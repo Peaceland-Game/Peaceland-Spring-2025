@@ -1,0 +1,482 @@
+title: Advance_the_conversation
+---
+You talk with the father about his sickness, learning that he is particularly unwell today, and that he admits his end is likely near. In this trying time, he asks you to retrieve a photograph from his desk so he can tell you a story that you haven't heard before.
+
+-> Go to desk
+	<<jump Go_to_desk>>
+===
+
+title: Burst_through_the_door
+---
+The father and the other soldier burst through the door to see the enemy soldier getting their bearings after having just been asleep. A small fight breaks out, and the other soldier tells the father to handle the enemy while they prevent the enemy from using the rescue target as leverage. 
+-> Fight enemy
+	<<jump Fight_enemy>>
+===
+
+
+title: Descend_stairs
+---
+The father and the soldier begin to head down the stairs. However, as they decend, there would be a QTE that the player would need to hit, as a trap is laid on the stairs. If the player fails, they trigger the trap. If they don't fail, they signal to the other soldier to come disarm the trap, as that is their specialty.
+
+-> Disarm trap
+	<<jump Disarm_trap>>
+-> Trigger trap
+	<<jump Trigger_trap>>
+===
+
+title: Descend_stairs__father_leading_L
+---
+The father and the soldier begin to head down the stairs. However, as they decend, there would be a QTE that the player would need to hit, as a trap is laid on the stairs. If the player fails, they trigger the trap. If they don't fail, they signal to the other soldier to come disarm the trap, as that is their specialty.
+
+-> Disarm trap 
+	<<jump Disarm_trap>>
+-> Trigger trap 
+	<<jump Trigger_trap>>
+===
+
+title: Descend_stairs__other_soldier_leading
+---
+The father and the other soldier descend the stairs as the other soldier leads. The other soldier then stops, signaling that there is a trap. They will then disarm it, as that is their specialty
+-> Disarm trap
+	<<jump Disarm_trap>>
+===
+
+title: Descend_stairs__other_soldier_leading_L
+---
+The father and the other soldier descend the stairs as the other soldier leads. The other soldier then stops, signaling that there is a trap. They will then disarm it, as that is their specialty
+-> Disarm trap 
+	<<jump Disarm_trap>>
+===
+
+title: Disarm_trap
+---
+The trap is disarmed, and then they continue down. They are met with another door at the foot of the stairs.
+
+-> Open door
+	<<jump Open_door>>
+-> Press ear to door
+	<<jump Press_ear_to_door>>
+===
+
+title: Discuss_plans__loud
+---
+The father and the other soldier would quietly take a look, then relay the information to the outside soldier. They would then talk and formulate a plan. Things like who is going to descend the stairs first, how to deal with the guard, etc..
+The general plan is that they will go down and whoever is leading will throw a smoke grenade to cover their entrance. They will burst the door down and quickly fan out to cover ground. The father will be the one to get the rescue target while the other soldier will distract the enemy soldier.
+-> Investigate footsteps 
+	<<jump Investigate_footsteps>>
+-> Go back: loud
+	<<jump Go_back__loud>>
+===
+
+title: Discuss_plans__quiet
+---
+The father and the other soldier would quietly take a look, then relay the information to the outside soldier. They would then talk and formulate a plan. Things like who is going to descend the stairs first, who is going to free the rescue target, etc..
+The general plan is that they go down first, and the other soldier will keep an eye on the enemy soldier in case they stir. Meanwhile, the father will secure the rescue target and free them of their binds.
+-> Investigate footsteps
+	<<jump Investigate_footsteps>>
+-> Go back 
+	<<jump Go_back>>
+===
+
+title: Enter_basement
+---
+The two enter the basement to indeed find a soldier sleeping on the job. As they enter, the person who listened to the door before opening would hold a finger up to their lips to quiet the rescue target. The target would comply, but silently usher them to hurry up.
+
+-> Start rescue
+	<<jump Start_rescue>>
+===
+
+title: Enter_building
+---
+They enter into a living room with a kitchen at the back of the room. The two soldiers are told that they don't know the situation inside, so they have to investigate around the building to search for clues before they head downstairs.
+
+-> Investigate living room
+	<<jump Investigate_living_room>>
+-> Investigate kitchen
+	<<jump Investigate_kitchen>>
+-> Investigate other door
+	<<jump Investigate_other_door>>
+If they have complete all of the investigations, they would get the option to head downstairs. There's no difference made here, just giving the player knowledge based on what there is to see on the first floor.
+-> Get to basement
+	<<jump Get_to_basement>>
+===
+
+title: Enter_memory
+---
+The memory starts with the father and one of the other soldiers outside of a building at night. A voice comes in over a walkie / earpiece to signal that the remaining soldier is keeping lookout of the surrounding area outside. With confirmation that they are clear for entry, the two enter the building.
+
+-> Enter building
+	<<jump Enter_building>>
+===
+
+title: Fight_enemy
+---
+This is another opportunity for gameplay. A quick fight choreography could happen with multiple QTE's being each strike, or if we even want to venture further and try and implement an RPG system like we had mentioned in a previous meeting.
+-> Subdue enemy
+	<<jump Subdue_enemy>>
+-> Lose fight
+	<<jump Lose_fight>>
+===
+
+title: Flip_photo
+---
+You flip the photo to learn the information written on the back
+
+-> Go back to father
+	<<jump Go_back_to_father>> 
+===
+
+title: Future_notes
+---
+This ending is the "success" ending. Since the enemy soldier was never woken and they got the rescue target out without a problem, the father would remember this very fondly as a great success for their first mission. Then, down the line, if the player even encounters the other two soldiers, they would also remember it fondly.
+===
+
+title: Gameplay
+---
+Here, there would be a larger portion of gameplay that isn't just interacting with the environment. Since there would be an active smokescreen, the player would likely hve to traverse the smoke to get to the rescue target. Maybe by having a sound sensor of the rescue target that the player has to go towards? Once they get there, they would cut the binds off of the rescue target, then call out to the other soldier.
+During this scene, the player would likely hear commotion of the other soldier and the enemy soldier.
+-> Get out
+	<<jump Get_out>>
+===
+
+title: Get_out
+---
+The three rush out of the basement and out into first floor. The smokescreen will have kept the enemy soldier distracted long enough that the other soldier would be able to make it out with the father. They would get out of the building and get a safe distance away while in communication with the outside soldier.
+-> Leave memory     
+	<<jump Leave_memory>>
+===
+
+title: Get_to_basement
+---
+The father and other soldier get to the door to the basement. They prepare for whatever may be down there and open the door. They are met with a staircase. The person leading the descent will be decided on the first floor in the "Discuss plans" scene in the living room.
+
+-> Descend stairs: other soldier leading
+	<<jump Descend_stairs__other_soldier_leading>>
+===
+
+
+title: Get_to_basement_L
+---
+The father and other soldier get to the door to the basement. They prepare for the encounter with the soldier and open the door. They are met with a staircase. The person leading the descent will be decided on the first floor in the "Discuss plans: loud" scene in the living room.
+-> Descend stairs: other soldier leading L
+	<<jump Descend_stairs__other_soldier_leading_L>>
+-> Descend stairs: father leading L
+	<<jump Descend_stairs__father_leading_L>>
+===
+
+title: Go_back
+---
+The father and other solder go to look into the other parts of the house.
+===
+
+title: Go_back_to_father
+---
+You go back to your father and hand him the photograph. He looks at it fondly before addressing you. He tells you that these two people were like his family in the war, and this picture is after their first successful mission as a three soldier unit. As he talks, the text gets blurry, and the screen fades into a memory. 
+(There could also be a hard cut to a screen that lets the player know they are about to be in a memory)
+
+-> Enter memory 
+	<<jump Enter_memory>>
+===
+
+title: Go_back__loud
+---
+The father and soldier would go look at other parts of the house. However, the sound of the door slamming was quite loud, and this path now has a different outcome based on the player's choices of investigation.
+-> Investigate living room L
+	<<jump Investigate_living_room_L>>
+-> Investigate kitchen L
+	<<jump Investigate_kitchen_L>>
+-> Get to basement L
+	<<jump Get_to_basement_L>>
+===
+
+title: Go_quietly
+---
+You make it to the rescue target and begin to go about cutting their binds. This is another opportunity for gameplay, where there could be QTE's or other inputs about freeing the rescue target. If you mess up, maybe the knife slips and clatters to the ground, or collides with the chair, making more noise.
+-> Mess up
+	<<jump Mess_up>>
+-> Succeed
+	<<jump Succeed>>
+===
+
+title: Go_to_desk
+---
+You go over to the desk, finding the photograph among other items on the desk that are strewn about in no particular fashion. 
+
+-> Interact with other items
+	<<jump Interact_with_other_items>>
+-> Grab photograph
+	<<jump Grab_photograph>>
+===
+
+title: Go_to_museum
+---
+In the museum, we would drop off the photo for the exhibit, then check out the other items that have already been placed in displays. These would each be a memory that we would see by interacting with them, reading a description of the item then fading into the memory.
+-> Future notes
+	<<jump Future_notes>>
+===
+
+title: Grab_photograph
+---
+You pick up the photograph to see that it's your father with two other comrades dressed in military gear. They are smiling and posing for the picture. You can flip it over to see a small scribble on the back that has the date it was taken, as well as possibly the names of who is in the picture. 
+
+-> Go back to father
+	<<jump Go_back_to_father>>
+===
+
+title: Interact_with_other_items
+---
+You pick out a couple of the other items, gaining more insight into who your father is. Things like a well kept diary, certain pins / medals, or other items that the father would have gotten or used to remember the war.
+-> Grab photograph
+	<<jump Grab_photograph>>
+===
+
+title: Investigate_backpack
+---
+The backpack would be full of survival items. Things like a folded up sleeping bag, a survival knife, a lighter, and other items would be roughly thrown into the bag. There could also be a named embroidered onto the bag, or a note inside that has some information on who's this bag was.
+-> Investigate food
+	<<jump Investigate_food>>
+-> Investigate trash bags
+	<<jump Investigate_trash_bags>>
+-> Go back: loud
+	<<jump Go_back__loud>>
+===
+
+title: Investigate_bedroom
+---
+The father and other soldier would enter the bedroom after having slammed the door open. Inside, there would be three things that can be found by moving around and getting close enough that they get highlighted to indicate interactability. Against a wall would be tattered trash bags with clothes and other personal apparel items inside it. Near the trash bags would be rotten food and empty bottles of water. On the bed is a backpack.
+-> Investigate trash bags
+	<<jump Investigate_trash_bags>>
+-> Investigate food
+	<<jump Investigate_food>>
+-> Investigate backpack
+	<<jump Investigate_backpack>>
+===
+
+title: Investigate_food
+---
+The rotten food would be days old at this point. There would be things like moldy fruit, open cans of food, overly used utencils, empty bottles of water, and other things that would make it clear that someone was living here. It would be centric to this area.
+-> Investigate backpack
+	<<jump Investigate_backpack>>
+-> Investigate trash bags
+	<<jump Investigate_trash_bags>>
+-> Go back: loud
+	<<jump Go_back__loud>>
+===
+
+title: Investigate_footsteps
+---
+There would be a trail in the dust that leads from the main door to another door in between the kitchen and the living room. Upon inspection, the father and other soldier would see that there is one set of footprints and a long line. There would be a comment about how the rescue target was likely dragged in by one soldier. 
+-> Investigate hole in the floor
+	<<jump Investigate_hole_in_the_floor>> 
+-> Go back 
+	<<jump Go_back>>
+===
+
+title: Investigate_hole_in_the_floor
+---
+The father notices a hole in the wooden floor that's just big enough to see into a certain part of the basement. In the hole, they can see that the rescue target is secured to a chair and currently either asleep or unaware of their presence above. They would also be able to see a single soldier asleep in a chair up against the wall.
+-> Discuss plans: quiet
+	<<jump Discuss_plans__quiet>>
+===
+
+title: Investigate_kitchen
+---
+In here, there would be two items that can be found by moving around and getting close enough that they get highlighted to indicate interactability. There is a cold meal pack and a used tea bag
+
+-> Investigate meal pack
+	<<jump Investigate_meal_pack>>
+-> Investigate tea bag
+	<<jump Investigate_tea_bag>>
+===
+
+title: Investigate_kitchen_L
+---
+In here, there would be two items that can be found by moving around and getting close enough that they get highlighted to indicate interactability. There is a cold meal pack and a used tea bag
+
+-> Investigate meal pack 
+	<<jump Investigate_meal_pack>>
+-> Investigate tea bag 
+	<<jump Investigate_tea_bag>>
+===
+
+title: Investigate_living_room
+---
+In here, there would be two things that can be found by moving around and getting close enough that they get highlighted to indicate interactability. There would be footsteps in the dust on the floor, and empty bullet cases.
+
+-> Investigate footsteps
+	<<jump Investigate_footsteps>>
+-> Investigate hole in the floor
+	<<jump Investigate_hole_in_the_floor>>
+===
+
+
+title: Investigate_living_room_L
+---
+In here, there would be two things that can be found by moving around and getting close enough that they get highlighted to indicate interactability. There would be footsteps in the dust on the floor, and empty bullet cases.
+
+-> Investigate footsteps 
+	<<jump Investigate_footsteps>>
+-> Investigate hole in the floor 
+	<<jump Investigate_hole_in_the_floor>>
+===
+
+
+title: Investigate_meal_pack
+---
+The meal pack is cold with some leftovers still inside of it. It's a relatively large meal, but not fully finished. Besides it are used utencils as well, and only one pair of them. 
+-> Investigate tea bag
+	<<jump Investigate_tea_bag>>
+-> Go back
+	<<jump Go_back>>
+===
+
+title: Investigate_other_door
+---
+Here, the father and other soldier would try to open the door, but would be unable to. They would radio to the outside soldier who would then inform them that it is an old bedroom that has a broken cabinet on the other side, barricading the door. There might also be a quick thing of dialogue here that maybe gives a warning against slamming into the door, but still offer the choice to the player.
+
+-> Slam into door
+	<<jump Slam_into_door>>
+-> Leave it alone
+	<<jump Leave_it_alone>>
+===
+
+title: Investigate_tea_bag
+---
+The tea bag is a still slightly damp. From the smell, it's chamomile and lavender. Here, there could be a comment from either the father or the other soldier about how this is a common tea to drink before sleeping.
+-> Investigate meal pack
+	<<jump Investigate_meal_pack>> 
+-> Go back
+	<<jump Go_back>>
+===
+
+title: Investigate_trash_bags
+---
+There would be two dirty trash bags that are knocked over and open. Inside would be tattered clothes that seemed to have not been washed in a long time. 
+-> Investigate food
+	<<jump Investigate_food>>
+-> Investigate backpack
+	<<jump Investigate_backpack>>
+-> Go back: loud
+	<<jump Go_back__loud>>
+===
+
+title: Leave_it_alone
+---
+The father and other solder go to look into the other parts of the house.
+-> Go back   
+	<<jump Go_back>>
+===
+
+title: Leave_memory
+---
+The game would then fade back to present time with the father finishing up the story. There may be some dialogue here about what our character thinks about the story, but it wouldn't be much. The father would then say something along the lines of
+"If only I could tell these two soldiers how much they meant to me one last time"
+which would set up motivation for the character to progress through the story. Somehow, they would learn of a museum opening up soon that is accepting artifacts connected to the war and the memories it has left with people, which is where we would bring the photo.
+
+-> Go to museum
+	<<jump Go_to_museum>>
+===
+
+title: Lose_fight
+---
+The player would be losing the upper hand in the fight, allowing the enemy enough time to radio for outside help. The outside soldier would radio in that they overheard the message via listening over the radio, and usher the two to get out fast. The other soldier would have at this point gotten the rescue target out, and come to assist in the fight. This would give the upper hand back to the player, allowing them to win the fight.
+(I don't think it would make sense if this was an "absolute" fail, since obviously the father is alive in the present, meaning that they would have had to get out somehow)
+-> Rush out 
+	<<jump Rush_out>>
+===
+
+title: Make_it_to_the_stairs
+---
+The two successfully make it to the stairs, and the other soldier quietly follows. They ascend the stairs and make it to the first floor safe and sound. They radio to the outside soldier, and quietly exit the building.
+-> Leave memory
+	<<jump Leave_memory>> 
+===
+
+title: Make_noise
+---
+The father makes his way to the rescue target too quickly and too carelessly, knocking around some broken glass on the floor or making some other noise. The enemy soldier stirs, and the father and other soldier share a look. With a quick nod, they switch positions, as the father is more suited for combat than the other soldier.
+-> Fight enemy
+	<<jump Fight_enemy>> 
+===
+
+title: Mess_up
+---
+The father attempts to cut the binds too quickly, dropping the knife after cutting his own hand from a careless cut. The knife clatters to the ground, and the enemy soldier stirs. The father and other soldier share a look. With a quick nod, they switch positions, as the father is more suited for combat than the other soldier.
+-> Fight enemy
+	<<jump Fight_enemy>> 
+===
+
+title: Open_door
+---
+The father goes to kick the door down, but the other soldier stops him as they press their ear to the door. They would inform the father that there is the sound of snoring, and then open the door slowly so as to not wake the enemy.
+
+-> Enter basement
+	<<jump Enter_basement>>
+===
+
+title: Press_ear_to_door
+---
+The father would press his ear to the door to hear whimpering / crying of the target of the rescue mission. They would also hear a singular enemy snoring. The father would then know to open the door quietly so as to not wake the enemy, and would do so.
+
+-> Enter basement
+	<<jump Enter_basement>>
+===
+
+title: Rush_out
+---
+The three rush out of the basement, barreling up the stairs and into the first floor. The outside soldier is actively radioing in to get a sense of what is going on, and there is rushed conversation about what happened. They get out of the building and run away.
+-> Leave memory  
+	<<jump Leave_memory>> 
+===
+
+title: Slam_into_door
+---
+The father would body slam the door to try and create enough room to get into the bedroom. It would take one or two slams, but eventually they would make it inside. This will make a lot of noise, and would be the first thing the player would do that would start to affect their chances of success negatively.
+-> Investigate bedroom
+	<<jump Investigate_bedroom>>
+===
+
+
+title: Start
+---
+You enter the game in a conversation with your bedridden father. The screen is black with only text, something along the lines of 
+"Father, how do you feel?"
+then the father gives a response as the screen fades into a bedroom. The father is in the bed, and there is a desk and large drawer in the room as well, with a large window on one of the walls. There are items scattered along the desk and drawer, but nothing is too visible just yet.
+
+-> Advance the conversation
+	<<jump Advance_the_conversation>>
+===
+
+title: Start_rescue
+---
+This would be the start of the majority of the gameplay. The two would slowly enter in, and the other soldier would go towards the enemy soldier. First gameplay would be to not move too far too fast. Maybe a bar to represent noise levels that increases based on movement? And it decreases when you stand still?
+-> Go quietly
+	<<jump Go_quietly>>
+-> Make noise
+	<<jump Make_noise>>
+===
+
+title: Subdue_enemy
+---
+The player successfully subdues the enemy, sending them unconscious before they can call for backup or, at worst, subdue both the father and the other soldier. The other soldier will have already cut free the rescue target, and be ready to quickly evacuate. 
+-> Rush out
+	<<jump Rush_out>>
+===
+
+title: Succeed
+---
+The father successfully frees the rescue target from their bindings, letting them drop to the floor quietly and safely. The rescue target is helped up, and they make their way back to the stairs leading upwards. The same gameplay of being quiet happens again, but with the rescue target in tow this time. 
+-> Make noise 
+	<<jump Make_noise>>
+-> Make it to the stairs
+	<<jump Make_it_to_the_stairs>>
+===
+
+title: Trigger_trap
+---
+The trap triggers, setting off several metal bells that fill the stairway with sound. The other soldier is quick to act, disarming the trap before it can go on for too long, but the alarm was sounded nonetheless. The other soldier will usher the father forward, disregarding stealth.
+-> Burst through the door
+	<<jump Burst_through_the_door>>
+===
+
+
