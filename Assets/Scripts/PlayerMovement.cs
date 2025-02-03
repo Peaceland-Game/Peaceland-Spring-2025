@@ -16,11 +16,14 @@ public class PlayerMovement : MonoBehaviour
     float currentSpeed = 0f;
     float distancePercentage = 0f;
     float splineLength;
+    Vector3 tangent;
 
     private void Start()
     {
         screenWidth = Screen.width;
         splineLength = spline.CalculateLength();
+        tangent = spline.EvaluateTangent(1);
+        Debug.Log(tangent);
     }
 
     // Update is called once per frame
