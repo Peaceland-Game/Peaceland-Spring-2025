@@ -1,11 +1,26 @@
 ﻿title: Start
+position: -117,-205
 ---
 Wow!
 My first ever Yarn script in Unity!
 
 -> Gosh!
+    Wow that's crazy!
+    -> Go somewhere else
+        <<jump Node>>
+    -> Go here
+        <<jump Node1>>
 -> Incredible!
 -> I'm amazed!
+===
 
-Anyway, time to get writing!
+title: Node
+position: -113,16
+---
+Hello there!
+===
+title: Node1
+position: -55,-13
+---
+This is node 1!
 ===
