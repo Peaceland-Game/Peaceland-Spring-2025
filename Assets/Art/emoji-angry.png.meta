@@ -235,7 +235,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      emoji-angry_0: -7481846300934072225
+      emoji-angry_1: 3555127706158854896
+      emoji-angry_2: -4514274033595254683
+      emoji-angry_3: 7900701507320429032
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

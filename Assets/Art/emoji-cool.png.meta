@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      emoji-cool_0: 286135230253530296
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
