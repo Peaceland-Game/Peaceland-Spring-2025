@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 8bd5e5f4f92798440990831d12277b6f
+guid: 39f264316c70c7a4eb56ac00c0abfbfe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1601585310974448952
-    second: test_room_1_0
+      213: -7481846300934072225
+    second: emoji-angry_0
+  - first:
+      213: 3555127706158854896
+    second: emoji-angry_1
+  - first:
+      213: -4514274033595254683
+    second: emoji-angry_2
+  - first:
+      213: 7900701507320429032
+    second: emoji-angry_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +135,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: test_room_1_0
+      name: emoji-angry_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2560
-        height: 1440
+        x: 41
+        y: 19
+        width: 446
+        height: 413
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +150,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8359d12da59f93610800000000000000
-      internalID: 1601585310974448952
+      spriteID: f5811c80e642b2890800000000000000
+      internalID: -7481846300934072225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emoji-angry_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 25
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f27fb810d9565130800000000000000
+      internalID: 3555127706158854896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emoji-angry_2
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 25
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 568f8c02fa31a51c0800000000000000
+      internalID: -4514274033595254683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emoji-angry_3
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 25
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e93a34492ee4ad60800000000000000
+      internalID: 7900701507320429032
       vertices: []
       indices: 
       edges: []
@@ -160,8 +235,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      test_room_1_0: 1601585310974448952
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

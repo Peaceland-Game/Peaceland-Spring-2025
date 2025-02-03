@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8bd5e5f4f92798440990831d12277b6f
+guid: 110bc8a4d492be847b88c694b0225b28
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1601585310974448952
-    second: test_room_1_0
+      213: 286135230253530296
+    second: emoji-cool_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: test_room_1_0
+      name: emoji-cool_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2560
-        height: 1440
+        x: 53
+        y: 28
+        width: 412
+        height: 403
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8359d12da59f93610800000000000000
-      internalID: 1601585310974448952
+      spriteID: 8bc7cf4d97e88f300800000000000000
+      internalID: 286135230253530296
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      test_room_1_0: 1601585310974448952
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
