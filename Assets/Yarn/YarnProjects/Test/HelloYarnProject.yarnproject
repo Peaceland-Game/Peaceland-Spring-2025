@@ -1,7 +1,7 @@
 {
   "projectFileVersion": 2,
   "sourceFiles": [
-    "HelloYarn.yarn"
+    "*.yarn"
   ],
   "excludeFiles": [
     "**/*~/*"
