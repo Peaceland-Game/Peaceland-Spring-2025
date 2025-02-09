@@ -4,23 +4,26 @@ position: -117,-205
 Wow!
 My first ever Yarn script in Unity!
 
--> Gosh!
+-> More options here!
     Wow that's crazy!
     -> Go somewhere else
-        <<jump Node>>
+        <<jump HelloThereNode>>
     -> Go here
-        <<jump Node1>>
+        <<jump NoSpaces>>
 -> Incredible!
 -> I'm amazed!
 ===
 
-title: Node
+title: HelloThereNode
 position: -113,16
 ---
 Hello there!
+This node simply says hello there!
 ===
-title: Node1
-position: -55,-13
+title: NoSpaces
+position: 162,-267
 ---
-This is node 1!
+This is another node just to demonstrate traversal of nodes
+Also this node loops back to the start node
+<<jump Start>>
 ===

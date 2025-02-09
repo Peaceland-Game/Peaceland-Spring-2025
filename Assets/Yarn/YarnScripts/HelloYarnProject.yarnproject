@@ -1,15 +1,14 @@
 {
   "projectFileVersion": 2,
   "sourceFiles": [
-    "**/*.yarn",
-    "../YarnScripts/HelloYarn.yarn"
+    "HelloYarn.yarn"
   ],
   "excludeFiles": [
     "**/*~/*"
   ],
   "localisation": {
     "en": {
-      "assets": ".."
+      "assets": "."
     }
   },
   "baseLanguage": "en",
