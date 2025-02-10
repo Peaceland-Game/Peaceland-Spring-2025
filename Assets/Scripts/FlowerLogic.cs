@@ -1,8 +1,14 @@
+using System.IO.Pipes;
+using UnityEditor;
 using UnityEngine;
 
 public class FlowerLogic : MonoBehaviour
 {
     [SerializeField] GrabAndSwipe shears;
+    [SerializeField] float pointTime;
+    [SerializeField] LineRenderer guideLine;
+    [SerializeField] LineRenderer cutLine;
+    float timer = 0;
 
     //if the shears pass over the flower quick enough, it cuts it
     private void OnTriggerEnter2D(Collider2D collider)
@@ -12,4 +18,40 @@ public class FlowerLogic : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.red;
         }
     }
+
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Shears"))
+        {
+            timer += Time.deltaTime;
+            if (timer >= pointTime)
+            {
+                timer = 0;
+                cutLine.positionCount++;
+                cutLine.SetPosition(cutLine.positionCount - 1, collider.gameObject.transform.position);
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Shears"))
+        {
+            float averageDistance = 0;
+            for (int i = 0; i < cutLine.positionCount; i++)
+            {
+                averageDistance += LinePointDistance(guideLine.GetPosition(0), guideLine.GetPosition(1), cutLine.GetPosition(i));
+            }
+            averageDistance /= cutLine.positionCount;
+            Debug.Log(averageDistance);
+        }
+    }
+
+    private float LinePointDistance(Vector2 lineStart, Vector2 lineEnd, Vector2 point)
+    {
+        Vector2 lineDirection = lineEnd - lineStart;
+        Vector2 pointToLineStart = point - lineStart;
+        return Vector3.Cross(point - lineStart, lineDirection).magnitude / lineDirection.magnitude;
+    }
+
 }
