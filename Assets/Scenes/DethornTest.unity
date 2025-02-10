@@ -146,7 +146,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3.0044634, y: -1.1112862, z: 100}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
+  m_LocalScale: {x: 1.2375001, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1816198025}
@@ -408,7 +408,7 @@ Transform:
   m_GameObject: {fileID: 646654749}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.134, y: -0.062, z: 0}
+  m_LocalPosition: {x: -0.173, y: -0.143, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -430,7 +430,7 @@ FixedJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.13399999, y: -0.061999988}
+  m_ConnectedAnchor: {x: -0.17300001, y: -0.143}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &858571131
@@ -459,7 +459,7 @@ Transform:
   m_GameObject: {fileID: 858571131}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.07388016, w: 0.9972672}
-  m_LocalPosition: {x: 10.726537, y: 2.584014, z: 10}
+  m_LocalPosition: {x: 10.75, y: 2.584014, z: 10}
   m_LocalScale: {x: 10, y: 10, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -757,7 +757,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 6.986537, y: -1.2059861, z: 100}
-  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
+  m_LocalScale: {x: 1.2283701, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1816198025}
@@ -935,7 +935,7 @@ Transform:
   m_GameObject: {fileID: 2006070356}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.86, y: 2.63, z: 10}
+  m_LocalPosition: {x: -1.76, y: 2.63, z: 10}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -983,7 +983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shears: {fileID: 6224690}
   gravScale: 2.5
-  popForce: 600
+  popForce: 500
   centerOfGravity: {fileID: 646654749}
 --- !u!61 &2006070361
 BoxCollider2D:
