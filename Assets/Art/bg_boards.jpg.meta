@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 07e8f29f176b8f8409d028e5e4c2a174
+guid: c47cb1b6d995d2544a2f3015c1225c4b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7886860654375418226
-    second: Shears_0
+      213: -3524088224626251803
+    second: bg_boards_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shears_0
+      name: bg_boards_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
-        width: 512
-        height: 504
+        y: 0
+        width: 980
+        height: 980
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2793d019af1c37d60800000000000000
-      internalID: 7886860654375418226
+      spriteID: 5e7e30e5e6ce71fc0800000000000000
+      internalID: -3524088224626251803
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Shears_0: 7886860654375418226
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

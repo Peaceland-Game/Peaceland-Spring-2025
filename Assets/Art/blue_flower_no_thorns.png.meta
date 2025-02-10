@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 07e8f29f176b8f8409d028e5e4c2a174
+guid: 04afd973a6c786a47ad1d6f7326ae77e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7886860654375418226
-    second: Shears_0
+      213: -1346605607605732703
+    second: blue_flower_no_thorns_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shears_0
+      name: blue_flower_no_thorns_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 512
-        height: 504
+        x: 753
+        y: 308
+        width: 627
+        height: 1916
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2793d019af1c37d60800000000000000
-      internalID: 7886860654375418226
+      spriteID: 1aa7c12a555ef4de0800000000000000
+      internalID: -1346605607605732703
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Shears_0: 7886860654375418226
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
