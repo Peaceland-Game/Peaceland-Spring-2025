@@ -1,14 +1,14 @@
 {
   "projectFileVersion": 2,
   "sourceFiles": [
-    "**/*.yarn"
+    "*.yarn"
   ],
   "excludeFiles": [
     "**/*~/*"
   ],
   "localisation": {
     "en": {
-      "assets": ".."
+      "assets": "."
     }
   },
   "baseLanguage": "en",
