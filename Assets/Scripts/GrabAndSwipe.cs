@@ -1,5 +1,6 @@
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class GrabAndSwipe : MonoBehaviour
@@ -22,7 +23,7 @@ public class GrabAndSwipe : MonoBehaviour
     private void OnMouseDrag()
     {
         transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
-        if (Vector2.Distance(previousMousePos, transform.position) >= sliceSpeed * Time.deltaTime)
+        if (Vector2.Distance(previousMousePos, transform.position) / Time.deltaTime >= sliceSpeed)
         {
             isSlicing = true;
             spriteRenderer.color = Color.red;

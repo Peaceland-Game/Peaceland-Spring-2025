@@ -38,20 +38,32 @@ public class FlowerLogic : MonoBehaviour
         if (collider.CompareTag("Shears"))
         {
             float averageDistance = 0;
+            //gets the distance of each point on the drawn line
             for (int i = 0; i < cutLine.positionCount; i++)
             {
                 averageDistance += LinePointDistance(guideLine.GetPosition(0), guideLine.GetPosition(1), cutLine.GetPosition(i));
             }
+            //calculate the average
             averageDistance /= cutLine.positionCount;
-            Debug.Log(averageDistance);
+            Debug.Log("Average distance: " + averageDistance);
+
+            //reset cut line
+            cutLine.positionCount = 0;
         }
     }
 
+    /// <summary>
+    /// returns the distance between a point and a line
+    /// </summary>
+    /// <param name="lineStart"></param>
+    /// <param name="lineEnd"></param>
+    /// <param name="point"></param>
+    /// <returns></returns>
     private float LinePointDistance(Vector2 lineStart, Vector2 lineEnd, Vector2 point)
     {
         Vector2 lineDirection = lineEnd - lineStart;
         Vector2 pointToLineStart = point - lineStart;
-        return Vector3.Cross(point - lineStart, lineDirection).magnitude / lineDirection.magnitude;
+        return Vector3.Cross(pointToLineStart, lineDirection).magnitude / lineDirection.magnitude;
     }
 
 }
