@@ -1,0 +1,21 @@
+name: Update module
+on:
+  workflow_dispatch
+permissions:
+    pull-requests: write
+    contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Update module
+        run: |
+          git submodule update --init --recursive --checkout -f --remote
+          git config --global user.name "GitHub Action"
+          git config --global user.email "noreply@github.com"
+          git commit -am "[Auto] Update submodules"
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v7

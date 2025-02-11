@@ -1,0 +1,3 @@
+[submodule "Assets/Yarn/YarnProjects"]
+	path = Assets/Yarn/YarnProjects
+	url = https://github.com/Peaceland-Game/Yarn-Spring-2025.git
