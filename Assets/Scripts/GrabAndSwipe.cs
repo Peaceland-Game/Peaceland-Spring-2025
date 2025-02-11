@@ -45,4 +45,21 @@ public class GrabAndSwipe : MonoBehaviour
     {
         isMouseDown = !context.canceled;
     }
+
+    private void OnMouseDrag()
+    {
+        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
+        if (Vector2.Distance(previousMousePos, transform.position) / Time.deltaTime >= sliceSpeed)
+        {
+            isSlicing = true;
+            spriteRenderer.color = Color.red;
+        }
+        else
+        {
+            isSlicing = false;
+            spriteRenderer.color = Color.white;
+        }
+        previousMousePos = transform.position;
+    }
+
 }
