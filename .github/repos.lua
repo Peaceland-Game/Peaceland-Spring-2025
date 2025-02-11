@@ -1,6 +1,6 @@
 local config = {
-    labels_fetch = "repo-fetch,dependencies"
-    labels_update = "dependencies",
+    labels_fetch = "repo-fetch,dependencies",
+    labels_update = "dependencies"
 }
 
 local repos = {
