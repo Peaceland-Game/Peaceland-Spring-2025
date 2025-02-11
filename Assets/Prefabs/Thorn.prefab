@@ -259,3 +259,6 @@ MonoBehaviour:
   gravScale: 2.5
   popForce: 500
   centerOfGravity: {fileID: 3950713690635210711}
+  pointTime: 0.01
+  guideLine: {fileID: 0}
+  cutLine: {fileID: 0}
