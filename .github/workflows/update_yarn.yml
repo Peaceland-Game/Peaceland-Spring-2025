@@ -10,7 +10,7 @@ jobs:
           fetch-depth: 0 # This pulls changes before doing any changes
       - uses: Panquesito7/submodules-alternative@v1.7.0
         with:
-          repos_filename: .github/repos.lua           # Both `repos.lua` and `repos` will work.
+          repos_filename: repos.lua           # Both `repos.lua` and `repos` will work.
           use_pr: true                                # Whether to create a pull request when updating/adding the repositories.
           branch_name: repo-update                    # The branch name to use (only if `use_pr` is enabled).
           commit_message: '[Auto] Update yarn'        # Commit message used when adding new repositories.
