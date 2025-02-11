@@ -1,6 +1,9 @@
-name: Updater yarn
+name: Update yarn
 on:
   workflow_dispatch: # This allows you to manually run the workflow whenever you want.
+permissions:
+  contents: write
+  pull-requests: write
 jobs:
   update-repos:
     runs-on: ubuntu-latest
@@ -8,6 +11,8 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 # This pulls changes before doing any changes
+      - name: "Copy file"
+        run: "cp .github/repos.lua /home/runner/work/_actions/Panquesito7/submodules-alternative/v1.7.0/src/repos.lua"
       - uses: Panquesito7/submodules-alternative@v1.7.0
         with:
           repos_filename: repos.lua           # Both `repos.lua` and `repos` will work.
