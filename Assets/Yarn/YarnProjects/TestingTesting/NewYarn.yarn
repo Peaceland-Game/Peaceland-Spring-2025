@@ -1,12 +1,10 @@
 ﻿title: Start
 position: -117,-205
 ---
-If you're seeing this, then this change worked!
-Wow!
-My first ever Yarn script in Unity!
+Hello HELLLOOOO World!
 
 -> More options here!
-    Wow that's crazy!
+    Wow that's really something...
     -> Go somewhere else
         <<jump HelloThereNode>>
     -> Go here
@@ -15,7 +13,7 @@ My first ever Yarn script in Unity!
 -> I'm amazed!
 ===
 
-title: HelloThereNode
+title: HelloThereNode1YouGuy
 position: -113,16
 ---
 Hello there!

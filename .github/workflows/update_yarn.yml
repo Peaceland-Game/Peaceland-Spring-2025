@@ -1,0 +1,26 @@
+name: Update yarn
+on:
+  workflow_dispatch: # This allows you to manually run the workflow whenever you want.
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  update-repos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # This pulls changes before doing any changes
+      - name: "Copy file"
+        run: "cp .github/repos.lua /home/runner/work/_actions/Panquesito7/submodules-alternative/v1.7.0/src/repos.lua"
+      - uses: Panquesito7/submodules-alternative@v1.7.0
+        with:
+          repos_filename: repos.lua           # Both `repos.lua` and `repos` will work.
+          use_pr: true                                # Whether to create a pull request when updating/adding the repositories.
+          branch_name: repo-update                    # The branch name to use (only if `use_pr` is enabled).
+          commit_message: '[Auto] Update yarn'        # Commit message used when adding new repositories.
+          commit_message_update: 'Bump repositories'  # Commit message used when updating all the repositories.
+          add_repos: false                            # If enabled, this will clone all the repositories listed in your repos file.
+          update_repos: true                          # When enabled, this will attempt to update all the repositories.
+          squash_commits: true                        # Whether to squash all commits or not on every repository update/addition. Cannot be used if `one_pr` is disabled.
+          one_pr: true                                # Creates one single PR for everything if enabled. Works only for `update_repos` if disabled.
