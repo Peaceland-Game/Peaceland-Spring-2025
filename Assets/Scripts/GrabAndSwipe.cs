@@ -27,7 +27,7 @@ public class GrabAndSwipe : MonoBehaviour
         if(isMouseDown)
         {
             // Snap to mouse position
-            transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
+            transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Touchscreen.current.position.ReadValue()).x, Camera.main.ScreenToWorldPoint(Touchscreen.current.position.ReadValue()).y, 0);
 
             // Determine if the blade is slicing
             isSlicing = Vector2.Distance(previousMousePos, transform.position) >= sliceSpeed * Time.deltaTime;
@@ -48,7 +48,7 @@ public class GrabAndSwipe : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
+        transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Touchscreen.current.position.ReadValue()).x, Camera.main.ScreenToWorldPoint(Touchscreen.current.position.ReadValue()).y, 0);
         if (Vector2.Distance(previousMousePos, transform.position) / Time.deltaTime >= sliceSpeed)
         {
             isSlicing = true;
