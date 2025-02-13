@@ -13,6 +13,13 @@ public class FlowerLogic : MonoBehaviour
     [SerializeField] float maxGreatDistance;
     [SerializeField] float maxOkayDistance;
 
+    [SerializeField] float pointTime;
+    [SerializeField] LineRenderer guideLine;
+    [SerializeField] LineRenderer cutLine;
+    float timer = 0;
+
+
+
     private Rigidbody2D rb;
     private Rigidbody2D centerRB;
 
@@ -39,6 +46,7 @@ public class FlowerLogic : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collider)
     {
+
         //if the shears are over the area to be cut
         if (collider.CompareTag("Shears"))
         {
@@ -53,6 +61,13 @@ public class FlowerLogic : MonoBehaviour
             else if (Vector2.Distance(cutLine.GetPosition(cutLine.positionCount - 1), collider.gameObject.transform.position) > cutDistance)
             {
                 //add a new point to the cut line
+
+        if (collider.CompareTag("Shears"))
+        {
+            timer += Time.deltaTime;
+            if (timer >= pointTime)
+            {
+                timer = 0;
                 cutLine.positionCount++;
                 cutLine.SetPosition(cutLine.positionCount - 1, collider.gameObject.transform.position);
             }
@@ -61,7 +76,9 @@ public class FlowerLogic : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
+
         //if the shears exit the area that is getting cut
+        
         if (collider.CompareTag("Shears"))
         {
             float averageDistance = 0;
@@ -73,6 +90,7 @@ public class FlowerLogic : MonoBehaviour
             //calculate the average
             averageDistance /= cutLine.positionCount;
             Debug.Log("Average distance: " + averageDistance);
+
             //calculate the score
             if (averageDistance <= maxGreatDistance)
             {

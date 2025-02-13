@@ -545,6 +545,9 @@ MonoBehaviour:
   cutLine: {fileID: 1695642414}
   maxGreatDistance: 0.1
   maxOkayDistance: 0.5
+  pointTime: 0.01
+  guideLine: {fileID: 449392619}
+  cutLine: {fileID: 1695642414}
 --- !u!61 &1192399937
 BoxCollider2D:
   m_ObjectHideFlags: 0
