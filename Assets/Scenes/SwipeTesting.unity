@@ -540,6 +540,11 @@ MonoBehaviour:
   gravScale: 1
   popForce: 1
   centerOfGravity: {fileID: 1192399933}
+  cutDistance: 0.2
+  guideLine: {fileID: 449392619}
+  cutLine: {fileID: 1695642414}
+  maxGreatDistance: 0.1
+  maxOkayDistance: 0.5
   pointTime: 0.01
   guideLine: {fileID: 449392619}
   cutLine: {fileID: 1695642414}
