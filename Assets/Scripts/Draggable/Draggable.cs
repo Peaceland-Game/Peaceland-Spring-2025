@@ -1,12 +1,14 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.Events;
 
-public class DraggableFlower : MonoBehaviour
+// Component for draggable objects. Requires a Drag Manager.
+
+[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(SpriteRenderer))]
+public class Draggable : MonoBehaviour
 {
     [SerializeField]
     private List<Transform> dragTargets; // Targets for the object to snap to
@@ -26,37 +28,38 @@ public class DraggableFlower : MonoBehaviour
     private Vector3 offset;
     private int snapIndex = -1;
     
-    private BoxCollider2D boxCollider2D;
+    private Collider2D bounds;
     void Start()
-    {
-        boxCollider2D = GetComponent<BoxCollider2D>();
+    {   
+        bounds = GetComponent<Collider2D>();
+    }
+
+    public bool CanDrag(Vector3 touch_wp) {
+        return draggable && bounds.OverlapPoint(touch_wp);
+    }
+
+    public void StartDrag(Vector3 touch_wp) {
+        dragging = true;
+        offset = transform.position - touch_wp;
+    }
+
+    public void DisableDrag() {
+        draggable = false;
+    }
+
+    public void EnableDrag() {
+        draggable = true;
     }
 
     void Update()
     {
-        if (!draggable) return;
+        if (!draggable || !dragging) return;
 
-        if (Input.touchCount != 1)
+        (TouchControl touch, Vector3 touch_wp) = DragManager.GetTouchWorldPosition();
+
+        if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved)
         {
-            dragging = false;
-            return;
-        }
-
-        TouchControl touch = Touchscreen.current.primaryTouch;
-
-        Vector3 touch_wp = Camera.main.ScreenToWorldPoint(touch.position.ReadValue());
-
-        if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
-        {
-            if (GetComponent<Collider2D>().OverlapPoint(touch_wp))
-            {
-                dragging = true;
-                offset = transform.position - touch_wp;
-            }
-        }
-        else if (dragging && touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved)
-        {
-            Vector3 newPos = new Vector3(touch_wp.x + offset.x, touch_wp.y + offset.y, transform.position.z);
+            Vector3 newPos = new(touch_wp.x + offset.x, touch_wp.y + offset.y, transform.position.z);
 
             // Snap to closts drag target (if one exists)
             if (dragTargets.Count > 0) {
@@ -76,23 +79,17 @@ public class DraggableFlower : MonoBehaviour
             // Clamp position to drag limit
             if (!dragLimit || dragLimit.OverlapPoint(new Vector2(newPos.x, newPos.y))) {
                 transform.position = newPos;
-                if (snapIndex != -1) {
-                    draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
-                }
             }
 
         }
-        else if (dragging && (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Ended || touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Canceled))
+        else if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Ended || touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Canceled)
         {
+            // End drag
             dragging = false;
+
+            if (snapIndex != -1) {
+                draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
+            }
         }
-    }
-
-    public void DisableDrag() {
-        draggable = false;
-    }
-
-    public void EnableDrag() {
-        draggable = true;
     }
 }
