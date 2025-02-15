@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.Events;
 
 public class DraggableFlower : MonoBehaviour
 {
@@ -16,8 +17,14 @@ public class DraggableFlower : MonoBehaviour
     [SerializeField]
     private float dragDistanceThreshold = 2.0f; // How close to get to a drag target before snapping to it 
 
+    [SerializeField]
+    UnityEvent<Transform> draggedOnTargetEvent; // When the object is released on a drag target, this signal is invoked with the transform of the target.
+
+    private bool draggable = true;
+
     private bool dragging = false;
     private Vector3 offset;
+    private int snapIndex = -1;
     
     private BoxCollider2D boxCollider2D;
     void Start()
@@ -27,6 +34,7 @@ public class DraggableFlower : MonoBehaviour
 
     void Update()
     {
+        if (!draggable) return;
 
         if (Input.touchCount != 1)
         {
@@ -53,17 +61,24 @@ public class DraggableFlower : MonoBehaviour
             // Snap to closts drag target (if one exists)
             if (dragTargets.Count > 0) {
                 float lowest_dist = float.MaxValue;
+                int i = 0;
+                snapIndex = -1;
                 foreach (Transform target in dragTargets) {
                     float dist = (newPos - target.position).magnitude;
                     if (dist < dragDistanceThreshold && dist < lowest_dist) {
                         newPos = target.position;
+                        snapIndex = i;
                     }
+                    i++;
                 }
             }
 
             // Clamp position to drag limit
             if (!dragLimit || dragLimit.OverlapPoint(new Vector2(newPos.x, newPos.y))) {
                 transform.position = newPos;
+                if (snapIndex != -1) {
+                    draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
+                }
             }
 
         }
@@ -71,5 +86,13 @@ public class DraggableFlower : MonoBehaviour
         {
             dragging = false;
         }
+    }
+
+    public void DisableDrag() {
+        draggable = false;
+    }
+
+    public void EnableDrag() {
+        draggable = true;
     }
 }
