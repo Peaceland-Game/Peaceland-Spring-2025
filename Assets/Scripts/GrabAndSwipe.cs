@@ -5,7 +5,9 @@ using UnityEngine.InputSystem;
 
 public class GrabAndSwipe : MonoBehaviour
 {
-    //the speed the shears need to be moving in order to slice
+    /// <summary>
+    /// the speed the shears need to be moving (units/sec) in order to slice
+    /// </summary>
     [SerializeField] float sliceSpeed;
 
     bool isMouseDown;
