@@ -15,7 +15,7 @@ public class Checklist : MonoBehaviour
     /// <summary>
     /// The x-coordinate for where the checklist should stop moving
     /// </summary>
-    private int checklistStopPoint = -320;
+    private int checklistStopPoint = -300;
 
     /// <summary>
     /// Controls whether the checklist can move or not
@@ -31,11 +31,6 @@ public class Checklist : MonoBehaviour
     /// Bool to check whether the checklist has finished moving or not
     /// </summary>
     private bool checklistReachedEnd = false;
-
-    /// <summary>
-    /// Main camera object
-    /// </summary>
-    private Camera mainCamera;
 
     /// <summary>
     /// Holds the text from the checklist
@@ -65,7 +60,6 @@ public class Checklist : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        mainCamera = Camera.main;
         rectTransform = GetComponent<RectTransform>();
         checklistStartPoint = (int)rectTransform.anchoredPosition.x;
 
@@ -128,6 +122,11 @@ public class Checklist : MonoBehaviour
         if (!checklistIsMoving)
         {
             clickData.position = Mouse.current.position.ReadValue();
+            if (clickData.position == new Vector2(0, 0))
+            {
+                clickData.position = Touchscreen.current.position.ReadValue();
+            }
+            Debug.LogWarning(clickData.position);
             clickResults.Clear();
 
             graphicRaycaster.Raycast(clickData, clickResults);
