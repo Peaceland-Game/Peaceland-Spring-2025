@@ -2,15 +2,41 @@ using UnityEngine;
 
 public class FlowerLogic : MonoBehaviour
 {
+    /// <summary>
+    /// the object that cuts the flower
+    /// </summary>
     [SerializeField] GrabAndSwipe shears;
+    /// <summary>
+    /// gravity scailing for thorn once it is cut
+    /// </summary>
     [SerializeField] float gravScale;
+    /// <summary>
+    /// the mangitude of the force applied to the thorn when it is cut
+    /// </summary>
     [SerializeField] float popForce;
+    /// <summary>
+    /// the thorn's center of gravity
+    /// </summary>
     [SerializeField] GameObject centerOfGravity;
+    /// <summary>
+    /// the distance the player must drag the shears for a new point to be drawn.
+    /// </summary>
     [SerializeField] float cutDistance;
+    /// <summary>
+    /// the dotted line that the player tries to cut on
+    /// </summary>
     [SerializeField] LineRenderer guideLine;
+    /// <summary>
+    /// the line that is drawn as the player cuts
+    /// </summary>
     [SerializeField] LineRenderer cutLine;
-
+    /// <summary>
+    /// the max average distance for a perfect score
+    /// </summary>
     [SerializeField] float maxGreatDistance;
+    /// <summary>
+    /// the max average distance for an okay score
+    /// </summary>
     [SerializeField] float maxOkayDistance;
 
     private Rigidbody2D rb;
