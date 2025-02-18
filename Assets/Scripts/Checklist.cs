@@ -90,7 +90,7 @@ public class Checklist : MonoBehaviour
             //If the checklist is hidden, move it to the right
             if (rectTransform.anchoredPosition.x < checklistStopPoint && !checklistReachedEnd)
             {
-                rectTransform.anchoredPosition += new Vector2(10, 0);
+                rectTransform.anchoredPosition += new Vector2(20, 0);
 
                 //If the checklist has reached it's stopping point, stop it from moving
                 if (rectTransform.anchoredPosition.x >= checklistStopPoint)
@@ -107,7 +107,7 @@ public class Checklist : MonoBehaviour
             //Otherwise, if the checklist is visible, move it to the left
             else if (rectTransform.anchoredPosition.x > checklistStartPoint)
             {
-                rectTransform.anchoredPosition -= new Vector2(10, 0);
+                rectTransform.anchoredPosition -= new Vector2(20, 0);
 
                 //If the checklist has reached it's starting point, stop it from moving
                 if (rectTransform.anchoredPosition.x <= checklistStartPoint)
@@ -136,7 +136,6 @@ public class Checklist : MonoBehaviour
         {
             //Save the position of where the user touched the screen to the clickData var
             clickData.position = Touchscreen.current.position.ReadValue();
-            Debug.LogWarning(clickData.position);
             //Clear the previous list of click results
             clickResults.Clear();
 
