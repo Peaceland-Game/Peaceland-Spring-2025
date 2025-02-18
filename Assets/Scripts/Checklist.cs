@@ -15,7 +15,7 @@ public class Checklist : MonoBehaviour
     /// <summary>
     /// The x-coordinate for where the checklist should stop moving
     /// </summary>
-    private int checklistStopPoint = -320;
+    private int checklistStopPoint = -690;
 
     /// <summary>
     /// Controls whether the checklist can move or not
@@ -31,11 +31,6 @@ public class Checklist : MonoBehaviour
     /// Bool to check whether the checklist has finished moving or not
     /// </summary>
     private bool checklistReachedEnd = false;
-
-    /// <summary>
-    /// Main camera object
-    /// </summary>
-    private Camera mainCamera;
 
     /// <summary>
     /// Holds the text from the checklist
@@ -57,18 +52,28 @@ public class Checklist : MonoBehaviour
     /// </summary>
     private RectTransform rectTransform;
 
+    /// <summary>
+    /// Holds data related to clicking/interacting with the game
+    /// </summary>
     private PointerEventData clickData;
+    /// <summary>
+    /// Holds a list of raycast results obtained from elements the user clicked on
+    /// </summary>
     private List<RaycastResult> clickResults;
 
+    /// <summary>
+    /// Raycaster element to help save clickData to clickResults
+    /// </summary>
     private GraphicRaycaster graphicRaycaster;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        mainCamera = Camera.main;
+        //Save the rect transform on the checklist to a var, so the position can be used for the starting point for the checklist
         rectTransform = GetComponent<RectTransform>();
         checklistStartPoint = (int)rectTransform.anchoredPosition.x;
 
+        //Instantiate the clicking vars
         clickData = new PointerEventData(EventSystem.current);
         clickResults = new List<RaycastResult>();
         graphicRaycaster = GetComponentInParent<GraphicRaycaster>();
@@ -85,7 +90,7 @@ public class Checklist : MonoBehaviour
             //If the checklist is hidden, move it to the right
             if (rectTransform.anchoredPosition.x < checklistStopPoint && !checklistReachedEnd)
             {
-                rectTransform.anchoredPosition += new Vector2(10, 0);
+                rectTransform.anchoredPosition += new Vector2(20, 0);
 
                 //If the checklist has reached it's stopping point, stop it from moving
                 if (rectTransform.anchoredPosition.x >= checklistStopPoint)
@@ -102,7 +107,7 @@ public class Checklist : MonoBehaviour
             //Otherwise, if the checklist is visible, move it to the left
             else if (rectTransform.anchoredPosition.x > checklistStartPoint)
             {
-                rectTransform.anchoredPosition -= new Vector2(10, 0);
+                rectTransform.anchoredPosition -= new Vector2(20, 0);
 
                 //If the checklist has reached it's starting point, stop it from moving
                 if (rectTransform.anchoredPosition.x <= checklistStartPoint)
@@ -123,23 +128,32 @@ public class Checklist : MonoBehaviour
     /// </summary>
     public void ChecklistClicked(InputAction.CallbackContext context)
     {
+        //If the context has not been started, return (I think)
         if (!context.started) return;
 
+        //If the checklist is not moving, continue
         if (!checklistIsMoving)
         {
-            clickData.position = Mouse.current.position.ReadValue();
+            //Save the position of where the user touched the screen to the clickData var
+            clickData.position = Touchscreen.current.position.ReadValue();
+            //Clear the previous list of click results
             clickResults.Clear();
 
+            //Raycast the clickData into the clickResults lisst
             graphicRaycaster.Raycast(clickData, clickResults);
 
+            //Go through each result in clickResults
             foreach (RaycastResult result in clickResults)
             {
+                //If the clicked element is the checklist collider, continue
                 if (result.gameObject.name == "UICollider")
                 {
+                    //Set the checklistCanMove var to the opposite of what it is
                     checklistCanMove = !checklistCanMove;
                 }
             }
 
+            //Previous code from when the checklist was a game object and not yet a UI object
             //var rayHit = Physics2D.GetRayIntersection(mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue()));
             //Debug.LogWarning(rayHit.GetType());
             //Debug.LogWarning(rayHit.collider);
