@@ -891,12 +891,12 @@ MonoBehaviour:
   cutRB: {fileID: 1971588565}
   shears: {fileID: 1027806482}
   gravScale: 2
-  popForce: 2
+  popForce: 300
   cutDistance: 1
   guideLine: {fileID: 1678868970}
   cutLine: {fileID: 666635801}
-  maxGreatDistance: 5
-  maxOkayDistance: 10
+  maxGreatDistance: 0.3
+  maxOkayDistance: 1
 --- !u!212 &1967743019
 SpriteRenderer:
   m_ObjectHideFlags: 0

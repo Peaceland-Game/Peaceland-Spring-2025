@@ -56,7 +56,7 @@ public class CutLogic : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collider)
     {
         //if the shears are over the area to be cut
-        if (collider.CompareTag("Shears"))
+        if (!cut && collider.CompareTag("Shears"))
         {
             //if the line has not been started yet
             if (cutLine.positionCount == 0)
@@ -76,9 +76,8 @@ public class CutLogic : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collider)
     {
-        Debug.Log("SWIPE FINISHED");
         //if the shears exit the area that is getting cut
-        if (collider.CompareTag("Shears"))
+        if (!cut && collider.CompareTag("Shears"))
         {
             float averageDistance = 0;
             //gets the distance of each point on the drawn line
