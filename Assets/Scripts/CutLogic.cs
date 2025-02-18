@@ -2,22 +2,23 @@ using UnityEngine;
 
 public class FlowerLogic : MonoBehaviour
 {
+
+    /// <summary>
+    /// The rigidbody that will physically be "cut off" by the player
+    /// </summary>
+    [SerializeField] Rigidbody2D cutRB;
     /// <summary>
     /// the object that cuts the flower
     /// </summary>
     [SerializeField] GrabAndSwipe shears;
     /// <summary>
-    /// gravity scailing for thorn once it is cut
+    /// gravity scaling for piece once it is cut
     /// </summary>
     [SerializeField] float gravScale;
     /// <summary>
-    /// the mangitude of the force applied to the thorn when it is cut
+    /// the magnitude of the force applied to the piece when it is cut
     /// </summary>
     [SerializeField] float popForce;
-    /// <summary>
-    /// the thorn's center of gravity
-    /// </summary>
-    [SerializeField] GameObject centerOfGravity;
     /// <summary>
     /// the distance the player must drag the shears for a new point to be drawn.
     /// </summary>
@@ -39,28 +40,17 @@ public class FlowerLogic : MonoBehaviour
     /// </summary>
     [SerializeField] float maxOkayDistance;
 
-    private Rigidbody2D rb;
-    private Rigidbody2D centerRB;
-
     private bool cut;
 
     private void Start()
     {
         cut = false;
-        rb = GetComponent<Rigidbody2D>();
-        centerRB = centerOfGravity.GetComponent<Rigidbody2D>();
     }
 
     //if the shears pass over the flower quick enough, it cuts it
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Shears") && shears.IsSlicing && !cut)
-        {
-            // Collision with shears
-            rb.gravityScale = gravScale;
-            rb.AddForce(Vector2.up * popForce);
-            cut = true;
-        }
+
     }
 
     private void OnTriggerStay2D(Collider2D collider)
@@ -86,6 +76,7 @@ public class FlowerLogic : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collider)
     {
+        Debug.Log("SWIPE FINISHED");
         //if the shears exit the area that is getting cut
         if (collider.CompareTag("Shears"))
         {
@@ -115,6 +106,16 @@ public class FlowerLogic : MonoBehaviour
 
             //reset cut line
             cutLine.positionCount = 0;
+        }
+
+        // *** ACTUAL CUTTING ** //
+        if (collider.CompareTag("Shears") && shears.IsSlicing && !cut)
+        {
+            Debug.Log("CUT!");
+            // Collision with shears
+            cutRB.gravityScale = gravScale;
+            cutRB.AddForce(Vector2.up * popForce);
+            cut = true;
         }
     }
 
