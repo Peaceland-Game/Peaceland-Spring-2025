@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FlowerLogic : MonoBehaviour
+public class CutLogic : MonoBehaviour
 {
 
     /// <summary>
