@@ -414,19 +414,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8914736155685001643, guid: a92f97fcde9e6fc48ad346799c77f7fe, type: 3}
       propertyPath: m_Size.x
-      value: 3.9809902
+      value: 1.8741999
       objectReference: {fileID: 0}
     - target: {fileID: 8914736155685001643, guid: a92f97fcde9e6fc48ad346799c77f7fe, type: 3}
       propertyPath: m_Size.y
-      value: 6.0471754
+      value: 2.3776326
       objectReference: {fileID: 0}
     - target: {fileID: 8914736155685001643, guid: a92f97fcde9e6fc48ad346799c77f7fe, type: 3}
       propertyPath: m_Offset.x
-      value: -0.15195763
+      value: 0.011903405
       objectReference: {fileID: 0}
     - target: {fileID: 8914736155685001643, guid: a92f97fcde9e6fc48ad346799c77f7fe, type: 3}
       propertyPath: m_Offset.y
-      value: -0.2569903
+      value: 1.406378
       objectReference: {fileID: 0}
     - target: {fileID: 8914736155685001643, guid: a92f97fcde9e6fc48ad346799c77f7fe, type: 3}
       propertyPath: m_IsTrigger
@@ -892,7 +892,7 @@ MonoBehaviour:
   shears: {fileID: 1027806482}
   gravScale: 2
   popForce: 300
-  cutDistance: 1
+  cutDistance: 0.2
   guideLine: {fileID: 1678868970}
   cutLine: {fileID: 666635801}
   maxGreatDistance: 0.3
