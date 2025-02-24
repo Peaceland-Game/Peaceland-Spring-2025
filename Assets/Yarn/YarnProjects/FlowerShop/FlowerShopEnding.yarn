@@ -1,0 +1,11 @@
+title: OrderComplete
+---
+Oh thank you so much! I gotta admit, I was nervous about coming here. I'm glad you're not like the rest of them!
+-> Oh no worries, it's my job!
+    <<jump Goodbye>>
+===
+title: Goodbye
+---
+-> Good luck with your date!
+Thank you!
+===
