@@ -1,10 +1,64 @@
-﻿title: FlowerShopStart
-tags:
+﻿title: Start
+position: 24,-217
 ---
-Hello! I would like some flowers please!
+<<declare $playerName = "Andrej">>
 
--> I'll get right to it!
-    <<switchCameras GameManager>>
--> No problem!
-    <<switchCameras GameManager>>
+-> Hi, how are you?
+    <<jump intro>>
+===
+
+title: Intro
+position: 24,-19
+---
+...
+-> Uh... hello there?
+    <<jump NPCFirstDialogue>>
+===
+
+
+title: NPCFirstDialogue
+position: 27,177
+---
+OH- sorry, I'm {$playerName}. I mean, I'm good thanks. How are you?
+-> I'm good, thanks. What can I do for you today?
+    <<jump NPCQuestion>>
+-> ...uhh, fine thanks. Anything I can help you with?
+    <<jump NPCQuestion>>
+-> Doing OK. How can I help you today?
+    <<jump NPCQuestion>>
+===
+
+title: NPCQuestion
+---
+Well, I'd like to get some flowers...
+-> Ok, any in particular-
+    <<jump FloristQuestion>>
+===
+
+title: FloristQuestion
+// COMMENT: not sure if I did this right, please feel free to adjust
+---
+They're for my girlfriend! She likes flowers.
+-> Aww, how sweet - I thought I saw you two walking around town square the other day, you make a very cute couple. What kind of flowers does she like?
+    <<jump NPCNervousRamble>>
+-> Well we can do personalized bouquets here, what flowers would she like?
+    <<jump NPCNervousRamble>>
+-> Great. Good for you. What flowers does she like?
+    <<jump NPCNervousRamble>>
+-> OK, what does she like?
+    <<jump NPCNervousRamble>>
+===
+
+title: NPCNervousRamble
+--- 
+Well I... I don't actually know... Should I have asked? I just wanted to get her flowers because we, like, just got together and I figured couples usually get flowers so I wanted flowers, is some kind of flower people usually get?
+-> Well, if you're looking for flowers for a first partner, my husband got these for me on our first date, and that turned out well! You could choose these ones, but they're quite popular at weddings, and that might lead to... questions. These ones represent youth, which is perfect for a young love. But of course, it's your choice, you know her best.
+    <<jump NPCOrderIn>>
+===
+
+title: NPCOrderIn
+---
+Oh uh... can I get both roses and daisies? I think that'd be nice.
+-> Sure!
+    <<jump Gameplay>>
 ===
