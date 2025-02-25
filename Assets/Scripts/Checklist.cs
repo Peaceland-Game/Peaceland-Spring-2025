@@ -135,7 +135,14 @@ public class Checklist : MonoBehaviour
         if (!checklistIsMoving)
         {
             //Save the position of where the user touched the screen to the clickData var
-            clickData.position = Touchscreen.current.position.ReadValue();
+            if (Application.platform == RuntimePlatform.WindowsPlayer)
+            {
+                clickData.position = Mouse.current.position.ReadValue();
+            }
+            else if (Application.platform == RuntimePlatform.Android)
+            {
+                clickData.position = Touchscreen.current.position.ReadValue();
+            }
             //Clear the previous list of click results
             clickResults.Clear();
 

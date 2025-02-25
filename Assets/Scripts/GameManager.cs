@@ -17,10 +17,15 @@ public class GameManager : MonoBehaviour
     private List<Camera> cameras;
 
     /// <summary>
-    /// The dialogue system for the current memory
+    /// The dialogue system game object for the current memory
     /// </summary>
     [SerializeField]
     private GameObject dialogueSystem;
+
+    /// <summary>
+    /// The actual dialogue runner in the scene
+    /// </summary>
+    private DialogueRunner dialogueRunner;
 
     /// <summary>
     /// The canvas that holds the checklist
@@ -32,6 +37,11 @@ public class GameManager : MonoBehaviour
     /// Bool to help keep track of which camera is active
     /// </summary>
     private bool isMainCameraActive = false;
+
+    private void Start()
+    {
+        dialogueRunner = dialogueSystem.GetComponent<DialogueRunner>();
+    }
 
     /// <summary>
     /// Switches between the gameplay scene and the dialogue scene

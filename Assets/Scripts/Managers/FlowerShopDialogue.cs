@@ -1,11 +1,11 @@
 using UnityEngine;
 using Yarn.Unity;
+using UnityEngine.Events;
 
 /// <summary>
 /// Manages dialogue for an interaction in the flower shop
 /// Each interaction has an intro, an outro, and some short dialogue during gameplay.
 /// </summary>
-[RequireComponent(typeof(DialogueRunner))]
 public class FlowerShopDialogue : MonoBehaviour
 {
     /// <summary>
@@ -26,12 +26,8 @@ public class FlowerShopDialogue : MonoBehaviour
     [SerializeField]
     private string gameplayGoodNode;
 
-    private DialogueRunner dialogueRunner;
-
-    void Start()
-    {
-        dialogueRunner = GetComponent<DialogueRunner>();
-    }
+    [SerializeField]
+    private DialogueRunner dialogueRunner; 
 
     /// <summary>
     /// Play the intro dialogue
