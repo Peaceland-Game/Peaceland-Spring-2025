@@ -12,5 +12,5 @@ public class FlowerObject : ScriptableObject
     /// <summary>
     /// List of flowers as Texture2D (subject to change)
     /// </summary>
-    public List<Texture2D> flowers;
+    public List<GameObject> flowers;
 }
