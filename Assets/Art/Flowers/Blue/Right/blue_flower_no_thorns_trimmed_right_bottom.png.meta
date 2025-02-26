@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 60d720ed64e46a048ae608c26c4bec48
+guid: c2c979b55edcd084da1b9f09190142aa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1351841087989692501
-    second: dotted_line_0
+      213: -4877206493526272988
+    second: blue_flower_no_thorns_trimmed_right_bottom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dotted_line_0
+      name: blue_flower_no_thorns_trimmed_right_bottom_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 4
-        height: 58
+        x: 18
+        y: 28
+        width: 57
+        height: 345
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5583762ae44b2c210800000000000000
-      internalID: 1351841087989692501
+      spriteID: 4245321e88ea05cb0800000000000000
+      internalID: -4877206493526272988
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      dotted_line_0: 1351841087989692501
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
