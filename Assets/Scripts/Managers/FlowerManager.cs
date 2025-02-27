@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(FlowerShopDialogue))]
 public class FlowerManager : MonoBehaviour
@@ -40,9 +41,22 @@ public class FlowerManager : MonoBehaviour
     [SerializeField]
     private GameObject checklistCanvas;
 
+    [SerializeField]
+    private List<OrderObject> orders;
+
+    public List<OrderObject> Orders { get => orders; }
+
+    public static FlowerManager Instance { get; private set; }
+
+    public static OrderObject GetCurrentOrder()
+    {
+        return Instance.orders[0];
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Instance = this;
         dialogueManager = GetComponent<FlowerShopDialogue>();
         ChangeState(FlowerGameState.START_DIALOGUE);
     }
@@ -70,7 +84,7 @@ public class FlowerManager : MonoBehaviour
         {
             case FlowerGameState.START_DIALOGUE:
                 dialogueManager.DoIntroDialogue();
-                dethornGame.SetActive(false);
+                //dethornGame.SetActive(false);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(false);
                 checklistCanvas.SetActive(false);
@@ -79,19 +93,20 @@ public class FlowerManager : MonoBehaviour
                 dethornGame.SetActive(true);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(false);
-                checklistCanvas.SetActive(true);
+                CutManager.StartCutting();
+                //checklistCanvas.SetActive(true);
                 break;
             case FlowerGameState.TRIM:
                 dethornGame.SetActive(false);
                 trimGame.SetActive(true);
                 arrangeGame.SetActive(false);
-                checklistCanvas.SetActive(true);
+                //checklistCanvas.SetActive(true);
                 break;
             case FlowerGameState.ARRANGE:
                 dethornGame.SetActive(false);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(true);
-                checklistCanvas.SetActive(true);
+                //checklistCanvas.SetActive(true);
                 break;
             case FlowerGameState.END_DIALOGUE:
                 dethornGame.SetActive(false);
