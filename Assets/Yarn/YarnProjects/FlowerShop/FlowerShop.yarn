@@ -1,34 +1,34 @@
 ﻿title: Start
-position: 24,-217
+position: 9,-242
 ---
 <<declare $playerName = "Andrej">>
 
 -> Hi, how are you?
-    <<jump intro>>
+    <<jump Intro>>
 ===
 
 title: Intro
-position: 24,-19
+position: 7,-42
 ---
 ...
--> Uh... hello there?
+-> Uh... {$playerName}?
     <<jump NPCFirstDialogue>>
 ===
 
 
 title: NPCFirstDialogue
-position: 27,177
+position: 0,137
 ---
-OH- sorry, I'm {$playerName}. I mean, I'm good thanks. How are you?
+OH- sorry, I mean, I'm good thanks. How are you?
 -> I'm good, thanks. What can I do for you today?
-    <<jump NPCQuestion>>
 -> ...uhh, fine thanks. Anything I can help you with?
-    <<jump NPCQuestion>>
 -> Doing OK. How can I help you today?
-    <<jump NPCQuestion>>
+
+<<jump NPCQuestion>>
 ===
 
 title: NPCQuestion
+position: 17,322
 ---
 Well, I'd like to get some flowers...
 -> Ok, any in particular-
@@ -36,20 +36,19 @@ Well, I'd like to get some flowers...
 ===
 
 title: FloristQuestion
-// COMMENT: not sure if I did this right, please feel free to adjust
+position: 39,550
 ---
 They're for my girlfriend! She likes flowers.
 -> Aww, how sweet - I thought I saw you two walking around town square the other day, you make a very cute couple. What kind of flowers does she like?
-    <<jump NPCNervousRamble>>
 -> Well we can do personalized bouquets here, what flowers would she like?
-    <<jump NPCNervousRamble>>
 -> Great. Good for you. What flowers does she like?
-    <<jump NPCNervousRamble>>
 -> OK, what does she like?
-    <<jump NPCNervousRamble>>
+
+<<jump NPCNervousRamble>>
 ===
 
 title: NPCNervousRamble
+position: 95,714
 --- 
 Well I... I don't actually know... Should I have asked? I just wanted to get her flowers because we, like, just got together and I figured couples usually get flowers so I wanted flowers, is some kind of flower people usually get?
 -> Well, if you're looking for flowers for a first partner, my husband got these for me on our first date, and that turned out well! You could choose these ones, but they're quite popular at weddings, and that might lead to... questions. These ones represent youth, which is perfect for a young love. But of course, it's your choice, you know her best.
@@ -57,8 +56,8 @@ Well I... I don't actually know... Should I have asked? I just wanted to get her
 ===
 
 title: NPCOrderIn
+position: 94,953
 ---
 Oh uh... can I get both roses and daisies? I think that'd be nice.
 -> Sure!
-    <<jump Gameplay>>
 ===
