@@ -1,6 +1,51 @@
-title: Gameplay
+title: GameplayGood
 ---
-*There would be gameplay here, with fluff text that we can use to dnnote how the player is doing ass they cut the flowers*
--> And here you go!
-    <<jump OrderComplete>>
+<<declare $rand = 0 as number>>
+<<set $rand = dice(4)>>
+
+<<if $rand == 1>>
+    Oh man, is she gonna think this is too much?
+<<elseif $rand == 2>>
+    That's so pretty!
+<<elseif $rand == 3>>
+    Wow, I never would have thought of that
+<<elseif $rand == 4>>
+    I think she’s going to love that!
+<<endif>>
 ===
+
+title: GameplayBad
+---
+<<set $rand = dice(4)>>
+
+<<if $rand == 1>>
+    Does that cost extra?
+<<elseif $rand == 2>>
+    Are you sure she'll like that?
+<<elseif $rand == 3>>
+    That's... good, right?
+<<elseif $rand == 4>>
+    Maybe we could try - actually, if you insist.
+<<endif>>
+===
+
+title: GameplayVeryBad
+---
+<<set $rand = dice(2)>>
+
+<<if $rand == 1>>
+    Oh… is it supposed to look like that?
+<<elseif $rand == 2>>
+    I've never seen flowers that look like that before…
+<<endif>>
+===
+
+title: GameplayVeryGood
+---
+<<set $rand = dice(1)>>
+
+<<if $rand == 1>>
+    That's exactly what I was hoping for!
+<<endif>>
+===
+
