@@ -128,6 +128,10 @@ public class Checklist : MonoBehaviour
     /// </summary>
     public void ChecklistClicked(InputAction.CallbackContext context)
     {
+        Debug.Log("Clicked");
+
+        if (!isActiveAndEnabled) return;
+
         //If the context has not been started, return (I think)
         if (!context.started) return;
 

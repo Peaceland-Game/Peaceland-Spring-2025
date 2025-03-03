@@ -93,25 +93,25 @@ public class FlowerManager : MonoBehaviour
                 dethornGame.SetActive(true);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(false);
-                //checklistCanvas.SetActive(true);
+                checklistCanvas.SetActive(true);
                 break;
             case FlowerGameState.TRIM:
                 dethornGame.SetActive(false);
                 trimGame.SetActive(true);
                 arrangeGame.SetActive(false);
-                //checklistCanvas.SetActive(true);
+                checklistCanvas.SetActive(true);
                 break;
             case FlowerGameState.ARRANGE:
                 dethornGame.SetActive(false);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(true);
-                //checklistCanvas.SetActive(true);
+                checklistCanvas.SetActive(true);
                 break;
             case FlowerGameState.END_DIALOGUE:
                 dethornGame.SetActive(false);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(false);
-                //checklistCanvas.SetActive(false);
+                checklistCanvas.SetActive(false);
                 break;
             default:
                 break;
