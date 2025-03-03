@@ -76,7 +76,7 @@ FixedJoint2D:
   m_BreakAction: 3
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.17300001, y: -0.143}
+  m_ConnectedAnchor: {x: -0.17300001, y: -0.14300004}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!1 &6290319978648193984
@@ -107,8 +107,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6290319978648193984}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.76, y: 2.63, z: 10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.4450877, y: 2.7875743, z: 10.32437}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -231,7 +231,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.1046959, y: -0.15417811}
+  m_Offset: {x: 0.1200448, y: -0.1248757}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -241,7 +241,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.1606082, y: 0.13323292}
+  m_Size: {x: 0.21363157, y: 0.50997794}
   m_EdgeRadius: 0
 --- !u!114 &6892693216579987732
 MonoBehaviour:
@@ -255,10 +255,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f144b4bbdb4632f449306c752850125e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shears: {fileID: 0}
+  cutRB: {fileID: 7600676759798683902}
   gravScale: 2.5
   popForce: 500
-  centerOfGravity: {fileID: 3950713690635210711}
-  pointTime: 0.01
+  cutDistance: 0
   guideLine: {fileID: 0}
   cutLine: {fileID: 0}
+  maxGreatDistance: 0
+  maxOkayDistance: 0

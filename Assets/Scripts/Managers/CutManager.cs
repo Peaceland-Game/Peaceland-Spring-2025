@@ -22,10 +22,6 @@ public class CutManager : MonoBehaviour
     private void Start()
     {
         instance = this;
-    }
-
-    public static void StartCutting()
-    {
         CutStart();
     }
 

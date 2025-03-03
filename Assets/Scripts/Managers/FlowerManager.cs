@@ -84,7 +84,7 @@ public class FlowerManager : MonoBehaviour
         {
             case FlowerGameState.START_DIALOGUE:
                 dialogueManager.DoIntroDialogue();
-                //dethornGame.SetActive(false);
+                dethornGame.SetActive(false);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(false);
                 checklistCanvas.SetActive(false);
@@ -93,7 +93,6 @@ public class FlowerManager : MonoBehaviour
                 dethornGame.SetActive(true);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(false);
-                CutManager.StartCutting();
                 //checklistCanvas.SetActive(true);
                 break;
             case FlowerGameState.TRIM:
@@ -112,7 +111,7 @@ public class FlowerManager : MonoBehaviour
                 dethornGame.SetActive(false);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(false);
-                checklistCanvas.SetActive(false);
+                //checklistCanvas.SetActive(false);
                 break;
             default:
                 break;
