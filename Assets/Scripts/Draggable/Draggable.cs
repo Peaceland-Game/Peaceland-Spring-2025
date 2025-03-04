@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 // Component for draggable objects. Requires a Drag Manager.
 
@@ -51,13 +52,22 @@ public class Draggable : MonoBehaviour
         draggable = true;
     }
 
+    public void EndDrag() {
+        // End drag
+        dragging = false;
+
+        if (snapIndex != -1) {
+            draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
+        }
+    } 
+
     void Update()
     {
         if (!draggable || !dragging) return;
 
-        (TouchControl touch, Vector3 touch_wp) = DragManager.GetTouchWorldPosition();
+        Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
 
-        if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Moved)
+        if (dragging)
         {
             Vector3 newPos = new(touch_wp.x + offset.x, touch_wp.y + offset.y, transform.position.z);
 
@@ -81,15 +91,6 @@ public class Draggable : MonoBehaviour
                 transform.position = newPos;
             }
 
-        }
-        else if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Ended || touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Canceled)
-        {
-            // End drag
-            dragging = false;
-
-            if (snapIndex != -1) {
-                draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
-            }
         }
     }
 }
