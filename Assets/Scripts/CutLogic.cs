@@ -1,3 +1,4 @@
+using System.Drawing.Text;
 using UnityEngine;
 
 public class CutLogic : MonoBehaviour
@@ -7,10 +8,6 @@ public class CutLogic : MonoBehaviour
     /// The rigidbody that will physically be "cut off" by the player
     /// </summary>
     [SerializeField] Rigidbody2D cutRB;
-    /// <summary>
-    /// the object that cuts the flower
-    /// </summary>
-    [SerializeField] GrabAndSwipe shears;
     /// <summary>
     /// gravity scaling for piece once it is cut
     /// </summary>
@@ -42,21 +39,19 @@ public class CutLogic : MonoBehaviour
 
     private bool cut;
 
+    public bool Cut { get => cut; }
+
     private void Start()
     {
         cut = false;
     }
 
-    //if the shears pass over the flower quick enough, it cuts it
-    private void OnTriggerEnter2D(Collider2D collider)
-    {
-
-    }
+    
 
     private void OnTriggerStay2D(Collider2D collider)
     {
         //if the shears are over the area to be cut
-        if (!cut && collider.CompareTag("Shears"))
+        if (!Cut && collider.CompareTag("Shears"))
         {
             //if the line has not been started yet
             if (cutLine.positionCount == 0)
@@ -77,45 +72,57 @@ public class CutLogic : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collider)
     {
         //if the shears exit the area that is getting cut
-        if (!cut && collider.CompareTag("Shears"))
+        if (!Cut && collider.CompareTag("Shears"))
         {
-            float averageDistance = 0;
-            //gets the distance of each point on the drawn line
-            for (int i = 0; i < cutLine.positionCount; i++)
-            {
-                averageDistance += LinePointDistance(guideLine.GetPosition(0), guideLine.GetPosition(1), cutLine.GetPosition(i));
-            }
-            //calculate the average
-            averageDistance /= cutLine.positionCount;
-            Debug.Log("Average distance: " + averageDistance);
-
-            //calculate the score
-            if (averageDistance <= maxGreatDistance)
-            {
-                Debug.Log("Great Work!");
-            }
-            else if (averageDistance <= maxOkayDistance)
-            {
-                Debug.Log("You did alright!");
-            }
-            else
-            {
-                Debug.Log("You can do better...");
-            }
-
-            //reset cut line
-            cutLine.positionCount = 0;
+            CalculateCutScore();
         }
 
         // *** ACTUAL CUTTING ** //
-        if (collider.CompareTag("Shears") && shears.IsSlicing && !cut)
+        if (collider.CompareTag("Shears") && collider.GetComponent<GrabAndSwipe>().IsSlicing && !Cut)
         {
-            Debug.Log("CUT!");
-            // Collision with shears
-            cutRB.gravityScale = gravScale;
-            cutRB.AddForce(Vector2.up * popForce);
-            cut = true;
+            CutObj();
         }
+    }
+
+    private void CutObj()
+    {
+        // Collision with shears
+        cutRB.gravityScale = gravScale;
+        cutRB.AddForce(Vector2.up * popForce);
+        cut = true;
+
+        CutManager.CutMade();
+        
+    }
+
+    private void CalculateCutScore()
+    {
+        float averageDistance = 0;
+        //gets the distance of each point on the drawn line
+        for (int i = 0; i < cutLine.positionCount; i++)
+        {
+            averageDistance += LinePointDistance(guideLine.GetPosition(0), guideLine.GetPosition(1), cutLine.GetPosition(i));
+        }
+        //calculate the average
+        averageDistance /= cutLine.positionCount;
+        Debug.Log("Average distance: " + averageDistance);
+
+        //calculate the score
+        if (averageDistance <= maxGreatDistance)
+        {
+            Debug.Log("Great Work!");
+        }
+        else if (averageDistance <= maxOkayDistance)
+        {
+            Debug.Log("You did alright!");
+        }
+        else
+        {
+            Debug.Log("You can do better...");
+        }
+
+        //reset cut line
+        cutLine.positionCount = 0;
     }
 
     /// <summary>
