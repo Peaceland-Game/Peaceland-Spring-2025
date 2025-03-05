@@ -1,15 +1,10 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using Yarn.Unity;
 
-[RequireComponent(typeof(FlowerShopDialogue))]
-public class FlowerManager : MonoBehaviour
+public class FlowerShopManager : MonoBehaviour
 {
-    /// <summary>
-    /// Dialogue manager for the flower memory
-    /// </summary>
-    private FlowerShopDialogue dialogueManager;
-
     /// <summary>
     /// Enum states for the flower memory
     /// </summary>
@@ -35,30 +30,38 @@ public class FlowerManager : MonoBehaviour
     [SerializeField]
     private GameObject arrangeGame;
 
-    /// <summary>
-    /// The canvas that holds the checklist
-    /// </summary>
-    [SerializeField]
-    private GameObject checklistCanvas;
-
     [SerializeField]
     private List<OrderObject> orders;
 
     public List<OrderObject> Orders { get => orders; }
 
-    public static FlowerManager Instance { get; private set; }
+    /// <summary>
+    /// Singleton Instace
+    /// </summary>
+    public static FlowerShopManager Instance { get; private set; }
+
+    /// <summary>
+    /// Node for random dialogue when doing well.
+    /// </summary>
+    [SerializeField]
+    private string gameplayGoodNode;
+
+    [SerializeField]
+    private DialogueRunner dialogueRunner; 
+
+    private static int currentOrder = 0;
 
     public static OrderObject GetCurrentOrder()
     {
-        return Instance.orders[0];
+        return Instance.orders[currentOrder];
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Instance = this;
-        dialogueManager = GetComponent<FlowerShopDialogue>();
         ChangeState(FlowerGameState.START_DIALOGUE);
+        // Connect dialogue runner
+        dialogueRunner.onDialogueComplete.AddListener(UpdateStateFromDialogue);
     }
 
     /// <summary>
@@ -71,7 +74,38 @@ public class FlowerManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Changes the state of the enum
+    /// Update state when coming out of dialogue
+    /// </summary>
+    public void UpdateStateFromDialogue() {
+        switch(currentState) {
+            case FlowerGameState.START_DIALOGUE:
+                ChangeState(FlowerGameState.DETHORN);
+                break;
+            case FlowerGameState.END_DIALOGUE:
+                ChangeState(FlowerGameState.START_DIALOGUE);
+                break;
+        }
+    }
+
+
+    /// <summary>
+    /// Play the intro dialogue
+    /// </summary>
+    private void DoIntroDialogue()
+    {
+        dialogueRunner.StartDialogue(GetCurrentOrder().dialogueStartNode);
+    }
+
+    /// <summary>
+    /// Play the outro dialogue
+    /// </summary>
+    private void DoOutroDialogue()
+    {
+        dialogueRunner.StartDialogue(GetCurrentOrder().dialogueEndNode);
+    }
+
+    /// <summary>
+    /// Changes the state of the flower shop memory
     /// </summary>
     /// <param name="state">The enum state to change to</param>
     public void ChangeState(FlowerGameState state)
@@ -83,35 +117,33 @@ public class FlowerManager : MonoBehaviour
         switch (currentState)
         {
             case FlowerGameState.START_DIALOGUE:
-                dialogueManager.DoIntroDialogue();
                 dethornGame.SetActive(false);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(false);
-                checklistCanvas.SetActive(false);
+                DoIntroDialogue();
                 break;
             case FlowerGameState.DETHORN:
                 dethornGame.SetActive(true);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(false);
-                //checklistCanvas.SetActive(true);
                 break;
             case FlowerGameState.TRIM:
                 dethornGame.SetActive(false);
                 trimGame.SetActive(true);
                 arrangeGame.SetActive(false);
-                //checklistCanvas.SetActive(true);
                 break;
             case FlowerGameState.ARRANGE:
                 dethornGame.SetActive(false);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(true);
-                //checklistCanvas.SetActive(true);
                 break;
             case FlowerGameState.END_DIALOGUE:
                 dethornGame.SetActive(false);
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(false);
-                //checklistCanvas.SetActive(false);
+                DoOutroDialogue();
+                // TODO: prevent this from going above # of orders
+                currentOrder++;
                 break;
             default:
                 break;

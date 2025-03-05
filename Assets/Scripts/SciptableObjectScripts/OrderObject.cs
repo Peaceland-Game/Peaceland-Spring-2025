@@ -15,6 +15,9 @@ public class OrderObject : ScriptableObject
     /// </summary>
     public List<Flower> flowers;
 
+    public string dialogueStartNode;
+    public string dialogueEndNode;
+
     [Serializable]
     public struct Flower
     {
