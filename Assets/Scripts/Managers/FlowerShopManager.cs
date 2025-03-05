@@ -40,18 +40,6 @@ public class FlowerShopManager : MonoBehaviour
     /// </summary>
     public static FlowerShopManager Instance { get; private set; }
 
-     /// <summary>
-    /// Node that begins intro dialogue for a character.
-    /// </summary>
-    [SerializeField]
-    private string introNode;
-
-    /// <summary>
-    /// Node that begins outro dialogue for a character.
-    /// </summary>
-    [SerializeField]
-    private string outroNode;
-
     /// <summary>
     /// Node for random dialogue when doing well.
     /// </summary>
@@ -61,9 +49,11 @@ public class FlowerShopManager : MonoBehaviour
     [SerializeField]
     private DialogueRunner dialogueRunner; 
 
+    private static int currentOrder = 0;
+
     public static OrderObject GetCurrentOrder()
     {
-        return Instance.orders[0];
+        return Instance.orders[currentOrder];
     }
 
     void Start()
@@ -103,7 +93,7 @@ public class FlowerShopManager : MonoBehaviour
     /// </summary>
     private void DoIntroDialogue()
     {
-        dialogueRunner.StartDialogue(introNode);
+        dialogueRunner.StartDialogue(GetCurrentOrder().dialogueStartNode);
     }
 
     /// <summary>
@@ -111,7 +101,7 @@ public class FlowerShopManager : MonoBehaviour
     /// </summary>
     private void DoOutroDialogue()
     {
-        dialogueRunner.StartDialogue(outroNode);
+        dialogueRunner.StartDialogue(GetCurrentOrder().dialogueEndNode);
     }
 
     /// <summary>
@@ -152,6 +142,8 @@ public class FlowerShopManager : MonoBehaviour
                 trimGame.SetActive(false);
                 arrangeGame.SetActive(false);
                 DoOutroDialogue();
+                // TODO: prevent this from going above # of orders
+                currentOrder++;
                 break;
             default:
                 break;
