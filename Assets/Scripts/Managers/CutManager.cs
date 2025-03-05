@@ -15,7 +15,7 @@ public class CutManager : MonoBehaviour
     private List<GameObject> flowers;
 
     [SerializeField]
-    private FlowerManager.FlowerGameState nextState;
+    private FlowerShopManager.FlowerGameState nextState;
 
     private static GameObject instantiatedFlower;
 
@@ -36,13 +36,13 @@ public class CutManager : MonoBehaviour
         Destroy(instantiatedFlower);
         instance.curIndex++;
        
-        if (instance.curIndex < FlowerManager.GetCurrentOrder().flowers.Count)
+        if (instance.curIndex < FlowerShopManager.GetCurrentOrder().flowers.Count)
         {
             CutStart();
         }
         else
         {
-            FlowerManager.Instance.ChangeState(instance.nextState);
+            FlowerShopManager.Instance.ChangeState(instance.nextState);
         }
     }
 }

@@ -128,8 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 41747955}
-  - component: {fileID: 41747957}
-  - component: {fileID: 41747956}
+  - component: {fileID: 41747958}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -152,23 +151,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &41747956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 41747954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21694f0bc7fe8a002894f353e4a9eaa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  introNode: Start
-  outroNode: OrderComplete
-  gameplayGoodNode: 
-  dialogueRunner: {fileID: 492172087}
---- !u!114 &41747957
+--- !u!114 &41747958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,9 +166,12 @@ MonoBehaviour:
   dethornGame: {fileID: 438935503}
   trimGame: {fileID: 1740225105}
   arrangeGame: {fileID: 1164951637}
-  checklistCanvas: {fileID: 705893472}
   orders:
   - {fileID: 11400000, guid: 08e58547467936140abcc295a3848a84, type: 2}
+  introNode: Start
+  outroNode: OrderComplete
+  gameplayGoodNode: 
+  dialogueRunner: {fileID: 492172087}
 --- !u!1001 &184161150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1187,7 +1173,7 @@ PrefabInstance:
     - target: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: onDialogueComplete.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 41747957}
+      objectReference: {fileID: 0}
     - target: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: onNodeComplete.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SwitchCameras
