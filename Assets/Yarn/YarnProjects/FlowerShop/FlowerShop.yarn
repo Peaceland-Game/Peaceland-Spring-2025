@@ -51,11 +51,29 @@ title: NPCNervousRamble
 position: 95,714
 --- 
 Well I... I don't actually know... Should I have asked? I just wanted to get her flowers because we, like, just got together and I figured couples usually get flowers so I wanted flowers, is some kind of flower people usually get?
--> Well, if you're looking for flowers for a first partner, my husband got these for me on our first date, and that turned out well! You could choose these ones, but they're quite popular at weddings, and that might lead to... questions. These ones represent youth, which is perfect for a young love. But of course, it's your choice, you know her best.
-    <<jump NPCOrderIn>>
+-> Well, if you're looking for flowers for a first partner, my husband got these for me on our first date, and that turned out well! 
+    <<jump NPCOrderIn1>>
 ===
 
-title: NPCOrderIn
+title: NPCOrderIn1
+---
+-> You could choose these ones, but they're quite popular at weddings, and that might lead to... questions.
+    <<jump NPCOrderIn2>>
+===
+
+title: NPCOrderIn2
+---
+-> These ones represent youth, which is perfect for a young love. 
+    <<jump NPCOrderIn3>>
+===
+
+title: NPCOrderIn3
+---
+-> But of course, it's your choice, you know her best.
+    <<jump NPCOrderIn4>>
+===
+
+title: NPCOrderIn4
 position: 94,953
 ---
 Oh uh... can I get both roses and daisies? I think that'd be nice.
