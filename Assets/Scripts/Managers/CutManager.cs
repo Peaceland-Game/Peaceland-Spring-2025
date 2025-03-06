@@ -31,8 +31,9 @@ public class CutManager : MonoBehaviour
         instantiatedFlower = Instantiate(instance.flowers[index]);
     }
 
-    public static void CutMade()
+    public static void AllCutsMade()
     {
+
         Destroy(instantiatedFlower);
         instance.curIndex++;
        

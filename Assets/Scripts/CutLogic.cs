@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Drawing.Text;
 using UnityEngine;
 
@@ -39,6 +40,8 @@ public class CutLogic : MonoBehaviour
 
     private bool cut;
 
+    Stem stem;
+
     public bool Cut { get => cut; }
 
     private void Start()
@@ -46,7 +49,11 @@ public class CutLogic : MonoBehaviour
         cut = false;
     }
 
-    
+    public void AssignValues(LineRenderer _cutLine, Stem _stem)
+    {
+        cutLine = _cutLine;
+        stem = _stem;
+    }
 
     private void OnTriggerStay2D(Collider2D collider)
     {
@@ -54,14 +61,7 @@ public class CutLogic : MonoBehaviour
         if (!Cut && collider.CompareTag("Shears"))
         {
             //if the line has not been started yet
-            if (cutLine.positionCount == 0)
-            {
-                //add a new point to the cut line
-                cutLine.positionCount++;
-                cutLine.SetPosition(cutLine.positionCount - 1, collider.gameObject.transform.position);
-            }
-            //if the shears are far enough away from the last drawn point
-            else if (Vector2.Distance(cutLine.GetPosition(cutLine.positionCount - 1), collider.gameObject.transform.position) > cutDistance)
+            if (cutLine.positionCount == 0 || Vector2.Distance(cutLine.GetPosition(cutLine.positionCount - 1), collider.gameObject.transform.position) > cutDistance)
             {
                 //add a new point to the cut line
                 cutLine.positionCount++;
@@ -78,7 +78,7 @@ public class CutLogic : MonoBehaviour
         }
 
         // *** ACTUAL CUTTING ** //
-        if (collider.CompareTag("Shears") && collider.GetComponent<GrabAndSwipe>().IsSlicing && !Cut)
+        if (collider.CompareTag("Shears") && !Cut)
         {
             CutObj();
         }
@@ -87,12 +87,27 @@ public class CutLogic : MonoBehaviour
     private void CutObj()
     {
         // Collision with shears
+        cutRB.bodyType = RigidbodyType2D.Dynamic;
         cutRB.gravityScale = gravScale;
         cutRB.AddForce(Vector2.up * popForce);
         cut = true;
-
-        CutManager.CutMade();
+        StartCoroutine(DestroyObject());
+        if (stem != null)
+        {
+            stem.CutMade(gameObject);
+        }
+        else
+        {
+            CutManager.AllCutsMade();
+        }
         
+        
+    }
+
+    IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
     }
 
     private void CalculateCutScore()
