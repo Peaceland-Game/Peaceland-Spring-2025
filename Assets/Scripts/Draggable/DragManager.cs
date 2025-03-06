@@ -9,13 +9,21 @@ public class DragManager : MonoBehaviour
     [SerializeField]
     private Draggable[] draggables;
 
+    private Draggable currentDraggable = null;
+
     void Update()
     {
-        TouchControl touch = Touchscreen.current.primaryTouch;
+    }
 
-        if (touch.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began) {
-            Vector3 touch_wp = Camera.main.ScreenToWorldPoint(touch.position.ReadValue());
+    public void OnTouch(InputAction.CallbackContext context) {
+        if (!isActiveAndEnabled) return;
 
+        if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled) {
+            if (currentDraggable is not null)
+                currentDraggable.EndDrag();
+        }
+        else if (context.phase == InputActionPhase.Started){
+            Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
             int highestOrderInLayer = int.MinValue;
             Draggable candidate = null;
             foreach (var draggable in draggables) {
@@ -24,15 +32,10 @@ public class DragManager : MonoBehaviour
                     candidate = draggable;
                 }
             }
-            if (candidate is not null)
-                candidate.StartDrag(touch_wp);
+            if (candidate is not null) {
+                currentDraggable = candidate;
+                currentDraggable.StartDrag(touch_wp);
+            }
         }
-    }
-
-    public static Tuple<TouchControl, Vector3> GetTouchWorldPosition() {
-        TouchControl touch = Touchscreen.current.primaryTouch;
-        Vector3 touch_wp = Camera.main.ScreenToWorldPoint(touch.position.ReadValue());
-
-        return new Tuple<TouchControl, Vector3>(touch, touch_wp);
     }
 }
