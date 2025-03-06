@@ -23,5 +23,8 @@ public class OrderObject : ScriptableObject
     {
         public string name;
         public Texture2D texture;
+
+
     }
+
 }

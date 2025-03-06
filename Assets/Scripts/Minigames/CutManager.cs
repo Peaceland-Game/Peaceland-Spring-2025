@@ -5,7 +5,7 @@ using System.Collections.Generic;
 /// <summary>
 /// Keep track of which object needs to be displayed and cut
 /// </summary>
-public class CutManager : MonoBehaviour
+public class CutManager : MinigameBehavior
 {
     private int curIndex = 0;
 
@@ -14,15 +14,18 @@ public class CutManager : MonoBehaviour
     [SerializeField]
     private List<GameObject> flowers;
 
-    [SerializeField]
-    private FlowerShopManager.FlowerGameState nextState;
-
     private static GameObject instantiatedFlower;
 
-    private void Start()
+    public override void StartMinigame()
     {
         instance = this;
+        gameObject.SetActive(true);
         CutStart();
+    }
+
+    public override void StopMinigame()
+    {
+        gameObject.SetActive(false);
     }
 
     public static void CutStart()
@@ -42,7 +45,7 @@ public class CutManager : MonoBehaviour
         }
         else
         {
-            FlowerShopManager.Instance.ChangeState(instance.nextState);
+            FlowerShopManager.Instance.NextMinigame();
         }
     }
 }
