@@ -98,7 +98,7 @@ public class CutLogic : MonoBehaviour
         }
         else
         {
-            CutManager.AllCutsMade();
+            StartCoroutine(CutManager.AllCutsMade());
         }
         
         

@@ -50,7 +50,7 @@ public class Stem : MonoBehaviour
         Debug.Log(thorns.Count);
         if (thorns.Count == 0)
         {
-            CutManager.AllCutsMade();
+            StartCoroutine(CutManager.AllCutsMade());
         }
     }
 }
