@@ -168,8 +168,6 @@ MonoBehaviour:
   arrangeGame: {fileID: 1164951637}
   orders:
   - {fileID: 11400000, guid: 08e58547467936140abcc295a3848a84, type: 2}
-  introNode: Start
-  outroNode: OrderComplete
   gameplayGoodNode: 
   dialogueRunner: {fileID: 492172087}
 --- !u!1001 &184161150
