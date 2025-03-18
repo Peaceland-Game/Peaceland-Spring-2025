@@ -30,6 +30,10 @@ public class CutLogic : MonoBehaviour
     /// </summary>
     [SerializeField] LineRenderer cutLine;
     /// <summary>
+    /// the gameObject that will be cut off
+    /// </summary>
+    [SerializeField] GameObject cutPiece;
+    /// <summary>
     /// the max average distance for a perfect score
     /// </summary>
     [SerializeField] float maxGreatDistance;
@@ -86,12 +90,14 @@ public class CutLogic : MonoBehaviour
 
     private void CutObj()
     {
-        // Collision with shears
-        cutRB.bodyType = RigidbodyType2D.Dynamic;
-        cutRB.gravityScale = gravScale;
-        cutRB.AddForce(Vector2.up * popForce);
+        // thorn pops off of stem
+        GetComponent<BoxCollider2D>().enabled = false;
+        guideLine.GetComponent<GuideLine>().DestroySequence();
         cut = true;
-        StartCoroutine(DestroyObject());
+
+        //move object off of the screen
+        StartCoroutine(cutPiece.GetComponent<CutPiece>().MoveSnippedObject(1, 1, 2f));
+
         if (stem != null)
         {
             stem.CutMade(gameObject);
@@ -100,14 +106,6 @@ public class CutLogic : MonoBehaviour
         {
             StartCoroutine(CutManager.AllCutsMade());
         }
-        
-        
-    }
-
-    IEnumerator DestroyObject()
-    {
-        yield return new WaitForSeconds(2);
-        Destroy(gameObject);
     }
 
     private void CalculateCutScore()
@@ -143,15 +141,10 @@ public class CutLogic : MonoBehaviour
     /// <summary>
     /// returns the distance between a point and a line
     /// </summary>
-    /// <param name="lineStart"></param>
-    /// <param name="lineEnd"></param>
-    /// <param name="point"></param>
-    /// <returns></returns>
     private float LinePointDistance(Vector2 lineStart, Vector2 lineEnd, Vector2 point)
     {
         Vector2 lineDirection = lineEnd - lineStart;
         Vector2 pointToLineStart = point - lineStart;
         return Vector3.Cross(pointToLineStart, lineDirection).magnitude / lineDirection.magnitude;
     }
-
 }
