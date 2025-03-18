@@ -1,18 +1,24 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
-using System;
 
 // Manages Draggable Objects
-public class DragManager : MonoBehaviour
+public class DragManager : MinigameBehavior
 {
     [SerializeField]
     private Draggable[] draggables;
 
     private Draggable currentDraggable = null;
 
-    void Update()
+    public override void StartMinigame()
     {
+        currentDraggable = null;
+        gameObject.SetActive(true);
+    }
+
+    public override void StopMinigame()
+    {
+        gameObject.SetActive(false);
+        FlowerShopManager.Instance.NextMinigame();
     }
 
     public void OnTouch(InputAction.CallbackContext context) {

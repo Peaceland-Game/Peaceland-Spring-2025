@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using System.Collections.Generic;
 using Yarn.Unity;
@@ -18,22 +17,29 @@ public class FlowerShopManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Var to keep track of the current state the game is in
+    /// List of "minigames"
     /// </summary>
-    private FlowerGameState currentState = FlowerGameState.START_DIALOGUE;
-
-    //GameObjects holding the different aspects of the game to turn on and off
     [SerializeField]
-    private GameObject dethornGame;
-    [SerializeField]
-    private GameObject trimGame;
-    [SerializeField]
-    private GameObject arrangeGame;
+    private List<MinigameBehavior> minigames;
+    private int currentMinigame = -1;
 
     [SerializeField]
     private List<OrderObject> orders;
 
     public List<OrderObject> Orders { get => orders; }
+
+    /// <summary>
+    /// Index of the current flower in the current order
+    /// </summary>
+    private static int currentFlower = 0;
+
+    /// <summary>
+    /// Gives access to the index of the current flower in the current order
+    /// </summary>
+    public static int CurrentFlower
+    {
+        get { return currentFlower; }
+    }
 
     /// <summary>
     /// Singleton Instace
@@ -49,8 +55,15 @@ public class FlowerShopManager : MonoBehaviour
     [SerializeField]
     private DialogueRunner dialogueRunner; 
 
+    /// <summary>
+    /// The current order being worked on
+    /// </summary>
     private static int currentOrder = 0;
 
+    /// <summary>
+    /// Gives access to the current order in the minigame
+    /// </summary>
+    /// <returns>The current order being worked on</returns>
     public static OrderObject GetCurrentOrder()
     {
         return Instance.orders[currentOrder];
@@ -59,94 +72,44 @@ public class FlowerShopManager : MonoBehaviour
     void Start()
     {
         Instance = this;
-        ChangeState(FlowerGameState.START_DIALOGUE);
+        NextMinigame();
         // Connect dialogue runner
-        dialogueRunner.onDialogueComplete.AddListener(UpdateStateFromDialogue);
+        dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
     }
 
     /// <summary>
-    /// Gives Unity access to changing the state of the enum using a given int
+    /// Move on to the next flower in the memory
     /// </summary>
-    /// <param name="state_num">An int the enum state to change to</param>
-    public void ChangeStateInt(int state_num)
+    public void NextFlower()
     {
-        ChangeState((FlowerGameState)state_num);
-    }
-
-    /// <summary>
-    /// Update state when coming out of dialogue
-    /// </summary>
-    public void UpdateStateFromDialogue() {
-        switch(currentState) {
-            case FlowerGameState.START_DIALOGUE:
-                ChangeState(FlowerGameState.DETHORN);
-                break;
-            case FlowerGameState.END_DIALOGUE:
-                ChangeState(FlowerGameState.START_DIALOGUE);
-                break;
-        }
-    }
-
-
-    /// <summary>
-    /// Play the intro dialogue
-    /// </summary>
-    private void DoIntroDialogue()
-    {
-        dialogueRunner.StartDialogue(GetCurrentOrder().dialogueStartNode);
-    }
-
-    /// <summary>
-    /// Play the outro dialogue
-    /// </summary>
-    private void DoOutroDialogue()
-    {
-        dialogueRunner.StartDialogue(GetCurrentOrder().dialogueEndNode);
+        currentFlower++;
     }
 
     /// <summary>
     /// Changes the state of the flower shop memory
     /// </summary>
     /// <param name="state">The enum state to change to</param>
-    public void ChangeState(FlowerGameState state)
+    public void NextMinigame()
     {
-        //Switch the current state to the given one
-        currentState = state;
 
-        //Handle the new current state
-        switch (currentState)
+        if (currentMinigame >= 0) minigames[currentMinigame].StopMinigame();
+
+        //If the current step in the current flower for the current order is not needed, then continue to the next minigame
+        if ((!GetCurrentOrder().flowers[currentFlower].needsDethorning && currentMinigame == 1) ||
+            (!GetCurrentOrder().flowers[currentFlower].needsTrimming && currentMinigame == 2) ||
+            (!GetCurrentOrder().flowers[currentFlower].needsArranging && currentMinigame == 3))
         {
-            case FlowerGameState.START_DIALOGUE:
-                dethornGame.SetActive(false);
-                trimGame.SetActive(false);
-                arrangeGame.SetActive(false);
-                DoIntroDialogue();
-                break;
-            case FlowerGameState.DETHORN:
-                dethornGame.SetActive(true);
-                trimGame.SetActive(false);
-                arrangeGame.SetActive(false);
-                break;
-            case FlowerGameState.TRIM:
-                dethornGame.SetActive(false);
-                trimGame.SetActive(true);
-                arrangeGame.SetActive(false);
-                break;
-            case FlowerGameState.ARRANGE:
-                dethornGame.SetActive(false);
-                trimGame.SetActive(false);
-                arrangeGame.SetActive(true);
-                break;
-            case FlowerGameState.END_DIALOGUE:
-                dethornGame.SetActive(false);
-                trimGame.SetActive(false);
-                arrangeGame.SetActive(false);
-                DoOutroDialogue();
-                // TODO: prevent this from going above # of orders
-                currentOrder++;
-                break;
-            default:
-                break;
+            currentMinigame++;
+            NextMinigame();
         }
+
+        currentMinigame++;
+
+        if (currentMinigame >= minigames.Count)
+        {
+            currentOrder++;
+            currentMinigame = 0;
+        }
+        minigames[currentMinigame].StartMinigame();
     }
 }
