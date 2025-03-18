@@ -21,10 +21,34 @@ public class OrderObject : ScriptableObject
     [Serializable]
     public struct Flower
     {
+        //Name of the flower
         public string name;
+        //The texture/sprite of the flower
         public Texture2D texture;
 
+        /// <summary>
+        /// Does the current flower need dethorning?
+        /// </summary>
+        public bool needsDethorning;
 
+        /// <summary>
+        /// Does the current flower need trimming?
+        /// </summary>
+        public bool needsTrimming;
+
+        /// <summary>
+        /// Does the current flower need arranging?
+        /// </summary>
+        public bool needsArranging;
+
+        /// <summary>
+        /// Is the flower finished being created?
+        /// </summary>
+        public bool isFinished;
+
+        public void Start()
+        {
+            isFinished = false;
+        }
     }
-
 }

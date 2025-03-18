@@ -18,6 +18,7 @@ public class DragManager : MinigameBehavior
     public override void StopMinigame()
     {
         gameObject.SetActive(false);
+        FlowerShopManager.Instance.NextMinigame();
     }
 
     public void OnTouch(InputAction.CallbackContext context) {
