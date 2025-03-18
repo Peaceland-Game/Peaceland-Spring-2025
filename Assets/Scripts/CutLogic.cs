@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Drawing.Text;
 using UnityEngine;
 
@@ -8,14 +9,6 @@ public class CutLogic : MonoBehaviour
     /// The rigidbody that will physically be "cut off" by the player
     /// </summary>
     [SerializeField] Rigidbody2D cutRB;
-    /// <summary>
-    /// gravity scaling for piece once it is cut
-    /// </summary>
-    [SerializeField] float gravScale;
-    /// <summary>
-    /// the magnitude of the force applied to the piece when it is cut
-    /// </summary>
-    [SerializeField] float popForce;
     /// <summary>
     /// the distance the player must drag the shears for a new point to be drawn.
     /// </summary>
@@ -29,6 +22,10 @@ public class CutLogic : MonoBehaviour
     /// </summary>
     [SerializeField] LineRenderer cutLine;
     /// <summary>
+    /// the gameObject that will be cut off
+    /// </summary>
+    [SerializeField] GameObject cutPiece;
+    /// <summary>
     /// the max average distance for a perfect score
     /// </summary>
     [SerializeField] float maxGreatDistance;
@@ -39,6 +36,8 @@ public class CutLogic : MonoBehaviour
 
     private bool cut;
 
+    Stem stem;
+
     public bool Cut { get => cut; }
 
     private void Start()
@@ -46,7 +45,11 @@ public class CutLogic : MonoBehaviour
         cut = false;
     }
 
-    
+    public void AssignValues(LineRenderer _cutLine, Stem _stem)
+    {
+        cutLine = _cutLine;
+        stem = _stem;
+    }
 
     private void OnTriggerStay2D(Collider2D collider)
     {
@@ -54,14 +57,7 @@ public class CutLogic : MonoBehaviour
         if (!Cut && collider.CompareTag("Shears"))
         {
             //if the line has not been started yet
-            if (cutLine.positionCount == 0)
-            {
-                //add a new point to the cut line
-                cutLine.positionCount++;
-                cutLine.SetPosition(cutLine.positionCount - 1, collider.gameObject.transform.position);
-            }
-            //if the shears are far enough away from the last drawn point
-            else if (Vector2.Distance(cutLine.GetPosition(cutLine.positionCount - 1), collider.gameObject.transform.position) > cutDistance)
+            if (cutLine.positionCount == 0 || Vector2.Distance(cutLine.GetPosition(cutLine.positionCount - 1), collider.gameObject.transform.position) > cutDistance)
             {
                 //add a new point to the cut line
                 cutLine.positionCount++;
@@ -78,7 +74,7 @@ public class CutLogic : MonoBehaviour
         }
 
         // *** ACTUAL CUTTING ** //
-        if (collider.CompareTag("Shears") && collider.GetComponent<GrabAndSwipe>().IsSlicing && !Cut)
+        if (collider.CompareTag("Shears") && !Cut)
         {
             CutObj();
         }
@@ -86,22 +82,31 @@ public class CutLogic : MonoBehaviour
 
     private void CutObj()
     {
-        // Collision with shears
-        cutRB.gravityScale = gravScale;
-        cutRB.AddForce(Vector2.up * popForce);
+        //disable hitbox
+        GetComponent<BoxCollider2D>().enabled = false;
+
+        // destory guide line after doing any effects
+        guideLine.GetComponent<GuideLine>().DestroySequence();
+
         cut = true;
 
-        CutManager.CutMade();
-        
+        //move object off of the screen
+        StartCoroutine(cutPiece.GetComponent<CutPiece>().MoveSnippedObject(1, 1, 2f));
+
+        //transition to next cut or next flower
+        if (stem != null) { stem.CutMade(transform.parent.gameObject); }
+        else { StartCoroutine(CutManager.AllCutsMade()); }
     }
 
     private void CalculateCutScore()
     {
         float averageDistance = 0;
         //gets the distance of each point on the drawn line
+        Vector3 guideLinePos1 = guideLine.GetPosition(0);
+        Vector3 guideLinePos2 = guideLine.GetPosition(1);
         for (int i = 0; i < cutLine.positionCount; i++)
         {
-            averageDistance += LinePointDistance(guideLine.GetPosition(0), guideLine.GetPosition(1), cutLine.GetPosition(i));
+            averageDistance += LinePointDistance(guideLinePos1, guideLinePos2, cutLine.GetPosition(i));
         }
         //calculate the average
         averageDistance /= cutLine.positionCount;
@@ -128,15 +133,10 @@ public class CutLogic : MonoBehaviour
     /// <summary>
     /// returns the distance between a point and a line
     /// </summary>
-    /// <param name="lineStart"></param>
-    /// <param name="lineEnd"></param>
-    /// <param name="point"></param>
-    /// <returns></returns>
     private float LinePointDistance(Vector2 lineStart, Vector2 lineEnd, Vector2 point)
     {
         Vector2 lineDirection = lineEnd - lineStart;
         Vector2 pointToLineStart = point - lineStart;
         return Vector3.Cross(pointToLineStart, lineDirection).magnitude / lineDirection.magnitude;
     }
-
 }
