@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab4baafa0581a85419c9d7adcbb01a81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thornPrefab: {fileID: 6290319978648193984, guid: 7c8f46951eed3f747abb82e2d8880a4c, type: 3}
+  thornPrefab: {fileID: 1189177139380853213, guid: a372c2766d37b5c4ea04e693904fee64, type: 3}
   cutLine: {fileID: 6595031580132998464}
   minThorns: 5
   maxThorns: 5

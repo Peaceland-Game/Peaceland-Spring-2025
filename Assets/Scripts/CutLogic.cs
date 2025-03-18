@@ -10,14 +10,6 @@ public class CutLogic : MonoBehaviour
     /// </summary>
     [SerializeField] Rigidbody2D cutRB;
     /// <summary>
-    /// gravity scaling for piece once it is cut
-    /// </summary>
-    [SerializeField] float gravScale;
-    /// <summary>
-    /// the magnitude of the force applied to the piece when it is cut
-    /// </summary>
-    [SerializeField] float popForce;
-    /// <summary>
     /// the distance the player must drag the shears for a new point to be drawn.
     /// </summary>
     [SerializeField] float cutDistance;
@@ -90,31 +82,31 @@ public class CutLogic : MonoBehaviour
 
     private void CutObj()
     {
-        // thorn pops off of stem
+        //disable hitbox
         GetComponent<BoxCollider2D>().enabled = false;
+
+        // destory guide line after doing any effects
         guideLine.GetComponent<GuideLine>().DestroySequence();
+
         cut = true;
 
         //move object off of the screen
         StartCoroutine(cutPiece.GetComponent<CutPiece>().MoveSnippedObject(1, 1, 2f));
 
-        if (stem != null)
-        {
-            stem.CutMade(gameObject);
-        }
-        else
-        {
-            StartCoroutine(CutManager.AllCutsMade());
-        }
+        //transition to next cut or next flower
+        if (stem != null) { stem.CutMade(transform.parent.gameObject); }
+        else { StartCoroutine(CutManager.AllCutsMade()); }
     }
 
     private void CalculateCutScore()
     {
         float averageDistance = 0;
         //gets the distance of each point on the drawn line
+        Vector3 guideLinePos1 = guideLine.GetPosition(0);
+        Vector3 guideLinePos2 = guideLine.GetPosition(1);
         for (int i = 0; i < cutLine.positionCount; i++)
         {
-            averageDistance += LinePointDistance(guideLine.GetPosition(0), guideLine.GetPosition(1), cutLine.GetPosition(i));
+            averageDistance += LinePointDistance(guideLinePos1, guideLinePos2, cutLine.GetPosition(i));
         }
         //calculate the average
         averageDistance /= cutLine.positionCount;

@@ -29,7 +29,7 @@ public class Stem : MonoBehaviour
             GameObject newThorn = Instantiate(thornPrefab);
             thorns.Add(newThorn);
             PositionThorn(newThorn);
-            newThorn.GetComponent<CutLogic>().AssignValues(cutLine, this);
+            newThorn.GetComponentInChildren<CutLogic>().AssignValues(cutLine, this);
         }
     }
 
@@ -56,10 +56,13 @@ public class Stem : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// removes this thorn from the list and goes to the next flower if it was the last one
+    /// </summary>
     public void CutMade(GameObject cutThorn)
     {
         thorns.Remove(cutThorn);
-        Debug.Log(thorns.Count);
         if (thorns.Count == 0)
         {
             StartCoroutine(CutManager.AllCutsMade());
