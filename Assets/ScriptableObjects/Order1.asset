@@ -26,5 +26,5 @@ MonoBehaviour:
     needsTrimming: 0
     needsArranging: 1
     isFinished: 0
-  dialogueStartNode: Start
+  dialogueStartNode: NPCOrderIn4
   dialogueEndNode: OrderComplete

@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 /// <summary>
 /// Keep track of which object needs to be displayed and cut
@@ -34,8 +35,10 @@ public class CutManager : MinigameBehavior
         instantiatedFlower = Instantiate(instance.flowers[index]);
     }
 
-    public static void CutMade()
+    
+    public static IEnumerator AllCutsMade()
     {
+        yield return new WaitForSeconds(1);
         Destroy(instantiatedFlower);
         instance.curIndex++;
        
