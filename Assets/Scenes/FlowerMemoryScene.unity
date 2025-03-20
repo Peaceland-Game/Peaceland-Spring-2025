@@ -168,9 +168,6 @@ MonoBehaviour:
   - {fileID: 438935505}
   - {fileID: 1740225107}
   - {fileID: 1164951639}
-  dethornGame: {fileID: 438935505}
-  trimGame: {fileID: 1740225107}
-  arrangeGame: {fileID: 0}
   orders:
   - {fileID: 11400000, guid: 08e58547467936140abcc295a3848a84, type: 2}
   gameplayGoodNode: 
@@ -234,6 +231,10 @@ PrefabInstance:
       value: InputManager
       objectReference: {fileID: 0}
     - target: {fileID: 4493108271439557894, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_UIInputModule
+      value: 
+      objectReference: {fileID: 1843959285}
+    - target: {fileID: 4493108271439557894, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -264,7 +265,7 @@ PrefabInstance:
     - target: {fileID: 4493108271439557894, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1164951639}
     - target: {fileID: 4493108271439557894, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
       propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1019,7 +1020,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowers:
   - {fileID: 9219485524165623847, guid: 11a2887ef671e9e4a9ddcbdccf708f22, type: 3}
-  nextState: 2
 --- !u!1001 &492172084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2679,7 +2679,6 @@ MonoBehaviour:
   - {fileID: 4329690458570257238, guid: 51d544ab1d7e3e344b1a506b324ac027, type: 3}
   - {fileID: 7168470204087067190, guid: a04eaae7f26044b40be24aee40656199, type: 3}
   - {fileID: 5487726692215652602, guid: 946428be2d1ac0a4886b07ef56379c8b, type: 3}
-  nextState: 3
 --- !u!1 &1843959284
 GameObject:
   m_ObjectHideFlags: 0
