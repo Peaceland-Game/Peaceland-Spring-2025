@@ -36,6 +36,6 @@ public class CutPiece : MonoBehaviour
             speedMultiplier = Mathf.Lerp(1.5f, 1f, t);
             yield return new WaitForEndOfFrame();
         }
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }

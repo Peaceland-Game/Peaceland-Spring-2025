@@ -175,8 +175,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutRB: {fileID: 5073091399701162995}
-  gravScale: 2
-  popForce: 300
   cutDistance: 0.2
   guideLine: {fileID: 4673377364836801849}
   cutLine: {fileID: 3761300943899948532}
@@ -217,7 +215,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.00038307905, y: 0.089921}
+  m_Offset: {x: 0.00038307905, y: 0.11258018}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -227,7 +225,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1007382, y: 1.6746435}
+  m_Size: {x: 1.1007382, y: 7.3476257}
   m_EdgeRadius: 0
 --- !u!50 &8664458808113444495
 Rigidbody2D:
@@ -526,19 +524,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Positions.Array.data[0].x
-      value: -1.2522867
+      value: -0.28337336
       objectReference: {fileID: 0}
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Positions.Array.data[0].y
-      value: -1.3652501
+      value: -0.32494354
       objectReference: {fileID: 0}
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Positions.Array.data[1].x
-      value: 1.2001083
+      value: 0.28219068
       objectReference: {fileID: 0}
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Positions.Array.data[1].y
-      value: 1.7305014
+      value: 0.39442158
       objectReference: {fileID: 0}
     - target: {fileID: 2250634650892339911, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Name
