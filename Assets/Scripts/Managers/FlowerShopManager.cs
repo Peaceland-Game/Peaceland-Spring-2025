@@ -99,17 +99,37 @@ public class FlowerShopManager : MonoBehaviour
             (!GetCurrentOrder().flowers[currentFlower].needsTrimming && currentMinigame == 2) ||
             (!GetCurrentOrder().flowers[currentFlower].needsArranging && currentMinigame == 3))
         {
+            Debug.LogWarning(GetCurrentOrder().flowers[currentFlower].needsDethorning);
+            Debug.LogWarning(currentFlower);
+            Debug.LogWarning(currentMinigame);
+            Debug.LogWarning(GetCurrentOrder().flowers[currentFlower].name);
             currentMinigame++;
             NextMinigame();
         }
 
+        //Increment to the next minigame
         currentMinigame++;
 
+        //If the current minigame is higher or equal to the number of minigames, continue
         if (currentMinigame >= minigames.Count)
         {
-            currentOrder++;
-            currentMinigame = 0;
+            //If there are still more flowers left in the current order, then move onto the next flower
+            if (currentFlower + 1 < GetCurrentOrder().flowers.Count)
+            {
+                //NextFlower();
+                currentMinigame = 0;
+                NextMinigame();
+            }
+            //Otherwise increment the current order and go back to the first minigame
+            else
+            {
+                currentOrder++;
+                
+                currentMinigame = 0;
+            }
         }
+
+        //Start the next minigame
         minigames[currentMinigame].StartMinigame();
     }
 }
