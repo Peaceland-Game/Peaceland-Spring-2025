@@ -190,7 +190,7 @@ Transform:
   m_GameObject: {fileID: 4916418092171424993}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.664, y: -3.8204193, z: 0.32572308}
+  m_LocalPosition: {x: -0.636, y: -3.849, z: 0.32572308}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -240,7 +240,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3522058021021723276, guid: fe81b1dfce317f34683528ec2887db8c, type: 3}
+  m_Sprite: {fileID: 1897822248430748755, guid: 88bb1cfbf584ab340a1e956cb5f926e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -316,8 +316,8 @@ Transform:
   m_GameObject: {fileID: 6557826292958051505}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: -0.45, y: -0.08, z: 0}
+  m_LocalScale: {x: 0.40000004, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4034408886636989055}
@@ -366,7 +366,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8605836808974377190, guid: 300a41dc4804aad4883b2cd5a75e2f30, type: 3}
+  m_Sprite: {fileID: 599749539538422185, guid: 62c29300dc0fedc4286ef10ed0845fe1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -403,7 +403,7 @@ Transform:
   m_GameObject: {fileID: 7463416518341218361}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1660001, y: -2.748, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -453,7 +453,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Positions: []
   m_Parameters:
     serializedVersion: 3
@@ -475,9 +475,9 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.99328995, g: 0, b: 1, a: 1}
-      key1: {r: 0.99215686, g: 0, b: 1, a: 1}
-      key2: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0.25490198, g: 0.48235294, b: 0.3529412, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -485,7 +485,7 @@ LineRenderer:
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
       ctime1: 65535
-      ctime2: 0
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -523,6 +523,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4034408886636989055}
     m_Modifications:
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Positions.Array.data[0].x
       value: 0.32122815
       objectReference: {fileID: 0}
@@ -537,6 +541,34 @@ PrefabInstance:
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Positions.Array.data[1].y
       value: 0.20392632
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.31523672
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.4407562
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.31523672
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.4407562
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2250634650892339911, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Name

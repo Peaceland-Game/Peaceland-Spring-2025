@@ -61,8 +61,8 @@ Transform:
   m_GameObject: {fileID: 4862241829528660367}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: -0.297, y: 0.05, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8093268609711424959}
@@ -111,9 +111,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 557704664825488700, guid: b390fadd0ffa36741ac4412d1a200621, type: 3}
+  m_Sprite: {fileID: -2100219582511920062, guid: 970955665a0df9f4fbadaea390f6f6d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.37, y: 0.58}
@@ -254,8 +254,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutRB: {fileID: 426057044807550054}
-  gravScale: 2.5
-  popForce: 500
   cutDistance: 0.2
   guideLine: {fileID: 3948996643531499154}
   cutLine: {fileID: 0}
@@ -285,6 +283,34 @@ PrefabInstance:
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Positions.Array.data[1].y
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.31523672
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.4407562
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.31523672
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.4407562
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2250634650892339911, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Name
