@@ -22,4 +22,19 @@ public static class DynamicCutHelper
         }
         return output;
     }
+
+    public static Color[] Make1DArrayFrom2D(Color[,] input)
+    {
+        Color[] output = new Color[input.Length];
+
+        int write = 0;
+        for (int col = 0; col <= input.GetUpperBound(0); col++)
+        {
+            for (int row = 0; row <= input.GetUpperBound(1); row++)
+            {
+                output[write++] = input[col, row];
+            }
+        }
+        return output;
+    }
 }

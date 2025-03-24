@@ -15,6 +15,10 @@ public class DynamicCutter : MonoBehaviour
 
     public Vector2 CutLine { get => cutLine; }
 
+    // Events for dynamic sprites
+    public delegate void OnCutCreated(Vector2 lineStart, Vector2 lineEnd);
+    public static event OnCutCreated onCutCreated;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -59,7 +63,10 @@ public class DynamicCutter : MonoBehaviour
     public void OnCollisionExit2D(Collision2D collision)
     {
         exitMousePos = transform.position;
-        cutLine = GenerateLine();
+        //cutLine = GenerateLine();
+
+        // Invoke event for dynamic sprite scripts
+        onCutCreated.Invoke(enterMousePos, exitMousePos);
     }
 
     public void OnDrawGizmos()
