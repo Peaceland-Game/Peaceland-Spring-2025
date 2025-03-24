@@ -39,6 +39,15 @@ public class Draggable : MonoBehaviour
         return draggable && bounds.OverlapPoint(touch_wp);
     }
 
+    /// <summary>
+    /// Is this draggable object draggable?
+    /// </summary>
+    /// <returns>If the current draggable is indeed draggable or not</returns>
+    public bool IsDraggable()
+    {
+        return draggable;
+    }
+
     public void StartDrag(Vector3 touch_wp) {
         dragging = true;
         offset = transform.position - touch_wp;
@@ -57,6 +66,7 @@ public class Draggable : MonoBehaviour
         dragging = false;
 
         if (snapIndex != -1) {
+            DisableDrag();
             draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
         }
     } 
