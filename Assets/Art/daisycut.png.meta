@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      daisycut_0: 1897822248430748755
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
