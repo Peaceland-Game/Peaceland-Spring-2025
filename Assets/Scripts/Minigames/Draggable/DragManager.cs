@@ -30,7 +30,7 @@ public class DragManager : MinigameBehavior
             startingLocations[i] = draggables[i].gameObject.transform.localPosition;
         }
     }
-
+    
     public override void StartMinigame()
     {
         //Reset the current draggable
