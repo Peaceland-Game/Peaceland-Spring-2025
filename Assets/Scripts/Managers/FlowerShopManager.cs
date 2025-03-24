@@ -78,14 +78,6 @@ public class FlowerShopManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Move on to the next flower in the memory
-    /// </summary>
-    public void NextFlower()
-    {
-        currentFlower++;
-    }
-
-    /// <summary>
     /// Changes the state of the flower shop memory
     /// </summary>
     /// <param name="state">The enum state to change to</param>
@@ -94,21 +86,16 @@ public class FlowerShopManager : MonoBehaviour
 
         if (currentMinigame >= 0) minigames[currentMinigame].StopMinigame();
 
+        //Increment to the next minigame
+        currentMinigame++;
+        
         //If the current step in the current flower for the current order is not needed, then continue to the next minigame
         if ((!GetCurrentOrder().flowers[currentFlower].needsDethorning && currentMinigame == 1) ||
             (!GetCurrentOrder().flowers[currentFlower].needsTrimming && currentMinigame == 2) ||
             (!GetCurrentOrder().flowers[currentFlower].needsArranging && currentMinigame == 3))
         {
-            Debug.LogWarning(GetCurrentOrder().flowers[currentFlower].needsDethorning);
-            Debug.LogWarning(currentFlower);
-            Debug.LogWarning(currentMinigame);
-            Debug.LogWarning(GetCurrentOrder().flowers[currentFlower].name);
-            currentMinigame++;
             NextMinigame();
         }
-
-        //Increment to the next minigame
-        currentMinigame++;
 
         //If the current minigame is higher or equal to the number of minigames, continue
         if (currentMinigame >= minigames.Count)
@@ -116,7 +103,7 @@ public class FlowerShopManager : MonoBehaviour
             //If there are still more flowers left in the current order, then move onto the next flower
             if (currentFlower + 1 < GetCurrentOrder().flowers.Count)
             {
-                //NextFlower();
+                currentFlower++;
                 currentMinigame = 0;
                 NextMinigame();
             }
