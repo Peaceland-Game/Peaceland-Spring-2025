@@ -2,17 +2,16 @@
 position: 9,-242
 ---
 <<declare $playerName = "Andrej">>
-<<wait 1>>
 
-You: Hi, how are you?
+Hi, how are you?
     <<jump Intro>>
 ===
 
 title: Intro
 position: 7,-42
 ---
-You: ...
-You: Uh... {$playerName}?
+...
+Uh... {$playerName}?
     <<jump NPCFirstDialogue>>
 ===
 
@@ -20,10 +19,10 @@ You: Uh... {$playerName}?
 title: NPCFirstDialogue
 position: 0,137
 ---
-Andrej: OH- sorry, I mean, I'm good thanks. How are you?
--> You: I'm good, thanks. What can I do for you today?
--> You: ...uhh, fine thanks. Anything I can help you with?
--> You: Doing OK. How can I help you today?
+OH- sorry, I mean, I'm good thanks. How are you?
+-> I'm good, thanks. What can I do for you today?
+-> ...uhh, fine thanks. Anything I can help you with?
+-> Doing OK. How can I help you today?
 
 <<jump NPCQuestion>>
 ===
@@ -31,19 +30,19 @@ Andrej: OH- sorry, I mean, I'm good thanks. How are you?
 title: NPCQuestion
 position: 17,322
 ---
-Andrej: Well, I'd like to get some flowers...
--> You: Ok, any in particular-
+Well, I'd like to get some flowers...
+-> Ok, any in particular-
     <<jump FloristQuestion>>
 ===
 
 title: FloristQuestion
 position: 39,550
 ---
-Andrej: They're for my girlfriend! She likes flowers.
--> You: Aww, how sweet - I thought I saw you two walking around town square the other day, you make a very cute couple. What kind of flowers does she like?
--> You: Well we can do personalized bouquets here, what flowers would she like?
--> You: Great. Good for you. What flowers does she like?
--> You: OK, what does she like?
+They're for my girlfriend! She likes flowers.
+-> Aww, how sweet - I thought I saw you two walking around town square the other day, you make a very cute couple. What kind of flowers does she like?
+-> Well we can do personalized bouquets here, what flowers would she like?
+-> Great. Good for you. What flowers does she like?
+-> OK, what does she like?
 
 <<jump NPCNervousRamble>>
 ===
@@ -51,32 +50,32 @@ Andrej: They're for my girlfriend! She likes flowers.
 title: NPCNervousRamble
 position: 95,714
 --- 
-Andrej: Well I... I don't actually know... Should I have asked? I just wanted to get her flowers because we, like, just got together and I figured couples usually get flowers so I wanted flowers, is some kind of flower people usually get?
--> You: Well, if you're looking for flowers for a first partner, my husband got these for me on our first date, and that turned out well! 
+Well I... I don't actually know... Should I have asked? I just wanted to get her flowers because we, like, just got together and I figured couples usually get flowers so I wanted flowers, is some kind of flower people usually get?
+-> Well, if you're looking for flowers for a first partner, my husband got these for me on our first date, and that turned out well! 
     <<jump NPCOrderIn1>>
 ===
 
 title: NPCOrderIn1
 ---
--> You: You could choose these ones, but they're quite popular at weddings, and that might lead to... questions.
+-> You could choose these ones, but they're quite popular at weddings, and that might lead to... questions.
     <<jump NPCOrderIn2>>
 ===
 
 title: NPCOrderIn2
 ---
--> You: These ones represent youth, which is perfect for a young love. 
+-> These ones represent youth, which is perfect for a young love. 
     <<jump NPCOrderIn3>>
 ===
 
 title: NPCOrderIn3
 ---
--> You: But of course, it's your choice, you know her best.
+-> But of course, it's your choice, you know her best.
     <<jump NPCOrderIn4>>
 ===
 
 title: NPCOrderIn4
 position: 94,953
 ---
-Andrej: Oh uh... can I get both roses and daisies? I think that'd be nice.
--> You: Sure!
+Oh uh... can I get both roses and daisies? I think that'd be nice.
+-> Sure!
 ===
