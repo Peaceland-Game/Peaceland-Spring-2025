@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 492172087}
-  startNode: Start
+  startNode: NPCOrderIn4
 --- !u!4 &88269611
 Transform:
   m_ObjectHideFlags: 0
@@ -1821,6 +1821,12 @@ MonoBehaviour:
   - {x: 27.98, y: 4.59, z: -0.10143833}
   - {x: 29.97, y: 6.4, z: -0.10143833}
   - {x: 31.49, y: 5.05, z: -0.10143833}
+  flowerSprites:
+  - {fileID: -5440670643983190029, guid: 971830b7986f4af4abdb4b4797b37bd4, type: 3}
+  - {fileID: 599749539538422185, guid: 62c29300dc0fedc4286ef10ed0845fe1, type: 3}
+  - {fileID: -1639245146206265901, guid: 5c302c829b631aa4687ea75b34542dbb, type: 3}
+  - {fileID: -8662626118389694424, guid: d8ac454edc89cec4daf162c02c4053a6, type: 3}
+  - {fileID: -216149754616551795, guid: 50362b9e48e6a0f429515e75fb4ce195, type: 3}
 --- !u!1 &1331315764 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3178988590836819911, guid: a92f97fcde9e6fc48ad346799c77f7fe, type: 3}
