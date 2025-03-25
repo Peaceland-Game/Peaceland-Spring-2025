@@ -3,7 +3,7 @@ position: 9,-242
 ---
 <<declare $playerName = "Andrej">>
 
-Hi, how are you?
+-> Hi, how are you?
     <<jump Intro>>
 ===
 
@@ -11,7 +11,7 @@ title: Intro
 position: 7,-42
 ---
 ...
-Uh... {$playerName}?
+-> Uh... {$playerName}?
     <<jump NPCFirstDialogue>>
 ===
 
