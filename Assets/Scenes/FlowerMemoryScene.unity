@@ -168,6 +168,7 @@ MonoBehaviour:
   - {fileID: 438935505}
   - {fileID: 1740225107}
   - {fileID: 1164951639}
+  - {fileID: 214963924}
   orders:
   - {fileID: 11400000, guid: 08e58547467936140abcc295a3848a84, type: 2}
   gameplayGoodNode: 
@@ -183,7 +184,7 @@ GameObject:
   - component: {fileID: 88269611}
   - component: {fileID: 88269610}
   m_Layer: 0
-  m_Name: DialogueMinigame
+  m_Name: DialogueMinigame Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,6 +541,52 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1164951638}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &214963923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 214963925}
+  - component: {fileID: 214963924}
+  m_Layer: 0
+  m_Name: DialogueMinigame End
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &214963924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214963923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443a04c4b1a996f4a80d2fe9c17d207b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 492172087}
+  startNode: OrderComplete
+--- !u!4 &214963925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214963923}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1103.9307, y: 617.38226, z: -2.4455903}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &276134458
 GameObject:
@@ -3125,6 +3172,7 @@ SceneRoots:
   - {fileID: 1164951638}
   - {fileID: 705893473}
   - {fileID: 88269611}
+  - {fileID: 214963925}
   - {fileID: 184161150}
   - {fileID: 1843959287}
   - {fileID: 511491064}
