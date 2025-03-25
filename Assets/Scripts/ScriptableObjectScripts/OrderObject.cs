@@ -21,10 +21,10 @@ public class OrderObject : ScriptableObject
     [Serializable]
     public struct Flower
     {
-        //Name of the flower
+        /// <summary>
+        /// name of the flower
+        /// </summary>
         public string name;
-        //The texture/sprite of the flower
-        public Texture2D texture;
 
         /// <summary>
         /// Does the current flower need dethorning?
@@ -46,9 +46,26 @@ public class OrderObject : ScriptableObject
         /// </summary>
         public bool isFinished;
 
+        public enum TypeOfFlower
+        {
+            ROSE,
+            TULIP,
+            SUNFLOWER,
+            LILY,
+            GLADIOLUS
+        }
+        public TypeOfFlower flowerType;
+
+        /// <summary>
+        /// The texture/sprite of the flower
+        /// </summary>
+        [HideInInspector] public Texture2D texture;
+
         public void Start()
         {
             isFinished = false;
+            texture = (Texture2D)Resources.Load("Assets/Art/Flowers/Blue/blue_flower_no_thorns.png");
+            Debug.Log(texture);
         }
     }
 }
