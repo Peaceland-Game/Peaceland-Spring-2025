@@ -35,6 +35,15 @@ public class Draggable : MonoBehaviour
         bounds = GetComponent<Collider2D>();
     }
 
+    //called when object is instantiated
+    public void Constructor(GameObject[] _dragTargets)
+    {
+        foreach (GameObject dragTarget in _dragTargets)
+        {
+            dragTargets.Add(dragTarget.transform);
+        }
+    }
+
     public bool CanDrag(Vector3 touch_wp) {
         return draggable && bounds.OverlapPoint(touch_wp);
     }
