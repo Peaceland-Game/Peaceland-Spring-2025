@@ -29,8 +29,6 @@ public class DragManager : MinigameBehavior
     /// The starting positions of the flowers to reset them to each time this is restarted
     /// </summary>
     [SerializeField] Vector3[] startingLocations;
-
-    [SerializeField] Sprite[] flowerSprites;
     
     public override void StartMinigame()
     {
@@ -53,13 +51,15 @@ public class DragManager : MinigameBehavior
         //For each flower, reset its position to its starting location and make sure they can be dragged
         for (int i = 0; i < numberOfFlowers; i++)
         {
+            var currentFlower = FlowerShopManager.GetCurrentOrder().flowers[i];
+
             draggables[i].gameObject.transform.localPosition = startingLocations[i];
             targets[i].transform.localPosition = startingLocations[i] + new Vector3(-5, 0, 0); //for now, targets move to the left of the flowers. subject to change
             draggables[i].EnableDrag();
 
             //run the constructor of each of the draggables and targets
-            draggables[i].Constructor(targets, (int)FlowerShopManager.GetCurrentOrder().flowers[i].flowerType, flowerSprites[i]);
-            targets[i].GetComponent<Target>().Constructor((int)FlowerShopManager.GetCurrentOrder().flowers[i].flowerType, flowerSprites[i]);
+            draggables[i].Constructor(targets, FlowerShopManager.GetCurrentOrder().flowers[i].flowerType);
+            targets[i].GetComponent<DragTarget>().Constructor(FlowerShopManager.GetCurrentOrder().flowers[i].flowerType);
         }
 
         //Set the arranging minigame to active
