@@ -113,9 +113,8 @@ public class CuttableFlower : MonoBehaviour
 
         // *** ANGLE ADJUSTMENTS *** //
         hitbox.rotation = Quaternion.Euler(0, 0, angle);
-        //for(int i = 0; i < masks.Count; i++)
-        //{
-        //    masks[i].rotation = hitbox.rotation;
-        //}
     }
+
+    // TODO: On cut, change position of masks to align with
+    // the cut and then change flower positions
 }
