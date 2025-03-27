@@ -276,5 +276,5 @@ MonoBehaviour:
   maxThorns: 5
   leftXSpawnPos: -2
   rightXSpawnPos: 2
-  minSpawnHeight: -4
+  minSpawnHeight: -3
   maxSpawnHeight: 4
