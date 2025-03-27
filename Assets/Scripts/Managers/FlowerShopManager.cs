@@ -53,7 +53,13 @@ public class FlowerShopManager : MonoBehaviour
     private string gameplayGoodNode;
 
     [SerializeField]
-    private DialogueRunner dialogueRunner; 
+    private DialogueRunner dialogueRunner;
+
+    /// <summary>
+    /// List of sprites associated with flower types
+    /// </summary>
+    [SerializeField]
+    private Sprite[] flowerSprites;
 
     /// <summary>
     /// The current order being worked on
@@ -67,6 +73,11 @@ public class FlowerShopManager : MonoBehaviour
     public static OrderObject GetCurrentOrder()
     {
         return Instance.orders[currentOrder];
+    }
+
+    public static Sprite GetFlowerSprite(FlowerType t)
+    {
+        return Instance.flowerSprites[(int)t];
     }
 
     void Start()

@@ -28,11 +28,29 @@ public class Draggable : MonoBehaviour
     private bool dragging = false;
     private Vector3 offset;
     private int snapIndex = -1;
+
+    /// <summary>
+    /// represents the flower type enum value from order object
+    /// </summary>
+    FlowerType typeofFlower;
     
     private Collider2D bounds;
     void Start()
     {   
         bounds = GetComponent<Collider2D>();
+    }
+
+    //called when object is instantiated
+    public void Constructor(GameObject[] _dragTargets, FlowerType _typeOfFlower)
+    {
+        foreach (GameObject dragTarget in _dragTargets)
+        {
+            dragTargets.Add(dragTarget.transform);
+        }
+        typeofFlower = _typeOfFlower;
+
+        //set the sprite
+        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerSprite(_typeOfFlower);
     }
 
     public bool CanDrag(Vector3 touch_wp) {
@@ -88,7 +106,8 @@ public class Draggable : MonoBehaviour
                 snapIndex = -1;
                 foreach (Transform target in dragTargets) {
                     float dist = (newPos - target.position).magnitude;
-                    if (dist < dragDistanceThreshold && dist < lowest_dist) {
+                    //snap if close enough AND if their flower types are the same
+                    if (dist < dragDistanceThreshold && dist < lowest_dist && target.gameObject.GetComponent<DragTarget>().TypeOfFlower == typeofFlower) {
                         newPos = target.position;
                         snapIndex = i;
                     }
