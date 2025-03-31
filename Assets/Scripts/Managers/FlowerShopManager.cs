@@ -67,6 +67,10 @@ public class FlowerShopManager : MonoBehaviour
         return Instance.orders[currentOrder];
     }
 
+    public static void NextOrder() {
+        currentOrder++;
+    }
+
     /// <summary>
     /// The current minigame that this memory is on
     /// </summary>
@@ -130,28 +134,11 @@ public class FlowerShopManager : MonoBehaviour
         //Increment to the next minigame
         currentMinigame++;
 
-
-        //If the current step in the current flower for the current order is not needed, then continue to the next minigame
-        if ((!GetCurrentFlower(currentFlower).needsDethorning && currentMinigame == 1) ||
-            (!GetCurrentFlower(currentFlower).needsTrimming && currentMinigame == 2) ||
-            (!GetCurrentFlower(currentFlower).needsArranging && currentMinigame == 3))
-        {
-            NextMinigame();
-        }
-
         //If the current minigame is higher or equal to the number of minigames, continue
         if (currentMinigame >= minigames.Count)
         {
-            //If there's more than one order, than go to the next one, otherwise go the last "minigame"
-            if (orders.Count > 1)
-            {
-                currentOrder++;
-                currentMinigame = 0;
-            }
-            else
-            {
-                currentMinigame++;
-            }
+            currentMinigame = 0;
+            // TODO: W're done, end the game (or memory)!!!
         }
 
         //Start the next minigame
