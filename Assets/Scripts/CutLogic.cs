@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class CutLogic : MonoBehaviour
 {
-
-    /// <summary>
-    /// The rigidbody that will physically be "cut off" by the player
-    /// </summary>
-    [SerializeField] Rigidbody2D cutRB;
     /// <summary>
     /// the distance the player must drag the shears for a new point to be drawn.
     /// </summary>
@@ -36,6 +31,13 @@ public class CutLogic : MonoBehaviour
 
     private bool cut;
 
+    private Vector2 cutStart;
+    private Vector2 cutEnd;
+
+    // Delegates and events for CuttableFlower listeners
+    public delegate void OnCut(Vector2 cutStart, Vector2 cutEnd);
+    public static event OnCut onCut;
+
     Stem stem;
 
     public bool Cut { get => cut; }
@@ -49,6 +51,16 @@ public class CutLogic : MonoBehaviour
     {
         cutLine = _cutLine;
         stem = _stem;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        //if the shears are over the area to be cut
+        if (!Cut && collider.CompareTag("Shears"))
+        {
+            // set the start of the cut 
+            cutStart = collider.transform.position;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collider)
@@ -70,13 +82,15 @@ public class CutLogic : MonoBehaviour
         //if the shears exit the area that is getting cut
         if (!Cut && collider.CompareTag("Shears"))
         {
-            CalculateCutScore();
-        }
+            cutEnd = collider.transform.position;
 
-        // *** ACTUAL CUTTING ** //
-        if (collider.CompareTag("Shears") && !Cut)
-        {
-            CutObj();
+            CalculateCutScore();
+            //CutObj();
+            
+            // Send the actual coordinates of the cut to CuttableFlower
+            // to dynamically divide the sprites
+            onCut.Invoke(cutStart, cutEnd);
+            Debug.Log("Cut");
         }
     }
 
@@ -91,7 +105,7 @@ public class CutLogic : MonoBehaviour
         cut = true;
 
         //move object off of the screen
-        StartCoroutine(cutPiece.GetComponent<CutPiece>().MoveSnippedObject(1, 1, 2f));
+        StartCoroutine(cutPiece?.GetComponent<CutPiece>().MoveSnippedObject(1, 1, 2f));
 
         //transition to next cut or next flower
         if (stem != null) { stem.CutMade(transform.parent.gameObject); }

@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting;
@@ -16,9 +17,10 @@ public class CuttableFlower : MonoBehaviour
     float minY;
     float maxY;
     float halfHeight;
-    const float DEVIATION = 3.0f; // Determines how far apart min y and max y can be
-    const float BOTTOM_BUFFER = 1.0f; // Determines the minimum distance from the bottom the hitbox will be
-    const float ANGLE_RANGE = 55.0f;
+    const float DEVIATION = 2.0f; // Determines how far apart min y and max y can be
+    const float BOTTOM_BUFFER = 0.5f; // Determines the minimum distance from the bottom the hitbox will be
+    const float ANGLE_RANGE = 40.0f;
+
     void Awake()
     {
         // There should only ever be two masks
@@ -33,7 +35,17 @@ public class CuttableFlower : MonoBehaviour
 
         // Moves hitbox to a random position
         RandomHitboxPos();
+
+        // Assign CuttableFlower's OnCut method to be triggered by a cut
+        CutLogic.onCut += OnCut;
     }
+
+    private void OnDestroy()
+    {
+        // Unassign event to avoid errors
+        CutLogic.onCut -= OnCut;
+    }
+
 
     /// <summary>
     /// Gets the masks and hitboxes of the flower
@@ -66,16 +78,26 @@ public class CuttableFlower : MonoBehaviour
         Rect rect = this.GetComponentInChildren<RectTransform>().rect;
 
         // Set positions of random hitbox generation for later
-        halfHeight = rect.height / 2 * this.transform.localScale.y;
+        halfHeight = rect.height / 2.5f * this.transform.localScale.y;
         minY = this.transform.position.y - halfHeight + BOTTOM_BUFFER;
-        maxY = this.transform.position.y - halfHeight + BOTTOM_BUFFER + DEVIATION;
+        maxY = minY + DEVIATION;
 
         // Loop through and set scale of each mask
-        for(int i = 0; i < masks.Count; i++)
+        foreach(Transform t in masks)
         {
-            Vector3 scale = masks[i].localScale;
-            scale.Set(rect.height, rect.height, 1.0f);
-            masks[i].localScale = scale;
+            if (t.gameObject.layer == LayerMask.NameToLayer("FlowerBottom"))
+            {
+                // Bottom should be a bit narrower
+                Vector3 scale = t.localScale;
+                scale.Set(rect.height / 1.5f, rect.height, 1.0f);
+                t.localScale = scale;
+            }
+            else
+            {
+                Vector3 scale = t.localScale;
+                scale.Set(rect.width * 1.5f, rect.height, 1.0f);
+                t.localScale = scale;
+            }
         }
     }
 
@@ -83,38 +105,68 @@ public class CuttableFlower : MonoBehaviour
     {
         // Generate a random position in the bottom range of the stem
         Vector3 newPos = this.transform.position;
-        newPos.y = Random.Range(minY, maxY);
+        newPos.y = UnityEngine.Random.Range(minY, maxY);
 
         // Generate a random angle for the hitbox
-        float angle = Random.Range(-ANGLE_RANGE, ANGLE_RANGE);
+        float angle = UnityEngine.Random.Range(-ANGLE_RANGE, ANGLE_RANGE);
 
         // Set hitbox position and angle
         hitbox.position = newPos;
-        
-
-        // Adjust mask positions
-        for(int i = 0; i < masks.Count; i++)
-        {
-            // Set new mask pos equal to hitbox position,
-            // then adjust the y position so that it is just above the line
-            Vector3 newMaskPos = hitbox.position;
-            if (masks[i].gameObject.layer == LayerMask.NameToLayer("FlowerTop")) {
-                // Move the mask up if its part of the top flower
-                newMaskPos.y += halfHeight;
-            }
-            else
-            {
-                // Move the mask down if its part of the bottom flower
-                newMaskPos.y -= halfHeight;
-            }
-
-           
-        }
 
         // *** ANGLE ADJUSTMENTS *** //
         hitbox.rotation = Quaternion.Euler(0, 0, angle);
     }
 
-    // TODO: On cut, change position of masks to align with
-    // the cut and then change flower positions
+    void OnCut(Vector2 cutStart, Vector2 cutEnd)
+    {
+        // Calculate midpoint of the the line
+        Vector2 midpoint = CalculateMidpoint(cutStart, cutEnd);
+
+        // Adjust vertical positions of the masks
+        // to match y value of the midpoint cut
+        foreach (Transform t in masks)
+        {
+            if (t.gameObject.layer == LayerMask.NameToLayer("FlowerTop"))
+            {
+                t.Translate(t.up * ((t.localScale.y / 4) + t.parent.gameObject.transform.position.y), Space.World);
+            }
+            else
+            {
+                t.Translate(-1 * t.up * ((t.localScale.y / 4) + t.parent.gameObject.transform.position.y), Space.World);
+            }
+        }
+
+
+        //** Adjust angle of masks to match the angle of the cut itself **//
+        // Calculate angle between horizon and the cutLine
+        Vector2 cutLine = cutEnd - cutStart;
+        float angle = CalculateVectorAngleFromHorizon(cutLine);
+
+        for (int i = 0; i < masks.Count; i++)
+        {
+            masks[i].rotation = Quaternion.Euler(0, 0, angle);
+        }
+    }
+
+    /// <summary>
+    /// Calculates the midpoint between two vectors
+    /// </summary>
+    /// <param name="v1">Start point</param>
+    /// <param name="v2">End point</param>
+    /// <returns>A Vector representing the midpoint between two vectors</returns>
+    Vector2 CalculateMidpoint(Vector2 v1, Vector2 v2)
+    {
+        return new Vector2((v2.x - v1.x) / 2, (v2.y - v1.y) / 2);
+    }
+
+    /// <summary>
+    /// Calculates the angle between a given Vector V
+    /// and the horizon (Vector2.right)
+    /// </summary>
+    /// <param name="v">Vector that is intersecting the horizon</param>
+    /// <returns>The angle (in degrees) between V and the horizon</returns>
+    float CalculateVectorAngleFromHorizon(Vector2 v)
+    {
+        return -1 * Mathf.Rad2Deg * Mathf.Acos(Vector2.Dot(v, Vector2.right) / (v.magnitude * Vector2.right.magnitude));
+    }
 }
