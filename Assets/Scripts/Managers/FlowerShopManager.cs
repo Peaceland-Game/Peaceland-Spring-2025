@@ -7,14 +7,14 @@ public class FlowerShopManager : MonoBehaviour
     /// <summary>
     /// Enum states for the flower memory
     /// </summary>
-    public enum FlowerGameState
-    {
-        START_DIALOGUE = 0,
-        DETHORN,
-        TRIM,
-        ARRANGE,
-        END_DIALOGUE
-    }
+    //public enum FlowerGameState
+    //{
+    //    START_DIALOGUE = 0,
+    //    DETHORN,
+    //    TRIM,
+    //    ARRANGE,
+    //    END_DIALOGUE
+    //}
 
     /// <summary>
     /// List of "minigames"
@@ -142,28 +142,6 @@ public class FlowerShopManager : MonoBehaviour
         //If the current minigame is higher or equal to the number of minigames, continue
         if (currentMinigame >= minigames.Count)
         {
-            ////If there are still more flowers left in the current order, then move onto the next flower
-            //if (currentFlower + 1 < GetCurrentOrder().flowers.Count)
-            //{
-            //    currentFlower++;
-            //    currentMinigame = 0;
-            //    NextMinigame();
-            //}
-            ////Otherwise increment the current order and go back to the first minigame
-            //else
-            //{
-            //    //If there's more than one order, than go to the next one, otherwise go the last "minigame"
-            //    if (orders.Count > 1)
-            //    {
-            //        currentOrder++;
-            //        currentMinigame = 0;
-            //    }
-            //    else
-            //    {
-            //        currentMinigame++;
-            //    }
-            //}
-
             //If there's more than one order, than go to the next one, otherwise go the last "minigame"
             if (orders.Count > 1)
             {
