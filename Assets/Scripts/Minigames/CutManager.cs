@@ -8,12 +8,9 @@ using System.Collections;
 /// </summary>
 public class CutManager : MinigameBehavior
 {
-    private int curIndex = 0;
+    private static int curIndex = 0;
 
     private static CutManager instance;
-
-    [SerializeField]
-    private List<GameObject> flowers;
 
     private static GameObject instantiatedFlower;
 
@@ -31,23 +28,36 @@ public class CutManager : MinigameBehavior
 
     public static void CutStart()
     {
-        int index = Random.Range(0, instance.flowers.Count - 1);
-        instantiatedFlower = Instantiate(instance.flowers[index]);
+        instantiatedFlower = Instantiate(FlowerShopManager.ReturnGameObjectBasedOnMinigame(curIndex,
+            FlowerShopManager.GetCurrentMinigame()));
     }
 
-    
+
     public static IEnumerator AllCutsMade()
     {
         yield return new WaitForSeconds(1);
         Destroy(instantiatedFlower);
-        instance.curIndex++;
-       
-        if (instance.curIndex < FlowerShopManager.GetCurrentOrder().flowers.Count)
+        curIndex++;
+        FlowerShopManager.currentFlower = curIndex;
+
+        if (curIndex < FlowerShopManager.GetCurrentOrder().flowers.Count)
         {
-            CutStart();
+            if ((FlowerShopManager.GetCurrentFlower(curIndex).needsDethorning && FlowerShopManager.GetCurrentMinigame() == 1) ||
+            (FlowerShopManager.GetCurrentFlower(curIndex).needsTrimming && FlowerShopManager.GetCurrentMinigame() == 2))
+            {
+                CutStart();
+            }
+            else
+            {
+                curIndex = 0;
+                FlowerShopManager.currentFlower = curIndex;
+                FlowerShopManager.Instance.NextMinigame();
+            }
         }
         else
         {
+            curIndex = 0;
+            FlowerShopManager.currentFlower = curIndex;
             FlowerShopManager.Instance.NextMinigame();
         }
     }

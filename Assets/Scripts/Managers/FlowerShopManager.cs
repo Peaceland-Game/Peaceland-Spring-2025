@@ -7,14 +7,14 @@ public class FlowerShopManager : MonoBehaviour
     /// <summary>
     /// Enum states for the flower memory
     /// </summary>
-    public enum FlowerGameState
-    {
-        START_DIALOGUE = 0,
-        DETHORN,
-        TRIM,
-        ARRANGE,
-        END_DIALOGUE
-    }
+    //public enum FlowerGameState
+    //{
+    //    START_DIALOGUE = 0,
+    //    DETHORN,
+    //    TRIM,
+    //    ARRANGE,
+    //    END_DIALOGUE
+    //}
 
     /// <summary>
     /// List of "minigames"
@@ -31,15 +31,7 @@ public class FlowerShopManager : MonoBehaviour
     /// <summary>
     /// Index of the current flower in the current order
     /// </summary>
-    private static int currentFlower = 0;
-
-    /// <summary>
-    /// Gives access to the index of the current flower in the current order
-    /// </summary>
-    public static int CurrentFlower
-    {
-        get { return currentFlower; }
-    }
+    public static int currentFlower = 0;
 
     /// <summary>
     /// Singleton Instace
@@ -75,6 +67,48 @@ public class FlowerShopManager : MonoBehaviour
         return Instance.orders[currentOrder];
     }
 
+    public static void NextOrder() {
+        currentOrder++;
+    }
+
+    /// <summary>
+    /// The current minigame that this memory is on
+    /// </summary>
+    /// <returns>The current minigame this memory is on</returns>
+    public static int GetCurrentMinigame()
+    {
+        return Instance.currentMinigame;
+    }
+
+    /// <summary>
+    /// The current flower that this memory is on
+    /// </summary>
+    /// <returns>The current flower in the current order</returns>
+    public static OrderObject.Flower GetCurrentFlower(int flowerNum)
+    {
+        return GetCurrentOrder().flowers[flowerNum];
+    }
+
+    /// <summary>
+    /// Returns the appropriate part of the flower, based on the current minigame
+    /// </summary>
+    /// <param name="index">The current flower to pull the appropriate game object from</param>
+    /// <param name="minigame">The current minigame to test for</param>
+    /// <returns>Flower stem if the minigame is dethorning, and whole flower if the minigame is trimming</returns>
+    public static GameObject ReturnGameObjectBasedOnMinigame(int index, int minigame)
+    {
+        //If the minigame is dethorning, return the flower stem
+        if (minigame == 1)
+        {
+            return GetCurrentOrder().flowers[index].flowerStem;
+        }
+        //Otherwise return the entire flower game object
+        else
+        {
+            return GetCurrentOrder().flowers[index].flowerObject;
+        }
+    }
+
     public static Sprite GetFlowerSprite(FlowerType t)
     {
         return Instance.flowerSprites[(int)t];
@@ -99,32 +133,12 @@ public class FlowerShopManager : MonoBehaviour
 
         //Increment to the next minigame
         currentMinigame++;
-        
-        //If the current step in the current flower for the current order is not needed, then continue to the next minigame
-        if ((!GetCurrentOrder().flowers[currentFlower].needsDethorning && currentMinigame == 1) ||
-            (!GetCurrentOrder().flowers[currentFlower].needsTrimming && currentMinigame == 2) ||
-            (!GetCurrentOrder().flowers[currentFlower].needsArranging && currentMinigame == 3))
-        {
-            NextMinigame();
-        }
 
         //If the current minigame is higher or equal to the number of minigames, continue
         if (currentMinigame >= minigames.Count)
         {
-            //If there are still more flowers left in the current order, then move onto the next flower
-            if (currentFlower + 1 < GetCurrentOrder().flowers.Count)
-            {
-                currentFlower++;
-                currentMinigame = 0;
-                NextMinigame();
-            }
-            //Otherwise increment the current order and go back to the first minigame
-            else
-            {
-                currentOrder++;
-                
-                currentMinigame = 0;
-            }
+            currentMinigame = 0;
+            // TODO: W're done, end the game (or memory)!!!
         }
 
         //Start the next minigame

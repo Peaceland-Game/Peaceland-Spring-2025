@@ -169,8 +169,12 @@ MonoBehaviour:
   - {fileID: 1740225107}
   - {fileID: 1164951639}
   - {fileID: 214963924}
+  - {fileID: 425442085}
+  - {fileID: 417134573}
+  - {fileID: 1164951639}
   orders:
   - {fileID: 11400000, guid: 08e58547467936140abcc295a3848a84, type: 2}
+  - {fileID: 11400000, guid: b7ea8f03dec914fee87fb9129622e4f5, type: 2}
   gameplayGoodNode: 
   dialogueRunner: {fileID: 492172087}
   flowerSprites:
@@ -858,6 +862,96 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &417134572
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417134574}
+  - component: {fileID: 417134573}
+  m_Layer: 0
+  m_Name: DialogueMinigame End (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &417134573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417134572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443a04c4b1a996f4a80d2fe9c17d207b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 492172087}
+  startNode: GameplayGood
+--- !u!4 &417134574
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417134572}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1103.9307, y: 617.38226, z: -2.4455903}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &425442084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 425442086}
+  - component: {fileID: 425442085}
+  m_Layer: 0
+  m_Name: NextOrder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &425442085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425442084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b78e8a0ca8e5b35a84c5afbebb6f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &425442086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425442084}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.9204657, y: -0.04747468, z: 0.012889523}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &438935503
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,8 +998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318052e93ecd1fa41aed8110eae9b14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowers:
-  - {fileID: 9219485524165623847, guid: 11a2887ef671e9e4a9ddcbdccf708f22, type: 3}
 --- !u!1001 &492172084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2316,10 +2408,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318052e93ecd1fa41aed8110eae9b14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowers:
-  - {fileID: 4329690458570257238, guid: 51d544ab1d7e3e344b1a506b324ac027, type: 3}
-  - {fileID: 7168470204087067190, guid: a04eaae7f26044b40be24aee40656199, type: 3}
-  - {fileID: 5487726692215652602, guid: 946428be2d1ac0a4886b07ef56379c8b, type: 3}
 --- !u!1 &1843959284
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,7 +2500,9 @@ SceneRoots:
   - {fileID: 705893473}
   - {fileID: 88269611}
   - {fileID: 214963925}
+  - {fileID: 417134574}
   - {fileID: 184161150}
   - {fileID: 1843959287}
   - {fileID: 511491064}
   - {fileID: 1340726479}
+  - {fileID: 425442086}

@@ -31,6 +31,15 @@ public class OrderObject : ScriptableObject
     public struct Flower
     {
         /// <summary>
+        /// The game object of the flower
+        /// </summary>
+        public GameObject flowerObject;
+        /// <summary>
+        /// The game object of the stem on this flower
+        /// </summary>
+        public GameObject flowerStem;
+
+        /// <summary>
         /// Does the current flower need dethorning?
         /// </summary>
         public bool needsDethorning;
