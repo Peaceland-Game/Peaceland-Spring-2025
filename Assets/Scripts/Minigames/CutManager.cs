@@ -38,7 +38,6 @@ public class CutManager : MinigameBehavior
             FlowerShopManager.GetCurrentMinigame().gameObject.name));
     }
 
-
     public static IEnumerator AllCutsMade()
     {
         yield return new WaitForSeconds(1);

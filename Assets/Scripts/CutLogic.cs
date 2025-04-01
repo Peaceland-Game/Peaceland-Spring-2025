@@ -102,8 +102,8 @@ public class CutLogic : MonoBehaviour
     {
         float averageDistance = 0;
         //gets the distance of each point on the drawn line
-        Vector3 guideLinePos1 = guideLine.GetPosition(0);
-        Vector3 guideLinePos2 = guideLine.GetPosition(1);
+        Vector3 guideLinePos1 = guideLine.GetPosition(0) + guideLine.transform.position;
+        Vector3 guideLinePos2 = guideLine.GetPosition(1) + guideLine.transform.position;
         for (int i = 0; i < cutLine.positionCount; i++)
         {
             averageDistance += LinePointDistance(guideLinePos1, guideLinePos2, cutLine.GetPosition(i));

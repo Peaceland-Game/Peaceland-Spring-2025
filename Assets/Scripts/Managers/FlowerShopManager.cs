@@ -146,7 +146,6 @@ public class FlowerShopManager : MonoBehaviour
     /// <param name="state">The enum state to change to</param>
     public void NextMinigame()
     {
-
         //As long as the current minigame is at a valid index (greater than 0), stop the minigame at that index
         if (currentMinigame >= 0 && currentFlower == 0) minigames[currentMinigame].StopMinigame();
 
