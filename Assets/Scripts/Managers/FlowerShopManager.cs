@@ -96,10 +96,19 @@ public class FlowerShopManager : MonoBehaviour
     /// <summary>
     /// The current flower that this memory is on
     /// </summary>
+    /// <param name="flowerNum">The index to search for in the flowers list in the current order (-1 uses the current flower 
+    /// in the FlowerShopManager instance)</param>
     /// <returns>The current flower in the current order</returns>
-    public static OrderObject.Flower GetCurrentFlower(int flowerNum)
+    public static OrderObject.Flower GetCurrentFlower(int flowerNum = -1)
     {
-        return GetCurrentOrder().flowers[flowerNum];
+        if (flowerNum < 0)
+        {
+            return GetCurrentOrder().flowers[currentFlower];
+        }
+        else
+        {
+            return GetCurrentOrder().flowers[flowerNum];
+        }
     }
 
     /// <summary>
@@ -147,30 +156,7 @@ public class FlowerShopManager : MonoBehaviour
     public void NextMinigame()
     {
         //As long as the current minigame is at a valid index (greater than 0), stop the minigame at that index
-        if (currentMinigame >= 0 && currentFlower == 0) minigames[currentMinigame].StopMinigame();
-
-        //If the current step in the current flower for the current order is not needed, then continue to the next minigame
-        if ((!GetCurrentFlower(currentFlower).needsDethorning && minigames[currentMinigame + 1].gameObject.name == "Dethorn") ||
-            (!GetCurrentFlower(currentFlower).needsTrimming && minigames[currentMinigame + 1].gameObject.name == "Trimming"))
-        {
-            //Increment the current flower this minigame is on
-            currentFlower++;
-
-            //If the next flower is out of range, then go back to the first flower
-            if (currentFlower >= GetCurrentOrder().flowers.Count)
-            {
-                currentFlower = 0;
-                CutManager.CurIndex = currentFlower;
-            }
-            else
-            {
-                //Update the flower index in the CutManager, and then set it up for cutting
-                CutManager.CurIndex = currentFlower;
-                CutManager.CutStart();
-            }
-
-            NextMinigame();
-        }
+        if (currentMinigame >= 0) minigames[currentMinigame].StopMinigame();
 
         //Increment to the next minigame
         currentMinigame++;
