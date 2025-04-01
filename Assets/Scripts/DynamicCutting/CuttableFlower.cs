@@ -19,7 +19,10 @@ public class CuttableFlower : MonoBehaviour
     float halfHeight;
     const float DEVIATION = 2.0f; // Determines how far apart min y and max y can be
     const float BOTTOM_BUFFER = 0.5f; // Determines the minimum distance from the bottom the hitbox will be
-    const float ANGLE_RANGE = 40.0f;
+    const float ANGLE_RANGE = 30.0f;
+
+    Rect spriteRect;
+
     Vector2 cutLine;
     Vector2 cutStart;
     Vector2 cutEnd;
@@ -33,7 +36,7 @@ public class CuttableFlower : MonoBehaviour
         cutStart = Vector2.zero;
         cutEnd = Vector2.zero;
 
-        // TO-DO implement dynamic sprite setting once enum is in
+        // TO-DO: implement dynamic sprite setting once enum is in
         //SetChildSprites();
 
         // Set proper mask scale
@@ -82,29 +85,19 @@ public class CuttableFlower : MonoBehaviour
     void SetMaskScale()
     {
         // Get the bounding rectangle of the sprite
-        Rect rect = this.GetComponentInChildren<RectTransform>().rect;
+        spriteRect = this.GetComponentInChildren<RectTransform>().rect;
 
         // Set positions of random hitbox generation for later
-        halfHeight = rect.height / 2.5f * this.transform.localScale.y;
+        halfHeight = spriteRect.height / 2f * this.transform.localScale.y;
         minY = this.transform.position.y - halfHeight + BOTTOM_BUFFER;
         maxY = minY + DEVIATION;
 
         // Loop through and set scale of each mask
         foreach(Transform t in masks)
         {
-            if (t.gameObject.layer == LayerMask.NameToLayer("FlowerBottom"))
-            {
-                // Bottom should be a bit narrower
-                Vector3 scale = t.localScale;
-                scale.Set(rect.height / 1.5f, rect.height, 1.0f);
-                t.localScale = scale;
-            }
-            else
-            {
-                Vector3 scale = t.localScale;
-                scale.Set(rect.width * 1.5f, rect.height, 1.0f);
-                t.localScale = scale;
-            }
+            Vector3 scale = t.localScale;
+            scale.Set(spriteRect.height, spriteRect.height, 1.0f);
+            t.localScale = scale;
         }
     }
 
@@ -129,17 +122,19 @@ public class CuttableFlower : MonoBehaviour
         // Calculate midpoint of the the line
         Vector2 midpoint = CalculateMidpoint(cutStart, cutEnd);
 
+        Debug.Log(midpoint);
+
         // Adjust vertical positions of the masks
         // to match y value of the midpoint cut
         foreach (Transform t in masks)
         {
             if (t.gameObject.layer == LayerMask.NameToLayer("FlowerTop"))
             {
-                t.Translate(t.up *  midpoint.y, Space.World);
+                t.Translate(t.up * (t.localScale.y / 8), Space.World);
             }
             else
             {
-                t.Translate(t.up * midpoint.y, Space.World);
+                t.Translate(t.up * (t.localScale.y / 2.5f) * -1, Space.World);
             }
         }
 
@@ -184,11 +179,15 @@ public class CuttableFlower : MonoBehaviour
     float CalculateVectorAngleFromHorizon(Vector2 v)
     {
         float angle = Mathf.Rad2Deg * Mathf.Acos(Vector2.Dot(v, Vector2.right) / (v.magnitude * Vector2.right.magnitude));
-        if(hitbox.rotation.z < 0 && angle > 0)
-        {
-            // angle NEEDS to be negative in this case
-            angle *= -1;
-        }
+        //if(hitbox.rotation.z < 0 && angle > 0)
+        //{
+        //    // angle NEEDS to be negative in this case
+        //    angle *= -1;
+        //}
+        //if(hitbox.rotation.z > 0 && angle < 0)
+        //{
+        //    angle *= -1;
+        //}
         return angle;
     }
 }
