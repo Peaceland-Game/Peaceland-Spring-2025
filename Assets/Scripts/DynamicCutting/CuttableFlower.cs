@@ -20,11 +20,18 @@ public class CuttableFlower : MonoBehaviour
     const float DEVIATION = 2.0f; // Determines how far apart min y and max y can be
     const float BOTTOM_BUFFER = 0.5f; // Determines the minimum distance from the bottom the hitbox will be
     const float ANGLE_RANGE = 40.0f;
+    Vector2 cutLine;
+    Vector2 cutStart;
+    Vector2 cutEnd;
 
     void Awake()
     {
         // There should only ever be two masks
         masks = new List<Transform>();
+
+        cutLine = Vector2.zero;
+        cutStart = Vector2.zero;
+        cutEnd = Vector2.zero;
 
         // TO-DO implement dynamic sprite setting once enum is in
         //SetChildSprites();
@@ -128,24 +135,33 @@ public class CuttableFlower : MonoBehaviour
         {
             if (t.gameObject.layer == LayerMask.NameToLayer("FlowerTop"))
             {
-                t.Translate(t.up * ((t.localScale.y / 4) + t.parent.gameObject.transform.position.y), Space.World);
+                t.Translate(t.up *  midpoint.y, Space.World);
             }
             else
             {
-                t.Translate(-1 * t.up * ((t.localScale.y / 4) + t.parent.gameObject.transform.position.y), Space.World);
+                t.Translate(t.up * midpoint.y, Space.World);
             }
         }
 
 
         //** Adjust angle of masks to match the angle of the cut itself **//
         // Calculate angle between horizon and the cutLine
-        Vector2 cutLine = cutEnd - cutStart;
+        cutLine = cutEnd - cutStart;
+        this.cutStart = cutStart;
+        this.cutEnd = cutEnd;
+
         float angle = CalculateVectorAngleFromHorizon(cutLine);
 
         for (int i = 0; i < masks.Count; i++)
         {
             masks[i].rotation = Quaternion.Euler(0, 0, angle);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = UnityEngine.Color.green;
+        Gizmos.DrawLine(cutStart, cutEnd);
     }
 
     /// <summary>
@@ -167,6 +183,12 @@ public class CuttableFlower : MonoBehaviour
     /// <returns>The angle (in degrees) between V and the horizon</returns>
     float CalculateVectorAngleFromHorizon(Vector2 v)
     {
-        return -1 * Mathf.Rad2Deg * Mathf.Acos(Vector2.Dot(v, Vector2.right) / (v.magnitude * Vector2.right.magnitude));
+        float angle = Mathf.Rad2Deg * Mathf.Acos(Vector2.Dot(v, Vector2.right) / (v.magnitude * Vector2.right.magnitude));
+        if(hitbox.rotation.z < 0 && angle > 0)
+        {
+            // angle NEEDS to be negative in this case
+            angle *= -1;
+        }
+        return angle;
     }
 }
