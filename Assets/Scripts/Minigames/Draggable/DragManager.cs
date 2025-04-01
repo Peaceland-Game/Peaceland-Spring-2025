@@ -26,10 +26,21 @@ public class DragManager : MinigameBehavior
     int flowerArrangeNum = 0;
 
     /// <summary>
-    /// The starting positions of the flowers to reset them to each time this is restarted
+    /// The positions of the flowers when the minigame starts
     /// </summary>
-    [SerializeField] Vector3[] startingLocations;
-    
+    [SerializeField] Vector3[] flowerLocations;
+
+    /// <summary>
+    /// The locations of the targets
+    /// </summary>
+    [SerializeField] Vector3[] targetLocations;
+
+    /// <summary>
+    /// The rotations of the targets
+    /// </summary>
+    [SerializeField] Vector3[] targetRotations;
+
+
     public override void StartMinigame()
     {
         //initilize draggables and targets with the number of flowers in the order
@@ -51,10 +62,11 @@ public class DragManager : MinigameBehavior
         //For each flower, reset its position to its starting location and make sure they can be dragged
         for (int i = 0; i < numberOfFlowers; i++)
         {
-            var currentFlower = FlowerShopManager.GetCurrentOrder().flowers[i];
+            //var currentFlower = FlowerShopManager.GetCurrentOrder().flowers[i];
 
-            draggables[i].gameObject.transform.localPosition = startingLocations[i];
-            targets[i].transform.localPosition = startingLocations[i] + new Vector3(-5, 0, 0); //for now, targets move to the left of the flowers. subject to change
+            draggables[i].gameObject.transform.localPosition = flowerLocations[i];
+            targets[i].transform.localPosition = targetLocations[i];
+            targets[i].transform.eulerAngles = targetRotations[i];
             draggables[i].EnableDrag();
 
             //run the constructor of each of the draggables and targets
@@ -82,10 +94,12 @@ public class DragManager : MinigameBehavior
         gameObject.SetActive(false);
     }
 
-    public void OnTouch(InputAction.CallbackContext context) {
+    public void OnTouch(InputAction.CallbackContext context)
+    {
         if (!isActiveAndEnabled) return;
 
-        if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled) {
+        if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled)
+        {
             if (currentDraggable is not null)
             {
                 //End the drag of the current draggable
@@ -107,17 +121,21 @@ public class DragManager : MinigameBehavior
                 }
             }
         }
-        else if (context.phase == InputActionPhase.Started){
+        else if (context.phase == InputActionPhase.Started)
+        {
             Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
             int highestOrderInLayer = int.MinValue;
             Draggable candidate = null;
-            foreach (var draggable in draggables) {
+            foreach (var draggable in draggables)
+            {
                 // Select the draggable in front
-                if (draggable.CanDrag(touch_wp) && draggable.GetComponent<SpriteRenderer>().sortingOrder > highestOrderInLayer) {
+                if (draggable.CanDrag(touch_wp) && draggable.GetComponent<SpriteRenderer>().sortingOrder > highestOrderInLayer)
+                {
                     candidate = draggable;
                 }
             }
-            if (candidate is not null) {
+            if (candidate is not null)
+            {
                 currentDraggable = candidate;
                 currentDraggable.StartDrag(touch_wp);
             }
