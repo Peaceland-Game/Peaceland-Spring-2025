@@ -255,7 +255,7 @@ Transform:
   m_GameObject: {fileID: 142677494}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.3, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -305,7 +305,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 4508068762258295744, guid: 17da0721535b1744b85ea590ab078a95, type: 3}
+  m_Sprite: {fileID: 2335289581450264537, guid: 9dad7b7a717c7314eb9ed7895dd18ef1, type: 3}
   m_Color: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1687,7 +1687,7 @@ Transform:
   m_GameObject: {fileID: 950099893}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.3, y: 5, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1893,7 +1893,7 @@ Transform:
   m_GameObject: {fileID: 1164951637}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -26.3, y: -5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1915,12 +1915,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowerPrefab: {fileID: 348610294788324795, guid: d29d04746fcd7554880bdbbdee871b2c, type: 3}
   targetPrefab: {fileID: 590954006385341025, guid: 6b91b5fb69b982b42920bd0d63296058, type: 3}
-  startingLocations:
-  - {x: 27.98, y: 4.59, z: -0.10143833}
-  - {x: 29.97, y: 6.4, z: -0.10143833}
-  - {x: 31.49, y: 5.05, z: -0.10143833}
-  - {x: 27.68, y: 3.5, z: -0.07122324}
-  - {x: 30.77, y: 3.32, z: -0.07122324}
+  flowerLocations:
+  - {x: 1.82, y: 1.46, z: 0}
+  - {x: 1.82, y: 1.46, z: 0}
+  - {x: 5.3, y: -0.48, z: 0}
+  - {x: 3.94, y: -2.29, z: 0}
+  - {x: 1.29, y: -2.61, z: 0}
+  targetLocations:
+  - {x: -7.47, y: 1.01, z: 0}
+  - {x: -7.08, y: 0.44, z: 0}
+  - {x: -6.05, y: 1.09, z: 0}
+  - {x: -4.87, y: 0.3, z: 0}
+  - {x: -3.63, y: 0.18, z: 0}
+  targetRotations:
+  - {x: 0, y: 0, z: 32.666206}
+  - {x: 0, y: 0, z: 13.148323}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 348.9966}
+  - {x: 0, y: 0, z: 329.0322}
 --- !u!1 &1331315764 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3178988590836819911, guid: a92f97fcde9e6fc48ad346799c77f7fe, type: 3}
