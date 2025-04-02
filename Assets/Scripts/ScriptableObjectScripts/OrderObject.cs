@@ -55,11 +55,8 @@ public class OrderObject : ScriptableObject
         public bool needsArranging;
 
         /// <summary>
-        /// Is the flower finished being created?
+        /// Helps with assigning the appropriate flower sprite in gameplay
         /// </summary>
-        public bool isFinished;
-
-
         public FlowerType flowerType;
     }
 }

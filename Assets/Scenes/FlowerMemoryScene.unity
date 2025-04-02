@@ -171,6 +171,7 @@ MonoBehaviour:
   - {fileID: 214963924}
   - {fileID: 425442085}
   - {fileID: 417134573}
+  - {fileID: 1740225107}
   - {fileID: 1164951639}
   orders:
   - {fileID: 11400000, guid: 08e58547467936140abcc295a3848a84, type: 2}
@@ -873,7 +874,7 @@ GameObject:
   - component: {fileID: 417134574}
   - component: {fileID: 417134573}
   m_Layer: 0
-  m_Name: DialogueMinigame End (1)
+  m_Name: DialogueGameplayGood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
