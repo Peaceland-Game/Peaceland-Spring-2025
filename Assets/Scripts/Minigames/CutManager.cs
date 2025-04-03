@@ -20,6 +20,16 @@ public class CutManager : MinigameBehavior
 
     private static GameObject instantiatedFlower;
 
+    /// <summary>
+    /// Stem for dethorning minigame
+    /// </summary>
+    public GameObject stem;
+
+    /// <summary>
+    /// Dynamic sprite cutting flower game object
+    /// </summary>
+    public GameObject flower;
+
     public override void StartMinigame()
     {
         instance = this;
@@ -34,8 +44,10 @@ public class CutManager : MinigameBehavior
 
     public static void CutStart()
     {
-        instantiatedFlower = Instantiate(FlowerShopManager.ReturnGameObjectBasedOnMinigame(curIndex,
-            FlowerShopManager.GetCurrentMinigame().gameObject.name));
+        //If the current minigame is dethorning, then use the pre-given stem game object
+        if (FlowerShopManager.GetCurrentMinigame().gameObject.name == "Dethorn") { instantiatedFlower = Instantiate(instance.stem); }
+        //Otherwise use the dynamic sprite flower
+        else { instantiatedFlower = Instantiate(instance.flower); }
     }
 
     public static IEnumerator AllCutsMade()

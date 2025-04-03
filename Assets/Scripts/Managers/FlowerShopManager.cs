@@ -112,26 +112,6 @@ public class FlowerShopManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns the appropriate part of the flower, based on the current minigame
-    /// </summary>
-    /// <param name="index">The current flower to pull the appropriate game object from</param>
-    /// <param name="minigame">The current minigame to test for</param>
-    /// <returns>Flower stem if the minigame is dethorning, and whole flower if the minigame is trimming</returns>
-    public static GameObject ReturnGameObjectBasedOnMinigame(int index, string minigame)
-    {
-        //If the minigame is dethorning, return the flower stem
-        if (minigame == "Dethorn")
-        {
-            return GetCurrentOrder().flowers[index].flowerStem;
-        }
-        //Otherwise return the entire flower game object
-        else
-        {
-            return GetCurrentOrder().flowers[index].flowerObject;
-        }
-    }
-
-    /// <summary>
     /// Gets the correct flower sprite that matches the given flower type
     /// </summary>
     /// <param name="t">The given flower type to search for</param>
