@@ -32,6 +32,7 @@ public class CuttableFlower : MonoBehaviour
     {
         // There should only ever be two masks
         masks = new List<Transform>();
+        renderers = new List<SpriteRenderer>();
 
         cutLine = Vector2.zero;
         cutStart = Vector2.zero;
