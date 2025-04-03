@@ -85,12 +85,15 @@ public class CutLogic : MonoBehaviour
             cutEnd = collider.transform.position;
 
             CalculateCutScore();
-            //CutObj();
-            
+
             // Send the actual coordinates of the cut to CuttableFlower
             // to dynamically divide the sprites
-            onCut.Invoke(cutStart, cutEnd);
-            Debug.Log("Cut");
+            // Only will happen with CuttableFlower
+            if (collider.gameObject.transform.parent.CompareTag("CuttableFlower"))
+            {
+                onCut.Invoke(cutStart, cutEnd);
+            }
+            CutObj();
         }
     }
 

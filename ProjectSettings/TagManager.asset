@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Shears
+  - CuttableFlower
   layers:
   - Default
   - TransparentFX
