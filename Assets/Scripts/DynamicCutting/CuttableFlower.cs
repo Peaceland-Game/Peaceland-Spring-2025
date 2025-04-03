@@ -11,6 +11,7 @@ using UnityEngine;
 public class CuttableFlower : MonoBehaviour
 {
     List<Transform> masks;
+    List<SpriteRenderer> renderers;
     Transform hitbox;
 
     // Fields for random hitbox generation
@@ -37,7 +38,7 @@ public class CuttableFlower : MonoBehaviour
         cutEnd = Vector2.zero;
 
         // TO-DO: implement dynamic sprite setting once enum is in
-        //SetChildSprites();
+        SetChildSprites();
 
         // Set proper mask scale
         GetMasksAndHitbox();
@@ -48,6 +49,27 @@ public class CuttableFlower : MonoBehaviour
 
         // Assign CuttableFlower's OnCut method to be triggered by a cut
         CutLogic.onCut += OnCut;
+    }
+
+    /// <summary>
+    /// Uses FlowerShop manager to dynamically select the sprite of the
+    /// flower to be cut
+    /// </summary>
+    private void SetChildSprites()
+    {
+        foreach(Transform child in transform)
+        {
+            if(child.GetComponent<SpriteRenderer>() != null)
+            {
+                renderers.Add(child.GetComponent<SpriteRenderer>());
+            }
+        }
+
+        foreach(SpriteRenderer renderer in renderers)
+        {
+            renderer.sprite = FlowerShopManager.GetFlowerSprite(
+                FlowerShopManager.GetCurrentFlower().flowerType);
+        }
     }
 
     private void OnDestroy()
