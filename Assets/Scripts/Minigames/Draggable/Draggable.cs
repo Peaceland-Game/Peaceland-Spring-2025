@@ -98,6 +98,7 @@ public class Draggable : MonoBehaviour
         if (dragging)
         {
             Vector3 newPos = new(touch_wp.x + offset.x, touch_wp.y + offset.y, transform.position.z);
+            Vector3 newRot = new(0, 0, 0);
 
             // Snap to closts drag target (if one exists)
             if (dragTargets.Count > 0) {
@@ -106,9 +107,10 @@ public class Draggable : MonoBehaviour
                 snapIndex = -1;
                 foreach (Transform target in dragTargets) {
                     float dist = (newPos - target.position).magnitude;
-                    //snap if close enough AND if their flower types are the same
+                    //snap position and rotation if close enough AND if their flower types are the same
                     if (dist < dragDistanceThreshold && dist < lowest_dist && target.gameObject.GetComponent<DragTarget>().TypeOfFlower == typeofFlower) {
                         newPos = target.position;
+                        newRot = target.eulerAngles;
                         snapIndex = i;
                     }
                     i++;
@@ -116,8 +118,9 @@ public class Draggable : MonoBehaviour
             }
 
             // Clamp position to drag limit
-            if (!dragLimit || dragLimit.OverlapPoint(new Vector2(newPos.x, newPos.y))) {
+            if (!dragLimit || dragLimit.OverlapPoint(newPos)) {
                 transform.position = newPos;
+                transform.eulerAngles = newRot;
             }
 
         }
