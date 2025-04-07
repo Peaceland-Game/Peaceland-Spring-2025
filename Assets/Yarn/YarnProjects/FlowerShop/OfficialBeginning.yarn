@@ -5,8 +5,8 @@ title: OfficialStart
 <<declare $officialVandalism = false>>
 
 -> Next in line -- how can I help you?
-    It's a pleasure to meet you! Councilman {$officialFullName}, at your service. *holds out hand for handshake*
-    -> Stefan! Great to meet you, congratulations on the election *warmly shakes hand* How can I help you today?
+    It's a pleasure to meet you! I'm Councilman {$officialFullName}. I've heard wonderful things about your work!
+    -> Ah, Councilman! Great to meet you, congratulations on the election. How can I help you today?
         <<jump OfficialBusiness>>
     -> The pleasure is mine, Councilman. *firmly shakes hand* What can I do for you?
         <<jump OfficialBusiness>>
@@ -17,12 +17,12 @@ title: OfficialStart
 title: OfficialBusiness
 position: 2,189
 ---
-I'm here on official council business. Founder's Day is upcoming and I thought it important our Town Hall look right for the occasion. And I thought to myself, wouldn't it be just fittin to have bouquets from such a fine local institution as yours adorn our front steps!
+I'm here on official council business. Founder's Day is upcoming and I thought it important to have  bouquets from such a fine local institution as yours adorn our front steps!
 -> *chuckles* I see… the council has you running errands, huh?
     <<jump OfficialTangentPathOne>>
 -> What an honor! I'm delighted the council thought of my little shop for such an occasion. What kind of bouquets are you looking for?
     <<jump OfficialOrder>>
--> *in a hushed voice* Councilman, with all due respect, are you sure that's a good idea… given the state I found my windows in this morning?
+-> Councilman, with all due respect, my shop was just vandalized. Are you sure that's a good idea?
     <<jump OfficialTangentPathTwo>>
 -> No problem, how many do you want?
     <<jump OfficialOrder>>
@@ -41,30 +41,30 @@ position: -158,359
 ===
 
 title: OfficialTangentPathTwo
-position: 171,357
+position: 173,343
 ---
+Of course, I completely understand your trepidation. Please know that the council unilaterally condemns the actions of those vandals. You have our full support, and it would be our honor to have your flowers adorn our steps.
 <<set $officialVandalism to true>>
-Of course, I completely understand your trepidation. Please know that the council unilaterally condemns the actions of those vandals. Now is not the time for such attacks on our community. You have our full support, and it would be our honor to have your flowers adorn our steps.
 -> Thank you.
     <<jump OfficialTangentPathTwoConti>>
--> Thanks {$officialName}, that means a lot.
+-> Thanks Councilman, that means a lot.
     <<jump OfficialTangentPathTwoConti>>
 ===
 
 title: OfficialTangentPathTwoConti
-position: 175,496
+position: 174,521
 ---
 // I'm gonna guess this is not a great name for this node, please feel free to rename it if is!
 Please let us know what damages you've incurred. I could speak to Jorge about our community restoration budget and see what the council can do to help?
--> I'd really appreciate that, thank you. If it's not too much trouble, of course.
-	Not at all! I'll let you know what he says. Now, about the flowers…
-    -> Yes! What're you looking for?
-        <<jump OfficialOrder>>
 -> Oh don't worry about me, that money should go to the people who really need it.
     Are you sure? I'm sure we could make something work.
     -> I'm sure, {$officialName}. I'll be OK. 
         Alright. Well let me know if you change your mind. Now, about those flowers…
         -> Yes of course, what are you interested in?
+-> I'd really appreciate that, thank you. If it's not too much trouble, of course.
+    Not at all! I'll let you know what he says. Now, about the flowers…
+    -> Yes! What're you looking for?
+        <<jump OfficialOrder>>
 -> I'll take care of it, thanks.
     Are you sure? I'd be happy to-
     -> I will take care of it. I'd hate to disturb the council's business.
