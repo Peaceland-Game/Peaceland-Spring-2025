@@ -86,11 +86,14 @@ public class CutLogic : MonoBehaviour
 
             CalculateCutScore();
 
+            Debug.Log(this.gameObject.transform.parent.name);
+
             // Send the actual coordinates of the cut to CuttableFlower
             // to dynamically divide the sprites
             // Only will happen with CuttableFlower
-            if (collider.gameObject.transform.parent.CompareTag("CuttableFlower"))
+            if (this.gameObject.transform.parent.CompareTag("CuttableFlower"))
             {
+                Debug.Log("OnCut invoked");
                 onCut.Invoke(cutStart, cutEnd);
             }
             CutObj();
