@@ -1,0 +1,137 @@
+title: Boris1
+position: 11,-89
+---
+Boris enters. He is an older man, a veteran of the war before this one. His head is almost bald but he has a bushy mustache and thick eyebrows. 
+Mira, it is good to see you! How is your mother?
+->She is well, Boris. She is enjoying her retirement.
+Good, good. Retirement is a lovely thing, I must say. Shame she had to move so far away.
+->She has too many memories here.
+That, I can understand completely.
+->I have to say, I am a bit surprised to see you in here. Do you need flowers for a special occassion?
+    <<jump Boris2>>
+===
+title: Boris2
+position: 9,72
+---
+I saw what they did. 
+-> Excuse me?
+To the front of your shop. It is simply disgraceful. 
+->Say nothing.
+    <<jump Boris3>>
+->I would rather not talk about that, Boris. Did you have something to order?
+    <<jump Boris3>>
+->What do you mean, "they," Boris? I do not like your implication.
+    <<jump BorisChallenge1>>
+===
+title: Boris3
+position: 7,227
+---
+And for them to do it today, of all days! It is outrageous!
+It is sickening!
+->Say nothing.
+    <<jump Boris4>>
+->Boris, this is honestly inappropriate. Do you have an order?
+    <<jump BorisChallenge2>>
+===
+title: Boris4
+position: 6,373
+---
+ I don’t know how nobody says more about them. It’s always them doing this sort of thing. 
+ Vandalism, violence, harassment. 
+ Even after we allow them back in here after what they did!
+ ->Say nothing.
+    <<jump Boris5>>
+ ->I don't like what you're implying. 
+    <<jump BorisChallenge1>>
+===
+
+title: Boris5
+position: 10,539
+---
+And to have one of them come in here and harass you today, even after what one of them did to the front of your store! 
+Just now, she comes in as if nothing happened!
+ ->Say nothing.
+    <<jump Boris6>>
+ ->That was not harrassment, she was simply a customer.
+    <<jump BorisChallenge2>>
+ ->Boris, (Regular) is a friend and customer. I do not appreciate you implying she is responsible for the vandalism of my store. Please leave.
+    <<jump BorisChallenge2>>
+===
+title: Boris6
+position: 16,718
+---
+They cannot simply be allowed to continue attacking this town and its people.
+Perhaps something will be done about them soon, eh?
+...But you did not hear that from me.
+ ->Say nothing.
+    <<jump BorisEnd>>
+ ->What did you have in mind?
+    <<jump BorisProbe>>
+ ->Boris, that is an awful thing to say.
+    <<jump BorisChallenge2>>
+ ->Get out of my store. Now.
+    <<jump BorisStormOff3>>
+===
+title: BorisEnd
+position: 14,886
+---
+I do not need any flowers, friend. But here, a tip for you. Today must be a hard day.
+And tonight, I will see if I can find someone who will clean that vandalism for you. 
+Free of charge, of course!
+Have a good day, Mira.
+(END)
+===
+title: BorisProbe
+position: -199,780
+---
+Oh, nothing. But you know how people are. They have to clean up the trash sooner or later.
+->Say Nothing.
+    <<jump BorisEnd>>
+===
+title: BorisChallenge1
+position: 307,177
+---
+You don't need to play coy.
+It is obvious who did this to your store.
+->Say nothing.
+    <<jump Boris5>>
+->We cannot be certain who it was.
+    <<jump BorisChallenge2>>
+===
+title: BorisChallenge2
+position: 294,433
+---
+What, are you defending them? After what they did to us? After what they did to you?
+->I'm no-
+I thought you would understand. Considering what they did to you. 
+->Listen, Boris. I would be happy to take your order. But if you are only here to talk, then I have many customers today and have orders to attend to.
+    <<jump BorisStormOff>>
+
+===
+title:BorisStormOff
+position: 286,642
+---
+...
+(Boris Glares intensely)
+Be well, Mira. I am... sorry to disturb you on such a difficult day.
+->...Thank you, Boris. Will that be all?
+    <<jump BorisStormOff2>>
+->Please, just leave, Boris.
+    <<jump BorisStormOff3>>
+===
+
+title:BorisStormOff2
+position: 257,830
+---
+I think it will.
+->Feel free to stop by if you ever need any flowers.
+I do not think I will.
+(END)
+===
+
+title:BorisStormOff3
+position: 474,926
+---
+...Fine.
+(END)
+===

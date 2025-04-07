@@ -1,0 +1,111 @@
+title: TeacherStart
+---
+<<declare $teacherName = "Danika">>
+
+-> Ah, {$teacherName}, welcome in. How are you?
+    <<jump TeacherConvoStart>>
+===
+
+title: TeacherConvoStart
+---
+Oh well, same as you, I suppose. A shame what happened to the store. Do you know who did it?
+-> Sadly no. It was here before I was, but I've just left it for now. Quite a bit of work piled up.
+    <<jump TeacherReassurance>>
+===
+
+title: TeacherReassurance
+---
+I'm sure. Well, if you find the vandals were one of my kids, please do let me know. I'll have a talk with their parents.
+-> Thank you. Though, if it were children, I'd be more concerned about how their parents raised them.
+    <<jump TeacherOrderStart>>
+===
+
+title: TeacherOrderStart
+---
+True enough. That's not really a conversation I'd like to have today.
+-> Agreed Now, what can I get you?
+    <<jump LargeOrder>>
+===
+
+title: LargeOrder
+---
+... I just, um, wnated to place a large order.
+-> One of the many I've gotten today. What'll it be?
+    <<jump SpecialRequest>>
+===
+
+title: SpecialRequest
+---
+I'd actually hoped you could take a few special requests?
+-> Of course! If it's for the anniversary, I can add a bit more than usual if you'd like?
+    <<jump NotEntirely>>
+===
+
+title: NotEntirely
+---
+That's... not entirely what I had in mind.
+    <<jump StudentsLost>>
+===
+
+title: StudentsLost
+---
+These are the students I lost to the sickness. I included their names and favorite colors, if that's alright.
+-> Sure! Let me just take a look.
+    <<jump TakeALook>>
+===
+
+title: TakeALook
+---
+-> Child 1
+    <<jump TakeALook2>>
+===
+
+title: TakeALook2
+---
+-> Child 2
+    <<jump TakeALook3>>
+===
+
+title: TakeALook3
+---
+-> Child 3
+    <<jump TakeALook4>>
+===
+
+title: TakeALook4
+---
+-> And... oh.
+    <<jump TeacherApology>>
+===
+
+title: TeacherApology
+---
+I'm so sorry, Mira. It's just that you're the only florist in town, and I didn't want to go and do nothing again like last year, and-
+-> It's alright. Please, don't apologize. I appreciate the gesture.
+    <<jump IfItsAlright>>
+===
+
+title: IfItsAlright
+---
+-> If it's alright, I'll do Pranas' wth my own inclusions.
+    <<jump TeacherOfferPayment>>
+===
+
+title: TeacherOfferPayment
+---
+Of course, I'm sorry. Please, let me pay more for it all.
+-> Absolutely not. This is something I need. Besides, Old Friend's already paid for an order, so I'll be okay.
+    <<jump TeacherEnding>>
+===
+
+title: TeacherEnding
+---
+... Alright. But please, let me know if you'd like payment. I'm more than happy to.
+-> I will. Now please, I need to get working.
+    <<jump TeacherLeaves>>
+===
+
+title: TeacherLeaves
+---
+*Florist smiles as teacher leaves, then cries*
+===

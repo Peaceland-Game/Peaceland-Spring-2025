@@ -1,0 +1,48 @@
+title: ChildOrderComplete
+position: -29,-310
+---
+->how does this look?
+    I think she’ll love it
+    Thank you 
+    <<jump Fumble>>
+===
+
+
+//this whole bit i feel like is gonna be weird, need to figure out how 
+//get emotion across properly
+title: Fumble
+position: -27,-142
+---
+->Of course, Pranas-
+...
+    Hm?
+    <<jump Trying>>
+===
+
+title: Trying
+position: -6,18
+---
+->Of course, I hope your mother-
+...
+<<jump Trying2>>
+===
+
+title: Trying2
+position: 2,189
+---
+->I hope your mother enjoys them.
+    *Lukas takes one of the flowers out of the bouquet and places it down for the florist*
+    //wouldn't actually go in the node but for the sake of walking through
+    <<jump ChildEnd>>
+===
+
+//*Lukas takes one of the flowers out of the bouquet and places it down for the florist
+//Sorry dev team
+//we can reword this just current idea
+
+title: ChildEnd
+position: 2,363
+---
+I think she'd want me to give you one too, you remind me a lot of her.
+Have a good rest of your day!
+===

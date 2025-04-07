@@ -1,0 +1,44 @@
+title: RegularGameplayVeryGood
+---
+<<set $rand = dice(2)>>
+
+<<if $rand == 1>>
+    Fantastic as always.
+<<elseif $rand == 2>>
+    Gosh those look lovely!
+<<endif>>
+===
+
+title: RegularGameplayGood
+---
+<<set $rand = dice(2)>>
+
+<<if $rand == 1>>
+    Looks great, Mira.
+<<elseif $rand == 2>>
+    Oh I love those colors.
+<<endif>>
+===
+
+title: RegularGameplayBad
+---
+<<set $rand = dice(2)>>
+
+<<if $rand == 1>>
+    Oh! Please be careful.
+<<elseif $rand == 2>>
+    It's… coming along.
+<<endif>>
+===
+
+title: RegulardGameplayVeryBad
+---
+<<set $rand = dice(2)>>
+
+<<if $rand == 1>>
+    I can come back tomorrow.
+<<elseif $rand == 2>>
+    Mira, please take your time.
+<<endif>>
+===
+
