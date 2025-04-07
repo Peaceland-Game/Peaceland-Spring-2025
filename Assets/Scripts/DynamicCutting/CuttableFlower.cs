@@ -66,9 +66,6 @@ public class CuttableFlower : MonoBehaviour
             }
         }
 
-        // Remove hitbox renderer
-        renderers.RemoveAt(renderers.Count - 1);
-
         foreach(SpriteRenderer renderer in renderers)
         {
             renderer.sprite = FlowerShopManager.GetFlowerSprite(

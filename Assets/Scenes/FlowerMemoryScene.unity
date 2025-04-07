@@ -179,11 +179,8 @@ MonoBehaviour:
   gameplayGoodNode: 
   dialogueRunner: {fileID: 492172087}
   flowerSprites:
-  - {fileID: -5440670643983190029, guid: 971830b7986f4af4abdb4b4797b37bd4, type: 3}
+  - {fileID: 857312311372029537, guid: 22b0d6ccf74eac744806de97c2df2787, type: 3}
   - {fileID: 599749539538422185, guid: 62c29300dc0fedc4286ef10ed0845fe1, type: 3}
-  - {fileID: -1639245146206265901, guid: 5c302c829b631aa4687ea75b34542dbb, type: 3}
-  - {fileID: -8662626118389694424, guid: d8ac454edc89cec4daf162c02c4053a6, type: 3}
-  - {fileID: -216149754616551795, guid: 50362b9e48e6a0f429515e75fb4ce195, type: 3}
 --- !u!1 &88269609
 GameObject:
   m_ObjectHideFlags: 0
