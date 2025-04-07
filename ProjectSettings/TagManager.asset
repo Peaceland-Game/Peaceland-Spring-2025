@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Shears
   - CuttableFlower
+  - Hitbox
   layers:
   - Default
   - TransparentFX
