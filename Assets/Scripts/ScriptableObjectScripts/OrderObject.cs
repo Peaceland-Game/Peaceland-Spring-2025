@@ -5,10 +5,7 @@ using System;
 public enum FlowerType
 {
     ROSE,
-    TULIP,
-    SUNFLOWER,
-    LILY,
-    GLADIOLUS
+    DAISY,
 }
 
 [CreateAssetMenu(fileName = "OrderObject", menuName = "Scriptable Objects/OrderObject")]
