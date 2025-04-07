@@ -1,0 +1,48 @@
+title: OfficialOrderComplete
+position: 2,-62
+---
+These are wonderful! They'll make our Founder's Day even more special.
+-> I'm so glad to hear.
+    <<jump OfficialEndingOne>>
+-> Excellent!
+    <<jump OfficialEndingOne>>
+-> You're welcome.
+    <<jump OfficialEndingOne>>
+===
+
+title: OfficialEndingOne
+position: -128,150
+---
+*{$officialName} pays*
+// I don't know if $officialVandalism is carrying over the correct value from the OfficialBeginning file. I (Josh) would love some help making sure this lines up if it's possible! 
+// If it isn't in sync, then the Yarn will always play through the second ending (for if the vandalism hasn't come up yet.)
+<<if $officialVandalism is true>>
+    <<jump OfficialEndingTwo>>
+<<else>>
+    Thank you again, I'll make sure the council knows of your work here today!
+    -> Sure thing, Councilman. Have a good one.
+    -> Thank you {$officialName}! I look out for the bouquets on my walk home.
+<<endif>>
+===
+
+title: OfficialEndingTwo
+position: 138,182
+---
+Before I go... I hope you know that your flower shop is a beloved institution in our town...
+-> ...
+    <<jump OfficialEndingTwoConti>>
+-> That's kind of you to say.
+    <<jump OfficialEndingTwoConti>>  
+===
+
+title: OfficialEndingTwoConti
+position: 146,400
+---
+…and i want you know that the council unilaterally supports you and your business. We condemn all acts of vandalism and will work closely with you to make sure this wrong is righted.
+-> Thank you, I'd be grateful for the help.
+    Of course! I'll be around in the next few days to go over some details. Thank you so much again!
+-> I appreciate that Councilman but it's really no trouble, I've got the situation under control.
+    Are you sure? It's the councils duty to-
+    -> I promise I'm sure. Thank you.
+        ...well if you change your mind, feel free to stop by my office. Thank you again for the flowers!
+===
