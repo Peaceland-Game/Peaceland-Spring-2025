@@ -1,4 +1,5 @@
 title: OrderComplete
+position: 0,-8
 ---
 Thank you!
 -> ({$playerName} pays)

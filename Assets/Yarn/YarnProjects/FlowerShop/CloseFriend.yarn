@@ -1,0 +1,130 @@
+
+title: CloseFriendStart
+---
+Hey... I know it's been rough recently, but I wanted to check in. How are you doing?
+-> I'm doing well
+    <<jump DoingWell>>
+-> I'm ok
+    Are you sure? You can talk to me.
+    -> Yeah, I'm ok
+        <<jump DoingWell>>
+    -> Honestly? No.
+        <<jump NotOk>>
+-> It's been... a lot
+    Do you want to talk about it?
+    -> Yeah, that'd be nice
+        <<jump TalkAboutIt>>
+    -> No, I have work to do
+        <<jump DontTalkAboutIt>>
+===
+
+title: DontTalkAboutIt
+---
+Alright, I understand. Let me know if that changes.
+So hey, can I place an order?
+-> Sure, what can I get you?
+    <<jump Order>>
+===
+
+title: TalkAboutIt
+---
+Look, I know there's a lot going on, and I'm sorry.
+Is there anything I can do to help?
+-> Not really, I just need some time
+    <<jump SomeTime>>
+-> Realistically, no, but I appreciate it nonetheless
+    <<jump Realistic>>
+-> You being here is enough for me
+    <<jump BeingHere>>
+===
+
+title: BeingHere
+---
+Anytime, friend. I'll always be here.
+So hey, can I place an order?
+-> Sure, what can I get you?
+    <<jump Order>>
+===
+
+title: Realistic
+---
+I understand, and of course. What are friends for?
+So hey, can I place an order?
+-> Sure, what can I get you?
+    <<jump Order>>
+===
+
+title: SomeTime
+---
+Alright, I understand.
+So hey, can I make an order?
+-> Sure, what would you like?
+    <<jump Order>>
+===
+
+title: NotOk
+---
+I'm sorry... Do you want to talk about it?
+-> Yeah, that'd be nice
+    <<jump TalkAboutIt>>
+-> No, I have work to do
+    <<jump DontTalkAboutIt>>
+===
+
+title: DoingWell
+---
+I'm glad to hear that. Let me know if there's anything you want to talk about.
+Can I place an order? It's a bit of an odd request.
+-> Sure, hit me with it.
+    <<jump Order>>
+===
+
+title: Order
+---
+I'm buying you flowers. Make a nice bouquet for yourself, go all out, and enjoy it. For me.
+-> ___, I really don't have the time
+    <<jump DontHaveTime>>
+-> I can't let you do that
+    <<jump CantLetYou>>
+-> I-I don't know what to say
+    <<jump Speechless>>
+===
+
+title: DontHaveTime
+---
+Surely you can do it at the end of your shift, right? 
+It doesn't need to be fancy, as long as it's for you.
+-> ...thank you.
+    <<jump Alright>>
+-> Alright, I'll get around to it later.
+    <<jump Alright>>
+===
+
+title: CantLetYou
+---
+Well too bad, I'm doing it.
+It's either you make it for yourself, or you make it for me and I give it to you later.
+Either way, you're getting flowers.
+-> There's no winning, is there?
+    <<jump Alright>>
+-> Fine, fine. I'll get to it at the end of my shift.
+    <<jump Alright>>
+===
+
+title: Speechless
+---
+You don't need to say anything. Just let me pay you and accept the order.
+-> Alright, fine
+    <<jump Alright>>
+===
+
+title: Alright
+---
+Great! Have fun with it, I'd imagine you need something like that right now.
+<<jump Done>>
+===
+
+title: Done
+---
+End of demo
+===
