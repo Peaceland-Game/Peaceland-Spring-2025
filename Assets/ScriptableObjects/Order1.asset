@@ -17,10 +17,14 @@ MonoBehaviour:
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 3
+    flowerType: 0
   - needsDethorning: 0
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 4
+    flowerType: 1
+  - needsDethorning: 1
+    needsTrimming: 1
+    needsArranging: 1
+    flowerType: 0
   dialogueStartNode: NPCOrderIn4
   dialogueEndNode: OrderComplete
