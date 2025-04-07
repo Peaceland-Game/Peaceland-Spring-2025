@@ -28,7 +28,7 @@ public class CuttableFlower : MonoBehaviour
     Vector2 cutStart;
     Vector2 cutEnd;
 
-    void Awake()
+    void Start()
     {
         // There should only ever be two masks
         masks = new List<Transform>();
@@ -44,6 +44,7 @@ public class CuttableFlower : MonoBehaviour
         // Set proper mask scale
         GetMasksAndHitbox();
         SetMaskScale();
+        Debug.Log("MASK SIZE: " + masks.Count);
 
         // Moves hitbox to a random position
         RandomHitboxPos();
@@ -145,6 +146,7 @@ public class CuttableFlower : MonoBehaviour
 
     void OnCut(Vector2 cutStart, Vector2 cutEnd)
     {
+        Debug.Log("OnCut called");
         // Calculate midpoint of the the line
         Vector2 midpoint = CalculateMidpoint(cutStart, cutEnd);
 
@@ -157,10 +159,12 @@ public class CuttableFlower : MonoBehaviour
             if (t.gameObject.layer == LayerMask.NameToLayer("FlowerTop"))
             {
                 t.Translate(t.up * (t.localScale.y / 8), Space.World);
+                Debug.Log("Top mask moved up");
             }
             else
             {
                 t.Translate(t.up * (t.localScale.y / 2.5f) * -1, Space.World);
+                Debug.Log("Bottom mask moved");
             }
         }
 
