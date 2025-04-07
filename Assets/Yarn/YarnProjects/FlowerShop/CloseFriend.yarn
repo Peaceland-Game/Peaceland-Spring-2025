@@ -1,7 +1,7 @@
 
 title: CloseFriendStart
 ---
-Hey... I know it's been rough recently, but I wanted to check in. How are you doing?
+Hey... I just wanted to check in. How are you holding up today?
 -> I'm doing well
     <<jump DoingWell>>
 -> I'm ok
@@ -28,11 +28,11 @@ So hey, can I place an order?
 
 title: TalkAboutIt
 ---
-Look, I know there's a lot going on, and I'm sorry.
+I know it's tough, but you've already pushed so hard for so long. I know you can get through today.
 Is there anything I can do to help?
 -> Not really, I just need some time
     <<jump SomeTime>>
--> Realistically, no, but I appreciate it nonetheless
+-> Realistically, no, but I appreiate it nonetheless
     <<jump Realistic>>
 -> You being here is enough for me
     <<jump BeingHere>>
@@ -40,7 +40,7 @@ Is there anything I can do to help?
 
 title: BeingHere
 ---
-Anytime, friend. I'll always be here.
+Anytime, Mira. I'll always be here.
 So hey, can I place an order?
 -> Sure, what can I get you?
     <<jump Order>>
@@ -48,7 +48,7 @@ So hey, can I place an order?
 
 title: Realistic
 ---
-I understand, and of course. What are friends for?
+I understand, and of course. Anything for you.
 So hey, can I place an order?
 -> Sure, what can I get you?
     <<jump Order>>
@@ -75,7 +75,7 @@ title: DoingWell
 ---
 I'm glad to hear that. Let me know if there's anything you want to talk about.
 Can I place an order? It's a bit of an odd request.
--> Sure, hit me with it.
+-> Sure, what can I get you?
     <<jump Order>>
 ===
 
@@ -121,9 +121,52 @@ You don't need to say anything. Just let me pay you and accept the order.
 title: Alright
 ---
 Great! Have fun with it, I'd imagine you need something like that right now.
-<<jump Done>>
+-> I'll try. Oh, how's Agim handling things?
+<<jump PartnerInquiry>>
 ===
 
+title: PartnerInquiry
+---
+He's doing well, he's preparing to head out within the next couple of days to visit the graves.
+-> That's nice. Is he just visiting for the day?
+    <<jump DayVisit>>
+===
+
+title: DayVisit
+---
+Yes, just for the day. He leaves early in the morning, then will be back a little after the Sun sets.
+-> Seems like a nice little trip. Will you not be going with him?
+    <<jump SoloVisit>>
+===
+
+title: SoloVisit
+---
+No, he prefers to go alone. He spends the day recounting their time together and likes to do that on his own.
+He's brought me before, but I think he just doesn't want me to see him cry.
+-> Well it sounds like it means a lot to him.
+    <<jump MeansALot>>
+===
+
+title: MeansALot
+---
+It does, and I don't take any offense to it. I've got my own plans to visit the memorial anyway.
+-> Perhaps I'll see you there?
+    <<jump SeeYouThere>>
+===
+
+title: SeeYouThere
+---
+I'll be going by for lunch, and I'd love if you joined me!
+-> I think I'll do just that!
+    <<jump OldFriendConvoEnd>>
+===
+
+title: OldFriendConvoEnd
+---
+Well, I'll leave you to it then! I'm looking forward to lunch then!
+-> Thank you, Ill see you then!
+    <<jump Done>>
+===
 title: Done
 ---
 End of demo
