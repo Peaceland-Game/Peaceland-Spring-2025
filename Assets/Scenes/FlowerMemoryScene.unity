@@ -999,6 +999,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318052e93ecd1fa41aed8110eae9b14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stem: {fileID: 9219485524165623847, guid: 11a2887ef671e9e4a9ddcbdccf708f22, type: 3}
+  flower: {fileID: 4541604742317120861, guid: 9555a523a8b60904d8d99aeca45b32c8, type: 3}
 --- !u!1001 &492172084
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2421,6 +2423,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318052e93ecd1fa41aed8110eae9b14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stem: {fileID: 9219485524165623847, guid: 11a2887ef671e9e4a9ddcbdccf708f22, type: 3}
+  flower: {fileID: 4541604742317120861, guid: 9555a523a8b60904d8d99aeca45b32c8, type: 3}
 --- !u!1 &1843959284
 GameObject:
   m_ObjectHideFlags: 0

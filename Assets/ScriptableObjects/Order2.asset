@@ -14,21 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameForOrder: Another person
   flowers:
-  - flowerObject: {fileID: 7168470204087067190, guid: a04eaae7f26044b40be24aee40656199, type: 3}
-    flowerStem: {fileID: 9219485524165623847, guid: 11a2887ef671e9e4a9ddcbdccf708f22, type: 3}
-    needsDethorning: 1
+  - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
     flowerType: 2
-  - flowerObject: {fileID: 4329690458570257238, guid: 51d544ab1d7e3e344b1a506b324ac027, type: 3}
-    flowerStem: {fileID: 9219485524165623847, guid: 11a2887ef671e9e4a9ddcbdccf708f22, type: 3}
-    needsDethorning: 0
+  - needsDethorning: 0
     needsTrimming: 1
     needsArranging: 1
     flowerType: 0
-  - flowerObject: {fileID: 5487726692215652602, guid: 946428be2d1ac0a4886b07ef56379c8b, type: 3}
-    flowerStem: {fileID: 9219485524165623847, guid: 11a2887ef671e9e4a9ddcbdccf708f22, type: 3}
-    needsDethorning: 1
+  - needsDethorning: 1
     needsTrimming: 0
     needsArranging: 1
     flowerType: 1
