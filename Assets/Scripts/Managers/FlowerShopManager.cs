@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using Yarn.Unity;
+using UnityEngine.SceneManagement;
 
 public class FlowerShopManager : MonoBehaviour
 {
@@ -144,6 +145,9 @@ public class FlowerShopManager : MonoBehaviour
         //If the current minigame is higher or equal to the number of minigames, continue
         if (currentMinigame >= minigames.Count)
         {
+            SceneManager.LoadScene(1);
+            return;
+
             //Reset the current minigame num, the current order num, and the current flower num (basically reset everything back
             //to the beginning of the memory
             currentMinigame = 0;

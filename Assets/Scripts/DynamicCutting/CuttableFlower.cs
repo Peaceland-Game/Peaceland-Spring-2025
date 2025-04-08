@@ -19,7 +19,7 @@ public class CuttableFlower : MonoBehaviour
     float maxY;
     float halfHeight;
     const float DEVIATION = 2.0f; // Determines how far apart min y and max y can be
-    const float BOTTOM_BUFFER = 0.5f; // Determines the minimum distance from the bottom the hitbox will be
+    const float BOTTOM_BUFFER = 1.0f; // Determines the minimum distance from the bottom the hitbox will be
     const float ANGLE_RANGE = 30.0f;
 
     Rect spriteRect;

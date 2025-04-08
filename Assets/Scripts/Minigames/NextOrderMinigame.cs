@@ -6,13 +6,16 @@ using System.Collections;
 /// <summary>
 /// Keep track of which object needs to be displayed and cut
 /// </summary>
-public class NextOderMinigame : MinigameBehavior
+public class NextOrderMinigame : MinigameBehavior
 {
     public override void StartMinigame()
     {
         FlowerShopManager.NextOrder();
         gameObject.SetActive(true);
         FlowerShopManager.Instance.NextMinigame();
+
+        // TODO: DELETE THIS. Hack for playtest.
+        GameObject.Find("Andrej").GetComponent<SpriteRenderer>().color = Color.black;
     }
 
     public override void StopMinigame()

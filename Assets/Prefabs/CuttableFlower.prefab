@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 8, y: 16}
+  m_SizeDelta: {x: 8, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &3748342578235174250
 SpriteRenderer:
@@ -597,7 +597,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 8, y: 16}
+  m_SizeDelta: {x: 8, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &6112966764897044913
 SpriteRenderer:
