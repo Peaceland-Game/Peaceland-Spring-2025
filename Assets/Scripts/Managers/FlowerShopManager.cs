@@ -148,13 +148,7 @@ public class FlowerShopManager : MonoBehaviour
             SceneManager.LoadScene(1);
             return;
 
-            //Reset the current minigame num, the current order num, and the current flower num (basically reset everything back
-            //to the beginning of the memory
-            currentMinigame = 0;
-            currentOrder = 0;
-            currentFlower = 0;
-            CutManager.CurIndex = currentFlower;
-            // TODO: W're done, end the game (or memory)!!!
+            // TODO: We're done, end the game (or memory)!!!
         }
 
         //Start the next minigame
