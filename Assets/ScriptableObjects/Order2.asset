@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9aada3eb7d4d0a49ad5041a60889061, type: 3}
   m_Name: Order2
   m_EditorClassIdentifier: 
-  nameForOrder: Another person
+  nameForOrder: Old Friend
   flowers:
   - needsDethorning: 1
     needsTrimming: 1
@@ -26,5 +26,5 @@ MonoBehaviour:
     needsTrimming: 0
     needsArranging: 1
     flowerType: 1
-  dialogueStartNode: GameplayGood
+  dialogueStartNode: CloseFriendStart
   dialogueEndNode: OrderComplete
