@@ -85,6 +85,7 @@ public class Draggable : MonoBehaviour
 
         if (snapIndex != -1) {
             DisableDrag();
+            dragTargets[snapIndex].GetComponent<DragTarget>().IsSnapped = true;
             draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
         }
     } 
@@ -106,6 +107,8 @@ public class Draggable : MonoBehaviour
                 int i = 0;
                 snapIndex = -1;
                 foreach (Transform target in dragTargets) {
+                    if (target.GetComponent<DragTarget>().IsSnapped) continue;
+
                     float dist = (newPos - target.position).magnitude;
                     //snap position and rotation if close enough AND if their flower types are the same
                     if (dist < dragDistanceThreshold && dist < lowest_dist && target.gameObject.GetComponent<DragTarget>().TypeOfFlower == typeofFlower) {

@@ -6,6 +6,8 @@ public class DragTarget : MonoBehaviour
 
     public FlowerType TypeOfFlower { get { return typeOfFlower; } }
 
+    public bool IsSnapped { get; set; } = false;
+
     public void Constructor(FlowerType _typeOfFlower)
     {
         typeOfFlower = _typeOfFlower;
