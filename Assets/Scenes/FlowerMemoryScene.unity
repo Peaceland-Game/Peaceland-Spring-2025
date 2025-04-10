@@ -2118,6 +2118,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 492172085}
     m_Modifications:
+    - target: {fileID: 1357586402, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357586402, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1357586402, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00012207031
+      objectReference: {fileID: 0}
     - target: {fileID: 3185601929996033811, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -2196,11 +2208,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5481484092624835572, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -164.1026
+      value: -164.10254
       objectReference: {fileID: 0}
     - target: {fileID: 5481484092624835572, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 12.307678
+      value: 12.307617
       objectReference: {fileID: 0}
     - target: {fileID: 5481484092624835572, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2236,7 +2248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7306900526976280635, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
       propertyPath: m_overflowMode
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7306900526976280635, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
       propertyPath: m_sharedMaterial
@@ -2244,7 +2256,7 @@ PrefabInstance:
       objectReference: {fileID: -2705481054575229854, guid: 8bec09ad86fa1a445be6e73a59921be3, type: 2}
     - target: {fileID: 7306900526976280635, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
       propertyPath: m_TextWrappingMode
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7306900526976280635, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
       propertyPath: m_hasFontAssetChanged
