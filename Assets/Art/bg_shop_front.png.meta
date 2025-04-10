@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 22b0d6ccf74eac744806de97c2df2787
+guid: f47f1a9ef996bbd4ca72183d60a26adb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 857312311372029537
-    second: rose_0
+      213: 7487958855065295060
+    second: bg_shop_front (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -110,19 +110,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -139,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rose_0
+      name: bg_shop_front (1)_0
       rect:
         serializedVersion: 2
-        x: 362
-        y: 346
-        width: 432
-        height: 1763
+        x: 0
+        y: 0
+        width: 2560
+        height: 1440
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 16e16e44109c5eb00800000000000000
-      internalID: 857312311372029537
+      spriteID: 4d858e0e7e29ae760800000000000000
+      internalID: 7487958855065295060
       vertices: []
       indices: 
       edges: []
@@ -174,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      rose_0: 857312311372029537
+      bg_shop_front (1)_0: 7487958855065295060
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

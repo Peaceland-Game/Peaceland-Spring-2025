@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 22b0d6ccf74eac744806de97c2df2787
+guid: 84d5c86b51f6ad84b9d1e327eda6b78f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 857312311372029537
-    second: rose_0
+      213: 4539909539476957673
+    second: bg_clipping_bin_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -110,19 +110,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -139,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rose_0
+      name: bg_clipping_bin_0
       rect:
         serializedVersion: 2
-        x: 362
-        y: 346
-        width: 432
-        height: 1763
+        x: 0
+        y: 0
+        width: 2560
+        height: 1440
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 16e16e44109c5eb00800000000000000
-      internalID: 857312311372029537
+      spriteID: 9e96ee43caff00f30800000000000000
+      internalID: 4539909539476957673
       vertices: []
       indices: 
       edges: []
@@ -173,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      rose_0: 857312311372029537
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
