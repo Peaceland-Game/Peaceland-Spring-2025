@@ -1,25 +1,38 @@
 ﻿title: Start
 position: 9,-242
 ---
-<<declare $playerName = "Andrej">>
+<<declare $customerName = "Andrej">>
 
--> Hi, how are you?
-    <<jump Intro>>
+<<wait  1>>
+
+Hi, how are you?
+
+<<jump Waiting>>
 ===
 
-title: Intro
+title: Waiting
 position: 7,-42
 ---
+<<wait 1>>
+
 ...
--> Uh... {$playerName}?
-    <<jump NPCFirstDialogue>>
+
+<<jump WaitingMore>>
 ===
 
+title: WaitingMore
+---
+<<wait  0.5>>
+
+Uh... {$customerName}?
+
+<<jump NPCFirstDialogue>>
+===
 
 title: NPCFirstDialogue
 position: 0,137
 ---
-OH- sorry, I mean, I'm good thanks. How are you?
+{$customerName}: OH—sorry, I mean, I'm good thanks. How are you?
 -> I'm good, thanks. What can I do for you today?
 -> ...uhh, fine thanks. Anything I can help you with?
 -> Doing OK. How can I help you today?
@@ -30,15 +43,16 @@ OH- sorry, I mean, I'm good thanks. How are you?
 title: NPCQuestion
 position: 17,322
 ---
-Well, I'd like to get some flowers...
--> Ok, any in particular-
-    <<jump FloristQuestion>>
+{$customerName}: Well, I'd like to get some flowers...
+-> Ok, any in particular—
+
+<<jump FloristQuestion>>
 ===
 
 title: FloristQuestion
 position: 39,550
 ---
-They're for my girlfriend! She likes flowers.
+{$customerName}: They're for my girlfriend! She likes flowers.
 -> Aww, how sweet - I thought I saw you two walking around town square the other day, you make a very cute couple. What kind of flowers does she like?
 -> Well we can do personalized bouquets here, what flowers would she like?
 -> Great. Good for you. What flowers does she like?
@@ -50,32 +64,19 @@ They're for my girlfriend! She likes flowers.
 title: NPCNervousRamble
 position: 95,714
 --- 
-Well I... I don't actually know... Should I have asked? I just wanted to get her flowers because we, like, just got together and I figured couples usually get flowers so I wanted flowers, is some kind of flower people usually get?
--> Well, if you're looking for flowers for a first partner, my husband got these for me on our first date, and that turned out well! 
-    <<jump NPCOrderIn1>>
-===
+{$customerName}: Well I... I don't actually know... Should I have asked? I just wanted to get her flowers because we, like, just got together and I figured couples usually get flowers so I wanted flowers...
+{$customerName}: Is there some kind of flower people usually get?
+-> Well, if you're looking for flowers for a first partner, my husband got me roses on our first date, and that turned out well! 
+    -> You could also choose peonies, but they're quite popular at weddings and that might lead to... questions.
+        -> Daisies represent youth, which is perfect for a young love. 
+            -> But of course, it's your choice, you know her best.
 
-title: NPCOrderIn1
----
--> You could choose these ones, but they're quite popular at weddings, and that might lead to... questions.
-    <<jump NPCOrderIn2>>
-===
-
-title: NPCOrderIn2
----
--> These ones represent youth, which is perfect for a young love. 
-    <<jump NPCOrderIn3>>
-===
-
-title: NPCOrderIn3
----
--> But of course, it's your choice, you know her best.
-    <<jump NPCOrderIn4>>
+<<jump NPCOrderIn4>>
 ===
 
 title: NPCOrderIn4
 position: 94,953
 ---
-Oh uh... can I get both roses and daisies? I think that'd be nice.
+{$customerName}: Oh uh... can I get both roses and daisies? I think that'd be nice.
 -> Sure!
 ===
