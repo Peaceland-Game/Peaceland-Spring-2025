@@ -964,6 +964,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b78e8a0ca8e5b35a84c5afbebb6f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  andrej: {fileID: -171743095488495158, guid: a93560a59d7121f4f91c3fe7f9b263e4, type: 3}
+  oldFriend: {fileID: 7970975631028415661, guid: a5592716ed50d7a498c4f63232ba8079, type: 3}
+  characterPortrait: {fileID: 1340726477}
 --- !u!4 &425442086
 Transform:
   m_ObjectHideFlags: 0
@@ -1383,6 +1386,10 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -2705481054575229854, guid: 8bec09ad86fa1a445be6e73a59921be3, type: 2}
+    - target: {fileID: 7778558434976753272, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7778558434976753272, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -2428,7 +2435,7 @@ GameObject:
   - component: {fileID: 1340726479}
   - component: {fileID: 1340726478}
   m_Layer: 0
-  m_Name: Andrej
+  m_Name: CharacterPortait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
