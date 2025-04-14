@@ -1,15 +1,15 @@
 title: OrderComplete
 position: 0,-8
 ---
-Thank you!
--> ({$playerName} pays)
+{$customerName}: Thank you!
+({$customerName} pays)
     <<jump NPCVandalism>>
 ===
 title: NPCVandalism
 position: 0,190
 ---
-And, uh… I just wanted to say, I saw what happened outside. I'm really sorry that happened to you. You don't deserve that, especially today.
--> Thank you, {$playerName}. I really appreciate that.
+{$customerName}: And, uh… I just wanted to say, I saw what happened outside. I'm really sorry that happened to you. You don't deserve that, especially today.
+-> Thank you, {$customerName}. I really appreciate that.
     <<jump NPCOffer>>
 ===
 
@@ -17,13 +17,18 @@ title: NPCOffer
 position: 1,375
 ---
 /// From Josh: Let me know if this isn't the best way of organizing this final node, I'm happy to split this into more nodes if it's better for Dev!
-Do you need help cleaning it up?
+{$customerName}: Do you need help cleaning it up?
 -> No, you enjoy your date.
-    Thank you, I'm sure Hana will love these flowers!
--> I wouldn't ask that of you
-    Are you sure? I don't mind.
+    {$customerName}: Thank you, I'm sure Hana will love these flowers!
+-> I wouldn't ask that of you.
+    {$customerName}: Are you sure? I don't mind.
     -> There's a group coming by tonight, don't worry.
-        Alright, well I hope your day gets better.
+    <<jump Conclusion>>
 -> There's a group coming by tonight, don't worry.
-    Alright, well I hope your day gets better.
+    <<jump Conclusion>>
+===
+
+title: Conclusion
+---
+{$customerName}: Alright, well I hope your day gets better.
 ===

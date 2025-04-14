@@ -662,6 +662,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1877503642747792861}
     m_Modifications:
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.31523672
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.4407562
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 0.31523672
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 0.8679245
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 0.4407562
+      objectReference: {fileID: 0}
+    - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2250634650892339911, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Name
       value: Guide Line

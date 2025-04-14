@@ -8,6 +8,13 @@ using System.Collections;
 /// </summary>
 public class NextOrderMinigame : MinigameBehavior
 {
+    [SerializeField]
+    private Sprite andrej;
+    [SerializeField]
+    private Sprite oldFriend;
+    [SerializeField]
+    private GameObject characterPortrait;
+
     public override void StartMinigame()
     {
         FlowerShopManager.NextOrder();
@@ -15,7 +22,7 @@ public class NextOrderMinigame : MinigameBehavior
         FlowerShopManager.Instance.NextMinigame();
 
         // TODO: DELETE THIS. Hack for playtest.
-        GameObject.Find("Andrej").GetComponent<SpriteRenderer>().color = Color.black;
+        characterPortrait.GetComponent<SpriteRenderer>().sprite = oldFriend;
     }
 
     public override void StopMinigame()
