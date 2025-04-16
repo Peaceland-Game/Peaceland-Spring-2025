@@ -174,7 +174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f144b4bbdb4632f449306c752850125e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutRB: {fileID: 5073091399701162995}
   cutDistance: 0.2
   guideLine: {fileID: 4673377364836801849}
   cutLine: {fileID: 3761300943899948532}
@@ -540,27 +539,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0.31523672
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0.8679245
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
-      value: 0.4407562
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.b
-      value: 0.31523672
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.g
-      value: 0.8679245
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.r
-      value: 0.4407562
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 649287990665989565, guid: 7e46cc29ab14402408ebb381877f81c3, type: 3}
       propertyPath: m_Parameters.colorGradient.m_Mode
