@@ -145,7 +145,7 @@ public class FlowerShopManager : MonoBehaviour
         //If the current minigame is higher or equal to the number of minigames, continue
         if (currentMinigame >= minigames.Count)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
             return;
 
             // TODO: We're done, end the game (or memory)!!!

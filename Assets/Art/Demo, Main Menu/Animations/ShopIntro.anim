@@ -1552,9 +1552,9 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 16.016666
-    functionName: LoadNextLevel()
+    functionName: LoadNextLevel
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: d07457b867b2057409500a4a07de8886, type: 3}
+    objectReferenceParameter: {fileID: 4793430413072917118, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
