@@ -142,12 +142,12 @@ TextureImporter:
       name: daisyfull_0
       rect:
         serializedVersion: 2
-        x: 510
-        y: 37
-        width: 805
-        height: 1624
+        x: 366
+        y: 293
+        width: 806
+        height: 1893
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -164,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 162a5a05b24fc6fee8d6fb52b2e38e40
     internalID: 0
     vertices: []
     indices: 

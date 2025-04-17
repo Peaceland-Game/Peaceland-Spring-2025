@@ -129,12 +129,12 @@ TextureImporter:
       name: thorn_closeup_0
       rect:
         serializedVersion: 2
-        x: 949
-        y: 1444
-        width: 411
-        height: 656
+        x: 1143
+        y: 1603
+        width: 495
+        height: 600
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f3d47aa961b7a6a7c974d19701c4b577
     internalID: 0
     vertices: []
     indices: 
