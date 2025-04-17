@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
@@ -10,6 +11,11 @@ public class LevelLoader : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
     public void LoadNextLevel()
