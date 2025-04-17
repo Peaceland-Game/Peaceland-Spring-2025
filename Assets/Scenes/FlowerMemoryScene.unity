@@ -771,11 +771,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4549752356143246613, guid: a92f97fcde9e6fc48ad346799c77f7fe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2000
       objectReference: {fileID: 0}
     - target: {fileID: 4549752356143246613, guid: a92f97fcde9e6fc48ad346799c77f7fe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4549752356143246613, guid: a92f97fcde9e6fc48ad346799c77f7fe, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2515,7 +2515,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 25.6, y: 14.4}
+  m_Size: {x: 21.640001, y: 22.89}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

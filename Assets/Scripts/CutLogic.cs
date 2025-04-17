@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using UnityEngine;
 
@@ -43,6 +44,10 @@ public class CutLogic : MonoBehaviour
 
     public bool Cut { get => cut; }
 
+
+    private void OnDrawGizmos()
+    {
+    }
     private void Start()
     {
         cut = false;
