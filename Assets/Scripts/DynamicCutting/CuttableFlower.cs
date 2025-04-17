@@ -12,7 +12,7 @@ public class CuttableFlower : MonoBehaviour
 {
     List<Transform> masks;
     List<SpriteRenderer> renderers;
-    Transform hitbox;
+    Transform guideLine;
 
     // Fields for random hitbox generation
     float minY;
@@ -20,7 +20,7 @@ public class CuttableFlower : MonoBehaviour
     float halfHeight;
     const float DEVIATION = 2.0f; // Determines how far apart min y and max y can be
     const float BOTTOM_BUFFER = 1.0f; // Determines the minimum distance from the bottom the hitbox will be
-    const float ANGLE_RANGE = 30.0f;
+    const float ANGLE_RANGE = 15.0f;
 
     Rect spriteRect;
 
@@ -38,7 +38,6 @@ public class CuttableFlower : MonoBehaviour
         cutStart = Vector2.zero;
         cutEnd = Vector2.zero;
 
-        // TO-DO: implement dynamic sprite setting once enum is in
         SetChildSprites();
 
         // Set proper mask scale
@@ -95,9 +94,10 @@ public class CuttableFlower : MonoBehaviour
                     masks.Add(grandChild);
                 }
             }
-            if (child.GetComponent<BoxCollider2D>() != null)
+            if (child.GetComponent<LineRenderer>() != null)
             {
-                hitbox = child;
+                guideLine = child;
+                Debug.Log(child.name);
             }
         }
     }
@@ -130,15 +130,16 @@ public class CuttableFlower : MonoBehaviour
         // Generate a random position in the bottom range of the stem
         Vector3 newPos = this.transform.position;
         newPos.y = UnityEngine.Random.Range(minY, maxY);
+        newPos.x += 0.5f;
 
         // Generate a random angle for the hitbox
-        float angle = UnityEngine.Random.Range(-ANGLE_RANGE, ANGLE_RANGE);
+        float angle = 90 + UnityEngine.Random.Range(-ANGLE_RANGE, ANGLE_RANGE);
 
         // Set hitbox position and angle
-        hitbox.position = newPos;
+        guideLine.transform.position = newPos;
 
         // *** ANGLE ADJUSTMENTS *** //
-        hitbox.rotation = Quaternion.Euler(0, 0, angle);
+        guideLine.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     void OnCut(Vector2 cutStart, Vector2 cutEnd)
@@ -160,7 +161,7 @@ public class CuttableFlower : MonoBehaviour
             }
             else
             {
-                t.Translate(t.up * (t.localScale.y / 2.5f) * -1, Space.World);
+                t.Translate(t.up * (t.localScale.y / 2.0f) * -1, Space.World);
                 Debug.Log("Bottom mask moved");
             }
         }

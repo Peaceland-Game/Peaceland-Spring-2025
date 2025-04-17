@@ -16,6 +16,7 @@ public class CutLogic : MonoBehaviour
     /// the line that is drawn as the player cuts
     /// </summary>
     [SerializeField] LineRenderer cutLine;
+
     /// <summary>
     /// the gameObject that will be cut off
     /// </summary>
