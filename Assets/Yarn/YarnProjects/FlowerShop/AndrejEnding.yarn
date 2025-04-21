@@ -8,15 +8,16 @@ position: 0,-8
 title: NPCVandalism
 position: 0,190
 ---
-{$customerName}: And, uh… I just wanted to say, I saw what happened outside. I'm really sorry that happened to you. You don't deserve that, especially today.
--> Thank you, {$customerName}. I really appreciate that.
+{$customerName}: And, uh… I just wanted to say, I saw what happened outside. 
+{$customerName}: I'm really sorry that happened to you. You don't deserve that, especially today.
+
+{$FloristName}: Thank you, {$customerName}. I appreciate that.
     <<jump NPCOffer>>
 ===
 
 title: NPCOffer
 position: 1,375
 ---
-/// From Josh: Let me know if this isn't the best way of organizing this final node, I'm happy to split this into more nodes if it's better for Dev!
 {$customerName}: Do you need help cleaning it up?
 -> No, you enjoy your date.
     {$customerName}: Thank you, I'm sure Hana will love these flowers!
