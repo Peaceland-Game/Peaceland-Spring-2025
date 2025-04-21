@@ -1,9 +1,0 @@
-tags:
----
-Hello! I would like some flowers please!
-
--> I'll get right to it!
-    <<switchCameras GameManager>>
--> No problem!
-    <<switchCameras GameManager>>
-===
