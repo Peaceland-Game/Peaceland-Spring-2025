@@ -122,6 +122,9 @@ public class FlowerShopManager : MonoBehaviour
         return Instance.flowerSprites[(int)t];
     }
 
+    /// <summary>
+    /// Reset any static variables in the flower shop memory
+    /// </summary>
     public static void ResetFlowerShop()
     {
         currentFlower = 0;
@@ -130,7 +133,10 @@ public class FlowerShopManager : MonoBehaviour
 
     void Start()
     {
+        //Set up the instance of this script
         Instance = this;
+
+        //Start the first minigame
         NextMinigame();
         // Connect dialogue runner
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
@@ -151,10 +157,9 @@ public class FlowerShopManager : MonoBehaviour
         //If the current minigame is higher or equal to the number of minigames, continue
         if (currentMinigame >= minigames.Count)
         {
+            //We're done in this memory, load in the end screen of the demo!!!
             SceneManager.LoadScene(2);
             return;
-
-            // TODO: We're done, end the game (or memory)!!!
         }
 
         //Start the next minigame

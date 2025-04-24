@@ -5,6 +5,10 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
+//IMPORTANT
+//The checklist is no longer being used, but is being kept here in case it or any of the code here is used in the future
+//Also being kept for documentation purposes
+
 public class Checklist : MonoBehaviour
 {
     /// <summary>
