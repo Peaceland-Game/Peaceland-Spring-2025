@@ -10,8 +10,19 @@ using UnityEngine;
 /// </summary>
 public class CuttableFlower : MonoBehaviour
 {
+    /// <summary>
+    /// List to store all SpriteMask transforms within the CuttableFlower prefab
+    /// </summary>
     List<Transform> masks;
+
+    /// <summary>
+    /// List to store all SpriteRenderers within the CuttableFlower prefab
+    /// </summary>
     List<SpriteRenderer> renderers;
+
+    /// <summary>
+    /// Guideline for the guideLine object within the prefab
+    /// </summary>
     Transform guideLine;
 
     // Fields for random hitbox generation
@@ -124,6 +135,9 @@ public class CuttableFlower : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Randomly sets the hitbox position and rotation
+    /// </summary>
     void RandomHitboxPos()
     {
         // Generate a random position in the bottom range of the stem
@@ -141,6 +155,12 @@ public class CuttableFlower : MonoBehaviour
         guideLine.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
+    /// <summary>
+    /// Function triggered by CutLogic. Initiates dynamic cutting sequence
+    /// for the CuttableFlower.
+    /// </summary>
+    /// <param name="cutStart">Vector position of the start of the cut</param>
+    /// <param name="cutEnd">Vector position of the end of the cut</param>
 
     void OnCut(Vector2 cutStart, Vector2 cutEnd)
     {
