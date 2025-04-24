@@ -122,6 +122,12 @@ public class FlowerShopManager : MonoBehaviour
         return Instance.flowerSprites[(int)t];
     }
 
+    public static void ResetFlowerShop()
+    {
+        currentFlower = 0;
+        currentOrder = 0;
+    }
+
     void Start()
     {
         Instance = this;
