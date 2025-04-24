@@ -6,7 +6,7 @@ title: CloseFriendStart
 <<declare $FloristName = "Mira">>
 
 <<wait  1>>
-{$closeFriendName}: Hey... I just wanted to check in. 
+{$closeFriendName}: Hi... I just wanted to check in. 
 {$closeFriendName}: How are you holding up today?
 -> I'm doing well.
     <<jump DoingWell>>
@@ -27,7 +27,7 @@ title: CloseFriendStart
 title: DontTalkAboutIt
 ---
 {$closeFriendName}: Alright, I understand. Let me know if that changes.
-{$closeFriendName}: So hey, can I place an order?
+{$closeFriendName}: So look, can I place an order?
 
 {$FloristName}: Sure, what can I get you?
     <<jump Order>>
@@ -49,7 +49,7 @@ title: TalkAboutIt
 title: BeingHere
 ---
 {$closeFriendName}: Anytime, {$FloristName}. I'll always be here.
-{$closeFriendName}: So hey, can I place an order?
+{$closeFriendName}: So look, can I place an order?
 
 {$FloristName}: Sure, what can I get you?
     <<jump Order>>
@@ -58,7 +58,7 @@ title: BeingHere
 title: Realistic
 ---
 {$closeFriendName}: I understand, and of course. Anything for you.
-{$closeFriendName}: So hey, can I place an order?
+{$closeFriendName}: So look, can I place an order?
 
 {$FloristName}: Sure, what can I get you?
     <<jump Order>>
@@ -67,7 +67,7 @@ title: Realistic
 title: SomeTime
 ---
 {$closeFriendName}: Alright, I understand.
-{$closeFriendName}: So hey, can I make an order?
+{$closeFriendName}: So look, can I make an order?
 
 {$FloristName}: Sure, what would you like?
     <<jump Order>>
@@ -145,7 +145,7 @@ title: Alright
 
 title: NoWinning
 ---
-Nope! And please try to have fun with it. I think it'd be good for you.
+{$closeFriendName}: Nope! And please try to have fun with it. I think it'd be good for you.
 -> I'll try. Oh, how's Agim handling things?
     <<jump PartnerInquiry>>
 -> Thank you. Now, I'll see you later, I need to work.
@@ -154,7 +154,7 @@ Nope! And please try to have fun with it. I think it'd be good for you.
 
 title: ThankYou
 ---
-Of course. And please try to have fun with it. I think it'd be good for you.
+{$closeFriendName}: Of course. And please try to have fun with it. I think it'd be good for you.
 -> I'll try. Oh, how's Agim handling things?
     <<jump PartnerInquiry>>
 -> Thank you. Now, I'll see you later, I need to work.
