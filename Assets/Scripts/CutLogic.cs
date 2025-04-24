@@ -53,6 +53,11 @@ public class CutLogic : MonoBehaviour
         cut = false;
     }
 
+    /// <summary>
+    /// Initializes cutLine and stem values
+    /// </summary>
+    /// <param name="_cutLine">CutLine to store</param>
+    /// <param name="_stem">Stem to store</param>
     public void AssignValues(LineRenderer _cutLine, Stem _stem)
     {
         cutLine = _cutLine;
@@ -106,6 +111,12 @@ public class CutLogic : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Initializes cut sequence of the CutLogic object.
+    /// Disables the hitbox, sets the state of the object
+    /// to cut, and then animates the cutPiece off screen.
+    /// Transitions to next cut after the couroutine is finished.
+    /// </summary>
     private void CutObj()
     {
         //disable hitbox
@@ -124,6 +135,11 @@ public class CutLogic : MonoBehaviour
         else { StartCoroutine(CutManager.AllCutsMade()); }
     }
 
+    /// <summary>
+    /// Uses the point-line distance formula to calculate an
+    /// accuracy score based on how well the user stayed within
+    /// the hitbox of the CutLogic object.
+    /// </summary>
     private void CalculateCutScore()
     {
         float averageDistance = 0;
@@ -138,7 +154,7 @@ public class CutLogic : MonoBehaviour
         averageDistance /= cutLine.positionCount;
         Debug.Log("Average distance: " + averageDistance);
 
-        //calculate the score
+        // Display score response
         if (averageDistance <= maxGreatDistance)
         {
             Debug.Log("Great Work!");
