@@ -11,36 +11,65 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Draggable : MonoBehaviour
 {
+    /// <summary>
+    /// Targets for the object to snap to
+    /// </summary>
     [SerializeField]
-    private List<Transform> dragTargets; // Targets for the object to snap to
+    private List<Transform> dragTargets;
 
+    /// <summary>
+    /// Limit the object to stay in this area
+    /// </summary>
     [SerializeField]
-    private BoxCollider2D dragLimit; // Limit the object to stay in this area
+    private BoxCollider2D dragLimit;
 
+    /// <summary>
+    /// How close to get to a drag target before snapping to it=
+    /// </summary>
     [SerializeField]
-    private float dragDistanceThreshold = 2.0f; // How close to get to a drag target before snapping to it 
+    private float dragDistanceThreshold = 2.0f;
 
+    /// <summary>
+    /// When the object is released on a drag target, this signal is invoked with the transform of the target.
+    /// </summary>
     [SerializeField]
-    UnityEvent<Transform> draggedOnTargetEvent; // When the object is released on a drag target, this signal is invoked with the transform of the target.
+    UnityEvent<Transform> draggedOnTargetEvent;
 
+    /// <summary>
+    /// Can we drag this object?
+    /// </summary>
     private bool draggable = true;
 
+    /// <summary>
+    /// Are we dragging this object?
+    /// </summary>
     private bool dragging = false;
+
+    /// <summary>
+    /// Offset from mouse/touch when dragging
+    /// </summary>
     private Vector3 offset;
+
+    /// <summary>
+    /// What target we're snapping to
+    /// </summary>
     private int snapIndex = -1;
 
     /// <summary>
-    /// represents the flower type enum value from order object
+    /// Tepresents the flower type enum value from order object
     /// </summary>
     FlowerType typeofFlower;
     
+    /// <summary>
+    /// Collison for object
+    /// </summary>
     private Collider2D bounds;
     void Start()
     {   
         bounds = GetComponent<Collider2D>();
     }
 
-    //called when object is instantiated
+    // Called when object is instantiated
     public void Constructor(GameObject[] _dragTargets, FlowerType _typeOfFlower)
     {
         foreach (GameObject dragTarget in _dragTargets)
@@ -49,7 +78,7 @@ public class Draggable : MonoBehaviour
         }
         typeofFlower = _typeOfFlower;
 
-        //set the sprite
+        // Set the sprite
         GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerSprite(_typeOfFlower);
     }
 
@@ -66,19 +95,32 @@ public class Draggable : MonoBehaviour
         return draggable;
     }
 
+    /// <summary>
+    /// We start dragging this object
+    /// </summary>
+    /// <param name="touch_wp">Touch world position</param>
     public void StartDrag(Vector3 touch_wp) {
         dragging = true;
         offset = transform.position - touch_wp;
     }
 
+    /// <summary>
+    /// Drag disabled
+    /// </summary>
     public void DisableDrag() {
         draggable = false;
     }
 
+    /// <summary>
+    /// Drag enabled
+    /// </summary>
     public void EnableDrag() {
         draggable = true;
     }
 
+    /// <summary>
+    /// Player stopped dragging this object
+    /// </summary>
     public void EndDrag() {
         // End drag
         dragging = false;
@@ -110,7 +152,7 @@ public class Draggable : MonoBehaviour
                     if (!target.GetComponent<DragTarget>().isSnapped)
                     {
                         float dist = (newPos - target.position).magnitude;
-                        //snap position and rotation if close enough AND if their flower types are the same
+                        // Snap position and rotation if close enough AND if their flower types are the same
                         if (dist < dragDistanceThreshold && dist < lowest_dist && target.gameObject.GetComponent<DragTarget>().TypeOfFlower == typeofFlower)
                         {
                             newPos = target.position;

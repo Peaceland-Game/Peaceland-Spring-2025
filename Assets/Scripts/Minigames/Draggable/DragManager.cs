@@ -6,24 +6,14 @@ using static OrderObject;
 public class DragManager : MinigameBehavior
 {
     /// <summary>
-    /// a list of flower objects that the player can drag
+    /// Draggable flower prefab to spawn
     /// </summary>
-    Draggable[] draggables;
-
-    /// <summary>
-    /// a list of gameObjects the player must drag flowers to
-    /// </summary>
-    GameObject[] targets;
-
     [SerializeField] GameObject flowerPrefab;
-    [SerializeField] GameObject targetPrefab;
-
-    Draggable currentDraggable = null;
-
+    
     /// <summary>
-    /// Keeps track of the num of flowers currently arranged
+    /// Drag target prefab tp spawn
     /// </summary>
-    int flowerArrangeNum = 0;
+    [SerializeField] GameObject targetPrefab;
 
     /// <summary>
     /// The positions of the flowers when the minigame starts
@@ -40,14 +30,33 @@ public class DragManager : MinigameBehavior
     /// </summary>
     [SerializeField] Vector3[] targetRotations;
 
+    /// <summary>
+    /// a list of flower objects that the player can drag
+    /// </summary>
+    private Draggable[] draggables;
+
+    /// <summary>
+    /// a list of gameObjects the player must drag flowers to
+    /// </summary>
+    private GameObject[] targets;
+
+    /// <summary>
+    /// Keeps track of the current object being dragged
+    /// </summary>
+    Draggable currentDraggable = null;
+
+    /// <summary>
+    /// Keeps track of the num of flowers currently arranged
+    /// </summary>
+    int flowerArrangeNum = 0;
 
     public override void StartMinigame()
     {
-        //initilize draggables and targets with the number of flowers in the order
+        // Initilize draggables and targets with the number of flowers in the order
         int numberOfFlowers = FlowerShopManager.GetCurrentOrder().flowers.Count;
         draggables = new Draggable[numberOfFlowers];
         targets = new GameObject[numberOfFlowers];
-        //instantiate flowers and targets to fill the arrays
+        // Instantiate flowers and targets to fill the arrays
         for (int i = 0; i < numberOfFlowers; i++)
         {
             GameObject newFlower = Instantiate(flowerPrefab);
@@ -59,11 +68,9 @@ public class DragManager : MinigameBehavior
             newTarget.transform.parent = transform;
         }
 
-        //For each flower, reset its position to its starting location and make sure they can be dragged
+        // For each flower, reset its position to its starting location and make sure they can be dragged
         for (int i = 0; i < numberOfFlowers; i++)
         {
-            //var currentFlower = FlowerShopManager.GetCurrentOrder().flowers[i];
-
             draggables[i].gameObject.transform.localPosition = flowerLocations[i];
             targets[i].transform.localPosition = targetLocations[i];
             targets[i].transform.eulerAngles = targetRotations[i];
@@ -80,10 +87,10 @@ public class DragManager : MinigameBehavior
 
     public override void StopMinigame()
     {
-        //Reset the current draggable
+        // Reset the current draggable
         currentDraggable = null;
 
-        //delete all flower and target objects
+        // Delete all flower and target objects
         for (int i = 0; i < FlowerShopManager.GetCurrentOrder().flowers.Count; i++)
         {
             Destroy(draggables[i].gameObject);
