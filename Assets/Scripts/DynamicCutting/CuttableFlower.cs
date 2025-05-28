@@ -25,6 +25,11 @@ public class CuttableFlower : MonoBehaviour
     /// </summary>
     Transform guideLine;
 
+    /// <summary>
+    /// Guideline for the hitbox object within the prefab
+    /// </summary>
+    Transform hitbox;
+
     // Fields for random hitbox generation
     float minY;
     float maxY;
@@ -109,6 +114,10 @@ public class CuttableFlower : MonoBehaviour
                 guideLine = child;
                 Debug.Log(child.name);
             }
+            else if (child.GetComponent<BoxCollider2D>() != null)
+            {
+                hitbox = child;
+            }
         }
     }
 
@@ -150,9 +159,13 @@ public class CuttableFlower : MonoBehaviour
 
         // Set hitbox position and angle
         guideLine.transform.position = newPos;
+        hitbox.transform.position = newPos;
 
         // *** ANGLE ADJUSTMENTS *** //
         guideLine.transform.rotation = Quaternion.Euler(0, 0, angle);
+        hitbox.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 0.1f, hitbox.transform.localScale.z);
     }
 
     /// <summary>
