@@ -7,15 +7,15 @@ public static class InputHelper
 
         Vector2 pos;
 
-        //if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.WindowsPlayer)
-        //{
-        //    pos = Touchscreen.current.position.ReadValue();
-        //}
-        //else {
-        //    pos = Mouse.current.position.ReadValue();
-        //}
+        if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.WindowsPlayer)
+        {
+            pos = Touchscreen.current.position.ReadValue();
+        }
+        else {
+            pos = Mouse.current.position.ReadValue();
+        }
 
-        pos = Touchscreen.current.position.ReadValue();
+        //pos = Touchscreen.current.position.ReadValue();
 
         return pos;
     }
