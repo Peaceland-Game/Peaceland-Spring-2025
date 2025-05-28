@@ -3,7 +3,7 @@ using UnityEngine;
 //data that needs to be stored globally and transfered between scenes can be stored and referenced in this script
 public class GameManager : MonoBehaviour
 {
-    //variables
+    //variables, whatever needs to be kept track of between scenes
 
     //create the private instance
     private static GameManager _instance;
@@ -21,9 +21,10 @@ public class GameManager : MonoBehaviour
     }
 
     //initialize private instance
-    void Start()
+    void Awake()
     {
         _instance = this;
+        DontDestroyOnLoad(_instance);
     }
 
     // Update is called once per frame
