@@ -25,6 +25,11 @@ public class CuttableFlower : MonoBehaviour
     /// </summary>
     Transform guideLine;
 
+    /// <summary>
+    /// Guideline for the hitbox object within the prefab
+    /// </summary>
+    Transform hitbox;
+
     // Fields for random hitbox generation
     float minY;
     float maxY;
@@ -109,6 +114,10 @@ public class CuttableFlower : MonoBehaviour
                 guideLine = child;
                 Debug.Log(child.name);
             }
+            else if (child.GetComponent<BoxCollider2D>() != null)
+            {
+                hitbox = child;
+            }
         }
     }
 
@@ -148,11 +157,16 @@ public class CuttableFlower : MonoBehaviour
         // Generate a random angle for the hitbox
         float angle = 90 + UnityEngine.Random.Range(-ANGLE_RANGE, ANGLE_RANGE);
 
-        // Set hitbox position and angle
+        // Set guideline and hitbox position/angle
         guideLine.transform.position = newPos;
+        hitbox.transform.position = newPos;
 
         // *** ANGLE ADJUSTMENTS *** //
         guideLine.transform.rotation = Quaternion.Euler(0, 0, angle);
+        hitbox.transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        //Scale down the hitbox so it matches the width of the flower stem
+        hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 0.1f, hitbox.transform.localScale.z);
     }
 
     /// <summary>
