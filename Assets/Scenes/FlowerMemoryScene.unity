@@ -859,6 +859,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7205933270289529200, guid: a92f97fcde9e6fc48ad346799c77f7fe, type: 3}
+      propertyPath: difficulty
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
