@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// Script for a cuttable flower within the trimming minigame
@@ -149,6 +150,7 @@ public class CuttableFlower : MonoBehaviour
     /// </summary>
     void RandomHitboxPos()
     {
+        /*
         // Generate a random position in the bottom range of the stem
         Vector3 newPos = this.transform.position;
         newPos.y = UnityEngine.Random.Range(minY, maxY);
@@ -166,6 +168,18 @@ public class CuttableFlower : MonoBehaviour
         hitbox.transform.rotation = Quaternion.Euler(0, 0, angle);
 
         //Scale down the hitbox so it matches the width of the flower stem
+        hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 0.1f, hitbox.transform.localScale.z);
+
+        */
+        Vector3 newPos = this.transform.position;
+        newPos.y = maxY - DEVIATION/2;
+
+        guideLine.transform.position = newPos;
+        hitbox.transform.position = newPos;
+
+        guideLine.transform.rotation = Quaternion.Euler(0, 0, 90);
+        hitbox.transform.rotation = Quaternion.Euler(0, 0, 90);
+
         hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 0.1f, hitbox.transform.localScale.z);
     }
 
