@@ -6,7 +6,6 @@ position: 9,-242
 <<wait  1>>
 
 {$FloristName}: Hi, how are you?
-
 <<jump Waiting>>
 ===
 
@@ -35,6 +34,7 @@ position: 0,137
 ---
 {$customerName}: OH—sorry, I mean, I'm good thanks. 
 {$customerName}: How are you?
+<<darken>>
 -> I'm good, thanks; welcome to my shop! What can I do for you today?
 -> ...uhh, fine thanks. Anything I can help you with?
 
@@ -44,6 +44,7 @@ position: 0,137
 title: NPCQuestion
 position: 17,322
 ---
+<<lighten>>
 {$customerName}: Well, I'd like to get some flowers...
 {$FloristName}: Ok, any in particular—
 
