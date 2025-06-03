@@ -20,12 +20,10 @@ public class PortaitLogic : MonoBehaviour
     private void Darken()
     {
         characterSprite.color = new Color(.75f, .75f, .75f, 1f);
-        Debug.Log("Darken!");
     }
 
     private void Lighten()
     {
         characterSprite.color = Color.white;
-        Debug.Log("Lighten!");
     }
 }
