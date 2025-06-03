@@ -8,25 +8,24 @@ public class PortaitLogic : MonoBehaviour
     private DialogueRunner dialogueRunner;
 
     [SerializeField]
-    private GameObject characterPortrait;
+    private SpriteRenderer characterSprite;
 
     public void Awake()
     {
+        //Adds commands that can be called in yarn using <<lighten>> and <<darken>> respectively
         dialogueRunner.AddCommandHandler("lighten", Lighten);
         dialogueRunner.AddCommandHandler("darken", Darken);
     }
 
-    //Darken/Lighten Testing
     private void Darken()
     {
-        characterPortrait.GetComponent<SpriteRenderer>().color = new Color(194, 194, 194);
+        characterSprite.color = new Color(.75f, .75f, .75f, 1f);
         Debug.Log("Darken!");
     }
 
-    //Darken/Lighten Testing
     private void Lighten()
     {
-        characterPortrait.GetComponent<SpriteRenderer>().color = Color.white;
+        characterSprite.color = Color.white;
         Debug.Log("Lighten!");
     }
 }
