@@ -204,11 +204,11 @@ public class CuttableFlower : MonoBehaviour
         {
             if (t.gameObject.layer == LayerMask.NameToLayer("FlowerTop"))
             {
-                t.Translate(t.up * (t.localScale.y / 8), Space.World);
+               // t.Translate(t.up * (t.localScale.y / 8), Space.World);
             }
             else
             {
-                t.Translate(t.up * (t.localScale.y / 2.0f) * -1, Space.World);
+               // t.Translate(t.up * (t.localScale.y / 2.0f) * -1, Space.World);
             }
         }
 
@@ -223,7 +223,7 @@ public class CuttableFlower : MonoBehaviour
 
         for (int i = 0; i < masks.Count; i++)
         {
-            masks[i].rotation = Quaternion.Euler(0, 0, angle);
+            //masks[i].rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 
