@@ -70,10 +70,16 @@ public class Draggable : MonoBehaviour
     /// </summary>
     private Rigidbody2D rb;
 
+    /// <summary>
+    /// get starting position for draggable
+    /// </summary>
+    private Vector3 startPos;
+
     void Start()
     {   
         bounds = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
+        startPos = transform.position;
     }
 
     // Called when object is instantiated
@@ -131,6 +137,7 @@ public class Draggable : MonoBehaviour
     public void EndDrag() {
         // End drag
         dragging = false;
+        BoundsCheck();
 
         if (snapIndex != -1) {
             DisableDrag();
@@ -138,6 +145,24 @@ public class Draggable : MonoBehaviour
             draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
         }
     } 
+
+    public void BoundsCheck()
+    {
+        Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.transform.position.z);
+        Vector3 screenHeight = new Vector3(Screen.width / 2, Screen.height, Camera.main.transform.position.z);
+        Vector3 screenWidth = new Vector3(Screen.width, Screen.height / 2, Camera.main.transform.position.z);
+               
+        Vector3 goScreen = Camera.main.WorldToScreenPoint(transform.position);
+
+        float distX = Vector3.Distance(new Vector3(Screen.width / 2, 0f, 0f), new Vector3(goScreen.x, 0f, 0f));
+        float distY = Vector3.Distance(new Vector3(0f, Screen.height, 0f), new Vector3(0f, goScreen.y, 0f));
+
+        if (distX > Screen.width / 2 || distY > Screen.height / 2)
+        {
+            transform.position = startPos;
+        }
+        
+    }
 
     void Update()
     {
@@ -178,5 +203,6 @@ public class Draggable : MonoBehaviour
             }
 
         }
+
     }
 }

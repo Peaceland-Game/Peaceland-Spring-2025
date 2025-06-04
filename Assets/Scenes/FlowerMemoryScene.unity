@@ -2967,7 +2967,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 3.0224786, y: 0.06613161}
+  m_Offset: {x: 2.45559, y: 0.00319314}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2977,7 +2977,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 7.044958, y: 0.8677368}
+  m_Size: {x: 8.178737, y: 2.5940542}
   m_EdgeRadius: 0
 --- !u!1 &975564404
 GameObject:
@@ -3904,7 +3904,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.34080315, y: -0.13550295}
+  m_Offset: {x: -0.34080315, y: -0.43987045}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3914,7 +3914,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 16.05217, y: 0.38977632}
+  m_Size: {x: 16.05217, y: 0.99851125}
   m_EdgeRadius: 0
 --- !u!1 &1686700636
 GameObject:
@@ -4470,7 +4470,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.34080315, y: -0.13550295}
+  m_Offset: {x: -0.34080315, y: 0.1757741}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4480,7 +4480,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 16.05217, y: 0.38977632}
+  m_Size: {x: 16.05217, y: 1.0123303}
   m_EdgeRadius: 0
 --- !u!1 &1843959284
 GameObject:
@@ -4576,7 +4576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1868083899
 Transform:
   m_ObjectHideFlags: 0
@@ -4749,7 +4749,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 3.0224786, y: 0.06613161}
+  m_Offset: {x: 3.53451, y: 0.013682604}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -4759,7 +4759,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 7.044958, y: 0.8677368}
+  m_Size: {x: 8.069021, y: 2.5730748}
   m_EdgeRadius: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
