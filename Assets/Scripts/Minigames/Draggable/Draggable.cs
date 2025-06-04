@@ -64,9 +64,16 @@ public class Draggable : MonoBehaviour
     /// Collison for object
     /// </summary>
     private Collider2D bounds;
+
+    /// <summary>
+    /// RigidBody2D reference
+    /// </summary>
+    private Rigidbody2D rb;
+
     void Start()
     {   
         bounds = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Called when object is instantiated
