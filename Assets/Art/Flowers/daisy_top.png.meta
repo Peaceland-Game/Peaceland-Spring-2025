@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: c39b03f558ead564c86c1e93037f74e0
+guid: b315660da98ebf9449849f0c9eb9f55b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7643072482402197539
-    second: rose_top_0
-  - first:
-      213: 8048999311478945803
-    second: rose_top_1
+      213: -1627919453384748604
+    second: daisy_top_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,45 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rose_top_0
+      name: daisy_top_0
       rect:
         serializedVersion: 2
-        x: 362
-        y: 742
-        width: 432
-        height: 1367
+        x: 228
+        y: 703
+        width: 1079
+        height: 1617
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ddf9add621a5ee590800000000000000
-      internalID: -7643072482402197539
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rose_top_1
-      rect:
-        serializedVersion: 2
-        x: 619
-        y: 352
-        width: 52
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b08f0167a3ac3bf60800000000000000
-      internalID: 8048999311478945803
+      spriteID: 4c1dd0ad1e77869e0800000000000000
+      internalID: -1627919453384748604
       vertices: []
       indices: 
       edges: []
@@ -150,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 246f39151f4809545919d14eac9787e3
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      rose_top_0: -7643072482402197539
-      rose_top_1: 8048999311478945803
+      daisy_top_0: -1627919453384748604
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

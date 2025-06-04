@@ -52,7 +52,10 @@ public class FlowerShopManager : MonoBehaviour
     /// List of sprites associated with flower types
     /// </summary>
     [SerializeField]
-    private Sprite[] flowerSprites;
+    private Sprite[] flowerTopSprites;
+
+    [SerializeField]
+    private Sprite[] flowerBottomSprites;
 
     /// <summary>
     /// The current order being worked on
@@ -117,9 +120,14 @@ public class FlowerShopManager : MonoBehaviour
     /// </summary>
     /// <param name="t">The given flower type to search for</param>
     /// <returns>The flower sprite that matches the given one</returns>
-    public static Sprite GetFlowerSprite(FlowerType t)
+    public static Sprite GetFlowerTopSprite(FlowerType t)
     {
-        return Instance.flowerSprites[(int)t];
+        return Instance.flowerTopSprites[(int)t];
+    }
+
+    public static Sprite GetFlowerBottomSprite(FlowerType t)
+    {
+        return Instance.flowerBottomSprites[(int)t];
     }
 
     public static void ResetFlowerShop()

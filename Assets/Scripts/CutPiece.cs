@@ -12,12 +12,12 @@ public class CutPiece : MonoBehaviour
         //Tried to make the clipped thorns go behind the unclipped ones, I think it works. Feel free to comment this out if it's still messing with the stem trimmings.
         transform.position = new(transform.position.x, transform.position.y, transform.position.z + 1f);
 
-        //move down
+        //move towards the center of the screen and has a little bit of variances left and right
         float startTime = Time.time;
         float t = 0;
         float speedMultiplier = speedMultiStart;
         Vector3 startPos = transform.position;
-        Vector3 endPos = new(startPos.x, -1, startPos.z);
+        Vector3 endPos = new(startPos.x + Random.Range(-1,1), -1, startPos.z);
         while (t < 1)
         {
             transform.localScale *= 0.999f;

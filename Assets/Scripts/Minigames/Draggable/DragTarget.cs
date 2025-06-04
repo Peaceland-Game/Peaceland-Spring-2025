@@ -20,6 +20,6 @@ public class DragTarget : MonoBehaviour
         typeOfFlower = _typeOfFlower;
 
         //set the sprite
-        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerSprite(_typeOfFlower);
+        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerTopSprite(_typeOfFlower);
     }
 }

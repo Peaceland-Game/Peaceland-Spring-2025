@@ -1,6 +1,8 @@
 using System.Collections;
+using System;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,6 +38,10 @@ public class GrabAndSwipe : MonoBehaviour
     {
         isSlicing = false;
         previousMousePos = Vector2.zero;
+        if(difficulty > 1)
+        {
+           // PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>;
+        }
     }
 
     private void Update()
@@ -51,8 +57,8 @@ public class GrabAndSwipe : MonoBehaviour
                 shakeTimer += Time.deltaTime;
                 if (shakeTimer > 0.2)
                 {
-                    xOffset = Random.Range(-0.4f, 0.4f);
-                    yOffset = Random.Range(-0.4f, 0.4f);
+                    xOffset = UnityEngine.Random.Range(-0.4f, 0.4f);
+                    yOffset = UnityEngine.Random.Range(-0.4f, 0.4f);
                     shakeTimer = 0;
                 }
                 xOffset *= 0.99f;

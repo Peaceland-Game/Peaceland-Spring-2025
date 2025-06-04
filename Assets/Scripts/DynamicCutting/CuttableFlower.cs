@@ -62,7 +62,7 @@ public class CuttableFlower : MonoBehaviour
         SetMaskScale();
 
         // Moves hitbox to a random position
-        RandomHitboxPos();
+        SetHitboxPos();
 
         // Assign CuttableFlower's OnCut method to be triggered by a cut
         CutLogic.onCut += OnCut;
@@ -82,10 +82,19 @@ public class CuttableFlower : MonoBehaviour
             }
         }
 
+        /*
         foreach(SpriteRenderer renderer in renderers)
         {
             renderer.sprite = FlowerShopManager.GetFlowerSprite(
                 FlowerShopManager.GetCurrentFlower().flowerType);
+        }
+        */
+
+        //Sets the sprites for the flower tops and bottoms seperately
+        for(int i = 0; i < renderers.Count; i+= 2)
+        {
+            renderers[i].sprite = FlowerShopManager.GetFlowerTopSprite(FlowerShopManager.GetCurrentFlower().flowerType);
+            renderers[i+1].sprite = FlowerShopManager.GetFlowerBottomSprite(FlowerShopManager.GetCurrentFlower().flowerType);
         }
     }
 
@@ -110,6 +119,7 @@ public class CuttableFlower : MonoBehaviour
                     masks.Add(grandChild);
                 }
             }
+            
             if (child.GetComponent<LineRenderer>() != null)
             {
                 guideLine = child;
@@ -146,9 +156,9 @@ public class CuttableFlower : MonoBehaviour
     }
 
     /// <summary>
-    /// Randomly sets the hitbox position and rotation
+    /// Sets the hitbox position and rotation
     /// </summary>
-    void RandomHitboxPos()
+    void SetHitboxPos()
     {
         /*
         // Generate a random position in the bottom range of the stem
@@ -171,15 +181,18 @@ public class CuttableFlower : MonoBehaviour
         hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 0.1f, hitbox.transform.localScale.z);
 
         */
+
+        //Sets position
         Vector3 newPos = this.transform.position;
         newPos.y = maxY - DEVIATION/2;
-
         guideLine.transform.position = newPos;
         hitbox.transform.position = newPos;
 
+        //Sets the angle
         guideLine.transform.rotation = Quaternion.Euler(0, 0, 90);
         hitbox.transform.rotation = Quaternion.Euler(0, 0, 90);
 
+        //Scale down the hitbox so it matches the width of the flower stem
         hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 0.1f, hitbox.transform.localScale.z);
     }
 
@@ -200,17 +213,19 @@ public class CuttableFlower : MonoBehaviour
 
         // Adjust vertical positions of the masks
         // to match y value of the midpoint cut
+        /*
         foreach (Transform t in masks)
         {
             if (t.gameObject.layer == LayerMask.NameToLayer("FlowerTop"))
             {
-               // t.Translate(t.up * (t.localScale.y / 8), Space.World);
+                t.Translate(t.up * (t.localScale.y / 8), Space.World);
             }
             else
             {
-               // t.Translate(t.up * (t.localScale.y / 2.0f) * -1, Space.World);
+                t.Translate(t.up * (t.localScale.y / 2.0f) * -1, Space.World);
             }
         }
+        */
 
 
         //** Adjust angle of masks to match the angle of the cut itself **//
@@ -221,10 +236,12 @@ public class CuttableFlower : MonoBehaviour
 
         float angle = CalculateVectorAngleFromHorizon(cutLine);
 
+        /*
         for (int i = 0; i < masks.Count; i++)
         {
-            //masks[i].rotation = Quaternion.Euler(0, 0, angle);
+            masks[i].rotation = Quaternion.Euler(0, 0, angle);
         }
+        */
     }
 
     private void OnDrawGizmos()
