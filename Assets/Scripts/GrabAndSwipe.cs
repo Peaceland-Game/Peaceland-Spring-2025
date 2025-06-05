@@ -46,7 +46,12 @@ public class GrabAndSwipe : MonoBehaviour
         if(difficulty > 1)
         {
             PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+            ppVolume.weight = 1;
             ppVolume.enabled = true;
+            if(difficulty >= 2)
+            {
+                ppVolume.weight = 0.45f + (difficulty * 0.05f);
+            }
         }
     }
 

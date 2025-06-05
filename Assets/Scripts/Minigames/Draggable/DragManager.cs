@@ -101,6 +101,11 @@ public class DragManager : MinigameBehavior
         if (difficulty > 1)
         {
             ppVolume.enabled = true;
+            ppVolume.weight = 1;
+            if (difficulty >= 2)
+            {
+                ppVolume.weight = 0.6f + (difficulty * 0.05f);
+            }
         }
     }
 
