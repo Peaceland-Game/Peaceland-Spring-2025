@@ -112,13 +112,6 @@ public class DragManager : MinigameBehavior
             {
                 //End the drag of the current draggable
                 currentDraggable.EndDrag();
-
-                //If the number of flowers that have been arranged is less than the length of the draggables array, continue
-                if (flowerArrangeNum < draggables.Length && !currentDraggable.IsDraggable())
-                {
-                    //Increment the num of flowers arranged
-                    //flowerArrangeNum++;
-                }
             }
         }
         else if (context.phase == InputActionPhase.Started)
