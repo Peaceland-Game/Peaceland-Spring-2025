@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using System.Transactions;
 
 // Component for draggable objects. Requires a Drag Manager.
 
@@ -64,6 +65,12 @@ public class Draggable : MonoBehaviour
     /// Collison for object
     /// </summary>
     private Collider2D bounds;
+
+    private int difficulty;
+    private float shakeTimer;
+    private float xShakeOffset;
+    private float yShakeOffset;
+
     void Start()
     {   
         bounds = GetComponent<Collider2D>();
@@ -99,9 +106,10 @@ public class Draggable : MonoBehaviour
     /// We start dragging this object
     /// </summary>
     /// <param name="touch_wp">Touch world position</param>
-    public void StartDrag(Vector3 touch_wp) {
+    public void StartDrag(Vector3 touch_wp, int currentDifficulty) {
         dragging = true;
         offset = transform.position - touch_wp;
+        difficulty = currentDifficulty;
     }
 
     /// <summary>
@@ -140,8 +148,23 @@ public class Draggable : MonoBehaviour
 
         if (dragging)
         {
-            Vector3 newPos = new(touch_wp.x + offset.x, touch_wp.y + offset.y, transform.position.z);
+            if (difficulty > 0)
+            {
+                shakeTimer += Time.deltaTime;
+                if (shakeTimer > 0.2)
+                {
+                    xShakeOffset = UnityEngine.Random.Range(-0.4f, 0.4f);
+                    yShakeOffset = UnityEngine.Random.Range(-0.4f, 0.4f);
+                    shakeTimer = 0;
+                }
+            }
+
+            xShakeOffset *= 0.99f;
+            yShakeOffset *= 0.99f;
+
+            Vector3 newPos = new(touch_wp.x + offset.x + xShakeOffset, touch_wp.y + offset.y + yShakeOffset, transform.position.z);
             Vector3 newRot = new(0, 0, 0);
+           
 
             // Snap to closts drag target (if one exists)
             if (dragTargets.Count > 0) {

@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GrabAndSwipe : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class GrabAndSwipe : MonoBehaviour
     GameObject currentTrail;
 
     /// <summary>
-    /// Used to add difficulty to the minigame, 0 is normal and 1 is shaky hands.
+    /// Used to add difficulty to the minigame. 0 is normal, 1 is shaky hands, and 2 is blurred vision.
     /// </summary>
     public int difficulty;
 
@@ -38,9 +39,11 @@ public class GrabAndSwipe : MonoBehaviour
     {
         isSlicing = false;
         previousMousePos = Vector2.zero;
+
         if(difficulty > 1)
         {
-           // PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>;
+            PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+            ppVolume.enabled = true;
         }
     }
 
