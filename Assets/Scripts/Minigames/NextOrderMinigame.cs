@@ -9,15 +9,11 @@ using System.Collections;
 public class NextOrderMinigame : MinigameBehavior
 {
     [SerializeField]
-    private Sprite andrej;
-    [SerializeField]
-    private Sprite oldFriend;
-    [SerializeField]
     private GameObject characterPortrait;
 
     public override void StartMinigame()
     {
-        characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.NextOrderTest();
+        characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.NextOrderChar();
         gameObject.SetActive(true);
         FlowerShopManager.Instance.NextMinigame();
     }

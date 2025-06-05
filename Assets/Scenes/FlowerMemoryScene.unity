@@ -1203,8 +1203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b78e8a0ca8e5b35a84c5afbebb6f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  andrej: {fileID: -171743095488495158, guid: a93560a59d7121f4f91c3fe7f9b263e4, type: 3}
-  oldFriend: {fileID: 7970975631028415661, guid: a5592716ed50d7a498c4f63232ba8079, type: 3}
   characterPortrait: {fileID: 1340726477}
 --- !u!4 &425442086
 Transform:
@@ -3033,8 +3031,8 @@ MonoBehaviour:
   minY: 0.5
   maxY: 1.5
   speed: 15
-  minWaitTime: 1
-  maxWaitTime: 2
+  minWaitTime: 10
+  maxWaitTime: 15
   carSprites:
   - {fileID: 2441016503757463086, guid: fb00cbf6826a37040baf5852668b535a, type: 3}
   - {fileID: 5779036021264795948, guid: 41d803a2a79c90e4292b4cc6a8d7854e, type: 3}
