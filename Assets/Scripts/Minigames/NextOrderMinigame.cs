@@ -17,12 +17,9 @@ public class NextOrderMinigame : MinigameBehavior
 
     public override void StartMinigame()
     {
-        FlowerShopManager.NextOrder();
+        characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.NextOrderTest();
         gameObject.SetActive(true);
         FlowerShopManager.Instance.NextMinigame();
-
-        // TODO: DELETE THIS. Hack for playtest.
-        characterPortrait.GetComponent<SpriteRenderer>().sprite = oldFriend;
     }
 
     public override void StopMinigame()

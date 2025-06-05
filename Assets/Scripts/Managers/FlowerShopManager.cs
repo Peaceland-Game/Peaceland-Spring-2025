@@ -80,6 +80,15 @@ public class FlowerShopManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Increment the current order and grab the sprite in it
+    /// </summary>
+    public static Sprite NextOrderTest()
+    {
+        currentOrder++;
+        return GetCurrentOrder().spriteForOrder;
+    }
+
+    /// <summary>
     /// The index of the current minigame that this memory is on
     /// </summary>
     /// <returns>The index of the current minigame this memory is on</returns>

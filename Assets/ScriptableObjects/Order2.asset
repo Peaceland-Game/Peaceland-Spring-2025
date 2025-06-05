@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Order2
   m_EditorClassIdentifier: 
   nameForOrder: Old Friend
+  spriteForOrder: {fileID: 7970975631028415661, guid: a5592716ed50d7a498c4f63232ba8079, type: 3}
   flowers:
   - needsDethorning: 1
     needsTrimming: 1

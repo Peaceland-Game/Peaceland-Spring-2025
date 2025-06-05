@@ -27,6 +27,7 @@ public class GrabAndSwipe : MonoBehaviour
     bool isMouseDown;
     bool isSlicing;
     Vector2 previousMousePos;
+    private bool shearMouseDown; // Makes sure multiple shear trails can't be made in one mouse down
 
     private float xOffset = 0;
     private float yOffset = 0;
@@ -36,6 +37,7 @@ public class GrabAndSwipe : MonoBehaviour
 
     private void Start()
     {
+        shearMouseDown = false;
         isSlicing = false;
         previousMousePos = Vector2.zero;
         if(difficulty > 1)
@@ -77,9 +79,11 @@ public class GrabAndSwipe : MonoBehaviour
         {
             if (currentTrail != null)
             {
+                currentTrail.GetComponent<TrailRenderer>().autodestruct = true;
                 currentTrail.transform.parent = null;
                 currentTrail = null;
             }
+            shearMouseDown = false;
         }
     }
 
@@ -96,10 +100,15 @@ public class GrabAndSwipe : MonoBehaviour
             //spawn a trail when the mouse is pressed, not released
             if (isMouseDown)
             {
-                currentTrail = Instantiate(shearTrail, transform.position, Quaternion.identity);
-                currentTrail.transform.parent = transform;
-                //turn on the trail once the shears move to the player's finger
-                StartCoroutine(TurnOnTrail());
+                if (!shearMouseDown)
+                {
+                    currentTrail = Instantiate(shearTrail, transform.position, Quaternion.identity);
+
+                    currentTrail.transform.parent = transform;
+                    //turn on the trail once the shears move to the player's finger
+                    StartCoroutine(TurnOnTrail());
+                    shearMouseDown = true;
+                }
             }
         }
     }
