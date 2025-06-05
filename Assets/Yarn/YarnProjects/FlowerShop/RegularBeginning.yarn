@@ -2,8 +2,11 @@ title: RegularStart
 ---
 <<declare $regularName = "Aria">>
 
--> Oh, {$regularName}, it's good to see you. How are you?
-    ___, hello. I'm doing well, how about you?
+<<darken>>
+{$floristName}: Oh, {$regularName}, it's good to see you. How are you?
+<<lighten>>
+{$regularName}: {$floristName}, hello. I'm doing well, how about you?
+<<darken>>
     -> I'm well, thank you.
         <<jump ConversationBegin>>
     -> I'm doing alright, though work is helping.
@@ -14,7 +17,9 @@ title: RegularStart
 
 title: WorriedConversationBegin
 ---
-Do you want me to take care of the storefront? You just need to say the word.
+<<lighten>>
+{$regularName}: Do you want me to take care of the storefront? You just need to say the word.
+<<darken>>
 -> No, it's alright. I'll get to it later.
     <<jump OrderBegin>>
 -> Thank you, but that's really not the issue right now.
@@ -23,7 +28,9 @@ Do you want me to take care of the storefront? You just need to say the word.
 
 title: WorriedConversationContinued
 ---
-I'm sorry, ___. Is there anything I can do to help?
+<<lighten>>
+{$regularName}: I'm sorry, {$floristName}. Is there anything I can do to help?
+<<darken>>
 -> I'll be fine, honestly. Thank you.
     <<jump OrderBegin>>
 -> I just need to work, {$regularName}. It'll pass.
@@ -32,35 +39,45 @@ I'm sorry, ___. Is there anything I can do to help?
 
 title: ConversationBegin
 ---
-Glad to hear that. I'm sorry about the storefront, do you want me to talk to someone about that?
--> Oh no, thank you. I'll get to it later.
-    <<jump OrderBegin>>
+<<lighten>>
+{$regularName}: Glad to hear that. I'm sorry about the storefront, do you want me to talk to someone about that?
+<<darken>>
+{$floristName}: Oh no, thank you. I'll get to it later.
+<<jump OrderBegin>>
 ===
 
 title: OrderBegin
 ---
-Alright. Well if you change your mind, let me know.
--> Of course. Now, what can I help you with?
-    <<jump OrderRequest>>
+<<lighten>>
+{$regularName}: Alright. Well if you change your mind, let me know.
+<<darken>>
+{$floristName}: Of course. Now, what can I help you with?
+<<jump OrderRequest>>
 ===
 
 title: WorriedOrderBegin
 ---
-...okay. But please, if you need anything, we're all here for you.
--> Thank you, I'll keep that in mind. Now, what can I help you with?
-    <<jump OrderRequest>>
+<<lighten>>
+{$regularName}: okay. But please, if you need anything, we're all here for you.
+<<darken>>
+{$floristName}: Thank you, I'll keep that in mind. Now, what can I help you with?
+<<jump OrderRequest>>
 ===
 
 title: OrderRequest
 ---
-I was just stopping by to order a bouquet. The girls wanted something nice for the memorial.
--> Oh yes! I had some ideas for one, I was just going to drop off aa bouqueet later tonight.
-    <<jump BuyOrder>>
+<<lighten>>
+{$regularName}: I was just stopping by to order a bouquet. The girls wanted something nice for the memorial.
+<<darken>>
+{$floristName}: Oh yes! I had some ideas for one, I was just going to drop off a bouqueet later tonight.
+<<jump BuyOrder>>
 ===
 
 title: BuyOrder
 ---
-That's great! Whatever you were thinking, I'll buy it off of you.
+<<lighten>>
+{$regularName}: That's great! Whatever you were thinking, I'll buy it off of you.
+<<darken>>
 -> {$regularName}, please. I can just give it to you all. I'll be there regardless.
     <<jump PaymentRefusal>>
 -> Are you sure? I was going to go all out.
@@ -71,21 +88,27 @@ That's great! Whatever you were thinking, I'll buy it off of you.
 
 title: AreYouSureResponse
 ---
-I'm certain. The girls already told me that we'll split the cost, so don't worry about. Give us everything you've got!
--> If you say so. I'll get it ready.
-    <<jump RegularOrderComplete>>
+<<lighten>>
+{$regularName}: I'm certain. The girls already told me that we'll split the cost, so don't worry about. Give us everything you've got!
+<<darken>>
+{$floristName}: If you say so. I'll get it ready.
+<<jump RegularOrderComplete>> //Remove if we put into game, should be setup through manager
 ===
 
 title: PaymentRefusal
 ---
-No no, not today. Today, you are going to leet me pay for this with no complaints.
--> Is there really no arguing this?
-    <<jump Nope>>
+<<lighten>>
+{$regularName}: No no, not today. Today, you are going to let me pay for this with no complaints.
+<<darken>>
+{$floristName}: Is there really no arguing this?
+<<jump Nope>>
 ===
 
 title: Nope
 ---
-*kind smile* Nope!
--> ... I'll get it ready for you then.
-    <<jump RegularOrderComplete>>
+<<lighten>>
+{$regularName}: *kind smile* Nope!
+<<darken>>
+{$floristName}: ... I'll get it ready for you then.
+<<jump RegularOrderComplete>> //Remove if we put into game, should be setup through manager
 ===

@@ -1,9 +1,11 @@
 title: OfficialOrderComplete
 position: 2,-62
 ---
-These are wonderful! They'll make our Founder's Day even more special.
+<<lighten>>
+{$officialName}: These are wonderful! They'll make our Founder's Day even more special.
 // Could be dependent on how well player interaction goes.
 // Also could integrate price into convo. Ala "that'll be {$price}"
+<<darken>>
 -> I'm so glad to hear.
     <<jump OfficialEndingOne>>
 -> Excellent!
@@ -15,13 +17,15 @@ These are wonderful! They'll make our Founder's Day even more special.
 title: OfficialEndingOne
 position: -128,150
 ---
-*{$officialName} pays*
+({$officialName} pays)
 // I don't know if $officialVandalism is carrying over the correct value from the OfficialBeginning file. 
 // If it isn't in sync, then the Yarn will always play through the second ending (for if the vandalism hasn't come up yet.)
 <<if $officialVandalism is false>>
     <<jump OfficialEndingTwo>>
-<<elseif $officialVandalism is true>> // Is this bad syntax? Someone yell at me if this is bad syntax.
-    Thank you again, I'll make sure the council knows of your work here today! // Official should address Florist here but it feels wrong for him to call her by first name. I'd reccomend finding a last name for the Florist.
+<<else>>
+    <<lighten>>
+    {$officialName}: Thank you again, I'll make sure the council knows of your work here today! // Official should address Florist here but it feels wrong for him to call her by first name. I'd reccomend finding a last name for the Florist.
+    <<darken>>
     -> Sure thing, Councilman. Have a good one.
     -> Thank you {$officialName}! I look out for the bouquets on my walk home.
 <<endif>>
@@ -30,7 +34,9 @@ position: -128,150
 title: OfficialEndingTwo
 position: 138,182
 ---
-Before I go... I hope you know that your flower shop is a beloved institution in our town...
+<<lighten>>
+{$officialName}: Before I go... I hope you know that your flower shop is a beloved institution in our town...
+<<darken>>
 -> ...
     <<jump OfficialEndingTwoConti>>
 -> That's kind of you to say.
@@ -40,11 +46,17 @@ Before I go... I hope you know that your flower shop is a beloved institution in
 title: OfficialEndingTwoConti
 position: 146,400
 ---
-…and i want you know that the council unilaterally supports you and your business. We condemn all acts of vandalism and will work closely with you to make sure this wrong is righted.
+<<lighten>>
+{$officialName}: …and i want you know that the council unilaterally supports you and your business. We condemn all acts of vandalism and will work closely with you to make sure this wrong is righted.
+<<darken>>
 -> Thank you, I'd be grateful for the help.
-    Of course! I'll be around in the next few days to go over some details. Thank you so much again!
+    <<lighten>>
+    {$officialName}: Of course! I'll be around in the next few days to go over some details. Thank you so much again!
 -> I appreciate that Councilman but it's really no trouble, I've got the situation under control.
-    Are you sure? It's the councils duty to-
-    -> I promise I'm sure. Thank you.
-        ...well if you change your mind, feel free to stop by my office. Thank you again for the flowers!
+    <<lighten>>
+    {$officialName}: Are you sure? It's the councils duty to-
+    <<darken>>
+    {$floristName}: I promise I'm sure. Thank you.
+    <<lighten>>
+    {$officialName}: ...well if you change your mind, feel free to stop by my office. Thank you again for the flowers!
 ===
