@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 41747955}
   - component: {fileID: 41747958}
+  - component: {fileID: 41747959}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -182,6 +183,20 @@ MonoBehaviour:
   flowerBottomSprites:
   - {fileID: 6139130623109489790, guid: 2513d9849507e1249ade306dc733a11a, type: 3}
   - {fileID: 2547050508655976591, guid: de840bb171756914bb59c6eaf8ebcde3, type: 3}
+--- !u!114 &41747959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41747954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67637868ea98b044f925bdef5cb81cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 492172087}
+  characterSprite: {fileID: 1340726478}
 --- !u!1 &88269609
 GameObject:
   m_ObjectHideFlags: 0
