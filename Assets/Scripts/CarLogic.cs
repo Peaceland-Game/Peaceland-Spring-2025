@@ -15,7 +15,10 @@ public class CarLogic : MonoBehaviour
     private float maxY; // Highest point car can show
 
     [SerializeField]
-    private float speed; // How fast car goes
+    private float minSpeed; // How fast car goes at slowest
+
+    [SerializeField]
+    private float maxSpeed; // How fast car goes at fastest
 
     [SerializeField]
     private float minWaitTime; // Minimum time between cars appearing
@@ -26,6 +29,7 @@ public class CarLogic : MonoBehaviour
     [SerializeField]
     private Sprite[] carSprites; //All car sprites that can be used
 
+    private float speed;
     private float timestamp; // Used to track how long to wait
     private float midY; // Average Y value to track what side of road
     private Vector3 scale; // What the scale is when going right
@@ -85,6 +89,7 @@ public class CarLogic : MonoBehaviour
     /// </summary>
     private Vector3 prepCar()
     {
+        speed = Random.Range(minSpeed, maxSpeed);
         float yPos = Random.Range(minY, maxY);
         float xPos;
         if (yPos < midY)

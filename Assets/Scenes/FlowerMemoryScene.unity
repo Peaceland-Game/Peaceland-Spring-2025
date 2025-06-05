@@ -3030,7 +3030,8 @@ MonoBehaviour:
   rightX: 8.1
   minY: 0.5
   maxY: 1.5
-  speed: 15
+  minSpeed: 8
+  maxSpeed: 12
   minWaitTime: 10
   maxWaitTime: 15
   carSprites:
