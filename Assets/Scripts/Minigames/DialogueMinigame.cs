@@ -25,4 +25,5 @@ public class DialogueMinigame : MinigameBehavior
     public override void StopMinigame()
     {
     }
+
 }

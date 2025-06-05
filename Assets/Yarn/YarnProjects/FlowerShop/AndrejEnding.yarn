@@ -1,6 +1,7 @@
 title: OrderComplete
 position: 0,-8
 ---
+<<lighten>>
 {$customerName}: Thank you!
 ({$customerName} pays)
     <<jump NPCVandalism>>
@@ -10,19 +11,24 @@ position: 0,190
 ---
 {$customerName}: And, uh… I just wanted to say, I saw what happened outside. 
 {$customerName}: I'm really sorry that happened to you. You don't deserve that, especially today.
-
-{$FloristName}: Thank you, {$customerName}. I appreciate that.
+<<darken>>
+{$floristName}: Thank you, {$customerName}. I appreciate that.
     <<jump NPCOffer>>
 ===
 
 title: NPCOffer
 position: 1,375
 ---
+<<lighten>>
 {$customerName}: Do you need help cleaning it up?
+<<darken>>
 -> No, you enjoy your date.
+    <<lighten>>
     {$customerName}: Thank you, I'm sure Hana will love these flowers!
 -> I wouldn't ask that of you.
+    <<lighten>>
     {$customerName}: Are you sure? I don't mind.
+    <<darken>>
     -> There's a group coming by tonight, don't worry.
     <<jump Conclusion>>
 -> There's a group coming by tonight, don't worry.
@@ -31,5 +37,6 @@ position: 1,375
 
 title: Conclusion
 ---
+<<lighten>>
 {$customerName}: Alright, well I hope your day gets better.
 ===
