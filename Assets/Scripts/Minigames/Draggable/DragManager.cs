@@ -56,9 +56,15 @@ public class DragManager : MinigameBehavior
     /// </summary>
     int flowerArrangeNum = 0;
 
+    /// <summary>
+    /// Sets the blur on the camera
+    /// </summary>
+    private PostProcessVolume ppVolume;
+
     public override void StartMinigame()
     {
-        
+        ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+
         // Initilize draggables and targets with the number of flowers in the order
         int numberOfFlowers = FlowerShopManager.GetCurrentOrder().flowers.Count;
         draggables = new Draggable[numberOfFlowers];
@@ -94,7 +100,6 @@ public class DragManager : MinigameBehavior
         //Adds the blur to minigames with added difficulty
         if (difficulty > 1)
         {
-            PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
             ppVolume.enabled = true;
         }
     }
@@ -112,7 +117,6 @@ public class DragManager : MinigameBehavior
         }
 
         //Remove the blur from minigames with added difficulty
-        PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
         ppVolume.enabled = false;
 
         //deactivate the minigame
