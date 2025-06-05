@@ -79,7 +79,7 @@ public class Draggable : MonoBehaviour
         typeofFlower = _typeOfFlower;
 
         // Set the sprite
-        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerSprite(_typeOfFlower);
+        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerTopSprite(_typeOfFlower);
     }
 
     public bool CanDrag(Vector3 touch_wp) {

@@ -1,6 +1,8 @@
 using System.Collections;
+using System;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,9 +19,18 @@ public class GrabAndSwipe : MonoBehaviour
     [SerializeField] GameObject shearTrail;
     GameObject currentTrail;
 
+    /// <summary>
+    /// Used to add difficulty to the minigame, 0 is normal and 1 is shaky hands.
+    /// </summary>
+    public int difficulty;
+
     bool isMouseDown;
     bool isSlicing;
     Vector2 previousMousePos;
+
+    private float xOffset = 0;
+    private float yOffset = 0;
+    private float shakeTimer;
 
     public bool IsSlicing { get { return isSlicing; } }
 
@@ -27,6 +38,10 @@ public class GrabAndSwipe : MonoBehaviour
     {
         isSlicing = false;
         previousMousePos = Vector2.zero;
+        if(difficulty > 1)
+        {
+           // PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>;
+        }
     }
 
     private void Update()
@@ -36,11 +51,26 @@ public class GrabAndSwipe : MonoBehaviour
             // Snap to mouse position
             transform.position = InputHelper.GetPointerWorldPosition();
 
+            //Randomly moves the slicer position to simulate shaky hands
+            if (difficulty > 0)
+            {
+                shakeTimer += Time.deltaTime;
+                if (shakeTimer > 0.2)
+                {
+                    xOffset = UnityEngine.Random.Range(-0.4f, 0.4f);
+                    yOffset = UnityEngine.Random.Range(-0.4f, 0.4f);
+                    shakeTimer = 0;
+                }
+                xOffset *= 0.99f;
+                yOffset *= 0.99f;
+                transform.position = new(transform.position.x + xOffset, transform.position.y + yOffset);
+            }
+
             // Determine if the blade is slicing
             isSlicing = Vector2.Distance(previousMousePos, transform.position) >= sliceSpeed * Time.deltaTime;
 
             // Update prev mouse pos
-            previousMousePos = transform.position;
+            previousMousePos = new(transform.position.x + xOffset, transform.position.y + yOffset);
         }
         //separate the trail from the shears
         else
