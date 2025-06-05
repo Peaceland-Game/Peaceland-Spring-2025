@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 41747955}
   - component: {fileID: 41747958}
+  - component: {fileID: 41747959}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -179,6 +180,20 @@ MonoBehaviour:
   flowerSprites:
   - {fileID: 857312311372029537, guid: 22b0d6ccf74eac744806de97c2df2787, type: 3}
   - {fileID: 599749539538422185, guid: 62c29300dc0fedc4286ef10ed0845fe1, type: 3}
+--- !u!114 &41747959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41747954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67637868ea98b044f925bdef5cb81cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 492172087}
+  characterSprite: {fileID: 1340726478}
 --- !u!1 &88269609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1875,7 +1890,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -3
-  m_Sprite: {fileID: 7487958855065295060, guid: f47f1a9ef996bbd4ca72183d60a26adb, type: 3}
+  m_Sprite: {fileID: -2803175787980464757, guid: 13eee8643678814428355ac601a2b1b6, type: 3}
   m_Color: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3429,7 +3444,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -2
   m_Sprite: {fileID: -171743095488495158, guid: a93560a59d7121f4f91c3fe7f9b263e4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
