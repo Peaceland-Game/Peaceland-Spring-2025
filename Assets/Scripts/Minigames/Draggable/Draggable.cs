@@ -75,6 +75,9 @@ public class Draggable : MonoBehaviour
     /// </summary>
     private Vector3 startPos;
 
+    /// <summary>
+    /// used to check screen bounds for draggable objects in BoundsCheck()
+    /// </summary>
     private Renderer renderer;
     private Camera camera;
     void Start()
@@ -155,6 +158,9 @@ public class Draggable : MonoBehaviour
         }
     } 
 
+    /// <summary>
+    /// check if object is off screen, return to starting position if it is
+    /// </summary>
     public void BoundsCheck()
     {
         Vector3 screenpos = camera.WorldToScreenPoint(transform.position);
