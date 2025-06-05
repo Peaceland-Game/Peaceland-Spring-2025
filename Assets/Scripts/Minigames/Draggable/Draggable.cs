@@ -75,11 +75,16 @@ public class Draggable : MonoBehaviour
     /// </summary>
     private Vector3 startPos;
 
+    private Renderer renderer;
+    private Camera camera;
     void Start()
     {   
         bounds = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
+
+        renderer = GetComponent<Renderer>();
+        camera = FindFirstObjectByType<Camera>();
     }
 
     // Called when object is instantiated
@@ -137,31 +142,33 @@ public class Draggable : MonoBehaviour
     public void EndDrag() {
         // End drag
         dragging = false;
-        BoundsCheck();
 
         if (snapIndex != -1) {
             DisableDrag();
             dragTargets[snapIndex].GetComponent<DragTarget>().isSnapped = true;
             draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
         }
+
+        else
+        {
+            BoundsCheck();
+        }
     } 
 
     public void BoundsCheck()
     {
-        Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.transform.position.z);
-        Vector3 screenHeight = new Vector3(Screen.width / 2, Screen.height, Camera.main.transform.position.z);
-        Vector3 screenWidth = new Vector3(Screen.width, Screen.height / 2, Camera.main.transform.position.z);
-               
-        Vector3 goScreen = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 screenpos = camera.WorldToScreenPoint(transform.position);
+        bool onScreen = screenpos.x > 0f && screenpos.x < Screen.width && screenpos.y > 0f && screenpos.y < Screen.height;
 
-        float distX = Vector3.Distance(new Vector3(Screen.width / 2, 0f, 0f), new Vector3(goScreen.x, 0f, 0f));
-        float distY = Vector3.Distance(new Vector3(0f, Screen.height, 0f), new Vector3(0f, goScreen.y, 0f));
-
-        if (distX > Screen.width / 2 || distY > Screen.height / 2)
+        if (onScreen && renderer.isVisible)
+        {
+            return;
+        }
+        else
         {
             transform.position = startPos;
         }
-        
+
     }
 
     void Update()
