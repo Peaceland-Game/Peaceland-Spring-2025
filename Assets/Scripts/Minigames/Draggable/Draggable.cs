@@ -165,6 +165,14 @@ public class Draggable : MonoBehaviour
         {
             BoundsCheck();
         }
+
+        //If the num of flowers is greater than or equal to the length of the draggables array, stop the minigame and
+        //reset the num of flowers arranged
+        if (dm.flowerArrangeNum >= dm.draggables.Length)
+        {
+            dm.flowerArrangeNum = 0;
+            FlowerShopManager.Instance.NextMinigame();
+        }
     } 
 
     /// <summary>
@@ -227,14 +235,5 @@ public class Draggable : MonoBehaviour
             }
 
         }
-
-        //If the num of flowers is greater than or equal to the length of the draggables array, stop the minigame and
-        //reset the num of flowers arranged
-        if (dm.flowerArrangeNum >= dm.draggables.Length)
-        {
-            dm.flowerArrangeNum = 0;
-            FlowerShopManager.Instance.NextMinigame();
-        }
-
     }
 }
