@@ -5,58 +5,69 @@ position: -191,-394
 ---
 <<declare $childName = "Lukas">>
 <<declare $floristKidName = "Pranas">>
-
--> ...
-    Um...
-    Excuse me?
-    <<jump FloristGreeting>>
+<<darken>>
+{$floristName}: ...
+<<lighten>>
+{$childName}: Um...
+{$childName}: Excuse me?
+<<jump FloristGreeting>>
 
 ===
 
 title: FloristGreeting
 position: -200,-215
 ---
--> Ah, hello! Apologies, what can I help you with?
-    It’s my mom’s birthday tomorrow and I was thinking I could get her some flowers…
-    <<jump OrderChoices>>
+<<darken>>
+{$floristName}: Ah, hello! Apologies, what can I help you with?
+<<lighten>>
+{$childName}: It’s my mom’s birthday tomorrow and I was thinking I could get her some flowers…
+<<jump OrderChoices>>
 ===
 
 title: OrderChoices
 position: -212,-66
 ---
-My dad gave me some money- um, what can I get for this?
-    -> I think most of the pre-arranged bouquets are outside of that price range but I could put something small together for you.
-        <<jump OrderTaking>>
-    -> I’m not really sure what he expected you to be able to get with that but I'll see what I can do.
-        <<jump OrderTaking>>
-    -> You can look at the premade bouquets.
-        <<jump PremadeBouquets>>
+<<lighten>>
+{$childName}: My dad gave me some money- um, what can I get for this?
+<<darken>>
+-> I think most of the pre-arranged bouquets are outside of that price range but I could put something small together for you.
+    <<jump OrderTaking>>
+-> I’m not really sure what he expected you to be able to get with that but I'll see what I can do.
+    <<jump OrderTaking>>
+-> You can look at the premade bouquets.
+    <<jump PremadeBouquets>>
 ===
 
 title: PremadeBouquets
 position: 75,-169
 ---
-Um, I think these are all out of my price range… is there anything I can order to be made?
-    -> Since it’s her birthday, I’ll do a small one special for you.
-    ->I can put something together that will fit into your budget.
-    <<jump OrderTaking>>
+<<lighten>>
+{$childName}: Um, I think these are all out of my price range… is there anything I can order to be made?
+<<darken>>
+-> Since it’s her birthday, I’ll do a small one special for you.
+->I can put something together that will fit into your budget.
+<<jump OrderTaking>>
 ===
 
 title: OrderTaking
 position: 122,37
 ---
--> What kind of flowers does she like?
-     I’m not sure… she usually says the white ones on the trees are pretty.
-    <<jump FlowerChoices>>
+<<darken>>
+{$floristName}: What kind of flowers does she like?
+<<lighten>>
+{$childName}: I’m not sure… she usually says the white ones on the trees are pretty.
+<<jump FlowerChoices>>
 ===
 
 //can put this as player option but idk what flowers we want to include for this part
 title: FlowerChoices
 position: -156,148
 ---
-->We don’t carry those unfortunately but I could give you *flowers*, they’re good for *whatever*. Or we could do *flower* and they’re usually associated with *blank*
-    I'm not sure...
-    <<jump SadFlower1>>
+<<darken>>
+{$floristName}: We don’t carry those unfortunately but I could give you *flowers*, they’re good for *whatever*. Or we could do *flower* and they’re usually associated with *blank*
+<<lighten>>
+{$childName}: I'm not sure...
+<<jump SadFlower1>>
 ===
 //i need to do 1 2 3 so that theyre all options for the player to press, but is that how we want to do it?
 //i feel like if its optionless its easier to j put them all in the same node and they process through on their own?
@@ -64,24 +75,29 @@ position: -156,148
 title: SadFlower1
 position: -147,342
 ---
--> I think *these* might be the closest in appearance to the ones outside but they’re usually associated with mourning so I’m not sure those would be appropriate
+<<darken>>
+{$floristName}: I think *these* might be the closest in appearance to the ones outside but they’re usually associated with mourning so I’m not sure those would be appropriate
 <<jump SadFlower2>>
 ===
 
 title: SadFlower2
 position: -154,506
 ---
--> Although, they have been selling a lot recently... I’ll probably need some for *friend*’s order later…
-    Um, is everything alrig-
-    <<jump GameplayTransition>>
+<<darken>>
+{$floristName}: Although, they have been selling a lot recently... I’ll probably need some for {$teacherName}’s order later…
+<<lighten>>
+{$childName}: Um, is everything alrig-
+<<jump GameplayTransition>>
+//Replaced *friend* with {$teacherName}, makes the most sense
 ===
 
 //blurry vision would start here
 title: GameplayTransition
 position: 267,459
 ---
--> You know what I’ll just put together a small version of my usual birthday bouquet for you, okay?
-    ...
-    <<jump ChildOrderComplete>>
+<<darken>>
+{$floristName}: You know what I’ll just put together a small version of my usual birthday bouquet for you, okay?
+<<lighten>>
+{$childName}: ...
+<<jump ChildOrderComplete>> //Remove if we put into game, should be setup through manager
 ===
-

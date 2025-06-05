@@ -2,10 +2,10 @@
 position: 9,-242
 ---
 <<declare $customerName = "Andrej">>
-
+<<darken>>
 <<wait  1>>
 
-{$FloristName}: Hi, how are you?
+{$floristName}: Hi, how are you?
 
 <<jump Waiting>>
 ===
@@ -15,7 +15,7 @@ position: 7,-42
 ---
 <<wait 1>>
 // I've seen some games do the thing where, if we don't know whose talking yet their tag shoes up as ellipses. Thoughts? May be confusing.
-{$FloristName}: ...
+{$floristName}: ...
 
 <<jump WaitingMore>>
 ===
@@ -23,9 +23,9 @@ position: 7,-42
 title: WaitingMore
 ---
 <<wait  0.5>>
-// Registering FloristName as Andrej and customerName as Mira in the Dialogue preview.
+// Registering floristName as Andrej and customerName as Mira in the Dialogue preview.
 // I think it's a 'my computer is weird' issue because the online dialogue preview works just fine.
-{$FloristName}: Uh... {$customerName}?
+{$floristName}: Uh... {$customerName}?
 
 <<jump NPCFirstDialogue>>
 ===
@@ -33,8 +33,10 @@ title: WaitingMore
 title: NPCFirstDialogue
 position: 0,137
 ---
+<<lighten>>
 {$customerName}: OH—sorry, I mean, I'm good thanks. 
 {$customerName}: How are you?
+<<darken>>
 -> I'm good, thanks; welcome to my shop! What can I do for you today?
 -> ...uhh, fine thanks. Anything I can help you with?
 
@@ -44,8 +46,10 @@ position: 0,137
 title: NPCQuestion
 position: 17,322
 ---
+<<lighten>>
 {$customerName}: Well, I'd like to get some flowers...
-{$FloristName}: Ok, any in particular—
+<<darken>>
+{$floristName}: Ok, any in particular—
 
 <<jump FloristQuestion>>
 ===
@@ -53,7 +57,9 @@ position: 17,322
 title: FloristQuestion
 position: 39,550
 ---
+<<lighten>>
 {$customerName}: They're for my girlfriend!
+<<darken>>
 -> Aww, that's sweet, I thought I saw you together the other day!  What kind of flowers does she like?
 -> Great. Good for you. What flowers does she like?
 
@@ -63,14 +69,15 @@ position: 39,550
 title: NPCNervousRamble
 position: 95,714
 --- 
+<<lighten>>
 {$customerName}: Well I- I don't actually know... We just started dating last week and I... Should I have asked?
 {$customerName}: I figured couples usually get flowers so I wanted to get her flowers...
 {$customerName}: Is there some kind of flower people usually get?
-
-{$FloristName}: Well, if you're looking for flowers for a first partner, my husband got me roses on our first date, and that turned out well! 
-{$FloristName}: You could also choose peonies, but they're quite popular at weddings and that might lead to... questions.
-{$FloristName}: Daisies represent youth, which is perfect for a young love. 
-{$FloristName}: But of course, it's your choice, you know her best.
+<<darken>>
+{$floristName}: Well, if you're looking for flowers for a first partner, my husband got me roses on our first date, and that turned out well! 
+{$floristName}: You could also choose peonies, but they're quite popular at weddings and that might lead to... questions.
+{$floristName}: Daisies represent youth, which is perfect for a young love. 
+{$floristName}: But of course, it's your choice, you know her best.
 
 <<jump NPCOrderIn4>>
 ===
@@ -78,7 +85,8 @@ position: 95,714
 title: NPCOrderIn4
 position: 94,953
 ---
+<<lighten>>
 {$customerName}: Oh uh... can I get both roses and daisies? I think that'd be nice.
-
-{$FloristName}: Sure! Let me get that started for you now.
+<<darken>>
+{$floristName}: Sure! Let me get that started for you now.
 ===

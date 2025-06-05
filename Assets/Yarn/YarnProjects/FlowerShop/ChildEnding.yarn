@@ -1,10 +1,12 @@
 title: ChildOrderComplete
 position: -29,-310
 ---
-->how does this look?
-    I think she’ll love it
-    Thank you 
-    <<jump Fumble>>
+<<darken>>
+{$floristName}: how does this look?
+<<lighten>>
+{$childName}: I think she’ll love it
+{$childName}: Thank you 
+<<jump Fumble>>
 ===
 
 
@@ -13,27 +15,31 @@ position: -29,-310
 title: Fumble
 position: -27,-142
 ---
-->Of course, Pranas-
-...
-    Hm?
-    <<jump Trying>>
+<<darken>>
+{$floristName}: Of course, {$floristKidName}-
+{$floristName}: ...
+<<lighten>>
+{$childName}: Hm?
+<<jump Trying>>
 ===
 
 title: Trying
 position: -6,18
 ---
-->Of course, I hope your mother-
-...
+<<darken>>
+{$floristName}: Of course, I hope your mother-
+{$floristName}: ...
 <<jump Trying2>>
 ===
 
 title: Trying2
 position: 2,189
 ---
-->I hope your mother enjoys them.
-    *Lukas takes one of the flowers out of the bouquet and places it down for the florist*
-    //wouldn't actually go in the node but for the sake of walking through
-    <<jump ChildEnd>>
+<<darken>>
+{$floristName}: I hope your mother enjoys them.
+(Lukas takes one of the flowers out of the bouquet and places it down for the florist)
+//wouldn't actually go in the node but for the sake of walking through
+<<jump ChildEnd>>
 ===
 
 //*Lukas takes one of the flowers out of the bouquet and places it down for the florist
@@ -43,6 +49,7 @@ position: 2,189
 title: ChildEnd
 position: 2,363
 ---
-I think she'd want me to give you one too, you remind me a lot of her.
-Have a good rest of your day!
+<<lighten>>
+{$childName}: I think she'd want me to give you one too, you remind me a lot of her.
+{$childName}: Have a good rest of your day!
 ===

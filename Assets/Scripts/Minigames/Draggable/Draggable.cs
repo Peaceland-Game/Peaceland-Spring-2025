@@ -71,9 +71,29 @@ public class Draggable : MonoBehaviour
     private float xShakeOffset;
     private float yShakeOffset;
 
+    /// <summary>
+    /// RigidBody2D reference
+    /// </summary>
+    private Rigidbody2D rb;
+
+    /// <summary>
+    /// get starting position for draggable
+    /// </summary>
+    private Vector3 startPos;
+
+    /// <summary>
+    /// used to check screen bounds for draggable objects in BoundsCheck()
+    /// </summary>
+    private Renderer renderer;
+    private Camera camera;
     void Start()
     {   
         bounds = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
+        startPos = transform.position;
+
+        renderer = GetComponent<Renderer>();
+        camera = FindFirstObjectByType<Camera>();
     }
 
     // Called when object is instantiated
@@ -138,7 +158,31 @@ public class Draggable : MonoBehaviour
             dragTargets[snapIndex].GetComponent<DragTarget>().isSnapped = true;
             draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
         }
+
+        else
+        {
+            BoundsCheck();
+        }
     } 
+
+    /// <summary>
+    /// check if object is off screen, return to starting position if it is
+    /// </summary>
+    public void BoundsCheck()
+    {
+        Vector3 screenpos = camera.WorldToScreenPoint(transform.position);
+        bool onScreen = screenpos.x > 0f && screenpos.x < Screen.width && screenpos.y > 0f && screenpos.y < Screen.height;
+
+        if (onScreen && renderer.isVisible)
+        {
+            return;
+        }
+        else
+        {
+            transform.position = startPos;
+        }
+
+    }
 
     void Update()
     {
@@ -195,5 +239,6 @@ public class Draggable : MonoBehaviour
             }
 
         }
+
     }
 }
