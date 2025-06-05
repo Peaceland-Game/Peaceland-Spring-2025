@@ -3,24 +3,29 @@ title: OfficialStart
 <<declare $officialFullName = "Stefan Ademi">>
 <<declare $officialName = "Stefan">>
 <<declare $officialVandalism = false>>
-
--> Next in line -- how can I help you?
-    It's a pleasure to meet you! I'm Councilman {$officialFullName}. I've heard wonderful things about your work!
-    -> Ah, Councilman! Great to meet you, congratulations on the election. How can I help you today?
-        <<jump OfficialBusiness>>
-    -> The pleasure is mine, Councilman. *firmly shakes hand* What can I do for you?
-        <<jump OfficialBusiness>>
-    -> Oh, um. Nice to meet you sir. *shakes hand*
-        <<jump OfficialBusiness>>
+<<darken>>
+{$floristName}: Next in line -- how can I help you?
+<<lighten>>
+{$officialName}: It's a pleasure to meet you! I'm Councilman {$officialFullName}. I've heard wonderful things about your work!
+<<darken>>
+-> Ah, Councilman! Great to meet you, congratulations on the election. How can I help you today?
+    <<jump OfficialBusiness>>
+-> The pleasure is mine, Councilman. *firmly shakes hand* What can I do for you?
+    <<jump OfficialBusiness>>
+-> Oh, um. Nice to meet you sir. *shakes hand*
+    <<jump OfficialBusiness>>
 ===
 
 title: OfficialBusiness
 position: 2,189
 ---
-I'm here on official council business. Founder's Day is upcoming and I thought it important to have  bouquets from such a fine local institution as yours adorn our front steps!
+<<lighten>>
+{$officialName}: I'm here on official council business. Founder's Day is upcoming and I thought it important to have bouquets from such a fine local institution as yours adorn our front steps!
+<<darken>>
 -> *chuckles* I see… the council has you running errands, huh?
     <<jump OfficialTangentPathOne>>
--> What an honor! I'm delighted the council thought of my little shop for such an occasion. What kind of bouquets are you looking for?
+-> What an honor!
+    {$floristName}: I'm delighted the council thought of my little shop for such an occasion. What kind of bouquets are you looking for?
     <<jump OfficialOrder>>
 -> Councilman, with all due respect, my shop was just vandalized. Are you sure that's a good idea?
     <<jump OfficialTangentPathTwo>>
@@ -31,20 +36,26 @@ I'm here on official council business. Founder's Day is upcoming and I thought i
 title: OfficialTangentPathOne
 position: -158,359
 ---
-*smiling* Hey now, a visit to a valued shop in our community by our town's Assistant Treasurer is hardly what I'd call an “errand”, don't you think?
+<<lighten>>
+{$officialName}: *smiling* Hey now, a visit to a valued shop in our community by our town's Assistant Treasurer is hardly what I'd call an “errand”, don't you think?
+<<darken>>
 -> Of course, Councilman, now what kind of bouquets are you looking for?
     <<jump OfficialOrder>>
 -> …but it is an errand, right…
-    *in a hushed tone* OK yes it's an errand, but an important one!
-    -> *laughs* If you say so, Councilman. What kinds of flowers do you have in mind?
-        <<jump OfficialOrder>>
+    <<lighten>>
+    {$officialName}: *in a hushed tone* OK yes it's an errand, but an important one!
+    <<darken>>
+    {$floristName}: *laughs* If you say so, Councilman. What kinds of flowers do you have in mind?
+    <<jump OfficialOrder>>
 ===
 
 title: OfficialTangentPathTwo
 position: 173,343
 ---
-Of course, I completely understand your trepidation. Please know that the council unilaterally condemns the actions of those vandals. You have our full support, and it would be our honor to have your flowers adorn our steps.
+<<lighten>>
+{$officialName}: Of course, I completely understand your trepidation. Please know that the council unilaterally condemns the actions of those vandals. You have our full support, and it would be our honor to have your flowers adorn our steps.
 <<set $officialVandalism to true>>
+<<darken>>
 -> Thank you.
     <<jump OfficialTangentPathTwoConti>>
 -> Thanks Councilman, that means a lot.
@@ -55,33 +66,48 @@ title: OfficialTangentPathTwoConti
 position: 174,521
 ---
 // I'm gonna guess this is not a great name for this node, please feel free to rename it if is!
-Please let us know what damages you've incurred. I could speak to Jorge about our community restoration budget and see what the council can do to help?
+<<lighten>>
+{$officialName}: Please let us know what damages you've incurred. I could speak to Jorge about our community restoration budget and see what the council can do to help?
+<<darken>>
 -> Oh don't worry about me, that money should go to the people who really need it.
-    Are you sure? I'm sure we could make something work.
-    -> I'm sure, {$officialName}. I'll be OK. 
-        Alright. Well let me know if you change your mind. Now, about those flowers…
-        -> Yes of course, what are you interested in?
+    <<lighten>>
+    {$officialName}: Are you sure? I'm sure we could make something work.
+    <<darken>>
+    {$floristName}: I'm sure, {$officialName}. I'll be OK. 
+    <<lighten>>
+    {$officialName}: Alright. Well let me know if you change your mind. Now, about those flowers…
+    <<darken>>
+    {$floristName}: Yes of course, what are you interested in?
+    <<jump OfficialOrder>>
 -> I'd really appreciate that, thank you. If it's not too much trouble, of course.
-    Not at all! I'll let you know what he says. Now, about the flowers…
-    -> Yes! What're you looking for?
-        <<jump OfficialOrder>>
+    <<lighten>>
+    {$officialName}: Not at all! I'll let you know what he says. Now, about the flowers…
+    <<darken>>
+    {$floristName}: Yes! What're you looking for?
+    <<jump OfficialOrder>>
 -> I'll take care of it, thanks.
-    Are you sure? I'd be happy to-
-    -> I will take care of it. I'd hate to disturb the council's business.
-        …very well. But please let me know if you change your mind.
-        -> I'll be sure to. How many bouquets do you want?
-            <<jump OfficialOrder>>
+    <<lighten>>
+    {$officialName}: Are you sure? I'd be happy to-
+    <<darken>>
+    {$floristName}: I will take care of it. I'd hate to disturb the council's business.
+    <<lighten>>
+    {$officialName}: …very well. But please let me know if you change your mind.
+    <<darken>>
+    {$floristName}: I'll be sure to. How many bouquets do you want?
+    <<jump OfficialOrder>>
 ===
 
 
 title: OfficialOrder
 position: 15,711
 ---
-I'd like two bouquets of carnations and any wildflowers you may have.
+<<lighten>>
+{$officialName}: I'd like two bouquets of carnations and any wildflowers you may have.
 // Option could be made for player, depending on dialogue choices made in the above sequences. Leaving as player's choice for now, but if we implement systems like this then come back to this spot.
--> You're in luck! We just got some fresh carnations in, haven't had any since before the blockades. I'll put those together for you right now.
-    <<jump OfficialOrderComplete>>
+-> You're in luck!
+    {$floristName}: We just got some fresh carnations in, haven't had any since before the blockades. I'll put those together for you right now.
+    <<jump OfficialOrderComplete>> //Remove if we put into game, should be setup through manager
 -> Take a look at any of the premade bouquets you see and let me know if they are to your liking. 
 // Also dependent on if premade bouqets are an implemented gameplay feature -- if Official's order is next after Andrei, then this would/could be the introduction of this mechanic
-    <<jump OfficialOrderComplete>>
+    <<jump OfficialOrderComplete>> //Remove if we put into game, should be setup through manager
 ===

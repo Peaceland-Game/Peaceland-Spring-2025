@@ -1,43 +1,52 @@
 title: RegularOrderComplete
 ---
-Oh they look lovely! I'm sure the girls will adore them.
--> I hope so! I tried to keep it modest, but I got a little carried away.
-    <<jump Nonsense>>
+<<lighten>>
+{$regularName}: Oh they look lovely! I'm sure the girls will adore them.
+<<darken>>
+{$floristName}: I hope so! I tried to keep it modest, but I got a little carried away.
+<<jump Nonsense>>
 ===
 
 title: Nonsense
 ---
-Nonsense! It's amazing, I can't thank you enough ___.
--> ...
-    <<jump DoubleChecking>>
+<<lighten>>
+{$regularName}: Nonsense! It's amazing, I can't thank you enough {$floristName}.
+<<darken>>
+{$floristName}: ...
+<<jump DoubleChecking>>
 ===
 
 title: DoubleChecking
 ---
-Hey, I know you said you were alright, but remember we're here for you.
+<<lighten>>
+{$regularName}: Hey, I know you said you were alright, but remember we're here for you.
+<<darken>>
 -> Where'd that come from?
-    <<jump FriendsIntuition>>
 -> {$regularName}, please. I'm okay.
-    <<jump FriendsIntuition>>
 -> Would you mind letting it go? I'd rather not talk about it.
-    <<jump FriendsIntuition>>
+<<jump FriendsIntuition>>
 ===
 
 title: FriendsIntuition
 ---
-Call it a friend's intuition. You're part of the Peace Group, you don't have to do this alone.
--> {$regularName}, I promise I'm okay. Work has been a good distraction.
-    <<jump AlrightThen>>
+<<lighten>>
+{$regularName}: Call it a friend's intuition. You're part of the Peace Group, you don't have to do this alone.
+<<darken>>
+{$floristName}: {$regularName}, I promise I'm okay. Work has been a good distraction.
+<<jump AlrightThen>>
 ===
 
 title: AlrightThen
 ---
-I understand, but the second that changes, you let us know, alright?
--> Of course. Thank you, {$regularName}. I'm grateful out paths crossed.
-    <<jump RegularEnding>>
+<<lighten>>
+{$regularName}: I understand, but the second that changes, you let us know, alright?
+<<darken>>
+{$floristName}: Of course. Thank you, {$regularName}. I'm grateful out paths crossed.
+<<jump RegularEnding>>
 ===
 
 title: RegularEnding
 ---
-Absolutely, ___. I'll see you later.
+<<lighten>>
+{$regularName}: Absolutely, {$floristName}. I'll see you later.
 ===
