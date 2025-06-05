@@ -11,6 +11,7 @@ public class LevelLoader : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+        Debug.Log("Quit!");
     }
 
     public void LoadNextLevel()
