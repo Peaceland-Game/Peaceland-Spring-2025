@@ -148,6 +148,7 @@ public class Draggable : MonoBehaviour
 
         if (dragging)
         {
+            //Shakes the cursor if the difficulty is above 0
             if (difficulty > 0)
             {
                 shakeTimer += Time.deltaTime;
@@ -159,13 +160,13 @@ public class Draggable : MonoBehaviour
                 }
             }
 
+            //Slowly resets the shake in between calls
             xShakeOffset *= 0.99f;
             yShakeOffset *= 0.99f;
 
             Vector3 newPos = new(touch_wp.x + offset.x + xShakeOffset, touch_wp.y + offset.y + yShakeOffset, transform.position.z);
             Vector3 newRot = new(0, 0, 0);
            
-
             // Snap to closts drag target (if one exists)
             if (dragTargets.Count > 0) {
                 float lowest_dist = float.MaxValue;

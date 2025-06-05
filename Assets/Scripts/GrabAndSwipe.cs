@@ -29,6 +29,9 @@ public class GrabAndSwipe : MonoBehaviour
     bool isSlicing;
     Vector2 previousMousePos;
 
+    /// <summary>
+    /// Used to keep track of the shaking hands and change their frequency.
+    /// </summary>
     private float xOffset = 0;
     private float yOffset = 0;
     private float shakeTimer;
