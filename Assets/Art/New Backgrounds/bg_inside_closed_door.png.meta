@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bg_inside_closed_door_0: -2803175787980464757
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
