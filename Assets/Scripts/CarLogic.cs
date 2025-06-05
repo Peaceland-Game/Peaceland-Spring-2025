@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class CarLogic : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField]
     private float startingX; // X pos car should start at
 
@@ -26,6 +25,7 @@ public class CarLogic : MonoBehaviour
 
     private float timestamp; // Used to track how long to wait
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         setWait();
@@ -35,24 +35,27 @@ public class CarLogic : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.position;
-        pos.x += speed * Time.deltaTime;
+        pos.x += speed * Time.deltaTime; //Moves X along by speed
         if (pos.x > endingX)
-        {
+        { // If posisition is past ending
             if (Time.time > timestamp)
-            {
+            { // Teleport to start if ready
                 this.GetComponent<SpriteRenderer>().enabled = true;
                 pos.x = startingX;
-                pos.y = Random.Range(minY, maxY);
+                pos.y = Random.Range(minY, maxY); // Random Y for extra variance
                 setWait();
             }
             else
-            {
+            { //Otherwise hide
                 this.GetComponent<SpriteRenderer>().enabled = false;
             }  
         }
         transform.position = pos;
     }
 
+    /// <summary>
+    /// Randomly generates how long it will take for the car to appear again
+    /// </summary>
     void setWait()
     {
         timestamp = Time.time + Random.Range(minWaitTime, maxWaitTime);
