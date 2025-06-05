@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.Rendering.PostProcessing;
 
 /// <summary>
 /// Keep track of which object needs to be displayed and cut
@@ -89,6 +90,11 @@ public class CutManager : MinigameBehavior
         //Otherwise move to the next minigame
         else
         {
+
+            //Remove the blur from minigames with added difficulty
+            PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+            ppVolume.enabled = false;
+
             curIndex = 0;
             FlowerShopManager.currentFlower = curIndex;
             FlowerShopManager.Instance.NextMinigame();
