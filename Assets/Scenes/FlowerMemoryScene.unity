@@ -2995,7 +2995,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 9.8, y: 9.8}
+  m_Size: {x: 22.613688, y: 10.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3010,7 +3010,7 @@ Transform:
   m_GameObject: {fileID: 864893786}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.54, y: 1.5, z: 0}
+  m_LocalPosition: {x: 3.68, y: 0.96, z: 0}
   m_LocalScale: {x: -0.1444, y: 0.1444, z: 0.1444}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3028,13 +3028,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50ce6c35205a7884eb01645094d999e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingX: -8.1
-  endingX: 8.1
+  leftX: -8.1
+  rightX: 8.1
   minY: 0.5
   maxY: 1.5
   speed: 15
-  minWaitTime: 10
-  maxWaitTime: 15
+  minWaitTime: 1
+  maxWaitTime: 2
+  carSprites:
+  - {fileID: 2441016503757463086, guid: fb00cbf6826a37040baf5852668b535a, type: 3}
+  - {fileID: 5779036021264795948, guid: 41d803a2a79c90e4292b4cc6a8d7854e, type: 3}
 --- !u!1 &950099893
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2b1932f372f324348a191b5011efa7e1
+guid: 41d803a2a79c90e4292b4cc6a8d7854e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8689320619089952525
-    second: bg_inside_closed_door (1)_0
+      213: 5779036021264795948
+    second: car2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bg_inside_closed_door (1)_0
+      name: car2_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2560
-        height: 1440
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 186
+        y: 526
+        width: 2432
+        height: 1025
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d0f7558a01ba69870800000000000000
-      internalID: 8689320619089952525
+      spriteID: c29cca784a2433050800000000000000
+      internalID: 5779036021264795948
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8d7b6805b62144d48bb97e4d224293a2
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bg_inside_closed_door (1)_0: 8689320619089952525
+      car2_0: 5779036021264795948
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
