@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bg_front_vandalism_0: 65057145161908188
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
