@@ -80,8 +80,17 @@ public class Draggable : MonoBehaviour
     /// </summary>
     private Renderer renderer;
     private Camera camera;
+
+    /// <summary>
+    /// drag manager ref
+    /// </summary>
+    public DragManager dm;
+
+
     void Start()
     {   
+        dm = FindFirstObjectByType<DragManager>();
+
         bounds = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
@@ -156,6 +165,14 @@ public class Draggable : MonoBehaviour
         {
             BoundsCheck();
         }
+
+        //If the num of flowers is greater than or equal to the length of the draggables array, stop the minigame and
+        //reset the num of flowers arranged
+        if (dm.flowerArrangeNum >= dm.draggables.Length)
+        {
+            dm.flowerArrangeNum = 0;
+            FlowerShopManager.Instance.NextMinigame();
+        }
     } 
 
     /// <summary>
@@ -203,6 +220,8 @@ public class Draggable : MonoBehaviour
                             newPos = target.position;
                             newRot = target.eulerAngles;
                             snapIndex = i;
+                            DisableDrag();
+                            dm.flowerArrangeNum += 1;
                         }
                     }
                     i++;
@@ -216,6 +235,5 @@ public class Draggable : MonoBehaviour
             }
 
         }
-
     }
 }

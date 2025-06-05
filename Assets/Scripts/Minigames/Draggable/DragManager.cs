@@ -33,7 +33,8 @@ public class DragManager : MinigameBehavior
     /// <summary>
     /// a list of flower objects that the player can drag
     /// </summary>
-    private Draggable[] draggables;
+    [SerializeField]
+    public Draggable[] draggables;
 
     /// <summary>
     /// a list of gameObjects the player must drag flowers to
@@ -48,7 +49,7 @@ public class DragManager : MinigameBehavior
     /// <summary>
     /// Keeps track of the num of flowers currently arranged
     /// </summary>
-    int flowerArrangeNum = 0;
+    public int flowerArrangeNum = 0;
 
     public override void StartMinigame()
     {
@@ -111,21 +112,6 @@ public class DragManager : MinigameBehavior
             {
                 //End the drag of the current draggable
                 currentDraggable.EndDrag();
-
-                //If the number of flowers that have been arranged is less than the length of the draggables array, continue
-                if (flowerArrangeNum < draggables.Length && !currentDraggable.IsDraggable())
-                {
-                    //Increment the num of flowers arranged
-                    flowerArrangeNum++;
-
-                    //If the num of flowers is greater than or equal to the length of the draggables array, stop the minigame and
-                    //reset the num of flowers arranged
-                    if (flowerArrangeNum >= draggables.Length)
-                    {
-                        flowerArrangeNum = 0;
-                        FlowerShopManager.Instance.NextMinigame();
-                    }
-                }
             }
         }
         else if (context.phase == InputActionPhase.Started)
