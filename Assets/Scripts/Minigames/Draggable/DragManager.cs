@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.PostProcessing;
 using static OrderObject;
 
 // Manages Draggable Objects
@@ -31,9 +32,15 @@ public class DragManager : MinigameBehavior
     [SerializeField] Vector3[] targetRotations;
 
     /// <summary>
+    /// Used to add difficulty to the minigame. 0 is normal, 1 is shaky hands, and 2 is blurred vision.
+    /// </summary>
+    [SerializeField] int difficulty;
+
+    /// <summary>
     /// a list of flower objects that the player can drag
     /// </summary>
-    private Draggable[] draggables;
+    [SerializeField]
+    public Draggable[] draggables;
 
     /// <summary>
     /// a list of gameObjects the player must drag flowers to
@@ -48,10 +55,17 @@ public class DragManager : MinigameBehavior
     /// <summary>
     /// Keeps track of the num of flowers currently arranged
     /// </summary>
-    int flowerArrangeNum = 0;
+    public int flowerArrangeNum = 0;
+
+    /// <summary>
+    /// Sets the blur on the camera
+    /// </summary>
+    private PostProcessVolume ppVolume;
 
     public override void StartMinigame()
     {
+        ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+
         // Initilize draggables and targets with the number of flowers in the order
         int numberOfFlowers = FlowerShopManager.GetCurrentOrder().flowers.Count;
         draggables = new Draggable[numberOfFlowers];
@@ -83,6 +97,17 @@ public class DragManager : MinigameBehavior
 
         //Set the arranging minigame to active
         gameObject.SetActive(true);
+
+        //Adds the blur to minigames with added difficulty
+        if (difficulty > 1)
+        {
+            ppVolume.enabled = true;
+            ppVolume.weight = 1;
+            if (difficulty >= 2)
+            {
+                ppVolume.weight = 0.6f + (difficulty * 0.05f);
+            }
+        }
     }
 
     public override void StopMinigame()
@@ -96,6 +121,9 @@ public class DragManager : MinigameBehavior
             Destroy(draggables[i].gameObject);
             Destroy(targets[i]);
         }
+
+        //Remove the blur from minigames with added difficulty
+        ppVolume.enabled = false;
 
         //deactivate the minigame
         gameObject.SetActive(false);
@@ -111,21 +139,6 @@ public class DragManager : MinigameBehavior
             {
                 //End the drag of the current draggable
                 currentDraggable.EndDrag();
-
-                //If the number of flowers that have been arranged is less than the length of the draggables array, continue
-                if (flowerArrangeNum < draggables.Length && !currentDraggable.IsDraggable())
-                {
-                    //Increment the num of flowers arranged
-                    flowerArrangeNum++;
-
-                    //If the num of flowers is greater than or equal to the length of the draggables array, stop the minigame and
-                    //reset the num of flowers arranged
-                    if (flowerArrangeNum >= draggables.Length)
-                    {
-                        flowerArrangeNum = 0;
-                        FlowerShopManager.Instance.NextMinigame();
-                    }
-                }
             }
         }
         else if (context.phase == InputActionPhase.Started)
@@ -144,7 +157,7 @@ public class DragManager : MinigameBehavior
             if (candidate is not null)
             {
                 currentDraggable = candidate;
-                currentDraggable.StartDrag(touch_wp);
+                currentDraggable.StartDrag(touch_wp, difficulty);
             }
         }
     }

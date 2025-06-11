@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: a8f9ede353f647a2889880d683271744
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - dragLimit: {instanceID: 0}
+  - screenBounds: {fileID: 7357961161081384363, guid: a31a553c8701e4f42b09bae7d40526ce, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

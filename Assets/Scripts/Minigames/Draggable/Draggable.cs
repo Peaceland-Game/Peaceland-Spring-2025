@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using System.Transactions;
 
 // Component for draggable objects. Requires a Drag Manager.
 
@@ -64,9 +65,44 @@ public class Draggable : MonoBehaviour
     /// Collison for object
     /// </summary>
     private Collider2D bounds;
+
+    private int difficulty;
+    private float shakeTimer;
+    private float xShakeOffset;
+    private float yShakeOffset;
+
+    /// <summary>
+    /// RigidBody2D reference
+    /// </summary>
+    private Rigidbody2D rb;
+
+    /// <summary>
+    /// get starting position for draggable
+    /// </summary>
+    private Vector3 startPos;
+
+    /// <summary>
+    /// used to check screen bounds for draggable objects in BoundsCheck()
+    /// </summary>
+    private Renderer renderer;
+    private Camera camera;
+
+    /// <summary>
+    /// drag manager ref
+    /// </summary>
+    public DragManager dm;
+
+
     void Start()
     {   
+        dm = FindFirstObjectByType<DragManager>();
+
         bounds = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
+        startPos = transform.position;
+
+        renderer = GetComponent<Renderer>();
+        camera = FindFirstObjectByType<Camera>();
     }
 
     // Called when object is instantiated
@@ -99,9 +135,10 @@ public class Draggable : MonoBehaviour
     /// We start dragging this object
     /// </summary>
     /// <param name="touch_wp">Touch world position</param>
-    public void StartDrag(Vector3 touch_wp) {
+    public void StartDrag(Vector3 touch_wp, int currentDifficulty) {
         dragging = true;
         offset = transform.position - touch_wp;
+        difficulty = currentDifficulty;
     }
 
     /// <summary>
@@ -130,7 +167,39 @@ public class Draggable : MonoBehaviour
             dragTargets[snapIndex].GetComponent<DragTarget>().isSnapped = true;
             draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
         }
+
+        else
+        {
+            BoundsCheck();
+        }
+
+        //If the num of flowers is greater than or equal to the length of the draggables array, stop the minigame and
+        //reset the num of flowers arranged
+        if (dm.flowerArrangeNum >= dm.draggables.Length)
+        {
+            dm.flowerArrangeNum = 0;
+            FlowerShopManager.Instance.NextMinigame();
+        }
     } 
+
+    /// <summary>
+    /// check if object is off screen, return to starting position if it is
+    /// </summary>
+    public void BoundsCheck()
+    {
+        Vector3 screenpos = camera.WorldToScreenPoint(transform.position);
+        bool onScreen = screenpos.x > 0f && screenpos.x < Screen.width && screenpos.y > 0f && screenpos.y < Screen.height;
+
+        if (onScreen && renderer.isVisible)
+        {
+            return;
+        }
+        else
+        {
+            transform.position = startPos;
+        }
+
+    }
 
     void Update()
     {
@@ -140,9 +209,25 @@ public class Draggable : MonoBehaviour
 
         if (dragging)
         {
-            Vector3 newPos = new(touch_wp.x + offset.x, touch_wp.y + offset.y, transform.position.z);
-            Vector3 newRot = new(0, 0, 0);
+            //Shakes the cursor if the difficulty is above 0
+            if (difficulty > 0)
+            {
+                shakeTimer += Time.deltaTime;
+                if (shakeTimer > 0.2)
+                {
+                    xShakeOffset = UnityEngine.Random.Range(-0.4f, 0.4f);
+                    yShakeOffset = UnityEngine.Random.Range(-0.4f, 0.4f);
+                    shakeTimer = 0;
+                }
+            }
 
+            //Slowly resets the shake in between calls
+            xShakeOffset *= 0.99f;
+            yShakeOffset *= 0.99f;
+
+            Vector3 newPos = new(touch_wp.x + offset.x + xShakeOffset, touch_wp.y + offset.y + yShakeOffset, transform.position.z);
+            Vector3 newRot = new(0, 0, 0);
+           
             // Snap to closts drag target (if one exists)
             if (dragTargets.Count > 0) {
                 float lowest_dist = float.MaxValue;
@@ -158,6 +243,8 @@ public class Draggable : MonoBehaviour
                             newPos = target.position;
                             newRot = target.eulerAngles;
                             snapIndex = i;
+                            DisableDrag();
+                            dm.flowerArrangeNum += 1;
                         }
                     }
                     i++;
