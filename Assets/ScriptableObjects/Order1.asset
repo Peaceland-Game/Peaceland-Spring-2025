@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Order1
   m_EditorClassIdentifier: 
   nameForOrder: Andrej
+  spriteForOrder: {fileID: -171743095488495158, guid: a93560a59d7121f4f91c3fe7f9b263e4, type: 3}
   flowers:
   - needsDethorning: 1
     needsTrimming: 1
