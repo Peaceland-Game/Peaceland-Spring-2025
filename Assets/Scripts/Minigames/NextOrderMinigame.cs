@@ -9,15 +9,22 @@ using System.Collections;
 public class NextOrderMinigame : MinigameBehavior
 {
     [SerializeField]
-    private GameObject characterPortrait;
+    private GameObject characterPortrait; //To swap characters
+
+    [SerializeField]
+    private GameObject flowershopBG;
+
+    [SerializeField]
+    private Sprite[] flowershopBGsprites; //To close and open flower shop door
+
     private float pauseTimer;
 
     public override void StartMinigame()
     {
         pauseTimer = 2;
         characterPortrait.SetActive(false);
-
-
+        gameObject.SetActive(true);
+        flowershopBG.GetComponent<SpriteRenderer>().sprite = flowershopBGsprites[1];
     }
 
     public override void StopMinigame()
@@ -31,11 +38,11 @@ public class NextOrderMinigame : MinigameBehavior
         if(pauseTimer > 0)
         {
             pauseTimer -= Time.deltaTime;
-            if(pauseTimer < 0)
+            if(pauseTimer <= 0)
             {
                 characterPortrait.SetActive(true);
+                flowershopBG.GetComponent<SpriteRenderer>().sprite = flowershopBGsprites[0];
                 characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.NextOrderChar();
-                gameObject.SetActive(true);
                 FlowerShopManager.Instance.NextMinigame();
             }
         }   

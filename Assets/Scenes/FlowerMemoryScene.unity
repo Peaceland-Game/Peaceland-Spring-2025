@@ -1212,6 +1212,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPortrait: {fileID: 1340726477}
+  flowershopBG: {fileID: 511491062}
+  flowershopBGsprites:
+  - {fileID: 8689320619089952525, guid: 2b1932f372f324348a191b5011efa7e1, type: 3}
+  - {fileID: -3203465725399040320, guid: 30d951962b1223742b5fd6295cd08bc2, type: 3}
 --- !u!4 &425442086
 Transform:
   m_ObjectHideFlags: 0
@@ -3605,6 +3609,8 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 348.9966}
   - {x: 0, y: 0, z: 329.0322}
   difficulty: 0
+  draggables: []
+  flowerArrangeNum: 0
 --- !u!224 &1274766565 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3604244442327615249, guid: a02a0016174004c6a809a1ddb3bfc35e, type: 3}
