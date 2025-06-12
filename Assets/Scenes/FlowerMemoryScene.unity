@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigames:
-  - {fileID: 438935505}
+  - {fileID: 88269610}
   - {fileID: 438935505}
   - {fileID: 1740225107}
   - {fileID: 1164951639}
