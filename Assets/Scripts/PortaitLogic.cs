@@ -16,25 +16,13 @@ public class PortaitLogic : MonoBehaviour
     public void Awake()
     {
         //Adds commands that can be called in yarn using <<lighten>> and <<darken>> respectively
-        dialogueRunner.AddCommandHandler("lighten", Lighten);
-        dialogueRunner.AddCommandHandler("darken", Darken);
-        dialogueRunner.AddCommandHandler<int>("darken2", Darken2);
-        dialogueRunner.AddCommandHandler<int>("lighten2", Lighten2);
+        dialogueRunner.AddCommandHandler<int>("lighten", Lighten);
+        dialogueRunner.AddCommandHandler<int>("darken", Darken);
         dialogueRunner.AddCommandHandler("oneChar", OneChar);
         dialogueRunner.AddCommandHandler("twoChar", TwoChar);
     }
 
-    private void Darken()
-    {
-        characterPortrait.GetComponent<SpriteRenderer>().color = new Color(.75f, .75f, .75f, 1f);
-    }
-
-    private void Lighten()
-    {
-        characterPortrait.GetComponent<SpriteRenderer>().color = Color.white;
-    }
-
-    private void Darken2(int i)
+    private void Darken(int i)
     {
         if (i == 1)
         {
@@ -46,7 +34,7 @@ public class PortaitLogic : MonoBehaviour
         }
     }
 
-    private void Lighten2(int i)
+    private void Lighten(int i)
     {
         if (i == 1)
         {
