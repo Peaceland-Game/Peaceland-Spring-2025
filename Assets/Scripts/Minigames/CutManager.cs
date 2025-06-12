@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Rendering.PostProcessing;
+using Unity.VisualScripting;
 
 /// <summary>
 /// Keep track of which object needs to be displayed and cut
@@ -20,6 +21,9 @@ public class CutManager : MinigameBehavior
     private static CutManager instance;
 
     private static GameObject instantiatedFlower;
+
+    [SerializeField] static GameObject thornyFlower;
+    GameObject currentThornyFlower;
 
     /// <summary>
     /// Stem for dethorning minigame
@@ -46,9 +50,20 @@ public class CutManager : MinigameBehavior
     public static void CutStart()
     {
         //If the current minigame is dethorning, then use the pre-given stem game object
-        if (FlowerShopManager.GetCurrentMinigame().gameObject.name == "Dethorn") { instantiatedFlower = Instantiate(instance.stem); }
+        if (FlowerShopManager.GetCurrentMinigame().gameObject.name == "Dethorn") 
+        {
+             if (curIndex > 0)
+            {
+                instantiatedFlower = Instantiate(instance.stem);
+            }
+        }
         //Otherwise use the dynamic sprite flower
         else { instantiatedFlower = Instantiate(instance.flower); }
+    }
+
+    public  void beginDethorn()
+    {
+        instantiatedFlower = Instantiate(instance.stem);
     }
 
     public static IEnumerator AllCutsMade()

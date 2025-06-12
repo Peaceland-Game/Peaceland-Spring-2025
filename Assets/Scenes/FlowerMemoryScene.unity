@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigames:
-  - {fileID: 88269610}
+  - {fileID: 438935505}
   - {fileID: 438935505}
   - {fileID: 1740225107}
   - {fileID: 1164951639}
@@ -1263,6 +1263,7 @@ Transform:
   m_Children:
   - {fileID: 1331315765}
   - {fileID: 975564405}
+  - {fileID: 1556416845}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &438935505
@@ -4224,6 +4225,68 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 16.05217, y: 0.99851125}
   m_EdgeRadius: 0
+--- !u!1001 &1556416844
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 438935504}
+    m_Modifications:
+    - target: {fileID: 3189437181823256070, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6079487
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189437181823256070, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.021443918
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189437181823256070, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189437181823256070, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189437181823256070, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189437181823256070, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189437181823256070, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189437181823256070, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189437181823256070, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3189437181823256070, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150388843376597193, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_Name
+      value: thornyRose
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+--- !u!4 &1556416845 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3189437181823256070, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+  m_PrefabInstance: {fileID: 1556416844}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1686700636
 GameObject:
   m_ObjectHideFlags: 0
