@@ -3,9 +3,21 @@ position: 9,-242
 ---
 <<declare $customerName = "Andrej">>
 <<darken>>
-<<wait  1>>
-
+<<oneChar>>
 {$floristName}: Hi, how are you?
+<<lighten>>
+{$customerName}: Good! Two char time!
+<<darken>>
+<<twoChar>>
+<<darken2 2>>
+{$floristName}: Hello!
+<<lighten2 1>>
+{$customerName}: Hi!
+<<darken2 1>>
+<<lighten2 2>>
+{$closeFriendName}: Bye!
+<<oneChar>>
+{$floristName}: One!
 
 <<jump Waiting>>
 ===
