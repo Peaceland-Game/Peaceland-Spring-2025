@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class ThornyFlowerZoom : MonoBehaviour
@@ -22,7 +23,7 @@ public class ThornyFlowerZoom : MonoBehaviour
             if (transform.localScale.x > 5)
             {
                 Debug.Log("spawn");
-                CutManager cm = new CutManager();
+                CutManager cm = gameObject.AddComponent(typeof(CutManager)) as CutManager;
                 cm.beginDethorn();
                 this.gameObject.SetActive(false);
 
