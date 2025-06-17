@@ -82,10 +82,10 @@ public class FlowerShopManager : MonoBehaviour
     /// <summary>
     /// Increment the current order and grab the sprite in it
     /// </summary>
-    public static Sprite NextOrderChar()
+    public static Sprite[] NextOrderChar()
     {
         currentOrder++;
-        return GetCurrentOrder().spriteForOrder;
+        return GetCurrentOrder().spritesForOrder;
     }
 
     /// <summary>

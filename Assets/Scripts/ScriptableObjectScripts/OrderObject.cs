@@ -17,9 +17,9 @@ public class OrderObject : ScriptableObject
     public string nameForOrder;
 
     /// <summary>
-    /// The sprite associated with the character for the flower order
+    /// The sprites associated with the characters for the flower order
     /// </summary>
-    public Sprite spriteForOrder;
+    public Sprite[] spritesForOrder;
 
     /// <summary>
     /// List of flowers as Texture2D (subject to change)

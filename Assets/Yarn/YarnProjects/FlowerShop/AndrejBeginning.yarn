@@ -9,12 +9,12 @@ position: 9,-242
 {$customerName}: Good! Two char time!
 <<darken>>
 <<twoChar>>
-<<darken2 2>>
+<<darken 2>>
 {$floristName}: Hello!
-<<lighten2 1>>
+<<lighten 1>>
 {$customerName}: Hi!
-<<darken2 1>>
-<<lighten2 2>>
+<<darken 1>>
+<<lighten 2>>
 {$closeFriendName}: Bye!
 <<oneChar>>
 {$floristName}: One!

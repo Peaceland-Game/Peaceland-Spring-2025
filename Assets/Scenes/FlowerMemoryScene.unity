@@ -1213,6 +1213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPortrait: {fileID: 1340726477}
+  characterPortrait2: {fileID: 2038727505}
 --- !u!4 &425442086
 Transform:
   m_ObjectHideFlags: 0

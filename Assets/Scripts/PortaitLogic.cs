@@ -15,14 +15,42 @@ public class PortaitLogic : MonoBehaviour
 
     public void Awake()
     {
-        //Adds commands that can be called in yarn using <<lighten>> and <<darken>> respectively
+        //Adds commands that can be called in yarn using the name in quotes
+        dialogueRunner.AddCommandHandler<int>("speaker", Speaker);
         dialogueRunner.AddCommandHandler<int>("lighten", Lighten);
         dialogueRunner.AddCommandHandler<int>("darken", Darken);
         dialogueRunner.AddCommandHandler("oneChar", OneChar);
         dialogueRunner.AddCommandHandler("twoChar", TwoChar);
     }
 
-    private void Darken(int i)
+    /// <summary>
+    /// Makes the lighten and darken able to happen with only one method call for any typical speaking
+    /// </summary>
+    /// <param name="i">0 for player, 1 for left/main char, 2 for right char</param>
+    private void Speaker(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                Darken(1);
+                Darken(2);
+                break;
+            case 1:
+                Lighten(1);
+                Darken(2);
+                break;
+            case 2:
+                Darken(1);
+                Lighten(2);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Darkens a particular characer, main char by default
+    /// </summary>
+    /// <param name="i">1 for left/main char, 2 for right char</param>
+    private void Darken(int i=1)
     {
         if (i == 1)
         {
@@ -34,7 +62,11 @@ public class PortaitLogic : MonoBehaviour
         }
     }
 
-    private void Lighten(int i)
+    /// <summary>
+    /// Lightens a particular character, main char by default
+    /// </summary>
+    /// <param name="i">1 for left/main char, 2 for right char</param>
+    private void Lighten(int i=1)
     {
         if (i == 1)
         {
@@ -46,12 +78,18 @@ public class PortaitLogic : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Makes only the main npc show on screen
+    /// </summary>
     private void OneChar()
     {
         characterPortrait.transform.position = new Vector3(-3, -1, 0);
         secondCharacterPortrait.SetActive(false);
     }
 
+    /// <summary>
+    /// Makes two npcs show on screen
+    /// </summary>
     private void TwoChar()
     {
         characterPortrait.transform.position = new Vector3(-5, -1, 0);
