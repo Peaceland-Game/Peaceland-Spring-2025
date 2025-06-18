@@ -28,5 +28,5 @@ MonoBehaviour:
     needsTrimming: 1
     needsArranging: 1
     flowerType: 0
-  dialogueStartNode: NPCOrderIn4
+  dialogueStartNode: AndrejOrder
   dialogueEndNode: OrderComplete

@@ -27,7 +27,7 @@ public class PortaitLogic : MonoBehaviour
     /// Makes the lighten and darken able to happen with only one method call for any typical speaking
     /// </summary>
     /// <param name="i">0 for player, 1 for left/main char, 2 for right char</param>
-    private void Speaker(int i)
+    private void Speaker(int i=0)
     {
         switch (i)
         {
