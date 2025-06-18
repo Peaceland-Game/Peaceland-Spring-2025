@@ -9,11 +9,24 @@ public class ThornyFlowerZoom : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        this.transform.position = new Vector3(0f, -0.3f, 1f);
-        this.transform.localScale = new Vector3(0.4f, 0.4f, 1f);
+        Reset();
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Resets the thorny rose so it can zoom in again 
+    /// </summary>
+    public void Reset()
+    {
+        this.transform.position = new Vector3(0f, -0.3f, 1f);
+        this.transform.localScale = new Vector3(0.4f, 0.4f, 1f);
+        this.gameObject.SetActive(true);
+        zoomDelay = 1f;
+    }
+
+    /// <summary>
+    /// Pauses for a second, then grows the flower sprite to look like a zoom-in, then 
+    /// activates the dethorning minigame and disables this object.
+    /// </summary>
     void Update()
     {
         if (zoomDelay < 0f)
@@ -26,7 +39,6 @@ public class ThornyFlowerZoom : MonoBehaviour
                 CutManager cm = gameObject.AddComponent(typeof(CutManager)) as CutManager;
                 cm.beginDethorn();
                 this.gameObject.SetActive(false);
-
             }
         }
         else {

@@ -22,8 +22,7 @@ public class CutManager : MinigameBehavior
 
     private static GameObject instantiatedFlower;
 
-    [SerializeField] static GameObject thornyFlower;
-    GameObject currentThornyFlower;
+    public GameObject thornyRose;
 
     /// <summary>
     /// Stem for dethorning minigame
@@ -37,6 +36,7 @@ public class CutManager : MinigameBehavior
 
     public override void StartMinigame()
     {
+        
         instance = this;
         gameObject.SetActive(true);
         CutStart();
@@ -52,16 +52,23 @@ public class CutManager : MinigameBehavior
         //If the current minigame is dethorning, then use the pre-given stem game object
         if (FlowerShopManager.GetCurrentMinigame().gameObject.name == "Dethorn") 
         {
-             if (curIndex > 0)
+            //Activates the thorny rose object for the zoom in on the first rose of the minigame
+            if (curIndex == 0)
             {
-                instantiatedFlower = Instantiate(instance.stem);
+                ThornyFlowerZoom t = instance.thornyRose.GetComponent<ThornyFlowerZoom>();
+                t.Reset();
+            }
+            //Otherwise load in the next thorns normally
+            else
+            {
+                instance.beginDethorn();
             }
         }
         //Otherwise use the dynamic sprite flower
         else { instantiatedFlower = Instantiate(instance.flower); }
     }
 
-    public  void beginDethorn()
+    public void beginDethorn()
     {
         instantiatedFlower = Instantiate(instance.stem);
     }

@@ -330,6 +330,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &148049016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7150388843376597193, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+  m_PrefabInstance: {fileID: 1556416844}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &184161150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1278,6 +1283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318052e93ecd1fa41aed8110eae9b14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thornyRose: {fileID: 148049016}
   stem: {fileID: 9219485524165623847, guid: 11a2887ef671e9e4a9ddcbdccf708f22, type: 3}
   flower: {fileID: 4541604742317120861, guid: 9555a523a8b60904d8d99aeca45b32c8, type: 3}
 --- !u!1001 &492172084
@@ -4773,6 +4779,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318052e93ecd1fa41aed8110eae9b14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thornyRose: {fileID: 0}
   stem: {fileID: 9219485524165623847, guid: 11a2887ef671e9e4a9ddcbdccf708f22, type: 3}
   flower: {fileID: 4541604742317120861, guid: 9555a523a8b60904d8d99aeca45b32c8, type: 3}
 --- !u!1 &1782363629
