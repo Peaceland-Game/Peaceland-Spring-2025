@@ -129,12 +129,12 @@ public class FlowerShopManager : MonoBehaviour
     /// </summary>
     /// <param name="t">The given flower type to search for</param>
     /// <returns>The flower sprite that matches the given one</returns>
-    public static Sprite GetFlowerTopSprite(FlowerType t)
+    public static Sprite GetFlowerTopSprite(OrderObjectType t)
     {
         return Instance.flowerTopSprites[(int)t];
     }
 
-    public static Sprite GetFlowerBottomSprite(FlowerType t)
+    public static Sprite GetFlowerBottomSprite(OrderObjectType t)
     {
         return Instance.flowerBottomSprites[(int)t];
     }

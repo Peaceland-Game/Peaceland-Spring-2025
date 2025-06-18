@@ -86,15 +86,15 @@ public class CuttableFlower : MonoBehaviour
         foreach(SpriteRenderer renderer in renderers)
         {
             renderer.sprite = FlowerShopManager.GetFlowerSprite(
-                FlowerShopManager.GetCurrentFlower().flowerType);
+                FlowerShopManager.GetCurrentFlower().objectType);
         }
         */
 
         //Sets the sprites for the flower tops and bottoms seperately
         for(int i = 0; i < renderers.Count; i+= 2)
         {
-            renderers[i].sprite = FlowerShopManager.GetFlowerTopSprite(FlowerShopManager.GetCurrentFlower().flowerType);
-            renderers[i+1].sprite = FlowerShopManager.GetFlowerBottomSprite(FlowerShopManager.GetCurrentFlower().flowerType);
+            renderers[i].sprite = FlowerShopManager.GetFlowerTopSprite(FlowerShopManager.GetCurrentFlower().objectType);
+            renderers[i+1].sprite = FlowerShopManager.GetFlowerBottomSprite(FlowerShopManager.GetCurrentFlower().objectType);
         }
     }
 

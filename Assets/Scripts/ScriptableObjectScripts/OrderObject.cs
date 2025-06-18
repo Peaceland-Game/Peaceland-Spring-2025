@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
-public enum FlowerType
+public enum OrderObjectType
 {
     ROSE,
     DAISY,
@@ -22,7 +22,7 @@ public class OrderObject : ScriptableObject
     public Sprite spriteForOrder;
 
     /// <summary>
-    /// List of flowers as Texture2D (subject to change)
+    /// List of flowers as Flower object (subject to change)
     /// </summary>
     public List<Flower> flowers;
 
@@ -50,6 +50,6 @@ public class OrderObject : ScriptableObject
         /// <summary>
         /// Helps with assigning the appropriate flower sprite in gameplay
         /// </summary>
-        public FlowerType flowerType;
+        public OrderObjectType objectType;
     }
 }

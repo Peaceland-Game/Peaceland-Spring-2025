@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class DragTarget : MonoBehaviour
 {
-    FlowerType typeOfFlower;
+    OrderObjectType typeOfFlower;
 
     /// <summary>
     /// Type of flower allowed to be dragged on this target
     /// </summary>
-    public FlowerType TypeOfFlower { get { return typeOfFlower; } }
+    public OrderObjectType TypeOfFlower { get { return typeOfFlower; } }
 
     /// <summary>
     /// Is there a flower snapped to this target?
@@ -15,7 +15,7 @@ public class DragTarget : MonoBehaviour
     [SerializeField]
     public bool isSnapped = false;
 
-    public void Constructor(FlowerType _typeOfFlower)
+    public void Constructor(OrderObjectType _typeOfFlower)
     {
         typeOfFlower = _typeOfFlower;
 

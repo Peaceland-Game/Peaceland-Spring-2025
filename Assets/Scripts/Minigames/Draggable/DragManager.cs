@@ -91,8 +91,8 @@ public class DragManager : MinigameBehavior
             draggables[i].EnableDrag();
 
             //run the constructor of each of the draggables and targets
-            draggables[i].Constructor(targets, FlowerShopManager.GetCurrentOrder().flowers[i].flowerType);
-            targets[i].GetComponent<DragTarget>().Constructor(FlowerShopManager.GetCurrentOrder().flowers[i].flowerType);
+            draggables[i].Constructor(targets, FlowerShopManager.GetCurrentOrder().flowers[i].objectType);
+            targets[i].GetComponent<DragTarget>().Constructor(FlowerShopManager.GetCurrentOrder().flowers[i].objectType);
         }
 
         //Set the arranging minigame to active

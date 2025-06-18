@@ -59,7 +59,7 @@ public class Draggable : MonoBehaviour
     /// <summary>
     /// Tepresents the flower type enum value from order object
     /// </summary>
-    FlowerType typeofFlower;
+    OrderObjectType typeofFlower;
     
     /// <summary>
     /// Collison for object
@@ -106,7 +106,7 @@ public class Draggable : MonoBehaviour
     }
 
     // Called when object is instantiated
-    public void Constructor(GameObject[] _dragTargets, FlowerType _typeOfFlower)
+    public void Constructor(GameObject[] _dragTargets, OrderObjectType _typeOfFlower)
     {
         foreach (GameObject dragTarget in _dragTargets)
         {
