@@ -61,14 +61,14 @@ public class CutManager : MinigameBehavior
             //Otherwise load in the next thorns normally
             else
             {
-                instance.beginDethorn();
+                instance.BeginDethorn();
             }
         }
         //Otherwise use the dynamic sprite flower
         else { instantiatedFlower = Instantiate(instance.flower); }
     }
 
-    public void beginDethorn()
+    public void BeginDethorn()
     {
         instantiatedFlower = Instantiate(instance.stem);
     }

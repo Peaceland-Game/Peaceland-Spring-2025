@@ -37,7 +37,7 @@ public class ThornyFlowerZoom : MonoBehaviour
             {
                 Debug.Log("spawn");
                 CutManager cm = gameObject.AddComponent(typeof(CutManager)) as CutManager;
-                cm.beginDethorn();
+                cm.BeginDethorn();
                 this.gameObject.SetActive(false);
             }
         }
