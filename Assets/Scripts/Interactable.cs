@@ -11,33 +11,7 @@ public class Interactable : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.touchCount > 0) {
-            Touch touch = Input.GetTouch(0);
-            Debug.Log(touch.position.x + ", " + touch.position.y);
-        }
-    }
-
-    public void OnMouseDown()
-    {
-        Debug.Log("mouse press");
-    }
-
-    public void OnTap(InputAction.CallbackContext context)
-    {
-        Debug.Log("on touch!");
-        if (!isActiveAndEnabled) return;
-
-        if(context.phase == InputActionPhase.Started)
-        {
-            Debug.Log("Clicked on!!!!");
-        }
-
+        Debug.Log("TEST AHHH");
     }
 
     private void Zoom()

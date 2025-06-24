@@ -104,9 +104,12 @@ public class GrabAndSwipe : MonoBehaviour
     /// <param name="context"></param>
     public void OnTap(InputAction.CallbackContext context)
     {
+        Interactmanager im = gameObject.AddComponent(typeof(Interactmanager)) as Interactmanager;
+        im.DoClick();
         //only effect the shear in the active minigame
         if (isActiveAndEnabled)
         {
+            Debug.Log("on tap grab and swipe");
             isMouseDown = !context.canceled;
             //spawn a trail when the mouse is pressed, not released
             if (isMouseDown)
