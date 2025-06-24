@@ -7,9 +7,9 @@ using static OrderObject;
 public class DragManager : MinigameBehavior
 {
     /// <summary>
-    /// Draggable flower prefab to spawn
+    /// Draggable object prefab to spawn
     /// </summary>
-    [SerializeField] GameObject flowerPrefab;
+    [SerializeField] GameObject draggablePrefab;
     
     /// <summary>
     /// Drag target prefab tp spawn
@@ -17,17 +17,17 @@ public class DragManager : MinigameBehavior
     [SerializeField] GameObject targetPrefab;
 
     /// <summary>
-    /// The positions of the flowers when the minigame starts
+    /// The positions of the draggables when the minigame starts
     /// </summary>
-    [SerializeField] Vector3[] flowerLocations;
+    [SerializeField] Vector3[] draggableLocations;
 
     /// <summary>
-    /// The locations of the targets
+    /// The locations of the drag targets
     /// </summary>
     [SerializeField] Vector3[] targetLocations;
 
     /// <summary>
-    /// The rotations of the targets
+    /// The rotations of the drag targets
     /// </summary>
     [SerializeField] Vector3[] targetRotations;
 
@@ -37,13 +37,13 @@ public class DragManager : MinigameBehavior
     [SerializeField] int difficulty;
 
     /// <summary>
-    /// a list of flower objects that the player can drag
+    /// a list of draggable objects that the player can drag
     /// </summary>
     [SerializeField]
     public Draggable[] draggables;
 
     /// <summary>
-    /// a list of gameObjects the player must drag flowers to
+    /// a list of gameObjects the player must drag draggables to
     /// </summary>
     private GameObject[] targets;
 
@@ -53,9 +53,9 @@ public class DragManager : MinigameBehavior
     Draggable currentDraggable = null;
 
     /// <summary>
-    /// Keeps track of the num of flowers currently arranged
+    /// Keeps track of the num of draggables currently arranged
     /// </summary>
-    public int flowerArrangeNum = 0;
+    public int draggableArrangeNum = 0;
 
     /// <summary>
     /// Sets the blur on the camera
@@ -66,33 +66,34 @@ public class DragManager : MinigameBehavior
     {
         ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
 
-        // Initilize draggables and targets with the number of flowers in the order
-        int numberOfFlowers = FlowerShopManager.GetCurrentOrder().flowers.Count;
-        draggables = new Draggable[numberOfFlowers];
-        targets = new GameObject[numberOfFlowers];
-        // Instantiate flowers and targets to fill the arrays
-        for (int i = 0; i < numberOfFlowers; i++)
+        // Initilize draggables and targets with the number of draggables in the order
+        int numberOfDraggables = FlowerShopManager.GetCurrentOrder().objects.Count;
+        draggables = new Draggable[numberOfDraggables];
+        targets = new GameObject[numberOfDraggables];
+
+        // Instantiate draggables and targets to fill the arrays
+        for (int i = 0; i < numberOfDraggables; i++)
         {
-            GameObject newFlower = Instantiate(flowerPrefab);
-            draggables[i] = newFlower.GetComponent<Draggable>();
-            newFlower.transform.parent = transform;
+            GameObject newDraggable = Instantiate(draggablePrefab);
+            draggables[i] = newDraggable.GetComponent<Draggable>();
+            newDraggable.transform.parent = transform;
 
             GameObject newTarget = Instantiate(targetPrefab);
             targets[i] = newTarget;
             newTarget.transform.parent = transform;
         }
 
-        // For each flower, reset its position to its starting location and make sure they can be dragged
-        for (int i = 0; i < numberOfFlowers; i++)
+        // For each draggable, reset its position to its starting location and make sure they can be dragged
+        for (int i = 0; i < numberOfDraggables; i++)
         {
-            draggables[i].gameObject.transform.localPosition = flowerLocations[i];
+            draggables[i].gameObject.transform.localPosition = draggableLocations[i];
             targets[i].transform.localPosition = targetLocations[i];
             targets[i].transform.eulerAngles = targetRotations[i];
             draggables[i].EnableDrag();
 
             //run the constructor of each of the draggables and targets
-            draggables[i].Constructor(targets, FlowerShopManager.GetCurrentOrder().flowers[i].objectType);
-            targets[i].GetComponent<DragTarget>().Constructor(FlowerShopManager.GetCurrentOrder().flowers[i].objectType);
+            draggables[i].Constructor(targets, FlowerShopManager.GetCurrentOrder().objects[i].objectType);
+            targets[i].GetComponent<DragTarget>().Constructor(FlowerShopManager.GetCurrentOrder().objects[i].objectType);
         }
 
         //Set the arranging minigame to active
@@ -116,7 +117,7 @@ public class DragManager : MinigameBehavior
         currentDraggable = null;
 
         // Delete all flower and target objects
-        for (int i = 0; i < FlowerShopManager.GetCurrentOrder().flowers.Count; i++)
+        for (int i = 0; i < FlowerShopManager.GetCurrentOrder().objects.Count; i++)
         {
             Destroy(draggables[i].gameObject);
             Destroy(targets[i]);

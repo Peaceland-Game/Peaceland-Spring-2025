@@ -2,24 +2,24 @@ using UnityEngine;
 
 public class DragTarget : MonoBehaviour
 {
-    OrderObjectType typeOfFlower;
+    OrderObjectType typeOfObject;
 
     /// <summary>
-    /// Type of flower allowed to be dragged on this target
+    /// Type of object allowed to be dragged on this target
     /// </summary>
-    public OrderObjectType TypeOfFlower { get { return typeOfFlower; } }
+    public OrderObjectType TypeOfObject { get { return typeOfObject; } }
 
     /// <summary>
-    /// Is there a flower snapped to this target?
+    /// Is there an object snapped to this target?
     /// </summary>
     [SerializeField]
     public bool isSnapped = false;
 
-    public void Constructor(OrderObjectType _typeOfFlower)
+    public void Constructor(OrderObjectType _typeOfObject)
     {
-        typeOfFlower = _typeOfFlower;
+        typeOfObject = _typeOfObject;
 
         //set the sprite
-        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerTopSprite(_typeOfFlower);
+        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerTopSprite(_typeOfObject);
     }
 }

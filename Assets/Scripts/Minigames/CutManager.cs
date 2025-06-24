@@ -59,7 +59,7 @@ public class CutManager : MinigameBehavior
         FlowerShopManager.currentFlower = curIndex;
 
         //As long as the next flower in the list for this order exists, continue below
-        if (curIndex < FlowerShopManager.GetCurrentOrder().flowers.Count)
+        if (curIndex < FlowerShopManager.GetCurrentOrder().objects.Count)
         {
             //If the current flower needs to be dethorned and the current minigame is dethorning, or the current flower needs to be
             //trimmed and the current minigame is trimming, then set up the next flower
@@ -69,7 +69,7 @@ public class CutManager : MinigameBehavior
                 CutStart();
             }
             //Otherwise if the current flower is the last one in the list, go back to the first flower in the list
-            else if (curIndex == FlowerShopManager.GetCurrentOrder().flowers.Count - 1)
+            else if (curIndex == FlowerShopManager.GetCurrentOrder().objects.Count - 1)
             {
                 curIndex = 0;
 

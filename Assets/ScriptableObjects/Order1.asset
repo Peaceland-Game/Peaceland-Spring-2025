@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameForOrder: Andrej
   spriteForOrder: {fileID: -171743095488495158, guid: a93560a59d7121f4f91c3fe7f9b263e4, type: 3}
-  flowers:
+  objects:
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 0
+    objectType: 0
   - needsDethorning: 0
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 1
+    objectType: 1
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 0
+    objectType: 0
   dialogueStartNode: NPCOrderIn4
   dialogueEndNode: OrderComplete

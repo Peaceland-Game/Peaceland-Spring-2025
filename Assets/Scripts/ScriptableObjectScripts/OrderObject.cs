@@ -24,31 +24,32 @@ public class OrderObject : ScriptableObject
     /// <summary>
     /// List of flowers as Flower object (subject to change)
     /// </summary>
-    public List<Flower> flowers;
+    public List<OObject> objects;
 
     public string dialogueStartNode;
     public string dialogueEndNode;
 
+    //add more bools or whatever as needed in accordance to whatever object
     [Serializable]
-    public struct Flower
+    public struct OObject
     {
         /// <summary>
-        /// Does the current flower need dethorning?
+        /// Does the current object need dethorning? (flowers only)
         /// </summary>
         public bool needsDethorning;
 
         /// <summary>
-        /// Does the current flower need trimming?
+        /// Does the current object need trimming? (flowers only)
         /// </summary>
         public bool needsTrimming;
 
         /// <summary>
-        /// Does the current flower need arranging?
+        /// Does the current object need arranging?
         /// </summary>
         public bool needsArranging;
 
         /// <summary>
-        /// Helps with assigning the appropriate flower sprite in gameplay
+        /// Helps with assigning the appropriate object sprite in gameplay
         /// </summary>
         public OrderObjectType objectType;
     }

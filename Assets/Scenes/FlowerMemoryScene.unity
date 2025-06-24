@@ -3584,14 +3584,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133fb0abbe44cbcffb79cf3bddc8f16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerPrefab: {fileID: 348610294788324795, guid: d29d04746fcd7554880bdbbdee871b2c, type: 3}
+  draggablePrefab: {fileID: 348610294788324795, guid: d29d04746fcd7554880bdbbdee871b2c, type: 3}
   targetPrefab: {fileID: 590954006385341025, guid: 6b91b5fb69b982b42920bd0d63296058, type: 3}
-  flowerLocations:
+  draggableLocations:
   - {x: 1.82, y: 1.46, z: 0}
   - {x: 1.82, y: 1.46, z: 0}
-  - {x: 5.3, y: -0.48, z: 0}
-  - {x: 3.94, y: -2.29, z: 0}
-  - {x: 1.29, y: -2.61, z: 0}
+  - {x: 5.3, y: -0.4, z: 0}
+  - {x: 3.94, y: -2.25, z: 0}
+  - {x: 1.29, y: -2.6, z: 0}
   targetLocations:
   - {x: -6.24, y: 0.97, z: 0}
   - {x: -5.16, y: 0.44, z: 0}
@@ -3605,6 +3605,8 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 348.9966}
   - {x: 0, y: 0, z: 329.0322}
   difficulty: 0
+  draggables: []
+  draggableArrangeNum: 0
 --- !u!224 &1274766565 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3604244442327615249, guid: a02a0016174004c6a809a1ddb3bfc35e, type: 3}

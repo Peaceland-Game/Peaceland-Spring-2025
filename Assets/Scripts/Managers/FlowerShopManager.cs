@@ -112,15 +112,15 @@ public class FlowerShopManager : MonoBehaviour
     /// <param name="flowerNum">The index to search for in the flowers list in the current order (-1 uses the current flower 
     /// in the FlowerShopManager instance)</param>
     /// <returns>The current flower in the current order</returns>
-    public static OrderObject.Flower GetCurrentFlower(int flowerNum = -1)
+    public static OrderObject.OObject GetCurrentFlower(int flowerNum = -1)
     {
         if (flowerNum < 0)
         {
-            return GetCurrentOrder().flowers[currentFlower];
+            return GetCurrentOrder().objects[currentFlower];
         }
         else
         {
-            return GetCurrentOrder().flowers[flowerNum];
+            return GetCurrentOrder().objects[flowerNum];
         }
     }
 

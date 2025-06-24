@@ -57,9 +57,9 @@ public class Draggable : MonoBehaviour
     private int snapIndex = -1;
 
     /// <summary>
-    /// Tepresents the flower type enum value from order object
+    /// Tepresents the object type enum value from order object
     /// </summary>
-    OrderObjectType typeofFlower;
+    OrderObjectType typeofObject;
     
     /// <summary>
     /// Collison for object
@@ -92,10 +92,16 @@ public class Draggable : MonoBehaviour
     /// </summary>
     public DragManager dm;
 
+    /// <summary>
+    /// flower shop manager reference
+    /// </summary>
+    public FlowerShopManager fsm;
+
 
     void Start()
     {   
         dm = FindFirstObjectByType<DragManager>();
+        fsm = FindFirstObjectByType<FlowerShopManager>();
 
         bounds = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
@@ -106,16 +112,16 @@ public class Draggable : MonoBehaviour
     }
 
     // Called when object is instantiated
-    public void Constructor(GameObject[] _dragTargets, OrderObjectType _typeOfFlower)
+    public void Constructor(GameObject[] _dragTargets, OrderObjectType _typeOfObject)
     {
         foreach (GameObject dragTarget in _dragTargets)
         {
             dragTargets.Add(dragTarget.transform);
         }
-        typeofFlower = _typeOfFlower;
+        typeofObject = _typeOfObject;
 
         // Set the sprite
-        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerTopSprite(_typeOfFlower);
+        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerTopSprite(_typeOfObject);
     }
 
     public bool CanDrag(Vector3 touch_wp) {
@@ -173,11 +179,11 @@ public class Draggable : MonoBehaviour
             BoundsCheck();
         }
 
-        //If the num of flowers is greater than or equal to the length of the draggables array, stop the minigame and
-        //reset the num of flowers arranged
-        if (dm.flowerArrangeNum >= dm.draggables.Length)
+        //If the num of objects is greater than or equal to the length of the draggables array, stop the minigame and
+        //reset the num of objects arranged
+        if (dm.draggableArrangeNum >= dm.draggables.Length)
         {
-            dm.flowerArrangeNum = 0;
+            dm.draggableArrangeNum = 0;
             FlowerShopManager.Instance.NextMinigame();
         }
     } 
@@ -238,13 +244,13 @@ public class Draggable : MonoBehaviour
                     {
                         float dist = (newPos - target.position).magnitude;
                         // Snap position and rotation if close enough AND if their flower types are the same
-                        if (dist < dragDistanceThreshold && dist < lowest_dist && target.gameObject.GetComponent<DragTarget>().TypeOfFlower == typeofFlower)
+                        if (dist < dragDistanceThreshold && dist < lowest_dist && target.gameObject.GetComponent<DragTarget>().TypeOfObject == typeofObject)
                         {
                             newPos = target.position;
                             newRot = target.eulerAngles;
                             snapIndex = i;
                             DisableDrag();
-                            dm.flowerArrangeNum += 1;
+                            dm.draggableArrangeNum += 1;
                         }
                     }
                     i++;
