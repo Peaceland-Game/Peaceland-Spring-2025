@@ -1,6 +1,6 @@
 title: OrderComplete
 ---
 <<lighten>>
-{$customerName}: Thank you so much, Mira. If you need anything, please let me know.
+{$customerName}: Thank you so much, {$floristName}. If you need anything, please let me know.
 *{$customerName} pays and leaves*
 ===

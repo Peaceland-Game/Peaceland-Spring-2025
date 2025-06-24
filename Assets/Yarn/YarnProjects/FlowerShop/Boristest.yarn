@@ -3,7 +3,7 @@ title: BorisStart
 <<declare $agitatorName = "Boris">>
 <<twoChar>>
 <<speaker 1>>
-{$agitatorName}: Mira, I saw-
+{$agitatorName}: {$floristName}, I saw-
 {$agitatorName}: Who is this?
 <<speaker 0>>
 {$floristName}: Oh, this is-
@@ -100,7 +100,7 @@ title: BorisAngry
 <<darken>>
 -><i>Say nothing.</i>
     <<lighten>>
-    {$agitatorName}: Speak up, Mira!
+    {$agitatorName}: Speak up, {$floristName}!
     -><i>Say nothing.</i>
 ->We cannot be certain who it was.
 <<jump BorisEnd>>
@@ -112,7 +112,7 @@ title: BorisRant
 <<darken>>
 {$floristName}: It’s just business, nothing personal.
 <<lighten>>
-{$agitatorName}: Oh, but it is personal. <color="yellow>Those money-grabbing Thebreans think they can just throw cash at every problem.</color> You sold out Mira!
+{$agitatorName}: Oh, but it is personal. <color="yellow">Those money-grabbing Thebreans think they can just throw cash at every problem.</color> You sold out {$floristName}!
 -> Did you <i>actually</i> come here to buy something?
     <<jump BorisOrder>>
 -> I didn’t sell out, I’m the only florist in town.
@@ -133,7 +133,7 @@ title: BorisEnd
 <<darken>>
 {$floristName}: I'm no-
 <<lighten>>
-{$agitatorName}: You are bringing shame to our people, what would Pranas say?
+{$agitatorName}: You are bringing shame to our people, what would {$floristKidName} say?
 <<darken>>
 {$floristName}: Get out. Now.
 <<lighten>>

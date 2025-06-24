@@ -32,7 +32,7 @@ title: Face
 {$teacherName}: True enough. But that’s not a conversation I’d like to have today.
 <<darken>>
 <i><color="yellow">Of course it isn’t. You people never want to talk about anything uncomfortable. Can’t you own up to some of the damage you cause?</color></i>
-<i>…Calm yourself, Mira. She’s only a teacher, his teacher. She’s always been good to you.</i>
+<i>…Calm yourself, {$floristName}. She’s only a teacher, his teacher. She’s always been good to you.</i>
 {$floristName}: Of course, you’re here for flowers. Now, what can I get you?
 <<lighten>>
 {$teacherName}: It’s a large order for my students.
@@ -53,7 +53,7 @@ title: Memorial
 <<darken>>
 {$floristName}: I’m not sure I would call it nice.
 <<lighten>>
-{$teacherName}: But it will be, Mira. <color="yellow>Thebreans, Cleoni, Eskani, all standing side by side in our shared grief. We’ll all be able to move past this conflict.</color>
+{$teacherName}: But it will be, {$floristName}. <color="yellow>Thebreans, Cleoni, Eskani, all standing side by side in our shared grief. We’ll all be able to move past this conflict.</color>
 <<darken>>
 <i>You say that like it’s easy. Maybe it is for you.</i>
 {$floristName}: If you say so. Now, please, let me take a look at the cards.
@@ -66,7 +66,7 @@ title: TeacherOrderStart
 {$floristName}: \[Child 1\], \[Child 2\], \[Child 3\]...
 {$floristName}: … Pranas.
 <<lighten>>
-{$teacherName}: Mira, I’m sorry. You’re the only florist nearby, you have to understand.
+{$teacherName}: {$floristName}, I’m sorry. You’re the only florist nearby, you have to understand.
 <<darken>>
 <i>A warning would have been nice. She’s oblivious to the harm that she causes. Just like the rest of them.</i>
 {$floristName}: I appreciate the gesture. Pranas always loved your class. I’ll put in carnations for sympathy, and an orchid for my Pranas, if you don’t mind.
