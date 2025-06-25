@@ -79,13 +79,20 @@ public class FlowerShopManager : MonoBehaviour
         currentOrder++;
     }
 
-    /// <summary>
-    /// Increment the current order and grab the sprite in it
-    /// </summary>
-    public static Sprite[] NextOrderChar()
+    public static Sprite[,] GetSpriteArray()
     {
-        currentOrder++;
-        return GetCurrentOrder().spritesForOrder;
+        Sprite[,] orderSprites = new Sprite[2,3];
+        //bad code
+        orderSprites[0,0] = GetCurrentOrder().mainCharSprites[0];
+        orderSprites[0,1] = GetCurrentOrder().mainCharSprites[1];
+        orderSprites[0,2] = GetCurrentOrder().mainCharSprites[2];
+        if (GetCurrentOrder().secondCharSprites.Length>0)
+        {
+            orderSprites[1, 0] = GetCurrentOrder().secondCharSprites[0];
+            orderSprites[1, 1] = GetCurrentOrder().secondCharSprites[1];
+            orderSprites[1, 2] = GetCurrentOrder().secondCharSprites[2];
+        }
+        return orderSprites;
     }
 
     /// <summary>

@@ -9,6 +9,7 @@
 <<darken>>
 {$floristName}: ...Andrej?
 <<lighten>>
+<<changeSprite 1 2>>
 {$customerName}: The outside of your store. Do you want any help cleaning that up?
 <<darken>>
 {$floristName}: No, thank you, Andrej. It looks like you have enough on your mind already.

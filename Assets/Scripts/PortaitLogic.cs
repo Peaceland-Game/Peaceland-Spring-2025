@@ -19,6 +19,7 @@ public class PortaitLogic : MonoBehaviour
         dialogueRunner.AddCommandHandler<int>("speaker", Speaker);
         dialogueRunner.AddCommandHandler<int>("lighten", Lighten);
         dialogueRunner.AddCommandHandler<int>("darken", Darken);
+        dialogueRunner.AddCommandHandler<int,int>("changeSprite", ChangeSprite);
         dialogueRunner.AddCommandHandler("oneChar", OneChar);
         dialogueRunner.AddCommandHandler("twoChar", TwoChar);
         dialogueRunner.AddCommandHandler("zeroChar", ZeroChar);
@@ -105,5 +106,18 @@ public class PortaitLogic : MonoBehaviour
     {
         characterPortrait.SetActive(false);
         secondCharacterPortrait.SetActive(false);
+    }
+
+    private void ChangeSprite(int character, int portait)
+    {
+        Sprite[,] charSprites = FlowerShopManager.GetSpriteArray();
+        if (character == 1)
+        {
+            characterPortrait.GetComponent<SpriteRenderer>().sprite = charSprites[0, portait];
+        }
+        else
+        {
+            secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = charSprites[1, portait];
+        }
     }
 }

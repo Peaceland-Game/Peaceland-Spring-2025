@@ -14,12 +14,17 @@ public class OrderObject : ScriptableObject
     /// <summary>
     /// The name that was given for the flower order
     /// </summary>
-    public string nameForOrder;
+    public string nameForOrder; 
 
     /// <summary>
-    /// The sprites associated with the characters for the flower order
+    /// The sprites associated with the main character for the flower order
     /// </summary>
-    public Sprite[] spritesForOrder;
+    public Sprite[] mainCharSprites;
+
+    /// <summary>
+    /// The sprites associated with the seoncdary character for the flower order
+    /// </summary>
+    public Sprite[] secondCharSprites;
 
     /// <summary>
     /// List of flowers as Texture2D (subject to change)

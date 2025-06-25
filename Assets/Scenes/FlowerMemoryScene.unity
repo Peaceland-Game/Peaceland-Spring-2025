@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigames:
+  - {fileID: 425442085}
   - {fileID: 88269610}
   - {fileID: 438935505}
   - {fileID: 1740225107}
@@ -205,6 +206,7 @@ MonoBehaviour:
   - {fileID: 1164951639}
   - {fileID: 583617334}
   orders:
+  - {fileID: 11400000, guid: ef2ab1d33f2f2c942aee002182da956b, type: 2}
   - {fileID: 11400000, guid: 08e58547467936140abcc295a3848a84, type: 2}
   - {fileID: 11400000, guid: b7ea8f03dec914fee87fb9129622e4f5, type: 2}
   - {fileID: 11400000, guid: 787d291b26bc5bf49aad0986bd1be5c7, type: 2}
@@ -3981,7 +3983,6 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 348.9966}
   - {x: 0, y: 0, z: 329.0322}
-  difficulty: 0
   draggables: []
   flowerArrangeNum: 0
 --- !u!1 &1180866053

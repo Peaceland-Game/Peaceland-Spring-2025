@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Order5
   m_EditorClassIdentifier: 
   nameForOrder: Lukas
-  spritesForOrder:
-  - {fileID: -171743095488495158, guid: a93560a59d7121f4f91c3fe7f9b263e4, type: 3}
+  mainCharSprites:
+  - {fileID: 3116686467387525769, guid: 6201b17c5efa109498e39ddb3fad60f0, type: 3}
+  - {fileID: 7155350529804483857, guid: 85cd58d2adf4e1945b47147629e695a1, type: 3}
+  - {fileID: 9207022935795185261, guid: b2bbef918c7263e48808eb20a60181b5, type: 3}
+  secondCharSprites: []
   flowers:
   - needsDethorning: 1
     needsTrimming: 0

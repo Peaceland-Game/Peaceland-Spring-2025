@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: FlowerEnd1
   m_EditorClassIdentifier: 
   nameForOrder: Jeta
-  spritesForOrder:
+  mainCharSprites:
   - {fileID: 7970975631028415661, guid: a5592716ed50d7a498c4f63232ba8079, type: 3}
+  - {fileID: 7970975631028415661, guid: a5592716ed50d7a498c4f63232ba8079, type: 3}
+  - {fileID: 7970975631028415661, guid: a5592716ed50d7a498c4f63232ba8079, type: 3}
+  secondCharSprites: []
   flowers:
   - needsDethorning: 1
     needsTrimming: 1

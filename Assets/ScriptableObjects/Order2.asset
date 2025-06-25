@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Order2
   m_EditorClassIdentifier: 
   nameForOrder: Danika
-  spritesForOrder:
-  - {fileID: 7970975631028415661, guid: a5592716ed50d7a498c4f63232ba8079, type: 3}
+  mainCharSprites:
+  - {fileID: 6618763717067473043, guid: 184fdcd100b06094390e6788e3179dd1, type: 3}
+  - {fileID: 4493633350398199302, guid: ba58931ac7957f34594889a08ce0a2bd, type: 3}
+  - {fileID: -3544298900915061737, guid: a08a7a92759119440a04251a61fe77be, type: 3}
+  secondCharSprites: []
   flowers:
   - needsDethorning: 1
     needsTrimming: 0

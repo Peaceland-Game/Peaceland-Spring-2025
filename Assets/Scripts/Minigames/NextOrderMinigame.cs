@@ -16,11 +16,12 @@ public class NextOrderMinigame : MinigameBehavior
 
     public override void StartMinigame()
     {
-        Sprite[] charSprites = FlowerShopManager.NextOrderChar();
-        characterPortrait.GetComponent<SpriteRenderer>().sprite = charSprites[0];
-        if (charSprites.Length > 1)
+        Sprite[,] charSprites = FlowerShopManager.GetSpriteArray();
+        FlowerShopManager.NextOrder();
+        characterPortrait.GetComponent<SpriteRenderer>().sprite = charSprites[0,0];
+        if (charSprites[1,0]!=null)
         {
-            characterPortrait2.GetComponent<SpriteRenderer>().sprite = charSprites[1];
+            characterPortrait2.GetComponent<SpriteRenderer>().sprite = charSprites[1,0];
         }
         gameObject.SetActive(true);
         FlowerShopManager.Instance.NextMinigame();
