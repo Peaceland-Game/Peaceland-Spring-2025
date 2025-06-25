@@ -35,7 +35,6 @@ public class ThornyFlowerZoom : MonoBehaviour
             transform.position = new Vector3(transform.position.x - (0.0016f * transform.localScale.x), transform.position.y, this.transform.position.z);
             if (transform.localScale.x > 5)
             {
-                Debug.Log("spawn");
                 CutManager cm = gameObject.AddComponent(typeof(CutManager)) as CutManager;
                 cm.BeginDethorn();
                 this.gameObject.SetActive(false);

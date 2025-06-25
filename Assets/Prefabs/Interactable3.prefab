@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2410964964121257263}
   - component: {fileID: 7297774830438626671}
   m_Layer: 6
-  m_Name: Interactable1
+  m_Name: Interactable3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 5726443785198315301, guid: afd49c5faf1c24747a0c5425b2d3e361, type: 3}
+  m_Sprite: {fileID: 8683036206156961311, guid: 4e88d0dbd6757734c9f80f8fce37967a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,11 +105,11 @@ MonoBehaviour:
   fading: 0
   finished: 0
   zoom: 0
-  hasDialogue: 1
+  hasDialogue: 0
   startNode: Start
-  x: -1
+  x: 3
   y: 0
-  z: 1.5
+  z: 1
 --- !u!61 &2410964964121257263
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.34, y: 3.98}
+    oldSize: {x: 0.38, y: 0.73}
     newSize: {x: 3.33, y: 10.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
