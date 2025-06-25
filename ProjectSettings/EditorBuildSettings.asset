@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/DemoDisclaimer.unity
     guid: f6c3ef22f7cf47c429c291702f3d7ba9
   - enabled: 1
+    path: Assets/Scenes/PDayIntro.unity
+    guid: d7b7df2f2d05ee2438f747b9b165d848
+  - enabled: 1
     path: Assets/Scenes/FMemIntro.unity
     guid: 3b8c065ad39116a46a87d34cabd54600
   - enabled: 1
