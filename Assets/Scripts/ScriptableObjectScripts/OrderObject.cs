@@ -6,6 +6,13 @@ public enum FlowerType
 {
     ROSE,
     DAISY,
+    PINKROSE,
+    THISTLE,
+    CHAMOMILE,
+    GLADIOLUS,
+    HAWTHORN,
+    CARNATION,
+    ORCHID
 }
 
 [CreateAssetMenu(fileName = "OrderObject", menuName = "Scriptable Objects/OrderObject")]
