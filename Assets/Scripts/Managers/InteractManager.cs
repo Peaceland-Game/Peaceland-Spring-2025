@@ -8,19 +8,33 @@ public class InteractManager : MinigameBehavior
 {
     [SerializeField] GameObject InteractablePrefab;
 
+    /// <summary>
+    /// Runs the dialogue when an object with dialogue is clicked on
+    /// </summary>
     [SerializeField] DialogueRunner dialogueRunner;
 
+    /// <summary>
+    /// List of the interactable objects
+    /// </summary>
     public Interactable[] interactables;
 
+    /// <summary>
+    /// Number of interactable objects in this minigame
+    /// </summary>
     public int numObjects;
 
+    /// <summary>
+    /// Number of active interactable objects
+    /// </summary>
     public int numActiveObjects;
 
 
-
+    /// <summary>
+    /// Instantiates the interactable objects and begins the minigame
+    /// </summary>
     public override void StartMinigame()
     {
-        numObjects = FlowerShopManager.GetCurrentOrder().flowers.Count;
+        numObjects = interactables.Length;
         numActiveObjects = numObjects;
 
         for (int i = 0; i < numObjects; i++)
@@ -33,6 +47,9 @@ public class InteractManager : MinigameBehavior
         gameObject.SetActive(true);
 
     }
+    /// <summary>
+    /// Destorys the interactable objects and ends the minigame
+    /// </summary>
     public override void StopMinigame()
     {
         for (int i = 0; i < interactables.Length; i++)
@@ -43,6 +60,11 @@ public class InteractManager : MinigameBehavior
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// This is the method that detects when the object is clicked on. I could not figure out the
+    /// regular on click methods using the input systems package, so I used the onTap method in
+    /// GrabAndSwipe to run this method.
+    /// </summary>
     public void DoClick()
     {
         if (this.gameObject.activeInHierarchy) {
@@ -50,16 +72,20 @@ public class InteractManager : MinigameBehavior
 
             for (int i = 0; i < numObjects; i++) { 
                 
+                //aabb bounding test
                     if (!(touch_wp.x < interactables[i].gameObject.transform.position.x - interactables[i].GetComponent<Collider2D>().bounds.size.x/2  ||
                            touch_wp.x > interactables[i].gameObject.transform.position.x + interactables[i].GetComponent<Collider2D>().bounds.size.x/2 ||
                           touch_wp.y <  interactables[i].gameObject.transform.position.y - interactables[i].GetComponent<SpriteRenderer>().bounds.size.y / 2  ||
                            touch_wp.y > interactables[i].gameObject.transform.position.y + interactables[i].GetComponent<SpriteRenderer>().bounds.size.y / 2) 
                            && !interactables[i].fading && interactables[i].gameObject.activeInHierarchy){
+
+                    //Runs the dialogue if it has any
                     if (interactables[i].hasDialogue)
                         {
                             runDialogue(interactables[i]);
 
                         }
+                    //Otherwise begins the fade away
                     else
                         {
                             Debug.Log(i + " CLICKED!!!!!");
@@ -72,6 +98,7 @@ public class InteractManager : MinigameBehavior
         }
     }
 
+    //Runs the dialogue once per object and labels it finished so it won't run it again
     private void runDialogue(Interactable inter)
     {
         if (!inter.finished)
@@ -82,6 +109,7 @@ public class InteractManager : MinigameBehavior
         }
     }
 
+    //Fades the objects and attemps to end the minigame when an object fades.
     private void Update()
     {
         for(int i = 0; i < numObjects; i++)
@@ -100,6 +128,7 @@ public class InteractManager : MinigameBehavior
 
     }
 
+    //Ends the minigame if there are no more active objects left.
     public void endInteractableMinigame()
     {
         Debug.Log("end method");

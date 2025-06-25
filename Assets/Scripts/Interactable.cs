@@ -10,13 +10,29 @@ using Yarn.Unity;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Interactable : MonoBehaviour
 {
+    /// <summary>
+    /// Used to fade the object away and remove it after its done
+    /// </summary>
     public bool fading;
+    /// <summary>
+    /// Used to label objects as complete after they run their dialogue
+    /// </summary>
     public bool finished = false;
+    /// <summary>
+    /// Potentially controls the zoom
+    /// </summary>
     public bool zoom;
+    /// <summary>
+    /// Used to mark which objects have attached dialogue
+    /// </summary>
     public bool hasDialogue;
 
+    /// <summary>
+    /// The attached dialogue
+    /// </summary>
     public string startNode;
 
+    //The position of the object
     public float x;
     public float y;
     public float z;
@@ -34,26 +50,5 @@ public class Interactable : MonoBehaviour
             transform.position += new Vector3(transform.position.x + -transform.position.x * 0.2f,
                 transform.position.y + -transform.position.y * 0.2f, transform.position.x);
         }
-
     }
-
-    private void Update()
-    {
-        /*
-        if (fading)
-        {
-            float tempColor = this.GetComponent<SpriteRenderer>().color.a - 0.005f;
-            if(tempColor <= 0)
-            {
-                Debug.Log("AERH");
-                this.gameObject.SetActive(false);
-               // interactmanager.endInteractableMinigame();
-            }
-            this.GetComponent<SpriteRenderer>().color = new Color(this.GetComponent<SpriteRenderer>().color.r,
-                this.GetComponent<SpriteRenderer>().color.g, this.GetComponent<SpriteRenderer>().color.g, tempColor);
-        }
-        */
-    }
-        
-
 }
