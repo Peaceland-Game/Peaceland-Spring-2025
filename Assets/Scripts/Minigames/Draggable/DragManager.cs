@@ -32,11 +32,6 @@ public class DragManager : MinigameBehavior
     [SerializeField] Vector3[] targetRotations;
 
     /// <summary>
-    /// Used to add difficulty to the minigame. 0 is normal, 1 is shaky hands, and 2 is blurred vision.
-    /// </summary>
-    [SerializeField] int difficulty;
-
-    /// <summary>
     /// a list of flower objects that the player can drag
     /// </summary>
     [SerializeField]
@@ -99,13 +94,13 @@ public class DragManager : MinigameBehavior
         gameObject.SetActive(true);
 
         //Adds the blur to minigames with added difficulty
-        if (difficulty > 1)
+        if (GameManager.Instance.difficulty > 1)
         {
             ppVolume.enabled = true;
             ppVolume.weight = 1;
-            if (difficulty >= 2)
-            {
-                ppVolume.weight = 0.6f + (difficulty * 0.05f);
+            if (GameManager.Instance.difficulty >= 2)
+            { //Scales from 2 to 11
+                ppVolume.weight = 0.45f + (GameManager.Instance.difficulty * 0.05f);
             }
         }
     }
@@ -157,7 +152,7 @@ public class DragManager : MinigameBehavior
             if (candidate is not null)
             {
                 currentDraggable = candidate;
-                currentDraggable.StartDrag(touch_wp, difficulty);
+                currentDraggable.StartDrag(touch_wp, GameManager.Instance.difficulty);
             }
         }
     }

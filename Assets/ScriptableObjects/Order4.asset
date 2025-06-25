@@ -17,11 +17,11 @@ MonoBehaviour:
   - {fileID: 7970975631028415661, guid: a5592716ed50d7a498c4f63232ba8079, type: 3}
   flowers:
   - needsDethorning: 1
-    needsTrimming: 1
+    needsTrimming: 0
     needsArranging: 1
     flowerType: 1
   - needsDethorning: 0
-    needsTrimming: 1
+    needsTrimming: 0
     needsArranging: 1
     flowerType: 0
   - needsDethorning: 1

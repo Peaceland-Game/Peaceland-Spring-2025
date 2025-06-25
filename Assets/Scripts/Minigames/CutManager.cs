@@ -36,6 +36,17 @@ public class CutManager : MinigameBehavior
         instance = this;
         gameObject.SetActive(true);
         CutStart();
+
+        if (GameManager.Instance.difficulty > 1)
+        {
+            PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+            ppVolume.weight = 1;
+            ppVolume.enabled = true;
+            if (GameManager.Instance.difficulty >= 2)
+            { //Scales from 2 to 11
+                ppVolume.weight = 0.45f + (GameManager.Instance.difficulty * 0.05f);
+            }
+        }
     }
 
     public override void StopMinigame()

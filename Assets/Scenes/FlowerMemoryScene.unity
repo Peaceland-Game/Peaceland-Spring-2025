@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 41747955}
   - component: {fileID: 41747958}
   - component: {fileID: 41747959}
+  - component: {fileID: 41747960}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -234,6 +235,22 @@ MonoBehaviour:
   dialogueRunner: {fileID: 492172087}
   characterPortrait: {fileID: 1340726477}
   secondCharacterPortrait: {fileID: 2038727505}
+--- !u!114 &41747960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41747954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e886924c9215042952e6da167897c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 492172087}
+  dethornShears: {fileID: 1331315764}
+  trimShears: {fileID: 401263671}
+  arrange: {fileID: 1164951637}
 --- !u!1 &88269609
 GameObject:
   m_ObjectHideFlags: 0
