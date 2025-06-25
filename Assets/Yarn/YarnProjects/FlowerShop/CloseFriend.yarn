@@ -25,7 +25,7 @@ title: DoingWell
 {$closeFriendName}: I’ve known you too long, {$floristName}. Something is bothering you, I can tell.
 <<darken>>
 -> I don’t really want to talk about it.
-    <<jump DontTalkAboutItTalkAboutIt>>
+    <<jump DontTalkAboutIt>>
 -> Fine, you win. Today hasn’t been great.
     <<jump TalkAboutIt>>
 ===
