@@ -21,6 +21,7 @@ public class PortaitLogic : MonoBehaviour
         dialogueRunner.AddCommandHandler<int>("darken", Darken);
         dialogueRunner.AddCommandHandler("oneChar", OneChar);
         dialogueRunner.AddCommandHandler("twoChar", TwoChar);
+        dialogueRunner.AddCommandHandler("zeroChar", ZeroChar);
     }
 
     /// <summary>
@@ -83,8 +84,10 @@ public class PortaitLogic : MonoBehaviour
     /// </summary>
     private void OneChar()
     {
-        characterPortrait.transform.position = new Vector3(-3, -1, 0);
+        characterPortrait.SetActive(true);
         secondCharacterPortrait.SetActive(false);
+        characterPortrait.transform.position = new Vector3(-3, -1, 0);
+        
     }
 
     /// <summary>
@@ -92,8 +95,15 @@ public class PortaitLogic : MonoBehaviour
     /// </summary>
     private void TwoChar()
     {
+        secondCharacterPortrait.SetActive(true);
+        characterPortrait.SetActive(true);
         characterPortrait.transform.position = new Vector3(-5, -1, 0);
         secondCharacterPortrait.transform.position = new Vector3(5, -1, 0);
-        secondCharacterPortrait.SetActive(true);
+    }
+
+    private void ZeroChar()
+    {
+        characterPortrait.SetActive(false);
+        secondCharacterPortrait.SetActive(false);
     }
 }

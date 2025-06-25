@@ -2,8 +2,9 @@ title: ChildStart
 ---
 <<declare $childName = "Lukas">>
 <<declare $floristKidName = "Pranas">>
-<<darken>>
+<<zeroChar>>
 *{$floristName} moves to the front of the store, preparing to flip the sign from open to closed.*
+<<oneChar>>
 <<lighten>>
 {$childName}: Wait!
 <<darken>>
