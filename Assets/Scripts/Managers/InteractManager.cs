@@ -80,7 +80,7 @@ public class InteractManager : MinigameBehavior
                            && !interactables[i].fading && interactables[i].gameObject.activeInHierarchy){
 
                     //Runs the dialogue if it has any
-                    if (interactables[i].hasDialogue)
+                    if (interactables[i].startNode != "")
                         {
                             runDialogue(interactables[i]);
 

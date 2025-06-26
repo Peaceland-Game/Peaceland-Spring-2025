@@ -22,13 +22,9 @@ public class Interactable : MonoBehaviour
     /// Potentially controls the zoom
     /// </summary>
     public bool zoom;
-    /// <summary>
-    /// Used to mark which objects have attached dialogue
-    /// </summary>
-    public bool hasDialogue;
 
     /// <summary>
-    /// The attached dialogue
+    /// The attached dialogue. Leave blank for no dialogue
     /// </summary>
     public string startNode;
 

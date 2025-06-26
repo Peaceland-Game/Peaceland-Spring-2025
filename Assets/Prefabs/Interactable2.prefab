@@ -106,7 +106,7 @@ MonoBehaviour:
   finished: 0
   zoom: 0
   hasDialogue: 0
-  startNode: Start
+  startNode: 
   x: 0
   y: 0
   z: 2
