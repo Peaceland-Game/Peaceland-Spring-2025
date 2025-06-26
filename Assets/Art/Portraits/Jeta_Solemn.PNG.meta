@@ -103,12 +103,12 @@ TextureImporter:
       name: Jeta_Solemn_0
       rect:
         serializedVersion: 2
-        x: 197
+        x: 0
         y: 0
-        width: 1563
-        height: 1814
+        width: 2048
+        height: 2048
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: c09a1d31a8550ce40ae045d01eddcc5b
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Jeta_Solemn_0: -3544298900915061737
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

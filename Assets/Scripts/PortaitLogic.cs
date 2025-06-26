@@ -87,7 +87,7 @@ public class PortaitLogic : MonoBehaviour
     {
         characterPortrait.SetActive(true);
         secondCharacterPortrait.SetActive(false);
-        characterPortrait.transform.position = new Vector3(-3, -1, 0);
+        characterPortrait.transform.position = new Vector3(-3f, -0.5f, 0f);
         
     }
 
@@ -98,8 +98,8 @@ public class PortaitLogic : MonoBehaviour
     {
         secondCharacterPortrait.SetActive(true);
         characterPortrait.SetActive(true);
-        characterPortrait.transform.position = new Vector3(-5, -1, 0);
-        secondCharacterPortrait.transform.position = new Vector3(5, -1, 0);
+        characterPortrait.transform.position = new Vector3(-4f, -0.5f, 0f);
+        secondCharacterPortrait.transform.position = new Vector3(5f, -0.5f, 0f);
     }
 
     private void ZeroChar()
@@ -110,14 +110,13 @@ public class PortaitLogic : MonoBehaviour
 
     private void ChangeSprite(int character, int portait)
     {
-        Sprite[,] charSprites = FlowerShopManager.GetSpriteArray();
         if (character == 1)
         {
-            characterPortrait.GetComponent<SpriteRenderer>().sprite = charSprites[0, portait];
+            characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetMainSprites()[portait];
         }
         else
         {
-            secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = charSprites[1, portait];
+            secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetSecondSprites()[portait];
         }
     }
 }

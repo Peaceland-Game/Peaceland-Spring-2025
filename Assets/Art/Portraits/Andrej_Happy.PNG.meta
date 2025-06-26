@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 85cd58d2adf4e1945b47147629e695a1
+guid: 036a26d319e2a6641970b81fba4a0c80
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7155350529804483857
-    second: Andrej_Happy_0
+      213: 5991870518222945421
+    second: Andrej_Happy 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Andrej_Happy_0
+      name: Andrej_Happy 1_0
       rect:
         serializedVersion: 2
-        x: 209
+        x: 0
         y: 0
-        width: 2164
-        height: 2291
+        width: 2048
+        height: 2048
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 11d366c6569ec4360800000000000000
-      internalID: 7155350529804483857
+      spriteID: d8c70d27d76672350800000000000000
+      internalID: 5991870518222945421
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6ade5c3247def094ba9642d8c7b57ecb
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Andrej_Happy 1_0: 5991870518222945421
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

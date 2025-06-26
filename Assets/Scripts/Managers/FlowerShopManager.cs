@@ -60,7 +60,7 @@ public class FlowerShopManager : MonoBehaviour
     /// <summary>
     /// The current order being worked on
     /// </summary>
-    private static int currentOrder = 0;
+    private static int currentOrder = -1;
 
     /// <summary>
     /// Gives access to the current order in the minigame
@@ -79,20 +79,24 @@ public class FlowerShopManager : MonoBehaviour
         currentOrder++;
     }
 
-    public static Sprite[,] GetSpriteArray()
+    /// <summary>
+    /// Returns an array of the main character sprites
+    /// </summary>
+    public static Sprite[] GetMainSprites()
     {
-        Sprite[,] orderSprites = new Sprite[2,3];
-        //bad code
-        orderSprites[0,0] = GetCurrentOrder().mainCharSprites[0];
-        orderSprites[0,1] = GetCurrentOrder().mainCharSprites[1];
-        orderSprites[0,2] = GetCurrentOrder().mainCharSprites[2];
-        if (GetCurrentOrder().secondCharSprites.Length>0)
+        return GetCurrentOrder().mainCharSprites;
+    }
+
+    /// <summary>
+    /// Returns an array of the secondary character sprites if not null
+    /// </summary>
+    public static Sprite[] GetSecondSprites()
+    {
+        if (GetCurrentOrder().secondCharSprites.Length > 0)
         {
-            orderSprites[1, 0] = GetCurrentOrder().secondCharSprites[0];
-            orderSprites[1, 1] = GetCurrentOrder().secondCharSprites[1];
-            orderSprites[1, 2] = GetCurrentOrder().secondCharSprites[2];
+            return GetCurrentOrder().secondCharSprites;
         }
-        return orderSprites;
+        return null;
     }
 
     /// <summary>
