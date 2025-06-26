@@ -20,8 +20,6 @@ public class GrabAndSwipe : MonoBehaviour
     [SerializeField] GameObject shearTrail;
     GameObject currentTrail;
 
-    [SerializeField] InteractManager interactmanager;
-
     bool isMouseDown;
     bool isSlicing;
     Vector2 previousMousePos;
@@ -90,7 +88,6 @@ public class GrabAndSwipe : MonoBehaviour
     /// <param name="context"></param>
     public void OnTap(InputAction.CallbackContext context)
     {
-        interactmanager.DoClick();
         //only effect the shear in the active minigame
         if (isActiveAndEnabled)
         {

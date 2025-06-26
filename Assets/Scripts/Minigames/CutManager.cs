@@ -3,7 +3,6 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Rendering.PostProcessing;
-using Unity.VisualScripting;
 
 /// <summary>
 /// Keep track of which object needs to be displayed and cut
@@ -22,8 +21,6 @@ public class CutManager : MinigameBehavior
 
     private static GameObject instantiatedFlower;
 
-    public GameObject thornyRose;
-
     /// <summary>
     /// Stem for dethorning minigame
     /// </summary>
@@ -36,7 +33,6 @@ public class CutManager : MinigameBehavior
 
     public override void StartMinigame()
     {
-        
         instance = this;
         gameObject.SetActive(true);
         CutStart();
@@ -61,27 +57,9 @@ public class CutManager : MinigameBehavior
     public static void CutStart()
     {
         //If the current minigame is dethorning, then use the pre-given stem game object
-        if (FlowerShopManager.GetCurrentMinigame().gameObject.name == "Dethorn") 
-        {
-            //Activates the thorny rose object for the zoom in on the first rose of the minigame
-            if (curIndex == 0)
-            {
-                ThornyFlowerZoom t = instance.thornyRose.GetComponent<ThornyFlowerZoom>();
-                t.Reset();
-            }
-            //Otherwise load in the next thorns normally
-            else
-            {
-                instance.BeginDethorn();
-            }
-        }
+        if (FlowerShopManager.GetCurrentMinigame().gameObject.name == "Dethorn") { instantiatedFlower = Instantiate(instance.stem); }
         //Otherwise use the dynamic sprite flower
         else { instantiatedFlower = Instantiate(instance.flower); }
-    }
-
-    public void BeginDethorn()
-    {
-        instantiatedFlower = Instantiate(instance.stem);
     }
 
     public static IEnumerator AllCutsMade()

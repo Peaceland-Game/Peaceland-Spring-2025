@@ -124,12 +124,10 @@ public class DragManager : MinigameBehavior
         gameObject.SetActive(false);
     }
 
-
     public void OnTouch(InputAction.CallbackContext context)
     {
-        
         if (!isActiveAndEnabled) return;
-        Debug.Log("on touchd drag manager");
+
         if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled)
         {
             if (currentDraggable is not null)

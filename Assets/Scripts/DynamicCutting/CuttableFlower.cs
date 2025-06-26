@@ -193,7 +193,7 @@ public class CuttableFlower : MonoBehaviour
         hitbox.transform.rotation = Quaternion.Euler(0, 0, 90);
 
         //Scale down the hitbox so it matches the width of the flower stem
-        hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 0.1f, hitbox.transform.localScale.z + 20f);
+        hitbox.transform.localScale = new Vector3(hitbox.transform.localScale.x, 0.1f, hitbox.transform.localScale.z);
     }
 
     /// <summary>
