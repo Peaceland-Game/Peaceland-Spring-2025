@@ -44,5 +44,8 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Guide line
+    uniqueID: 2669951959
+    locked: 0
   m_RenderingLayers:
   - Default

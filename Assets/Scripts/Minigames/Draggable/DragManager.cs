@@ -102,11 +102,7 @@ public class DragManager : MinigameBehavior
         if (difficulty > 1)
         {
             ppVolume.enabled = true;
-            ppVolume.weight = 1;
-            if (difficulty >= 2)
-            {
-                ppVolume.weight = 0.6f + (difficulty * 0.05f);
-            }
+            ppVolume.weight = 0.6f + (difficulty * 0.05f);
         }
     }
 
@@ -129,10 +125,12 @@ public class DragManager : MinigameBehavior
         gameObject.SetActive(false);
     }
 
+
     public void OnTouch(InputAction.CallbackContext context)
     {
+        
         if (!isActiveAndEnabled) return;
-
+        Debug.Log("on touchd drag manager");
         if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled)
         {
             if (currentDraggable is not null)
