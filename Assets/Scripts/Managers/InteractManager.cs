@@ -6,8 +6,6 @@ using static OrderObject;
 
 public class InteractManager : MinigameBehavior
 {
-    [SerializeField] GameObject InteractablePrefab;
-
     /// <summary>
     /// Runs the dialogue when an object with dialogue is clicked on
     /// </summary>
@@ -67,16 +65,18 @@ public class InteractManager : MinigameBehavior
     /// </summary>
     public void DoClick()
     {
+
         if (this.gameObject.activeInHierarchy) {
         Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
+            Debug.Log(touch_wp.x + ", " + touch_wp.y);
 
             for (int i = 0; i < numObjects; i++) { 
                 
                 //aabb bounding test
                     if (!(touch_wp.x < interactables[i].gameObject.transform.position.x - interactables[i].GetComponent<Collider2D>().bounds.size.x/2  ||
                            touch_wp.x > interactables[i].gameObject.transform.position.x + interactables[i].GetComponent<Collider2D>().bounds.size.x/2 ||
-                          touch_wp.y <  interactables[i].gameObject.transform.position.y - interactables[i].GetComponent<SpriteRenderer>().bounds.size.y / 2  ||
-                           touch_wp.y > interactables[i].gameObject.transform.position.y + interactables[i].GetComponent<SpriteRenderer>().bounds.size.y / 2) 
+                          touch_wp.y <  interactables[i].gameObject.transform.position.y - interactables[i].GetComponent<Collider2D>().bounds.size.y / 2  ||
+                           touch_wp.y > interactables[i].gameObject.transform.position.y + interactables[i].GetComponent<Collider2D>().bounds.size.y / 2) 
                            && !interactables[i].fading && interactables[i].gameObject.activeInHierarchy){
 
                     //Runs the dialogue if it has any
@@ -109,14 +109,14 @@ public class InteractManager : MinigameBehavior
         }
     }
 
-    //Fades the objects and attemps to end the minigame when an object fades.
+    //Fades the objects and attemps to end the minigame when an object fades
     private void Update()
     {
         for(int i = 0; i < numObjects; i++)
         {
             if (interactables[i].fading && !interactables[i].finished)
                 interactables[i].GetComponent<SpriteRenderer>().color = new Color(interactables[i].GetComponent<SpriteRenderer>().color.r,
-                interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.a - 0.005f);
+                interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.a - 0.001f);
                 if (interactables[i].GetComponent<SpriteRenderer>().color.a <= 0 && !interactables[i].finished)
             {
                 numActiveObjects--;
@@ -128,7 +128,7 @@ public class InteractManager : MinigameBehavior
 
     }
 
-    //Ends the minigame if there are no more active objects left.
+    //Ends the minigame if there are no more active objects left
     public void endInteractableMinigame()
     {
         Debug.Log("end method");

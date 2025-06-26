@@ -20,7 +20,7 @@ public class GrabAndSwipe : MonoBehaviour
     [SerializeField] GameObject shearTrail;
     GameObject currentTrail;
 
-    [SerializeField] InteractManager interactmanager;
+    [SerializeField] InteractManager[] interactmanagers;
 
     /// <summary>
     /// Used to add difficulty to the minigame. 0 is normal, 1 is shaky hands, and 2 is blurred vision.
@@ -106,9 +106,13 @@ public class GrabAndSwipe : MonoBehaviour
     /// <param name="context"></param>
     public void OnTap(InputAction.CallbackContext context)
     {
-        interactmanager.DoClick();
-        //only effect the shear in the active minigame
-        if (isActiveAndEnabled)
+        for (int i = 0; i < interactmanagers.Length; i++)
+        {
+            interactmanagers[i].DoClick();
+        }
+
+            //only effect the shear in the active minigame
+            if (isActiveAndEnabled)
         {
             isMouseDown = !context.canceled;
             //spawn a trail when the mouse is pressed, not released
