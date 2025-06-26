@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2410964964121257263}
   - component: {fileID: 7297774830438626671}
   m_Layer: 6
-  m_Name: Interactable3
+  m_Name: Interactable4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 603097123361820352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.66, y: -1.1, z: 0}
-  m_LocalScale: {x: 0.225, y: 0.212, z: 1}
+  m_LocalPosition: {x: 7.94, y: -4.02, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: 5726443785198315301, guid: afd49c5faf1c24747a0c5425b2d3e361, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: -1302531701457320957, guid: ddd12a0abba1de74294fbaedfadbaeff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,9 +106,9 @@ MonoBehaviour:
   finished: 0
   zoom: 0
   startNode: 
-  x: 3.8
-  y: -2.7
-  z: 1
+  x: 8.63
+  y: -4
+  z: 1.5
 --- !u!61 &2410964964121257263
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,13 +147,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.34, y: 3.98}
+    oldSize: {x: 15.99, y: 12.61}
     newSize: {x: 3.33, y: 10.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5.2, y: 4}
+  m_Size: {x: 16, y: 14}
   m_EdgeRadius: 0
 --- !u!50 &7297774830438626671
 Rigidbody2D:
