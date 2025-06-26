@@ -1,5 +1,6 @@
 title: OrderComplete
 ---
+<<changeSprite 1 1>>
 <<lighten>>
 {$customerName}: Thank you so much, {$floristName}. If you need anything, please let me know.
 *{$customerName} pays and leaves*

@@ -4,4 +4,5 @@ title: ChildOrderComplete
 {$floristName}: Be strong, alright? Be strong... <size=50%>you have to be...</size>
 <<lighten>>
 {$childName}: Thank you, Miss Florist!
+<<zeroChar>>
 ===

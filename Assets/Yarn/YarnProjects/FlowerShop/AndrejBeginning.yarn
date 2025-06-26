@@ -1,15 +1,16 @@
 ﻿title: Start
 ---
 <<declare $customerName = "Andrej">>
+<<changeSprite 1 1>>
 <<darken>>
 <<oneChar>>
 {$floristName}: Welcome!
 <<lighten>>
+<<changeSprite 1 2>>
 {$customerName}: Hmmm.
 <<darken>>
 {$floristName}: ...Andrej?
 <<lighten>>
-<<changeSprite 1 2>>
 {$customerName}: The outside of your store. Do you want any help cleaning that up?
 <<darken>>
 {$floristName}: No, thank you, Andrej. It looks like you have enough on your mind already.
@@ -19,6 +20,7 @@
 <i>The memorial, I didn’t realize that was today.</i>
 {$floristName}: There’s nothing to be done about it now. What are you here for today?
 <<lighten>>
+<<changeSprite 1 0>>
 {$customerName}: It’s for the memorial, actually. I wanted to get a small arrangement for Hana’s mother.
 <<darken>>
 -> That's sweet of you. Did you know her well?

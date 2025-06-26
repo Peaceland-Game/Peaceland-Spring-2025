@@ -20,15 +20,7 @@ MonoBehaviour:
   secondCharSprites: []
   flowers:
   - needsDethorning: 1
-    needsTrimming: 0
-    needsArranging: 1
-    flowerType: 1
-  - needsDethorning: 0
-    needsTrimming: 0
-    needsArranging: 1
-    flowerType: 0
-  - needsDethorning: 1
-    needsTrimming: 0
+    needsTrimming: 1
     needsArranging: 1
     flowerType: 1
   dialogueStartNode: TeacherOrderStart

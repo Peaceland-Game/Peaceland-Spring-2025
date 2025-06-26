@@ -112,11 +112,17 @@ public class PortaitLogic : MonoBehaviour
     {
         if (character == 1)
         {
-            characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetMainSprites()[portait];
+            if (FlowerShopManager.GetMainSprites().Length > portait)
+            {
+                characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetMainSprites()[portait];
+            }
         }
         else
         {
-            secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetSecondSprites()[portait];
+            if (FlowerShopManager.GetSecondSprites().Length > portait)
+            {
+                secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetSecondSprites()[portait];
+            }
         }
     }
 }
