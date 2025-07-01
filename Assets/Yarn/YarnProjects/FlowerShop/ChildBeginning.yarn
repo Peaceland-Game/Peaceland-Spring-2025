@@ -1,103 +1,114 @@
-// im not positive the indentation on this is correct but im trying my best
-
 title: ChildStart
-position: -191,-394
 ---
 <<declare $childName = "Lukas">>
 <<declare $floristKidName = "Pranas">>
+<<zeroChar>>
+*{$floristName} moves to the front of the store, preparing to flip the sign from open to closed.*
+<<oneChar>>
+<<lighten>>
+{$childName}: Wait!
+<<darken>>
+*{$floristName} turns around, surprised*
+<<lighten>>
+{$childName}: Miss Florist, please don’t close yet!
 <<darken>>
 {$floristName}: ...
 <<lighten>>
-{$childName}: Um...
-{$childName}: Excuse me?
-<<jump FloristGreeting>>
-
-===
-
-title: FloristGreeting
-position: -200,-215
----
+{$childName}: Pretty please?
 <<darken>>
-{$floristName}: Ah, hello! Apologies, what can I help you with?
+{$floristName}: Uh, alright then. How can I help you?
 <<lighten>>
-{$childName}: It’s my mom’s birthday tomorrow and I was thinking I could get her some flowers…
-<<jump OrderChoices>>
+{$childName}: It’s my mom’s birthday soon and I want to get her some flowers!
+*{$childName} barely reaches the top of the counter, dropping some bills and coins, some spilling off the table*
+{$childName}: Sorry, Papa gave me these. How many flowers can I get?
+-> That’s not a lot of money…
+    <<jump TellTheTruth>>
+-> Um… I’ll see what I can make.
+    <<jump LookAtFlowers>>
+
 ===
 
-title: OrderChoices
-position: -212,-66
+title: TellTheTruth
 ---
 <<lighten>>
-{$childName}: My dad gave me some money- um, what can I get for this?
+{$childName}: Oh...
+*{$childName} is about to cry*
+{$childName}: But this is all I have...
 <<darken>>
--> I think most of the pre-arranged bouquets are outside of that price range but I could put something small together for you.
-    <<jump OrderTaking>>
--> I’m not really sure what he expected you to be able to get with that but I'll see what I can do.
-    <<jump OrderTaking>>
--> You can look at the premade bouquets.
-    <<jump PremadeBouquets>>
+{$floristName}: Oh, don’t worry, Whatever you get, your mom will love! I promise. Here, I’ll make a pretty bouquet with any three flowers you want!
+<<lighten>>
+{$childName}: Are you sure...?
+<<darken>>
+{$floristName}: Absolutely.
+<i>I guess I’ll give him a discount...</i>
+<<jump LookAtFlowers>>
 ===
 
-title: PremadeBouquets
-position: 75,-169
+title: LookAtFlowers
 ---
-<<lighten>>
-{$childName}: Um, I think these are all out of my price range… is there anything I can order to be made?
 <<darken>>
--> Since it’s her birthday, I’ll do a small one special for you.
-->I can put something together that will fit into your budget.
-<<jump OrderTaking>>
+{$floristName}: Well, what kind of flowers are you looking for?
+<<lighten>>
+{$childName}: Since they’re for mama, I want one that helps her be strong!
+<<darken>>
+{$floristName}: Strength, huh? Everyone could use more of that these days...
+<<lighten>>
+{$childName}: And one to always make her happy!
+<<darken>>
+{$floristName}: This flower’s a bit thorny, but it’ll always protect the people close to them.
+{$floristName}: And what would you like your third flower to be?
+<<lighten>>
+{$childName}: Do you have one that’ll make someone feel better?
+<<darken>>
+{$floristName}: What do you mean?
+<<lighten>>
+{$childName}: Well, Mama’s always in the hospital, so I want to help her get better so she can come home!
+<<darken>>
+-> ...
+    <<jump Silence>>
+-> Oh, I see...
+    <<jump Cracking>>
 ===
 
-title: OrderTaking
-position: 122,37
+title: Silence
 ---
-<<darken>>
-{$floristName}: What kind of flowers does she like?
+*Tears form at {$floristName}'s eyes*
 <<lighten>>
-{$childName}: I’m not sure… she usually says the white ones on the trees are pretty.
-<<jump FlowerChoices>>
+{$childName}: Um… Miss Florist, are you ok?
+<<darken>>
+{$floristName}: I’m okay, sorry. So your mom’s sick?
+<<lighten>>
+{$childName}: Yeah, but Papa’s working really hard! <color="yellow">And the doctors that talk funny have been very nice too!</color>
+<<darken>>
+<i>Talk funny? He must mean the foreign aid workers that recently arrived.</i>
+<<jump FinishBouquet>>
 ===
 
-//can put this as player option but idk what flowers we want to include for this part
-title: FlowerChoices
-position: -156,148
+title: Cracking
 ---
 <<darken>>
-{$floristName}: We don’t carry those unfortunately but I could give you *flowers*, they’re good for *whatever*. Or we could do *flower* and they’re usually associated with *blank*
+{$floristName}: {$floristKidName}...
 <<lighten>>
-{$childName}: I'm not sure...
-<<jump SadFlower1>>
-===
-//i need to do 1 2 3 so that theyre all options for the player to press, but is that how we want to do it?
-//i feel like if its optionless its easier to j put them all in the same node and they process through on their own?
-//idk
-title: SadFlower1
-position: -147,342
----
+{$childName}: That’s a pretty name, is that a flower?
 <<darken>>
-{$floristName}: I think *these* might be the closest in appearance to the ones outside but they’re usually associated with mourning so I’m not sure those would be appropriate
-<<jump SadFlower2>>
+{$floristName}: No, nevermind, sorry. Is your mom ok?
+<<lighten>>
+{$childName}: I’m not sure, but Papa says that medicine is really expensive.
+{$childName}: But, I’m sure she’ll get a lot better once she gets the flowers!
+<<jump FinishBouquet>>
 ===
 
-title: SadFlower2
-position: -154,506
+title: FinishBouquet
 ---
 <<darken>>
-{$floristName}: Although, they have been selling a lot recently... I’ll probably need some for {$teacherName}’s order later…
+{$floristName}: Alright, how about these Chamomile?
+{$floristName}: It represents patience in adversity.
 <<lighten>>
-{$childName}: Um, is everything alrig-
-<<jump GameplayTransition>>
-//Replaced *friend* with {$teacherName}, makes the most sense
-===
-
-//blurry vision would start here
-title: GameplayTransition
-position: 267,459
----
+{$childName}: I’m not sure what that means.
 <<darken>>
-{$floristName}: You know what I’ll just put together a small version of my usual birthday bouquet for you, okay?
+{$floristName}: If you wait, your mom will get better. All you have to do is be by her side, alright?
 <<lighten>>
-{$childName}: ...
-<<jump ChildOrderComplete>> //Remove if we put into game, should be setup through manager
+{$childName}: Yeah! I can do that!
+<<darken>>
+{$floristName}: Good boy.
 ===

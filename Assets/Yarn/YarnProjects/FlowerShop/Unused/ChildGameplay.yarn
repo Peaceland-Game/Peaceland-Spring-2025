@@ -1,0 +1,44 @@
+title: ChildGameplayVeryGood
+---
+<<set $rand = dice(2)>>
+
+<<if $rand == 1>>
+    {$childName}: Wow! That looks amazing!
+<<elseif $rand == 2>>
+    {$childName}: I'm so excited to give those to her!
+<<endif>>
+===
+
+title: ChildGameplayGood
+---
+<<set $rand = dice(2)>>
+
+<<if $rand == 1>>
+    {$childName}: Those look really nice.
+<<elseif $rand == 2>>
+    {$childName}: You're really talented.
+<<endif>>
+===
+
+title: ChildGameplayBad
+---
+<<set $rand = dice(2)>>
+
+<<if $rand == 1>>
+    {$childName}: Your process is so interesting.
+<<elseif $rand == 2>>
+    {$childName}: A few imperfections never hurt anyone.
+<<endif>>
+===
+
+title: ChildGameplayVeryBad
+---
+<<set $rand = dice(2)>>
+
+<<if $rand == 1>>
+    {$childName}: She's going to think I put this together myself...
+<<elseif $rand == 2>>
+    {$childName}: I'm trusting you...
+<<endif>>
+===
+
