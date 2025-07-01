@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
+/// <summary>
+/// Allows for code to handle setting up the appropirate flower, according to the given flower type
+/// </summary>
 public enum FlowerType
 {
     ROSE,
@@ -36,6 +39,9 @@ public class OrderObject : ScriptableObject
     public string dialogueStartNode;
     public string dialogueEndNode;
 
+    /// <summary>
+    /// A "flower", holding values for if it needs dethorning, trimming, arrnaging, and what FlowerType it is
+    /// </summary>
     [Serializable]
     public struct Flower
     {
