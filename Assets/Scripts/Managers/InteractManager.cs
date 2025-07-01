@@ -86,12 +86,7 @@ public class InteractManager : MinigameBehavior
 
                         }
                     //Otherwise begins the fade away
-                    else
-                        {
-                            Debug.Log(i + " CLICKED!!!!!");
-                            interactables[i].fading = true;
-                        }
-                        
+                        interactables[i].fading = true;
                     }
             }
 
@@ -101,11 +96,10 @@ public class InteractManager : MinigameBehavior
     //Runs the dialogue once per object and labels it finished so it won't run it again
     private void runDialogue(Interactable inter)
     {
-        if (!inter.finished)
+        if (!inter.startedDialogue)
         {
             dialogueRunner.StartDialogue(inter.startNode);
-            inter.finished = true;
-            Debug.Log("AHHH");
+            inter.startedDialogue = true;
         }
     }
 
@@ -114,14 +108,15 @@ public class InteractManager : MinigameBehavior
     {
         for(int i = 0; i < numObjects; i++)
         {
-            if (interactables[i].fading && !interactables[i].finished)
+            if (interactables[i].fading && !interactables[i].finishedFading && !dialogueRunner.IsDialogueRunning)
                 interactables[i].GetComponent<SpriteRenderer>().color = new Color(interactables[i].GetComponent<SpriteRenderer>().color.r,
                 interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.a - 0.001f);
-                if (interactables[i].GetComponent<SpriteRenderer>().color.a <= 0 && !interactables[i].finished)
+                if (interactables[i].GetComponent<SpriteRenderer>().color.a <= 0 && !interactables[i].finishedFading && !dialogueRunner.IsDialogueRunning)
             {
                 numActiveObjects--;
-                interactables[i].finished = true;
+                interactables[i].finishedFading = true;
                 endInteractableMinigame();
+
             }
         }
         
@@ -135,7 +130,7 @@ public class InteractManager : MinigameBehavior
         if (numActiveObjects <= 0)
         {
             StopMinigame();
-            FlowerShopManager.Instance.NextMinigame();
+            FlowerShopManager.Instance.InteractableDialogueNextMinigame();
         }
     }
 }

@@ -159,8 +159,40 @@ public class FlowerShopManager : MonoBehaviour
     /// <param name="state">The enum state to change to</param>
     public void NextMinigame()
     {
+        Debug.Log(currentMinigame);
+
+        if (currentMinigame < 0 || !minigames[currentMinigame].gameObject.GetComponent<InteractManager>().isActiveAndEnabled)
+        {
+
+            //As long as the current minigame is at a valid index (greater than 0), stop the minigame at that index
+            if (currentMinigame >= 0) minigames[currentMinigame].StopMinigame();
+                
+
+
+                //Increment to the next minigame
+                currentMinigame++;
+
+            //If the current minigame is higher or equal to the number of minigames, continue
+            if (currentMinigame >= minigames.Count)
+            {
+                SceneManager.LoadScene(2);
+                return;
+
+                // TODO: We're done, end the game (or memory)!!!
+            }
+
+            //Start the next minigame
+            minigames[currentMinigame].StartMinigame();
+        }
+       
+    }
+public void InteractableDialogueNextMinigame()
+{
+
         //As long as the current minigame is at a valid index (greater than 0), stop the minigame at that index
         if (currentMinigame >= 0) minigames[currentMinigame].StopMinigame();
+
+
 
         //Increment to the next minigame
         currentMinigame++;

@@ -17,7 +17,9 @@ public class Interactable : MonoBehaviour
     /// <summary>
     /// Used to label objects as complete after they run their dialogue
     /// </summary>
-    public bool finished = false;
+    public bool finishedFading = false;
+
+    public bool startedDialogue = false;
     /// <summary>
     /// Potentially controls the zoom
     /// </summary>

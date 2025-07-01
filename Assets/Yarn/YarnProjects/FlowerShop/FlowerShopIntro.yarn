@@ -1,0 +1,45 @@
+title: FlowerShopIntroGraffiti
+---
+{$floristName}: My store’s been graffitied. And they even drew a Thebrean crest. 
+{$floristName}: It was only a matter of time, but still. Today’s off to a great start.
+===
+
+title: FlowerShopDoorOpen
+---
+
+Go Inside
+    -> Yes
+    -> No
+
+===
+
+title: SpilledFlowers
+---
+
+{$floristName}: My peonies. Such peaceful flowers, ruined. The war’s over, so why are we still fighting?
+
+===
+
+
+title: FlowerShopIntroBrokenGlass
+---
+
+{$floristName}: Great, my floor is covered in glass. Where’d I put my broom? 
+
+===
+
+title: FlowerShopIntroCalendar
+---
+
+
+{$floristName}: Oh, it’s the 13th. The memorial opens today.
+{$floristName}: It was already going to be such a hard day, so why did my shop have to get ruined, too?
+
+===
+
+title: FlowerShopIntroBrick
+---
+
+{$floristName}: A brick? Seriously? Graffiti is one thing, but how will I afford to fix this window? 
+
+===
