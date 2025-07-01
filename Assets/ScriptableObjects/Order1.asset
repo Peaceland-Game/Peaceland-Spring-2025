@@ -13,19 +13,15 @@ MonoBehaviour:
   m_Name: Order1
   m_EditorClassIdentifier: 
   nameForOrder: Andrej
-  spriteForOrder: {fileID: -171743095488495158, guid: a93560a59d7121f4f91c3fe7f9b263e4, type: 3}
+  mainCharSprites:
+  - {fileID: 7155350529804483857, guid: 036a26d319e2a6641970b81fba4a0c80, type: 3}
+  - {fileID: 3116686467387525769, guid: 6201b17c5efa109498e39ddb3fad60f0, type: 3}
+  - {fileID: 9207022935795185261, guid: b2bbef918c7263e48808eb20a60181b5, type: 3}
+  secondCharSprites: []
   flowers:
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
     flowerType: 0
-  - needsDethorning: 0
-    needsTrimming: 1
-    needsArranging: 1
-    flowerType: 1
-  - needsDethorning: 1
-    needsTrimming: 1
-    needsArranging: 1
-    flowerType: 0
-  dialogueStartNode: NPCOrderIn4
+  dialogueStartNode: Start
   dialogueEndNode: OrderComplete

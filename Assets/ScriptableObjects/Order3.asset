@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9aada3eb7d4d0a49ad5041a60889061, type: 3}
-  m_Name: Order2
+  m_Name: Order3
   m_EditorClassIdentifier: 
   nameForOrder: Danika
   mainCharSprites:
+  - {fileID: 5308715261994372917, guid: ca8ce3787044f98478061118e8a5a6e6, type: 3}
+  - {fileID: -791942423441732202, guid: 4e9c0f5935409c94abc30b761939b0a0, type: 3}
+  secondCharSprites:
   - {fileID: -8608283842792828695, guid: 158c7ad9153e1d945aa4a3dafff2640e, type: 3}
   - {fileID: 557110884877198456, guid: 79ba49d5f8c27e34ea088c23a7d82503, type: 3}
   - {fileID: 8374921293574171215, guid: c62fe59b65a034b48a0e267112b13148, type: 3}
-  secondCharSprites: []
   flowers:
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
     flowerType: 1
-  dialogueStartNode: TeacherStart
-  dialogueEndNode: TeacherEnding
+  dialogueStartNode: BorisStart
+  dialogueEndNode: BorisEnd

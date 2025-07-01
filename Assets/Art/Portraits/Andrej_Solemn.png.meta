@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f199eff862f3b804689e0719679cfa17
+guid: b2bbef918c7263e48808eb20a60181b5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1758568918706676738
-    second: spraypaint_can_0
+      213: 9207022935795185261
+    second: Andrej_Solemn_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spraypaint_can_0
+      name: Andrej_Solemn_0
       rect:
         serializedVersion: 2
-        x: 23
-        y: 24
-        width: 186
-        height: 88
+        x: 0
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: efb127fb2ee4897e0800000000000000
-      internalID: -1758568918706676738
+      spriteID: d6632f6449ae5cf70800000000000000
+      internalID: 9207022935795185261
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 652937fcc32664746b8068ee94edb6ff
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      spraypaint_can_0: -1758568918706676738
+      Andrej_Solemn_0: 9207022935795185261
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -509,7 +509,23 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      broken_glass_interactable_0: -7582384069570787660
+      broken_glass_interactable_1: 6160175274542413917
+      broken_glass_interactable_10: 7240470895099399986
+      broken_glass_interactable_11: 8683036206156961311
+      broken_glass_interactable_12: 8010791016103559884
+      broken_glass_interactable_13: -5121071800656787163
+      broken_glass_interactable_14: 901955623569012241
+      broken_glass_interactable_15: 5593352558288554705
+      broken_glass_interactable_2: -6932018852789170054
+      broken_glass_interactable_3: 7186283415217235731
+      broken_glass_interactable_4: -3266048284069910155
+      broken_glass_interactable_5: 1068095982527951456
+      broken_glass_interactable_6: -6128805864713375781
+      broken_glass_interactable_7: -5755040509440266039
+      broken_glass_interactable_8: 7977988331484908087
+      broken_glass_interactable_9: 5938323380243471544
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

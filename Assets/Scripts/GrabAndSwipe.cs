@@ -22,11 +22,6 @@ public class GrabAndSwipe : MonoBehaviour
 
     [SerializeField] InteractManager interactmanager;
 
-    /// <summary>
-    /// Used to add difficulty to the minigame. 0 is normal, 1 is shaky hands, and 2 is blurred vision.
-    /// </summary>
-    public int difficulty;
-
     bool isMouseDown;
     bool isSlicing;
     Vector2 previousMousePos;
@@ -46,17 +41,6 @@ public class GrabAndSwipe : MonoBehaviour
         shearMouseDown = false;
         isSlicing = false;
         previousMousePos = Vector2.zero;
-
-        if(difficulty > 1)
-        {
-            PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
-            ppVolume.weight = 1;
-            ppVolume.enabled = true;
-            if(difficulty >= 2)
-            {
-                ppVolume.weight = 0.45f + (difficulty * 0.05f);
-            }
-        }
     }
 
     private void Update()
@@ -67,7 +51,7 @@ public class GrabAndSwipe : MonoBehaviour
             transform.position = InputHelper.GetPointerWorldPosition();
 
             //Randomly moves the slicer position to simulate shaky hands
-            if (difficulty > 0)
+            if (GameManager.Instance.difficulty > 0)
             {
                 shakeTimer += Time.deltaTime;
                 if (shakeTimer > 0.2)
@@ -133,3 +117,5 @@ public class GrabAndSwipe : MonoBehaviour
         currentTrail.GetComponent<TrailRenderer>().emitting = true;
     }
 }
+
+

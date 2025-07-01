@@ -5,6 +5,12 @@ public class GameManager : MonoBehaviour
 {
     //variables
 
+    /// <summary>
+    /// Used to add difficulty to the minigame. 0 is normal, 1 is shaky hands, and 2 is blurred vision.
+    /// </summary>
+    [HideInInspector]
+    public int difficulty = 0;
+
     //create the private instance
     private static GameManager _instance;
 
@@ -30,6 +36,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
+
+
