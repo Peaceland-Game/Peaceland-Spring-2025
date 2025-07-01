@@ -1,94 +1,40 @@
 
 title: CloseFriendStart
 ---
-
 <<declare $closeFriendName = "Jeta">>
 <<declare $floristName = "Mira">>
-<<darken>>
-<<wait  1>>
+
+<<changeSprite 1 2>>
 <<lighten>>
-{$closeFriendName}: Hi... I just wanted to check in. 
-{$closeFriendName}: How are you holding up today?
+{$closeFriendName}: Hi {$floristName} - Oh what happened? Did those vandals break your vases too?
 <<darken>>
--> I'm doing well.
+{$floristName}: No, it was {$agitatorName}...
+<<lighten>>
+{$closeFriendName}: I see. Do you need any help?    
+<<darken>>
+-> Thanks Jeta, but I’ll be fine.
     <<jump DoingWell>>
--> I'm ok.
-    <<lighten>>
-    {$closeFriendName}: Are you sure? You can talk to me.
-    <<darken>>
-    -> Yeah, I'm ok.
-        <<jump DoingWell>>
-    -> Honestly? No.
-        <<jump NotOk>>
--> It's been... a lot.
-    <<lighten>>
-    {$closeFriendName}: Do you want to talk about it?
-    <<darken>>
-    -> Yeah, that'd be nice.
-        <<jump TalkAboutIt>>
-    -> No, I have work to do.
-        <<jump DontTalkAboutIt>>
+->  I’m fine, it’s no big deal
+    <<jump DoingWell>>
+-> It’s… honestly no, it’s not fine…
+    <<jump NotOk>>
 ===
 
-title: DontTalkAboutIt
+title: DoingWell
 ---
 <<lighten>>
-{$closeFriendName}: Alright, I understand. Let me know if that changes.
-{$closeFriendName}: So look, can I place an order?
+{$closeFriendName}: I’ve known you too long, {$floristName}. Something is bothering you, I can tell.
 <<darken>>
-{$floristName}: Sure, what can I get you?
-    <<jump Order>>
-===
-
-title: TalkAboutIt
----
-<<lighten>>
-{$closeFriendName}: I know it's tough, but you've already pushed so hard for so long. 
-{$closeFriendName}: I know you can get through today.
-{$closeFriendName}: Is there anything I can do to help?
-<<darken>>
--> Not really, I just need some time.
-    <<jump SomeTime>>
--> Realistically, no, but I appreiate it nonetheless.
-    <<jump Realistic>>
--> You being here is enough for me.
-    <<jump BeingHere>>
-===
-
-title: BeingHere
----
-<<lighten>>
-{$closeFriendName}: Anytime, {$floristName}. I'll always be here.
-{$closeFriendName}: So look, can I place an order?
-<<darken>>
-{$floristName}: Sure, what can I get you?
-    <<jump Order>>
-===
-
-title: Realistic
----
-<<lighten>>
-{$closeFriendName}: I understand, and of course. Anything for you.
-{$closeFriendName}: So look, can I place an order?
-<<darken>>
-{$floristName}: Sure, what can I get you?
-    <<jump Order>>
-===
-
-title: SomeTime
----
-<<lighten>>
-{$closeFriendName}: Alright, I understand.
-{$closeFriendName}: So look, can I make an order?
-<<darken>>
-{$floristName}: Sure, what would you like?
-    <<jump Order>>
+-> I don’t really want to talk about it.
+    <<jump DontTalkAboutIt>>
+-> Fine, you win. Today hasn’t been great.
+    <<jump TalkAboutIt>>
 ===
 
 title: NotOk
 ---
 <<lighten>>
-{$closeFriendName}: I'm sorry... Do you want to talk about it?
+{$closeFriendName}: I'm sorry to hear that... Do you want to talk about it?
 <<darken>>
 -> Yeah, that'd be nice.
     <<jump TalkAboutIt>>
@@ -96,28 +42,112 @@ title: NotOk
     <<jump DontTalkAboutIt>>
 ===
 
-title: DoingWell
+title: TalkAboutIt
 ---
 <<lighten>>
-{$closeFriendName}: I'm glad to hear that. 
-{$closeFriendName}: Let me know if there's anything you want to talk about.
-{$closeFriendName}: Can I place an order? It's a bit of an odd request.
+{$closeFriendName}: Hit me. What’s been on your mind lately? 
 <<darken>>
-{$floristName}: Sure, what can I get you?
-    <<jump Order>>
+-> I’m sure you noticed it on your way in.
+    <<jump AboutVandalism>>
+-> Boris came in.
+    <<jump AboutBoris>>
+-> My mind is all over the place with the memorial.
+    <<jump AboutPranas>>
+===
+
+title: DontTalkAboutIt
+---
+<<lighten>>
+{$closeFriendName}: Alright, I understand. Let me know if there is anything I can do to help.
+<<changeSprite 1 1>>
+{$closeFriendName}: That aside, I’d like to get some flowers.
+<<darken>>
+{$floristName}: What can I get you?
+<<jump Order>>
+===
+
+title: AboutVandalism
+---
+<<lighten>>
+{$closeFriendName}: Any idea of who the culprit is?
+<<darken>>
+{$floristName}: <color="yellow">No specifics but… that symbol… only a Thebrean would-</color>
+<<lighten>>
+{$closeFriendName}: The city is full of Thebreans, not all of them would do such a thing.
+<<darken>>
+{$floristName}: I know that, but you know they all feel the same.
+<<lighten>>
+<<changeSprite 1 0>>
+{$closeFriendName}: {$floristName}, don’t be like that. It may not do much, but I can inform the police and tell them to keep an eye out.
+<<darken>>
+{$floristName}: Do you really think that’s going to do anything?
+<<lighten>>
+{$closeFriendName}: It can’t be worse than not telling them, no?
+<<darken>>
+{$floristName}: I suppose that’s true. Thanks, Jeta.
+<<lighten>>
+<<changeSprite 1 1>>
+{$closeFriendName}: No worries. But hey, if you want to pay me back, how about some flowers?
+<<darken>>
+{$floristName}: Of course.
+<<jump Order>>
+===
+
+title: AboutBoris
+---
+<<lighten>>
+{$closeFriendName}: Is it about the vase he broke? I can pay for that.
+<<darken>>
+{$floristName}: No, he yelled at Danika, then he lectured me about having Thebreans in my store.
+<<lighten>>
+{$closeFriendName}: {$floristName}, you know {$agitatorName} is a little… you know, {$agitatorName}.
+<<darken>>
+{$floristName}: I just hate how much I agree with him...
+<<lighten>>
+{$closeFriendName}: Just cause he’s a jerk doesn’t mean he doesn’t have a point. <color="yellow">We were roped into this war</color> and we lost so much; our homes, our history, our loved ones.
+<<darken>>
+{$floristName}: But that doesn’t mean he has a right to just-
+<<lighten>>
+{$closeFriendName}: Of course, but he’s angry. We’re all angry, to some extent. And it’s worse for those of us who saw the front lines and made it back, like {$agitatorName}.
+<<darken>>
+{$floristName}: You have a point. We can only hope that the memorial will be what they say it’ll be. That reminds me, you wanted to buy some flowers?
+<<jump Order>>
+===
+
+title: AboutPranas
+---
+<<lighten>>
+{$closeFriendName}: It is that time of the year again. Are you thinking about {$floristKidName}?
+<<darken>>
+{$floristName}: I was trying not to, but first {$teacherName}, then {$agitatorName} - they just wouldn’t shut up about that damn memorial!
+<<lighten>>
+{$closeFriendName}: Damn memorial? {$floristName}, it’s {$floristKidName}’ memorial as well as everyone else’s. 
+<<darken>>
+{$floristName}: But what do they think they’re memorializing? <color="yellow">It’s their fault he’s dead! All because of their stupid war and that damn blockade!</color> And then... and then... he!
+<<lighten>>
+*{$closeFriendName} hugs {$floristName}*
+{$closeFriendName}: It’s okay to cry when you need to. I’m going to go visit my husband at the memorial and I think it’ll do you good to visit {$floristKidName} too.
+{$closeFriendName}: How about this? I’ll get some flowers, <color="yellow">then let’s go to the memorial together tonight?</color>
+<<darken>>
+{$floristName}: Maybe... What flowers would you like?
+<<lighten>>
+{$closeFriendName}: These flowers are for you and {$floristKidName}, so make sure to pick some that cheer you up. I’m sure he’d be happy to see you smile again.
+<<darken>>
+{$floristName}: Yeah. Thanks again, {$closeFriendName}. I mean it, really.
+<<jump Alright>>
 ===
 
 title: Order
 ---
 <<lighten>>
-{$closeFriendName}: I'm buying you flowers. 
-{$closeFriendName}: Make a nice bouquet for yourself, go all out, and enjoy it. For me.
+<<changeSprite 1 1>>
+{$closeFriendName}: Any flowers will do. Not for me, though, I’d like to get them for you. Anything that’d cheer you up, even a little.
 <<darken>>
 -> {$closeFriendName}, I really don't have the time.
     <<jump DontHaveTime>>
--> I can't let you do that.
+-> I’m fine, that’s really not necessary.
     <<jump CantLetYou>>
--> I-I don't know what to say.
+-> I don't know what to say.
     <<jump Speechless>>
 ===
 
@@ -127,168 +157,38 @@ title: DontHaveTime
 {$closeFriendName}: Surely you can do it at the end of your shift, right? 
 {$closeFriendName}: It doesn't need to be fancy, as long as it's for you.
 <<darken>>
--> ...thank you.
-    <<jump ThankYou>>
--> Alright, I'll get around to it later.
-    <<jump Alright>>
+-> Thank you.
+-> Alright, I'll do it...
+<<jump Alright>>
 ===
 
 title: CantLetYou
 ---
 <<lighten>>
-{$closeFriendName}: Well too bad, I'm doing it.
-{$closeFriendName}: It's either you make it for yourself, or you make it for me and I give it to you later.
+{$closeFriendName}: Too bad, I'm doing it.
+{$closeFriendName}: IYou can either make it for yourself now or you make it for me and I’ll give it to you later.
 {$closeFriendName}: Either way, you're getting flowers.
 <<darken>>
--> There's no winning, is there?
-    <<jump NoWinning>>
+-> There's no winning against you, is there?
 -> Fine, fine. I'll get to it at the end of my shift.
-    <<jump Alright>>
+<<jump Alright>>
 ===
 
 title: Speechless
 ---
 <<lighten>>
-{$closeFriendName}: You don't need to say anything. 
-{$closeFriendName}: Just let me pay you and accept the order.
+{$closeFriendName}: You don’t have to say anything. Just let me pay you and accept the order.
 <<darken>>
 {$floristName}: Alright, fine.
-    <<jump Alright>>
+<<jump Alright>>
 ===
 
 title: Alright
 ---
 <<lighten>>
-{$closeFriendName}: Great! Have fun with it, I'd imagine you need something like that right now.
-<<darken>>
--> I'll try. Oh, how's Agim handling things?
-    <<jump PartnerInquiry>>
--> Thank you. Now, I'll see you later, I need to work.
-    <<jump Dismissal>>
-===
-
-title: NoWinning
----
-<<lighten>>
-{$closeFriendName}: Nope! And please try to have fun with it. I think it'd be good for you.
-<<darken>>
--> I'll try. Oh, how's Agim handling things?
-    <<jump PartnerInquiry>>
--> Thank you. Now, I'll see you later, I need to work.
-    <<jump Dismissal>>
-===
-
-title: ThankYou
----
-<<lighten>>
-{$closeFriendName}: Of course. And please try to have fun with it. I think it'd be good for you.
-<<darken>>
--> I'll try. Oh, how's Agim handling things?
-    <<jump PartnerInquiry>>
--> Thank you. Now, I'll see you later, I need to work.
-    <<jump Dismissal>>
-===
-
-title: Dismissal
----
-<<lighten>>
-{$closeFriendName}: Oh, alright. Well, I'll see you later then.
-    <<jump Done>>
-===
-
-title: PartnerInquiry
----
-<<lighten>>
-{$closeFriendName}: He's doing well, he's preparing to head out.
-{$closeFriendName}: He's going to go visit the graves in a couple of days.
-<<darken>>
--> That's nice. Is he just visiting for the day?
-    <<jump DayVisit>>
--> He's not going to the memorial?
-    <<jump NotMemorial>>
-===
-
-title: NotMemorial
----
-<<lighten>>
-{$closeFriendName}: No, he prefers the graves themselves.
-{$closeFriendName}: He says it's quieter there, and he likes to pour a drink out for them.
-<<darken>>
--> Such a man thing to do. Sounds nice!
-    <<jump SoundsNiceWrapUp>>
--> Will you not be going with him?
-    <<jump SoloVisit>>
-===
-
-title: SoundsNiceWrapUp
----
-<<lighten>>
-{$closeFriendName}: It is, he always comes back in a good mood.
-{$closeFriendName}: But that's enough about Agim!
-{$closeFriendName}: I'll leave you to get to work, I'm sure you'll be getting lots of orders today.
-<<darken>>
-{$floristName}: Oh I'd imagine. I'll see you later then!
-    <<jump SoundsNiceEnd>>
-===
-
-title: SoundsNiceEnd
----
-<<lighten>>
-{$closeFriendName}: See you, {$floristName}!
-(END OF CONVERSATION)
-===
-
-title: DayVisit
----
-<<lighten>>
-{$closeFriendName}: Yes, just for the day. 
-{$closeFriendName}: He leaves early in the morning, then will be back a little after the sun sets.
-<<darken>>
-{$floristName}: Seems like a nice little trip. Will you not be going with him?
-    <<jump SoloVisit>>
-===
-
-title: SoloVisit
----
-<<lighten>>
-{$closeFriendName}: No, he prefers to go alone. 
-{$closeFriendName}: He spends the day recounting their time together and likes to do that on his own.
-{$closeFriendName}: He's brought me before, but I think he just doesn't want me to see him cry.
-<<darken>>
-{$floristName}: Well it sounds like it means a lot to him.
-    <<jump MeansALot>>
-===
-
-title: MeansALot
----
-<<lighten>>
-{$closeFriendName}: It does, and I don't take any offense to it. 
-{$closeFriendName}: I've got my own plans to visit the memorial anyway.
-<<darken>>
-{$floristName}: Oh yes, I plan to close shop that day.
-    <<jump CloseShop>>
-===
-
-title: CloseShop
----
-<<lighten>>
-{$closeFriendName}: I would hope so!
-{$closeFriendName}: I'd hate for you to work that day.
-<<darken>>
-{$floristName}: Of course, even I can't imagine that!
-    <<jump OldFriendConvoEnd>>
-===
-
-title: OldFriendConvoEnd
----
-<<lighten>>
-{$closeFriendName}: Well then, I'll leave you to it! 
-{$closeFriendName}: Do show me what you make yourself at some point!
-<<darken>>
-{$floristName}: Thank you, I will!
-    <<jump Done>>
-===
-title: Done
----
-(END OF CONVERSATION)
+*{$closeFriendName} leaves a small stack of money on the counter*
+<<changeSprite 1 1>>
+{$closeFriendName}: I hope it makes you feel better. Especially, after all of <i>this</i> going on.
+<<zeroChar>>    
+<i>It’s a bit early, but maybe I should close for the day.</i>
 ===

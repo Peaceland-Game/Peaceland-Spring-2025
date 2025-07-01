@@ -1,0 +1,144 @@
+title: BorisStart
+---
+<<declare $agitatorName = "Boris">>
+<<twoChar>>
+<<speaker 1>>
+{$agitatorName}: {$floristName}, I saw-
+{$agitatorName}: Who is this?
+<<speaker 0>>
+{$floristName}: Oh, this is-
+<<speaker 1>>
+{$agitatorName}: What are you doing in this store? Don’t you know what you Thebreans did to this lady?
+<<speaker 2>>
+{$teacherName}: Excuse me?
+<<speaker 1>>
+{$agitatorName}: Don’t think she’d actually sell to people like you, put those flowers back on the shelf now!
+<<speaker 0>>
+{$floristName}: She’s a customer, Boris, leave her alone.
+<<speaker 1>>
+{$agitatorName}: You know better than to sell to her kind.
+<<speaker 2>>
+{$teacherName}: This is ridiculous! People like you are what’s wrong with this country, I’m leaving.
+<<oneChar>>
+<<lighten>>
+{$agitatorName}: Good! Don’t come back!
+<<darken>>
+{$floristName}: Are you done chasing away my customers or are you ready to buy some flowers?
+<<lighten>>
+{$agitatorName}: I saw what they did. To the front of your shop. It’s disgraceful!
+<<darken>>
+-> <i>Say nothing.</i>
+    <<jump BorisTalk>>
+-> I would rather not talk about that, Boris. Did you have something to order?
+    <<jump BorisTalk>>
+-> What do you mean, "they," Boris? I do not like your tone.
+    <<jump BorisAngry>>
+===
+title: BorisTalk
+---
+<<lighten>>
+{$agitatorName}: And to think they’d tarnish your son’s memory by grouping him with those <mark=\#000000>Profanity</mark>! Walking all over us, just like in the -
+<<darken>>
+->Enough, Boris. Do you have an order or not?
+->Boris, this is inappropriate. Do you have an order?
+<<lighten>>
+{$agitatorName}: They look down on us, belittle us, but they’re nothing but monsters!
+<<darken>>
+-> <i>Say nothing.</i>
+    <<jump BorisTalk2>>
+-> What do you mean, "they", Boris?
+    <<jump BorisAngry>>
+===
+title: BorisTalk2
+---
+<<lighten>>
+{$agitatorName}: They say we have to join together, even hold a memorial, but then they go and destroy your store! Those hypocrites! And you let one of those terrorists in here!
+-> <i>Say nothing.</i>
+    <<jump BorisTalk3>>
+-> Danika’s not a terrorist, she’s a customer.
+    <<jump BorisRant>>
+-> Boris, Danika is a school teacher, she didn’t do this. Stop pointing fingers.
+    <<jump BorisEnd>>
+===
+title: BorisTalk3
+---
+<<lighten>>
+{$agitatorName}: We cannot keep letting them trample over us. Not like they did in the war, you know this as well as I do.
+<<darken>>
+<i>I obviously know that...</i>
+<<lighten>>
+{$agitatorName}: Perhaps, something will be done about them soon, eh?
+<<darken>>
+<i>It's a little late to be doing anything about them now...</i>
+<<lighten>>
+{$agitatorName}: ...But you did not hear that from me.
+<<darken>>
+-><i>Say nothing.</i>
+->What did you have in mind?
+<<lighten>>
+{$agitatorName}: Nothing they haven’t already done to us. You shouldn’t concern yourself with it for now.
+<<darken>>
+<i>You are nothing but concerning, Boris.</i>
+-> Whatever you say Boris, how can I help you again?
+    <<jump BorisOrder>>
+-> ...So, your order Boris?
+    <<jump BorisOrder>>
+-> You cannot talk like this in my store! You’re going to scare my customers away!
+    <<lighten>>
+    {$agitatorName}: You’d actually serve those animals?
+    <<darken>>
+    ->Yes, I would.
+        <<jump BorisEnd>>
+    ->Do you actually want anything?
+        <<jump BorisOrder>>
+===
+
+title: BorisAngry
+---
+<<lighten>>
+{$agitatorName}: It is obvious who did this to your store. And to think one of them would dare come here.
+<<darken>>
+-><i>Say nothing.</i>
+    <<lighten>>
+    {$agitatorName}: Speak up, {$floristName}!
+    -><i>Say nothing.</i>
+->We cannot be certain who it was.
+<<jump BorisEnd>>
+===
+title: BorisRant
+---
+<<lighten>>
+{$agitatorName}: Customer? There is no amount of money they could pay me to serve them.
+<<darken>>
+{$floristName}: It’s just business, nothing personal.
+<<lighten>>
+{$agitatorName}: Oh, but it is personal. <color="yellow">Those money-grabbing Thebreans think they can just throw cash at every problem.</color> You sold out {$floristName}!
+-> Did you <i>actually</i> come here to buy something?
+    <<jump BorisOrder>>
+-> I didn’t sell out, I’m the only florist in town.
+    <<jump BorisEnd>>
+===
+title: BorisOrder
+---
+<<lighten>>
+{$agitatorName}: I don’t want anything from you, not after you served one of those murderers.
+<<darken>>
+{$floristName}: Please get out of my store then.
+<<jump BorisEnd>>
+===
+title: BorisEnd
+---
+<<lighten>>
+{$agitatorName}: Are you defending them? After what they did to us, to you?
+<<darken>>
+{$floristName}: I'm no-
+<<lighten>>
+{$agitatorName}: You are bringing shame to our people, what would {$floristKidName} say?
+<<darken>>
+{$floristName}: Get out. Now.
+<<lighten>>
+{$agitatorName}: Fine then, roll over. Just give up then!
+*{$agitatorName} grabs a bouquet from the shelf*
+{$agitatorName}: Another bouquet for that blasted memorial? You and this damned city can burn!
+*{$agitatorName} destroys bouquet and throws destroyed flowers on the ground* //<-------------
+===
