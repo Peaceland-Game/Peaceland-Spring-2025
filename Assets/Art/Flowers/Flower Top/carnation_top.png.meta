@@ -103,12 +103,12 @@ TextureImporter:
       name: carnation_top_0
       rect:
         serializedVersion: 2
-        x: 386
-        y: 292
-        width: 663
-        height: 1876
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 364
+        y: 728
+        width: 685
+        height: 1440
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d1136c465a874944897d65ad69430202
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      carnation_top_0: 4298724111099476646
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

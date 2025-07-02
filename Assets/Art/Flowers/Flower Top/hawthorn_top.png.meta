@@ -104,11 +104,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 199
-        y: 300
-        width: 1027
-        height: 2128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        y: 659
+        width: 1121
+        height: 1769
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 6aea3438ca2ab344fa2d95acd120a0f9
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hawthorn_top_0: -2444993238181332539
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

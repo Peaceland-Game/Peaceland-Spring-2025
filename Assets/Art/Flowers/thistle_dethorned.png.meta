@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      thistle_dethorned_0: 8729098252278993650
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -103,12 +103,12 @@ TextureImporter:
       name: gladiolus_bottom_0
       rect:
         serializedVersion: 2
-        x: 669
+        x: 662
         y: 290
-        width: 60
+        width: 67
         height: 401
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 75c79fadf78e6414f8e70773bf4e2716
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gladiolus_bottom_0: -6875091617176986082
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

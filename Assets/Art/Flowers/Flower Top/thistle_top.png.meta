@@ -103,12 +103,12 @@ TextureImporter:
       name: thistle_top_0
       rect:
         serializedVersion: 2
-        x: 955
-        y: 287
-        width: 559
-        height: 1905
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 920
+        y: 726
+        width: 594
+        height: 1466
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7ab837774ee332142ae16daa449be783
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      thistle_top_0: -5659254084372613640
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

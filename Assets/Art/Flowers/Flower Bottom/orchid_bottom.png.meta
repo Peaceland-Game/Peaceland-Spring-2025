@@ -103,12 +103,12 @@ TextureImporter:
       name: orchid_bottom_0
       rect:
         serializedVersion: 2
-        x: 1203
+        x: 979
         y: 293
-        width: 254
+        width: 478
         height: 423
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: a474c82db66f8234f972a6c18e02c44e
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      orchid_bottom_0: 1629574754950164452
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

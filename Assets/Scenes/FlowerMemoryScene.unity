@@ -4142,7 +4142,7 @@ MonoBehaviour:
   targetPrefab: {fileID: 590954006385341025, guid: 6b91b5fb69b982b42920bd0d63296058, type: 3}
   flowerLocations:
   - {x: 1.82, y: -1.04, z: 0}
-  - {x: 1.82, y: -1.04, z: 0}
+  - {x: 3.35, y: -1.04, z: 0}
   - {x: 5.3, y: -2.98, z: 0}
   - {x: 3.94, y: -3.79, z: 0}
   - {x: 1.29, y: -5.11, z: 0}

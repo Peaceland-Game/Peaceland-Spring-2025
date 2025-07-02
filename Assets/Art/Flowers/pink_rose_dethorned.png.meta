@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pink_rose_dethorned_0: 2817270886880311462
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

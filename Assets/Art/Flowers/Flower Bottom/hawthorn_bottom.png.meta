@@ -103,12 +103,12 @@ TextureImporter:
       name: hawthorn_bottom_0
       rect:
         serializedVersion: 2
-        x: 738
+        x: 689
         y: 304
-        width: 91
+        width: 140
         height: 359
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 03f2bd71db7a15b4b9681facac06ed90
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hawthorn_bottom_0: -8189221672550949019
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

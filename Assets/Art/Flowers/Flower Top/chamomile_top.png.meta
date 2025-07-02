@@ -103,12 +103,12 @@ TextureImporter:
       name: chamomile_top_0
       rect:
         serializedVersion: 2
-        x: 204
-        y: 292
-        width: 1067
-        height: 2128
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 113
+        y: 676
+        width: 1158
+        height: 1744
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 588a7da8ca68bcb43a7e107e8a3aa262
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chamomile_top_0: 4685367536158310348
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      daisy_thorns_0: 6520440258332988359
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

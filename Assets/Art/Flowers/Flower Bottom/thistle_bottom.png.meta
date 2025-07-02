@@ -105,10 +105,10 @@ TextureImporter:
         serializedVersion: 2
         x: 1180
         y: 291
-        width: 62
+        width: 75
         height: 440
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 842d7e171e64d944a83265d9323f1bbf
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      thistle_bottom_0: -4462088882853105153
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -105,10 +105,10 @@ TextureImporter:
         serializedVersion: 2
         x: 649
         y: 294
-        width: 72
+        width: 85
         height: 385
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0851d78b3285a7c4489fc1ae4849a40a
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chamomile_bottom_0: 8143958164249640503
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

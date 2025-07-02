@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chamomile_0: 5076843057574473011
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

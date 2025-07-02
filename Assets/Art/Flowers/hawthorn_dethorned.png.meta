@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hawthorn_dethorned_0: -8216922885433522546
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

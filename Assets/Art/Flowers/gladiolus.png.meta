@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gladiolus_0: -2042029690069144481
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
