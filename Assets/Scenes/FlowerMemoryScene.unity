@@ -4949,6 +4949,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: thornyRose
       objectReference: {fileID: 0}
+    - target: {fileID: 8196874143206039653, guid: 5e5e86fdb4b064f4d8bdbd24385f7305, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3203595553420565062, guid: b27a009e792723f4c937bf9c6423e41d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

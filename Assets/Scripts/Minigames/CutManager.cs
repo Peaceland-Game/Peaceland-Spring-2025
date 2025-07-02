@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Rendering.PostProcessing;
 using Unity.VisualScripting;
+using System;
 
 /// <summary>
 /// Keep track of which object needs to be displayed and cut
@@ -33,6 +34,8 @@ public class CutManager : MinigameBehavior
     /// Dynamic sprite cutting flower game object
     /// </summary>
     public GameObject flower;
+
+    private static Boolean isFirstDethorn = true;
 
     public override void StartMinigame()
     {
@@ -64,8 +67,9 @@ public class CutManager : MinigameBehavior
         if (FlowerShopManager.GetCurrentMinigame().gameObject.name == "Dethorn")
         {
             //Activates the thorny rose object for the zoom in on the first rose of the minigame
-            if (curIndex == 0)
+            if (isFirstDethorn)
             {
+                isFirstDethorn = false;
                 ThornyFlowerZoom t = instance.thornyRose.GetComponent<ThornyFlowerZoom>();
                 t.Reset();
             }
