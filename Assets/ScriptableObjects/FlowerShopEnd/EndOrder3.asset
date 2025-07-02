@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9aada3eb7d4d0a49ad5041a60889061, type: 3}
-  m_Name: EndOrder2
+  m_Name: EndOrder3
   m_EditorClassIdentifier: 
   nameForOrder: Jeta
   mainCharSprites:
@@ -22,6 +22,6 @@ MonoBehaviour:
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 1
+    flowerType: 7
   dialogueStartNode: 
   dialogueEndNode: 

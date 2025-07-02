@@ -23,6 +23,7 @@ public class PortaitLogic : MonoBehaviour
         dialogueRunner.AddCommandHandler("oneChar", OneChar);
         dialogueRunner.AddCommandHandler("twoChar", TwoChar);
         dialogueRunner.AddCommandHandler("zeroChar", ZeroChar);
+        dialogueRunner.AddCommandHandler("nextOrder", NextOrder);
     }
 
     /// <summary>
@@ -102,12 +103,20 @@ public class PortaitLogic : MonoBehaviour
         secondCharacterPortrait.transform.position = new Vector3(5f, -0.5f, 0f);
     }
 
+    /// <summary>
+    /// Makes no character show on screen
+    /// </summary>
     private void ZeroChar()
     {
         characterPortrait.SetActive(false);
         secondCharacterPortrait.SetActive(false);
     }
 
+    /// <summary>
+    /// Changes a character's facial expression
+    /// </summary>
+    /// <param name="character">Which character should change</param>
+    /// <param name="portait">What portrait to change to</param>
     private void ChangeSprite(int character, int portait)
     {
         if (character == 1)
@@ -124,5 +133,13 @@ public class PortaitLogic : MonoBehaviour
                 secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetSecondSprites()[portait];
             }
         }
+    }
+
+    /// <summary>
+    /// Skip to next order without modifying other things like character sprite or opening the door
+    /// </summary>
+    private void NextOrder()
+    {
+        FlowerShopManager.NextOrder();
     }
 }
