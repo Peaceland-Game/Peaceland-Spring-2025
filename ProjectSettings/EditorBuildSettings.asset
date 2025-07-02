@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/InteractableIntro.unity
     guid: 8431cc6a44c30a54e8247545e4a5dc5a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/PDayIntro.unity
     guid: d7b7df2f2d05ee2438f747b9b165d848
   - enabled: 1
