@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2513d9849507e1249ade306dc733a11a
+guid: 02498f7d9636eab43b150c2208730238
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6139130623109489790
-    second: rose_bottom_0
+      213: -6875091617176986082
+    second: gladiolus_bottom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rose_bottom_0
+      name: gladiolus_bottom_0
       rect:
         serializedVersion: 2
-        x: 619
-        y: 346
-        width: 103
-        height: 402
+        x: 669
+        y: 290
+        width: 60
+        height: 401
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e74e92476c2923550800000000000000
-      internalID: 6139130623109489790
+      spriteID: e1e56e79994c690a0800000000000000
+      internalID: -6875091617176986082
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      rose_bottom_0: 6139130623109489790
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

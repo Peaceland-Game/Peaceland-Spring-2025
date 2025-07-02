@@ -22,6 +22,6 @@ MonoBehaviour:
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 1
+    flowerType: 2
   dialogueStartNode: 
   dialogueEndNode: 

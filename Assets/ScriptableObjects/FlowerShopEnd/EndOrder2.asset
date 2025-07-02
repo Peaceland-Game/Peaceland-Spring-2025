@@ -22,7 +22,7 @@ MonoBehaviour:
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 1
+    flowerType: 2
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
@@ -30,6 +30,10 @@ MonoBehaviour:
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 1
+    flowerType: 7
+  - needsDethorning: 1
+    needsTrimming: 1
+    needsArranging: 1
+    flowerType: 8
   dialogueStartNode: Stem3
   dialogueEndNode: FlowerEnd

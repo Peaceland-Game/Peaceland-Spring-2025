@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: de840bb171756914bb59c6eaf8ebcde3
+guid: efcf393ca883699489c78017dfb63972
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2547050508655976591
-    second: daisy_bottom_0
+      213: -8189221672550949019
+    second: hawthorn_bottom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: daisy_bottom_0
+      name: hawthorn_bottom_0
       rect:
         serializedVersion: 2
-        x: 688
-        y: 293
-        width: 79
-        height: 568
+        x: 738
+        y: 304
+        width: 91
+        height: 359
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f80ea6951f0f85320800000000000000
-      internalID: 2547050508655976591
+      spriteID: 56f9ba4f64a0a5e80800000000000000
+      internalID: -8189221672550949019
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      daisy_bottom_0: 2547050508655976591
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
