@@ -6,8 +6,6 @@ using static OrderObject;
 
 public class InteractManager : MinigameBehavior
 {
-    [SerializeField] GameObject InteractablePrefab;
-
     /// <summary>
     /// Runs the dialogue when an object with dialogue is clicked on
     /// </summary>
@@ -27,6 +25,11 @@ public class InteractManager : MinigameBehavior
     /// Number of active interactable objects
     /// </summary>
     public int numActiveObjects;
+
+    /// <summary>
+    /// Marks if something has been clicked in this loop to prevent multi clicks
+    /// </summary>
+    private bool somethingClicked = false;
 
 
     /// <summary>
@@ -67,18 +70,20 @@ public class InteractManager : MinigameBehavior
     /// </summary>
     public void DoClick()
     {
+
         if (this.gameObject.activeInHierarchy) {
         Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
 
             for (int i = 0; i < numObjects; i++) { 
                 
                 //aabb bounding test
-                    if (!(touch_wp.x < interactables[i].gameObject.transform.position.x - interactables[i].GetComponent<Collider2D>().bounds.size.x/2  ||
-                           touch_wp.x > interactables[i].gameObject.transform.position.x + interactables[i].GetComponent<Collider2D>().bounds.size.x/2 ||
-                          touch_wp.y <  interactables[i].gameObject.transform.position.y - interactables[i].GetComponent<SpriteRenderer>().bounds.size.y / 2  ||
-                           touch_wp.y > interactables[i].gameObject.transform.position.y + interactables[i].GetComponent<SpriteRenderer>().bounds.size.y / 2) 
-                           && !interactables[i].fading && interactables[i].gameObject.activeInHierarchy){
+                    if (!(touch_wp.x < interactables[i].GetComponent<Collider2D>().attachedRigidbody.position.x - interactables[i].GetComponent<Collider2D>().bounds.size.x/2  ||
+                           touch_wp.x > interactables[i].GetComponent<Collider2D>().attachedRigidbody.position.x + interactables[i].GetComponent<Collider2D>().bounds.size.x/2 ||
+                          touch_wp.y < interactables[i].GetComponent<Collider2D>().attachedRigidbody.position.y - interactables[i].GetComponent<Collider2D>().bounds.size.y / 2  ||
+                           touch_wp.y > interactables[i].GetComponent<Collider2D>().attachedRigidbody.position.y + interactables[i].GetComponent<Collider2D>().bounds.size.y / 2) 
+                           && !interactables[i].fading && interactables[i].gameObject.activeInHierarchy && !somethingClicked){
 
+                    somethingClicked = true;
                     //Runs the dialogue if it has any
                     if (interactables[i].startNode != "")
                         {
@@ -86,56 +91,52 @@ public class InteractManager : MinigameBehavior
 
                         }
                     //Otherwise begins the fade away
-                    else
-                        {
-                            Debug.Log(i + " CLICKED!!!!!");
-                            interactables[i].fading = true;
-                        }
-                        
+                    if(interactables[i].startedDialogue || interactables[i].startNode == "")
+                        interactables[i].fading = true;
                     }
             }
 
         }
+        somethingClicked = false;
     }
 
     //Runs the dialogue once per object and labels it finished so it won't run it again
     private void runDialogue(Interactable inter)
     {
-        if (!inter.finished)
+        if (!inter.startedDialogue && !dialogueRunner.IsDialogueRunning)
         {
             dialogueRunner.StartDialogue(inter.startNode);
-            inter.finished = true;
-            Debug.Log("AHHH");
+            inter.startedDialogue = true;
         }
     }
 
-    //Fades the objects and attemps to end the minigame when an object fades.
+    //Fades the objects and attemps to end the minigame when an object fades
     private void Update()
     {
         for(int i = 0; i < numObjects; i++)
         {
-            if (interactables[i].fading && !interactables[i].finished)
+            if (interactables[i].fading && !interactables[i].finishedFading && !dialogueRunner.IsDialogueRunning)
                 interactables[i].GetComponent<SpriteRenderer>().color = new Color(interactables[i].GetComponent<SpriteRenderer>().color.r,
-                interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.a - 0.005f);
-                if (interactables[i].GetComponent<SpriteRenderer>().color.a <= 0 && !interactables[i].finished)
+                interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.a - 0.001f);
+                if (interactables[i].GetComponent<SpriteRenderer>().color.a <= 0 && !interactables[i].finishedFading && !dialogueRunner.IsDialogueRunning)
             {
                 numActiveObjects--;
-                interactables[i].finished = true;
+                interactables[i].finishedFading = true;
                 endInteractableMinigame();
+
             }
         }
         
 
     }
 
-    //Ends the minigame if there are no more active objects left.
+    //Ends the minigame if there are no more active objects left
     public void endInteractableMinigame()
     {
-        Debug.Log("end method");
         if (numActiveObjects <= 0)
         {
             StopMinigame();
-            FlowerShopManager.Instance.NextMinigame();
+            FlowerShopManager.Instance.InteractableDialogueNextMinigame();
         }
     }
 }

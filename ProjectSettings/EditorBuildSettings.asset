@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Dialogue Test.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/Scenes/FMemIntro.unity
+    guid: 3b8c065ad39116a46a87d34cabd54600
   - enabled: 1
     path: Assets/Scenes/DemoStart.unity
     guid: a44448c9cde269c4399d766487a333e9
@@ -18,8 +21,8 @@ EditorBuildSettings:
     path: Assets/Scenes/PDayIntro.unity
     guid: d7b7df2f2d05ee2438f747b9b165d848
   - enabled: 1
-    path: Assets/Scenes/FMemIntro.unity
-    guid: 3b8c065ad39116a46a87d34cabd54600
+    path: Assets/Scenes/InteractableIntro.unity
+    guid: 8431cc6a44c30a54e8247545e4a5dc5a
   - enabled: 1
     path: Assets/Scenes/FlowerMemoryScene.unity
     guid: b4b8e1b5fec086f40b657d890449e5e5
