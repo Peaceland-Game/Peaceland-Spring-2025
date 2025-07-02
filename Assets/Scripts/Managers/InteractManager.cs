@@ -26,6 +26,11 @@ public class InteractManager : MinigameBehavior
     /// </summary>
     public int numActiveObjects;
 
+    /// <summary>
+    /// Marks if something has been clicked in this loop to prevent multi clicks
+    /// </summary>
+    private bool somethingClicked = false;
+
 
     /// <summary>
     /// Instantiates the interactable objects and begins the minigame
@@ -68,17 +73,17 @@ public class InteractManager : MinigameBehavior
 
         if (this.gameObject.activeInHierarchy) {
         Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
-            Debug.Log(touch_wp.x + ", " + touch_wp.y);
 
             for (int i = 0; i < numObjects; i++) { 
                 
                 //aabb bounding test
-                    if (!(touch_wp.x < interactables[i].gameObject.transform.position.x - interactables[i].GetComponent<Collider2D>().bounds.size.x/2  ||
-                           touch_wp.x > interactables[i].gameObject.transform.position.x + interactables[i].GetComponent<Collider2D>().bounds.size.x/2 ||
-                          touch_wp.y <  interactables[i].gameObject.transform.position.y - interactables[i].GetComponent<Collider2D>().bounds.size.y / 2  ||
-                           touch_wp.y > interactables[i].gameObject.transform.position.y + interactables[i].GetComponent<Collider2D>().bounds.size.y / 2) 
-                           && !interactables[i].fading && interactables[i].gameObject.activeInHierarchy){
+                    if (!(touch_wp.x < interactables[i].GetComponent<Collider2D>().attachedRigidbody.position.x - interactables[i].GetComponent<Collider2D>().bounds.size.x/2  ||
+                           touch_wp.x > interactables[i].GetComponent<Collider2D>().attachedRigidbody.position.x + interactables[i].GetComponent<Collider2D>().bounds.size.x/2 ||
+                          touch_wp.y < interactables[i].GetComponent<Collider2D>().attachedRigidbody.position.y - interactables[i].GetComponent<Collider2D>().bounds.size.y / 2  ||
+                           touch_wp.y > interactables[i].GetComponent<Collider2D>().attachedRigidbody.position.y + interactables[i].GetComponent<Collider2D>().bounds.size.y / 2) 
+                           && !interactables[i].fading && interactables[i].gameObject.activeInHierarchy && !somethingClicked){
 
+                    somethingClicked = true;
                     //Runs the dialogue if it has any
                     if (interactables[i].startNode != "")
                         {
@@ -86,17 +91,19 @@ public class InteractManager : MinigameBehavior
 
                         }
                     //Otherwise begins the fade away
+                    if(interactables[i].startedDialogue || interactables[i].startNode == "")
                         interactables[i].fading = true;
                     }
             }
 
         }
+        somethingClicked = false;
     }
 
     //Runs the dialogue once per object and labels it finished so it won't run it again
     private void runDialogue(Interactable inter)
     {
-        if (!inter.startedDialogue)
+        if (!inter.startedDialogue && !dialogueRunner.IsDialogueRunning)
         {
             dialogueRunner.StartDialogue(inter.startNode);
             inter.startedDialogue = true;
@@ -126,7 +133,6 @@ public class InteractManager : MinigameBehavior
     //Ends the minigame if there are no more active objects left
     public void endInteractableMinigame()
     {
-        Debug.Log("end method");
         if (numActiveObjects <= 0)
         {
             StopMinigame();

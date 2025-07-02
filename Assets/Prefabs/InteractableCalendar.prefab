@@ -108,7 +108,7 @@ MonoBehaviour:
   zoom: 0
   startNode: FlowerShopIntroCalendar
   x: 8.63
-  y: -3.98
+  y: -4.08
   z: 1.5
 --- !u!61 &2410964964121257263
 BoxCollider2D:

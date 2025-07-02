@@ -161,7 +161,7 @@ public class FlowerShopManager : MonoBehaviour
     {
         Debug.Log(currentMinigame);
 
-        if (currentMinigame < 0 || !minigames[currentMinigame].gameObject.GetComponent<InteractManager>().isActiveAndEnabled)
+        if (currentMinigame < 0 || minigames[currentMinigame].GetType() != typeof(InteractManager))
         {
 
             //As long as the current minigame is at a valid index (greater than 0), stop the minigame at that index

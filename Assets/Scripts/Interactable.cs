@@ -15,10 +15,13 @@ public class Interactable : MonoBehaviour
     /// </summary>
     public bool fading;
     /// <summary>
-    /// Used to label objects as complete after they run their dialogue
+    /// Used to label objects as complete after they finish fading
     /// </summary>
     public bool finishedFading = false;
 
+    /// <summary>
+    /// Used to label objects that have begun their dialogue
+    /// </summary>
     public bool startedDialogue = false;
     /// <summary>
     /// Potentially controls the zoom
@@ -39,14 +42,5 @@ public class Interactable : MonoBehaviour
     void Start()
     {
         transform.position = new(x, y, z);
-    }
-
-    public void Zoom()
-    {
-        if (transform.position.x > 0 || transform.position.y > 0)
-        {
-            transform.position += new Vector3(transform.position.x + -transform.position.x * 0.2f,
-                transform.position.y + -transform.position.y * 0.2f, transform.position.x);
-        }
     }
 }

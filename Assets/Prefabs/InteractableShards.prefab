@@ -107,8 +107,8 @@ MonoBehaviour:
   startedDialogue: 0
   zoom: 0
   startNode: FlowerShopIntroBrokenGlass
-  x: 3.45
-  y: -1.665
+  x: 2.7
+  y: -2.2
   z: 1
 --- !u!61 &2410964964121257263
 BoxCollider2D:
@@ -146,15 +146,15 @@ BoxCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    border: {x: 1.89, y: 2.32, z: 7.02, w: 10.98}
+    pivot: {x: 0.26524326, y: 0.36934346}
     oldSize: {x: 20.48, y: 20.48}
     newSize: {x: 20.48, y: 20.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 15, y: 10}
+  m_Size: {x: 8, y: 6}
   m_EdgeRadius: 0
 --- !u!50 &7297774830438626671
 Rigidbody2D:
