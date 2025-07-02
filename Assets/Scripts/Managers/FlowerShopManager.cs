@@ -175,7 +175,7 @@ public class FlowerShopManager : MonoBehaviour
             //If the current minigame is higher or equal to the number of minigames, continue
             if (currentMinigame >= minigames.Count)
             {
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 return;
 
                 // TODO: We're done, end the game (or memory)!!!
@@ -186,6 +186,12 @@ public class FlowerShopManager : MonoBehaviour
         }
        
     }
+
+    /// <summary>
+    /// Same as the top one, but actives via the interactable dialogue minigame because the 
+    /// dialogue would automatically go to the next scene, which can't happen in minigames
+    /// with multiple objects that have dialogue.
+    /// </summary>
 public void InteractableDialogueNextMinigame()
 {
 
@@ -200,7 +206,7 @@ public void InteractableDialogueNextMinigame()
         //If the current minigame is higher or equal to the number of minigames, continue
         if (currentMinigame >= minigames.Count)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             return;
 
             // TODO: We're done, end the game (or memory)!!!
