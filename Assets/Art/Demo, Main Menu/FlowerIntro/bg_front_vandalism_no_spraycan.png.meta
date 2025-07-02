@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bg_front_vandalism_no_spraycan_0: -8338922607449243878
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

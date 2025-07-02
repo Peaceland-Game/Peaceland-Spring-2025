@@ -384,7 +384,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      front_closed_door_interactable_0: -829503670166694680
+      front_closed_door_interactable_1: 5950122856066799652
+      front_closed_door_interactable_10: 7636533064064522689
+      front_closed_door_interactable_2: 5650537088452487824
+      front_closed_door_interactable_3: -769370454816311432
+      front_closed_door_interactable_4: -3510512208519512428
+      front_closed_door_interactable_5: -2781661696295237495
+      front_closed_door_interactable_6: -2210189635603559092
+      front_closed_door_interactable_7: -5444676698937974319
+      front_closed_door_interactable_8: -8061440238335268709
+      front_closed_door_interactable_9: 2255367921120977064
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
