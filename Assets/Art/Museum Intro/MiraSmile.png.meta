@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MiraSmile_0: -7630039465487326411
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

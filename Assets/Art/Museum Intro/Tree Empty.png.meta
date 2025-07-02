@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ff6119c6235897044bf398f7a6ff0c00
+guid: 58d4cec9a440dbf40861e4cba731be43
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2742950449879769539
-    second: MiraNormal_0
+      213: 260649215713881196
+    second: Tree Empty_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MiraNormal_0
+      name: Tree Empty_0
       rect:
         serializedVersion: 2
-        x: 680
-        y: 674
-        width: 741
-        height: 1259
+        x: 0
+        y: 0
+        width: 1811
+        height: 1811
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3e1b6e39151fe9d0800000000000000
-      internalID: -2742950449879769539
+      spriteID: c6c2c99a4130e9300800000000000000
+      internalID: 260649215713881196
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      MiraNormal_0: -2742950449879769539
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

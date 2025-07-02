@@ -16,6 +16,8 @@ public class MuseumIntroManager : MonoBehaviour
     [SerializeField]
     private DialogueRunner dialogueRunner;
 
+    private GameManager gm;
+
     /// <summary>
     /// The index of the current minigame that this memory is on
     /// </summary>
@@ -37,6 +39,8 @@ public class MuseumIntroManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        gm = GameManager.Instance;
+
         Instance = this;
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
     }
@@ -44,7 +48,13 @@ public class MuseumIntroManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //when the intro sprawl is done, start Marc's dialogue
+        if (gm.introSprawlDone == true && gm.marcStart == false)
+        {
+            gm.marcStart = true;
+            NextMinigame();
+        }
+
     }
 
     /// <summary>
@@ -58,10 +68,10 @@ public class MuseumIntroManager : MonoBehaviour
         //Increment to the next minigame
         currentMinigame++;
 
-        //If the current minigame is higher or equal to the number of minigames, play animation and change scene to flower memory
+        //If the current minigame is higher or equal to the number of minigames,end dialogue for intro
         if (currentMinigame >= minigames.Count)
         {
-            
+            gm.miraIntroDone = true;
             return;  
         }
 

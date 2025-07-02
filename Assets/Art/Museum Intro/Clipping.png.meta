@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ff6119c6235897044bf398f7a6ff0c00
+guid: 2301bd45ec09e4e4695131387c78d93f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2742950449879769539
-    second: MiraNormal_0
+      213: -5495100527575115049
+    second: Clipping_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MiraNormal_0
+      name: Clipping_0
       rect:
         serializedVersion: 2
-        x: 680
-        y: 674
-        width: 741
-        height: 1259
+        x: 56
+        y: 436
+        width: 1949
+        height: 1580
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3e1b6e39151fe9d0800000000000000
-      internalID: -2742950449879769539
+      spriteID: 7dad2d83f2b7db3b0800000000000000
+      internalID: -5495100527575115049
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      MiraNormal_0: -2742950449879769539
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

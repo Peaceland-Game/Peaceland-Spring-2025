@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Hub_Concept_Light (1)_0: -8299975046719838282
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
