@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b315660da98ebf9449849f0c9eb9f55b
+guid: 22adcc60d262a5540b93b31076aebe0a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1627919453384748604
-    second: daisy_top_0
+      213: 7434067829166763271
+    second: orchid_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: daisy_top_0
+      name: orchid_0
       rect:
         serializedVersion: 2
-        x: 228
-        y: 703
-        width: 1079
-        height: 1617
+        x: 292
+        y: 81
+        width: 1547
+        height: 1846
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4c1dd0ad1e77869e0800000000000000
-      internalID: -1627919453384748604
+      spriteID: 70de4a1ad4d1b2760800000000000000
+      internalID: 7434067829166763271
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 246f39151f4809545919d14eac9787e3
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      daisy_top_0: -1627919453384748604
+      orchid_0: 7434067829166763271
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

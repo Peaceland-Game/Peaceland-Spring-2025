@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: de840bb171756914bb59c6eaf8ebcde3
+guid: 93a8e98909ed67b4886ff71b747d9770
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2547050508655976591
-    second: daisy_bottom_0
+      213: -4462088882853105153
+    second: thistle_bottom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: daisy_bottom_0
+      name: thistle_bottom_0
       rect:
         serializedVersion: 2
-        x: 688
-        y: 293
-        width: 79
-        height: 568
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1180
+        y: 291
+        width: 75
+        height: 440
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f80ea6951f0f85320800000000000000
-      internalID: 2547050508655976591
+      spriteID: ff1325d5dc97312c0800000000000000
+      internalID: -4462088882853105153
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 842d7e171e64d944a83265d9323f1bbf
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      daisy_bottom_0: 2547050508655976591
+      thistle_bottom_0: -4462088882853105153
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

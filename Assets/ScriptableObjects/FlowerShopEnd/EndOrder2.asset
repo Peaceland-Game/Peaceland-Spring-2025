@@ -23,13 +23,5 @@ MonoBehaviour:
     needsTrimming: 1
     needsArranging: 1
     flowerType: 1
-  - needsDethorning: 1
-    needsTrimming: 1
-    needsArranging: 1
-    flowerType: 1
-  - needsDethorning: 1
-    needsTrimming: 1
-    needsArranging: 1
-    flowerType: 1
-  dialogueStartNode: Stem3
-  dialogueEndNode: FlowerEnd
+  dialogueStartNode: 
+  dialogueEndNode: 

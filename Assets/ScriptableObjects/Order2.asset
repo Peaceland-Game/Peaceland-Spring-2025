@@ -19,9 +19,17 @@ MonoBehaviour:
   - {fileID: 8374921293574171215, guid: c62fe59b65a034b48a0e267112b13148, type: 3}
   secondCharSprites: []
   flowers:
+  - needsDethorning: 0
+    needsTrimming: 1
+    needsArranging: 1
+    flowerType: 7
+  - needsDethorning: 0
+    needsTrimming: 1
+    needsArranging: 1
+    flowerType: 8
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 1
+    flowerType: 3
   dialogueStartNode: TeacherStart
   dialogueEndNode: TeacherEnding

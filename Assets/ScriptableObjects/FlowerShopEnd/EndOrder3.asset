@@ -10,26 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d9aada3eb7d4d0a49ad5041a60889061, type: 3}
-  m_Name: Order5
+  m_Name: EndOrder3
   m_EditorClassIdentifier: 
-  nameForOrder: Lukas
+  nameForOrder: Jeta
   mainCharSprites:
   - {fileID: -1015950284290614753, guid: 0b4dbad2c96080c44b47b8a099e0f958, type: 3}
   - {fileID: -4499213574595818492, guid: d8038d3af0ad8754598af76d02fdabed, type: 3}
   - {fileID: 4692744361058411648, guid: e40c006b738c245499bfbafb531a18c6, type: 3}
   secondCharSprites: []
   flowers:
-  - needsDethorning: 0
-    needsTrimming: 1
-    needsArranging: 1
-    flowerType: 5
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 6
-  - needsDethorning: 0
-    needsTrimming: 1
-    needsArranging: 1
-    flowerType: 4
-  dialogueStartNode: ChildStart
-  dialogueEndNode: ChildOrderComplete
+    flowerType: 7
+  dialogueStartNode: 
+  dialogueEndNode: 
