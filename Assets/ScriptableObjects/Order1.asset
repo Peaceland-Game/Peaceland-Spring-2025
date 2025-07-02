@@ -22,7 +22,7 @@ MonoBehaviour:
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
-    flowerType: 0
+    flowerType: 2
   - needsDethorning: 1
     needsTrimming: 1
     needsArranging: 1
