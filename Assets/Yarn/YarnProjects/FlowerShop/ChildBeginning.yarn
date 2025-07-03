@@ -4,6 +4,7 @@ title: ChildStart
 <<declare $floristKidName = "Pranas">>
 <<zeroChar>>
 *{$floristName} moves to the front of the store, preparing to flip the sign from open to closed.*
+<<changeSprite 1 1>>
 <<oneChar>>
 <<lighten>>
 {$childName}: Wait!
@@ -18,6 +19,7 @@ title: ChildStart
 <<darken>>
 {$floristName}: Uh, alright then. How can I help you?
 <<lighten>>
+<<changeSprite 1 0>>
 {$childName}: It’s my mom’s birthday soon and I want to get her some flowers!
 *{$childName} barely reaches the top of the counter, dropping some bills and coins, some spilling off the table*
 {$childName}: Sorry, Papa gave me these. How many flowers can I get?
@@ -31,12 +33,14 @@ title: ChildStart
 title: TellTheTruth
 ---
 <<lighten>>
+<<changeSprite 1 2>>
 {$childName}: Oh...
 *{$childName} is about to cry*
 {$childName}: But this is all I have...
 <<darken>>
 {$floristName}: Oh, don’t worry, Whatever you get, your mom will love! I promise. Here, I’ll make a pretty bouquet with any three flowers you want!
 <<lighten>>
+<<changeSprite 1 0>>
 {$childName}: Are you sure...?
 <<darken>>
 {$floristName}: Absolutely.
@@ -58,10 +62,12 @@ title: LookAtFlowers
 {$floristName}: This flower’s a bit thorny, but it’ll always protect the people close to them.
 {$floristName}: And what would you like your third flower to be?
 <<lighten>>
+<<changeSprite 1 1>>
 {$childName}: Do you have one that’ll make someone feel better?
 <<darken>>
 {$floristName}: What do you mean?
 <<lighten>>
+<<changeSprite 1 0>>
 {$childName}: Well, Mama’s always in the hospital, so I want to help her get better so she can come home!
 <<darken>>
 -> ...
@@ -74,10 +80,12 @@ title: Silence
 ---
 *Tears form at {$floristName}'s eyes*
 <<lighten>>
-{$childName}: Um… Miss Florist, are you ok?
+<<changeSprite 1 1>>
+{$childName}: Um... Miss Florist, are you ok?
 <<darken>>
 {$floristName}: I’m okay, sorry. So your mom’s sick?
 <<lighten>>
+<<changeSprite 1 0>>
 {$childName}: Yeah, but Papa’s working really hard! <color="yellow">And the doctors that talk funny have been very nice too!</color>
 <<darken>>
 <i>Talk funny? He must mean the foreign aid workers that recently arrived.</i>
@@ -89,6 +97,7 @@ title: Cracking
 <<darken>>
 {$floristName}: {$floristKidName}...
 <<lighten>>
+<<changeSprite 1 0>>
 {$childName}: That’s a pretty name, is that a flower?
 <<darken>>
 {$floristName}: No, nevermind, sorry. Is your mom ok?
@@ -104,10 +113,12 @@ title: FinishBouquet
 {$floristName}: Alright, how about these Chamomile?
 {$floristName}: It represents patience in adversity.
 <<lighten>>
+<<changeSprite 1 1>>
 {$childName}: I’m not sure what that means.
 <<darken>>
 {$floristName}: If you wait, your mom will get better. All you have to do is be by her side, alright?
 <<lighten>>
+<<changeSprite 1 0>>
 {$childName}: Yeah! I can do that!
 <<darken>>
 {$floristName}: Good boy.

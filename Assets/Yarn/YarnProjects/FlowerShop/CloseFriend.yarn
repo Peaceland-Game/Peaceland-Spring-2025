@@ -6,6 +6,7 @@ title: CloseFriendStart
 
 <<changeSprite 1 2>>
 <<lighten>>
+<<oneChar>>
 {$closeFriendName}: Hi {$floristName} - Oh what happened? Did those vandals break your vases too?
 <<darken>>
 {$floristName}: No, it was {$agitatorName}...
@@ -59,7 +60,7 @@ title: DontTalkAboutIt
 ---
 <<lighten>>
 {$closeFriendName}: Alright, I understand. Let me know if there is anything I can do to help.
-<<changeSprite 1 1>>
+<<changeSprite 1 0>>
 {$closeFriendName}: That aside, I’d like to get some flowers.
 <<darken>>
 {$floristName}: What can I get you?
@@ -77,7 +78,7 @@ title: AboutVandalism
 <<darken>>
 {$floristName}: I know that, but you know they all feel the same.
 <<lighten>>
-<<changeSprite 1 0>>
+<<changeSprite 1 1>>
 {$closeFriendName}: {$floristName}, don’t be like that. It may not do much, but I can inform the police and tell them to keep an eye out.
 <<darken>>
 {$floristName}: Do you really think that’s going to do anything?
@@ -86,7 +87,7 @@ title: AboutVandalism
 <<darken>>
 {$floristName}: I suppose that’s true. Thanks, Jeta.
 <<lighten>>
-<<changeSprite 1 1>>
+<<changeSprite 1 0>>
 {$closeFriendName}: No worries. But hey, if you want to pay me back, how about some flowers?
 <<darken>>
 {$floristName}: Of course.
@@ -140,7 +141,7 @@ title: AboutPranas
 title: Order
 ---
 <<lighten>>
-<<changeSprite 1 1>>
+<<changeSprite 1 0>>
 {$closeFriendName}: Any flowers will do. Not for me, though, I’d like to get them for you. Anything that’d cheer you up, even a little.
 <<darken>>
 -> {$closeFriendName}, I really don't have the time.
@@ -187,7 +188,7 @@ title: Alright
 ---
 <<lighten>>
 *{$closeFriendName} leaves a small stack of money on the counter*
-<<changeSprite 1 1>>
+<<changeSprite 1 0>>
 {$closeFriendName}: I hope it makes you feel better. Especially, after all of <i>this</i> going on.
 <<zeroChar>>    
 <i>It’s a bit early, but maybe I should close for the day.</i>

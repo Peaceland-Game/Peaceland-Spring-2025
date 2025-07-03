@@ -1,8 +1,9 @@
 title: TeacherStart
 ---
 <<declare $teacherName = "Danika">>
-
+<<changeSprite 1 1>>
 <<darken>>
+<<oneChar>>
 {$floristName}: {$teacherName}, welcome. How are you?
 <<lighten>>
 {$teacherName}: Same as you, I suppose. It’s a shame, what happened to the store. Do you know who did it?
@@ -39,6 +40,7 @@ title: Face
 <<darken>>
 {$floristName}: Oh, is it for the kids’ graduation? I can throw in some extra if you’d like.
 <<lighten>>
+<<changeSprite 1 2>>
 {$teacherName}: It’s actually for the memorial. I wanted to have an arrangement made for students I lost during the conflict. I made some cards with their names for you to add to the flowers.
 ->I’ve been getting a lot of orders for that recently. Let me take a look.
     <<jump TeacherOrderStart>>
@@ -49,6 +51,7 @@ title: Face
 title: Memorial
 ---
 <<lighten>>
+<<changeSprite 1 0>>
 {$teacherName}: Yes! It will be such a nice event to commemorate all those we’ve lost together. And your flowers will make it look so beautiful.
 <<darken>>
 {$floristName}: I’m not sure I would call it nice.
@@ -63,14 +66,16 @@ title: Memorial
 title: TeacherOrderStart
 ---
 <<darken>>
-{$floristName}: \[Child 1\], \[Child 2\], \[Child 3\]...
-{$floristName}: … Pranas.
+{$floristName}: Zlatan, Ema, Adiran, Sara...
+{$floristName}: ...{$floristKidName}.
 <<lighten>>
+<<changeSprite 1 2>>
 {$teacherName}: {$floristName}, I’m sorry. You’re the only florist nearby, you have to understand.
 <<darken>>
 <i>A warning would have been nice. She’s oblivious to the harm that she causes. Just like the rest of them.</i>
-{$floristName}: I appreciate the gesture. Pranas always loved your class. I’ll put in carnations for sympathy, and an orchid for my Pranas, if you don’t mind.
+{$floristName}: I appreciate the gesture. {$floristKidName} always loved your class. I’ll put in carnations for sympathy, and an orchid for my {$floristKidName}, if you don’t mind.
 <<lighten>>
+<<changeSprite 1 0>>
 {$teacherName}: Sounds beautiful. I’d also like you to throw in some thistle. I heard they stand for unity and endurance. Perfect for the memorial.
 <<darken>>
 <i>Of course you think so. Are you trying to remember the children, or forget the war?</i>
