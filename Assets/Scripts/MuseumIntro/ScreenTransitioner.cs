@@ -45,6 +45,7 @@ public class ScreenTransitioner : MonoBehaviour
     //dialogue runner reference
     public DialogueRunner dr;
 
+    public LevelLoader ll;
 
     private void Start()
     {
@@ -149,6 +150,8 @@ public class ScreenTransitioner : MonoBehaviour
         //transition scene into the memory intro once screen has gone white
         yield return new WaitForSeconds(4);
         //PUT LEVEL LOAD HERE
+
+        ll.LoadNextLevel();
     }
 
     //whole transition sequence for newspaper and auto advance screens
