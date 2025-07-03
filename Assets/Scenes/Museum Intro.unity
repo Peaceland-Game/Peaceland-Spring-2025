@@ -1078,6 +1078,7 @@ MonoBehaviour:
   marcStart: 0
   miraIntroDone: 0
   memoryObjectAcquired: 0
+  difficulty: 0
 --- !u!4 &828910784
 Transform:
   m_ObjectHideFlags: 0
@@ -1159,7 +1160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 24191320}
-  characterSprite: {fileID: 1867561163}
+  characterPortrait: {fileID: 1867561162}
+  secondCharacterPortrait: {fileID: 0}
 --- !u!114 &953220422
 MonoBehaviour:
   m_ObjectHideFlags: 0
