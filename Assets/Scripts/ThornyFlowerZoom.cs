@@ -1,6 +1,4 @@
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class ThornyFlowerZoom : MonoBehaviour
@@ -31,8 +29,8 @@ public class ThornyFlowerZoom : MonoBehaviour
     {
         if (zoomDelay < 0f)
             {
-            transform.localScale = (Vector3)transform.localScale * (1.001f);
-            transform.position = new Vector3(transform.position.x - (0.0016f * transform.localScale.x), transform.position.y, this.transform.position.z);
+            transform.localScale = (Vector3)transform.localScale * (1f + 1.001f * Time.deltaTime);
+           // transform.position = new Vector3(transform.position.x - (0.1f * transform.localScale.x * Time.deltaTime), transform.position.y, this.transform.position.z);
             if (transform.localScale.x > 5)
             {
                 CutManager cm = gameObject.AddComponent(typeof(CutManager)) as CutManager;
