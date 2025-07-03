@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 492172087}
-  characterSprite: {fileID: 1340726478}
+  characterSprite: {fileID: 0}
 --- !u!1 &88269609
 GameObject:
   m_ObjectHideFlags: 0
@@ -4723,7 +4723,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: 2
   m_Sprite: {fileID: 157688284424911389, guid: fdcf482b3fe366243ac859dff824aff6, type: 3}
   m_Color: {r: 0.75, g: 0.75, b: 0.75, a: 1}
   m_FlipX: 0
