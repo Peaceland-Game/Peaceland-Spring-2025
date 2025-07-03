@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e530a42260634f147881bc410d4c6545
+guid: c806a42ec6be53c4ba30932c3c3b5c93
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5445682375628085451
-    second: Newspaper (1)_0
+      213: -2927468551500334926
+    second: Newspaper (2)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Newspaper (1)_0
+      name: Newspaper (2)_0
       rect:
         serializedVersion: 2
         x: 39
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc8dae6a443f29b40800000000000000
-      internalID: 5445682375628085451
+      spriteID: 2b8f1b0ecda8f57d0800000000000000
+      internalID: -2927468551500334926
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Newspaper (1)_0: 5445682375628085451
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
