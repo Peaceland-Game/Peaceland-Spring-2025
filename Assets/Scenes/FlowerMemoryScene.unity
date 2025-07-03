@@ -324,6 +324,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1016099149961970447, guid: 398b1daf981067b4aa68c59d49ae74f4, type: 3}
+      propertyPath: m_SortingOrder
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 1647227453171028143, guid: 398b1daf981067b4aa68c59d49ae74f4, type: 3}
       propertyPath: m_Name
       value: Calendar
@@ -1412,7 +1416,7 @@ MonoBehaviour:
   flowershopBG: {fileID: 511491062}
   flowershopBGsprites:
   - {fileID: -2803175787980464757, guid: bb7fbd7cc9cfd9d4c9467f0943e57042, type: 3}
-  - {fileID: 6638381312415609133, guid: d03b6bfe386535340a8cef340dda5d68, type: 3}
+  - {fileID: 8749517544837524449, guid: daabe1c4f4ecd70458ceb2f0c84cb4f9, type: 3}
   characterPortrait2: {fileID: 2057993351}
 --- !u!4 &425442086
 Transform:
