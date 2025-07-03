@@ -1,0 +1,42 @@
+﻿title: MarcStart
+---
+<<declare $charName = "Marc">>
+<<declare $plaque = "...">>
+<<declare $mira = "Mira">>
+<<wait 4>>
+
+{$charName}: This is it. The grand opening. No mistakes today, Marc. You're on the main exhibit.
+{$charName}: The Memory Tree, the new main exhibit of the museum. It doesn't have any memories on its branches yet.
+{$charName}: As a volunteer, it's my job to put them up.
+
+//display plaque
+{$plaque}: A plaque at the base of the tree reads: <i>The branches of this tree bear witness to memories of our past and hope for the future. The act of remembering can pave our path towards peace.</i>
+
+{$charName}: Not too many volunteers yet. A lot of people would rather forget the past. Hopefully as the word spreads, more will want to share something.
+{$charName}: Let's see, first on the list: Mira. She should be here in the museum already.
+
+<<jump MiraMuseum>>
+
+===
+
+title: MiraMuseum
+---
+//enter mira sprite, darken her portrait
+<<darken>>
+<<wait 2>>
+{$charName}: Hello, are you Mira? I see that you have something to donate for the Memory Tree?
+
+//lighten mira
+<<lighten>>
+{$mira}: Yes, I am. Can I donate these newspaper clippings?
+{$mira}: They’re from 1996, a year after the war. The opening of the memorial was that day and some shops in the city were vandalized. My shop is the one in the photo.
+
+//darken mira
+<<darken>>
+{$charName}: Would it be okay if I gave these a quick read?
+
+//lighten mira
+<<lighten>>
+{$mira}: Feel free.
+
+===

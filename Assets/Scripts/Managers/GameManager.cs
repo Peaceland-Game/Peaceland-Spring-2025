@@ -3,7 +3,12 @@ using UnityEngine;
 //data that needs to be stored globally and transfered between scenes can be stored and referenced in this script
 public class GameManager : MonoBehaviour
 {
-    //variables
+    //bools for the MuseumIntro scene, used in MuseumIntroManager.cs and SceneTransitioner.cs
+    public bool newsRead;
+    public bool introSprawlDone;
+    public bool marcStart;
+    public bool miraIntroDone;
+    public bool memoryObjectAcquired;
 
     /// <summary>
     /// Used to add difficulty to the minigame. 0 is normal, 1 is shaky hands, and 2 is blurred vision.
