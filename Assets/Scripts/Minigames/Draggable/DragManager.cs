@@ -10,7 +10,7 @@ public class DragManager : MinigameBehavior
     /// Draggable flower prefab to spawn
     /// </summary>
     [SerializeField] GameObject flowerPrefab;
-    
+
     /// <summary>
     /// Drag target prefab tp spawn
     /// </summary>
@@ -30,11 +30,6 @@ public class DragManager : MinigameBehavior
     /// The rotations of the targets
     /// </summary>
     [SerializeField] Vector3[] targetRotations;
-
-    /// <summary>
-    /// Used to add difficulty to the minigame. 0 is normal, 1 is shaky hands, and 2 is blurred vision.
-    /// </summary>
-    [SerializeField] int difficulty;
 
     /// <summary>
     /// a list of flower objects that the player can drag
@@ -99,10 +94,14 @@ public class DragManager : MinigameBehavior
         gameObject.SetActive(true);
 
         //Adds the blur to minigames with added difficulty
-        if (difficulty > 1)
+        if (GameManager.Instance.difficulty > 1)
         {
             ppVolume.enabled = true;
-            ppVolume.weight = 0.6f + (difficulty * 0.05f);
+            ppVolume.weight = 1;
+            if (GameManager.Instance.difficulty >= 2)
+            { //Scales from 2 to 11
+                ppVolume.weight = 0.45f + (GameManager.Instance.difficulty * 0.05f);
+            }
         }
     }
 
@@ -128,7 +127,7 @@ public class DragManager : MinigameBehavior
 
     public void OnTouch(InputAction.CallbackContext context)
     {
-        
+
         if (!isActiveAndEnabled) return;
         Debug.Log("on touchd drag manager");
         if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled)
@@ -155,8 +154,10 @@ public class DragManager : MinigameBehavior
             if (candidate is not null)
             {
                 currentDraggable = candidate;
-                currentDraggable.StartDrag(touch_wp, difficulty);
+                currentDraggable.StartDrag(touch_wp, GameManager.Instance.difficulty);
             }
         }
     }
 }
+
+

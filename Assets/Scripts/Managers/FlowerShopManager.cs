@@ -35,7 +35,7 @@ public class FlowerShopManager : MonoBehaviour
     public static int currentFlower = 0;
 
     /// <summary>
-    /// Singleton Instace
+    /// Singleton Instance
     /// </summary>
     public static FlowerShopManager Instance { get; private set; }
 
@@ -60,7 +60,7 @@ public class FlowerShopManager : MonoBehaviour
     /// <summary>
     /// The current order being worked on
     /// </summary>
-    private static int currentOrder = 0;
+    private static int currentOrder = -1;
 
     /// <summary>
     /// Instance of the background to change during transitions
@@ -97,12 +97,23 @@ public class FlowerShopManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Increment the current order and grab the sprite in it
+    /// Returns an array of the main character sprites
     /// </summary>
-    public static Sprite NextOrderChar()
+    public static Sprite[] GetMainSprites()
     {
-        currentOrder++;
-        return GetCurrentOrder().spriteForOrder;
+        return GetCurrentOrder().mainCharSprites;
+    }
+
+    /// <summary>
+    /// Returns an array of the secondary character sprites if not null
+    /// </summary>
+    public static Sprite[] GetSecondSprites()
+    {
+        if (GetCurrentOrder().secondCharSprites.Length > 0)
+        {
+            return GetCurrentOrder().secondCharSprites;
+        }
+        return null;
     }
 
     /// <summary>

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9aada3eb7d4d0a49ad5041a60889061, type: 3}
+  m_Name: Order4
+  m_EditorClassIdentifier: 
+  nameForOrder: Jeta
+  mainCharSprites:
+  - {fileID: 4493633350398199302, guid: ba58931ac7957f34594889a08ce0a2bd, type: 3}
+  - {fileID: -3544298900915061737, guid: a08a7a92759119440a04251a61fe77be, type: 3}
+  - {fileID: 6618763717067473043, guid: 184fdcd100b06094390e6788e3179dd1, type: 3}
+  secondCharSprites: []
+  flowers:
+  - needsDethorning: 1
+    needsTrimming: 1
+    needsArranging: 1
+    flowerType: 1
+  dialogueStartNode: CloseFriendStart
+  dialogueEndNode: Alright

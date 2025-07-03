@@ -1,55 +1,8 @@
 title: ChildOrderComplete
-position: -29,-310
 ---
 <<darken>>
-{$floristName}: how does this look?
+{$floristName}: Be strong, alright? Be strong... <size=50%>you have to be...</size>
 <<lighten>>
-{$childName}: I think she’ll love it
-{$childName}: Thank you 
-<<jump Fumble>>
-===
-
-
-//this whole bit i feel like is gonna be weird, need to figure out how 
-//get emotion across properly
-title: Fumble
-position: -27,-142
----
-<<darken>>
-{$floristName}: Of course, {$floristKidName}-
-{$floristName}: ...
-<<lighten>>
-{$childName}: Hm?
-<<jump Trying>>
-===
-
-title: Trying
-position: -6,18
----
-<<darken>>
-{$floristName}: Of course, I hope your mother-
-{$floristName}: ...
-<<jump Trying2>>
-===
-
-title: Trying2
-position: 2,189
----
-<<darken>>
-{$floristName}: I hope your mother enjoys them.
-(Lukas takes one of the flowers out of the bouquet and places it down for the florist)
-//wouldn't actually go in the node but for the sake of walking through
-<<jump ChildEnd>>
-===
-
-//*Lukas takes one of the flowers out of the bouquet and places it down for the florist
-//Sorry dev team
-//we can reword this just current idea
-
-title: ChildEnd
-position: 2,363
----
-<<lighten>>
-{$childName}: I think she'd want me to give you one too, you remind me a lot of her.
-{$childName}: Have a good rest of your day!
+{$childName}: Thank you, Miss Florist!
+<<zeroChar>>
 ===
