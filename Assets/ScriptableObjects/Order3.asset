@@ -20,6 +20,7 @@ MonoBehaviour:
   - {fileID: -8608283842792828695, guid: 158c7ad9153e1d945aa4a3dafff2640e, type: 3}
   - {fileID: 557110884877198456, guid: 79ba49d5f8c27e34ea088c23a7d82503, type: 3}
   - {fileID: 8374921293574171215, guid: c62fe59b65a034b48a0e267112b13148, type: 3}
+  - {fileID: 4804919428978359840, guid: 92fbb39994e537e40b49b9fbf2351d9b, type: 3}
   flowers:
   - needsDethorning: 1
     needsTrimming: 1

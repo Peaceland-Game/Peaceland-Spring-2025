@@ -49,7 +49,7 @@ public class NextOrderMinigame : MinigameBehavior
             pauseTimer -= Time.deltaTime;
             if (pauseTimer <= 0)
             {
-                characterPortrait.SetActive(true);
+                //characterPortrait.SetActive(true);
                 flowershopBG.GetComponent<SpriteRenderer>().sprite = flowershopBGsprites[0];
                 FlowerShopManager.Instance.NextMinigame();
             }
