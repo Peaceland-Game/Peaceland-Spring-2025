@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Peaceland-Spring-2025.sln"
+    "dotnet.defaultSolution": "Peaceland-Spring-2025.sln",
+    "dotnet.preferCSharpExtension": true
 }

@@ -19,8 +19,17 @@ public class NextOrderMinigame : MinigameBehavior
 
     private float pauseTimer;
 
+    [SerializeField]
+    private GameObject characterPortrait2;
+
     public override void StartMinigame()
     {
+        FlowerShopManager.NextOrder();
+        characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetMainSprites()[0];
+        if (FlowerShopManager.GetSecondSprites() != null)
+        {
+            characterPortrait2.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetSecondSprites()[0];
+        }
         pauseTimer = 2;
         characterPortrait.SetActive(false);
         gameObject.SetActive(true);
@@ -35,16 +44,17 @@ public class NextOrderMinigame : MinigameBehavior
     //Added an update method to run a timer in between characters
     public void Update()
     {
-        if(pauseTimer > 0)
+        if (pauseTimer > 0)
         {
             pauseTimer -= Time.deltaTime;
-            if(pauseTimer <= 0)
+            if (pauseTimer <= 0)
             {
                 characterPortrait.SetActive(true);
                 flowershopBG.GetComponent<SpriteRenderer>().sprite = flowershopBGsprites[0];
-                characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.NextOrderChar();
                 FlowerShopManager.Instance.NextMinigame();
             }
-        }   
+        }
     }
 }
+
+

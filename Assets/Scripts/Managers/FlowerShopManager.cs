@@ -35,7 +35,7 @@ public class FlowerShopManager : MonoBehaviour
     public static int currentFlower = 0;
 
     /// <summary>
-    /// Singleton Instace
+    /// Singleton Instance
     /// </summary>
     public static FlowerShopManager Instance { get; private set; }
 
@@ -60,7 +60,7 @@ public class FlowerShopManager : MonoBehaviour
     /// <summary>
     /// The current order being worked on
     /// </summary>
-    private static int currentOrder = 0;
+    private static int currentOrder = -1;
 
     /// <summary>
     /// Gives access to the current order in the minigame
@@ -80,12 +80,23 @@ public class FlowerShopManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Increment the current order and grab the sprite in it
+    /// Returns an array of the main character sprites
     /// </summary>
-    public static Sprite NextOrderChar()
+    public static Sprite[] GetMainSprites()
     {
-        currentOrder++;
-        return GetCurrentOrder().spriteForOrder;
+        return GetCurrentOrder().mainCharSprites;
+    }
+
+    /// <summary>
+    /// Returns an array of the secondary character sprites if not null
+    /// </summary>
+    public static Sprite[] GetSecondSprites()
+    {
+        if (GetCurrentOrder().secondCharSprites.Length > 0)
+        {
+            return GetCurrentOrder().secondCharSprites;
+        }
+        return null;
     }
 
     /// <summary>
@@ -159,8 +170,46 @@ public class FlowerShopManager : MonoBehaviour
     /// <param name="state">The enum state to change to</param>
     public void NextMinigame()
     {
+        Debug.Log(currentMinigame);
+
+        if (currentMinigame < 0 || minigames[currentMinigame].GetType() != typeof(InteractManager))
+        {
+
+            //As long as the current minigame is at a valid index (greater than 0), stop the minigame at that index
+            if (currentMinigame >= 0) minigames[currentMinigame].StopMinigame();
+                
+
+
+                //Increment to the next minigame
+                currentMinigame++;
+
+            //If the current minigame is higher or equal to the number of minigames, continue
+            if (currentMinigame >= minigames.Count)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                return;
+
+                // TODO: We're done, end the game (or memory)!!!
+            }
+
+            //Start the next minigame
+            minigames[currentMinigame].StartMinigame();
+        }
+       
+    }
+
+    /// <summary>
+    /// Same as the top one, but actives via the interactable dialogue minigame because the 
+    /// dialogue would automatically go to the next scene, which can't happen in minigames
+    /// with multiple objects that have dialogue.
+    /// </summary>
+public void InteractableDialogueNextMinigame()
+{
+
         //As long as the current minigame is at a valid index (greater than 0), stop the minigame at that index
         if (currentMinigame >= 0) minigames[currentMinigame].StopMinigame();
+
+
 
         //Increment to the next minigame
         currentMinigame++;
@@ -168,7 +217,7 @@ public class FlowerShopManager : MonoBehaviour
         //If the current minigame is higher or equal to the number of minigames, continue
         if (currentMinigame >= minigames.Count)
         {
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             return;
 
             // TODO: We're done, end the game (or memory)!!!

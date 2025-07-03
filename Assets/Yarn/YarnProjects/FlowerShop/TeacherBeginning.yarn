@@ -3,130 +3,75 @@ title: TeacherStart
 <<declare $teacherName = "Danika">>
 
 <<darken>>
-{$floristName}: Ah, {$teacherName}, welcome in. How are you?
-<<jump TeacherConvoStart>>
+{$floristName}: {$teacherName}, welcome. How are you?
+<<lighten>>
+{$teacherName}: Same as you, I suppose. It’s a shame, what happened to the store. Do you know who did it?
+<<darken>>
+<i>Considering the hateful graffiti on my windows, I have an idea. And I’m sure you do, too.</i>
+->It was here before I opened up this morning. Work doesn’t stop just because I’m going through something.
+    <<jump TeacherOrderStart>>
+->If I knew who drew that awful symbol, I’d have them cleaning it off my windows already. 
+    <<jump Vandals>>
 ===
 
-title: TeacherConvoStart
+title: Vandals
 ---
 <<lighten>>
-{$teacherName}: Oh well, same as you, I suppose. A shame what happened to the store. Do you know who did it?
+{$teacherName}: Of course. If it ends up being a prank from one of my students, please let me know. I’ll have a talk with their parents.
 <<darken>>
-{$floristName}: Sadly no. It was here before I was, but I've just left it for now. Quite a bit of work piled up.
-<<jump TeacherReassurance>>
+<i>Like children could do such a thing.</i>
+->Thank you. Though, it seems much more deliberate than just some children misbehaving.
+    <<jump Face>>
+->I doubt it, but I’ll let you know if that ends up being the case. So, your order?
+    <<jump TeacherOrderStart>>
 ===
 
-title: TeacherReassurance
+title: Face
 ---
 <<lighten>>
-{$teacherName}: I'm sure. Well, if you find the vandals were one of my kids, please do let me know. I'll have a talk with their parents.
+{$teacherName}: True enough. But that’s not a conversation I’d like to have today.
 <<darken>>
-{$floristName}: Thank you. Though, if it were children, I'd be more concerned about how their parents raised them.
+<i><color="yellow">Of course it isn’t. You people never want to talk about anything uncomfortable. Can’t you own up to some of the damage you cause?</color></i>
+<i>…Calm yourself, {$floristName}. She’s only a teacher, his teacher. She’s always been good to you.</i>
+{$floristName}: Of course, you’re here for flowers. Now, what can I get you?
+<<lighten>>
+{$teacherName}: It’s a large order for my students.
+<<darken>>
+{$floristName}: Oh, is it for the kids’ graduation? I can throw in some extra if you’d like.
+<<lighten>>
+{$teacherName}: It’s actually for the memorial. I wanted to have an arrangement made for students I lost during the conflict. I made some cards with their names for you to add to the flowers.
+->I’ve been getting a lot of orders for that recently. Let me take a look.
+    <<jump TeacherOrderStart>>
+->The memorial, yes. That is opening today, isn’t it?
+    <<jump Memorial>>
+===
+
+title: Memorial
+---
+<<lighten>>
+{$teacherName}: Yes! It will be such a nice event to commemorate all those we’ve lost together. And your flowers will make it look so beautiful.
+<<darken>>
+{$floristName}: I’m not sure I would call it nice.
+<<lighten>>
+{$teacherName}: But it will be, {$floristName}. <color="yellow>Thebreans, Cleoni, Eskani, all standing side by side in our shared grief. We’ll all be able to move past this conflict.</color>
+<<darken>>
+<i>You say that like it’s easy. Maybe it is for you.</i>
+{$floristName}: If you say so. Now, please, let me take a look at the cards.
 <<jump TeacherOrderStart>>
 ===
 
 title: TeacherOrderStart
 ---
-<<lighten>>
-{$teacherName}: True enough. That's not really a conversation I'd like to have today.
 <<darken>>
-{$floristName}: Agreed Now, what can I get you?
-<<jump LargeOrder>>
-===
-
-title: LargeOrder
----
+{$floristName}: \[Child 1\], \[Child 2\], \[Child 3\]...
+{$floristName}: … Pranas.
 <<lighten>>
-{$teacherName}: ... I just, um, wanted to place a large order.
+{$teacherName}: {$floristName}, I’m sorry. You’re the only florist nearby, you have to understand.
 <<darken>>
-{$floristName}: One of the many I've gotten today. What'll it be?
-<<jump SpecialRequest>>
-===
-
-title: SpecialRequest
----
+<i>A warning would have been nice. She’s oblivious to the harm that she causes. Just like the rest of them.</i>
+{$floristName}: I appreciate the gesture. Pranas always loved your class. I’ll put in carnations for sympathy, and an orchid for my Pranas, if you don’t mind.
 <<lighten>>
-{$teacherName}: I'd actually hoped you could take a few special requests?
+{$teacherName}: Sounds beautiful. I’d also like you to throw in some thistle. I heard they stand for unity and endurance. Perfect for the memorial.
 <<darken>>
-{$floristName}: Of course! If it's for the memorial, I can add a bit more than usual if you'd like?
-<<jump NotEntirely>>
-===
-
-title: NotEntirely
----
-<<lighten>>
-{$teacherName}: That's... not entirely what I had in mind.
-<<jump StudentsLost>>
-===
-
-title: StudentsLost
----
-<<lighten>>
-{$teacherName}: These are the students I lost to the sickness. I included their names and favorite colors, if that's alright.
-<<darken>>
-{$floristName}: Sure! Let me just take a look.
-<<jump TakeALook>>
-===
-
-title: TakeALook
----
--> Child 1
-    <<jump TakeALook2>>
-===
-
-title: TakeALook2
----
--> Child 2
-    <<jump TakeALook3>>
-===
-
-title: TakeALook3
----
--> Child 3
-    <<jump TakeALook4>>
-===
-
-title: TakeALook4
----
--> And... oh.
-    <<jump TeacherApology>>
-===
-
-title: TeacherApology
----
-<<lighten>>
-{$teacherName}: I'm so sorry, Mira. It's just that you're the only florist in town, and I didn't want to go and do nothing again like last year, and-
-<<darken>>
-{$floristName}: It's alright. Please, don't apologize. I appreciate the gesture.
-<<jump IfItsAlright>>
-===
-
-title: IfItsAlright
----
-<<darken>>
-{$floristName}: If it's alright, I'll do Pranas' wth my own inclusions.
-<<jump TeacherOfferPayment>>
-===
-
-title: TeacherOfferPayment
----
-<<lighten>>
-{$teacherName}: Of course, I'm sorry. Please, let me pay more for it all.
-<<darken>>
-{$floristName}: Absolutely not. This is something I need. Besides, {$closeFriendName}'s already paid for an order, so I'll be okay.
-<<jump TeacherEnding>>
-===
-
-title: TeacherEnding
----
-<<lighten>>
-{$teacherName}: ... Alright. But please, let me know if you'd like payment. I'm more than happy to.
-<<darken>>
-{$floristName}: I will. Now please, I need to get working.
-<<jump TeacherLeaves>>
-===
-
-title: TeacherLeaves
----
-*Florist smiles as teacher leaves, then cries*
+<i>Of course you think so. Are you trying to remember the children, or forget the war?</i>
 ===
