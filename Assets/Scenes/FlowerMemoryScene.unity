@@ -1283,8 +1283,8 @@ MonoBehaviour:
   characterPortrait: {fileID: 1340726477}
   flowershopBG: {fileID: 511491062}
   flowershopBGsprites:
-  - {fileID: 8689320619089952525, guid: 2b1932f372f324348a191b5011efa7e1, type: 3}
-  - {fileID: -3203465725399040320, guid: 30d951962b1223742b5fd6295cd08bc2, type: 3}
+  - {fileID: -2803175787980464757, guid: bb7fbd7cc9cfd9d4c9467f0943e57042, type: 3}
+  - {fileID: 6638381312415609133, guid: d03b6bfe386535340a8cef340dda5d68, type: 3}
 --- !u!4 &425442086
 Transform:
   m_ObjectHideFlags: 0
