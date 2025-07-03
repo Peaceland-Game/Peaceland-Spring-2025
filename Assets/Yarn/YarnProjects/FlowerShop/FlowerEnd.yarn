@@ -1,0 +1,58 @@
+title: EndStart
+---
+<<zeroChar>>
+{$floristName}: That boy... he was just like my {$floristKidName}...
+<<difficulty 4>>
+===
+title: Thorn1
+---
+{$floristName}: Those teary little eyes.
+<<difficulty 5>>
+===
+title: Thorn2
+---
+{$floristName}: It’s ruined...
+<<difficulty 6>>
+===
+title: Thorn3
+---
+*{$floristName} tears up*
+{$floristName}: I'm shaking too much.
+<<difficulty 7>>
+===
+title: Stem1
+---
+{$floristName}: I can’t. I can’t make it to the memorial.
+<<difficulty 8>>
+<<nextOrder>>
+===
+title: Stem2
+---
+{$floristName}: It’s not fair.
+{$floristName}: It shouldn’t have been you, {$floristKidName}.
+<<difficulty 9>>
+<<nextOrder>>
+===
+title: Stem3
+---
+{$floristName}: I can’t show this to him.
+<<difficulty 10>>
+<<nextOrder>>
+===
+title: Stem4
+---
+<<zeroChar>>
+{$floristName}: Where’s that damn vase?
+<<difficulty 11>>
+<<nextOrder>>
+===
+title: FlowerEnd
+---
+{$floristName}: I can’t do this anymore.
+*{$floristName} looks at hands covered in thorn punctures*
+{$floristName}: It hurts.
+{$floristName}: So much.
+{$floristName}: I can’t visit you like this.
+{$floristName}: I’m so sorry...
+{$floristName}: {$floristKidName}.
+===

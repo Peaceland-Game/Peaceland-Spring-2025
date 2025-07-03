@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Rendering.PostProcessing;
 using Unity.VisualScripting;
+using System;
 
 /// <summary>
 /// Keep track of which object needs to be displayed and cut
@@ -34,12 +35,25 @@ public class CutManager : MinigameBehavior
     /// </summary>
     public GameObject flower;
 
+    private static Boolean isFirstDethorn = true;
+
     public override void StartMinigame()
     {
-        
+
         instance = this;
         gameObject.SetActive(true);
         CutStart();
+
+        if (GameManager.Instance.difficulty > 1)
+        {
+            PostProcessVolume ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+            ppVolume.weight = 1;
+            ppVolume.enabled = true;
+            if (GameManager.Instance.difficulty >= 2)
+            { //Scales from 2 to 11
+                ppVolume.weight = 0.45f + (GameManager.Instance.difficulty * 0.05f);
+            }
+        }
     }
 
     public override void StopMinigame()
@@ -50,11 +64,12 @@ public class CutManager : MinigameBehavior
     public static void CutStart()
     {
         //If the current minigame is dethorning, then use the pre-given stem game object
-        if (FlowerShopManager.GetCurrentMinigame().gameObject.name == "Dethorn") 
+        if (FlowerShopManager.GetCurrentMinigame().gameObject.name == "Dethorn")
         {
             //Activates the thorny rose object for the zoom in on the first rose of the minigame
-            if (curIndex == 0)
+            if (isFirstDethorn)
             {
+                isFirstDethorn = false;
                 ThornyFlowerZoom t = instance.thornyRose.GetComponent<ThornyFlowerZoom>();
                 t.Reset();
             }

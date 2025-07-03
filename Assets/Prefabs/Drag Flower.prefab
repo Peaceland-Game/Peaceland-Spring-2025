@@ -120,11 +120,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  sHeight: 0
-  sWidth: 0
-  screenBounds: {fileID: 7357961161081384363, guid: a31a553c8701e4f42b09bae7d40526ce, type: 3}
-  screenH: {x: 0, y: 0, z: 0}
-  screenW: {x: 0, y: 0, z: 0}
+  dm: {fileID: 0}
 --- !u!61 &8509131610706137351
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -159,7 +155,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 1.2910419, y: 0.18044329}
+  m_Offset: {x: 0, y: 6.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
