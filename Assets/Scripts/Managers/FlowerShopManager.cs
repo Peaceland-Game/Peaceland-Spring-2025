@@ -63,23 +63,6 @@ public class FlowerShopManager : MonoBehaviour
     private static int currentOrder = -1;
 
     /// <summary>
-    /// Instance of the background to change during transitions
-    /// </summary>
-    [SerializeField]
-    private GameObject flowershopBG;
-
-    /// <summary>
-    /// The sprite to change to during transitions
-    /// </summary>
-    [SerializeField]
-    private Sprite flowershopBGsprite;
-
-    /// <summary>
-    /// The timer for transitions
-    /// </summary>
-    private float pauseTimer;
-
-    /// <summary>
     /// Gives access to the current order in the minigame
     /// </summary>
     /// <returns>The current order being worked on</returns>
@@ -234,8 +217,7 @@ public void InteractableDialogueNextMinigame()
         //If the current minigame is higher or equal to the number of minigames, continue
         if (currentMinigame >= minigames.Count)
         {
-            pauseTimer = 2;
-            flowershopBG.GetComponent<SpriteRenderer>().sprite = flowershopBGsprite;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             return;
 
             // TODO: We're done, end the game (or memory)!!!
@@ -243,20 +225,5 @@ public void InteractableDialogueNextMinigame()
 
         //Start the next minigame
         minigames[currentMinigame].StartMinigame();
-    }
-
-    /// <summary>
-    /// Update method to add a transition after the interactable intro ends
-    /// </summary>
-    public void Update()
-    {
-        if (pauseTimer > 0)
-        {
-            pauseTimer -= Time.deltaTime;
-            if (pauseTimer <= 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-        }
     }
 }
