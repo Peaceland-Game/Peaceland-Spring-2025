@@ -1,7 +1,7 @@
 title: FlowerShopIntroGraffiti
 ---
 <<wait 0.1>>
-{$floristName}: My store’s been graffitied. And they even drew a Thebrean crest. 
+{$floristName}: My store’s been graffitied. And they even drew a <color="yellow">Thebrean crest</color>. 
 {$floristName}: It was only a matter of time, but still. Today’s off to a great start.
 {$floristName}: The can is completely empty. How many other stores have those thugs vandalized?
 
