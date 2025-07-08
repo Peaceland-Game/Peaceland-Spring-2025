@@ -191,5 +191,5 @@ title: Alright
 <<changeSprite 1 0>>
 {$closeFriendName}: I hope it makes you feel better. Especially, after all of <i>this</i> going on.
 <<zeroChar>>    
-<i>It’s a bit early, but maybe I should close for the day.</i>
+{$floristName}: (<i>It’s a bit early, but maybe I should close for the day.</i>)
 ===

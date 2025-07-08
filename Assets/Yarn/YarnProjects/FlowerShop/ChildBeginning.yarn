@@ -44,7 +44,7 @@ title: TellTheTruth
 {$childName}: Are you sure...?
 <<darken>>
 {$floristName}: Absolutely.
-<i>I guess I’ll give him a discount...</i>
+{$floristName}: (<i>I guess I’ll give him a discount...</i>)
 <<jump LookAtFlowers>>
 ===
 
@@ -88,7 +88,7 @@ title: Silence
 <<changeSprite 1 0>>
 {$childName}: Yeah, but Papa’s working really hard! <color="yellow">And the doctors that talk funny have been very nice too!</color>
 <<darken>>
-<i>Talk funny? He must mean the foreign aid workers that recently arrived.</i>
+{$floristName}: (<i>Talk funny? He must mean the foreign aid workers that recently arrived.</i>)
 <<jump FinishBouquet>>
 ===
 

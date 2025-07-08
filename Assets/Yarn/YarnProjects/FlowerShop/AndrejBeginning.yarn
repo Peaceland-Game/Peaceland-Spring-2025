@@ -17,7 +17,7 @@
 <<lighten>>
 {$customerName}: It’s awful someone would do something like that with the memorial opening today.
 <<darken>>
-<i>The memorial, I didn’t realize that was today.</i>
+{$floristName}: (<i>The memorial, I didn’t realize that was today.</i>)
 {$floristName}: There’s nothing to be done about it now. What are you here for today?
 <<lighten>>
 <<changeSprite 1 0>>

@@ -3,6 +3,6 @@ title: TeacherEnding
 <<lighten>>
 {$teacherName}: I’m sorry for the trouble, {$floristName}, but it does look beautiful. It’ll be nice to dedicate something to the children.
 <<darken>>
-<i>We shouldn’t have to dedicate something to them at all. Pranas, all of them should still be here. It’s your people’s fault that– </i>
-<i>It’s not her fault, though.</i>
+{$floristName}: (<i>We shouldn’t have to dedicate something to them at all. Pranas, all of them should still be here. It’s your people’s fault that– </i>)
+{$floristName}: (<i>It’s not her fault, though.</i>)
 ===

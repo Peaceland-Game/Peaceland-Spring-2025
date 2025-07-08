@@ -65,11 +65,11 @@ title: BorisTalk3
 <<lighten>>
 {$agitatorName}: We cannot keep letting them trample over us. Not like they did in the war, you know this as well as I do.
 <<darken>>
-<i>I obviously know that...</i>
+{$floristName}: (<i>I obviously know that...</i>)
 <<lighten>>
 {$agitatorName}: Perhaps, something will be done about them soon, eh?
 <<darken>>
-<i>It's a little late to be doing anything about them now...</i>
+{$floristName}: (<i>It's a little late to be doing anything about them now...</i>)
 <<lighten>>
 {$agitatorName}: ...But you did not hear that from me.
 <<darken>>
@@ -78,7 +78,7 @@ title: BorisTalk3
 <<lighten>>
 {$agitatorName}: Nothing they haven’t already done to us. You shouldn’t concern yourself with it for now.
 <<darken>>
-<i>You are nothing but concerning, Boris.</i>
+{$floristName}: (<i>You are nothing but concerning, Boris.</i>)
 -> Whatever you say Boris, how can I help you again?
     <<jump BorisOrder>>
 -> ...So, your order Boris?
