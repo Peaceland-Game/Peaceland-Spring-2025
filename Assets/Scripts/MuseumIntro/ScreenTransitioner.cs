@@ -43,6 +43,7 @@ public class ScreenTransitioner : MonoBehaviour
     //dialogue runner reference
     public DialogueRunner dr;
 
+    public LevelLoader ll;
 
     private void Start()
     {
@@ -141,12 +142,14 @@ public class ScreenTransitioner : MonoBehaviour
         memoryObjectHanging.enabled = true;
 
         //wait until player has looked at memory tree with the clipping on it, begin fade into the memory
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(9);
         transition.SetBool("MemoryFadeOut", true);
 
         //transition scene into the memory intro once screen has gone white
         yield return new WaitForSeconds(4);
         //PUT LEVEL LOAD HERE
+
+        ll.LoadNextLevel();
     }
 
     //whole transition sequence for newspaper and auto advance screens

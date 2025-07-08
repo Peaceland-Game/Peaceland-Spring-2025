@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 58d4cec9a440dbf40861e4cba731be43
+guid: 64b151d1529aad048ae8d23741b07581
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 260649215713881196
-    second: Tree Empty_0
+      213: 5030839369416123442
+    second: Tree_Height_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tree Empty_0
+      name: Tree_Height_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1811
-        height: 1811
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c6c2c99a4130e9300800000000000000
-      internalID: 260649215713881196
+      spriteID: 234291080c121d540800000000000000
+      internalID: 5030839369416123442
       vertices: []
       indices: 
       edges: []
