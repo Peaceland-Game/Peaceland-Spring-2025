@@ -117,7 +117,7 @@ public class InteractManager : MinigameBehavior
         {
             if (interactables[i].fading && !interactables[i].finishedFading && !dialogueRunner.IsDialogueRunning)
                 interactables[i].GetComponent<SpriteRenderer>().color = new Color(interactables[i].GetComponent<SpriteRenderer>().color.r,
-                interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.a - 0.001f);
+                interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.a - (0.9f * Time.deltaTime));
                 if (interactables[i].GetComponent<SpriteRenderer>().color.a <= 0 && !interactables[i].finishedFading && !dialogueRunner.IsDialogueRunning)
             {
                 numActiveObjects--;

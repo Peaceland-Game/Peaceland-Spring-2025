@@ -1,13 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine.InputSystem;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
-using UnityEditor.Build;
 using Yarn.Unity;
 
 //this script is being used exclusively for functionality in the Museum Intro scene
