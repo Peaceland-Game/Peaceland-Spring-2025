@@ -107,7 +107,7 @@ MonoBehaviour:
   startedDialogue: 0
   zoom: 0
   startNode: FlowerShopIntroGraffiti
-  x: -9.083
+  x: -7
   y: -4.937
   z: 1.5
 --- !u!61 &2410964964121257263
