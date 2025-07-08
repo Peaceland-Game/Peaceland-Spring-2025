@@ -10,6 +10,7 @@ title: BorisStart
 <<speaker 1>>
 {$agitatorName}: What are you doing in this store? Don’t you know what you Thebreans did to this lady?
 <<speaker 2>>
+<<changeSprite 2 3>>
 {$teacherName}: Excuse me?
 <<speaker 1>>
 {$agitatorName}: Don’t think she’d actually sell to people like you.
@@ -100,6 +101,7 @@ title: BorisAngry
 <<darken>>
 -><i>Say nothing.</i>
     <<lighten>>
+    <<changeSprite 1 1>>
     {$agitatorName}: Speak up, {$floristName}!
     -><i>Say nothing.</i>
 ->We cannot be certain who it was.
@@ -137,8 +139,5 @@ title: BorisEnd
 <<darken>>
 {$floristName}: Get out. Now.
 <<lighten>>
-{$agitatorName}: Fine then, roll over. Just give up then!
-*{$agitatorName} grabs a bouquet from the shelf*
-{$agitatorName}: Another bouquet for that blasted memorial? You and this damned city can burn!
-*{$agitatorName} destroys bouquet and throws destroyed flowers on the ground* //<-------------
+{$agitatorName}: Fine then, roll over. Just give up then! Another bouquet for their memorial? You and this city can burn! 
 ===

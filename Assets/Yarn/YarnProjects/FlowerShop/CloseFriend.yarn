@@ -101,7 +101,7 @@ title: AboutBoris
 <<darken>>
 {$floristName}: No, he yelled at Danika, then he lectured me about having Thebreans in my store.
 <<lighten>>
-{$closeFriendName}: {$floristName}, you know {$agitatorName} is a little… you know, {$agitatorName}.
+{$closeFriendName}: {$floristName}, you know {$agitatorName} is a little... you know, {$agitatorName}.
 <<darken>>
 {$floristName}: I just hate how much I agree with him...
 <<lighten>>
