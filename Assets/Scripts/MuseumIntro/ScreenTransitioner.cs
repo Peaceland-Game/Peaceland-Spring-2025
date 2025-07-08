@@ -144,7 +144,7 @@ public class ScreenTransitioner : MonoBehaviour
         memoryObjectHanging.enabled = true;
 
         //wait until player has looked at memory tree with the clipping on it, begin fade into the memory
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(9);
         transition.SetBool("MemoryFadeOut", true);
 
         //transition scene into the memory intro once screen has gone white
