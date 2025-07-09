@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -299,6 +299,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2a20e62ec47104d9f9937a58c1cb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newsRead: 0
+  introSprawlDone: 0
+  marcStart: 0
+  miraIntroDone: 0
+  memoryObjectAcquired: 0
   difficulty: 0
 --- !u!4 &152251883
 Transform:
@@ -927,7 +932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 1, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1211,7 +1216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5409611486675845757, guid: 57db93827f6ed5f48ba822e64faf3775, type: 3}
+  m_Sprite: {fileID: -4098344818406560794, guid: 699efed2c300c9e409988525fa481c74, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

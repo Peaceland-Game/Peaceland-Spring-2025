@@ -8,10 +8,10 @@ title: TeacherStart
 <<lighten>>
 {$teacherName}: Same as you, I suppose. It’s a shame, what happened to the store. Do you know who did it?
 <<darken>>
-<i>Considering the hateful graffiti on my windows, I have an idea. And I’m sure you do, too.</i>
+{$floristName}: (<i>Considering the hateful graffiti on my windows, I’m sure we both have an idea.</i>)
 ->It was here before I opened up this morning. Work doesn’t stop just because I’m going through something.
     <<jump TeacherOrderStart>>
-->If I knew who drew that awful symbol, I’d have them cleaning it off my windows already. 
+->If I knew, I’d have them cleaning it off my windows already.
     <<jump Vandals>>
 ===
 
@@ -20,8 +20,8 @@ title: Vandals
 <<lighten>>
 {$teacherName}: Of course. If it ends up being a prank from one of my students, please let me know. I’ll have a talk with their parents.
 <<darken>>
-<i>Like children could do such a thing.</i>
-->Thank you. Though, it seems much more deliberate than just some children misbehaving.
+{$floristName}: (<i>Like children could do such a thing.</i>)
+->Thank you. Though, it seems more deliberate than just some children misbehaving.
     <<jump Face>>
 ->I doubt it, but I’ll let you know if that ends up being the case. So, your order?
     <<jump TeacherOrderStart>>
@@ -32,8 +32,8 @@ title: Face
 <<lighten>>
 {$teacherName}: True enough. But that’s not a conversation I’d like to have today.
 <<darken>>
-<i><color="yellow">Of course it isn’t. You people never want to talk about anything uncomfortable. Can’t you own up to some of the damage you cause?</color></i>
-<i>…Calm yourself, {$floristName}. She’s only a teacher, his teacher. She’s always been good to you.</i>
+<i>Of course it isn’t. You people never want to talk about anything uncomfortable. Can’t you <color="yellow">own up</color> to some of the damage you cause?</i>
+{$floristName}: (<i>...Calm yourself, {$floristName}. She’s only a teacher, his teacher. She’s always been good to you.</i>)
 {$floristName}: Of course, you’re here for flowers. Now, what can I get you?
 <<lighten>>
 {$teacherName}: It’s a large order for my students.
@@ -44,7 +44,7 @@ title: Face
 {$teacherName}: It’s actually for the memorial. I wanted to have an arrangement made for students I lost during the conflict. I made some cards with their names for you to add to the flowers.
 ->I’ve been getting a lot of orders for that recently. Let me take a look.
     <<jump TeacherOrderStart>>
-->The memorial, yes. That is opening today, isn’t it?
+->The memorial is opening today, isn’t it?
     <<jump Memorial>>
 ===
 
@@ -56,9 +56,9 @@ title: Memorial
 <<darken>>
 {$floristName}: I’m not sure I would call it nice.
 <<lighten>>
-{$teacherName}: But it will be, {$floristName}. <color="yellow>Thebreans, Cleoni, Eskani, all standing side by side in our shared grief. We’ll all be able to move past this conflict.</color>
+{$teacherName}: But it will be, {$floristName}. <color="yellow>Thebreans, Cleoni, Eskani</color>, all standing side by side in our shared grief. We’ll all be able to move past this conflict.
 <<darken>>
-<i>You say that like it’s easy. Maybe it is for you.</i>
+{$floristName}: (<i>You say that like it’s easy. Maybe it is for you.</i>)
 {$floristName}: If you say so. Now, please, let me take a look at the cards.
 <<jump TeacherOrderStart>>
 ===
@@ -66,17 +66,17 @@ title: Memorial
 title: TeacherOrderStart
 ---
 <<darken>>
-{$floristName}: Zlatan, Ema, Adiran, Sara...
+{$floristName}: Irja, Zdeno, Tatiana...
 {$floristName}: ...{$floristKidName}.
 <<lighten>>
 <<changeSprite 1 2>>
 {$teacherName}: {$floristName}, I’m sorry. You’re the only florist nearby, you have to understand.
 <<darken>>
-<i>A warning would have been nice. She’s oblivious to the harm that she causes. Just like the rest of them.</i>
-{$floristName}: I appreciate the gesture. {$floristKidName} always loved your class. I’ll put in carnations for sympathy, and an orchid for my {$floristKidName}, if you don’t mind.
+{$floristName}: (<i>A warning would have been nice. She’s oblivious to the harm that she causes. Just like the rest of them.</i>)
+{$floristName}: I appreciate the gesture. My son always loved your class. I’ll put in carnations for sympathy, and an orchid for my ${$floristKidName}, if you don’t mind.
 <<lighten>>
 <<changeSprite 1 0>>
 {$teacherName}: Sounds beautiful. I’d also like you to throw in some thistle. I heard they stand for unity and endurance. Perfect for the memorial.
 <<darken>>
-<i>Of course you think so. Are you trying to remember the children, or forget the war?</i>
+{$floristName}: (<i>Of course you think so. Are you trying to remember the children, or forget the war?</i>)
 ===

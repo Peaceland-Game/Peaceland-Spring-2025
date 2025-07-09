@@ -46,11 +46,11 @@ title: NotOk
 title: TalkAboutIt
 ---
 <<lighten>>
-{$closeFriendName}: Hit me. What’s been on your mind lately? 
+{$closeFriendName}: Tell me, what’s been on your mind lately?
 <<darken>>
 -> I’m sure you noticed it on your way in.
     <<jump AboutVandalism>>
--> Boris came in.
+-> {$agitatorName} came in.
     <<jump AboutBoris>>
 -> My mind is all over the place with the memorial.
     <<jump AboutPranas>>
@@ -72,7 +72,7 @@ title: AboutVandalism
 <<lighten>>
 {$closeFriendName}: Any idea of who the culprit is?
 <<darken>>
-{$floristName}: <color="yellow">No specifics but… that symbol… only a Thebrean would-</color>
+{$floristName}: No specifics but... that symbol... only a <color="yellow">Thebrean</color> would-
 <<lighten>>
 {$closeFriendName}: The city is full of Thebreans, not all of them would do such a thing.
 <<darken>>
@@ -101,11 +101,11 @@ title: AboutBoris
 <<darken>>
 {$floristName}: No, he yelled at Danika, then he lectured me about having Thebreans in my store.
 <<lighten>>
-{$closeFriendName}: {$floristName}, you know {$agitatorName} is a little… you know, {$agitatorName}.
+{$closeFriendName}: {$floristName}, you know {$agitatorName} is a little... you know, {$agitatorName}.
 <<darken>>
 {$floristName}: I just hate how much I agree with him...
 <<lighten>>
-{$closeFriendName}: Just cause he’s a jerk doesn’t mean he doesn’t have a point. <color="yellow">We were roped into this war</color> and we lost so much; our homes, our history, our loved ones.
+{$closeFriendName}: Just cause he’s a jerk doesn’t mean he doesn’t have a point. We were <color="yellow">roped</color> into this war and we lost so much; our homes, our history, our loved ones.
 <<darken>>
 {$floristName}: But that doesn’t mean he has a right to just-
 <<lighten>>
@@ -120,15 +120,15 @@ title: AboutPranas
 <<lighten>>
 {$closeFriendName}: It is that time of the year again. Are you thinking about {$floristKidName}?
 <<darken>>
-{$floristName}: I was trying not to, but first {$teacherName}, then {$agitatorName} - they just wouldn’t shut up about that damn memorial!
+{$floristName}: I was trying not to, but first {$teacherName}, then {$agitatorName} - they just wouldn’t shut up about that memorial!
 <<lighten>>
-{$closeFriendName}: Damn memorial? {$floristName}, it’s {$floristKidName}’ memorial as well as everyone else’s. 
+{$closeFriendName}: {$floristName}, it’s {$floristKidName}’ memorial as well as everyone else’s. 
 <<darken>>
-{$floristName}: But what do they think they’re memorializing? <color="yellow">It’s their fault he’s dead! All because of their stupid war and that damn blockade!</color> And then... and then... he!
+{$floristName}: But what do they think they’re memorializing? It’s their fault he’s <color="yellow">dead</color>! All because of their pointless war and that stupid blockade! And then… and then… he!
 <<lighten>>
 *{$closeFriendName} hugs {$floristName}*
 {$closeFriendName}: It’s okay to cry when you need to. I’m going to go visit my husband at the memorial and I think it’ll do you good to visit {$floristKidName} too.
-{$closeFriendName}: How about this? I’ll get some flowers, <color="yellow">then let’s go to the memorial together tonight?</color>
+{$closeFriendName}: How about this? I’ll get some flowers, then let’s go to the memorial together <color="yellow">tonight</color>?
 <<darken>>
 {$floristName}: Maybe... What flowers would you like?
 <<lighten>>
@@ -191,5 +191,5 @@ title: Alright
 <<changeSprite 1 0>>
 {$closeFriendName}: I hope it makes you feel better. Especially, after all of <i>this</i> going on.
 <<zeroChar>>    
-<i>It’s a bit early, but maybe I should close for the day.</i>
+{$floristName}: (<i>It’s a bit early, but maybe I should close for the day.</i>)
 ===

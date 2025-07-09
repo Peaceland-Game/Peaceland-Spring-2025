@@ -15,14 +15,14 @@ title: ChildStart
 <<darken>>
 {$floristName}: ...
 <<lighten>>
-{$childName}: Pretty please?
+{$childName}: Please ma'am?
 <<darken>>
 {$floristName}: Uh, alright then. How can I help you?
 <<lighten>>
 <<changeSprite 1 0>>
 {$childName}: It’s my mom’s birthday soon and I want to get her some flowers!
 *{$childName} barely reaches the top of the counter, dropping some bills and coins, some spilling off the table*
-{$childName}: Sorry, Papa gave me these. How many flowers can I get?
+{$childName}: Sorry, dad gave me this much. How many flowers can I get?
 -> That’s not a lot of money…
     <<jump TellTheTruth>>
 -> Um… I’ll see what I can make.
@@ -44,7 +44,7 @@ title: TellTheTruth
 {$childName}: Are you sure...?
 <<darken>>
 {$floristName}: Absolutely.
-<i>I guess I’ll give him a discount...</i>
+{$floristName}: (<i>I guess I’ll give him a discount...</i>)
 <<jump LookAtFlowers>>
 ===
 
@@ -53,7 +53,7 @@ title: LookAtFlowers
 <<darken>>
 {$floristName}: Well, what kind of flowers are you looking for?
 <<lighten>>
-{$childName}: Since they’re for mama, I want one that helps her be strong!
+{$childName}: Since they’re for mom, I want one that helps her be strong!
 <<darken>>
 {$floristName}: Strength, huh? Everyone could use more of that these days...
 <<lighten>>
@@ -68,7 +68,7 @@ title: LookAtFlowers
 {$floristName}: What do you mean?
 <<lighten>>
 <<changeSprite 1 0>>
-{$childName}: Well, Mama’s always in the hospital, so I want to help her get better so she can come home!
+{$childName}: Well, mom's always in the hospital, so I want to help her get better so she can come home!
 <<darken>>
 -> ...
     <<jump Silence>>
@@ -86,9 +86,9 @@ title: Silence
 {$floristName}: I’m okay, sorry. So your mom’s sick?
 <<lighten>>
 <<changeSprite 1 0>>
-{$childName}: Yeah, but Papa’s working really hard! <color="yellow">And the doctors that talk funny have been very nice too!</color>
+{$childName}: Yeah, but dad's working really hard! And the <color="yellow">doctors</color> that talk funny have been very nice too!
 <<darken>>
-<i>Talk funny? He must mean the foreign aid workers that recently arrived.</i>
+{$floristName}: (<i>Talk funny? He must mean the foreign aid workers that recently arrived.</i>)
 <<jump FinishBouquet>>
 ===
 
@@ -99,11 +99,11 @@ title: Cracking
 <<lighten>>
 <<changeSprite 1 0>>
 {$childName}: That’s a pretty name, is that a flower?
-<<darken>>
+<<darken>>  
 {$floristName}: No, nevermind, sorry. Is your mom ok?
 <<lighten>>
-{$childName}: I’m not sure, but Papa says that medicine is really expensive.
-{$childName}: But, I’m sure she’ll get a lot better once she gets the flowers!
+{$childName}: I’m not sure, but dad says that medicine is really expensive.
+{$childName}: But, I think she’ll get a lot better once she gets the flowers!
 <<jump FinishBouquet>>
 ===
 

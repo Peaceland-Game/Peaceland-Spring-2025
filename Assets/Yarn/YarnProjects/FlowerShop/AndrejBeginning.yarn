@@ -17,13 +17,12 @@
 <<lighten>>
 {$customerName}: It’s awful someone would do something like that with the memorial opening today.
 <<darken>>
-<i>The memorial, I didn’t realize that was today.</i>
 {$floristName}: There’s nothing to be done about it now. What are you here for today?
 <<lighten>>
 <<changeSprite 1 0>>
 {$customerName}: It’s for the memorial, actually. I wanted to get a small arrangement for Hana’s mother.
 <<darken>>
--> That's sweet of you. Did you know her well?
+-> That's sweet of you.
     <<jump AboutMother>>
 -> How is Hana? I heard you two are getting engaged soon?
     <<lighten>>
@@ -40,7 +39,7 @@ title: AboutMother
 {$floristName}: I get it. I went through the same thing with my husband’s family.
 {$floristName}: But I’m sure that doesn’t compare to how it is for you, after the war.
 <<lighten>>
-{$customerName}: <color="yellow">It’s a lot. They all see me as a traitor for something that was forced on us.</color>
+{$customerName}: It’s a lot. They all see me as a <color="yellow">traitor</color> for something that was forced on us.
 <<jump AndrejOrder>>
 ===
 
