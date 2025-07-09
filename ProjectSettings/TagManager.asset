@@ -18,7 +18,7 @@ TagManager:
   - FlowerTop
   - FlowerBottom
   - Wall
-  - 
+  - post processing
   - 
   - 
   - 
@@ -46,6 +46,9 @@ TagManager:
     locked: 0
   - name: Guide line
     uniqueID: 2669951959
+    locked: 0
+  - name: Background
+    uniqueID: 557046631
     locked: 0
   m_RenderingLayers:
   - Default
