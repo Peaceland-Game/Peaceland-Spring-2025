@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5220975161984375423}
   - component: {fileID: 2410964964121257263}
   - component: {fileID: 7297774830438626671}
+  - component: {fileID: 495046752845622035}
   m_Layer: 6
   m_Name: InteractableCalendar
   m_TagString: Untagged
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -7477340349320945422, guid: c7f541ab3fdc46647a9963e7f97b705a, type: 3}
+  m_Sprite: {fileID: -1302531701457320957, guid: ddd12a0abba1de74294fbaedfadbaeff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -183,3 +184,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!95 &495046752845622035
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603097123361820352}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad2cf71c1a9a38e4687f723f723424c2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
