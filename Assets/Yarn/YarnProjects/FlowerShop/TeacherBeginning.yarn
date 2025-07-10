@@ -73,7 +73,7 @@ title: TeacherOrderStart
 {$teacherName}: {$floristName}, I’m sorry. You’re the only florist nearby, you have to understand.
 <<darken>>
 {$floristName}: (<i>A warning would have been nice. She’s oblivious to the harm that she causes. Just like the rest of them.</i>)
-{$floristName}: I appreciate the gesture. My son always loved your class. I’ll put in carnations for sympathy, and an orchid for my ${$floristKidName}, if you don’t mind.
+{$floristName}: I appreciate the gesture. My son always loved your class. I’ll put in carnations for sympathy, and an orchid for my {$floristKidName}, if you don’t mind.
 <<lighten>>
 <<changeSprite 1 0>>
 {$teacherName}: Sounds beautiful. I’d also like you to throw in some thistle. I heard they stand for unity and endurance. Perfect for the memorial.
