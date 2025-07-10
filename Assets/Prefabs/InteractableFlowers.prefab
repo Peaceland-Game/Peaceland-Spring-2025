@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2410964964121257263}
   - component: {fileID: 7297774830438626671}
   - component: {fileID: 8428604574008819877}
-  - component: {fileID: 1709879089425806601}
+  - component: {fileID: 7889443355402042622}
   m_Layer: 6
   m_Name: InteractableFlowers
   m_TagString: Untagged
@@ -208,7 +208,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!331 &1709879089425806601
+--- !u!331 &7889443355402042622
 SpriteMask:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,7 +231,7 @@ SpriteMask:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

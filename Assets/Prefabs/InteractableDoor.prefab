@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2410964964121257263}
   - component: {fileID: 7297774830438626671}
   - component: {fileID: 8978850256953717815}
-  - component: {fileID: 4373528318668257274}
+  - component: {fileID: 3208542064576429114}
   m_Layer: 6
   m_Name: InteractableDoor
   m_TagString: Untagged
@@ -208,7 +208,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!331 &4373528318668257274
+--- !u!331 &3208542064576429114
 SpriteMask:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,7 +231,7 @@ SpriteMask:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -255,9 +255,9 @@ SpriteMask:
   m_Sprite: {fileID: -829503670166694680, guid: d951edceba238b44681c0036b613a71f, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: -557474843
-  m_BackSortingLayerID: -557474843
+  m_BackSortingLayerID: 0
   m_FrontSortingLayer: 6
-  m_BackSortingLayer: 6
+  m_BackSortingLayer: 0
   m_FrontSortingOrder: 4
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 1

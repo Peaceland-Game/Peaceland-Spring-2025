@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2410964964121257263}
   - component: {fileID: 7297774830438626671}
   - component: {fileID: 7207843535028368273}
-  - component: {fileID: 2753632985520327284}
+  - component: {fileID: 6986337521179701267}
   m_Layer: 6
   m_Name: InteractableSprayCan
   m_TagString: Untagged
@@ -208,7 +208,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!331 &2753632985520327284
+--- !u!331 &6986337521179701267
 SpriteMask:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,7 +231,7 @@ SpriteMask:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -255,9 +255,9 @@ SpriteMask:
   m_Sprite: {fileID: -1758568918706676738, guid: f199eff862f3b804689e0719679cfa17, type: 3}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 221437479
-  m_BackSortingLayerID: 221437479
+  m_BackSortingLayerID: 0
   m_FrontSortingLayer: 4
-  m_BackSortingLayer: 4
+  m_BackSortingLayer: 0
   m_FrontSortingOrder: 4
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 1

@@ -329,10 +329,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractableFlowers
       objectReference: {fileID: 0}
-    - target: {fileID: 1709879089425806601, guid: d798e6ea1f47c2e41a8a3ee8aa922c09, type: 3}
-      propertyPath: m_FrontSortingOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 5468187594331934094, guid: d798e6ea1f47c2e41a8a3ee8aa922c09, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.91
@@ -390,6 +386,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractableBrick
       objectReference: {fileID: 0}
+    - target: {fileID: 3849627369727457612, guid: 3cc2413119fb520439a72f7f2566b417, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 3849627369727457612, guid: 3cc2413119fb520439a72f7f2566b417, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 5468187594331934094, guid: 3cc2413119fb520439a72f7f2566b417, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.02
@@ -429,10 +433,6 @@ PrefabInstance:
     - target: {fileID: 5468187594331934094, guid: 3cc2413119fb520439a72f7f2566b417, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8951637113257216657, guid: 3cc2413119fb520439a72f7f2566b417, type: 3}
-      propertyPath: m_FrontSortingOrder
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -530,18 +530,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractableSprayCan
       objectReference: {fileID: 0}
-    - target: {fileID: 1373830564364047586, guid: 0d3fd3615980fbc4ea25d7172fd9fbef, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.94
-      objectReference: {fileID: 0}
-    - target: {fileID: 1373830564364047586, guid: 0d3fd3615980fbc4ea25d7172fd9fbef, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 2753632985520327284, guid: 0d3fd3615980fbc4ea25d7172fd9fbef, type: 3}
-      propertyPath: m_FrontSortingOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 5468187594331934094, guid: 0d3fd3615980fbc4ea25d7172fd9fbef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.33
@@ -599,10 +587,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: InteractableDoor
       objectReference: {fileID: 0}
-    - target: {fileID: 4373528318668257274, guid: 4ddc984f4cfd0114095c289996c5e5bb, type: 3}
-      propertyPath: m_FrontSortingOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 5468187594331934094, guid: 4ddc984f4cfd0114095c289996c5e5bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.91
@@ -656,10 +640,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 311963514682198192, guid: 12a0c296a7c276f46af0a136021ca007, type: 3}
-      propertyPath: m_FrontSortingOrder
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 603097123361820352, guid: 12a0c296a7c276f46af0a136021ca007, type: 3}
       propertyPath: m_Name
       value: InteractableCalendar
@@ -772,10 +752,6 @@ PrefabInstance:
     - target: {fileID: 603097123361820352, guid: 5278677a5549ed24fb251b1beab61c1e, type: 3}
       propertyPath: m_Name
       value: InteractableShards
-      objectReference: {fileID: 0}
-    - target: {fileID: 4184410644575849646, guid: 5278677a5549ed24fb251b1beab61c1e, type: 3}
-      propertyPath: m_FrontSortingOrder
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5468187594331934094, guid: 5278677a5549ed24fb251b1beab61c1e, type: 3}
       propertyPath: m_LocalPosition.x
