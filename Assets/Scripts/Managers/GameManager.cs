@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Used to add difficulty to the minigame. 0 is normal, 1 is shaky hands, and 2 is blurred vision.
     /// </summary>
-    [HideInInspector]
+
     public int difficulty = 0;
 
     //create the private instance
