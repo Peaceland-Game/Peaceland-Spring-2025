@@ -84,6 +84,9 @@ public class InteractManager : MinigameBehavior
                            && !interactables[i].fading && interactables[i].gameObject.activeInHierarchy && !somethingClicked){
 
                     somethingClicked = true;
+
+                    interactables[i].GetComponent<Animator>().enabled = false;
+
                     //Runs the dialogue if it has any
                     if (interactables[i].startNode != "")
                         {

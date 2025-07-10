@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Peaceland
   productName: Peaceland
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 844b41a58c1b3bc48adbcefbe7845cb8, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 0
@@ -145,8 +145,6 @@ PlayerSettings:
   bundleVersion: 1.0
   preloadedAssets:
   - {fileID: -944628639613478452, guid: 81253cb86dd87734391587a09a6a872c, type: 3}
-  - {fileID: -1298567098417156390, guid: 0c452da40a2591e4ca97ca2a698f0d43, type: 2}
-  - {fileID: 11400000, guid: 4d8ae7137bdc4414b8f3343a5d7fb862, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
