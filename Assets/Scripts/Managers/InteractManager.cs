@@ -84,6 +84,9 @@ public class InteractManager : MinigameBehavior
                            && !interactables[i].fading && interactables[i].gameObject.activeInHierarchy && !somethingClicked){
 
                     somethingClicked = true;
+
+                    interactables[i].GetComponent<Animator>().enabled = false;
+
                     //Runs the dialogue if it has any
                     if (interactables[i].startNode != "")
                         {
@@ -116,7 +119,6 @@ public class InteractManager : MinigameBehavior
         for(int i = 0; i < numObjects; i++)
         {
             if (interactables[i].fading && !interactables[i].finishedFading && !dialogueRunner.IsDialogueRunning)
-                interactables[i].GetComponent<Animator>().enabled = false;
                 interactables[i].GetComponent<SpriteRenderer>().color = new Color(interactables[i].GetComponent<SpriteRenderer>().color.r,
                 interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.g, interactables[i].GetComponent<SpriteRenderer>().color.a - (0.9f * Time.deltaTime));
                 if (interactables[i].GetComponent<SpriteRenderer>().color.a <= 0 && !interactables[i].finishedFading && !dialogueRunner.IsDialogueRunning)

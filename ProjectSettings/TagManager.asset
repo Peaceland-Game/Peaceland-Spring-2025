@@ -50,5 +50,23 @@ TagManager:
   - name: Background
     uniqueID: 557046631
     locked: 0
+  - name: vase
+    uniqueID: 4158576665
+    locked: 0
+  - name: paintcan
+    uniqueID: 221437479
+    locked: 0
+  - name: glass
+    uniqueID: 624998061
+    locked: 0
+  - name: door
+    uniqueID: 3737492453
+    locked: 0
+  - name: brick
+    uniqueID: 1097854317
+    locked: 0
+  - name: calendar
+    uniqueID: 1965153517
+    locked: 0
   m_RenderingLayers:
   - Default
