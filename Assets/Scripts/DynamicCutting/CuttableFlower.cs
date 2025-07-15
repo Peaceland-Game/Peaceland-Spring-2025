@@ -95,6 +95,7 @@ public class CuttableFlower : MonoBehaviour
         {
             renderers[i].sprite = FlowerShopManager.GetFlowerTopSprite(FlowerShopManager.GetCurrentFlower().flowerType);
             renderers[i+1].sprite = FlowerShopManager.GetFlowerBottomSprite(FlowerShopManager.GetCurrentFlower().flowerType);
+            renderers[i + 1].sortingOrder = 1;
         }
     }
 

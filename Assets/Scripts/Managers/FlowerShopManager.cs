@@ -150,10 +150,13 @@ public class FlowerShopManager : MonoBehaviour
         return Instance.flowerBottomSprites[(int)t];
     }
 
-    public static void ResetFlowerShop()
+    /// <summary>
+    /// Resets the current flower and order to -1 after the minigames all end for the demo
+    /// </summary>
+    public void ResetFlowerShop()
     {
-        currentFlower = 0;
-        currentOrder = 0;
+        currentFlower = -1;
+        currentOrder = -1;
     }
 
     void Start()
@@ -170,7 +173,7 @@ public class FlowerShopManager : MonoBehaviour
     /// <param name="state">The enum state to change to</param>
     public void NextMinigame()
     {
-        Debug.Log(currentMinigame);
+        Debug.Log("Minigame: " + currentMinigame);
 
         if (currentMinigame < 0 || minigames[currentMinigame].GetType() != typeof(InteractManager))
         {
@@ -186,7 +189,11 @@ public class FlowerShopManager : MonoBehaviour
             //If the current minigame is higher or equal to the number of minigames, continue
             if (currentMinigame >= minigames.Count)
             {
+                CutManager cm = gameObject.AddComponent(typeof(CutManager)) as CutManager;
+                cm.ResetCutManager();
+                ResetFlowerShop();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
                 return;
 
                 // TODO: We're done, end the game (or memory)!!!

@@ -56,6 +56,11 @@ public class CutManager : MinigameBehavior
         }
     }
 
+    public void ResetCutManager()
+    {
+        isFirstDethorn = true;
+    }
+
     public override void StopMinigame()
     {
         gameObject.SetActive(false);
