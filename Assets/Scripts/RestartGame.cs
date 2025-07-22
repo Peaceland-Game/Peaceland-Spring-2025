@@ -15,6 +15,6 @@ public class RestartGame : MonoBehaviour
     void StartGame()
     {
         SceneManager.LoadScene(0);
-        FlowerShopManager.ResetFlowerShop();
+        //FlowerShopManager.ResetFlowerShop(); error message, doesn't run anyway
     }
 }
