@@ -85,7 +85,9 @@ public class InteractManager : MinigameBehavior
 
                     somethingClicked = true;
 
+                    //disable animator and shine component
                     interactables[i].GetComponent<Animator>().enabled = false;
+                    interactables[i].transform.GetChild(0).gameObject.SetActive(false);
 
                     //Runs the dialogue if it has any
                     if (interactables[i].startNode != "")
