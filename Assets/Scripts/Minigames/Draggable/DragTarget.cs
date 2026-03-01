@@ -2,12 +2,9 @@ using UnityEngine;
 
 public class DragTarget : MonoBehaviour
 {
-    FlowerType typeOfFlower;
+    
 
-    /// <summary>
-    /// Type of flower allowed to be dragged on this target
-    /// </summary>
-    public FlowerType TypeOfFlower { get { return typeOfFlower; } }
+    private object targetType;
 
     /// <summary>
     /// Is there a flower snapped to this target?
@@ -15,11 +12,20 @@ public class DragTarget : MonoBehaviour
     [SerializeField]
     public bool isSnapped = false;
 
-    public void Constructor(FlowerType _typeOfFlower)
+    public void Constructor<T>(T _dataType, Sprite sprite = null)
     {
-        typeOfFlower = _typeOfFlower;
+        targetType = _dataType;
 
-        //set the sprite
-        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerTopSprite(_typeOfFlower);
+        if (sprite != null)
+        {
+            //set the sprite
+            GetComponent<SpriteRenderer>().sprite = sprite;
+        }
+
+    }
+
+    public bool CanSnap(object incomingType)
+    {
+        return Equals(targetType, incomingType);
     }
 }
