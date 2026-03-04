@@ -5,7 +5,7 @@ public class SneakPlayer : MonoBehaviour
     // Fields
     [SerializeField]
     private float speed;
-    private float speedScalar = 1;    // Allows the player to catch up to the player.
+    private float speedScalar = 1.0f;    // Allows the player to catch up to the player.
     private bool isHiding = false;
 
     private Camera cam;
@@ -69,5 +69,13 @@ public class SneakPlayer : MonoBehaviour
     public void SetHide(bool _isHiding)
     {
         isHiding = _isHiding;
+    }
+
+
+    public void ResetPlayer()
+    {
+        gameObject.transform.position = new Vector3(cam.transform.position.x - camOffset, 0);
+        isHiding = false;
+        speedScalar = 1.0f;
     }
 }

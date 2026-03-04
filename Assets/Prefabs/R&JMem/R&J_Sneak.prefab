@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2073481628025229857}
   m_Layer: 0
   m_Name: R&J_Sneak
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,3 +101,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.01
+  camOffset: 2
