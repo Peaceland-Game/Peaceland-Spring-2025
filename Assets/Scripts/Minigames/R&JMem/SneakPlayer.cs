@@ -7,6 +7,7 @@ public class SneakPlayer : MonoBehaviour
     private float speed;
     private float speedScalar = 1.0f;    // Allows the player to catch up to the player.
     private bool isHiding = false;
+    private bool isSafe = false;
 
     private Camera cam;
     [SerializeField]
@@ -29,6 +30,34 @@ public class SneakPlayer : MonoBehaviour
     }
 
     /// <summary>
+    /// Logic when the player enters the collider of another game object
+    /// </summary>
+    /// <param name="collision">The object the player collided with</param>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // When the player enters a hiding place, swich to IsSafe
+        if (collision.CompareTag("HidingPlace"))
+        {
+            isSafe = true;
+            Debug.Log("Player is in a hiding place.");
+        }
+    }
+
+    /// <summary>
+    /// Logic when the player exits the collider of another game object
+    /// </summary>
+    /// <param name="collision">The object the player collided with</param>
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        // When the player leaves a hiding place, swich to !IsSafe
+        if (collision.CompareTag("HidingPlace"))
+        {
+            isSafe = false;
+            Debug.Log("Player has left a hiding place.");
+        }
+    }
+
+    /// <summary>
     /// If the player is not hiding, move the sprite with the camera
     /// </summary>
     public void MovePlayer()
@@ -47,8 +76,7 @@ public class SneakPlayer : MonoBehaviour
             }
 
             // Move the player forward
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x + speed * speedScalar,
-                   gameObject.transform.position.y);
+            gameObject.transform.Translate(speed * speedScalar, 0, 0);
         }
     }
 
@@ -71,11 +99,14 @@ public class SneakPlayer : MonoBehaviour
         isHiding = _isHiding;
     }
 
-
+    /// <summary>
+    /// Resets all player values when restarting minigame
+    /// </summary>
     public void ResetPlayer()
     {
         gameObject.transform.position = new Vector3(cam.transform.position.x - camOffset, 0);
         isHiding = false;
+        isSafe = false;
         speedScalar = 1.0f;
     }
 }

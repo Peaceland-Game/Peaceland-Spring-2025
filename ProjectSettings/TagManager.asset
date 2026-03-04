@@ -7,7 +7,7 @@ TagManager:
   - Shears
   - CuttableFlower
   - Hitbox
-  - DeathPlane
+  - HidingPlace
   layers:
   - Default
   - TransparentFX

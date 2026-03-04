@@ -80,8 +80,7 @@ public class SneakManager : MinigameBehavior
     /// </summary>
     private void MoveCamera()
     {
-        cam.transform.position = new Vector3(cam.transform.position.x + camSpeed,
-                   cam.transform.position.y, cam.transform.position.z);
+        cam.transform.Translate(camSpeed, 0, 0);
     }
 
 
