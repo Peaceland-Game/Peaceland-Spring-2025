@@ -132,7 +132,11 @@ public class CutLogic : MonoBehaviour
 
         //transition to next cut or next flower
         if (stem != null) { stem.CutMade(transform.parent.gameObject); }
-        else { StartCoroutine(CutManager.AllCutsMade()); }
+        else { 
+            Debug.Log("All cuts made, starting next flower");
+            //StartCoroutine(CutManager.AllCutsMade()); 
+            CutManager.instance.AllCutsCheck();
+        }
     }
 
     /// <summary>
