@@ -5,9 +5,19 @@ using static UnityEngine.GraphicsBuffer;
 
 public class FlowerArrangeMinigame : MinigameBehavior
 {
-
+    /// <summary>
+    /// Reference to the GameObject used for the arrange minigame.
+    /// </summary>
     [SerializeField] GameObject arrangeMinigame;
+
+    /// <summary>
+    /// Prefab used to instantiate flower GameObjects in the scene.
+    /// </summary>
     [SerializeField] GameObject flowerPrefab;
+
+    /// <summary>
+    /// Prefab to instantiate as the target object.
+    /// </summary>
     [SerializeField] GameObject targetPrefab;
 
 
@@ -50,7 +60,7 @@ public class FlowerArrangeMinigame : MinigameBehavior
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            Debug.Log("Transitioning to next minigame");
+            //Debug.Log("Transitioning to next minigame");
             isTransitioning = false;
             arrangeMinigame.GetComponent<DragManager>().Reset();
             FlowerShopManager.Instance.NextMinigame();
@@ -58,6 +68,9 @@ public class FlowerArrangeMinigame : MinigameBehavior
 
     }
 
+    /// <summary>
+    /// Initiates a transition by setting the transitioning flag and resetting the timer.
+    /// </summary>
     public void HandleCompleted()
     {
         isTransitioning = true;
