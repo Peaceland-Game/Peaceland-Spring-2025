@@ -56,10 +56,11 @@ public class Draggable : MonoBehaviour
     /// </summary>
     private int snapIndex = -1;
 
+
     /// <summary>
-    /// Tepresents the flower type enum value from order object
+    /// Stores the type of the current draggable, used for checking if it can snap to a target
     /// </summary>
-    FlowerType typeofFlower;
+    private object dragType;
     
     /// <summary>
     /// Collison for object
@@ -106,16 +107,21 @@ public class Draggable : MonoBehaviour
     }
 
     // Called when object is instantiated
-    public void Constructor(GameObject[] _dragTargets, FlowerType _typeOfFlower)
+    public void Constructor<T>(GameObject[] _dragTargets, T _dataType, Sprite sprite = null)
     {
         foreach (GameObject dragTarget in _dragTargets)
         {
             dragTargets.Add(dragTarget.transform);
         }
-        typeofFlower = _typeOfFlower;
+        dragType = _dataType;
 
         // Set the sprite
-        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerTopSprite(_typeOfFlower);
+        
+        if (sprite != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = sprite;
+        }
+        
     }
 
     public bool CanDrag(Vector3 touch_wp) {
@@ -166,6 +172,8 @@ public class Draggable : MonoBehaviour
             DisableDrag();
             dragTargets[snapIndex].GetComponent<DragTarget>().isSnapped = true;
             draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
+
+            
         }
 
         else
@@ -173,13 +181,7 @@ public class Draggable : MonoBehaviour
             BoundsCheck();
         }
 
-        //If the num of flowers is greater than or equal to the length of the draggables array, stop the minigame and
-        //reset the num of flowers arranged
-        if (dm.flowerArrangeNum >= dm.draggables.Length)
-        {
-            dm.flowerArrangeNum = 0;
-            FlowerShopManager.Instance.NextMinigame();
-        }
+        
     } 
 
     /// <summary>
@@ -237,14 +239,15 @@ public class Draggable : MonoBehaviour
                     if (!target.GetComponent<DragTarget>().isSnapped)
                     {
                         float dist = (newPos - target.position).magnitude;
-                        // Snap position and rotation if close enough AND if their flower types are the same
-                        if (dist < dragDistanceThreshold && dist < lowest_dist && target.gameObject.GetComponent<DragTarget>().TypeOfFlower == typeofFlower)
+                        // Snap position and rotation if close enough AND if the draggable obj types are the same
+                        if (dist < dragDistanceThreshold && dist < lowest_dist && target.gameObject.GetComponent<DragTarget>().CanSnap(dragType))
                         {
                             newPos = target.position;
                             newRot = target.eulerAngles;
                             snapIndex = i;
                             DisableDrag();
-                            dm.flowerArrangeNum += 1;
+                            dm.completedDragCount += 1;
+                            dm.CompletionCheck();
                         }
                     }
                     i++;
