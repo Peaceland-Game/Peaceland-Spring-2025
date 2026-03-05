@@ -65,7 +65,8 @@ public class Stem : MonoBehaviour
         thorns.Remove(cutThorn);
         if (thorns.Count == 0)
         {
-            StartCoroutine(CutManager.AllCutsMade());
+            //StartCoroutine(CutManager.AllCutsMade());
+            CutManager.instance.AllCutsCheck();
         }
     }
 }

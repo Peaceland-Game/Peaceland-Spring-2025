@@ -170,13 +170,13 @@ MonoBehaviour:
   - {fileID: 88269610}
   - {fileID: 438935505}
   - {fileID: 1740225107}
-  - {fileID: 1164951639}
+  - {fileID: 1164951640}
   - {fileID: 214963924}
   - {fileID: 425442085}
   - {fileID: 692662732}
   - {fileID: 438935505}
   - {fileID: 1740225107}
-  - {fileID: 1164951639}
+  - {fileID: 1164951640}
   - {fileID: 960189408}
   - {fileID: 425442085}
   - {fileID: 1985202907}
@@ -186,7 +186,7 @@ MonoBehaviour:
   - {fileID: 1195790986}
   - {fileID: 438935505}
   - {fileID: 1740225107}
-  - {fileID: 1164951639}
+  - {fileID: 1164951640}
   - {fileID: 1772941240}
   - {fileID: 425442085}
   - {fileID: 52505740}
@@ -204,7 +204,7 @@ MonoBehaviour:
   - {fileID: 748602617}
   - {fileID: 1740225107}
   - {fileID: 815154156}
-  - {fileID: 1164951639}
+  - {fileID: 1164951640}
   - {fileID: 431787418}
   orders:
   - {fileID: 11400000, guid: 08e58547467936140abcc295a3848a84, type: 2}
@@ -4211,6 +4211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1164951638}
   - component: {fileID: 1164951639}
+  - component: {fileID: 1164951640}
   m_Layer: 0
   m_Name: Arrange
   m_TagString: Untagged
@@ -4271,6 +4272,40 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 329.0322}
   draggables: []
   flowerArrangeNum: 0
+  completedDragCount: 0
+--- !u!114 &1164951640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164951637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9971764e0336140a13537da2e70d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrangeMinigame: {fileID: 1164951637}
+  flowerPrefab: {fileID: 348610294788324795, guid: d29d04746fcd7554880bdbbdee871b2c, type: 3}
+  targetPrefab: {fileID: 590954006385341025, guid: 6b91b5fb69b982b42920bd0d63296058, type: 3}
+  flowerLocations:
+  - {x: 1.82, y: -1.04, z: 0}
+  - {x: 3.35, y: -1.04, z: 0}
+  - {x: 5.3, y: -2.98, z: 0}
+  - {x: 3.94, y: -3.79, z: 0}
+  - {x: 1.29, y: -5.11, z: 0}
+  targetLocations:
+  - {x: -6.24, y: -1.53, z: 0}
+  - {x: -5.16, y: -2.06, z: 0}
+  - {x: -4.24, y: -3.26, z: 0}
+  - {x: -4.87, y: -2.2, z: 0}
+  - {x: -3.63, y: -2.32, z: 0}
+  targetRotations:
+  - {x: 0, y: 0, z: 9}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 348.9966}
+  - {x: 0, y: 0, z: 329.0322}
 --- !u!1 &1195790984
 GameObject:
   m_ObjectHideFlags: 0
