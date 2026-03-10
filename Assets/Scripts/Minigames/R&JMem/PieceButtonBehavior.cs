@@ -6,8 +6,12 @@ public class PieceButtonBehavior : MonoBehaviour{
 
     public void SpawnPiece()
     {
-        piece.SetActive(true);
+        if (piece.activeSelf){
+            piece.SetActive(false);
+        } else {  
+            piece.SetActive(true); 
+        }
         // GameObject piece = Instantiate(piecePrefab);
-        Debug.Log("Piece spawned");
+        //Debug.Log("Piece spawned");
     }
 }
