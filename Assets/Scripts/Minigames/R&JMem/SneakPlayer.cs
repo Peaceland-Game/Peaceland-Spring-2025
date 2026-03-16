@@ -8,10 +8,14 @@ public class SneakPlayer : MonoBehaviour
     private float speedScalar = 1.0f;    // Allows the player to catch up to the player.
     private bool isHiding = false;
     private bool isSafe = false;
+    private bool isCaught = false;
 
     private Camera cam;
     [SerializeField]
     private float camOffset;
+
+    // Get/Set Properties
+    public bool IsCaught { get { return isCaught; } }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,6 +25,8 @@ public class SneakPlayer : MonoBehaviour
 
         // Set player starting postion to camera location minus offset
         gameObject.transform.position = new Vector3(cam.transform.position.x - camOffset, 0);
+        isSafe = false;
+        isHiding = false;
     }
 
     // Update is called once per frame
@@ -58,6 +64,27 @@ public class SneakPlayer : MonoBehaviour
     }
 
     /// <summary>
+    /// Handles logic when the player stays inside a collider
+    /// </summary>
+    /// <param name="collision">The collider of the objects the player is colliding with.</param>
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // When the player is in a sight beam
+        if (collision.gameObject.GetComponent<SneakSentry>() != null)
+        {
+            if (isSafe && isHiding)
+            {
+                Debug.Log("Player hid from Sentry");
+            }
+            else
+            {
+                Debug.Log("Player caught by Sentry");
+                isCaught = true;
+            }
+        }
+    }
+
+    /// <summary>
     /// If the player is not hiding, move the sprite with the camera
     /// </summary>
     public void MovePlayer()
@@ -68,7 +95,7 @@ public class SneakPlayer : MonoBehaviour
             if (gameObject.transform.position.x < cam.transform.position.x - camOffset)
             {
                 speedScalar = CalculateSpeedScalar();
-                Debug.Log("Speed Scalar: " + speedScalar);
+            //    Debug.Log("Speed Scalar: " + speedScalar);
             }
             else
             {
@@ -86,8 +113,9 @@ public class SneakPlayer : MonoBehaviour
     /// <returns>A float to scale the player's speed by when they are far from the camera.</returns>
     private float CalculateSpeedScalar()
     {
-        return 1 + (cam.transform.position.x - gameObject.transform.position.x) / 2.0f;
+        //    return 1 + (cam.transform.position.x - gameObject.transform.position.x) / 2.0f;
         // Note: perhaps this should grant a flat speed boost instead of a scalar
+        return 2;
     }
 
     /// <summary>
@@ -107,6 +135,7 @@ public class SneakPlayer : MonoBehaviour
         gameObject.transform.position = new Vector3(cam.transform.position.x - camOffset, 0);
         isHiding = false;
         isSafe = false;
+        isCaught = false;
         speedScalar = 1.0f;
     }
 }

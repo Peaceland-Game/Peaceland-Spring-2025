@@ -62,8 +62,9 @@ public class SneakManager : MinigameBehavior
             player.MovePlayer();
             MoveCamera();
 
-            // The player loses if they fall too far behind the camera
-            if (player.transform.position.x < cam.transform.position.x - loseDistance)
+            // The player loses if they fall too far behind the camera or is caught
+            if (player.transform.position.x < cam.transform.position.x - loseDistance
+                || player.IsCaught)
             {
                 DisplayGameOver();
             }
