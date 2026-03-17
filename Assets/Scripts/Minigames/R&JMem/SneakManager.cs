@@ -91,8 +91,8 @@ public class SneakManager : MinigameBehavior
                 currentSentrySpawner++;
             }
 
-            // TODO: Clean-up method for old sentries
-            
+            // Remove offscreen sentries
+            CleanUpOldSentries();
         }
     }
 
@@ -104,7 +104,9 @@ public class SneakManager : MinigameBehavior
         cam.transform.Translate(camSpeed, 0, 0);
     }
 
-
+    /// <summary>
+    /// Move all active Sentries each frame
+    /// </summary>
     private void MoveSentries()
     {
         foreach (SneakSentry sentry in sentryList)
@@ -120,10 +122,26 @@ public class SneakManager : MinigameBehavior
     private void SpawnSentry(Vector3 spawnPos)
     {
         sentryList.Add(
-            SneakSentry.Instantiate(sentryPrefab, spawnPos, new Quaternion())
+            Instantiate(sentryPrefab, spawnPos, new Quaternion())
             );
     }
 
+    /// <summary>
+    /// Destroy sentries once they move off screen
+    /// </summary>
+    private void CleanUpOldSentries()
+    {
+        for (int i = 0; i < sentryList.Count; i++)
+        {
+            // If a sentry is off screen, delete it
+            if (sentryList[i].transform.position.x < cam.transform.position.x - loseDistance) 
+            {
+                Destroy(sentryList[i].gameObject);
+                sentryList.RemoveAt(i);
+                i--;
+            }
+        }
+    }
 
     /// <summary>
     /// Reset all elements of the minigame to the default state

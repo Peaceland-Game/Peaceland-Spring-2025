@@ -157,6 +157,5 @@ public class SneakPlayer : MonoBehaviour
         isHiding = false;
         isSafe = false;
         isCaught = false;
-        speedScalar = 1.0f;
     }
 }
