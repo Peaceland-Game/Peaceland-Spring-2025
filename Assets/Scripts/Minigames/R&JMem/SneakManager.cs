@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SneakManager : MinigameBehavior
@@ -13,6 +14,13 @@ public class SneakManager : MinigameBehavior
 
     [SerializeField]
     private GameObject goalTile;
+
+    [SerializeField]
+    private Vector3[] sentrySpawners;
+    private int currentSentrySpawner = 0;
+    [SerializeField]
+    private SneakSentry sentryPrefab;
+    private List<SneakSentry> sentryList = new List<SneakSentry>();
 
     // UI fields
     [SerializeField]
@@ -61,6 +69,7 @@ public class SneakManager : MinigameBehavior
         {
             player.MovePlayer();
             MoveCamera();
+            MoveSentries();
 
             // The player loses if they fall too far behind the camera or is caught
             if (player.transform.position.x < cam.transform.position.x - loseDistance
@@ -73,6 +82,17 @@ public class SneakManager : MinigameBehavior
             {
                 DisplayVictory();
             }
+
+            // Check if the player has passed the current sentry spawn point
+            if (currentSentrySpawner < sentrySpawners.Length &&
+                player.transform.position.x >= sentrySpawners[currentSentrySpawner].x)
+            {
+                SpawnSentry(new Vector3(sentrySpawners[currentSentrySpawner].x + 8, 0, 0));
+                currentSentrySpawner++;
+            }
+
+            // TODO: Clean-up method for old sentries
+            
         }
     }
 
@@ -82,6 +102,26 @@ public class SneakManager : MinigameBehavior
     private void MoveCamera()
     {
         cam.transform.Translate(camSpeed, 0, 0);
+    }
+
+
+    private void MoveSentries()
+    {
+        foreach (SneakSentry sentry in sentryList)
+        {
+            sentry.Move();
+        }
+    }
+
+    /// <summary>
+    /// Spawns a new Sentry
+    /// </summary>
+    /// <param name="spawnPos">A vector 3 position at which to spawn the sentry</param>
+    private void SpawnSentry(Vector3 spawnPos)
+    {
+        sentryList.Add(
+            SneakSentry.Instantiate(sentryPrefab, spawnPos, new Quaternion())
+            );
     }
 
 
@@ -96,6 +136,14 @@ public class SneakManager : MinigameBehavior
         victoryScreen.SetActive(false);
         sneakUI.SetActive(true);
         isRunning = true;
+
+        currentSentrySpawner = 0;
+        for (int i = 0; i < sentryList.Count; i++)
+        {
+            Destroy(sentryList[i].gameObject);
+        //    sentryList.Remove(sentry);
+        }
+        sentryList.Clear();
     }
 
     /// <summary>
