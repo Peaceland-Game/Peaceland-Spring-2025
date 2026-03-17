@@ -5,9 +5,11 @@ public class SneakPlayer : MonoBehaviour
     // Fields
     [SerializeField]
     private float speed;
-    private float speedScalar = 1.0f;    // Allows the player to catch up to the player.
+    [SerializeField]
+    private float speedScalar = 2.0f;    // Allows the player to catch up to the camera.
     private bool isHiding = false;
     private bool isSafe = false;
+    private bool isSprinting = false;
     private bool isCaught = false;
 
     private Camera cam;
@@ -27,6 +29,8 @@ public class SneakPlayer : MonoBehaviour
         gameObject.transform.position = new Vector3(cam.transform.position.x - camOffset, 0);
         isSafe = false;
         isHiding = false;
+        isSprinting = false;
+        isCaught = false;
     }
 
     // Update is called once per frame
@@ -91,19 +95,27 @@ public class SneakPlayer : MonoBehaviour
     {
         if (!isHiding)
         {
-            // If the player is lagging behind the camera, scale the speed
-            if (gameObject.transform.position.x < cam.transform.position.x - camOffset)
+            //// If the player is lagging behind the camera, scale the speed
+            //if (gameObject.transform.position.x < cam.transform.position.x - camOffset)
+            //{
+            //    speedScalar = CalculateSpeedScalar();
+            ////    Debug.Log("Speed Scalar: " + speedScalar);
+            //}
+            //else
+            //{
+            //    speedScalar = 1.0f;
+            //}
+
+            // Move the player forward
+            if (isSprinting)
             {
-                speedScalar = CalculateSpeedScalar();
-            //    Debug.Log("Speed Scalar: " + speedScalar);
+                gameObject.transform.Translate(speed * speedScalar, 0, 0);
             }
             else
             {
-                speedScalar = 1.0f;
+                gameObject.transform.Translate(speed, 0, 0);
             }
 
-            // Move the player forward
-            gameObject.transform.Translate(speed * speedScalar, 0, 0);
         }
     }
 
@@ -111,12 +123,12 @@ public class SneakPlayer : MonoBehaviour
     /// Increase the player's speed if they are further from the camera
     /// </summary>
     /// <returns>A float to scale the player's speed by when they are far from the camera.</returns>
-    private float CalculateSpeedScalar()
-    {
-        //    return 1 + (cam.transform.position.x - gameObject.transform.position.x) / 2.0f;
-        // Note: perhaps this should grant a flat speed boost instead of a scalar
-        return 2;
-    }
+    //private float CalculateSpeedScalar()
+    //{
+    //    //    return 1 + (cam.transform.position.x - gameObject.transform.position.x) / 2.0f;
+    //    // Note: perhaps this should grant a flat speed boost instead of a scalar
+    //    return 2;
+    //}
 
     /// <summary>
     /// Sets the bool that determines if the player is hiding.
@@ -125,6 +137,15 @@ public class SneakPlayer : MonoBehaviour
     public void SetHide(bool _isHiding)
     {
         isHiding = _isHiding;
+    }
+
+    /// <summary>
+    /// Sets the bool that determines if the player is sprinting.
+    /// </summary>
+    /// <param name="_isSprinting">Boolean for if the player is springing</param>
+    public void SetSprinting(bool _isSprinting)
+    {
+        isSprinting = _isSprinting;
     }
 
     /// <summary>
