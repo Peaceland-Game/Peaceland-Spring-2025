@@ -4,19 +4,22 @@ public class SneakPlayer : MonoBehaviour
 {
     // Fields
     [SerializeField]
-    private float speed;
+    private float speed;                        // The player's base speed
     [SerializeField]
-    private float speedScalar = 2.0f;    // Allows the player to catch up to the camera.
-    private bool isHiding = false;
-    private bool isSafe = false;
-    private bool isSprinting = false;
-    private bool isCaught = false;
+    private float speedScalar = 2.0f;           // The speed boost gained by sprinting
+    private bool isHiding = false;              // Checks if the player is currently pressing the HIDE button
+    private bool isWithinHidingPlace = false;   // Checks if the player is in range of a hiding spot
+    private bool isSprinting = false;           // Checks if the player is currently sprinting
+    private bool isCaught = false;              // Checks if the player has been caught
 
-    private Camera cam;
+    private Camera cam;         // Reference to the camera
     [SerializeField]
-    private float camOffset;
+    private float camOffset;    // Distance to offset player from Camera
 
     // Get/Set Properties
+    /// <summary>
+    /// Returns whether or not the player has been caught
+    /// </summary>
     public bool IsCaught { get { return isCaught; } }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -27,7 +30,8 @@ public class SneakPlayer : MonoBehaviour
 
         // Set player starting postion to camera location minus offset
         gameObject.transform.position = new Vector3(cam.transform.position.x - camOffset, 0);
-        isSafe = false;
+        // Reset all values
+        isWithinHidingPlace = false;
         isHiding = false;
         isSprinting = false;
         isCaught = false;
@@ -45,10 +49,10 @@ public class SneakPlayer : MonoBehaviour
     /// <param name="collision">The object the player collided with</param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // When the player enters a hiding place, swich to IsSafe
+        // When the player enters a hiding place, swich bool to true
         if (collision.CompareTag("HidingPlace"))
         {
-            isSafe = true;
+            isWithinHidingPlace = true;
             Debug.Log("Player is in a hiding place.");
         }
     }
@@ -59,10 +63,10 @@ public class SneakPlayer : MonoBehaviour
     /// <param name="collision">The object the player collided with</param>
     private void OnTriggerExit2D(Collider2D collision)
     {
-        // When the player leaves a hiding place, swich to !IsSafe
+        // When the player leaves a hiding place, swich bool to false
         if (collision.CompareTag("HidingPlace"))
         {
-            isSafe = false;
+            isWithinHidingPlace = false;
             Debug.Log("Player has left a hiding place.");
         }
     }
@@ -76,7 +80,7 @@ public class SneakPlayer : MonoBehaviour
         // When the player is in a sight beam
         if (collision.gameObject.GetComponent<SneakSentry>() != null)
         {
-            if (isSafe && isHiding)
+            if (isWithinHidingPlace && isHiding)
             {
                 Debug.Log("Player hid from Sentry");
             }
@@ -155,7 +159,7 @@ public class SneakPlayer : MonoBehaviour
     {
         gameObject.transform.position = new Vector3(cam.transform.position.x - camOffset, 0);
         isHiding = false;
-        isSafe = false;
+        isWithinHidingPlace = false;
         isCaught = false;
     }
 }

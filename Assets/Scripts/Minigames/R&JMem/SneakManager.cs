@@ -4,33 +4,33 @@ using UnityEngine;
 public class SneakManager : MinigameBehavior
 {
     // Fields
-    private bool isRunning;
-    private Camera cam;
+    private bool isRunning;     // Bool to track if the minigame is active
+    private Camera cam;         // Reference to the Main Camera
     [SerializeField]
-    private Vector3 startPos;
+    private Vector3 startPos;   // Camera starting position
     [SerializeField]
-    private float camSpeed;
-    private SneakPlayer player;
+    private float camSpeed;     // Movement speed of camera
+    private SneakPlayer player; // Reference to the player
 
     [SerializeField]
-    private GameObject goalTile;
+    private GameObject goalTile;    // Reference to the goal tile
 
     [SerializeField]
-    private Vector3[] sentrySpawners;
-    private int currentSentrySpawner = 0;
+    private Vector3[] sentrySpawners;       // List of points to spawn Sentries
+    private int currentSentrySpawner = 0;   // Current spawner position to check against
     [SerializeField]
-    private SneakSentry sentryPrefab;
-    private List<SneakSentry> sentryList = new List<SneakSentry>();
+    private SneakSentry sentryPrefab;       // Reference to Sentry prefab to instantiate from
+    private List<SneakSentry> sentryList = new List<SneakSentry>(); // List of active Sentries
 
     // UI fields
     [SerializeField]
-    private float loseDistance;
+    private float loseDistance;     // Distance from camera to remove old objects
     [SerializeField]
-    private GameObject sneakUI;
+    private GameObject sneakUI;     // UI for when the game is running
     [SerializeField]
-    private GameObject gameOverScreen;
+    private GameObject gameOverScreen;  // UI for when the player has been caught
     [SerializeField]
-    private GameObject victoryScreen;
+    private GameObject victoryScreen;   // UI for when the player has reached the goal
 
 
     /// <summary>
@@ -159,7 +159,6 @@ public class SneakManager : MinigameBehavior
         for (int i = 0; i < sentryList.Count; i++)
         {
             Destroy(sentryList[i].gameObject);
-        //    sentryList.Remove(sentry);
         }
         sentryList.Clear();
     }
