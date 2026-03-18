@@ -6,7 +6,7 @@ public class PieceButtonBehavior : MonoBehaviour{
 
     //might need to use this function to set the piece for each button
     public void setPiece(GameObject _piece){
-        piece = _piece;
+        this.piece = _piece;
     }
 
     public void SpawnPiece()
@@ -16,7 +16,5 @@ public class PieceButtonBehavior : MonoBehaviour{
         } else {  
             piece.SetActive(true); 
         }
-        // GameObject piece = Instantiate(piecePrefab);
-        //Debug.Log("Piece spawned");
     }
 }

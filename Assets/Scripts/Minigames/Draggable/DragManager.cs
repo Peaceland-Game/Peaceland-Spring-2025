@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
@@ -91,6 +92,28 @@ public class DragManager : MonoBehaviour
             targets[i].GetComponent<DragTarget>().Constructor(draggableData[i], sprites[i]);
         }
 
+    }
+
+    ///tentative helpers:
+    ///disable gameObject of each draggable (used for letter puzzle minigame)
+    public void disableDraggableObjs()
+    {
+        for (int i = 0; i < numDraggables; i++)
+        {
+            draggables[i].gameObject.SetActive(false);
+        }
+    }
+
+    public GameObject[] getDraggableObjs()
+    {
+        GameObject[] objs = new GameObject[numDraggables];
+        ;
+        for (int i = 0; i < numDraggables; i++)
+        {
+            objs[i]=draggables[i].gameObject;
+        }
+
+        return objs;
     }
 
 

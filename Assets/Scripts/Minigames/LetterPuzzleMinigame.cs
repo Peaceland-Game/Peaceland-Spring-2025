@@ -119,26 +119,31 @@ public class LetterPuzzleMinigame : MinigameBehavior
             pieceIds,
             sprites);
 
-        //sets the pieces on the buttons to match the pieces in the minigame
+        puzzleMinigame.GetComponent<DragManager>().disableDraggableObjs();
 
+        GameObject[] draggableObjs = puzzleMinigame.GetComponent<DragManager>().getDraggableObjs();
         for (int i = 0; i < count; i++)
         {
-            //set button[i]'s PieceButtonBehavior's piece? (not sure if this is possible)
+            buttons[i].GetComponent<PieceButtonBehavior>().setPiece(draggableObjs[i]);
+            //sets the pieces on the buttons to match the pieces in the minigame
         }
+
+
+
 
         //Set the minigame to active
         puzzleMinigame.SetActive(true);
 
         //Adds the blur to minigames with added difficulty
-        if (GameManager.Instance.difficulty > 1)
-        {
-            ppVolume.enabled = true;
-            ppVolume.weight = 1;
-            if (GameManager.Instance.difficulty >= 2)
-            { //Scales from 2 to 11
-                ppVolume.weight = 0.45f + (GameManager.Instance.difficulty * 0.05f);
-            }
-        }
+        //if (GameManager.Instance.difficulty > 1)
+        //{
+        //    ppVolume.enabled = true;
+        //    ppVolume.weight = 1;
+        //    if (GameManager.Instance.difficulty >= 2)
+        //    { //Scales from 2 to 11
+        //        ppVolume.weight = 0.45f + (GameManager.Instance.difficulty * 0.05f);
+        //    }
+        //}
     }
 
 
