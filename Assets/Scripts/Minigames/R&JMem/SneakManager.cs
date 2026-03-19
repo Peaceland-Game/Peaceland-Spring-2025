@@ -19,12 +19,14 @@ public class SneakManager : MinigameBehavior
     private Vector3[] sentrySpawners;       // List of points to spawn Sentries
     private int currentSentrySpawner = 0;   // Current spawner position to check against
     [SerializeField]
+    private float sentrySpawnOffset;        // Ditance to offset Sentries from their spawners
+    [SerializeField]
     private SneakSentry sentryPrefab;       // Reference to Sentry prefab to instantiate from
     private List<SneakSentry> sentryList = new List<SneakSentry>(); // List of active Sentries
-
-    // UI fields
     [SerializeField]
     private float loseDistance;     // Distance from camera to remove old objects
+
+    // UI fields
     [SerializeField]
     private GameObject sneakUI;     // UI for when the game is running
     [SerializeField]
@@ -87,7 +89,7 @@ public class SneakManager : MinigameBehavior
             if (currentSentrySpawner < sentrySpawners.Length &&
                 player.transform.position.x >= sentrySpawners[currentSentrySpawner].x)
             {
-                SpawnSentry(new Vector3(sentrySpawners[currentSentrySpawner].x + 8, 0, 0));
+                SpawnSentry(new Vector3(sentrySpawners[currentSentrySpawner].x + sentrySpawnOffset, 0, 0));
                 currentSentrySpawner++;
             }
 
