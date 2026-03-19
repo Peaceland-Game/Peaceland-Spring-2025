@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleMinigame: {fileID: 872698778}
-  piecePrefab: {fileID: 348610294788324795, guid: 64133f9d5130cf14fbf915db940fd036, type: 3}
+  piecePrefab: {fileID: 7172442220138870305, guid: 96f519265e239e64681894d7aa907944, type: 3}
   targetPrefab: {fileID: 2791281132505450456, guid: d154c700cfb8a6241b62f5dc08796985, type: 3}
   pieceLocations:
   - {x: -4.68, y: 2.5011005, z: 0}
