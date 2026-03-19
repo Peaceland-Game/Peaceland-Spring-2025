@@ -124,17 +124,25 @@ public class DragManager : MonoBehaviour
     /// <param name="context">The input action callback context containing information about the touch event.</param>
     public void OnTouch(InputAction.CallbackContext context)
     {
+        // Debug log: very useful for testing what object is receiving the touch input and if it is active and enabled, as well as the phase of the touch input
+        //Debug.Log("Object: " + gameObject.name + " | enabled: " + enabled + " | active: " + gameObject.activeSelf);
+        //Debug.Log("Touch input received with phase: " + context.phase);
+
         if (!isActiveAndEnabled) return;
+        
+
         if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled)
         {
             if (currentDraggable is not null)
             {
+
                 //End the drag of the current draggable
                 currentDraggable.EndDrag();
             }
         }
         else if (context.phase == InputActionPhase.Started)
         {
+
             Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
             int highestOrderInLayer = int.MinValue;
             Draggable candidate = null;

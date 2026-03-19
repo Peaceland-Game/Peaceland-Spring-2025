@@ -206,7 +206,7 @@ public class Draggable : MonoBehaviour
     void Update()
     {
         if (!draggable || !dragging) return;
-
+        
         Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
 
         if (dragging)

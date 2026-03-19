@@ -59,10 +59,12 @@ public class LetterPuzzleMinigame : MinigameBehavior
 
     private void Start()
     {
-        StartMinigame();
+        
+
         puzzleMinigame.GetComponent<DragManager>().OnCompleted += HandleCompleted;
         //registers HandleCompleted as a listener for the OnCompleted event on the DragManager.
         //When DragManager raises OnCompleted, HandleCompleted method will be invoked.
+        
     }
 
     private void Update()
@@ -100,7 +102,8 @@ public class LetterPuzzleMinigame : MinigameBehavior
         Vector3[] targetRot = new Vector3[count];
         int[] pieceIds = new int[count]; // used to identify which piece is which
         
-        
+
+
         for (int i = 0; i < count; i++)
         {
             dragPos[i] = pieceLocations[i];
@@ -119,7 +122,7 @@ public class LetterPuzzleMinigame : MinigameBehavior
             pieceIds,
             sprites);
 
-        puzzleMinigame.GetComponent<DragManager>().disableDraggableObjs();
+        //puzzleMinigame.GetComponent<DragManager>().disableDraggableObjs();
 
         GameObject[] draggableObjs = puzzleMinigame.GetComponent<DragManager>().getDraggableObjs();
         for (int i = 0; i < count; i++)
