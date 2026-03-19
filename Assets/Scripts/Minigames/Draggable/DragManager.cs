@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
@@ -93,6 +94,28 @@ public class DragManager : MonoBehaviour
 
     }
 
+    ///tentative helpers:
+    ///disable gameObject of each draggable (used for letter puzzle minigame)
+    public void disableDraggableObjs()
+    {
+        for (int i = 0; i < numDraggables; i++)
+        {
+            draggables[i].gameObject.SetActive(false);
+        }
+    }
+
+    public GameObject[] getDraggableObjs()
+    {
+        GameObject[] objs = new GameObject[numDraggables];
+        ;
+        for (int i = 0; i < numDraggables; i++)
+        {
+            objs[i]=draggables[i].gameObject;
+        }
+
+        return objs;
+    }
+
 
     /// <summary>
     /// Handles touch input to start or end dragging of draggable objects based on the input action phase.
@@ -101,17 +124,25 @@ public class DragManager : MonoBehaviour
     /// <param name="context">The input action callback context containing information about the touch event.</param>
     public void OnTouch(InputAction.CallbackContext context)
     {
+        // Debug log: very useful for testing what object is receiving the touch input and if it is active and enabled, as well as the phase of the touch input
+        //Debug.Log("Object: " + gameObject.name + " | enabled: " + enabled + " | active: " + gameObject.activeSelf);
+        //Debug.Log("Touch input received with phase: " + context.phase);
+
         if (!isActiveAndEnabled) return;
+        
+
         if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled)
         {
             if (currentDraggable is not null)
             {
+
                 //End the drag of the current draggable
                 currentDraggable.EndDrag();
             }
         }
         else if (context.phase == InputActionPhase.Started)
         {
+
             Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
             int highestOrderInLayer = int.MinValue;
             Draggable candidate = null;

@@ -19,7 +19,7 @@ TagManager:
   - FlowerBottom
   - Wall
   - post processing
-  - 
+  - piece
   - 
   - 
   - 
@@ -67,6 +67,12 @@ TagManager:
     locked: 0
   - name: calendar
     uniqueID: 1965153517
+    locked: 0
+  - name: outline
+    uniqueID: 4195715785
+    locked: 0
+  - name: piece
+    uniqueID: 130611171
     locked: 0
   m_RenderingLayers:
   - Default

@@ -98,6 +98,7 @@ public class FlowerArrangeMinigame : MinigameBehavior
             sprites[i] = FlowerShopManager.GetFlowerTopSprite(flowerTypes[i]);
         }
 
+
         arrangeMinigame.GetComponent<DragManager>().CreateDragToTarget(
             FlowerShopManager.GetCurrentOrder().flowers.Count, 
             flowerPrefab, 
