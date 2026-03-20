@@ -157,6 +157,12 @@ public class DragManager : MonoBehaviour
             if (candidate is not null)
             {
                 currentDraggable = candidate;
+
+                if (currentDraggable.gameObject is not null && currentDraggable.gameObject.transform.parent.CompareTag("ScrollContent"))
+                {
+                    currentDraggable.gameObject.transform.SetParent(GameObject.FindGameObjectWithTag("Minigame").transform, true);
+                }
+
                 currentDraggable.StartDrag(touch_wp, GameManager.Instance.difficulty);
             }
         }

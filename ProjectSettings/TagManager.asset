@@ -7,6 +7,8 @@ TagManager:
   - Shears
   - CuttableFlower
   - Hitbox
+  - ScrollContent
+  - Minigame
   layers:
   - Default
   - TransparentFX

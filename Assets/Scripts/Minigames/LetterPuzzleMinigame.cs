@@ -47,7 +47,7 @@ public class LetterPuzzleMinigame : MinigameBehavior
     /// </summary>
     [SerializeField] Sprite[] sprites;
 
-    [SerializeField] Button[] buttons;
+    //[SerializeField] Button[] buttons;
 
     private bool isTransitioning;
     private float timer = 0.5f;
@@ -123,15 +123,16 @@ public class LetterPuzzleMinigame : MinigameBehavior
             sprites);
 
         //puzzleMinigame.GetComponent<DragManager>().disableDraggableObjs();
+        //puzzleMinigame.GetComponent<DragManager>().setDraggableObjParents("ScrollContent");
 
         GameObject[] draggableObjs = puzzleMinigame.GetComponent<DragManager>().getDraggableObjs();
+        // Debug.Log($"found: {GameObject.FindGameObjectWithTag("ScrollContent")}");
         for (int i = 0; i < count; i++)
         {
-            buttons[i].GetComponent<PieceButtonBehavior>().setPiece(draggableObjs[i]);
+            //buttons[i].GetComponent<PieceButtonBehavior>().setPiece(draggableObjs[i]);
             //sets the pieces on the buttons to match the pieces in the minigame
+            draggableObjs[i].transform.SetParent(GameObject.FindGameObjectWithTag("ScrollContent").transform, true);
         }
-
-
 
 
         //Set the minigame to active
