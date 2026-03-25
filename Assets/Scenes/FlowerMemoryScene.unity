@@ -254,6 +254,8 @@ MonoBehaviour:
   dialogueRunner: {fileID: 492172087}
   characterPortrait: {fileID: 1340726477}
   secondCharacterPortrait: {fileID: 2057993351}
+  isFloristMemory: 1
+  currentMemManager: {fileID: 0}
 --- !u!114 &41747960
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -375,6 +375,133 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5481484092624835572, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
   m_PrefabInstance: {fileID: 348426866}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &577278849
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1718543364278196821, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_Name
+      value: InputManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493108271439557894, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493108271439557894, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493108271439557894, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnTouch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493108271439557894, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnTouch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493108271439557894, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DragManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4493108271439557894, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DragManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753642647129381308, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753642647129381308, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753642647129381308, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753642647129381308, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753642647129381308, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753642647129381308, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753642647129381308, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753642647129381308, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753642647129381308, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753642647129381308, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c9f9ee510dc032642982f7fe3084708e, type: 3}
+--- !u!1 &647304825
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 647304826}
+  - component: {fileID: 647304827}
+  m_Layer: 0
+  m_Name: RuzicaHouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &647304826
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647304825}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1717744511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &647304827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647304825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443a04c4b1a996f4a80d2fe9c17d207b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 1770962777}
+  startNode: RuzicaHouse
 --- !u!1 &691742555
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +719,8 @@ MonoBehaviour:
   dialogueRunner: {fileID: 1770962777}
   characterPortrait: {fileID: 1510574683}
   secondCharacterPortrait: {fileID: 816390659}
+  isFloristMemory: 0
+  currentMemManager: {fileID: 782885771}
 --- !u!4 &782885770
 Transform:
   m_ObjectHideFlags: 0
@@ -621,7 +750,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minigames:
   - {fileID: 2146495310}
+  - {fileID: 1912521038}
+  - {fileID: 647304827}
   - {fileID: 1445538945}
+  orders:
+  - {fileID: 11400000, guid: 441d715936b4e7c448e216fe89d1266d, type: 2}
+  - {fileID: 11400000, guid: 8a2212c402ff3fa44b0cf1f9aeb8c230, type: 2}
   dialogueRunner: {fileID: 1770962777}
 --- !u!1 &816390659
 GameObject:
@@ -1857,6 +1991,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2146495309}
+  - {fileID: 1912521037}
+  - {fileID: 647304826}
   - {fileID: 1445538944}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2695,6 +2831,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2a56d6679de44298207eec0bbcf044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1912521036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1912521037}
+  - component: {fileID: 1912521038}
+  m_Layer: 0
+  m_Name: CousinEnters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1912521037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912521036}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1717744511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1912521038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912521036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443a04c4b1a996f4a80d2fe9c17d207b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 1770962777}
+  startNode: CousinEnters
 --- !u!1 &2084515333
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,7 +2938,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097b95c9f69f04f2d8c08a817e7786af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueView: {fileID: 0}
+  dialogueView: {fileID: 831445607}
   continueActionType: 4
   continueActionKeyCode: 32
   continueActionButtonName: Jump
@@ -2897,6 +3079,7 @@ SceneRoots:
   - {fileID: 2141095886}
   - {fileID: 1389814979}
   - {fileID: 691742556}
+  - {fileID: 577278849}
   - {fileID: 147341606}
   - {fileID: 2084515334}
   - {fileID: 1510574685}

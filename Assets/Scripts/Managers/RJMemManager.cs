@@ -3,31 +3,36 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
 
-public class RJMemManager : MonoBehaviour
+public class RJMemManager : GenericMemManager
 {
     // Fields
     // Minigame trackers
-    [SerializeField]
-    private List<MinigameBehavior> minigames;
-    private int currentMinigameIndex = -1;
+    //[SerializeField]
+    //private List<MinigameBehavior> minigames;
+    //private int currentMinigameIndex = -1;
 
-    /// <summary>
-    /// Returns the current minigame
-    /// </summary>
-    public MinigameBehavior CurrentMinigame { get { return minigames[currentMinigameIndex]; } }
+    ///// <summary>
+    ///// Returns the current minigame
+    ///// </summary>
+    //public MinigameBehavior CurrentMinigame { get { return minigames[currentMinigameIndex]; } }
 
-    /// <summary>
-    /// Returns the index of the current minigame
-    /// </summary>
-    public int CurrentMinigameIndex { get { return currentMinigameIndex; } }
+    ///// <summary>
+    ///// Returns the index of the current minigame
+    ///// </summary>
+    //public int CurrentMinigameIndex { get { return currentMinigameIndex; } }
 
-    [SerializeField]
-    private DialogueRunner dialogueRunner;
+    //// Dialogue system and sprites
+    //[SerializeField]
+    //private DialogueRunner dialogueRunner;
+    //[SerializeField]
+    //private List<OrderObject> orders; // Only used until a new portrait storage system is created
+    //private int currentOrder = -1;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         NextMinigame();
+        NextOrder();
         // Connect dialogue runner
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
     }
@@ -35,16 +40,16 @@ public class RJMemManager : MonoBehaviour
     /// <summary>
     /// Iterate to the next minigame.
     /// </summary>
-    public void NextMinigame()
+    public override void NextMinigame()
     {
-        Debug.Log("Current Minigame " + currentMinigameIndex);
+        Debug.Log("Current Minigame " + currentMinigame);
 
-        if (currentMinigameIndex >= 0) minigames[currentMinigameIndex].StopMinigame();
+        if (currentMinigame >= 0) minigames[currentMinigame].StopMinigame();
 
-        currentMinigameIndex++;
+        currentMinigame++;
 
         // If passed all the minigames, reset the scene and go to the next scene
-        if (currentMinigameIndex >= minigames.Count)
+        if (currentMinigame >= minigames.Count)
         {
             ResetMemory();
             Debug.Log("End R&J Memory test Test");
@@ -53,11 +58,69 @@ public class RJMemManager : MonoBehaviour
             return;
         }
         // Otherwise, start the next minigame.
-        minigames[currentMinigameIndex].StartMinigame();
+        minigames[currentMinigame].StartMinigame();
     }
 
+    /// <summary>
+    /// Resets the values of the memory so it can run again
+    /// </summary>
     public void ResetMemory()
     {
-        currentMinigameIndex = -1;
+        currentMinigame = -1;
+        currentOrder = -1;
+    }
+
+    /// <summary>
+    /// Returns the current order object.
+    /// </summary>
+    /// <returns>The current order object in the list.</returns>
+    public override OrderObject GetCurrentOrder()
+    {
+        return orders[currentOrder];
+    }
+
+    /// <summary>
+    /// Increments to the next order in the list
+    /// </summary>
+    public override void NextOrder()
+    {
+        if (currentOrder + 1 < orders.Count) currentOrder++;
+        else Debug.Log($"Attempted to increment to order {orders.Count + 1} when there are only {orders.Count} orders.");
+    }
+
+    /// <summary>
+    /// Fetches the Main Character's sprites
+    /// </summary>
+    /// <returns>An array of Unity Sprite Obejcts.</returns>
+    public override Sprite[] GetMainSprites()
+    {
+        return GetCurrentOrder().mainCharSprites;
+    }
+
+    /// <summary>
+    /// Fetches the Secondary Character's sprites
+    /// </summary>
+    /// <returns>An array of Unity Sprite Obejcts.</returns>
+    public override Sprite[] GetSecondSprites()
+    {
+        return GetCurrentOrder().secondCharSprites;
+    }
+
+    /// <summary>
+    /// Returns the index of the current minigame in the list
+    /// </summary>
+    /// <returns>Returns the index in the list of minigames.</returns>
+    public override int GetCurrentMinigameIndex()
+    {
+        return currentMinigame;
+    }
+
+    /// <summary>
+    /// Returns the current minigame object in the list.
+    /// </summary>
+    /// <returns>Returns the current minigame objct.</returns>
+    public override MinigameBehavior GetCurrentMinigame()
+    {
+        return minigames[currentMinigame];
     }
 }
