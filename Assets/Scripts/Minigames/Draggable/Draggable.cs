@@ -6,6 +6,8 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using System.Transactions;
 
+using UnityEngine.UI;
+
 // Component for draggable objects. Requires a Drag Manager.
 
 [RequireComponent(typeof(Collider2D))]
@@ -141,12 +143,24 @@ public class Draggable : MonoBehaviour
     /// We start dragging this object
     /// </summary>
     /// <param name="touch_wp">Touch world position</param>
-    public void StartDrag(Vector3 touch_wp, int currentDifficulty) {
+    public void StartDrag(Vector3 touch_wp, int currentDifficulty)
+    {
         dragging = true;
         offset = transform.position - touch_wp;
         difficulty = currentDifficulty;
-    }
 
+        GameObject scrollView = GameObject.FindGameObjectWithTag("ScrollView");
+        if (scrollView != null)
+        {
+            scrollView.GetComponent<ScrollRect>().enabled = false;
+        }
+
+        GameObject gameObj = this.gameObject;
+        if (gameObj != null && gameObj.transform.parent.CompareTag("ScrollContent"))
+        {
+            gameObj.transform.SetParent(GameObject.FindGameObjectWithTag("Minigame").transform, true);
+        }
+    }
     /// <summary>
     /// Drag disabled
     /// </summary>
@@ -158,6 +172,7 @@ public class Draggable : MonoBehaviour
     /// Drag enabled
     /// </summary>
     public void EnableDrag() {
+
         draggable = true;
     }
 
@@ -167,6 +182,12 @@ public class Draggable : MonoBehaviour
     public void EndDrag() {
         // End drag
         dragging = false;
+
+        GameObject scrollView = GameObject.FindGameObjectWithTag("ScrollView");
+        if (scrollView!=null)
+        {
+            scrollView.GetComponent<ScrollRect>().enabled = true;
+        }
 
         if (snapIndex != -1) {
             DisableDrag();

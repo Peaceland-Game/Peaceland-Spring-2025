@@ -9,6 +9,7 @@ TagManager:
   - Hitbox
   - ScrollContent
   - Minigame
+  - ScrollView
   layers:
   - Default
   - TransparentFX
