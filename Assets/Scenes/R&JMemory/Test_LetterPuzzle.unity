@@ -1064,9 +1064,9 @@ MonoBehaviour:
   piecePrefab: {fileID: 7172442220138870305, guid: 96f519265e239e64681894d7aa907944, type: 3}
   targetPrefab: {fileID: 2791281132505450456, guid: d154c700cfb8a6241b62f5dc08796985, type: 3}
   pieceLocations:
-  - {x: 7.5, y: 0, z: 0}
-  - {x: 7.5, y: -2.5, z: 0}
-  - {x: 7.5, y: -10, z: 0}
+  - {x: 7.25, y: 0, z: 0}
+  - {x: 7.25, y: -2.5, z: 0}
+  - {x: 7.25, y: -10, z: 0}
   targetLocations:
   - {x: -4.811977, y: -0.01889944, z: 0}
   - {x: -3.014978, y: -0.0638994, z: 0}
@@ -1608,8 +1608,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1518155480}
   - component: {fileID: 1518155483}
-  - component: {fileID: 1518155482}
   - component: {fileID: 1518155481}
+  - component: {fileID: 1518155482}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: ScrollView
@@ -1635,8 +1635,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 0}
-  m_SizeDelta: {x: 300, y: 900}
+  m_AnchoredPosition: {x: -167, y: 0}
+  m_SizeDelta: {x: 350, y: 1100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1518155481
 MonoBehaviour:
@@ -1662,7 +1662,7 @@ MonoBehaviour:
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 2031482690}
   m_HorizontalScrollbarVisibility: 2
-  m_VerticalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 1
   m_HorizontalScrollbarSpacing: -3
   m_VerticalScrollbarSpacing: -3
   m_OnValueChanged:
@@ -3205,7 +3205,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1538877923}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.72624177
+  m_Size: 0.88762885
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
