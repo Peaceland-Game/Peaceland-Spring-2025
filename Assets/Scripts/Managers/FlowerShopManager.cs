@@ -84,7 +84,7 @@ public class FlowerShopManager : MonoBehaviour
     /// </summary>
     public static Sprite[] GetMainSprites()
     {
-        return GetCurrentOrder().mainCharSprites;
+        return GetCurrentOrder().MainCharSprites;
     }
 
     /// <summary>
@@ -92,9 +92,9 @@ public class FlowerShopManager : MonoBehaviour
     /// </summary>
     public static Sprite[] GetSecondSprites()
     {
-        if (GetCurrentOrder().secondCharSprites.Length > 0)
+        if (GetCurrentOrder().SecondCharSprites.Length > 0)
         {
-            return GetCurrentOrder().secondCharSprites;
+            return GetCurrentOrder().SecondCharSprites;
         }
         return null;
     }

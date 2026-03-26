@@ -12,7 +12,7 @@ public abstract class GenericMemManager : MonoBehaviour
 
     // List of "orders" (or other portait storage method)
     [SerializeField]
-    protected List<OrderObject> orders;
+    protected List<SceneCharatcersObject> scenes;
     protected int currentOrder = -1;
     public int CurrentOrder { get { return currentOrder; } }
 
@@ -26,7 +26,7 @@ public abstract class GenericMemManager : MonoBehaviour
     /// Gets the current order in the minigame
     /// </summary>
     /// <returns></returns>
-    public abstract OrderObject GetCurrentOrder();
+    public abstract SceneCharatcersObject GetCurrentOrder();
 
     /// <summary>
     /// Increments to the next OrderObject

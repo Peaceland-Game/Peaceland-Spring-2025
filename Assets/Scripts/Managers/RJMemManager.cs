@@ -74,9 +74,9 @@ public class RJMemManager : GenericMemManager
     /// Returns the current order object.
     /// </summary>
     /// <returns>The current order object in the list.</returns>
-    public override OrderObject GetCurrentOrder()
+    public override SceneCharatcersObject GetCurrentOrder()
     {
-        return orders[currentOrder];
+        return scenes[currentOrder];
     }
 
     /// <summary>
@@ -84,8 +84,8 @@ public class RJMemManager : GenericMemManager
     /// </summary>
     public override void NextOrder()
     {
-        if (currentOrder + 1 < orders.Count) currentOrder++;
-        else Debug.Log($"Attempted to increment to order {orders.Count + 1} when there are only {orders.Count} orders.");
+        if (currentOrder + 1 < scenes.Count) currentOrder++;
+        else Debug.Log($"Attempted to increment to order {scenes.Count + 1} when there are only {scenes.Count} orders.");
     }
 
     /// <summary>
@@ -94,7 +94,7 @@ public class RJMemManager : GenericMemManager
     /// <returns>An array of Unity Sprite Obejcts.</returns>
     public override Sprite[] GetMainSprites()
     {
-        return GetCurrentOrder().mainCharSprites;
+        return GetCurrentOrder().MainCharSprites;
     }
 
     /// <summary>
@@ -103,7 +103,7 @@ public class RJMemManager : GenericMemManager
     /// <returns>An array of Unity Sprite Obejcts.</returns>
     public override Sprite[] GetSecondSprites()
     {
-        return GetCurrentOrder().secondCharSprites;
+        return GetCurrentOrder().SecondCharSprites;
     }
 
     /// <summary>

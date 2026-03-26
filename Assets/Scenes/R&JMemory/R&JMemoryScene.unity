@@ -753,9 +753,9 @@ MonoBehaviour:
   - {fileID: 1912521038}
   - {fileID: 647304827}
   - {fileID: 1445538945}
-  orders:
-  - {fileID: 11400000, guid: 441d715936b4e7c448e216fe89d1266d, type: 2}
-  - {fileID: 11400000, guid: 8a2212c402ff3fa44b0cf1f9aeb8c230, type: 2}
+  scenes:
+  - {fileID: 11400000, guid: 92359b097b473c74da7b66cb8d88c531, type: 2}
+  - {fileID: 11400000, guid: e4be361f0cdab5d42bbf40410ed8c2e9, type: 2}
   dialogueRunner: {fileID: 1770962777}
 --- !u!1 &816390659
 GameObject:
