@@ -26,39 +26,87 @@ public abstract class GenericMemManager : MonoBehaviour
     /// Gets the current order in the minigame
     /// </summary>
     /// <returns></returns>
-    public abstract SceneCharatcersObject GetCurrentOrder();
+    public virtual SceneCharatcersObject GetCurrentOrder()
+    {
+        return scenes[currentOrder];
+    }
 
     /// <summary>
     /// Increments to the next OrderObject
     /// </summary>
-    public abstract void NextOrder();
+    public virtual void NextOrder()
+    {
+        currentOrder++;
+    }
 
     /// <summary>
     /// Fetches the list containing the main character's sprites
     /// </summary>
     /// <returns>A list of Unity Sprite objects</returns>
-    public abstract Sprite[] GetMainSprites();
+    public virtual Sprite[] GetMainSprites()
+    {
+        return scenes[currentOrder].MainCharSprites;
+    }
 
     /// <summary>
     /// Fetches the list containing the secondary character's sprites
     /// </summary>
     /// <returns>A list of Unity Sprite objects</returns>
-    public abstract Sprite[] GetSecondSprites();
+    public virtual Sprite[] GetSecondSprites()
+    {
+        return scenes[currentOrder].SecondCharSprites;
+    }
 
     /// <summary>
     /// Gets the current minigame's index in the minigame list
     /// </summary>
     /// <returns>An integer of the index in the minigame list</returns>
-    public abstract int GetCurrentMinigameIndex();
+    public virtual int GetCurrentMinigameIndex()
+    {
+        return currentMinigame;
+    }
 
     /// <summary>
     /// Gets the current minigame.
     /// </summary>
     /// <returns>The MinigameBehavior object.</returns>
-    public abstract MinigameBehavior GetCurrentMinigame();
+    public virtual MinigameBehavior GetCurrentMinigame()
+    {
+        return minigames[currentMinigame];
+    }
 
     /// <summary>
     /// Increments to the next minigame in the list.
     /// </summary>
-    public abstract void NextMinigame();
+    public virtual void NextMinigame()
+    {
+        Debug.Log("Current Minigame " + currentMinigame);
+
+        // Stope the current mingame, if there is one.
+        if (currentMinigame >= 0) minigames[currentMinigame].StopMinigame();
+
+        // Increment minigame counter
+        currentMinigame++;
+
+        // If passed all the minigames, reset the Unity scene and go to the next Unity scene
+        if (currentMinigame >= minigames.Count)
+        {
+            ResetMemory();
+            Debug.Log("End Memory");
+            // TODO: Uncomment this line once there is a scene to go to
+            //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            return;
+        }
+        // Otherwise, start the next minigame.
+        minigames[currentMinigame].StartMinigame();
+    }
+
+    /// <summary>
+    /// Behavior to reset the memory sequence
+    /// </summary>
+    public virtual void ResetMemory()
+    {
+        currentMinigame = -1;
+        currentOrder = -1;
+    }
 }

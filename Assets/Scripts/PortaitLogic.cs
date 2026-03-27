@@ -16,7 +16,7 @@ public class PortaitLogic : MonoBehaviour
     // Evan's test variables. Not likely to be in final version
     [SerializeField]
     private bool isFloristMemory;
-    [SerializeField]
+//    [SerializeField]
     private GenericMemManager currentMemManager;
 
     public void Awake()
@@ -30,6 +30,12 @@ public class PortaitLogic : MonoBehaviour
         dialogueRunner.AddCommandHandler("twoChar", TwoChar);
         dialogueRunner.AddCommandHandler("zeroChar", ZeroChar);
         dialogueRunner.AddCommandHandler("nextOrder", NextOrder);
+    }
+
+    public void Start()
+    {
+        // Find the memory manager on start
+        currentMemManager = FindFirstObjectByType<GenericMemManager>();
     }
 
     /// <summary>
