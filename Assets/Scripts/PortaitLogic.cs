@@ -13,9 +13,6 @@ public class PortaitLogic : MonoBehaviour
     [SerializeField]
     private GameObject secondCharacterPortrait;
 
-    // Evan's test variables. Not likely to be in final version
-    [SerializeField]
-    private bool isFloristMemory;
 //    [SerializeField]
     private GenericMemManager currentMemManager;
 
@@ -131,50 +128,20 @@ public class PortaitLogic : MonoBehaviour
     /// <param name="portait">What portrait to change to</param>
     private void ChangeSprite(int character, int portait)
     {
-        if (isFloristMemory)
+        if (character == 1)
         {
-            if (character == 1)
+            if (currentMemManager.GetMainSprites().Length > portait)
             {
-                if (FlowerShopManager.GetMainSprites().Length > portait)
-                {
-                    characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetMainSprites()[portait];
-                }
-            }
-            else
-            {
-                if (FlowerShopManager.GetSecondSprites().Length > portait)
-                {
-                    secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetSecondSprites()[portait];
-                }
+                characterPortrait.GetComponent<SpriteRenderer>().sprite = currentMemManager.GetMainSprites()[portait];
             }
         }
-
-        /* Evan's notes:
-         * This is a quick and dirty work around to get the proper protraits in the R&&J mem, 
-         * without messing with the florist.
-         * Too many things were hard-coded to work with the florist memory to detangle yet.
-         * This class will need to become generic at some point, which likely means changing how 
-         * OrderObjects work.
-         */
         else
         {
-            if (character == 1)
+            if (currentMemManager.GetSecondSprites().Length > portait)
             {
-                if (currentMemManager.GetMainSprites().Length > portait)
-                {
-                    characterPortrait.GetComponent<SpriteRenderer>().sprite = currentMemManager.GetMainSprites()[portait];
-                }
+                secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = currentMemManager.GetSecondSprites()[portait];
             }
-            else
-            {
-                if (currentMemManager.GetSecondSprites().Length > portait)
-                {
-                    secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = currentMemManager.GetSecondSprites()[portait];
-                }
-            }
-           
         }
-        
     }
 
     /// <summary>
@@ -182,13 +149,6 @@ public class PortaitLogic : MonoBehaviour
     /// </summary>
     private void NextOrder()
     {
-        if (isFloristMemory)
-        {
-            FlowerShopManager.NextOrder();
-        }
-        else
-        {
-            currentMemManager.NextOrder();
-        }
+        currentMemManager.NextOrder();
     }
 }
