@@ -61,7 +61,7 @@ public class DragManager : MonoBehaviour
     /// <param name="targetRotations"></param>
     /// <param name="draggableData"></param>
     /// <param name="sprites"></param>
-    public void CreateDragToTarget<T>(int _numDraggables, GameObject draggablePrefab, GameObject targetPrefab,
+    public Draggable[] CreateDragToTarget<T>(int _numDraggables, GameObject draggablePrefab, GameObject targetPrefab,
         Vector3[] dragPositions, Vector3[] targetPositions, Vector3[] targetRotations, T[] draggableData, Sprite[] sprites)
     {
         numDraggables = _numDraggables;
@@ -93,6 +93,33 @@ public class DragManager : MonoBehaviour
             targets[i].GetComponent<DragTarget>().Constructor(draggableData[i], sprites[i]);
         }
 
+        return draggables;
+
+    }
+
+    /// <summary>
+    /// Testing
+    /// </summary>
+    /// <param name="dragGameObject"></param>
+    public void CreateDrag(Draggable[] dragGameObject)
+    {
+        numDraggables = dragGameObject.Length;
+
+        if (draggables.Length > 0)
+        {
+            draggables = draggables.Concat(dragGameObject).ToArray();
+        }
+
+        for (int i = 0; i < numDraggables; i++)
+        {
+            draggables[i].EnableDrag();
+
+        }
+    }
+
+    public void InstantiateDragObjects()
+    {
+        
     }
 
     ///tentative helpers:

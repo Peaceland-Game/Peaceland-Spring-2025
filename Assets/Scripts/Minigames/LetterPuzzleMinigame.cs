@@ -47,10 +47,15 @@ public class LetterPuzzleMinigame : MinigameBehavior
     /// </summary>
     [SerializeField] Sprite[] sprites;
 
+    [SerializeField] Draggable[] puzzleList;
+
     //[SerializeField] Button[] buttons;
 
     private bool isTransitioning;
     private float timer = 0.5f;
+
+    public GameObject puzzlePieceHolder;
+    public GameObject ScrollPiecePrefab;
 
     /// <summary>
     /// Sets the blur on the camera
@@ -112,7 +117,7 @@ public class LetterPuzzleMinigame : MinigameBehavior
             pieceIds[i] = i;
         }
 
-        puzzleMinigame.GetComponent<DragManager>().CreateDragToTarget(
+        Draggable[] pieceList = puzzleMinigame.GetComponent<DragManager>().CreateDragToTarget(
             count,
             piecePrefab,
             targetPrefab,
@@ -122,17 +127,31 @@ public class LetterPuzzleMinigame : MinigameBehavior
             pieceIds,
             sprites);
 
+        if  (pieceList.Length > 0)
+        {
+            //puzzleMinigame.GetComponent<DragManager>().CreateDrag(pieceList);
+
+            for (int i = 0; i < pieceList.Length; i++)
+            {
+                pieceList[i].GetComponent<Draggable>().originParent = puzzleMinigame.GetComponent<DragManager>(); 
+                GameObject holder = Instantiate(ScrollPiecePrefab, puzzlePieceHolder.transform);
+                pieceList[i].transform.SetParent(holder.transform, true);
+                pieceList[i].transform.localPosition = Vector2.zero;
+                holder.GetComponent<ScrollPiece>().Constructor(pieceList[i]);
+            }
+        }
+
         //puzzleMinigame.GetComponent<DragManager>().disableDraggableObjs();
         //puzzleMinigame.GetComponent<DragManager>().setDraggableObjParents("ScrollContent");
 
-        GameObject[] draggableObjs = puzzleMinigame.GetComponent<DragManager>().getDraggableObjs();
-        // Debug.Log($"found: {GameObject.FindGameObjectWithTag("ScrollContent")}");
-        for (int i = 0; i < count; i++)
-        {
-            //buttons[i].GetComponent<PieceButtonBehavior>().setPiece(draggableObjs[i]);
-            //sets the pieces on the buttons to match the pieces in the minigame
-            draggableObjs[i].transform.SetParent(GameObject.FindGameObjectWithTag("ScrollContent").transform, true);
-        }
+        //GameObject[] draggableObjs = puzzleMinigame.GetComponent<DragManager>().getDraggableObjs();
+        //// Debug.Log($"found: {GameObject.FindGameObjectWithTag("ScrollContent")}");
+        //for (int i = 0; i < count; i++)
+        //{
+        //    //buttons[i].GetComponent<PieceButtonBehavior>().setPiece(draggableObjs[i]);
+        //    //sets the pieces on the buttons to match the pieces in the minigame
+        //    draggableObjs[i].transform.SetParent(GameObject.FindGameObjectWithTag("ScrollContent").transform, true);
+        //}
 
 
         //Set the minigame to active

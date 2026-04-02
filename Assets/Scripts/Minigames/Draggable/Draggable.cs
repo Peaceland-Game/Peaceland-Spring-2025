@@ -95,6 +95,9 @@ public class Draggable : MonoBehaviour
     /// </summary>
     public DragManager dm;
 
+    public bool IsDragging { get; }
+    public DragManager originParent;
+
 
     void Start()
     {   
@@ -106,6 +109,7 @@ public class Draggable : MonoBehaviour
 
         renderer = GetComponent<Renderer>();
         camera = FindFirstObjectByType<Camera>();
+        
     }
 
     // Called when object is instantiated
