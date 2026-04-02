@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BG Town Square_0: 5347329958423853224
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

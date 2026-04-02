@@ -1615,7 +1615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1395755142884440253, guid: 7769cd993c99ec44587c51c747437571, type: 3}
+  m_Sprite: {fileID: 6371227558067554192, guid: b11a69eadefa78244be79e828e2d885c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2324,7 +2324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 5030839369416123442, guid: 64b151d1529aad048ae8d23741b07581, type: 3}
+  m_Sprite: {fileID: 2602241080895700830, guid: 82e837333a4b85f4da37e6122e2d015d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2966,6 +2966,7 @@ MonoBehaviour:
   seenRJMemory: 0
   defaultCursor: {fileID: 2800000, guid: 844b41a58c1b3bc48adbcefbe7845cb8, type: 3}
   interactCursor: {fileID: 2800000, guid: 5970d5ca86e8ccc4eb4c550842513acb, type: 3}
+  currentMemoryManager: {fileID: 0}
   difficulty: 0
 --- !u!4 &1901868927
 Transform:
