@@ -1,8 +1,10 @@
+using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
-using static UnityEngine.GraphicsBuffer;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class LetterPuzzleMinigame : MinigameBehavior
 {
@@ -52,7 +54,7 @@ public class LetterPuzzleMinigame : MinigameBehavior
     //[SerializeField] Button[] buttons;
 
     private bool isTransitioning;
-    private float timer = 0.5f;
+    private float timer = 1.5f;
 
     public GameObject puzzlePieceHolder;
     public GameObject ScrollPiecePrefab;
@@ -82,9 +84,13 @@ public class LetterPuzzleMinigame : MinigameBehavior
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            //Debug.Log("Transitioning to next minigame");
-            isTransitioning = false;
-            puzzleMinigame.GetComponent<DragManager>().Reset();
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                //Debug.Log("Transitioning to next minigame");
+                isTransitioning = false;
+                puzzleMinigame.GetComponent<DragManager>().Reset();
+            }
+            
         }
 
     }
