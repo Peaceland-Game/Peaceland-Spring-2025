@@ -143,6 +143,7 @@ public class LetterPuzzleMinigame : MinigameBehavior
                 GameObject holder = Instantiate(ScrollPiecePrefab, puzzlePieceHolder.transform);
                 pieceList[i].transform.SetParent(holder.transform, true);
                 pieceList[i].transform.localPosition = Vector2.zero;
+                pieceList[i].setBoundsOffset(83);
                 holder.GetComponent<ScrollPiece>().Constructor(pieceList[i]);
             }
         }
