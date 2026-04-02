@@ -1,0 +1,9 @@
+﻿title: RuzicaHouse
+---
+<<declare $lover2Name = "Ruzica">>
+<<twoChar>>
+<<changeSprite 2 0>>
+*Memory Segment 3*
+{$lover1Name} goes to {$lover2Name}'s house. 
+After a heated discussion, they choose to run away together.
+===

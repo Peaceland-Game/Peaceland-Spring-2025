@@ -206,6 +206,8 @@ MonoBehaviour:
   - {fileID: 815154156}
   - {fileID: 1164951640}
   - {fileID: 431787418}
+  scenes: []
+  dialogueRunner: {fileID: 492172087}
   orders:
   - {fileID: 11400000, guid: 08e58547467936140abcc295a3848a84, type: 2}
   - {fileID: 11400000, guid: b7ea8f03dec914fee87fb9129622e4f5, type: 2}
@@ -218,7 +220,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: baad065cb7298d74885c49306d17c43d, type: 2}
   - {fileID: 11400000, guid: 80b9b5810c460514cb0d8dcc2fee6dac, type: 2}
   gameplayGoodNode: 
-  dialogueRunner: {fileID: 492172087}
   flowerTopSprites:
   - {fileID: -7643072482402197539, guid: c39b03f558ead564c86c1e93037f74e0, type: 3}
   - {fileID: -1627919453384748604, guid: b315660da98ebf9449849f0c9eb9f55b, type: 3}
@@ -254,6 +255,7 @@ MonoBehaviour:
   dialogueRunner: {fileID: 492172087}
   characterPortrait: {fileID: 1340726477}
   secondCharacterPortrait: {fileID: 2057993351}
+  isFloristMemory: 1
 --- !u!114 &41747960
 MonoBehaviour:
   m_ObjectHideFlags: 0

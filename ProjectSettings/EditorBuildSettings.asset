@@ -18,20 +18,23 @@ EditorBuildSettings:
     path: Assets/Scenes/DemoDisclaimer.unity
     guid: f6c3ef22f7cf47c429c291702f3d7ba9
   - enabled: 0
-    path: Assets/Scenes/InteractableIntro.unity
-    guid: 8431cc6a44c30a54e8247545e4a5dc5a
-  - enabled: 1
     path: Assets/Scenes/Museum Intro.unity
     guid: 3e7e298b17df8e74bbdc5dd1e9c8aeb3
   - enabled: 0
-    path: Assets/Scenes/PDayIntro.unity
-    guid: d7b7df2f2d05ee2438f747b9b165d848
-  - enabled: 1
     path: Assets/Scenes/InteractableIntro.unity
     guid: 8431cc6a44c30a54e8247545e4a5dc5a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FlowerMemoryScene.unity
     guid: b4b8e1b5fec086f40b657d890449e5e5
+  - enabled: 1
+    path: Assets/Scenes/R&JMemory/Demo_RJ_Present.unity
+    guid: ba6a145683be728488b61bcb54af521f
+  - enabled: 1
+    path: Assets/Scenes/R&JMemory/R&JMemoryScene.unity
+    guid: bd79436c7bbc1e742944c05bf6eb7b12
+  - enabled: 0
+    path: Assets/Scenes/PDayIntro.unity
+    guid: d7b7df2f2d05ee2438f747b9b165d848
   - enabled: 1
     path: Assets/Scenes/DemoEnd.unity
     guid: 598190bd147e608469e15c5acee13a6b

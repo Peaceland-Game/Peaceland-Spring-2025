@@ -13,6 +13,9 @@ public class PortaitLogic : MonoBehaviour
     [SerializeField]
     private GameObject secondCharacterPortrait;
 
+//    [SerializeField]
+    private GenericMemManager currentMemManager;
+
     public void Awake()
     {
         //Adds commands that can be called in yarn using the name in quotes
@@ -24,6 +27,12 @@ public class PortaitLogic : MonoBehaviour
         dialogueRunner.AddCommandHandler("twoChar", TwoChar);
         dialogueRunner.AddCommandHandler("zeroChar", ZeroChar);
         dialogueRunner.AddCommandHandler("nextOrder", NextOrder);
+    }
+
+    public void Start()
+    {
+        // Find the memory manager on start
+        currentMemManager = FindFirstObjectByType<GenericMemManager>();
     }
 
     /// <summary>
@@ -121,16 +130,16 @@ public class PortaitLogic : MonoBehaviour
     {
         if (character == 1)
         {
-            if (FlowerShopManager.GetMainSprites().Length > portait)
+            if (currentMemManager.GetMainSprites().Length > portait)
             {
-                characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetMainSprites()[portait];
+                characterPortrait.GetComponent<SpriteRenderer>().sprite = currentMemManager.GetMainSprites()[portait];
             }
         }
         else
         {
-            if (FlowerShopManager.GetSecondSprites().Length > portait)
+            if (currentMemManager.GetSecondSprites().Length > portait)
             {
-                secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetSecondSprites()[portait];
+                secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = currentMemManager.GetSecondSprites()[portait];
             }
         }
     }
@@ -140,6 +149,6 @@ public class PortaitLogic : MonoBehaviour
     /// </summary>
     private void NextOrder()
     {
-        FlowerShopManager.NextOrder();
+        currentMemManager.NextOrder();
     }
 }
