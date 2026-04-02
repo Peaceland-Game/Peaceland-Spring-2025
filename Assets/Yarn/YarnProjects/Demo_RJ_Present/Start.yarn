@@ -1,0 +1,14 @@
+﻿title: Start
+---
+<<zeroChar>>
+The PA systems announces the museum is open.
+Marc stands and muses to himself about the Memory Tree.
+He hears someone call over to him.
+Jovan and Ruzica approach.
+<<twoChar>>
+<<changeSprite 1 0>>
+<<changeSprite 2 0>>
+The three introduce themselves and make some small talk.
+Marc begins the interview.
+*Transition into memory*
+===

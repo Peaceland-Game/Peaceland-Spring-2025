@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public bool miraIntroDone;
     public bool memoryObjectAcquired;
 
+    // Bools for Demo_RJMuseumIntro
+    public bool seenRJMemory = false;
+
     //cursors
     [SerializeField]
     private Texture2D defaultCursor;

@@ -1,0 +1,9 @@
+﻿title: Start
+
+---
+<<declare $lover1Name = "Jovan">>
+Test dialogue for Romeo and Juliet Memory.
+*Memory Segment 1*
+{$lover1Name} is at their house.
+They are trying to find a letter from their lover.
+===

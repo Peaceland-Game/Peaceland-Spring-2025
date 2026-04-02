@@ -10,6 +10,7 @@ TagManager:
   - ScrollContent
   - Minigame
   - ScrollView
+  - HidingPlace
   layers:
   - Default
   - TransparentFX

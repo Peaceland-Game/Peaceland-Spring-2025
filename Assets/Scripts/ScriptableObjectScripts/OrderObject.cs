@@ -16,7 +16,7 @@ public enum FlowerType
 }
 
 [CreateAssetMenu(fileName = "OrderObject", menuName = "Scriptable Objects/OrderObject")]
-public class OrderObject : ScriptableObject
+public class OrderObject : SceneCharatcersObject
 {
     /// <summary>
     /// The name that was given for the flower order
@@ -26,20 +26,20 @@ public class OrderObject : ScriptableObject
     /// <summary>
     /// The sprites associated with the main character for the flower order
     /// </summary>
-    public Sprite[] mainCharSprites;
+//    public Sprite[] mainCharSprites;
 
     /// <summary>
     /// The sprites associated with the seoncdary character for the flower order
     /// </summary>
-    public Sprite[] secondCharSprites;
+//    public Sprite[] secondCharSprites;
 
     /// <summary>
     /// List of flowers as Texture2D (subject to change)
     /// </summary>
     public List<Flower> flowers;
 
-    public string dialogueStartNode;
-    public string dialogueEndNode;
+//    public string dialogueStartNode;
+//    public string dialogueEndNode;
 
     [Serializable]
     public struct Flower
