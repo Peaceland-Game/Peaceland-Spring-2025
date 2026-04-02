@@ -14,6 +14,11 @@ public class LetterPuzzleMinigame : MinigameBehavior
     [SerializeField] GameObject puzzleMinigame;
 
     /// <summary>
+    /// Reference to the Puzzle Container GameObject
+    /// </summary>
+    [SerializeField] GameObject puzzleContainer;
+
+    /// <summary>
     /// Prefab used to instantiate piece GameObjects in the scene.
     /// </summary>
     [SerializeField] GameObject piecePrefab;
@@ -65,8 +70,7 @@ public class LetterPuzzleMinigame : MinigameBehavior
     private PostProcessVolume ppVolume;
 
     private void Start()
-    {
-        
+    {        
 
         puzzleMinigame.GetComponent<DragManager>().OnCompleted += HandleCompleted;
         //registers HandleCompleted as a listener for the OnCompleted event on the DragManager.
@@ -89,6 +93,9 @@ public class LetterPuzzleMinigame : MinigameBehavior
                 //Debug.Log("Transitioning to next minigame");
                 isTransitioning = false;
                 puzzleMinigame.GetComponent<DragManager>().Reset();
+
+                // Assuming this is the victory condition, call NextMinigame
+                GameManager.Instance.CurrentMemoryManager.NextMinigame();
             }
             
         }
@@ -106,7 +113,10 @@ public class LetterPuzzleMinigame : MinigameBehavior
 
     public override void StartMinigame()
     {
-        ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+        gameObject.SetActive(true);
+        puzzleContainer.SetActive(true);
+
+    //    ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
 
         Vector3[] dragPos = new Vector3[count];
         Vector3[] targetPos = new Vector3[count];
@@ -181,9 +191,10 @@ public class LetterPuzzleMinigame : MinigameBehavior
         puzzleMinigame.GetComponent<DragManager>().Reset();
 
         //Remove the blur from minigames with added difficulty
-        ppVolume.enabled = false;
+    //    ppVolume.enabled = false;
 
         //deactivate the minigame
+        puzzleContainer.SetActive(false);
         puzzleMinigame.SetActive(false);
     }
 }

@@ -959,6 +959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleMinigame: {fileID: 872698778}
+  puzzleContainer: {fileID: 490742791}
   piecePrefab: {fileID: 7172442220138870305, guid: 96f519265e239e64681894d7aa907944, type: 3}
   targetPrefab: {fileID: 2791281132505450456, guid: d154c700cfb8a6241b62f5dc08796985, type: 3}
   pieceLocations:
@@ -1141,8 +1142,10 @@ MonoBehaviour:
   marcStart: 0
   miraIntroDone: 0
   memoryObjectAcquired: 0
+  seenRJMemory: 0
   defaultCursor: {fileID: 2800000, guid: 844b41a58c1b3bc48adbcefbe7845cb8, type: 3}
   interactCursor: {fileID: 2800000, guid: 5970d5ca86e8ccc4eb4c550842513acb, type: 3}
+  currentMemoryManager: {fileID: 0}
   difficulty: 0
 --- !u!4 &1058075374
 Transform:
