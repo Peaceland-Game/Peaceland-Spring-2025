@@ -1,13 +1,12 @@
 ﻿title: CousinEnters
 
 ---
-<<declare $cousinName = "Cousin">>
-<<twoChar>>
-<<changeSprite 2 0>>
+<<declare $cousinName = "Sasha">>
+<<oneChar>>
+<<changeSprite 1 0>>
 //<<speaker 2>>
 *Memory Segment 2*
 {$lover1Name}'s cousin enters. 
 They talk have found the letter, but it has been torn to pieces.
 *The two work to piece the letter back together*
-<<nextOrder>>
 ===

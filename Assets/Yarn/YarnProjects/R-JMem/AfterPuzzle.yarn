@@ -1,0 +1,11 @@
+title: AfterPuzzle
+---
+
+<<oneChar>>
+<<changeSprite 1 0>>
+*Memory Segment 3*
+{$cousinName} Returns to find {$lover1Name} with the completed letter.
+They are hesitant at first, but offer to help them find the location.
+The pair head out.
+<<nextOrder>>
+===

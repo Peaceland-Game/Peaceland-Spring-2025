@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RuzicaHouse
   m_EditorClassIdentifier: 
   mainCharSprites:
-  - {fileID: -171743095488495158, guid: a93560a59d7121f4f91c3fe7f9b263e4, type: 3}
+  - {fileID: 4493633350398199302, guid: ba58931ac7957f34594889a08ce0a2bd, type: 3}
   secondCharSprites:
   - {fileID: 4493633350398199302, guid: ba58931ac7957f34594889a08ce0a2bd, type: 3}
   dialogueStartNode: RuzicaHouse

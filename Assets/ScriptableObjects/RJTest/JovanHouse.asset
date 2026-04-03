@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: JovanHouse
   m_EditorClassIdentifier: 
   mainCharSprites:
-  - {fileID: -171743095488495158, guid: a93560a59d7121f4f91c3fe7f9b263e4, type: 3}
+  - {fileID: -1015950284290614753, guid: 0b4dbad2c96080c44b47b8a099e0f958, type: 3}
   secondCharSprites:
   - {fileID: -1015950284290614753, guid: 0b4dbad2c96080c44b47b8a099e0f958, type: 3}
   dialogueStartNode: Start
