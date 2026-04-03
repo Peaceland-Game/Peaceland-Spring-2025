@@ -82,6 +82,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         // Jump ahead on dialoge if returning from the memory
         if (GM.seenRJMemory)
         {
+            newsPaper.enabled = false;
             currentMinigame = afterMemStart - 1;    // NextMinigame increments the count
             NextOrder();
             NextMinigame();
@@ -300,9 +301,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
     // Play "Fade Out" animation
     IEnumerator FadeOut()
     {
-        // BUG: currently gives a warning that this bool does not exist.
-            // The game still runs properly, it just does not trigger the fade-out effect.
-        transition.SetBool("MemoryFadeout", true);
+        // BUG: Does not play Fade-Out animation
+        transition.SetBool("MemoryFadeOut", true);
         yield return new WaitForSeconds(2);
     }
 }
