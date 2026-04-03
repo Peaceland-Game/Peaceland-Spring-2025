@@ -97,7 +97,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         if (!GM.seenRJMemory)
         {
             //if the news (first screen) hasn't been read yet
-            if (transition.GetBool("NewsRead") == false)
+            if (transition.GetBool("NewsRead") == false || transition.GetBool("MuseumClicked") == false)
             {
                 //start the sequence
                 if (started == false)
@@ -112,7 +112,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
                 }
 
                 //when pressed, carry out the rest of the intro sequence
-                if (tap.IsPressed())
+                if (tap.IsPressed() && newsPaper.enabled == true)
                 {
                     GM.newsRead = true;
 
@@ -121,6 +121,16 @@ public class Demo_RJMuseumIntro : GenericMemManager
                     transition.SetTrigger("NewsRead");
 
                     StartCoroutine(NewsTransition());
+                }
+
+                /*else*/ if (tap.IsPressed() && museumWide.enabled == true)
+                {
+                    Debug.Log("MUSEUM TAPPED");
+                //    textStarted = false;
+
+                    transition.SetTrigger("MuseumClicked");
+
+                    StartCoroutine(MuseumTransition());
                 }
             }
 
@@ -175,7 +185,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
         // If after the initial dialogue, jump into the memory sequence.
         else if (currentMinigame == 1 && !GM.seenRJMemory)
         {
-            StartCoroutine(ClippingTransition());
+            //    StartCoroutine(ClippingTransition());
+            StartCoroutine(FadeOut());
             LL.LoadNextLevel();
         }
 
@@ -188,7 +199,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
         // If after the ending dialogue, go to the demo end screen.
         else if (currentMinigame == 2)
         {
-            StartCoroutine(ClippingTransition());
+            //    StartCoroutine(ClippingTransition());
+            StartCoroutine(FadeOut());
             LL.LoadLevelByBuildIndex(4);
         }
 
@@ -241,17 +253,23 @@ public class Demo_RJMuseumIntro : GenericMemManager
         Debug.Log("Begin News Transition");
         yield return new WaitForSeconds(4);
         newsPaper.enabled = false;
-        transition.SetBool("TextEnd", true);
-        continueText.enabled = false;
 
         //show outside of musuem
         museumWide.enabled = true;
+        Debug.Log("Museum Enabled: " + museumWide.enabled);
         transition.SetBool("MuseumOut", true);
-        yield return new WaitForSeconds(7);
+    }
+
+    // Transitions from outside the museum to the memory tree
+    IEnumerator MuseumTransition()
+    {
+        Debug.Log("Start Museum Transition");
 
         //fade into white
         transition.SetBool("MuseumOutDone", true);
         yield return new WaitForSeconds(4);
+        transition.SetBool("TextEnd", true);
+        continueText.enabled = false;
 
         //disable museum outside, enable museum inside, set var to true, begin white fadout to museum inside
         museumWide.enabled = false;
@@ -266,7 +284,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
     {
         Debug.Log("Show Continue Text");
         textStarted = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2.5f);
         transition.SetBool("TextStart", true);
         continueText.enabled = true;
     }
@@ -277,5 +295,14 @@ public class Demo_RJMuseumIntro : GenericMemManager
         started = true;
         Debug.Log("Waiting");
         yield return new WaitForSeconds(3);
+    }
+
+    // Play "Fade Out" animation
+    IEnumerator FadeOut()
+    {
+        // BUG: currently gives a warning that this bool does not exist.
+            // The game still runs properly, it just does not trigger the fade-out effect.
+        transition.SetBool("MemoryFadeout", true);
+        yield return new WaitForSeconds(2);
     }
 }
