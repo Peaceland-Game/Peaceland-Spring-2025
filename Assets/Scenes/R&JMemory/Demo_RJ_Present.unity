@@ -1198,6 +1198,8 @@ MonoBehaviour:
   scenes:
   - {fileID: 11400000, guid: c63819933b0dedd4c93e37fb47b97edc, type: 2}
   - {fileID: 11400000, guid: c63819933b0dedd4c93e37fb47b97edc, type: 2}
+  backgroundList: []
+  backgroundSprite: {fileID: 0}
   dialogueRunner: {fileID: 1269267407}
   afterMemStart: 1
   MainCharPortrait: {fileID: 752152684}
@@ -1212,7 +1214,7 @@ MonoBehaviour:
   museumTreeClose: {fileID: 2049266309}
   memoryObjectHanging: {fileID: 179052821}
   fadeColor: {r: 1, g: 1, b: 1, a: 1}
-  LL: {fileID: 1201928311}
+  LL: {fileID: 1201928312}
 --- !u!114 &583866547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1840,6 +1842,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2813458220616316244, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1201928311}
     - target: {fileID: 4793430413072917118, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
       propertyPath: m_Name
       value: LevelLoader
@@ -1893,9 +1899,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
---- !u!114 &1201928311 stripped
+--- !u!95 &1201928311 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8061365858526278367, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
+  m_PrefabInstance: {fileID: 1201928310}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1201928312 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8971622666258372276, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2388738456042281788, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
   m_PrefabInstance: {fileID: 1201928310}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

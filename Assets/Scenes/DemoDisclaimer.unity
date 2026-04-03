@@ -714,8 +714,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-          m_MethodName: OnButtonCursorEnter
+          m_TargetAssemblyTypeName: LevelLoader, Assembly-CSharp
+          m_MethodName: 
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -749,6 +749,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2813458220616316244, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1087352574}
     - target: {fileID: 4793430413072917118, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
       propertyPath: m_Name
       value: LevelLoader
@@ -818,10 +822,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2116153207 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8971622666258372276, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2813458220616316244, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
   m_PrefabInstance: {fileID: 2116153205}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133221921}
+  m_GameObject: {fileID: 1087352569}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d07457b867b2057409500a4a07de8886, type: 3}
