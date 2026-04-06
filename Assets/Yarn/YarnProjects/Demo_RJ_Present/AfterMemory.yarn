@@ -1,4 +1,5 @@
 ﻿title: AfterMemory
+// Corresponds to scene 8 in the narrative script
 ---
 <<twoChar>>
 <<changeSprite 1 0>>
@@ -7,5 +8,5 @@
 Marc thanks the couple for their time.
 They thank him for the interview.
 Jovan and Ruzica leave.
-*End of Romeo and Juliet segement.*
+*End of Romeo and Juliet segment.*
 ===

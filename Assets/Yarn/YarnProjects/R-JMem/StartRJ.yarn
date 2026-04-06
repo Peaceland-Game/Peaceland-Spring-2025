@@ -1,11 +1,20 @@
 ﻿title: StartRJ
-
+// Corresponds to Scene 2 in the narrative script
 ---
 <<declare $lover1Name = "Jovan">>
+<<declare $cousinName = "Sasha">>
 <<changeBG 0>>
 <<zeroChar>>
 Test dialogue for Romeo and Juliet Memory.
 *Memory Segment 1*
 {$lover1Name} is at their house.
 They are trying to find a letter from their lover.
+
+
+*Memory Segment 2*
+<<oneChar>>
+<<changeSprite 1 0>>
+{$lover1Name}'s cousin enters. 
+They talk have found the letter, but it has been torn to pieces.
+*The two work to piece the letter back together*
 ===
