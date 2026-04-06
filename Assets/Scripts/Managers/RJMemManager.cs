@@ -5,12 +5,8 @@ using Yarn.Unity;
 
 public class RJMemManager : GenericMemManager
 {
-    /* Evan's Notes:
-     * As of 3/27/2026, there are no differing behaviors between this manager and its parent.
-     * However, that is likely to change with the introduction of the minigames.
-     * In the event that it does not change, this script can be deleted and replaced with GenericMemManager
-     *      once it is no longer abstract.
-     */
+    [SerializeField]
+    private LevelLoader LL;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,6 +15,7 @@ public class RJMemManager : GenericMemManager
         NextOrder();
         // Connect dialogue runner
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
+        LL = FindFirstObjectByType<LevelLoader>();
     }
 
     /// <summary>
@@ -44,9 +41,18 @@ public class RJMemManager : GenericMemManager
 
             // Update GM bool and return to the present
             GameManager.Instance.seenRJMemory = true;
-            SceneManager.LoadScene(2);
+            LL.FadeAnimation();
+            LL.LoadLevelByBuildIndex(2);
+        //    SceneManager.LoadScene(2);
             return;
         }
+
+        // After the "AfterPuzzle" dialogue minigame, play fade out
+        else if (currentMinigame == 3)
+        {
+            LL.FadeAnimation();
+        }
+
         // Otherwise, start the next minigame.
         minigames[currentMinigame].StartMinigame();
     }

@@ -57,8 +57,8 @@ public class LevelLoader : MonoBehaviour
         //Debug.Log("Start trigger = " + transition.GetBool("Start"));
 
         Debug.Log("Playing fade animation");
-        transition.Play("Base Layer.WhiteFadeOut");
+        transition.Play("Base Layer.WhiteFadein", 0, 0.0f);
         yield return new WaitForSeconds(transitionTime);
-
+    //    transition.Play("Base Layer.WhiteFadeIn", 0, 0.0f);
     }
 }

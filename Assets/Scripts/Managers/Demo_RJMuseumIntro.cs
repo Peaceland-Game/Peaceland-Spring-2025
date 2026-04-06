@@ -187,8 +187,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
         else if (currentMinigame == 1 && !GM.seenRJMemory)
         {
             StartCoroutine(ClippingTransition());
-            //LL.FadeAnimation();
-            //LL.LoadNextLevel();
         }
 
         // If returning from the memory, run the dialogue
@@ -219,9 +217,11 @@ public class Demo_RJMuseumIntro : GenericMemManager
 
         //transition scene into the memory intro once screen has gone white
         transition.SetBool("MemoryFadeOut", true);
-        yield return new WaitForSeconds(2f);
-        //PUT LEVEL LOAD HERE
+        yield return new WaitForSeconds(0);
 
+        //Diable character portraits and load memory scene
+        MainCharPortrait.SetActive(false);
+        SecondCharPortrait.SetActive(false);
         LL.LoadNextLevel();
     }
 
