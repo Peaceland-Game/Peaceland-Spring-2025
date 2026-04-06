@@ -186,9 +186,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
         // If after the initial dialogue, jump into the memory sequence.
         else if (currentMinigame == 1 && !GM.seenRJMemory)
         {
-            //    StartCoroutine(ClippingTransition());
-            StartCoroutine(FadeOut());
-            LL.LoadNextLevel();
+            StartCoroutine(ClippingTransition());
+            //LL.FadeAnimation();
+            //LL.LoadNextLevel();
         }
 
         // If returning from the memory, run the dialogue
@@ -201,7 +201,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         else if (currentMinigame == 2)
         {
             //    StartCoroutine(ClippingTransition());
-            StartCoroutine(FadeOut());
+            LL.FadeAnimation();
             LL.LoadLevelByBuildIndex(4);
         }
 
@@ -214,34 +214,12 @@ public class Demo_RJMuseumIntro : GenericMemManager
     //functionality for everything post-dialogue
     IEnumerator ClippingTransition()
     {
-        //begin fade into white right after mira conversation
+        //Fade to memory
         Debug.Log("Begin Clipping Transition");
-        transition.SetBool("DialogueEnd", true);
-
-        //wait until screen is white, then start fade into news clipping. Enable/disable appropriate assets
-        yield return new WaitForSeconds(4);
-        transition.SetBool("ClippingStart", true);
-        museumTree.enabled = false;
-        dialogueRunner.enabled = false;
-        memoryObjectZoomed.enabled = true;
-
-        //wait until fade is done and player has looks at clipping for a few seconds
-        yield return new WaitForSeconds(7);
-        transition.SetBool("ClippingDone", true);
-
-        //wait for screen to go white again, enable/disable appropriate assets
-        yield return new WaitForSeconds(4);
-        transition.SetBool("ShowCloseTree", true);
-        memoryObjectZoomed.enabled = false;
-        museumTreeClose.enabled = true;
-        memoryObjectHanging.enabled = true;
-
-        //wait until player has looked at memory tree with the clipping on it, begin fade into the memory
-        yield return new WaitForSeconds(6);
-        transition.SetBool("MemoryFadeOut", true);
 
         //transition scene into the memory intro once screen has gone white
-        yield return new WaitForSeconds(4);
+        transition.SetBool("MemoryFadeOut", true);
+        yield return new WaitForSeconds(2f);
         //PUT LEVEL LOAD HERE
 
         LL.LoadNextLevel();
@@ -296,13 +274,5 @@ public class Demo_RJMuseumIntro : GenericMemManager
         started = true;
         Debug.Log("Waiting");
         yield return new WaitForSeconds(3);
-    }
-
-    // Play "Fade Out" animation
-    IEnumerator FadeOut()
-    {
-        // BUG: Does not play Fade-Out animation
-        transition.SetBool("MemoryFadeOut", true);
-        yield return new WaitForSeconds(2);
     }
 }
