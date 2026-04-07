@@ -27,6 +27,9 @@ public abstract class GenericMemManager : MonoBehaviour
     [SerializeField]
     protected DialogueRunner dialogueRunner;
 
+    // Level Loader
+    protected LevelLoader LL;
+    public LevelLoader LevelLoader { get { return LL; } }
 
     // Functions
     /// <summary>

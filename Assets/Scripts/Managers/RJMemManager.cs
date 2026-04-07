@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,9 +6,6 @@ using Yarn.Unity;
 
 public class RJMemManager : GenericMemManager
 {
-    [SerializeField]
-    private LevelLoader LL;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,7 +30,7 @@ public class RJMemManager : GenericMemManager
 
         // Increment minigame counter
         currentMinigame++;
-
+        
         // If passed all the minigames, reset the Unity scene and go to the next Unity scene
         if (currentMinigame >= minigames.Count)
         {
@@ -41,16 +39,8 @@ public class RJMemManager : GenericMemManager
 
             // Update GM bool and return to the present
             GameManager.Instance.seenRJMemory = true;
-            LL.FadeAnimation();
             LL.LoadLevelByBuildIndex(2);
-        //    SceneManager.LoadScene(2);
             return;
-        }
-
-        // After the "AfterPuzzle" dialogue minigame, play fade out
-        else if (currentMinigame == 3)
-        {
-            LL.FadeAnimation();
         }
 
         // Otherwise, start the next minigame.

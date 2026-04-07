@@ -34,31 +34,48 @@ public class LevelLoader : MonoBehaviour
     IEnumerator LoadLevel(int levelIndex)
     {
         Debug.Log("Running fade out animation.");
-        Debug.Log("Start trigger = " + transition.GetBool("Start"));
-        transition.SetTrigger("Start");
-        Debug.Log("Start trigger = " + transition.GetBool("Start"));
+        //    transition.SetTrigger("Start");
+
+        FadeAnimation(true);
 
         yield return new WaitForSeconds(transitionTime);
+
+        FadeAnimation(false);
 
         SceneManager.LoadScene(levelIndex);
     }
 
-    public void FadeAnimation()
+    /// <summary>
+    /// Start the coroutine to play the WhiteFadein amimation on command
+    /// </summary>
+    public void FadeAnimation(bool _willFadeIn)
     {
-        StartCoroutine(PlayFadeAnimation());
+        if (_willFadeIn)
+        {
+            StartCoroutine(PlayFadeInAnimation());
+        }
+        else
+        {
+            StartCoroutine(PlayFadeOutAnimation());
+        }
+
     }
 
-    IEnumerator PlayFadeAnimation()
+    /// <summary>
+    /// Plays the WhiteFadein amimation on command
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator PlayFadeInAnimation()
     {
-        //transition.ResetTrigger("Start");
-        //Debug.Log("Start trigger = " + transition.GetBool("Start"));
-        //yield return new WaitForSeconds(transitionTime);
-        //transition.SetTrigger("Start");
-        //Debug.Log("Start trigger = " + transition.GetBool("Start"));
-
-        Debug.Log("Playing fade animation");
+        // Important note: The the second "i" is lowercase
         transition.Play("Base Layer.WhiteFadein", 0, 0.0f);
         yield return new WaitForSeconds(transitionTime);
-    //    transition.Play("Base Layer.WhiteFadeIn", 0, 0.0f);
+    }
+
+    // Plays the WhiteFadeOut animimation on command
+    IEnumerator PlayFadeOutAnimation()
+    {
+        transition.Play("Base Layer.WhiteFadeOut", 0, 0.0f);
+        yield return new WaitForSeconds(transitionTime);
     }
 }

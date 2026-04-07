@@ -47,16 +47,14 @@ public class Demo_RJMuseumIntro : GenericMemManager
     [SerializeField]
     private Color fadeColor;        // Color for fadeout effect
 
-    public LevelLoader LL;          // Level Loader reference
-
     // Methods:
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Set up variables
-        //    GM = GameManager.Instance;
         GM = FindFirstObjectByType<GameManager>();
+        LL = FindFirstObjectByType<LevelLoader>();
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
         fadeColor = whiteFade.color;
         tap = InputSystem.actions.FindAction("Tap");
@@ -78,10 +76,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
         // Hide character portraits
         MainCharPortrait.SetActive(false);
         SecondCharPortrait.SetActive(false);
-
-        // Testing calls. Will not work in the actual demo
-        //    NextMinigame();
-        //    NextOrder();
 
         // Jump ahead on dialoge if returning from the memory
         if (GM.seenRJMemory)
@@ -129,10 +123,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
                     StartCoroutine(NewsTransition());
                 }
 
-                /*else*/ if (tap.IsPressed() && museumWide.enabled == true)
+                if (tap.IsPressed() && museumWide.enabled == true)
                 {
                     Debug.Log("MUSEUM TAPPED");
-                //    textStarted = false;
 
                     transition.SetTrigger("MuseumClicked");
 
@@ -144,6 +137,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
             if (GM.introSprawlDone && !GM.marcStart)
             {
                 GM.marcStart = true;
+                StartCoroutine(Wait());
                 NextOrder();
                 NextMinigame();
             }
@@ -203,8 +197,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
         // If after the ending dialogue, go to the demo end screen.
         else if (currentMinigame == 2)
         {
-            //    StartCoroutine(ClippingTransition());
-            LL.FadeAnimation();
             LL.LoadLevelByBuildIndex(4);
         }
 
@@ -225,8 +217,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
         yield return new WaitForSeconds(0);
 
         //Diable character portraits and load memory scene
-    //    MainCharPortrait.SetActive(false);
-    //    SecondCharPortrait.SetActive(false);
         LL.LoadNextLevel();
     }
 

@@ -905,6 +905,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &726691799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 726691800}
+  - component: {fileID: 726691801}
+  m_Layer: 0
+  m_Name: FadeToRuzicaHouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &726691800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726691799}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1717744511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &726691801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726691799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e4c03ef0a948c64bb91ee335762e0c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionWaitTime: 2.5
+  newBackgroundIndex: 1
 --- !u!1 &773070321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,6 +1255,7 @@ MonoBehaviour:
   - {fileID: 2146495310}
   - {fileID: 1262846301}
   - {fileID: 798517619}
+  - {fileID: 726691801}
   - {fileID: 647304827}
   scenes:
   - {fileID: 11400000, guid: 92359b097b473c74da7b66cb8d88c531, type: 2}
@@ -1218,7 +1265,6 @@ MonoBehaviour:
   - {fileID: 8187422015717571592, guid: 6163b3acf363405458b696e542dfba7d, type: 3}
   backgroundSprite: {fileID: 2084515333}
   dialogueRunner: {fileID: 1770962777}
-  LL: {fileID: 0}
 --- !u!1 &798517617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2461,7 +2507,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2388738456042281788, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
       propertyPath: transitionTime
-      value: 1.5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2813458220616316244, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
       propertyPath: transition
@@ -3753,6 +3799,7 @@ Transform:
   m_Children:
   - {fileID: 2146495309}
   - {fileID: 798517618}
+  - {fileID: 726691800}
   - {fileID: 647304826}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
