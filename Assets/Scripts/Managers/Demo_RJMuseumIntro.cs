@@ -37,7 +37,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
     public UnityEngine.UI.Image newsPaper;
     public UnityEngine.UI.Image whiteFade;
     public UnityEngine.UI.Image museumWide;
+    public SpriteRenderer marcBack;
     public UnityEngine.UI.Image museumTree;
+    public SpriteRenderer treePlaque;
     public UnityEngine.UI.Image memoryObjectZoomed;
     public UnityEngine.UI.Image museumTreeClose;
     public UnityEngine.UI.Image memoryObjectHanging;
@@ -66,7 +68,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
         continueText.enabled = false;
 
         museumTree.enabled = false;
+        treePlaque.enabled = false;
         museumWide.enabled = false;
+        marcBack.enabled = false;
         memoryObjectZoomed.enabled = false;
         museumTreeClose.enabled = false;
         memoryObjectHanging.enabled = false;
@@ -88,6 +92,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
             NextMinigame();
 
             museumTree.enabled = true;
+            treePlaque.enabled = true;
         }
     }
 
@@ -220,8 +225,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
         yield return new WaitForSeconds(0);
 
         //Diable character portraits and load memory scene
-        MainCharPortrait.SetActive(false);
-        SecondCharPortrait.SetActive(false);
+    //    MainCharPortrait.SetActive(false);
+    //    SecondCharPortrait.SetActive(false);
         LL.LoadNextLevel();
     }
 
@@ -235,6 +240,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
 
         //show outside of musuem
         museumWide.enabled = true;
+        marcBack.enabled = true;
         Debug.Log("Museum Enabled: " + museumWide.enabled);
         transition.SetBool("MuseumOut", true);
     }
@@ -252,7 +258,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
 
         //disable museum outside, enable museum inside, set var to true, begin white fadout to museum inside
         museumWide.enabled = false;
+        marcBack.enabled = false;
         museumTree.enabled = true;
+        treePlaque.enabled = true;
         GM.introSprawlDone = true;
         transition.SetBool("IntroFadeout", true);
 
