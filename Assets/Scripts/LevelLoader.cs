@@ -33,10 +33,32 @@ public class LevelLoader : MonoBehaviour
 
     IEnumerator LoadLevel(int levelIndex)
     {
+        Debug.Log("Running fade out animation.");
+        Debug.Log("Start trigger = " + transition.GetBool("Start"));
         transition.SetTrigger("Start");
+        Debug.Log("Start trigger = " + transition.GetBool("Start"));
 
         yield return new WaitForSeconds(transitionTime);
 
         SceneManager.LoadScene(levelIndex);
+    }
+
+    public void FadeAnimation()
+    {
+        StartCoroutine(PlayFadeAnimation());
+    }
+
+    IEnumerator PlayFadeAnimation()
+    {
+        //transition.ResetTrigger("Start");
+        //Debug.Log("Start trigger = " + transition.GetBool("Start"));
+        //yield return new WaitForSeconds(transitionTime);
+        //transition.SetTrigger("Start");
+        //Debug.Log("Start trigger = " + transition.GetBool("Start"));
+
+        Debug.Log("Playing fade animation");
+        transition.Play("Base Layer.WhiteFadein", 0, 0.0f);
+        yield return new WaitForSeconds(transitionTime);
+    //    transition.Play("Base Layer.WhiteFadeIn", 0, 0.0f);
     }
 }

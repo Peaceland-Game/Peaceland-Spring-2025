@@ -37,7 +37,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
     public UnityEngine.UI.Image newsPaper;
     public UnityEngine.UI.Image whiteFade;
     public UnityEngine.UI.Image museumWide;
+    public SpriteRenderer marcBack;
     public UnityEngine.UI.Image museumTree;
+    public SpriteRenderer treePlaque;
     public UnityEngine.UI.Image memoryObjectZoomed;
     public UnityEngine.UI.Image museumTreeClose;
     public UnityEngine.UI.Image memoryObjectHanging;
@@ -66,7 +68,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
         continueText.enabled = false;
 
         museumTree.enabled = false;
+        treePlaque.enabled = false;
         museumWide.enabled = false;
+        marcBack.enabled = false;
         memoryObjectZoomed.enabled = false;
         museumTreeClose.enabled = false;
         memoryObjectHanging.enabled = false;
@@ -82,11 +86,13 @@ public class Demo_RJMuseumIntro : GenericMemManager
         // Jump ahead on dialoge if returning from the memory
         if (GM.seenRJMemory)
         {
+            newsPaper.enabled = false;
             currentMinigame = afterMemStart - 1;    // NextMinigame increments the count
             NextOrder();
             NextMinigame();
 
             museumTree.enabled = true;
+            treePlaque.enabled = true;
         }
     }
 
@@ -97,7 +103,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         if (!GM.seenRJMemory)
         {
             //if the news (first screen) hasn't been read yet
-            if (transition.GetBool("NewsRead") == false)
+            if (transition.GetBool("NewsRead") == false || transition.GetBool("MuseumClicked") == false)
             {
                 //start the sequence
                 if (started == false)
@@ -112,7 +118,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
                 }
 
                 //when pressed, carry out the rest of the intro sequence
-                if (tap.IsPressed())
+                if (tap.IsPressed() && newsPaper.enabled == true)
                 {
                     GM.newsRead = true;
 
@@ -121,6 +127,16 @@ public class Demo_RJMuseumIntro : GenericMemManager
                     transition.SetTrigger("NewsRead");
 
                     StartCoroutine(NewsTransition());
+                }
+
+                /*else*/ if (tap.IsPressed() && museumWide.enabled == true)
+                {
+                    Debug.Log("MUSEUM TAPPED");
+                //    textStarted = false;
+
+                    transition.SetTrigger("MuseumClicked");
+
+                    StartCoroutine(MuseumTransition());
                 }
             }
 
@@ -176,7 +192,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
         else if (currentMinigame == 1 && !GM.seenRJMemory)
         {
             StartCoroutine(ClippingTransition());
-            LL.LoadNextLevel();
         }
 
         // If returning from the memory, run the dialogue
@@ -188,7 +203,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
         // If after the ending dialogue, go to the demo end screen.
         else if (currentMinigame == 2)
         {
-            StartCoroutine(ClippingTransition());
+            //    StartCoroutine(ClippingTransition());
+            LL.FadeAnimation();
             LL.LoadLevelByBuildIndex(4);
         }
 
@@ -201,36 +217,16 @@ public class Demo_RJMuseumIntro : GenericMemManager
     //functionality for everything post-dialogue
     IEnumerator ClippingTransition()
     {
-        //begin fade into white right after mira conversation
+        //Fade to memory
         Debug.Log("Begin Clipping Transition");
-        transition.SetBool("DialogueEnd", true);
-
-        //wait until screen is white, then start fade into news clipping. Enable/disable appropriate assets
-        yield return new WaitForSeconds(4);
-        transition.SetBool("ClippingStart", true);
-        museumTree.enabled = false;
-        dialogueRunner.enabled = false;
-        memoryObjectZoomed.enabled = true;
-
-        //wait until fade is done and player has looks at clipping for a few seconds
-        yield return new WaitForSeconds(7);
-        transition.SetBool("ClippingDone", true);
-
-        //wait for screen to go white again, enable/disable appropriate assets
-        yield return new WaitForSeconds(4);
-        transition.SetBool("ShowCloseTree", true);
-        memoryObjectZoomed.enabled = false;
-        museumTreeClose.enabled = true;
-        memoryObjectHanging.enabled = true;
-
-        //wait until player has looked at memory tree with the clipping on it, begin fade into the memory
-        yield return new WaitForSeconds(6);
-        transition.SetBool("MemoryFadeOut", true);
 
         //transition scene into the memory intro once screen has gone white
-        yield return new WaitForSeconds(4);
-        //PUT LEVEL LOAD HERE
+        transition.SetBool("MemoryFadeOut", true);
+        yield return new WaitForSeconds(0);
 
+        //Diable character portraits and load memory scene
+    //    MainCharPortrait.SetActive(false);
+    //    SecondCharPortrait.SetActive(false);
         LL.LoadNextLevel();
     }
 
@@ -241,21 +237,30 @@ public class Demo_RJMuseumIntro : GenericMemManager
         Debug.Log("Begin News Transition");
         yield return new WaitForSeconds(4);
         newsPaper.enabled = false;
-        transition.SetBool("TextEnd", true);
-        continueText.enabled = false;
 
         //show outside of musuem
         museumWide.enabled = true;
+        marcBack.enabled = true;
+        Debug.Log("Museum Enabled: " + museumWide.enabled);
         transition.SetBool("MuseumOut", true);
-        yield return new WaitForSeconds(7);
+    }
+
+    // Transitions from outside the museum to the memory tree
+    IEnumerator MuseumTransition()
+    {
+        Debug.Log("Start Museum Transition");
 
         //fade into white
         transition.SetBool("MuseumOutDone", true);
         yield return new WaitForSeconds(4);
+        transition.SetBool("TextEnd", true);
+        continueText.enabled = false;
 
         //disable museum outside, enable museum inside, set var to true, begin white fadout to museum inside
         museumWide.enabled = false;
+        marcBack.enabled = false;
         museumTree.enabled = true;
+        treePlaque.enabled = true;
         GM.introSprawlDone = true;
         transition.SetBool("IntroFadeout", true);
 
@@ -266,7 +271,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
     {
         Debug.Log("Show Continue Text");
         textStarted = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2.5f);
         transition.SetBool("TextStart", true);
         continueText.enabled = true;
     }

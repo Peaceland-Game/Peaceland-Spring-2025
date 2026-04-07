@@ -16,6 +16,13 @@ public abstract class GenericMemManager : MonoBehaviour
     protected int currentOrder = -1;
     public int CurrentOrder { get { return currentOrder; } }
 
+    // List of backgrounds for dialogue segments in a memory
+    [SerializeField]
+    protected Sprite[] backgroundList;
+    public Sprite[] BackgroundList { get { return backgroundList; } }
+    [SerializeField]
+    protected GameObject backgroundSprite;
+
     // Dialogue Runner
     [SerializeField]
     protected DialogueRunner dialogueRunner;
@@ -108,5 +115,21 @@ public abstract class GenericMemManager : MonoBehaviour
     {
         currentMinigame = -1;
         currentOrder = -1;
+    }
+
+    /// <summary>
+    /// Changes the current background sprite
+    /// </summary>
+    /// <param name="newBgIndex">The index of the new background sprite to use</param>
+    public virtual void ChangeBackgroundSprite(int newBgIndex)
+    {
+        // Do not set the background if the index is out of range
+        if (newBgIndex >= backgroundList.Length)
+        {
+            Debug.Log($"Index {newBgIndex} is larger than {backgroundList.Length}, cannot set background.");
+            return;
+        }
+
+        backgroundSprite.GetComponent<SpriteRenderer>().sprite = backgroundList[newBgIndex];
     }
 }

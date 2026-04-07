@@ -1,9 +1,13 @@
 ﻿title: RuzicaHouse
+// Corresponds to scene 4 in the narrative script
 ---
 <<declare $lover2Name = "Ruzica">>
-<<twoChar>>
-<<changeSprite 2 0>>
-*Memory Segment 3*
+<<changeBG 1>>
+<<oneChar>>
+<<changeSprite 1 0>>
+*Memory Segment 4*
 {$lover1Name} goes to {$lover2Name}'s house. 
 After a heated discussion, they choose to run away together.
+<<zeroChar>>
+*End Romeo and Juliet Memory test.*
 ===

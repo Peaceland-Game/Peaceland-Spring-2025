@@ -13,8 +13,9 @@ public class PortaitLogic : MonoBehaviour
     [SerializeField]
     private GameObject secondCharacterPortrait;
 
-//    [SerializeField]
-    private GenericMemManager currentMemManager;
+    //    [SerializeField]
+    // private GenericMemManager currentMemManager;
+    private GameManager GM;
 
     public void Awake()
     {
@@ -23,6 +24,7 @@ public class PortaitLogic : MonoBehaviour
         dialogueRunner.AddCommandHandler<int>("lighten", Lighten);
         dialogueRunner.AddCommandHandler<int>("darken", Darken);
         dialogueRunner.AddCommandHandler<int, int>("changeSprite", ChangeSprite);
+        dialogueRunner.AddCommandHandler<int>("changeBG", ChangeBackground);
         dialogueRunner.AddCommandHandler("oneChar", OneChar);
         dialogueRunner.AddCommandHandler("twoChar", TwoChar);
         dialogueRunner.AddCommandHandler("zeroChar", ZeroChar);
@@ -31,8 +33,10 @@ public class PortaitLogic : MonoBehaviour
 
     public void Start()
     {
+        GM = GameManager.Instance;
+
         // Find the memory manager on start
-        currentMemManager = FindFirstObjectByType<GenericMemManager>();
+    //    GM.CurrentMemoryManager = FindFirstObjectByType<GenericMemManager>();
     }
 
     /// <summary>
@@ -130,18 +134,24 @@ public class PortaitLogic : MonoBehaviour
     {
         if (character == 1)
         {
-            if (currentMemManager.GetMainSprites().Length > portait)
+            if (GM.CurrentMemoryManager.GetMainSprites().Length > portait)
             {
-                characterPortrait.GetComponent<SpriteRenderer>().sprite = currentMemManager.GetMainSprites()[portait];
+                characterPortrait.GetComponent<SpriteRenderer>().sprite = GM.CurrentMemoryManager.GetMainSprites()[portait];
             }
         }
         else
         {
-            if (currentMemManager.GetSecondSprites().Length > portait)
+            if (GM.CurrentMemoryManager.GetSecondSprites().Length > portait)
             {
-                secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = currentMemManager.GetSecondSprites()[portait];
+                secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = GM.CurrentMemoryManager.GetSecondSprites()[portait];
             }
         }
+    }
+
+
+    private void ChangeBackground(int backgroundIndex)
+    {
+        GM.CurrentMemoryManager.ChangeBackgroundSprite(backgroundIndex);
     }
 
     /// <summary>
@@ -149,6 +159,6 @@ public class PortaitLogic : MonoBehaviour
     /// </summary>
     private void NextOrder()
     {
-        currentMemManager.NextOrder();
+        GM.CurrentMemoryManager.NextOrder();
     }
 }

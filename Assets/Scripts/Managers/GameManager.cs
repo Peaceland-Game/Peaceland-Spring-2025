@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //data that needs to be stored globally and transfered between scenes can be stored and referenced in this script
 public class GameManager : MonoBehaviour
@@ -21,6 +22,11 @@ public class GameManager : MonoBehaviour
     private Texture2D interactCursor;
 
     private Vector2 cursorHotSpot;
+
+    // Reference to current Memory Manager
+    [SerializeField]
+    private GenericMemManager currentMemoryManager;
+    public GenericMemManager CurrentMemoryManager { get { return currentMemoryManager; } }
 
     /// <summary>
     /// Used to add difficulty to the minigame. 0 is normal, 1 is shaky hands, and 2 is blurred vision.
@@ -51,12 +57,20 @@ public class GameManager : MonoBehaviour
 
         cursorHotSpot = Vector2.zero;
         Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
+
+        SceneManager.sceneLoaded += FindCurrentMemoryManager;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void FindCurrentMemoryManager(Scene scene, LoadSceneMode mode)
+    {
+        // Set current Memory Manager
+        currentMemoryManager = FindFirstObjectByType<GenericMemManager>();
     }
 
     //cursor methods for entering/exiting buttons/colliders
