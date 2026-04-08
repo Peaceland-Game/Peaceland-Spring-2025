@@ -6,6 +6,11 @@ using Yarn.Unity;
 
 public class RJMemManager : GenericMemManager
 {
+    [SerializeField]
+    private GameObject cakeSprite;  // The cousin's cake
+    // NOTE: currently no good way to show and hide cake when the cousin enters, just leaving it in the scene
+        // Could add a new dialogue minigame for when the cousin enters
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,6 +32,12 @@ public class RJMemManager : GenericMemManager
 
         // Stope the current mingame, if there is one.
         if (currentMinigame >= 0) minigames[currentMinigame].StopMinigame();
+
+        // Hide cake asset when moving into puzzle minigame
+        if (currentMinigame == 1)
+        {
+            cakeSprite.SetActive(false);
+        }
 
         // Increment minigame counter
         currentMinigame++;
