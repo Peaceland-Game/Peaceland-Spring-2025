@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: RuzicaHouse
   m_EditorClassIdentifier: 
   mainCharSprites:
-  - {fileID: 7791637463296455410, guid: fabcb3b6fa18a9b48ad7602e61aa52e2, type: 3}
-  - {fileID: -5683393628695951791, guid: 5b9c9153ed735d34a9617e6b4e3527ae, type: 3}
-  secondCharSprites:
   - {fileID: 8515190908981397332, guid: d6ee4dff6537ae24c87a2cecd829f411, type: 3}
   - {fileID: -8442931796747003406, guid: 957c2ce00aed6f34d8e770275c65e222, type: 3}
+  secondCharSprites:
+  - {fileID: 7791637463296455410, guid: fabcb3b6fa18a9b48ad7602e61aa52e2, type: 3}
+  - {fileID: -5683393628695951791, guid: 5b9c9153ed735d34a9617e6b4e3527ae, type: 3}
   dialogueStartNode: RuzicaHouse
   dialogueEndNode: End
   nameForScene: RuzicaHouse
