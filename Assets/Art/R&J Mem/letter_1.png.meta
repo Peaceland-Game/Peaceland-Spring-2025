@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: d0ee0adb489522546bc1aa94e3d419eb
+guid: 295e8f54c4acf904fb72b710ce2aabe1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 680923446098767342
-    second: Memory Tree Plaque_0
+      213: -5165381202115445375
+    second: letter_1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Memory Tree Plaque_0
+      name: letter_1_0
       rect:
         serializedVersion: 2
-        x: 786
-        y: 0
-        width: 388
-        height: 175
+        x: 30
+        y: 11
+        width: 373
+        height: 312
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eeda3fb3440237900800000000000000
-      internalID: 680923446098767342
+      spriteID: 18dbd6ef921e058b0800000000000000
+      internalID: -5165381202115445375
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Memory Tree Plaque_0: 680923446098767342
+      letter_1_0: -5165381202115445375
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

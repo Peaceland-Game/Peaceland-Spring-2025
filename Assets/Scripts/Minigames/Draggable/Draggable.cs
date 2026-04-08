@@ -38,6 +38,9 @@ public class Draggable : MonoBehaviour
     [SerializeField]
     UnityEvent<Transform> draggedOnTargetEvent;
 
+    ///[SerializeField] 
+    private int boundsOffset = 0;
+
     /// <summary>
     /// Can we drag this object?
     /// </summary>
@@ -209,13 +212,17 @@ public class Draggable : MonoBehaviour
         
     } 
 
+    public void setBoundsOffset(int offset)
+    {
+        this.boundsOffset = offset;
+    }
     /// <summary>
     /// check if object is off screen, return to starting position if it is
     /// </summary>
     public void BoundsCheck()
     {
         Vector3 screenpos = camera.WorldToScreenPoint(transform.position);
-        bool onScreen = screenpos.x > 0f && screenpos.x < Screen.width && screenpos.y > 0f && screenpos.y < Screen.height;
+        bool onScreen = screenpos.x > 0f && screenpos.x < (Screen.width -boundsOffset) && screenpos.y > 0f && screenpos.y < Screen.height;
 
         if (onScreen && renderer.isVisible)
         {
@@ -227,6 +234,22 @@ public class Draggable : MonoBehaviour
         }
 
     }
+
+    //public void BoundsCheck()
+    //{
+    //    Vector3 screenpos = camera.WorldToScreenPoint(transform.position);
+    //    bool onScreen = screenpos.x > 0f && screenpos.x < Screen.width && screenpos.y > 0f && screenpos.y < Screen.height;
+
+    //    if (onScreen && renderer.isVisible)
+    //    {
+    //        return;
+    //    }
+    //    else
+    //    {
+    //        transform.position = startPos;
+    //    }
+
+    //}
 
     void Update()
     {
