@@ -1,13 +1,77 @@
 title: AfterPuzzle
 // Corresponds to scene 3 in the narrative script
+// Takes place from Jovan's perspective
+// His cousin is the only portrait in the scene
 ---
 
+// <<oneChar>>
+// <<changeSprite 1 0>>
+// *Memory Segment 3*
+// {$cousinName} Returns to find {$lover1Name} with the completed letter.
+// They are hesitant at first, but offer to help them find the location.
+// The pair head out.
+// <<zeroChar>>
+// <<nextOrder>>
+
+<<zeroChar>>
+{$cousinName} comes back into the room, puts his plate into the sink and sees {$lover1Name} sitting at the kitchen table.
 <<oneChar>>
 <<changeSprite 1 0>>
-*Memory Segment 3*
-{$cousinName} Returns to find {$lover1Name} with the completed letter.
-They are hesitant at first, but offer to help them find the location.
-The pair head out.
-<<zeroChar>>
+<<lighten 1>>
+{$cousinName}: You know, I know stupid when I see it.
+<<darken 1>>
+
+{$lover1Name} jumps in his seat, attempting to fold the letter. 
+{$lover1Name}: I'm just trying to figure something out, {$cousinName}. I told you, it's nothing.
+
+<<lighten 1>>
+{$cousinName}: Nothing? You in the park with a girl is nothing?
+<<darken 1>>
+
+{$lover1Name} freezes. He looks up, meeting {$cousinName}'s eyes.
+
+They stare at each other in silence.
+
+{$lover1Name} sighs as he realizes there is no point in keeping this secret from {$cousinName}.
+{$lover1Name}: Fine. This… girl. She's good, I swear, but she wants me to come meet her. 
+{$lover1Name} pauses again, attempting to parse out how much to tell {$cousinName}.
+{$lover1Name}: She described a place... a blue house around the corner from an old church made of bricks. 
+{$lover1Name}: She said the side of the house would be covered in windows. 
+
+<<lighten 1>>
+{$cousinName}'s posture stiffens. His face pales, his expression shifting something akin to fear.
+<<darken 1>>
+
+{$lover1Name}: What? What's that look for?
+
+<<lighten 1>>
+{$cousinName}: It's on the Eskani side of the city.
+<<darken 1>>
+
+{$lover1Name}: How do you know that? You never go over there. No one goes over there.
+
+<<lighten 1>>
+{$cousinName} avoids his gaze, staring at a fixed point past his shoulder.
+{$cousinName}: This part of town, I was there a long time ago.
+<<darken 1>>
+
+{$lover1Name} stands and grabs {$cousinName}'s arm, a desperate look on his face.
+{$lover1Name}: Then you have to show me. 
+{$lover1Name}: I can't find it on this map, and I can't wander around over there looking lost. 
+{$lover1Name}: Please, {$cousinName}.
+
+<<lighten 1>>
+{$cousinName}'s jaw tightens. He looks at the door, then back at {$lover1Name}'s face. 
+<<darken 1>>
+
+With a sharp exhale, he moves past {$lover1Name} to the door. 
+
+<<lighten 1>>
+{$cousinName}: Fine, but let me be clear, {$lover1Name}.
+{$cousinName} turns away from the door to look back at {$lover1Name}, a hard look in his eyes. 
+{$cousinName}: You're on your own once we're out of the neighborhood.
+<<darken 1>>
+
+// After this scene, the characters change
 <<nextOrder>>
 ===
