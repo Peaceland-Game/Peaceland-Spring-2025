@@ -10,12 +10,12 @@
 // After a heated discussion, they choose to run away together.
 // <<zeroChar>>
 // *End Romeo and Juliet Memory test.*
-
+<<zeroChar>>
 <<declare $lover2Name = "Ruzica">>
 <<changeBG 1>>
 {$lover1Name} climbs through the window into {$lover2Name}'s room, she's scared.
 <<oneChar>>
-<<changeSprite 0 1>>
+<<changeSprite 1 0>>
 {$lover1Name} checks behind him to see if anyone saw him.
 <<lighten 1>>
 {$lover2Name}: Did anyone see you?

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 957c2ce00aed6f34d8e770275c65e222
+guid: 822bf999b444b454b89c73452f1bd30c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8442931796747003406
-    second: Jovan Past Sad_0
+      213: -8240265709395586054
+    second: BG_MemoryTree_Contrast_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jovan Past Sad_0
+      name: BG_MemoryTree_Contrast_0
       rect:
         serializedVersion: 2
-        x: 91
-        y: 117
-        width: 990
-        height: 2501
-      alignment: 9
-      pivot: {x: 0.5, y: 0.75}
+        x: 0
+        y: 0
+        width: 2560
+        height: 1400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2f95b00734ea4da80800000000000000
-      internalID: -8442931796747003406
+      spriteID: af3d4a00ff1b4ad80800000000000000
+      internalID: -8240265709395586054
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 03f018689bf193d4ab17dab512f48255
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Jovan Past Sad_0: -8442931796747003406
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

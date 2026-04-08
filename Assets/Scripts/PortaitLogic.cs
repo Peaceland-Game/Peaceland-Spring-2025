@@ -70,11 +70,11 @@ public class PortaitLogic : MonoBehaviour
     {
         if (i == 1)
         {
-            characterPortrait.GetComponent<SpriteRenderer>().color = new Color(.75f, .75f, .75f, 1f);
+            characterPortrait.GetComponent<SpriteRenderer>().color = new Color(.7f, .7f, .75f, 1f);
         }
         else
         {
-            secondCharacterPortrait.GetComponent<SpriteRenderer>().color = new Color(.75f, .75f, .75f, 1f);
+            secondCharacterPortrait.GetComponent<SpriteRenderer>().color = new Color(.7f, .7f, .75f, 1f);
         }
     }
 
@@ -113,7 +113,7 @@ public class PortaitLogic : MonoBehaviour
         secondCharacterPortrait.SetActive(true);
         characterPortrait.SetActive(true);
         characterPortrait.transform.position = new Vector3(-4f, -0.5f, 0f);
-        secondCharacterPortrait.transform.position = new Vector3(5f, -0.5f, 0f);
+        secondCharacterPortrait.transform.position = new Vector3(3f, -0.5f, 0f);
     }
 
     /// <summary>
@@ -159,6 +159,7 @@ public class PortaitLogic : MonoBehaviour
     /// </summary>
     private void NextOrder()
     {
+        Debug.Log("Next Order called from Yarn Spinner");
         GM.CurrentMemoryManager.NextOrder();
     }
 }

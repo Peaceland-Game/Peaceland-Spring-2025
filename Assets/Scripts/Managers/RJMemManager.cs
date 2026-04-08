@@ -30,7 +30,7 @@ public class RJMemManager : GenericMemManager
 
         // Increment minigame counter
         currentMinigame++;
-        
+
         // If passed all the minigames, reset the Unity scene and go to the next Unity scene
         if (currentMinigame >= minigames.Count)
         {

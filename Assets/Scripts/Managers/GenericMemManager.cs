@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Yarn.Unity;
 
 public abstract class GenericMemManager : MonoBehaviour
@@ -21,7 +22,7 @@ public abstract class GenericMemManager : MonoBehaviour
     protected Sprite[] backgroundList;
     public Sprite[] BackgroundList { get { return backgroundList; } }
     [SerializeField]
-    protected GameObject backgroundSprite;
+    protected UnityEngine.UI.Image backgroundSprite;
 
     // Dialogue Runner
     [SerializeField]
@@ -133,6 +134,7 @@ public abstract class GenericMemManager : MonoBehaviour
             return;
         }
 
-        backgroundSprite.GetComponent<SpriteRenderer>().sprite = backgroundList[newBgIndex];
+        //backgroundSprite.GetComponent<SpriteRenderer>().sprite = backgroundList[newBgIndex];
+        backgroundSprite.GetComponent<Image>().sprite = backgroundList[newBgIndex];
     }
 }

@@ -33,6 +33,7 @@ He gets more and more desperate as he mutters to himself.
 {$lover1Name}: It's fine, no one else has-
 
 <<oneChar>>
+<<changeSprite 1 0>>
 {$cousinName} walks into the kitchen and sits at the table with a slice of chocolate cake.
 <<lighten 1>>
 {$cousinName}: Are you looking for something?

@@ -74,4 +74,5 @@ With a sharp exhale, he moves past {$lover1Name} to the door.
 
 // After this scene, the characters change
 <<nextOrder>>
+<<zeroChar>>
 ===
