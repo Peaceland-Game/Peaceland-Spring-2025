@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d0ee0adb489522546bc1aa94e3d419eb
+guid: 4b06782060bc94240a4b3a35a45d78da
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 680923446098767342
-    second: Memory Tree Plaque_0
+      213: 3102446720272507563
+    second: letter_7_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Memory Tree Plaque_0
+      name: letter_7_0
       rect:
         serializedVersion: 2
-        x: 786
-        y: 0
-        width: 388
-        height: 175
+        x: 664
+        y: 24
+        width: 355
+        height: 371
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: eeda3fb3440237900800000000000000
-      internalID: 680923446098767342
+      spriteID: ba22b68cada1e0b20800000000000000
+      internalID: 3102446720272507563
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Memory Tree Plaque_0: 680923446098767342
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
