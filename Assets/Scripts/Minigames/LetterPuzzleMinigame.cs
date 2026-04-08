@@ -149,11 +149,14 @@ public class LetterPuzzleMinigame : MinigameBehavior
 
             for (int i = 0; i < pieceList.Length; i++)
             {
-                pieceList[i].GetComponent<Draggable>().originParent = puzzleMinigame.GetComponent<DragManager>(); 
+                pieceList[i].GetComponent<Draggable>().originParent = puzzleMinigame.GetComponent<DragManager>();
                 GameObject holder = Instantiate(ScrollPiecePrefab, puzzlePieceHolder.transform);
                 pieceList[i].transform.SetParent(holder.transform, true);
                 pieceList[i].transform.localPosition = Vector2.zero;
                 pieceList[i].setBoundsOffset(83);
+
+                
+
                 holder.GetComponent<ScrollPiece>().Constructor(pieceList[i]);
             }
         }
