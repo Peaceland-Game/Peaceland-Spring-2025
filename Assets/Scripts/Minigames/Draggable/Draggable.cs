@@ -130,7 +130,18 @@ public class Draggable : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = sprite;
         }
-        
+
+        //fixed image box collider not matching the piece size by setting the size of the box collider to match the sprite size
+        SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
+        BoxCollider2D bc = this.GetComponent<BoxCollider2D>();
+        if (sr != null && bc != null)
+        {
+            Debug.Log("box2d size: " + bc.size);
+            Debug.Log(sr.sprite.name + " sprite size: " + sr.sprite.bounds.size);
+            bc.size = new Vector2(sr.sprite.bounds.size.x, sr.sprite.bounds.size.y);
+            //bc.offset = sr.sprite.bounds.center;
+        }
+
     }
 
     public bool CanDrag(Vector3 touch_wp) {

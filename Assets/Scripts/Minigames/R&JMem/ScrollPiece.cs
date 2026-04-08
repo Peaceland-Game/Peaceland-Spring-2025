@@ -42,14 +42,32 @@ public class ScrollPiece : MonoBehaviour
     {
         if (dragObj != null)
         {
+            Image img = this.GetComponent<Image>();
+            RectTransform rectTransform = this.GetComponent<RectTransform>();
+
             draggableObj = dragObj;
             isContaining = true;
 
             this.GetComponent<Image>().sprite = dragObj.GetComponent<SpriteRenderer>().sprite;
+
+            Debug.Log("sprite assigned size: " + img.sprite.bounds.size);
+            Debug.Log("rect size: " + rectTransform.rect.size);
+
+            Vector2 worldSize = dragObj.GetComponent<SpriteRenderer>().sprite.bounds.size;
+            Vector3 scale = rectTransform.lossyScale;
+
+            rectTransform.sizeDelta = new Vector2(worldSize.x / scale.x , worldSize.y / scale.y );
+
             Color tempColor = new Color(0.3207f, 0.2708f, 0.2708f);
             this.GetComponent<Image>().color = tempColor;
+            //ChangeAlpha(0f);
 
-            ChangeAlpha(0f);
+            //float maxSize = 100f;
+
+            //float width = maxSize - dragObj.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
+            //float height = maxSize - dragObj.GetComponent<SpriteRenderer>().sprite.bounds.size.y;
+            //rectTransform.sizeDelta = new Vector2(width, height);
+
 
         }
     }
