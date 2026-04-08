@@ -1,12 +1,177 @@
 ﻿title: AfterMemory
 // Corresponds to scene 8 in the narrative script
+// Jovan = char 1
+// Ruzica = char 2
 ---
-<<twoChar>>
+<<declare $CousinName = "Sasha">>
 <<changeSprite 1 0>>
 <<changeSprite 2 0>>
-*Jovan and Ruzica have just finished sharing their memory.*
-Marc thanks the couple for their time.
-They thank him for the interview.
-Jovan and Ruzica leave.
-*End of Romeo and Juliet segment.*
+<<twoChar>>
+{$lover1Name} and {$lover2Name} sit in silence for a while.
+<<darken 1>>
+<<darken 2>>
+
+-> Ask about {$CousinName}.
+    {$protagName}: So you got out, but what happened to Sasha?
+    <<jump Sasha>>
+-> Ask where they went.
+    {$protagName}: Where did you go?
+    <<jump Away>>
+-> Wait for them to continue.
+    <<jump Silence>>
+===
+
+title: Sasha
+---
+<<lighten 1>>
+{$lover1Name} opens and closes his mouth as if to speak.
+<<darken 2>>
+
+<<lighten 2>>
+{$lover2Name}:  We can never repay {$CousinName} for what he did for us.
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name}: He died-
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name}: {$lover1Name}...
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name}: They burned his house and he died.
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name} glares at you.
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name} closes his eyes.
+<<darken 1>>
+<<lighten 1>>
+{$lover1Name}: {$CousinName} is why we're here. He deserved to be remembered.
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name}'s expression softens.
+{$lover2Name}: We stopped by a bakery to buy his favorite cake.
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name} smiles.
+{$lover1Name}: He loved chocolate cake. It drove our family crazy. He never shared either.
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name} smiles too.
+{$lover2Name}: Sasha had a good taste in dessert.
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name} turns to {$lover2Name}.
+{$lover1Name}: And you never told me you liked chocolate cake too!
+He turns back to you.
+{$lover1Name}: My own wife hid this from me for years!
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name} grins.
+{$lover2Name}: You're being dramatic.
+She turns serious.
+<<darken 2>>
+<<jump Leave>>
+===
+
+title: Away
+---
+<<lighten 2>>
+{$lover2Name}: We kept running until we got to another city. We ran here.
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name}: There was a very kind woman who let us stay in her spare room for a few days. 
+{$lover1Name}: Then we wrote letters to our families to let them know we were okay. 
+{$lover1Name}: That's how {$CousinName}-
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name}: {$lover1Name}...
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name}: He's why we're here! 
+{$lover1Name}: He took such a big risk helping us and they burned down his house.
+{$lover1Name}: He died, he died for us!
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name}: {$CousinName} was kind. 
+{$lover2Name}: I never met him, but he gave his life for us.
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name}: He deserves to be remembered. 
+{$lover1Name}: That's why we wanted to talk to you. 
+{$lover1Name}: Even after we're gone, the tree will be here and so will Sasha's memory.
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name}: But we also need to move on, even if it's hard.
+{$lover2Name} focuses on {$lover1Name}.
+{$lover2Name}: Remember how he was when he was alive.
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name} smiles.
+{$lover1Name}: He loved chocolate cake. I think he would've had it for every meal if he could.
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name}: {$CousinName} had good taste.
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name} focuses on {$lover2Name}.
+{$lover1Name}: And you never told me you liked chocolate until <i>after</i> we left the bakery.
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name} smiles.
+{$lover2Name}: Can't I have my secrets?
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name}: Not about cake.
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name}: Speaking of which,
+<<darken 2>>
+
+<<jump Leave>>
+===
+
+title: Silence
+---
+<<lighten 1>>
+{$lover1Name}: Well, we don't have much else to say.
+{$lover1Name}: Just please make sure you include Sasha. 
+{$lover1Name}: He was important.
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name}: We actually stopped by the bakery to get something for him.
+<<darken 2>>
+
+<<jump Leave>>
+===
+
+title: Leave
+---
+<<lighten 2>>
+{$lover2Name}: We have to get going, the cake is going to melt.
+<<darken 2>>
+<<lighten 1>>
+{$lover1Name}: I completely forgot!
+<<darken 1>>
+<<lighten 2>>
+{$lover2Name} smiles at {$lover1Name}.
+{$lover2Name}: Of course you did.
+{$lover2Name} turns back to you.
+{$lover2Name}: Thank you for interviewing us. I hope our memory will look good on the tree.
+<<darken 2>>
+{$protagName}: I'm sure it will.
+<<lighten 1>>
+Thank you, again. Have a good day, {$protagName}.
+<<darken 1>>
+-> {$protagName}: You too!
+    <<jump End>>
+-> {$protagName}: Thanks, I will.
+    <<jump End>>
+===
+
+title: End
+---
+{$lover1Name} and {$lover2Name} turn and leave.
+<<zeroChar>>
+{$protagName}: Time to put this all together. Then I can go home.
 ===
