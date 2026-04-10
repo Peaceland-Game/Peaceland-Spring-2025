@@ -28,6 +28,8 @@ public class PortaitLogic : MonoBehaviour
         dialogueRunner.AddCommandHandler("oneChar", OneChar);
         dialogueRunner.AddCommandHandler("twoChar", TwoChar);
         dialogueRunner.AddCommandHandler("zeroChar", ZeroChar);
+        dialogueRunner.AddCommandHandler<int>("showChar", ShowChar);
+        dialogueRunner.AddCommandHandler<int>("hideChar", HideChar);
         dialogueRunner.AddCommandHandler("nextOrder", NextOrder);
     }
 
@@ -123,6 +125,46 @@ public class PortaitLogic : MonoBehaviour
     {
         characterPortrait.SetActive(false);
         secondCharacterPortrait.SetActive(false);
+    }
+
+    /// <summary>
+    /// Shows a character sprite
+    /// </summary>
+    /// <param name="characterNum">A number for which character to show. 1 for main, 2 for second.</param>
+    private void ShowChar(int characterNum)
+    {
+        if (characterNum == 1)
+        {
+            characterPortrait.SetActive(true);
+        }
+        else if (characterNum == 2)
+        {
+            secondCharacterPortrait.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Attempting to show invalid character portrait. Can only show 1 or 2.");
+        }
+    }
+
+    /// <summary>
+    /// Hides a character sprite when not in use.
+    /// </summary>
+    /// <param name="characterNum">A number for which character to hide. 1 for main, 2 for second.</param>
+    private void HideChar(int characterNum)
+    {
+        if (characterNum == 1)
+        {
+            characterPortrait.SetActive(false);
+        }
+        else if (characterNum == 2)
+        {
+            secondCharacterPortrait.SetActive(false);
+        }
+        else 
+        {
+            Debug.Log("Attempting to hide invalid character portrait. Can only hide 1 or 2.");
+        }
     }
 
     /// <summary>

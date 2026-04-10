@@ -1,54 +1,70 @@
 ﻿title: StartRJ
 // Corresponds to Scene 2 in the narrative script
 // This scene is from Jovan's POV
-// The cousin is the only character present in the scene
+// Jovan and his cousin, Sasha, are in this scene
+// Sasha is character 1, Jovan is character 2
+// NOTE: Sasha is set as character one so his sprite lines up with the chair
 ---
 <<declare $lover1Name = "Jovan">>
 <<declare $cousinName = "Sasha">>
 <<changeBG 0>>
-<<zeroChar>>
+<<twoChar>>
+<<hideChar 1>>
 
+<<lighten 2>>
 {$lover1Name} is running around his dining room frantically. 
 He's looking in drawers and behind furniture. 
 He gets more and more desperate as he mutters to himself.
 {$lover1Name}: I must have misplaced it. 
 {$lover1Name}: I must have picked it up and put it somewhere. 
 {$lover1Name}: It's fine, no one else has-
+<<darken 2>>
 
-<<oneChar>>
 <<changeSprite 1 0>>
-{$cousinName} walks into the kitchen and sits at the table with a slice of chocolate cake.
+{$cousinName}, {$lover1Name}'s cousin, walks into the kitchen and sits at the table with a slice of chocolate cake.
+<<showChar 1>>
 <<lighten 1>>
 {$cousinName}: Are you looking for something?
 <<darken 1>>
 
+<<lighten 2>>
 {$lover1Name} freezes before forcing himself to appear calm.
 {$lover1Name}: Not really. Just a pen.
+<<darken 2>>
 
 <<lighten 1>>
 {$cousinName}: Not really? Or just a pen?
 <<darken 1>>
 
+<<lighten 2>>
 {$lover1Name}'s heart beats faster.
+<<darken 2>>
+
 <<lighten 1>>
 {$cousinName}: (Sighs) Or was it a letter?
 <<darken 1>>
 
+<<lighten 2>>
 {$lover1Name} feels his eyes go wide.
 {$lover1Name}: Why would you think-
+<<darken 2>>
 
 <<lighten 1>>
 {$cousinName} holds up the envelope and waves it in the air.
 {$cousinName}: I found this by your favorite bench in the old park.
 <<darken 1>>
 
+<<lighten 2>>
 {$lover1Name} rushes forward and grabs the letter. Then he steps back, but stops when {$cousinName} speaks.
+<<darken 2>>
 
 <<lighten 1>>
 {$cousinName}: {$lover1Name}. What's in the letter?
 <<darken 1>>
 
+<<lighten 2>>
 {$lover1Name}: Uh, what do you mean?
+<<darken 2>>
 
 <<lighten 1>>
 {$cousinName} puts down his fork.
@@ -56,22 +72,28 @@ He gets more and more desperate as he mutters to himself.
 {$cousinName}: On top of that, you won't tell me what's in the letter.
 <<darken 1>>
 
+<<lighten 2>>
 {$lover1Name}: I mean, we all have our secrets, right?
+<<darken 2>>
 
 <<lighten 1>>
 {$cousinName}: Secrets are dangerous right now.
 <<darken 1>>
 
+<<lighten 2>>
 {$lover1Name} felt his expression drop into fear.
 {$lover1Name}: I know. But its nothing, I promise.
+<<darken 2>>
 
 <<lighten 1>>
 Picking up the fork and shaking his head, {$cousinName} gives up.
 {$cousinName}: Fine. But you'll tell me if it's something I should worry about.
 <<darken 1>>
 
+<<lighten 2>>
 A smile blooms on {$lover1Name}'s face.
 {$lover1Name}: Of course!
+<<darken 2>>
 
 There's an awkward pause. 
 
@@ -79,13 +101,16 @@ There's an awkward pause.
 {$cousinName}: Well? Are you going to open it?
 <<darken 1>>
 
+<<lighten 2>>
 {$lover1Name}: I will. I just, uh, need some privacy.
+<<darken 2>>
 
 <<lighten 1>>
 {$cousinName}: Fine. I'll let you be suspicious in peace.
 <<darken 1>>
 {$cousinName} leaves the room.
-<<zeroChar>>
+<<hideChar 1>>
 
 {$lover1Name} dumps the pieces of the letter and begins to assemble it before he even sits down.
+<<hideChar 2>>
 ===
