@@ -1,12 +1,13 @@
 ﻿{
-  "projectFileVersion": 2,
-  "sourceFiles": [
-    "**/*.yarn"
-  ],
-  "excludeFiles": [
-    "**/*~/*"
-  ],
-  "localisation": {},
-  "baseLanguage": "en",
-  "compilerOptions": {}
+    "projectFileVersion": 2,
+    "sourceFiles": [
+        "***~*.yarn",
+        "**/*.yarn",
+        "AfterMemory.yarn",
+        "Start.yarn"
+    ],
+    "localisation": {},
+    "baseLanguage": "en",
+    "compilerOptions": {},
+    "definitions": "Assembly-CSharp.ysls.json"
 }

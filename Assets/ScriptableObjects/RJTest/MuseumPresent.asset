@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MuseumPresent
   m_EditorClassIdentifier: 
   mainCharSprites:
-  - {fileID: 7155350529804483857, guid: 036a26d319e2a6641970b81fba4a0c80, type: 3}
+  - {fileID: -5969785612072809107, guid: 24eb948a5a6b0ce4cbaf6a4c5ddeac8e, type: 3}
   secondCharSprites:
-  - {fileID: 4493633350398199302, guid: ba58931ac7957f34594889a08ce0a2bd, type: 3}
+  - {fileID: -5254250293326989361, guid: 3f4d2fbe8a7c70548a110354350ad9b6, type: 3}
   dialogueStartNode: Start
   dialogueEndNode: AfterMemory
   nameForScene: MuseumPresent

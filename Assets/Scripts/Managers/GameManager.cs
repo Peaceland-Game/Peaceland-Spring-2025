@@ -71,6 +71,12 @@ public class GameManager : MonoBehaviour
     {
         // Set current Memory Manager
         currentMemoryManager = FindFirstObjectByType<GenericMemManager>();
+
+        // Reset the game when entering the title screen
+        //if (scene.buildIndex == 0)
+        //{
+        //    ResetGameManager();
+        //}
     }
 
     //cursor methods for entering/exiting buttons/colliders
@@ -92,6 +98,20 @@ public class GameManager : MonoBehaviour
     private void OnMouseExit()
     {
         Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
+    }
+
+    /// <summary>
+    /// Clears the booleans that control the intro sequence, resetting the demo
+    /// </summary>
+    private void ResetGameManager()
+    {
+        Debug.Log("Reseting GameManager bools.");
+        newsRead = false;
+        introSprawlDone = false;
+        marcStart = false;
+        miraIntroDone = false;
+        memoryObjectAcquired = false;
+        seenRJMemory = false;
     }
 }
 

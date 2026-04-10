@@ -1,13 +1,78 @@
 ﻿title: RuzicaHouse
 // Corresponds to scene 4 in the narrative script
 ---
+<<zeroChar>>
 <<declare $lover2Name = "Ruzica">>
 <<changeBG 1>>
+{$lover1Name} climbs through the window into {$lover2Name}'s room, she's scared.
 <<oneChar>>
 <<changeSprite 1 0>>
-*Memory Segment 4*
-{$lover1Name} goes to {$lover2Name}'s house. 
-After a heated discussion, they choose to run away together.
-<<zeroChar>>
-*End Romeo and Juliet Memory test.*
+
+<<lighten 1>>
+{$lover1Name} checks behind him to see if anyone saw him.
+<<darken 1>>
+
+{$lover2Name}: Did anyone see you?
+<<lighten 1>>
+{$lover1Name} picks up her hand and places it in his.
+{$lover1Name}: I don't know. Maybe. I don't think so.
+<<darken 1>>
+
+{$lover2Name} keeps checking the door, constantly looking if they're safe.
+
+<<lighten 1>>
+{$lover1Name} grabs her hand tighter.
+{$lover1Name}: Everything will be okay.
+<<darken 1>>
+
+{$lover2Name}: How can you be sure? If anyone sees you here…
+
+<<lighten 1>>
+{$lover1Name}: I know. But I don't think anyone saw me.
+They turn their heads to the window after hearing voices outside.
+<<darken 1>>
+
+{$lover2Name}:(Eyes tearing up) I am really scared. I can't live like this anymore.
+
+<<lighten 1>>
+{$lover1Name}: I know. But there is nothing we can do now but see each other like this.
+<<darken 1>>
+
+{$lover2Name}: I wish we could just go away together.
+
+<<lighten 1>>
+{$lover1Name}: Where would we go?
+<<darken 1>>
+
+{$lover2Name}: Just away. I don't care, as long as we don't have to live like this anymore.
+
+<<lighten 1>>
+{$lover1Name}: Are you sure about this? What would we even need to bring?
+<<darken 1>>
+
+{$lover2Name} picks up her large bag and starts pushing clothes inside.
+{$lover2Name}: (Determined) I am sure. Help me pack things.
+
+They both start packing her essentials into the bag. 
+They pause after hearing a voice from outside her door.
+
+{$lover2Name}'s Mom: (Yelling from another room) {$lover2Name}, are you talking to somebody? Who's in the room with you?
+
+{$lover2Name}:(Rushed) No one, Mom. Just talking to myself.
+
+{$lover2Name}'s Mom: Do you need something?
+
+{$lover2Name}: No, no. Everything is okay.
+
+They both pause packing for a moment after hearing {$lover2Name}'s Mom walking toward her room. 
+
+{$lover2Name}'s Mom: (Begins to open the door) Are you sure?
+
+{$lover2Name}: Yeah, yeah. I'm just changing.
+
+{$lover2Name}'s mom stops opening the door and walks away. {$lover2Name} and {$lover1Name} look at each other. 
+
+{$lover2Name}: <size=50%>We need to leave.</size>
+They leave through the window with whatever they have packed so far.
+
 ===

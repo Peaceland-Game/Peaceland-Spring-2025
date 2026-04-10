@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: JovanHouse
   m_EditorClassIdentifier: 
   mainCharSprites:
-  - {fileID: -1015950284290614753, guid: 0b4dbad2c96080c44b47b8a099e0f958, type: 3}
+  - {fileID: -8795686289945771090, guid: fea748e70cddd8d469c380de3e4e8538, type: 3}
   secondCharSprites:
-  - {fileID: -1015950284290614753, guid: 0b4dbad2c96080c44b47b8a099e0f958, type: 3}
+  - {fileID: 8515190908981397332, guid: d6ee4dff6537ae24c87a2cecd829f411, type: 3}
   dialogueStartNode: Start
   dialogueEndNode: RuzicaHouse
   nameForScene: JovanHouse

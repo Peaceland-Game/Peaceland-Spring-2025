@@ -1333,7 +1333,7 @@ GameObject:
   - component: {fileID: 3120809946468220702}
   - component: {fileID: 1164103685944531481}
   m_Layer: 0
-  m_Name: istockphoto-1205933896-612x612_0
+  m_Name: DeskBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
