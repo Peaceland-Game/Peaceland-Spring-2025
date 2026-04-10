@@ -1,5 +1,5 @@
 using Unity.VisualScripting;
-using UnityEditorInternal;
+//using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
@@ -69,12 +69,21 @@ public class LetterPuzzleMinigame : MinigameBehavior
     /// </summary>
     private PostProcessVolume ppVolume;
 
+    // Tap action for ending the minigame. Should work for both PC and Android
+    private InputAction tap;
+
+    // The "Tap to Continue" text that pops up after completing the minigame
+    [SerializeField]
+    private GameObject continueText;
+
     private void Start()
     {        
-
+        continueText.SetActive(false);  // Ensure text is disabled
         puzzleMinigame.GetComponent<DragManager>().OnCompleted += HandleCompleted;
         //registers HandleCompleted as a listener for the OnCompleted event on the DragManager.
         //When DragManager raises OnCompleted, HandleCompleted method will be invoked.
+
+        tap = InputSystem.actions.FindAction("Tap");
         
     }
 
@@ -88,11 +97,13 @@ public class LetterPuzzleMinigame : MinigameBehavior
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
+        //    if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (tap.IsPressed())
             {
                 //Debug.Log("Transitioning to next minigame");
                 isTransitioning = false;
                 puzzleMinigame.GetComponent<DragManager>().Reset();
+                continueText.SetActive(false);
 
                 // Assuming this is the victory condition, call NextMinigame
                 GameManager.Instance.CurrentMemoryManager.NextMinigame();
@@ -109,6 +120,7 @@ public class LetterPuzzleMinigame : MinigameBehavior
     {
         isTransitioning = true;
         timer = 0.5f; // Reset timer for transition
+        continueText.SetActive(true);   // Enable text when puzzle is complete
     }
 
     public override void StartMinigame()
