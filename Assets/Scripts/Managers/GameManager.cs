@@ -52,13 +52,27 @@ public class GameManager : MonoBehaviour
     //initialize private instance
     void Start()
     {
-        _instance = this;
-        DontDestroyOnLoad(_instance);
+        /* Important Note:
+         * The GameManager is found on an object in the DemoStart Screen.
+         * Each time the game loads this scene, a new object is created.
+         * This method prevents multiple GMs from gaining "DontDestroyOnLoad,
+         *      thus preventing multiple GMs from persisting.
+         * Best practice for Singletons should prevent a second GM from being created.
+         * However, there was not time to do this in Spring 2026
+        */
 
-        cursorHotSpot = Vector2.zero;
-        Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
+        // Only set the instance if there isn't one already
+        if (_instance == null)
+        {
+            Debug.Log("Setting GM Instance");
+            _instance = this;
+            DontDestroyOnLoad(_instance);
+        
+            cursorHotSpot = Vector2.zero;
+            Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
 
-        SceneManager.sceneLoaded += FindCurrentMemoryManager;
+            SceneManager.sceneLoaded += GMOnSceneLoaded;
+        }
     }
 
     // Update is called once per frame
@@ -67,16 +81,21 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void FindCurrentMemoryManager(Scene scene, LoadSceneMode mode)
+    /// <summary>
+    /// Runs all behavior for when a new scene is loaded.
+    /// </summary>
+    /// <param name="scene">The scene Unity is in.</param>
+    /// <param name="mode"> The current LoadSceneMode</param>
+    public void GMOnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         // Set current Memory Manager
         currentMemoryManager = FindFirstObjectByType<GenericMemManager>();
 
-        // Reset the game when entering the title screen
-        //if (scene.buildIndex == 0)
-        //{
-        //    ResetGameManager();
-        //}
+        // Reset the game when re-entering the title screen
+        if (scene.buildIndex == 0)
+        {
+            ResetGameManager();
+        }
     }
 
     //cursor methods for entering/exiting buttons/colliders
