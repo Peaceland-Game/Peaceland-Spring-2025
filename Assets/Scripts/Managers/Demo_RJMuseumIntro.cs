@@ -208,7 +208,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         Debug.Log("Begin News Transition");
         // Fade in
         GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2f);
 
         //Hide newspaper, show outside of musuem
         newsPaper.enabled = false;
@@ -227,7 +227,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
 
         //fade into white
         GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
         continueText.enabled = false;
 
@@ -245,7 +245,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
     {
         Debug.Log("Show Continue Text");
         textStarted = true;
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         transition.SetBool("TextStart", true);
         continueText.enabled = true;
     }
@@ -255,6 +255,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
     {
         started = true;
         Debug.Log("Waiting");
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2f);
     }
 }

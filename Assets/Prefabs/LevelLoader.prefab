@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 8061365858526278367}
-  transitionTime: 2.5
+  transitionTime: 2
 --- !u!1 &3491678454690886259
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 8061365858526278367}
-  transitionTime: 2.5
+  transitionTime: 2
 --- !u!1 &7914592643416430248
 GameObject:
   m_ObjectHideFlags: 0
