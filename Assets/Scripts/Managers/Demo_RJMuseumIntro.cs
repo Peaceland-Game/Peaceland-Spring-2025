@@ -112,13 +112,11 @@ public class Demo_RJMuseumIntro : GenericMemManager
                 }
 
                 //when pressed, carry out the rest of the intro sequence
-                if (tap.IsPressed() && newsPaper.enabled == true)
+                if (tap.IsPressed() && !GM.newsRead)
                 {
                     GM.newsRead = true;
 
                     Debug.Log("NEWS READ TAPPED");
-
-                    transition.SetTrigger("NewsRead");
 
                     StartCoroutine(NewsTransition());
                 }
@@ -126,9 +124,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
                 if (tap.IsPressed() && museumWide.enabled == true)
                 {
                     Debug.Log("MUSEUM TAPPED");
-
-                    transition.SetTrigger("MuseumClicked");
-
                     StartCoroutine(MuseumTransition());
                 }
             }
@@ -185,7 +180,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         // If after the initial dialogue, jump into the memory sequence.
         else if (currentMinigame == 1 && !GM.seenRJMemory)
         {
-            StartCoroutine(ClippingTransition());
+            LL.LoadNextLevel();
         }
 
         // If returning from the memory, run the dialogue
@@ -206,33 +201,23 @@ public class Demo_RJMuseumIntro : GenericMemManager
         }
     }
 
-    //functionality for everything post-dialogue
-    IEnumerator ClippingTransition()
-    {
-        //Fade to memory
-        Debug.Log("Begin Clipping Transition");
-
-        //transition scene into the memory intro once screen has gone white
-        transition.SetBool("MemoryFadeOut", true);
-        yield return new WaitForSeconds(0);
-
-        //Diable character portraits and load memory scene
-        LL.LoadNextLevel();
-    }
-
     //whole transition sequence for newspaper and auto advance screens
     IEnumerator NewsTransition()
     {
         //screen fade, disable news and text
         Debug.Log("Begin News Transition");
-        yield return new WaitForSeconds(4);
-        newsPaper.enabled = false;
+        // Fade in
+        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
+        yield return new WaitForSeconds(3);
 
-        //show outside of musuem
+        //Hide newspaper, show outside of musuem
+        newsPaper.enabled = false;
         museumWide.enabled = true;
         marcBack.enabled = true;
         Debug.Log("Museum Enabled: " + museumWide.enabled);
-        transition.SetBool("MuseumOut", true);
+
+        // Fade out
+        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
     }
 
     // Transitions from outside the museum to the memory tree
@@ -241,19 +226,18 @@ public class Demo_RJMuseumIntro : GenericMemManager
         Debug.Log("Start Museum Transition");
 
         //fade into white
-        transition.SetBool("MuseumOutDone", true);
-        yield return new WaitForSeconds(4);
-        transition.SetBool("TextEnd", true);
+        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
+        yield return new WaitForSeconds(3f);
+        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
         continueText.enabled = false;
 
-        //disable museum outside, enable museum inside, set var to true, begin white fadout to museum inside
+        //disable museum outside, enable museum inside, set var to true, begin black fadout to museum inside
         museumWide.enabled = false;
         marcBack.enabled = false;
         museumTree.enabled = true;
         treePlaque.enabled = true;
         GM.introSprawlDone = true;
-        transition.SetBool("IntroFadeout", true);
-
+        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
     }
 
     //start animating text
