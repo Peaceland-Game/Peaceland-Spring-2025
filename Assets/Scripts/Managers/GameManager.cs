@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //data that needs to be stored globally and transfered between scenes can be stored and referenced in this script
 public class GameManager : MonoBehaviour
@@ -10,6 +11,9 @@ public class GameManager : MonoBehaviour
     public bool miraIntroDone;
     public bool memoryObjectAcquired;
 
+    // Bools for Demo_RJMuseumIntro
+    public bool seenRJMemory = false;
+
     //cursors
     [SerializeField]
     private Texture2D defaultCursor;
@@ -18,6 +22,11 @@ public class GameManager : MonoBehaviour
     private Texture2D interactCursor;
 
     private Vector2 cursorHotSpot;
+
+    // Reference to current Memory Manager
+    [SerializeField]
+    private GenericMemManager currentMemoryManager;
+    public GenericMemManager CurrentMemoryManager { get { return currentMemoryManager; } }
 
     /// <summary>
     /// Used to add difficulty to the minigame. 0 is normal, 1 is shaky hands, and 2 is blurred vision.
@@ -41,19 +50,53 @@ public class GameManager : MonoBehaviour
     }
 
     //initialize private instance
-    void Start()
+    //void Start()
+    void Awake()
     {
-        _instance = this;
-        DontDestroyOnLoad(_instance);
+        /* Important Note:
+         * The GameManager is found on an object in the DemoStart Screen.
+         * Each time the game loads this scene, a new object is created.
+         * This method prevents multiple GMs from gaining "DontDestroyOnLoad,
+         *      thus preventing multiple GMs from persisting.
+         * Best practice for Singletons should prevent a second GM from being created.
+         * However, there was not time to do this in Spring 2026
+        */
 
-        cursorHotSpot = Vector2.zero;
-        Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
+        // Only set the instance if there isn't one already
+        if (_instance == null)
+        {
+            Debug.Log("Setting GM Instance");
+            _instance = this;
+            DontDestroyOnLoad(_instance);
+        
+            cursorHotSpot = Vector2.zero;
+            Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
+
+            SceneManager.sceneLoaded += GMOnSceneLoaded;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    /// <summary>
+    /// Runs all behavior for when a new scene is loaded.
+    /// </summary>
+    /// <param name="scene">The scene Unity is in.</param>
+    /// <param name="mode"> The current LoadSceneMode</param>
+    public void GMOnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Set current Memory Manager
+        currentMemoryManager = FindFirstObjectByType<GenericMemManager>();
+
+        // Reset the game when re-entering the title screen
+        if (scene.buildIndex == 0)
+        {
+            ResetGameManager();
+        }
     }
 
     //cursor methods for entering/exiting buttons/colliders
@@ -75,6 +118,20 @@ public class GameManager : MonoBehaviour
     private void OnMouseExit()
     {
         Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
+    }
+
+    /// <summary>
+    /// Clears the booleans that control the intro sequence, resetting the demo
+    /// </summary>
+    private void ResetGameManager()
+    {
+        Debug.Log("Reseting GameManager bools.");
+        newsRead = false;
+        introSprawlDone = false;
+        marcStart = false;
+        miraIntroDone = false;
+        memoryObjectAcquired = false;
+        seenRJMemory = false;
     }
 }
 

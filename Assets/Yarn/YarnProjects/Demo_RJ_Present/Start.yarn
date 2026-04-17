@@ -1,0 +1,75 @@
+﻿title: Start
+// Corresponds to Scene 1 in the narrative script
+// Ruzica = char 1
+// Jovan = char 2
+
+// NOTE: Jovan used to be char 1, and is still lover1 because he appears first in the past.
+    // The character order was switch last minute for the 4/10/2026 build.
+    // The past was originally planned to be first-person POV, but was changed.
+    // Jovan's cousin had to be on the left in the past to sit in the chair,
+    // so keeping Jovan on the right added the most visual consistency.
+---
+<<declare $protagName = "Marc">>
+<<declare $lover1Name = "Jovan">>
+<<declare $lover2Name = "Ruzica">>
+
+<<zeroChar>>
+Over the PA System: Good morning, the museum is now open. 
+Over the PA System: Please feel free to stop by our brand new exhibit, the Memory Tree! 
+Over the PA System: Explore the past, embrace the present. 
+
+{$protagName}: (<i>Guess that's my cue</i>).
+{$protagName}: (<i>It's only my second day, but the tree's already looking better. It's really coming together.</i>)
+
+Unknown Voice: Hi, are you Marc?
+
+<<twoChar>>
+<<changeSprite 1 0>>
+<<changeSprite 2 0>>
+<<darken 2>>
+<<darken 1>>
+A pair of adults approaches, both wearing wedding rings.
+The woman is looking directly at you with a smile.
+The man is gazing intently at the <b>Memory Tree</b>.
+
+<<lighten 2>>
+The Man: The tree looks a little bare, but the rest of the exhibit looks great!
+<<darken 2>>
+
+-> {$protagName}: Yeah, it's still a work in progress.
+    <<lighten 2>>
+    The Man: I see, well I'm sure that the end result will look fantastic!
+    <<darken 2>>
+-> {$protagName}: It's going to take a while.
+    <<lighten 2>>
+    The Man: Well, if it looks this great now, I'm sure that it can only get better!
+    <<darken 2>>
+-> {$protagName}: I don't think it's going to look much better.
+    <<lighten 2>>
+    The Man: (Frowning) I see. Well, difference of opinion, I suppose.
+    <<darken 2>>
+// This line was added because otherwise Jovan's response hovered in the text box
+{$protagName}: (<i>I should formally start the interview.</i>)
+-> {$protagName}: I'm Marc. What are your names?
+    <<lighten 1>>
+    {$lover2Name}: Hello, I'm {$lover2Name}, and this is my husband, {$lover1Name}.
+    <<darken 1>>
+-> {$protagName}: I guess you're here for the interview?
+    <<lighten 1>>
+    {$lover2Name}: (Frowning) Yes, I'm {$lover2Name}, and this is my husband, {$lover1Name}.
+    <<darken 1>>
+
+{$protagName}: It's nice to meet you both. 
+{$protagName}: Are you two ready to start the interview?
+
+<<lighten 2>>
+<<lighten 1>>
+{$lover2Name} and {$lover1Name} give each other a look, and turn to Marc with small smiles on their faces.
+<<darken 1>>
+{$lover1Name} grabs {$lover2Name}'s hand.
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name}: As ready as we'll ever be...
+<<lighten 1>>
+===

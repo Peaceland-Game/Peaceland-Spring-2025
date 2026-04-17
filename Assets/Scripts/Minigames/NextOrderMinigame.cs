@@ -25,10 +25,10 @@ public class NextOrderMinigame : MinigameBehavior
     public override void StartMinigame()
     {
         FlowerShopManager.NextOrder();
-        characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetMainSprites()[0];
-        if (FlowerShopManager.GetSecondSprites() != null)
+        characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetMainSpritesStatic()[0];
+        if (FlowerShopManager.GetSecondSpritesStatic() != null)
         {
-            characterPortrait2.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetSecondSprites()[0];
+            characterPortrait2.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetSecondSpritesStatic()[0];
         }
         pauseTimer = 2;
         characterPortrait.SetActive(false);

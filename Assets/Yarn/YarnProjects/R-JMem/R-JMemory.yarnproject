@@ -1,0 +1,14 @@
+﻿{
+    "projectFileVersion": 2,
+    "sourceFiles": [
+        "***~*.yarn",
+        "**/*.yarn",
+        "AfterPuzzle.yarn",
+        "RuzicaHouse.yarn",
+        "StartRJ.yarn"
+    ],
+    "localisation": {},
+    "baseLanguage": "en",
+    "compilerOptions": {},
+    "definitions": "Assembly-CSharp.ysls.json"
+}

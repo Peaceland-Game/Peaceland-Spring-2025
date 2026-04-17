@@ -1,0 +1,106 @@
+﻿title: RuzicaHouse
+// Corresponds to scene 4 in the narrative script
+// This scene is from Ruzica's POV
+// Ruzica and Jovan are the characters in these scene
+// Ruzica is character 1, Jovan is character 2
+---
+<<declare $lover2Name = "Ruzica">>
+<<oneChar>>
+<<changeSprite 1 0>>
+<<changeBG 1>>
+{$lover1Name} climbs through the window into {$lover2Name}'s room, she's scared.
+<<twoChar>>
+<<changeSprite 1 0>>
+<<darken 2>>
+
+<<lighten 2>>
+{$lover1Name} checks behind him to see if anyone saw him.
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name}: Did anyone see you?
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name} picks up her hand and places it in his.
+{$lover1Name}: I don't know. Maybe. I don't think so.
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name} keeps checking the door, constantly looking if they're safe.
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name} grabs her hand tighter.
+{$lover1Name}: Everything will be okay.
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name}: How can you be sure? If anyone sees you here…
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name}: I know. But I don't think anyone saw me.
+They turn their heads to the window after hearing voices outside.
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name}:(Eyes tearing up) I am really scared. I can't live like this anymore.
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name}: I know. But there is nothing we can do now but see each other like this.
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name}: I wish we could just go away together.
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name}: Where would we go?
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name}: Just away. I don't care, as long as we don't have to live like this anymore.
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name}: Are you sure about this? What would we even need to bring?
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name} picks up her large bag and starts pushing clothes inside.
+{$lover2Name}: (Determined) I am sure. Help me pack things.
+<<darken 1>>
+
+They both start packing her essentials into the bag. 
+They pause after hearing a voice from outside her door.
+
+{$lover2Name}'s Mom: (Yelling from another room) {$lover2Name}, are you talking to somebody? Who's in the room with you?
+
+<<lighten 1>>
+{$lover2Name}:(Rushed) No one, Mom. Just talking to myself.
+<<darken 1>>
+
+{$lover2Name}'s Mom: Do you need something?
+
+<<lighten 1>>
+{$lover2Name}: No, no. Everything is okay.
+<<darken 1>>
+
+They both pause packing for a moment after hearing {$lover2Name}'s Mom walking toward her room. 
+
+{$lover2Name}'s Mom: (Begins to open the door) Are you sure?
+
+<<lighten 1>>
+{$lover2Name}: Yeah, yeah. I'm just changing.
+<<darken 1>>
+
+{$lover2Name}'s mom stops opening the door and walks away. {$lover2Name} and {$lover1Name} look at each other. 
+
+<<lighten 1>>
+{$lover2Name}: <size=50%>We need to leave.</size>
+<<darken 1>>
+They leave through the window with whatever they have packed so far.
+
+===

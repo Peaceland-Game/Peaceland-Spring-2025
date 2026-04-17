@@ -1,8 +1,10 @@
-using UnityEditorInternal;
+using Unity.VisualScripting;
+//using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering.PostProcessing;
-using static UnityEngine.GraphicsBuffer;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class LetterPuzzleMinigame : MinigameBehavior
 {
@@ -10,6 +12,11 @@ public class LetterPuzzleMinigame : MinigameBehavior
     /// Reference to the GameObject used for the puzzle minigame.
     /// </summary>
     [SerializeField] GameObject puzzleMinigame;
+
+    /// <summary>
+    /// Reference to the Puzzle Container GameObject
+    /// </summary>
+    [SerializeField] GameObject puzzleContainer;
 
     /// <summary>
     /// Prefab used to instantiate piece GameObjects in the scene.
@@ -47,23 +54,36 @@ public class LetterPuzzleMinigame : MinigameBehavior
     /// </summary>
     [SerializeField] Sprite[] sprites;
 
-    [SerializeField] Button[] buttons;
+    [SerializeField] Draggable[] puzzleList;
+
+    //[SerializeField] Button[] buttons;
 
     private bool isTransitioning;
-    private float timer = 0.5f;
+    private float timer = 1.5f;
+
+    public GameObject puzzlePieceHolder;
+    public GameObject ScrollPiecePrefab;
 
     /// <summary>
     /// Sets the blur on the camera
     /// </summary>
     private PostProcessVolume ppVolume;
 
-    private void Start()
-    {
-        
+    // Tap action for ending the minigame. Should work for both PC and Android
+    private InputAction tap;
 
+    // The "Tap to Continue" text that pops up after completing the minigame
+    [SerializeField]
+    private GameObject continueText;
+
+    private void Start()
+    {        
+        continueText.SetActive(false);  // Ensure text is disabled
         puzzleMinigame.GetComponent<DragManager>().OnCompleted += HandleCompleted;
         //registers HandleCompleted as a listener for the OnCompleted event on the DragManager.
         //When DragManager raises OnCompleted, HandleCompleted method will be invoked.
+
+        tap = InputSystem.actions.FindAction("Tap");
         
     }
 
@@ -77,9 +97,18 @@ public class LetterPuzzleMinigame : MinigameBehavior
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            //Debug.Log("Transitioning to next minigame");
-            isTransitioning = false;
-            puzzleMinigame.GetComponent<DragManager>().Reset();
+        //    if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (tap.IsPressed())
+            {
+                //Debug.Log("Transitioning to next minigame");
+                isTransitioning = false;
+                puzzleMinigame.GetComponent<DragManager>().Reset();
+                continueText.SetActive(false);
+
+                // Assuming this is the victory condition, call NextMinigame
+                GameManager.Instance.CurrentMemoryManager.NextMinigame();
+            }
+            
         }
 
     }
@@ -91,11 +120,15 @@ public class LetterPuzzleMinigame : MinigameBehavior
     {
         isTransitioning = true;
         timer = 0.5f; // Reset timer for transition
+        continueText.SetActive(true);   // Enable text when puzzle is complete
     }
 
     public override void StartMinigame()
     {
-        ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+        gameObject.SetActive(true);
+        puzzleContainer.SetActive(true);
+
+    //    ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
 
         Vector3[] dragPos = new Vector3[count];
         Vector3[] targetPos = new Vector3[count];
@@ -112,7 +145,7 @@ public class LetterPuzzleMinigame : MinigameBehavior
             pieceIds[i] = i;
         }
 
-        puzzleMinigame.GetComponent<DragManager>().CreateDragToTarget(
+        Draggable[] pieceList = puzzleMinigame.GetComponent<DragManager>().CreateDragToTarget(
             count,
             piecePrefab,
             targetPrefab,
@@ -122,16 +155,35 @@ public class LetterPuzzleMinigame : MinigameBehavior
             pieceIds,
             sprites);
 
-        //puzzleMinigame.GetComponent<DragManager>().disableDraggableObjs();
-
-        GameObject[] draggableObjs = puzzleMinigame.GetComponent<DragManager>().getDraggableObjs();
-        for (int i = 0; i < count; i++)
+        if  (pieceList.Length > 0)
         {
-            buttons[i].GetComponent<PieceButtonBehavior>().setPiece(draggableObjs[i]);
-            //sets the pieces on the buttons to match the pieces in the minigame
+            //puzzleMinigame.GetComponent<DragManager>().CreateDrag(pieceList);
+
+            for (int i = 0; i < pieceList.Length; i++)
+            {
+                pieceList[i].GetComponent<Draggable>().originParent = puzzleMinigame.GetComponent<DragManager>();
+                GameObject holder = Instantiate(ScrollPiecePrefab, puzzlePieceHolder.transform);
+                pieceList[i].transform.SetParent(holder.transform, true);
+                pieceList[i].transform.localPosition = Vector2.zero;
+                pieceList[i].setBoundsOffset(83);
+
+                
+
+                holder.GetComponent<ScrollPiece>().Constructor(pieceList[i]);
+            }
         }
 
+        //puzzleMinigame.GetComponent<DragManager>().disableDraggableObjs();
+        //puzzleMinigame.GetComponent<DragManager>().setDraggableObjParents("ScrollContent");
 
+        //GameObject[] draggableObjs = puzzleMinigame.GetComponent<DragManager>().getDraggableObjs();
+        //// Debug.Log($"found: {GameObject.FindGameObjectWithTag("ScrollContent")}");
+        //for (int i = 0; i < count; i++)
+        //{
+        //    //buttons[i].GetComponent<PieceButtonBehavior>().setPiece(draggableObjs[i]);
+        //    //sets the pieces on the buttons to match the pieces in the minigame
+        //    draggableObjs[i].transform.SetParent(GameObject.FindGameObjectWithTag("ScrollContent").transform, true);
+        //}
 
 
         //Set the minigame to active
@@ -155,9 +207,10 @@ public class LetterPuzzleMinigame : MinigameBehavior
         puzzleMinigame.GetComponent<DragManager>().Reset();
 
         //Remove the blur from minigames with added difficulty
-        ppVolume.enabled = false;
+    //    ppVolume.enabled = false;
 
         //deactivate the minigame
+        puzzleContainer.SetActive(false);
         puzzleMinigame.SetActive(false);
     }
 }

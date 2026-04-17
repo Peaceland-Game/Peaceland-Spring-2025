@@ -6,6 +6,8 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using System.Transactions;
 
+using UnityEngine.UI;
+
 // Component for draggable objects. Requires a Drag Manager.
 
 [RequireComponent(typeof(Collider2D))]
@@ -35,6 +37,9 @@ public class Draggable : MonoBehaviour
     /// </summary>
     [SerializeField]
     UnityEvent<Transform> draggedOnTargetEvent;
+
+    ///[SerializeField] 
+    private int boundsOffset = 0;
 
     /// <summary>
     /// Can we drag this object?
@@ -93,6 +98,9 @@ public class Draggable : MonoBehaviour
     /// </summary>
     public DragManager dm;
 
+    public bool IsDragging { get; }
+    public DragManager originParent;
+
 
     void Start()
     {   
@@ -104,6 +112,7 @@ public class Draggable : MonoBehaviour
 
         renderer = GetComponent<Renderer>();
         camera = FindFirstObjectByType<Camera>();
+        
     }
 
     // Called when object is instantiated
@@ -121,7 +130,18 @@ public class Draggable : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = sprite;
         }
-        
+
+        //fixed image box collider not matching the piece size by setting the size of the box collider to match the sprite size
+        SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
+        BoxCollider2D bc = this.GetComponent<BoxCollider2D>();
+        if (sr != null && bc != null)
+        {
+            Debug.Log("box2d size: " + bc.size);
+            Debug.Log(sr.sprite.name + " sprite size: " + sr.sprite.bounds.size);
+            bc.size = new Vector2(sr.sprite.bounds.size.x, sr.sprite.bounds.size.y);
+            //bc.offset = sr.sprite.bounds.center;
+        }
+
     }
 
     public bool CanDrag(Vector3 touch_wp) {
@@ -141,12 +161,24 @@ public class Draggable : MonoBehaviour
     /// We start dragging this object
     /// </summary>
     /// <param name="touch_wp">Touch world position</param>
-    public void StartDrag(Vector3 touch_wp, int currentDifficulty) {
+    public void StartDrag(Vector3 touch_wp, int currentDifficulty)
+    {
         dragging = true;
         offset = transform.position - touch_wp;
         difficulty = currentDifficulty;
-    }
 
+        GameObject scrollView = GameObject.FindGameObjectWithTag("ScrollView");
+        if (scrollView != null)
+        {
+            scrollView.GetComponent<ScrollRect>().enabled = false;
+        }
+
+        GameObject gameObj = this.gameObject;
+        if (gameObj != null && gameObj.transform.parent.CompareTag("ScrollContent"))
+        {
+            gameObj.transform.SetParent(GameObject.FindGameObjectWithTag("Minigame").transform, true);
+        }
+    }
     /// <summary>
     /// Drag disabled
     /// </summary>
@@ -158,6 +190,7 @@ public class Draggable : MonoBehaviour
     /// Drag enabled
     /// </summary>
     public void EnableDrag() {
+
         draggable = true;
     }
 
@@ -167,6 +200,12 @@ public class Draggable : MonoBehaviour
     public void EndDrag() {
         // End drag
         dragging = false;
+
+        GameObject scrollView = GameObject.FindGameObjectWithTag("ScrollView");
+        if (scrollView!=null)
+        {
+            scrollView.GetComponent<ScrollRect>().enabled = true;
+        }
 
         if (snapIndex != -1) {
             DisableDrag();
@@ -184,13 +223,17 @@ public class Draggable : MonoBehaviour
         
     } 
 
+    public void setBoundsOffset(int offset)
+    {
+        this.boundsOffset = offset;
+    }
     /// <summary>
     /// check if object is off screen, return to starting position if it is
     /// </summary>
     public void BoundsCheck()
     {
         Vector3 screenpos = camera.WorldToScreenPoint(transform.position);
-        bool onScreen = screenpos.x > 0f && screenpos.x < Screen.width && screenpos.y > 0f && screenpos.y < Screen.height;
+        bool onScreen = screenpos.x > 0f && screenpos.x < (Screen.width -boundsOffset) && screenpos.y > 0f && screenpos.y < Screen.height;
 
         if (onScreen && renderer.isVisible)
         {
@@ -202,6 +245,22 @@ public class Draggable : MonoBehaviour
         }
 
     }
+
+    //public void BoundsCheck()
+    //{
+    //    Vector3 screenpos = camera.WorldToScreenPoint(transform.position);
+    //    bool onScreen = screenpos.x > 0f && screenpos.x < Screen.width && screenpos.y > 0f && screenpos.y < Screen.height;
+
+    //    if (onScreen && renderer.isVisible)
+    //    {
+    //        return;
+    //    }
+    //    else
+    //    {
+    //        transform.position = startPos;
+    //    }
+
+    //}
 
     void Update()
     {

@@ -13,6 +13,10 @@ public class PortaitLogic : MonoBehaviour
     [SerializeField]
     private GameObject secondCharacterPortrait;
 
+    //    [SerializeField]
+    // private GenericMemManager currentMemManager;
+    private GameManager GM;
+
     public void Awake()
     {
         //Adds commands that can be called in yarn using the name in quotes
@@ -20,10 +24,21 @@ public class PortaitLogic : MonoBehaviour
         dialogueRunner.AddCommandHandler<int>("lighten", Lighten);
         dialogueRunner.AddCommandHandler<int>("darken", Darken);
         dialogueRunner.AddCommandHandler<int, int>("changeSprite", ChangeSprite);
+        dialogueRunner.AddCommandHandler<int>("changeBG", ChangeBackground);
         dialogueRunner.AddCommandHandler("oneChar", OneChar);
         dialogueRunner.AddCommandHandler("twoChar", TwoChar);
         dialogueRunner.AddCommandHandler("zeroChar", ZeroChar);
+        dialogueRunner.AddCommandHandler<int>("showChar", ShowChar);
+        dialogueRunner.AddCommandHandler<int>("hideChar", HideChar);
         dialogueRunner.AddCommandHandler("nextOrder", NextOrder);
+    }
+
+    public void Start()
+    {
+        GM = GameManager.Instance;
+
+        // Find the memory manager on start
+    //    GM.CurrentMemoryManager = FindFirstObjectByType<GenericMemManager>();
     }
 
     /// <summary>
@@ -57,11 +72,11 @@ public class PortaitLogic : MonoBehaviour
     {
         if (i == 1)
         {
-            characterPortrait.GetComponent<SpriteRenderer>().color = new Color(.75f, .75f, .75f, 1f);
+            characterPortrait.GetComponent<SpriteRenderer>().color = new Color(.7f, .7f, .75f, 1f);
         }
         else
         {
-            secondCharacterPortrait.GetComponent<SpriteRenderer>().color = new Color(.75f, .75f, .75f, 1f);
+            secondCharacterPortrait.GetComponent<SpriteRenderer>().color = new Color(.7f, .7f, .75f, 1f);
         }
     }
 
@@ -100,7 +115,7 @@ public class PortaitLogic : MonoBehaviour
         secondCharacterPortrait.SetActive(true);
         characterPortrait.SetActive(true);
         characterPortrait.transform.position = new Vector3(-4f, -0.5f, 0f);
-        secondCharacterPortrait.transform.position = new Vector3(5f, -0.5f, 0f);
+        secondCharacterPortrait.transform.position = new Vector3(3f, -0.5f, 0f);
     }
 
     /// <summary>
@@ -113,6 +128,46 @@ public class PortaitLogic : MonoBehaviour
     }
 
     /// <summary>
+    /// Shows a character sprite
+    /// </summary>
+    /// <param name="characterNum">A number for which character to show. 1 for main, 2 for second.</param>
+    private void ShowChar(int characterNum)
+    {
+        if (characterNum == 1)
+        {
+            characterPortrait.SetActive(true);
+        }
+        else if (characterNum == 2)
+        {
+            secondCharacterPortrait.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Attempting to show invalid character portrait. Can only show 1 or 2.");
+        }
+    }
+
+    /// <summary>
+    /// Hides a character sprite when not in use.
+    /// </summary>
+    /// <param name="characterNum">A number for which character to hide. 1 for main, 2 for second.</param>
+    private void HideChar(int characterNum)
+    {
+        if (characterNum == 1)
+        {
+            characterPortrait.SetActive(false);
+        }
+        else if (characterNum == 2)
+        {
+            secondCharacterPortrait.SetActive(false);
+        }
+        else 
+        {
+            Debug.Log("Attempting to hide invalid character portrait. Can only hide 1 or 2.");
+        }
+    }
+
+    /// <summary>
     /// Changes a character's facial expression
     /// </summary>
     /// <param name="character">Which character should change</param>
@@ -121,18 +176,24 @@ public class PortaitLogic : MonoBehaviour
     {
         if (character == 1)
         {
-            if (FlowerShopManager.GetMainSprites().Length > portait)
+            if (GM.CurrentMemoryManager.GetMainSprites().Length > portait)
             {
-                characterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetMainSprites()[portait];
+                characterPortrait.GetComponent<SpriteRenderer>().sprite = GM.CurrentMemoryManager.GetMainSprites()[portait];
             }
         }
         else
         {
-            if (FlowerShopManager.GetSecondSprites().Length > portait)
+            if (GM.CurrentMemoryManager.GetSecondSprites().Length > portait)
             {
-                secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetSecondSprites()[portait];
+                secondCharacterPortrait.GetComponent<SpriteRenderer>().sprite = GM.CurrentMemoryManager.GetSecondSprites()[portait];
             }
         }
+    }
+
+
+    private void ChangeBackground(int backgroundIndex)
+    {
+        GM.CurrentMemoryManager.ChangeBackgroundSprite(backgroundIndex);
     }
 
     /// <summary>
@@ -140,6 +201,7 @@ public class PortaitLogic : MonoBehaviour
     /// </summary>
     private void NextOrder()
     {
-        FlowerShopManager.NextOrder();
+        Debug.Log("Next Order called from Yarn Spinner");
+        GM.CurrentMemoryManager.NextOrder();
     }
 }
