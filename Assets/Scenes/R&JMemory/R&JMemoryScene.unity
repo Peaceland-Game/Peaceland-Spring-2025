@@ -2805,6 +2805,10 @@ PrefabInstance:
       propertyPath: transition
       value: 
       objectReference: {fileID: 1314565338}
+    - target: {fileID: 2813458220616316244, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
+      propertyPath: transitionTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4793430413072917118, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
       propertyPath: m_Name
       value: LevelLoader
@@ -3795,7 +3799,7 @@ Transform:
   m_GameObject: {fileID: 1510574683}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: -0.5, z: 0}
+  m_LocalPosition: {x: -4, y: -0.5, z: 0}
   m_LocalScale: {x: 0.67, y: 0.67, z: 0.67}
   m_ConstrainProportionsScale: 1
   m_Children: []

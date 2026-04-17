@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
     }
 
     //initialize private instance
-    void Start()
+    //void Start()
+    void Awake()
     {
         /* Important Note:
          * The GameManager is found on an object in the DemoStart Screen.

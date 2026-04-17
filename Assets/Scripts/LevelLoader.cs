@@ -31,32 +31,37 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(buildIndex));
     }
 
+    /// <summary>
+    /// Loads a level by a given index and plays fade animations.
+    /// </summary>
+    /// <param name="levelIndex">An integer containing the build index to load.</param>
+    /// <returns>Returns a yield statement</returns>
     IEnumerator LoadLevel(int levelIndex)
     {
         Debug.Log("Running fade out animation.");
         //    transition.SetTrigger("Start");
 
-        FadeAnimation(true);
+        WhiteFadeAnimation(true);
 
         yield return new WaitForSeconds(transitionTime);
 
-        FadeAnimation(false);
+        WhiteFadeAnimation(false);
 
         SceneManager.LoadScene(levelIndex);
     }
 
     /// <summary>
-    /// Start the coroutine to play the WhiteFadein amimation on command
+    /// Start the coroutine to play a White Fade amimation on command
     /// </summary>
-    public void FadeAnimation(bool _willFadeIn)
+    public void WhiteFadeAnimation(bool _willFadeIn)
     {
         if (_willFadeIn)
         {
-            StartCoroutine(PlayFadeInAnimation());
+            StartCoroutine(PlayWhiteFadeInAnimation());
         }
         else
         {
-            StartCoroutine(PlayFadeOutAnimation());
+            StartCoroutine(PlayWhiteFadeOutAnimation());
         }
 
     }
@@ -65,7 +70,7 @@ public class LevelLoader : MonoBehaviour
     /// Plays the WhiteFadein amimation on command
     /// </summary>
     /// <returns></returns>
-    IEnumerator PlayFadeInAnimation()
+    IEnumerator PlayWhiteFadeInAnimation()
     {
         // Important note: The the second "i" is lowercase
         transition.Play("Base Layer.WhiteFadein", 0, 0.0f);
@@ -73,9 +78,42 @@ public class LevelLoader : MonoBehaviour
     }
 
     // Plays the WhiteFadeOut animimation on command
-    IEnumerator PlayFadeOutAnimation()
+    IEnumerator PlayWhiteFadeOutAnimation()
     {
         transition.Play("Base Layer.WhiteFadeOut", 0, 0.0f);
+        yield return new WaitForSeconds(transitionTime);
+    }
+
+    /// <summary>
+    /// Start the coroutine to play a black fade amimation on command
+    /// </summary>
+    public void BlackFadeAnimation(bool _willFadeIn)
+    {
+        if (_willFadeIn)
+        {
+            StartCoroutine(PlayBlackFadeInAnimation());
+        }
+        else
+        {
+            StartCoroutine(PlayBlackFadeOutAnimation());
+        }
+
+    }
+
+    /// <summary>
+    /// Plays the BlackFadeIn amimation on command
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator PlayBlackFadeInAnimation()
+    {
+        transition.Play("Base Layer.BlackFadeIn", 0, 0.0f);
+        yield return new WaitForSeconds(transitionTime);
+    }
+
+    // Plays the BlackFadeOut animimation on command
+    IEnumerator PlayBlackFadeOutAnimation()
+    {
+        transition.Play("Base Layer.BlackFadeOut", 0, 0.0f);
         yield return new WaitForSeconds(transitionTime);
     }
 }

@@ -10,6 +10,7 @@ public class RJMemManager : GenericMemManager
     private GameObject cakeSprite;  // The cousin's cake
     // NOTE: currently no good way to show and hide cake when the cousin enters, just leaving it in the scene
         // Could add a new dialogue minigame for when the cousin enters
+        // Could add a Yarn command to show or hide objects in the scene
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

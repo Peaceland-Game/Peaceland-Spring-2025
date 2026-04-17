@@ -25,7 +25,7 @@ public class FadeTransitionMinigame : MinigameBehavior
     IEnumerator PlayFadeTransition()
     {
         // Play fade in animation
-        GameManager.Instance.CurrentMemoryManager.LevelLoader.FadeAnimation(true);
+        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
         // Wait for animation to finish
         yield return new WaitForSeconds(transitionWaitTime);
 
@@ -33,7 +33,7 @@ public class FadeTransitionMinigame : MinigameBehavior
         GameManager.Instance.CurrentMemoryManager.ChangeBackgroundSprite(newBackgroundIndex);
 
         // Play fade out animation
-        GameManager.Instance.CurrentMemoryManager.LevelLoader.FadeAnimation(false);
+        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
         // Wait for animation to finish
         yield return new WaitForSeconds(transitionWaitTime);
 

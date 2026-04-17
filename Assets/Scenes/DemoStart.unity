@@ -1261,10 +1261,6 @@ PrefabInstance:
       propertyPath: m_PixelPerfect
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7914592643416430248, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8752892614062703564, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
       propertyPath: m_Name
       value: WhiteFade
