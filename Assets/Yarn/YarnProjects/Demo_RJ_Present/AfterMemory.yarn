@@ -19,15 +19,15 @@
 
 -> Ask about {$CousinName}.
     {$protagName}: So you got out, but what happened to {$CousinName}?
-    <<jump {$CousinName}>>
+    <<jump Damir>>
 -> Ask where they went.
     {$protagName}: Where did you go?
     <<jump Away>>
 -> Wait for them to continue.
-    <<jump {$CousinName}>>
+    <<jump Damir>>
 ===
 
-title: {$CousinName}
+title: Damir
 ---
 <<lighten 2>>
 {$lover1Name} opens and closes his mouth as if to speak.
