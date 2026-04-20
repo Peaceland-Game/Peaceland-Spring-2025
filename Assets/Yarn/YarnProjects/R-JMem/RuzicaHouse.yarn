@@ -49,7 +49,10 @@ They turn their heads to the window after hearing voices outside.
 <<darken 1>>
 
 <<lighten 2>>
-{$lover1Name}: I know. But there is nothing we can do now but see each other like this.
+    -> I know.
+        {$lover1Name}: I know. But there is nothing we can do now but see each other like this.
+    -> Yes, you can!
+        {$lover1Name}: Yes, you can! You have me, {$lover2Name}. You'll always have me.
 <<darken 2>>
 
 <<lighten 1>>
@@ -79,7 +82,10 @@ They pause after hearing a voice from outside her door.
 {$lover2Name}'s Mom: (Yelling from another room) {$lover2Name}, are you talking to somebody? Who's in the room with you?
 
 <<lighten 1>>
-{$lover2Name}:(Rushed) No one, Mom. Just talking to myself.
+    -> No one.
+        {$lover2Name}:(Rushed) No one, Mom. Just talking to myself.
+    -> *Stay silent*
+        {$lover2Name}: ...
 <<darken 1>>
 
 {$lover2Name}'s Mom: Do you need something?
@@ -96,10 +102,14 @@ They both pause packing for a moment after hearing {$lover2Name}'s Mom walking t
 {$lover2Name}: Yeah, yeah. I'm just changing.
 <<darken 1>>
 
-{$lover2Name}'s mom stops opening the door and walks away. {$lover2Name} and {$lover1Name} look at each other. 
+{$lover2Name}'s mom stops opening the door and walks away. 
+{$lover2Name} and {$lover1Name} look at each other. 
 
 <<lighten 1>>
-{$lover2Name}: <size=50%>We need to leave.</size>
+    -> We can't keep living like this.
+        {$lover2Name}: <size=75%>We can't keep living like this.</size>
+    -> We need to leave.
+        {$lover2Name}: <size=75%>We need to leave. Now.</size>
 <<darken 1>>
 They leave through the window with whatever they have packed so far.
 

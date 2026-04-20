@@ -15,8 +15,13 @@ title: AfterPuzzle
 <<darken 1>>
 
 <<lighten 2>>
-{$lover1Name} jumps in his seat, attempting to fold the letter. 
-{$lover1Name}: I'm just trying to figure something out, {$cousinName}. I told you, it's nothing.
+{$lover1Name} jumps in his seat, attempting to rescramble the letter. 
+    -> I'm just trying to figure something out.
+        {$lover1Name}: I'm just trying to figure something out, {$cousinName}. I told you, it's nothing.
+    -> It's not stupid, okay?
+        {$lover1Name}: It's not stupid, okay? It's nothing.
+    -> Nothing for you to worry about.
+        {$lover1Name}: Nothing for you to worry about.
 <<darken 2>>
 
 <<lighten 1>>
@@ -50,7 +55,10 @@ They stare at each other in silence.
 <<darken 1>>
 
 <<lighten 2>>
-{$lover1Name}: How do you know that? You never go over there. No one goes over there.
+    -> How do you know that?
+        {$lover1Name}: How do you know that? You never go over there. No one goes over there.
+    -> Are you hiding something?
+        {$lover1Name}: And how do you know that? Are you hiding something, {$cousinName}?
 <<darken 2>>
 
 <<lighten 1>>
@@ -67,11 +75,7 @@ They stare at each other in silence.
 
 <<lighten 1>>
 {$cousinName}'s jaw tightens. He looks at the door, then back at {$lover1Name}'s face. 
-<<darken 1>>
-
 With a sharp exhale, he moves past {$lover1Name} to the door. 
-
-<<lighten 1>>
 {$cousinName}: Fine, but let me be clear, {$lover1Name}.
 {$cousinName} turns away from the door to look back at {$lover1Name}, a hard look in his eyes. 
 {$cousinName}: You're on your own once we're out of the neighborhood.

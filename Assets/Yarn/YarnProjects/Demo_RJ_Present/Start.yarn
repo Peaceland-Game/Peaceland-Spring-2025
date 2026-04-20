@@ -20,6 +20,7 @@ Over the PA System: Explore the past, embrace the present.
 
 {$protagName}: (<i>Guess that's my cue</i>).
 {$protagName}: (<i>It's only my second day, but the tree's already looking better. It's really coming together.</i>)
+{$protagName}: (<i>Collecting these memories for the Tree has actually been kind of rewarding.</i>)
 
 Unknown Voice: Hi, are you Marc?
 
@@ -60,7 +61,7 @@ The Man: The tree looks a little bare, but the rest of the exhibit looks great!
     <<darken 1>>
 
 {$protagName}: It's nice to meet you both. 
-{$protagName}: Are you two ready to start the interview?
+{$protagName}: Can I collect your story for the Memory Tree?
 
 <<lighten 2>>
 <<lighten 1>>
@@ -71,5 +72,9 @@ The Man: The tree looks a little bare, but the rest of the exhibit looks great!
 
 <<lighten 1>>
 {$lover2Name}: As ready as we'll ever be...
-<<lighten 1>>
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name}: It started when I was in my kitchen...
+<<darken 2>>
 ===

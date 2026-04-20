@@ -1,12 +1,12 @@
 ﻿title: StartRJ
 // Corresponds to Scene 2 in the narrative script
 // This scene is from Jovan's POV
-// Jovan and his cousin, Sasha, are in this scene
-// Sasha is character 1, Jovan is character 2
-// NOTE: Sasha is set as character one so his sprite lines up with the chair
+// Jovan and his cousin, Damir, are in this scene
+// Damir is character 1, Jovan is character 2
+// NOTE: Damir is set as character one so his sprite lines up with the chair
 ---
 <<declare $lover1Name = "Jovan">>
-<<declare $cousinName = "Sasha">>
+<<declare $cousinName = "Damir">>
 <<changeBG 0>>
 <<twoChar>>
 <<hideChar 1>>
@@ -38,6 +38,12 @@ He gets more and more desperate as he mutters to himself.
 
 <<lighten 2>>
 {$lover1Name}'s heart beats faster.
+    -> Just a pen!
+        {$lover1Name}: Just a pen!
+    -> Not really. No pen.
+        {$lover1Name}: Not really. No pen.
+    -> *Say nothing*
+        {$lover1Name}: ...
 <<darken 2>>
 
 <<lighten 1>>
@@ -82,7 +88,12 @@ He gets more and more desperate as he mutters to himself.
 
 <<lighten 2>>
 {$lover1Name} felt his expression drop into fear.
-{$lover1Name}: I know. But its nothing, I promise.
+    -> Just drop it, please.
+        {$lover1Name}: Just drop it, please.
+    -> I know what I'm doing.
+        {$lover1Name}: I know what I'm doing.
+    -> I know. But it's nothing, I promise.
+        {$lover1Name}: I know. But its nothing, I promise.
 <<darken 2>>
 
 <<lighten 1>>
