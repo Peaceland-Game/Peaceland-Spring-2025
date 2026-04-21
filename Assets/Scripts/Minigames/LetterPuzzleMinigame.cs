@@ -16,7 +16,7 @@ public class LetterPuzzleMinigame : MinigameBehavior
     /// <summary>
     /// Reference to the Puzzle Container GameObject
     /// </summary>
-    [SerializeField] GameObject puzzleContainer;
+    //[SerializeField] GameObject puzzleContainer;
 
     /// <summary>
     /// Prefab used to instantiate piece GameObjects in the scene.
@@ -61,8 +61,15 @@ public class LetterPuzzleMinigame : MinigameBehavior
     private bool isTransitioning;
     private float timer = 1.5f;
 
-    public GameObject puzzlePieceHolder;
-    public GameObject ScrollPiecePrefab;
+    /// <summary>
+    /// For scroll view. Uncomment to use. This is the parent object that holds the pieces in the scroll view, and the prefab for the pieces in the scroll view. The piece prefab should be a child of the ScrollPiece prefab, which has the script for dragging from the scroll view to the puzzle area.
+    ///</summary>
+    //public GameObject puzzlePieceHolder;
+
+    /// <summary>
+    /// For scroll view. Uncomment to use. This is the prefab for the pieces in the scroll view. The piece prefab should be a child of the ScrollPiece prefab, which has the script for dragging from the scroll view to the puzzle area.
+    ///</summary>
+    //public GameObject ScrollPiecePrefab;
 
     /// <summary>
     /// Sets the blur on the camera
@@ -126,7 +133,7 @@ public class LetterPuzzleMinigame : MinigameBehavior
     public override void StartMinigame()
     {
         gameObject.SetActive(true);
-        puzzleContainer.SetActive(true);
+        //puzzleContainer.SetActive(true);
 
     //    ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
 
@@ -206,7 +213,9 @@ public class LetterPuzzleMinigame : MinigameBehavior
         puzzleMinigame.GetComponent<DragManager>().OnCompleted -= HandleCompleted;
 
         //deactivate the minigame
-        puzzleContainer.SetActive(false);
+
+        // If using a puzzle container, deactivate it here. Otherwise, just deactivate the puzzle minigame.
+        //puzzleContainer.SetActive(false);
         puzzleMinigame.SetActive(false);
     }
 }
