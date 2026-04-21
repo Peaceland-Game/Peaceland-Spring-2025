@@ -139,7 +139,9 @@ public class LetterPuzzleMinigame : MinigameBehavior
 
         for (int i = 0; i < count; i++)
         {
-            dragPos[i] = pieceLocations[i];
+            // randomize the piece locations
+            int randomIndex = Random.Range(0, pieceLocations.Length); //index, -1 (inclusive)
+            dragPos[i] = pieceLocations[randomIndex];
             targetPos[i] = targetLocations[i];
             targetRot[i] = targetRotations[i];
             pieceIds[i] = i;
@@ -157,33 +159,24 @@ public class LetterPuzzleMinigame : MinigameBehavior
 
         if  (pieceList.Length > 0)
         {
-            //puzzleMinigame.GetComponent<DragManager>().CreateDrag(pieceList);
 
-            for (int i = 0; i < pieceList.Length; i++)
-            {
-                pieceList[i].GetComponent<Draggable>().originParent = puzzleMinigame.GetComponent<DragManager>();
-                GameObject holder = Instantiate(ScrollPiecePrefab, puzzlePieceHolder.transform);
-                pieceList[i].transform.SetParent(holder.transform, true);
-                pieceList[i].transform.localPosition = Vector2.zero;
-                pieceList[i].setBoundsOffset(83);
+            // for scroll view. uncomment to use
 
-                
+            //for (int i = 0; i < pieceList.Length; i++)
+            //{
+            //    pieceList[i].GetComponent<Draggable>().originParent = puzzleMinigame.GetComponent<DragManager>();
+            //    GameObject holder = Instantiate(ScrollPiecePrefab, puzzlePieceHolder.transform);
+            //    pieceList[i].transform.SetParent(holder.transform, true);
+            //    pieceList[i].transform.localPosition = Vector2.zero;
+            //    pieceList[i].setBoundsOffset(83);
 
-                holder.GetComponent<ScrollPiece>().Constructor(pieceList[i]);
-            }
+
+
+            //    holder.GetComponent<ScrollPiece>().Constructor(pieceList[i]);
+            //}
         }
 
-        //puzzleMinigame.GetComponent<DragManager>().disableDraggableObjs();
-        //puzzleMinigame.GetComponent<DragManager>().setDraggableObjParents("ScrollContent");
-
-        //GameObject[] draggableObjs = puzzleMinigame.GetComponent<DragManager>().getDraggableObjs();
-        //// Debug.Log($"found: {GameObject.FindGameObjectWithTag("ScrollContent")}");
-        //for (int i = 0; i < count; i++)
-        //{
-        //    //buttons[i].GetComponent<PieceButtonBehavior>().setPiece(draggableObjs[i]);
-        //    //sets the pieces on the buttons to match the pieces in the minigame
-        //    draggableObjs[i].transform.SetParent(GameObject.FindGameObjectWithTag("ScrollContent").transform, true);
-        //}
+        
 
 
         //Set the minigame to active
@@ -207,7 +200,10 @@ public class LetterPuzzleMinigame : MinigameBehavior
         puzzleMinigame.GetComponent<DragManager>().Reset();
 
         //Remove the blur from minigames with added difficulty
-    //    ppVolume.enabled = false;
+        //    ppVolume.enabled = false;
+
+        // Unregister the event handler to prevent potential memory leaks or unintended behavior
+        puzzleMinigame.GetComponent<DragManager>().OnCompleted -= HandleCompleted;
 
         //deactivate the minigame
         puzzleContainer.SetActive(false);

@@ -259,14 +259,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 17293381887579151, guid: edb254c19f580ed43aaaafb41b9a4205, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 17293381887579151, guid: edb254c19f580ed43aaaafb41b9a4205, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2813359209317125352, guid: edb254c19f580ed43aaaafb41b9a4205, type: 3}
       propertyPath: m_Name
       value: PuzzleMiniGame
@@ -309,10 +301,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5153366515217308123, guid: edb254c19f580ed43aaaafb41b9a4205, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5382718670057442827, guid: edb254c19f580ed43aaaafb41b9a4205, type: 3}
-      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8875423198871180519, guid: edb254c19f580ed43aaaafb41b9a4205, type: 3}

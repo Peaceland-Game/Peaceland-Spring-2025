@@ -159,7 +159,7 @@ RectTransform:
   m_Father: {fileID: 8810294133337657951}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -871,13 +871,9 @@ MonoBehaviour:
   piecePrefab: {fileID: 7172442220138870305, guid: 96f519265e239e64681894d7aa907944, type: 3}
   targetPrefab: {fileID: 2791281132505450456, guid: d154c700cfb8a6241b62f5dc08796985, type: 3}
   pieceLocations:
-  - {x: 0, y: 3.23, z: 0}
-  - {x: 0, y: 3.23, z: 0}
-  - {x: -4, y: 3.23, z: 0}
-  - {x: -4, y: 3.23, z: 0}
-  - {x: -4, y: 3.23, z: 0}
-  - {x: -4, y: 3.23, z: 0}
-  - {x: -4, y: 3.23, z: 0}
+  - {x: 3.13, y: 2.21, z: 0}
+  - {x: 4.87, y: 0.55, z: 0}
+  - {x: 3.61, y: -2.65, z: 0}
   targetLocations:
   - {x: -6.09, y: 2.97, z: 0}
   - {x: -2.906, y: 2.62, z: 0}
@@ -908,6 +904,7 @@ MonoBehaviour:
   - {fileID: 0}
   puzzlePieceHolder: {fileID: 6192101141723854405}
   ScrollPiecePrefab: {fileID: 5662489226590252393, guid: 02f2ad42c96046a4c8dc619d45331a75, type: 3}
+  continueText: {fileID: 0}
 --- !u!1 &4794469502529747271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,7 +1001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8476748391427215342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1124,7 +1121,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -41.457, y: 153.7034}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 11}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &3276187593597837111
 MonoBehaviour:
