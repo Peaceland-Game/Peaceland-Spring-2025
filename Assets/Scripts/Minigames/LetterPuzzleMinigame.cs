@@ -85,6 +85,10 @@ public class LetterPuzzleMinigame : MinigameBehavior
     [SerializeField]
     private Button continueButton;
 
+    // The box game object that contains a collider to cover the screen
+    [SerializeField]
+    private GameObject box1;
+
     private void Start()
     {
         continueButton.interactable = false;  // Ensure button is disabled
@@ -104,11 +108,12 @@ public class LetterPuzzleMinigame : MinigameBehavior
             return;
         }
 
-        timer -= Time.deltaTime;
+        if (timer >= 0) timer -= Time.deltaTime;
         if (timer <= 0)
         {
             continueButton.interactable = true;
             continueButton.GetComponent<Image>().enabled = true;
+            box1.SetActive(false);
         }
 
     }
@@ -124,8 +129,13 @@ public class LetterPuzzleMinigame : MinigameBehavior
             puzzleMinigame.GetComponent<DragManager>().Reset();
         //continueText.SetActive(false);
 
+        // Turn off button
+        Debug.Log("Continue Button Clicked");
+        continueButton.interactable = false;
+        continueButton.GetComponent<Image>().enabled = false;
+
         // Assuming this is the victory condition, call NextMinigame
-            Debug.Log("Next minigame called");
+        Debug.Log("Next minigame called");
             GameManager.Instance.CurrentMemoryManager.NextMinigame();
                 
         //}

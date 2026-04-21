@@ -45,7 +45,7 @@ public class LevelLoader : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
 
-        WhiteFadeAnimation(false);
+    //    WhiteFadeAnimation(false);
 
         SceneManager.LoadScene(levelIndex);
     }
