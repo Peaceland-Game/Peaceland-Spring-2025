@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 30d951962b1223742b5fd6295cd08bc2
+guid: c147309fe958fd14aabc5fee2c6ea9a2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3203465725399040320
-    second: bg_inside_open_door (1)_0
+      213: -6256715074269551188
+    second: Screenshot 2026-04-20 185326_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bg_inside_open_door (1)_0
+      name: Screenshot 2026-04-20 185326_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2560
-        height: 1440
+        width: 145
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ce737b35e00b83d0800000000000000
-      internalID: -3203465725399040320
+      spriteID: ca5e4591aceab29a0800000000000000
+      internalID: -6256715074269551188
       vertices: []
       indices: 
       edges: []
@@ -148,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bg_inside_open_door (1)_0: -3203465725399040320
-      bg_inside_open_door_0: 6638381312415609133
+      Screenshot 2026-04-20 185326_0: -6256715074269551188
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

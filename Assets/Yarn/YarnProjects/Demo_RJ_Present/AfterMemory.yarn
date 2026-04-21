@@ -9,7 +9,7 @@
     // Jovan's cousin had to be on the left in the past to sit in the chair,
     // so keeping Jovan on the right added the most visual consistency.
 ---
-<<declare $CousinName = "Sasha">>
+<<declare $CousinName = "Damir">>
 <<changeSprite 1 0>>
 <<changeSprite 2 0>>
 <<twoChar>>
@@ -18,16 +18,16 @@
 <<darken 1>>
 
 -> Ask about {$CousinName}.
-    {$protagName}: So you got out, but what happened to Sasha?
-    <<jump Sasha>>
+    {$protagName}: So you got out, but what happened to {$CousinName}?
+    <<jump Damir>>
 -> Ask where they went.
     {$protagName}: Where did you go?
     <<jump Away>>
 -> Wait for them to continue.
-    <<jump Silence>>
+    <<jump Damir>>
 ===
 
-title: Sasha
+title: Damir
 ---
 <<lighten 2>>
 {$lover1Name} opens and closes his mouth as if to speak.
@@ -64,7 +64,7 @@ title: Sasha
 <<darken 2>>
 <<lighten 1>>
 {$lover2Name} smiles too.
-{$lover2Name}: Sasha had a good taste in dessert.
+{$lover2Name}: {$CousinName} had a good taste in dessert.
 <<darken 1>>
 <<lighten 2>>
 {$lover1Name} turns to {$lover2Name}.
@@ -105,7 +105,7 @@ title: Away
 <<lighten 2>>
 {$lover1Name}: He deserves to be remembered. 
 {$lover1Name}: That's why we wanted to talk to you. 
-{$lover1Name}: Even after we're gone, the tree will be here and so will Sasha's memory.
+{$lover1Name}: Even after we're gone, the tree will be here and so will {$CousinName}'s memory.
 <<darken 2>>
 <<lighten 1>>
 {$lover2Name}: But we also need to move on, even if it's hard.
@@ -131,25 +131,26 @@ title: Away
 {$lover1Name}: Not about cake.
 <<darken 2>>
 <<lighten 1>>
-{$lover2Name}: Speaking of which,
+{$lover2Name}: Speaking of which...
 <<darken 1>>
 
 <<jump Leave>>
 ===
 
-title: Silence
----
-<<lighten 2>>
-{$lover1Name}: Well, we don't have much else to say.
-{$lover1Name}: Just please make sure you include Sasha. 
-{$lover1Name}: He was important.
-<<darken 2>>
-<<lighten 1>>
-{$lover2Name}: We actually stopped by the bakery to get something for him.
-<<darken 1>>
+// NOTE: This node was removed in the last draft.
+// title: Silence
+// ---
+// <<lighten 2>>
+// {$lover1Name}: Well, we don't have much else to say.
+// {$lover1Name}: Just please make sure you include {$CousinName}. 
+// {$lover1Name}: He was important.
+// <<darken 2>>
+// <<lighten 1>>
+// {$lover2Name}: We actually stopped by the bakery to get something for him.
+// <<darken 1>>
 
-<<jump Leave>>
-===
+// <<jump Leave>>
+// ===
 
 title: Leave
 ---

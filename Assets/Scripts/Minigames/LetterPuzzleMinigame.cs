@@ -80,12 +80,15 @@ public class LetterPuzzleMinigame : MinigameBehavior
     private InputAction tap;
 
     // The "Tap to Continue" text that pops up after completing the minigame
+    /*[SerializeField]
+    private GameObject continueText;*/
     [SerializeField]
-    private GameObject continueText;
+    private Button continueButton;
 
     private void Start()
-    {        
-        continueText.SetActive(false);  // Ensure text is disabled
+    {
+        continueButton.interactable = false;  // Ensure button is disabled
+        continueButton.GetComponent<Image>().enabled = false; // Ensure button image is disabled
         puzzleMinigame.GetComponent<DragManager>().OnCompleted += HandleCompleted;
         //registers HandleCompleted as a listener for the OnCompleted event on the DragManager.
         //When DragManager raises OnCompleted, HandleCompleted method will be invoked.
@@ -104,20 +107,30 @@ public class LetterPuzzleMinigame : MinigameBehavior
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
-        //    if (Mouse.current.leftButton.wasPressedThisFrame)
-            if (tap.IsPressed())
-            {
-                //Debug.Log("Transitioning to next minigame");
-                isTransitioning = false;
-                puzzleMinigame.GetComponent<DragManager>().Reset();
-                continueText.SetActive(false);
-
-                // Assuming this is the victory condition, call NextMinigame
-                GameManager.Instance.CurrentMemoryManager.NextMinigame();
-            }
-            
+            continueButton.interactable = true;
+            continueButton.GetComponent<Image>().enabled = true;
         }
 
+    }
+
+    public void Continue()
+    {
+        
+        //    if (Mouse.current.leftButton.wasPressedThisFrame)
+        //if (tap.IsPressed())
+        //{
+            //Debug.Log("Transitioning to next minigame");
+            isTransitioning = false;
+            puzzleMinigame.GetComponent<DragManager>().Reset();
+        //continueText.SetActive(false);
+
+        // Assuming this is the victory condition, call NextMinigame
+            Debug.Log("Next minigame called");
+            GameManager.Instance.CurrentMemoryManager.NextMinigame();
+                
+        //}
+
+        
     }
 
     /// <summary>
@@ -127,7 +140,8 @@ public class LetterPuzzleMinigame : MinigameBehavior
     {
         isTransitioning = true;
         timer = 0.5f; // Reset timer for transition
-        continueText.SetActive(true);   // Enable text when puzzle is complete
+        continueButton.GetComponent<Image>().enabled = true; // Show the continue button
+        continueButton.interactable=true;   // Enable text when puzzle is complete
     }
 
     public override void StartMinigame()

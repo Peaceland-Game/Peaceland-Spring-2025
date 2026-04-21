@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /// <summary>
 /// Manager script for the Spring 2026 demo. Created from MuseumIntroManager.cs and ScreenTransitioner.cs.
@@ -30,8 +31,11 @@ public class Demo_RJMuseumIntro : GenericMemManager
 
     private InputAction tap;        // Checks for user input via tap or click
 
+    //[SerializeField]
+    //public TMPro.TextMeshProUGUI continueText;  // Animated "Continue" Text
+
     [SerializeField]
-    public TMPro.TextMeshProUGUI continueText;  // Animated "Continue" Text
+    public Button continueButton;
 
     // Images for the scene
     public UnityEngine.UI.Image newsPaper;
@@ -63,7 +67,10 @@ public class Demo_RJMuseumIntro : GenericMemManager
         started = false;
         textStarted = false;
 
-        continueText.enabled = false;
+        //continueText.enabled = false;
+
+        //continueButton.interactable = false;
+        //continueButton.GetComponent<Image>().enabled = false;
 
         museumTree.enabled = false;
         treePlaque.enabled = false;
@@ -112,20 +119,20 @@ public class Demo_RJMuseumIntro : GenericMemManager
                 }
 
                 //when pressed, carry out the rest of the intro sequence
-                if (tap.IsPressed() && !GM.newsRead)
-                {
-                    GM.newsRead = true;
+                //if (tap.IsPressed() && !GM.newsRead)
+                //{
+                //    GM.newsRead = true;
 
-                    Debug.Log("NEWS READ TAPPED");
+                //    Debug.Log("NEWS READ TAPPED");
 
-                    StartCoroutine(NewsTransition());
-                }
+                //    StartCoroutine(NewsTransition());
+                //}
 
-                if (tap.IsPressed() && museumWide.enabled == true)
-                {
-                    Debug.Log("MUSEUM TAPPED");
-                    StartCoroutine(MuseumTransition());
-                }
+                //if (tap.IsPressed() && museumWide.enabled == true)
+                //{
+                //    Debug.Log("MUSEUM TAPPED");
+                //    StartCoroutine(MuseumTransition());
+                //}
             }
 
             // Once the intro is done, start the dialogue
@@ -155,6 +162,24 @@ public class Demo_RJMuseumIntro : GenericMemManager
 
                 //    StartCoroutine(ClippingTransition());
                 //}
+        }
+    }
+
+    public void Continue()
+    {
+        if (!GM.newsRead)
+        {
+            GM.newsRead = true;
+
+            Debug.Log("NEWS READ TAPPED");
+
+            StartCoroutine(NewsTransition());
+        }
+
+        if (museumWide.enabled == true)
+        {
+            Debug.Log("MUSEUM TAPPED");
+            StartCoroutine(MuseumTransition());
         }
     }
 
@@ -208,7 +233,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         Debug.Log("Begin News Transition");
         // Fade in
         GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0f); //orig 2f
 
         //Hide newspaper, show outside of musuem
         newsPaper.enabled = false;
@@ -223,13 +248,16 @@ public class Demo_RJMuseumIntro : GenericMemManager
     // Transitions from outside the museum to the memory tree
     IEnumerator MuseumTransition()
     {
+        continueButton.interactable = false;
+        continueButton.GetComponent<Image>().enabled = false;
         Debug.Log("Start Museum Transition");
 
         //fade into white
         GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0f);
         GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
-        continueText.enabled = false;
+        //continueText.enabled = false;
+        
 
         //disable museum outside, enable museum inside, set var to true, begin black fadout to museum inside
         museumWide.enabled = false;
@@ -245,9 +273,11 @@ public class Demo_RJMuseumIntro : GenericMemManager
     {
         Debug.Log("Show Continue Text");
         textStarted = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0f);
         transition.SetBool("TextStart", true);
-        continueText.enabled = true;
+        //continueText.enabled = true;
+        continueButton.interactable = true;
+        continueButton.GetComponent<Image>().enabled = true;
     }
 
     //start scene and wait 3 seconds
@@ -255,6 +285,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
     {
         started = true;
         Debug.Log("Waiting");
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0f);
     }
 }
