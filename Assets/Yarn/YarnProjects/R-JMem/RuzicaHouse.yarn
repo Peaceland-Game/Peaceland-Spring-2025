@@ -6,11 +6,11 @@
 ---
 <<declare $lover2Name = "Ruzica">>
 <<oneChar>>
-<<changeSprite 1 0>>
+<<changeSprite 1 0>>    // Ruzica starts scared
 <<changeBG 1>>
 {$lover1Name} climbs through the window into {$lover2Name}'s room, she's scared.
 <<twoChar>>
-<<changeSprite 1 0>>
+<<changeSprite 2 0>>    // Jovan Starts calm
 <<darken 2>>
 
 <<lighten 2>>
@@ -44,7 +44,7 @@
 They turn their heads to the window after hearing voices outside.
 <<darken 2>>
 
-<<lighten 1>>
+<<lighten 1>>   // Change Ruzica's Expression: Tearing up
 {$lover2Name}:(Eyes tearing up) I am really scared. I can't live like this anymore.
 <<darken 1>>
 
@@ -59,7 +59,7 @@ They turn their heads to the window after hearing voices outside.
 {$lover2Name}: I wish we could just go away together.
 <<darken 1>>
 
-<<lighten 2>>
+<<lighten 2>>   // Change Jovan's Expression?
 {$lover1Name}: Where would we go?
 <<darken 2>>
 
@@ -73,6 +73,7 @@ They turn their heads to the window after hearing voices outside.
 
 <<lighten 1>>
 {$lover2Name} picks up her large bag and starts pushing clothes inside.
+// Change Ruzica's Expression: Determined
 {$lover2Name}: (Determined) I am sure. Help me pack things.
 <<darken 1>>
 
@@ -81,7 +82,7 @@ They pause after hearing a voice from outside her door.
 
 {$lover2Name}'s Mom: (Yelling from another room) {$lover2Name}, are you talking to somebody? Who's in the room with you?
 
-<<lighten 1>>
+<<lighten 1>>   // Change Ruzica's Expression?
     -> No one.
         {$lover2Name}:(Rushed) No one, Mom. Just talking to myself.
     -> *Stay silent*
@@ -105,11 +106,11 @@ They both pause packing for a moment after hearing {$lover2Name}'s Mom walking t
 {$lover2Name}'s mom stops opening the door and walks away. 
 {$lover2Name} and {$lover1Name} look at each other. 
 
-<<lighten 1>>
+<<lighten 1>>   // Change Ruzica's Expression: Determined
     -> We can't keep living like this.
-        {$lover2Name}: <size=75%>We can't keep living like this.</size>
+        {$lover2Name}: <size=90%>We can't keep living like this.</size>
     -> We need to leave.
-        {$lover2Name}: <size=75%>We need to leave. Now.</size>
+        {$lover2Name}: <size=90%>We need to leave. Now.</size>
 <<darken 1>>
 They leave through the window with whatever they have packed so far.
 
