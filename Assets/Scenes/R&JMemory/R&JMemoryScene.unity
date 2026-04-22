@@ -1093,8 +1093,9 @@ MonoBehaviour:
   - {fileID: -2850297495729680593, guid: 0df003d3ea6e853438beb4cb2253fc86, type: 3}
   - {fileID: -2639095407088699231, guid: e00de4d806b44834e939b618b4384d47, type: 3}
   backgroundSprite: {fileID: 2075730141}
+  objectImageList:
+  - {fileID: 65615383}
   dialogueRunner: {fileID: 1030130987}
-  cakeSprite: {fileID: 65615383}
 --- !u!1 &798517617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,7 +2007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &949325193
 MonoBehaviour:
   m_ObjectHideFlags: 0

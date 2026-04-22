@@ -23,6 +23,7 @@ He gets more and more desperate as he mutters to himself.
 <<changeSprite 1 0>>    // Damir starts with a neutral expression
 {$cousinName}, {$lover1Name}'s cousin, walks into the kitchen and sits at the table with a slice of chocolate cake.
 <<showChar 1>>
+<<showIMG 0>>   // Show Cake
 <<lighten 1>>
 {$cousinName}: Are you looking for something?
 <<darken 1>>
@@ -122,6 +123,7 @@ There's an awkward pause.
 <<darken 1>>
 {$cousinName} leaves the room.
 <<hideChar 1>>
+<<hideIMG 0>>   // Hide Cake
 
 {$lover1Name} dumps the pieces of the letter and begins to assemble it before he even sits down.
 <<hideChar 2>>

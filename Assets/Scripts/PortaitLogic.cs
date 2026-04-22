@@ -31,6 +31,8 @@ public class PortaitLogic : MonoBehaviour
         dialogueRunner.AddCommandHandler<int>("showChar", ShowChar);
         dialogueRunner.AddCommandHandler<int>("hideChar", HideChar);
         dialogueRunner.AddCommandHandler("nextOrder", NextOrder);
+        dialogueRunner.AddCommandHandler<int>("showIMG", ShowObjectImage);
+        dialogueRunner.AddCommandHandler<int>("hideIMG", HideObjectImage);
     }
 
     public void Start()
@@ -190,7 +192,10 @@ public class PortaitLogic : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// Changes the background in a scene.
+    /// </summary>
+    /// <param name="backgroundIndex">The index of the background to change to.</param>
     private void ChangeBackground(int backgroundIndex)
     {
         GM.CurrentMemoryManager.ChangeBackgroundSprite(backgroundIndex);
@@ -203,5 +208,23 @@ public class PortaitLogic : MonoBehaviour
     {
         Debug.Log("Next Order called from Yarn Spinner");
         GM.CurrentMemoryManager.NextOrder();
+    }
+
+    /// <summary>
+    /// Show an image in the scene.
+    /// </summary>
+    /// <param name="_index">The index of the image to show.</param>
+    private void ShowObjectImage(int _index)
+    {
+        GM.CurrentMemoryManager.ShowObjectImage(_index);
+    }
+
+    /// <summary>
+    /// Hide an image in the scene.
+    /// </summary>
+    /// <param name="_index">The index of the image to hide.</param>
+    private void HideObjectImage(int _index)
+    {
+        GM.CurrentMemoryManager.HideObjectImage(_index);
     }
 }
