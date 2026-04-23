@@ -6,15 +6,17 @@ title: AfterPuzzle
 // NOTE: Sasha is set as character one so his sprite lines up with the chair
 ---
 <<twoChar>>
+<<changeSprite 2 5>>    // Jovan starts the scene serious
 <<hideChar 1>>
 {$cousinName} comes back into the room, puts his plate into the sink and sees {$lover1Name} sitting at the kitchen table.
 <<showChar 1>>
-<<changeSprite 1 0>>
+<<changeSprite 1 0>>    // Damir starts the scene neutral
 <<lighten 1>>
 {$cousinName}: You know, I know stupid when I see it.
 <<darken 1>>
 
-<<lighten 2>>   // Change Jovan's Expresion: Desperate?
+<<changeSprite 2 4>>// Change Jovan's Expresion: Desperate
+<<lighten 2>>   
 {$lover1Name} jumps in his seat, attempting to re-scramble the letter. 
     -> I'm just trying to figure something out.
         {$lover1Name}: I'm just trying to figure something out, {$cousinName}. I told you, it's nothing.
@@ -24,17 +26,20 @@ title: AfterPuzzle
         {$lover1Name}: Nothing for you to worry about.
 <<darken 2>>
 
-<<lighten 1>>   // Change Damir's Expression: Suspicious
+// Change Damir's Expression: Suspicious
+<<lighten 1>>   
 {$cousinName}: Nothing? You in the park with a girl is nothing?
 <<darken 1>>
 
-<<lighten 2>> // Change Jovan's Expression?
+<<changeSprite 2 3>>// Change Jovan's Expression: Afraid
+<<lighten 2>> 
 {$lover1Name} freezes. He looks up, meeting {$cousinName}'s eyes.
 <<darken 2>>
 
 They stare at each other in silence.
 
-<<lighten 2>>   // Change Jovan's Expression for sure
+<<changeSprite 2 5>> // Change Jovan's Expression: Serious
+<<lighten 2>>  
 {$lover1Name} sighs as he realizes there is no point in keeping this secret from {$cousinName}.
 {$lover1Name}: Fine. This… girl. She's good, I swear, but she wants me to come meet her. 
 {$lover1Name} pauses again, attempting to parse out how much to tell {$cousinName}.
@@ -42,7 +47,8 @@ They stare at each other in silence.
 {$lover1Name}: She said the side of the house would be covered in windows. 
 <<darken 2>>
 
-<<lighten 1>>   // Change Damir's Expression: Afraid
+// Change Damir's Expression: Afraid
+<<lighten 1>>   
 {$cousinName}'s posture stiffens. His face pales, his expression shifting something akin to fear.
 <<darken 1>>
 
@@ -54,26 +60,29 @@ They stare at each other in silence.
 {$cousinName}: It's on the Eskani side of the city.
 <<darken 1>>
 
-<<lighten 2>>   // Change Jovan's Expression?
+<<lighten 2>>   // Change Jovan's Expression? - Maybe in next draft
     -> How do you know that?
         {$lover1Name}: How do you know that? You never go over there. No one goes over there.
     -> Are you hiding something?
         {$lover1Name}: And how do you know that? Are you hiding something, {$cousinName}?
 <<darken 2>>
 
-<<lighten 1>>
+// Change Damir's Expression: Determined
+<<lighten 1>>   
 {$cousinName} avoids his gaze, staring at a fixed point past his shoulder.
 {$cousinName}: This part of town, I was there a long time ago.
 <<darken 1>>
 
-<<lighten 2>> // Change Jovan's Expression: Desperate
+<<changeSprite 2 4>>// Change Jovan's Expression: Desperate
+<<lighten 2>> 
 {$lover1Name} stands and grabs {$cousinName}'s arm, a desperate look on his face.
 {$lover1Name}: Then you have to show me. 
 {$lover1Name}: I can't find it on this map, and I can't wander around over there looking lost. 
 {$lover1Name}: Please, {$cousinName}.
 <<darken 2>>
 
-<<lighten 1>>   // Change Damir's Expression: Determined
+// Change Damir's Expression: Determined
+<<lighten 1>>   
 {$cousinName}'s jaw tightens. He looks at the door, then back at {$lover1Name}'s face. 
 With a sharp exhale, he moves past {$lover1Name} to the door. 
 {$cousinName}: Fine, but let me be clear, {$lover1Name}.

@@ -10,6 +10,7 @@
     // so keeping Jovan on the right added the most visual consistency.
 ---
 <<declare $CousinName = "Damir">>
+// Both characters start neutral
 <<changeSprite 1 0>>
 <<changeSprite 2 0>>
 <<twoChar>>
@@ -34,11 +35,11 @@
 
 title: Damir
 ---
-<<lighten 2>>   // Change Jovan's Expression: Grieving? Frown?
+<<lighten 2>>   // Change Jovan's Expression: Frown
 {$lover1Name} opens and closes his mouth as if to speak.
 <<darken 2>>
 
-<<lighten 1>>   // Change Ruzica's Expression: Soft?
+<<lighten 1>>   // Change Ruzica's Expression: Soft
 {$lover2Name}:  We can never repay {$CousinName} for what he did for us.
 <<darken 1>>
 
@@ -58,7 +59,7 @@ title: Damir
 {$lover2Name} glares at you.
 <<darken 1>>
 
-<<lighten 2>>   // Change Jovan's Expression: Grieving?
+<<lighten 2>>   // Change Jovan's Expression: Grieving
 {$lover1Name} closes his eyes.
 {$lover1Name}: {$CousinName} is why we're here. He deserved to be remembered.
 <<darken 2>>
@@ -86,9 +87,8 @@ He turns back to you.
 <<darken 2>>
 
 <<lighten 1>>
-{$lover2Name} grins.    // Already smiling from before?
 {$lover2Name}: You're being dramatic.
-She turns serious.
+She turns serious.  // Change Ruzica's Expression Neutral
 <<darken 1>>
 <<jump Leave>>
 ===
@@ -99,17 +99,18 @@ title: Away
 {$lover2Name}: We kept running until we got to another city. We ran here.
 <<darken 1>>
 
-<<lighten 2>>
+<<lighten 2>>   // Jovan smile
 {$lover1Name}: There was a very kind woman who let us stay in her spare room for a few days. 
 {$lover1Name}: Then we wrote letters to our families to let them know we were okay. 
+// Jovan Frown
 {$lover1Name}: That's how {$CousinName}-
 <<darken 2>>
 
-<<lighten 1>>   // Change Ruzica's Expression: Soft?
+<<lighten 1>>   // Change Ruzica's Expression: Soft
 {$lover2Name}: {$lover1Name}...
 <<darken 1>>
 
-<<lighten 2>>   // Change Jovan's Expression: Grieving?
+<<lighten 2>>   // Change Jovan's Expression: Grieving
 {$lover1Name}: He's why we're here! 
 {$lover1Name}: He took such a big risk helping us and they burned down his house.
 {$lover1Name}: He died, he died for us!
@@ -137,17 +138,16 @@ title: Away
 {$lover1Name}: He loved chocolate cake. I think he would've had it for every meal if he could.
 <<darken 2>>
 
-<<lighten 1>>   // Change Ruzica's Expression: Smile?
+<<lighten 1>>   // Change Ruzica's Expression: Smile
 {$lover2Name}: {$CousinName} had good taste.
 <<darken 1>>
 
 <<lighten 2>>
 {$lover1Name} focuses on {$lover2Name}.
-{$lover1Name}: And you never told me you liked chocolate until <i>after</i> we left the bakery.
+{$lover1Name}: And you never told me you liked chocolate cake until <i>after</i> we left the bakery.
 <<darken 2>>
 
 <<lighten 1>>
-{$lover2Name} smiles.   // Already smiling from before?
 {$lover2Name}: Can't I have my secrets?
 <<darken 1>>
 
@@ -155,7 +155,7 @@ title: Away
 {$lover1Name}: Not about cake.
 <<darken 2>>
 
-<<lighten 1>>
+<<lighten 1>>   // Ruzica neutral
 {$lover2Name}: Speaking of which...
 <<darken 1>>
 
@@ -179,7 +179,7 @@ title: Away
 
 title: Leave
 ---
-// Set both expressions to neutral?
+// Set both expressions to neutral
 <<lighten 1>>
 {$lover2Name}: We have to get going, the cake is going to melt.
 <<darken 1>>
@@ -197,7 +197,7 @@ title: Leave
 
 {$protagName}: I'm sure it will.
 
-<<lighten 2>>   // Change Jovan's Expression: Smile?
+<<lighten 2>>   // Change Jovan's Expression: Smile
 {$lover1Name}: Thank you, again. Have a good day, {$protagName}.
 <<darken 2>>
 

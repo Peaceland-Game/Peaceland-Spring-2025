@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: JovanHouse
   m_EditorClassIdentifier: 
   mainCharSprites:
-  - {fileID: -8795686289945771090, guid: fea748e70cddd8d469c380de3e4e8538, type: 3}
+  - {fileID: 9064789059978714295, guid: c91002051742d254e938d9e11d82caca, type: 3}
   secondCharSprites:
   - {fileID: 8515190908981397332, guid: d6ee4dff6537ae24c87a2cecd829f411, type: 3}
+  - {fileID: -8157979096919744228, guid: 6cfd2f84f362d5644aa7de84bb00a732, type: 3}
   - {fileID: -8442931796747003406, guid: 957c2ce00aed6f34d8e770275c65e222, type: 3}
+  - {fileID: 3207563731759239878, guid: 011ca3fcc8615a14993884ff3b9460a6, type: 3}
+  - {fileID: 3207563731759239878, guid: 011ca3fcc8615a14993884ff3b9460a6, type: 3}
+  - {fileID: -236626072722740863, guid: f6f8453d5a84ec9419615362d785f9b4, type: 3}
   dialogueStartNode: Start
   dialogueEndNode: RuzicaHouse
   nameForScene: JovanHouse
