@@ -1,0 +1,25 @@
+title: Variables
+// This file holds the variable declarations and expression lists of all characters in the R&J memory.
+// The goal was to create one convinient document to reference.
+---
+<<declare $lover1Name = "Jovan">>
+// Expression List:
+// 0 - Neutral/Calm
+// 1 - Smile/Happy
+// 2 - Frown/Sad
+// 3 - Afraid
+// 4 - Desperate
+// 5 - Serious
+
+<<declare $cousinName = "Damir">>   // Not all expressions are finished as of 4/23/2026
+// Expression List:
+// 0 - Neutral
+
+<<declare $lover2Name = "Ruzica">>
+// Expression List: 
+// 0 - Neutral
+// 1 - Frown/Sad
+// 2 - Determined
+// 3 - Afraid/Scared
+// 4 - Tearing Up
+===

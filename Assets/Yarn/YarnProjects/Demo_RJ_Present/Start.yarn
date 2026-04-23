@@ -9,9 +9,9 @@
     // Jovan's cousin had to be on the left in the past to sit in the chair,
     // so keeping Jovan on the right added the most visual consistency.
 ---
-<<declare $protagName = "Marc">>
-<<declare $lover1Name = "Jovan">>
-<<declare $lover2Name = "Ruzica">>
+// <<declare $protagName = "Marc">>
+// <<declare $lover1Name = "Jovan">>
+// <<declare $lover2Name = "Ruzica">>
 
 <<zeroChar>>
 Over the PA System: Good morning, the museum is now open. 

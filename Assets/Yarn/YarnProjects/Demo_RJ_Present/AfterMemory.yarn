@@ -9,7 +9,7 @@
     // Jovan's cousin had to be on the left in the past to sit in the chair,
     // so keeping Jovan on the right added the most visual consistency.
 ---
-<<declare $CousinName = "Damir">>
+// <<declare $CousinName = "Damir">>
 // Both characters start neutral
 <<changeSprite 1 0>>
 <<changeSprite 2 0>>

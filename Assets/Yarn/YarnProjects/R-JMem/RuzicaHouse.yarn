@@ -4,7 +4,7 @@
 // Ruzica and Jovan are the characters in these scene
 // Ruzica is character 1, Jovan is character 2
 ---
-<<declare $lover2Name = "Ruzica">>
+//<<declare $lover2Name = "Ruzica">>
 <<oneChar>>
 <<changeSprite 1 3>>    // Ruzica starts scared
 <<changeBG 1>>

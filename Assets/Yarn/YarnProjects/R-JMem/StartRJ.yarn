@@ -5,8 +5,8 @@
 // Damir is character 1, Jovan is character 2
 // NOTE: Damir is set as character one so his sprite lines up with the chair
 ---
-<<declare $lover1Name = "Jovan">>
-<<declare $cousinName = "Damir">>
+// <<declare $lover1Name = "Jovan">>
+// <<declare $cousinName = "Damir">>
 <<changeBG 0>>
 <<twoChar>>
 <<hideChar 1>>

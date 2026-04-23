@@ -1,0 +1,20 @@
+title: Variables
+// This file serves to declare variables for the present section of the demo.
+---
+// First-person protag, no expressions
+<<declare $protagName = "Marc">> 
+
+<<declare $lover1Name = "Jovan">>   // Only default expression at this time
+// Expressions list:
+// 0 - Neutral
+
+<<declare $lover2Name = "Ruzica">>
+// Expressions list:
+// 0 - Neutral
+// 1 - Smile/Happy
+// 2 - Angry
+// 3 - Soft smile
+
+// Character only mentioned, no expressions
+<<declare $CousinName = "Damir">>   
+===
