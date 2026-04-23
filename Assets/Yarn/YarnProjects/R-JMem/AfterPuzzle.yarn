@@ -75,7 +75,7 @@ They stare at each other in silence.
 
 <<changeSprite 2 4>>// Change Jovan's Expression: Desperate
 <<lighten 2>> 
-{$lover1Name} stands and grabs {$cousinName}'s arm, a desperate look on his face.
+{$lover1Name} stands and grabs {$cousinName}'s arm.
 {$lover1Name}: Then you have to show me. 
 {$lover1Name}: I can't find it on this map, and I can't wander around over there looking lost. 
 {$lover1Name}: Please, {$cousinName}.

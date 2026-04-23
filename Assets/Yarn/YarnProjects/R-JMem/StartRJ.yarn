@@ -56,7 +56,7 @@ He gets more and more desperate as he mutters to himself.
 
 <<changeSprite 2 4>> // Change Jovan's Expression: Desperate
 <<lighten 2>> 
-{$lover1Name} feels his eyes go wide.
+// {$lover1Name} feels his eyes go wide.
 {$lover1Name}: Why would you think-
 <<darken 2>>
 
@@ -96,7 +96,7 @@ He gets more and more desperate as he mutters to himself.
 
 <<changeSprite 2 3>> // Change Jovan's expression: Afraid
 <<lighten 2>>   
-{$lover1Name} felt his expression drop into fear.
+// {$lover1Name} felt his expression drop into fear.
     -> Just drop it, please.
         {$lover1Name}: Just drop it, please.
     -> I know what I'm doing.
@@ -112,7 +112,7 @@ Picking up the fork and shaking his head, {$cousinName} gives up.
 
 <<changeSprite 2 1>> // Change Jovan's Expression: Smile
 <<lighten 2>>   
-A smile blooms on {$lover1Name}'s face.
+// A smile blooms on {$lover1Name}'s face.
 {$lover1Name}: Of course!
 <<darken 2>>
 

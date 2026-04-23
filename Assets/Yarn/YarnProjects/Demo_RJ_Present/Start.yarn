@@ -25,7 +25,7 @@ Over the PA System: Explore the past, embrace the present.
 Unknown Voice: Hi, are you Marc?
 
 <<twoChar>>
-<<changeSprite 1 0>>
+<<changeSprite 1 0>>    // Both characters start neutral
 <<changeSprite 2 0>>
 <<darken 2>>
 <<darken 1>>
@@ -57,17 +57,22 @@ The Man: The tree looks a little bare, but the rest of the exhibit looks great!
     {$lover2Name}: Hello, I'm {$lover2Name}, and this is my husband, {$lover1Name}.
     <<darken 1>>
 -> {$protagName}: I guess you're here for the interview?
-    <<lighten 1>>   // Change Ruzica's expression to frown
+    <<changeSprite 1 2>> // Change Ruzica's expression to frown
+    <<lighten 1>>   
     {$lover2Name}: (Frowning) Yes, I'm {$lover2Name}, and this is my husband, {$lover1Name}.
     <<darken 1>>
 
 {$protagName}: It's nice to meet you both. 
-// change Jovan's expression back to neutral?
-// Change Ruzica's expression back to neutral?
+// Change both expression back to neutral
+<<changeSprite 1 0>>
+<<changeSprite 2 0>>
 {$protagName}: Can I collect your story for the Memory Tree?
 
+// Expression change: both to smile
+<<changeSprite 1 1>>
+// <<changeSprite 2 1>> // No Jovan expression assets at this time
 <<lighten 2>>
-<<lighten 1>>   // Expression change: both to smile
+<<lighten 1>>   
 {$lover2Name} and {$lover1Name} give each other a look, and turn to Marc with small smiles on their faces.
 <<darken 1>>
 {$lover1Name} grabs {$lover2Name}'s hand.

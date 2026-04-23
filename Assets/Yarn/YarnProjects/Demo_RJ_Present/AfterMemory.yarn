@@ -39,7 +39,8 @@ title: Damir
 {$lover1Name} opens and closes his mouth as if to speak.
 <<darken 2>>
 
-<<lighten 1>>   // Change Ruzica's Expression: Soft
+<<changeSprite 1 3>> // Change Ruzica's Expression: Soft
+<<lighten 1>>   
 {$lover2Name}:  We can never repay {$CousinName} for what he did for us.
 <<darken 1>>
 
@@ -55,8 +56,8 @@ title: Damir
 {$lover1Name}: They burned his house and he died.
 <<darken 2>>
 
-<<lighten 1>>   // Change Ruzica's Expression: Angry
-{$lover2Name} glares at you.
+<<lighten 1>>   
+<<changeSprite 1 2>> // Change Ruzica's Expression: Angry
 <<darken 1>>
 
 <<lighten 2>>   // Change Jovan's Expression: Grieving
@@ -64,18 +65,18 @@ title: Damir
 {$lover1Name}: {$CousinName} is why we're here. He deserved to be remembered.
 <<darken 2>>
 
-<<lighten 1>>   // Change Ruzica's Expression: Soft
-{$lover2Name}'s expression softens.
+<<lighten 1>>  
+<<changeSprite 1 3>> // Change Ruzica's Expression: Soft
 {$lover2Name}: We stopped by a bakery to buy his favorite cake.
 <<darken 1>>
 
 <<lighten 2>>   // Change Jovan's Expression: Smile
-{$lover1Name} smiles.
+{$lover1Name} smiles. 
 {$lover1Name}: He loved chocolate cake. It drove our family crazy. He never shared either.
 <<darken 2>>
 
-<<lighten 1>>   // Change Ruzica's Expression: Smile
-{$lover2Name} smiles too.
+<<lighten 1>>   
+<<changeSprite 1 1>> // Change Ruzica's Expression: Smile
 {$lover2Name}: {$CousinName} had a good taste in dessert.
 <<darken 1>>
 
@@ -88,7 +89,7 @@ He turns back to you.
 
 <<lighten 1>>
 {$lover2Name}: You're being dramatic.
-She turns serious.  // Change Ruzica's Expression Neutral
+<<changeSprite 1 0>>  // Change Ruzica's Expression Neutral
 <<darken 1>>
 <<jump Leave>>
 ===
@@ -106,7 +107,8 @@ title: Away
 {$lover1Name}: That's how {$CousinName}-
 <<darken 2>>
 
-<<lighten 1>>   // Change Ruzica's Expression: Soft
+<<changeSprite 1 3>> // Change Ruzica's Expression: Soft
+<<lighten 1>>   
 {$lover2Name}: {$lover1Name}...
 <<darken 1>>
 
@@ -138,7 +140,8 @@ title: Away
 {$lover1Name}: He loved chocolate cake. I think he would've had it for every meal if he could.
 <<darken 2>>
 
-<<lighten 1>>   // Change Ruzica's Expression: Smile
+<<changeSprite 1 1>> // Change Ruzica's Expression: Smile
+<<lighten 1>>   
 {$lover2Name}: {$CousinName} had good taste.
 <<darken 1>>
 
@@ -155,31 +158,19 @@ title: Away
 {$lover1Name}: Not about cake.
 <<darken 2>>
 
-<<lighten 1>>   // Ruzica neutral
+<<changeSprite 1 0>> // Ruzica neutral
+<<lighten 1>>   
 {$lover2Name}: Speaking of which...
 <<darken 1>>
 
 <<jump Leave>>
 ===
 
-// NOTE: This node was removed in the last draft.
-// title: Silence
-// ---
-// <<lighten 2>>
-// {$lover1Name}: Well, we don't have much else to say.
-// {$lover1Name}: Just please make sure you include {$CousinName}. 
-// {$lover1Name}: He was important.
-// <<darken 2>>
-// <<lighten 1>>
-// {$lover2Name}: We actually stopped by the bakery to get something for him.
-// <<darken 1>>
-
-// <<jump Leave>>
-// ===
-
 title: Leave
 ---
 // Set both expressions to neutral
+<<changeSprite 1 0>>
+<<changeSprite 2 0>>
 <<lighten 1>>
 {$lover2Name}: We have to get going, the cake is going to melt.
 <<darken 1>>
@@ -188,8 +179,10 @@ title: Leave
 {$lover1Name}: I completely forgot!
 <<darken 2>>
 
-<<lighten 1>>   // Change Ruzica's expression: Smile
-{$lover2Name} smiles at {$lover1Name}.
+// Change Ruzica's expression: Smile
+<<changeSprite 2 1>>
+<<lighten 1>>  
+// {$lover2Name} smiles at {$lover1Name}.
 {$lover2Name}: Of course you did.
 {$lover2Name} turns back to you.
 {$lover2Name}: Thank you for interviewing us. I hope our memory will look good on the tree.
