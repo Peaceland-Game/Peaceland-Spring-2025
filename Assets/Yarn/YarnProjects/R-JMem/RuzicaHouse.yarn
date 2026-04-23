@@ -44,7 +44,7 @@ They turn their heads to the window after hearing voices outside.
 
 <<changeSprite 1 4>>// Change Ruzica's Expression: Tearing up
 <<lighten 1>>   
-{$lover2Name}:(Eyes tearing up) I am really scared. I can't live like this anymore.
+{$lover2Name}: I am really scared. I can't live like this anymore.
 <<darken 1>>
 
 <<lighten 2>> 
@@ -76,7 +76,7 @@ They turn their heads to the window after hearing voices outside.
 <<lighten 1>>
 {$lover2Name} picks up her large bag and starts pushing clothes inside.
 <<changeSprite 1 2>>// Change Ruzica's Expression: Determined
-{$lover2Name}: (Determined) I am sure. Help me pack things.
+{$lover2Name}: I am sure. Help me pack things.
 <<darken 1>>
 
 They both start packing her essentials into the bag. 
@@ -89,7 +89,7 @@ They pause after hearing a voice from outside her door.
 <<changeSprite 2 3>>
 <<lighten 1>>
     -> No one.
-        {$lover2Name}:(Rushed) No one, Mom. Just talking to myself.
+        {$lover2Name}: No one, Mom. Just talking to myself.
     -> *Stay silent*
         {$lover2Name}: ...
 <<darken 1>>
