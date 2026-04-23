@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 824602c76f68337429053d9a54b7e650
+guid: cbc33dbb149456846b881de3a5110b8c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2283629762067223073
-    second: Peaceland Text_0
+      213: 7469852757474563754
+    second: Shadowed demo text_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Peaceland Text_0
+      name: Shadowed demo text_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1319
-        height: 384
+        x: 693
+        y: 385
+        width: 505
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 122d68e5b2511bf10800000000000000
-      internalID: 2283629762067223073
+      spriteID: aa65eb5818f3aa760800000000000000
+      internalID: 7469852757474563754
       vertices: []
       indices: 
       edges: []
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Peaceland Text_0: 2283629762067223073
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

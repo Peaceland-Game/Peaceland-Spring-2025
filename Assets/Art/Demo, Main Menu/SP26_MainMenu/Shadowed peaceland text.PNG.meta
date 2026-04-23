@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: cb3494f0066aa8847b2f07a62dd2f0bb
+guid: afa685ca64eab384988ca945da5eb2db
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5136547550054584597
-    second: Demo w shadow_0
+      213: -2299809310140616167
+    second: Shadowed peaceland text_0
+  - first:
+      213: -8282087985920117128
+    second: Shadowed peaceland text_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Demo w shadow_0
+      name: Shadowed peaceland text_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 531
-        height: 189
+        x: 136
+        y: 462
+        width: 1670
+        height: 445
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: beee713c73157b8b0800000000000000
-      internalID: -5136547550054584597
+      spriteID: 912bee90e9f6510e0800000000000000
+      internalID: -2299809310140616167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shadowed peaceland text_1
+      rect:
+        serializedVersion: 2
+        x: 1464
+        y: 367
+        width: 51
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87673b07bdc101d80800000000000000
+      internalID: -8282087985920117128
       vertices: []
       indices: 
       edges: []
@@ -134,8 +159,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Demo w shadow_0: -5136547550054584597
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
