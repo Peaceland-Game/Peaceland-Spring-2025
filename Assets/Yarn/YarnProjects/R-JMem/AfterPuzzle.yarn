@@ -26,7 +26,7 @@ title: AfterPuzzle
         {$lover1Name}: Nothing for you to worry about.
 <<darken 2>>
 
-// Change Damir's Expression: Suspicious
+<<changeSprite 1 1>>// Change Damir's Expression: Suspicious
 <<lighten 1>>   
 {$cousinName}: Nothing? You in the park with a girl is nothing?
 <<darken 1>>
@@ -47,7 +47,7 @@ They stare at each other in silence.
 {$lover1Name}: She said the side of the house would be covered in windows. 
 <<darken 2>>
 
-// Change Damir's Expression: Afraid
+<<changeSprite 1 3>>// Change Damir's Expression: Afraid
 <<lighten 1>>   
 {$cousinName}'s posture stiffens. His face pales, his expression shifting something akin to fear.
 <<darken 1>>
@@ -67,7 +67,7 @@ They stare at each other in silence.
         {$lover1Name}: And how do you know that? Are you hiding something, {$cousinName}?
 <<darken 2>>
 
-// Change Damir's Expression: Determined
+<<changeSprite 1 0>>// Change Damir's Expression: Neutral
 <<lighten 1>>   
 {$cousinName} avoids his gaze, staring at a fixed point past his shoulder.
 {$cousinName}: This part of town, I was there a long time ago.
@@ -81,7 +81,7 @@ They stare at each other in silence.
 {$lover1Name}: Please, {$cousinName}.
 <<darken 2>>
 
-// Change Damir's Expression: Determined
+<<changeSprite 1 2>>// Change Damir's Expression: Determined
 <<lighten 1>>   
 {$cousinName}'s jaw tightens. He looks at the door, then back at {$lover1Name}'s face. 
 With a sharp exhale, he moves past {$lover1Name} to the door. 
