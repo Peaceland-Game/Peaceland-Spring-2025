@@ -1318,6 +1318,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c63819933b0dedd4c93e37fb47b97edc, type: 2}
   backgroundList: []
   backgroundSprite: {fileID: 0}
+  objectImageList: []
   dialogueRunner: {fileID: 1791870416}
   afterMemStart: 1
   MainCharPortrait: {fileID: 752152684}

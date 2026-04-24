@@ -69,8 +69,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
 
         //continueText.enabled = false;
 
-        //continueButton.interactable = false;
-        //continueButton.GetComponent<Image>().enabled = false;
+        continueButton.interactable = false;
+        continueButton.GetComponent<Image>().enabled = false;
 
         museumTree.enabled = false;
         treePlaque.enabled = false;
