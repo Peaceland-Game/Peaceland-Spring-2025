@@ -35,7 +35,7 @@ He gets more and more desperate as he mutters to himself.
 {$lover1Name}: Not really. Just a pen.
 <<darken 2>>
 
-// Change Damir's Expression: Suspicious
+<<changeSprite 1 1>>// Change Damir's Expression: Suspicious
 <<lighten 1>>   
 {$cousinName}: Not really? Or just a pen?
 <<darken 1>>
@@ -78,7 +78,7 @@ He gets more and more desperate as he mutters to himself.
 {$lover1Name}: Uh, what do you mean?
 <<darken 2>>
 
-// Change Damir's Expression: Determined
+<<changeSprite 1 2>>// Change Damir's Expression: Determined
 <<lighten 1>>   
 {$cousinName} puts down his fork.
 {$cousinName}: A letter with no return address thats clearly filled with shredded paper was left in a park for you to find. 
