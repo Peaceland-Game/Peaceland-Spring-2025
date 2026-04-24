@@ -24,6 +24,10 @@ public abstract class GenericMemManager : MonoBehaviour
     [SerializeField]
     protected UnityEngine.UI.Image backgroundSprite;
 
+    // List of sprite objects to show/hide in the scene
+    [SerializeField]
+    protected GameObject[] objectImageList;
+
     // Dialogue Runner
     [SerializeField]
     protected DialogueRunner dialogueRunner;
@@ -136,5 +140,35 @@ public abstract class GenericMemManager : MonoBehaviour
 
         //backgroundSprite.GetComponent<SpriteRenderer>().sprite = backgroundList[newBgIndex];
         backgroundSprite.GetComponent<Image>().sprite = backgroundList[newBgIndex];
+    }
+
+    /// <summary>
+    /// Shows an image by a given index
+    /// </summary>
+    /// <param name="_index">An integer containing the index of the object to show.</param>
+    public virtual void ShowObjectImage(int _index)
+    {
+        if (_index >= objectImageList.Length || _index < 0)
+        {
+            Debug.Log("Index out of bounds, no image object at position " + _index);
+            return;
+        }
+
+        objectImageList[_index].SetActive(true);
+    }
+
+    /// <summary>
+    /// Hides an image by a given index
+    /// </summary>
+    /// <param name="_index">An integer containing the index of the object to hide.</param>
+    public virtual void HideObjectImage(int _index)
+    {
+        if (_index >= objectImageList.Length || _index < 0)
+        {
+            Debug.Log("Index out of bounds, no image object at position " + _index);
+            return;
+        }
+
+        objectImageList[_index].SetActive(false);
     }
 }

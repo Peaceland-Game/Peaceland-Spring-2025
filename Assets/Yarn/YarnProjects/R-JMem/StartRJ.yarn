@@ -11,7 +11,8 @@
 <<twoChar>>
 <<hideChar 1>>
 
-<<lighten 2>>
+<<changeSprite 2 4>> // Change Jovan's Expression: Desperate
+<<lighten 2>>   
 {$lover1Name} is running around his dining room frantically. 
 He's looking in drawers and behind furniture. 
 He gets more and more desperate as he mutters to himself.
@@ -20,23 +21,26 @@ He gets more and more desperate as he mutters to himself.
 {$lover1Name}: It's fine, no one else has-
 <<darken 2>>
 
-<<changeSprite 1 0>>
+<<changeSprite 1 0>>    // Damir starts with a neutral expression
 {$cousinName}, {$lover1Name}'s cousin, walks into the kitchen and sits at the table with a slice of chocolate cake.
 <<showChar 1>>
+<<showIMG 0>>   // Show Cake
 <<lighten 1>>
 {$cousinName}: Are you looking for something?
 <<darken 1>>
 
+<<changeSprite 2 0>> // Change Jovan's expression: Neutral
 <<lighten 2>>
 {$lover1Name} freezes before forcing himself to appear calm.
 {$lover1Name}: Not really. Just a pen.
 <<darken 2>>
 
-<<lighten 1>>
+// Change Damir's Expression: Suspicious
+<<lighten 1>>   
 {$cousinName}: Not really? Or just a pen?
 <<darken 1>>
 
-<<lighten 2>>
+<<lighten 2>>   
 {$lover1Name}'s heart beats faster.
     -> Just a pen!
         {$lover1Name}: Just a pen!
@@ -50,8 +54,9 @@ He gets more and more desperate as he mutters to himself.
 {$cousinName}: (Sighs) Or was it a letter?
 <<darken 1>>
 
-<<lighten 2>>
-{$lover1Name} feels his eyes go wide.
+<<changeSprite 2 4>> // Change Jovan's Expression: Desperate
+<<lighten 2>> 
+// {$lover1Name} feels his eyes go wide.
 {$lover1Name}: Why would you think-
 <<darken 2>>
 
@@ -60,7 +65,8 @@ He gets more and more desperate as he mutters to himself.
 {$cousinName}: I found this by your favorite bench in the old park.
 <<darken 1>>
 
-<<lighten 2>>
+<<changeSprite 2 3>>// Change Jovan's Expression: Afraid
+<<lighten 2>> 
 {$lover1Name} rushes forward and grabs the letter. Then he steps back, but stops when {$cousinName} speaks.
 <<darken 2>>
 
@@ -72,13 +78,15 @@ He gets more and more desperate as he mutters to himself.
 {$lover1Name}: Uh, what do you mean?
 <<darken 2>>
 
-<<lighten 1>>
+// Change Damir's Expression: Determined
+<<lighten 1>>   
 {$cousinName} puts down his fork.
 {$cousinName}: A letter with no return address thats clearly filled with shredded paper was left in a park for you to find. 
 {$cousinName}: On top of that, you won't tell me what's in the letter.
 <<darken 1>>
 
-<<lighten 2>>
+<<changeSprite 2 4>> // Change Jovan's Expression: Desperate
+<<lighten 2>>   
 {$lover1Name}: I mean, we all have our secrets, right?
 <<darken 2>>
 
@@ -86,8 +94,9 @@ He gets more and more desperate as he mutters to himself.
 {$cousinName}: Secrets are dangerous right now.
 <<darken 1>>
 
-<<lighten 2>>
-{$lover1Name} felt his expression drop into fear.
+<<changeSprite 2 3>> // Change Jovan's expression: Afraid
+<<lighten 2>>   
+// {$lover1Name} feels his expression drop into fear.
     -> Just drop it, please.
         {$lover1Name}: Just drop it, please.
     -> I know what I'm doing.
@@ -101,18 +110,21 @@ Picking up the fork and shaking his head, {$cousinName} gives up.
 {$cousinName}: Fine. But you'll tell me if it's something I should worry about.
 <<darken 1>>
 
-<<lighten 2>>
-A smile blooms on {$lover1Name}'s face.
+<<changeSprite 2 1>> // Change Jovan's Expression: Smile
+<<lighten 2>>   
+// A smile blooms on {$lover1Name}'s face.
 {$lover1Name}: Of course!
 <<darken 2>>
 
 There's an awkward pause. 
 
-<<lighten 1>>
+<<changeSprite 1 0>>// Change Damir's Expression: Neutral
+<<lighten 1>>   
 {$cousinName}: Well? Are you going to open it?
 <<darken 1>>
 
-<<lighten 2>>
+<<changeSprite 2 5>>// Change Jovan's Expression: Serious
+<<lighten 2>>   
 {$lover1Name}: I will. I just, uh, need some privacy.
 <<darken 2>>
 
@@ -121,6 +133,7 @@ There's an awkward pause.
 <<darken 1>>
 {$cousinName} leaves the room.
 <<hideChar 1>>
+<<hideIMG 0>>   // Hide Cake
 
 {$lover1Name} dumps the pieces of the letter and begins to assemble it before he even sits down.
 <<hideChar 2>>

@@ -46,9 +46,10 @@ The Man: The tree looks a little bare, but the rest of the exhibit looks great!
     The Man: Well, if it looks this great now, I'm sure that it can only get better!
     <<darken 2>>
 -> {$protagName}: I don't think it's going to look much better.
-    <<lighten 2>>
+    <<lighten 2>>    // change Jovan's expression to frown
     The Man: (Frowning) I see. Well, difference of opinion, I suppose.
-    <<darken 2>>
+    <<darken 2>>    
+
 // This line was added because otherwise Jovan's response hovered in the text box
 {$protagName}: (<i>I should formally start the interview.</i>)
 -> {$protagName}: I'm Marc. What are your names?
@@ -56,21 +57,23 @@ The Man: The tree looks a little bare, but the rest of the exhibit looks great!
     {$lover2Name}: Hello, I'm {$lover2Name}, and this is my husband, {$lover1Name}.
     <<darken 1>>
 -> {$protagName}: I guess you're here for the interview?
-    <<lighten 1>>
+    <<lighten 1>>   // Change Ruzica's expression to frown
     {$lover2Name}: (Frowning) Yes, I'm {$lover2Name}, and this is my husband, {$lover1Name}.
     <<darken 1>>
 
 {$protagName}: It's nice to meet you both. 
+// change Jovan's expression back to neutral?
+// Change Ruzica's expression back to neutral?
 {$protagName}: Can I collect your story for the Memory Tree?
 
 <<lighten 2>>
-<<lighten 1>>
+<<lighten 1>>   // Expression change: both to smile
 {$lover2Name} and {$lover1Name} give each other a look, and turn to Marc with small smiles on their faces.
 <<darken 1>>
 {$lover1Name} grabs {$lover2Name}'s hand.
 <<darken 2>>
 
-<<lighten 1>>
+<<lighten 1>>  
 {$lover2Name}: As ready as we'll ever be...
 <<darken 1>>
 

@@ -1508,7 +1508,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2388738456042281788, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
       propertyPath: transitionTime
-      value: 2.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2813458220616316244, guid: d31527e1c6058914e8eff32f37af8390, type: 3}
       propertyPath: transition
