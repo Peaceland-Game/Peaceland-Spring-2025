@@ -4486,23 +4486,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600366535429458009, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 4.3267
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2600366535429458009, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1.0903
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 2600366535429458009, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_LocalScale.x
-      value: 44.978165
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2600366535429458009, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_LocalScale.y
-      value: 44.978165
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2600366535429458009, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_LocalScale.z
-      value: 44.978165
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2600366535429458009, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4552,6 +4552,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2600366535429458009, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2676651003326688303, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -4562,7 +4566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5362283665661371713, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
