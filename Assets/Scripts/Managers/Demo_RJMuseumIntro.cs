@@ -39,17 +39,17 @@ public class Demo_RJMuseumIntro : GenericMemManager
 
     // Images for the scene
     public UnityEngine.UI.Image newsPaper;
-    public UnityEngine.UI.Image whiteFade;
+//    public UnityEngine.UI.Image whiteFade;
     public UnityEngine.UI.Image museumWide;
     public SpriteRenderer marcBack;
     public UnityEngine.UI.Image museumTree;
     public SpriteRenderer treePlaque;
-    public UnityEngine.UI.Image memoryObjectZoomed;
-    public UnityEngine.UI.Image museumTreeClose;
-    public UnityEngine.UI.Image memoryObjectHanging;
+//    public UnityEngine.UI.Image memoryObjectZoomed;
+//    public UnityEngine.UI.Image museumTreeClose;
+//    public UnityEngine.UI.Image memoryObjectHanging;
 
-    [SerializeField]
-    private Color fadeColor;        // Color for fadeout effect
+    //[SerializeField]
+    //private Color fadeColor;        // Color for fadeout effect
 
     // Methods:
 
@@ -60,7 +60,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         GM = FindFirstObjectByType<GameManager>();
         LL = FindFirstObjectByType<LevelLoader>();
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
-        fadeColor = whiteFade.color;
+    //    fadeColor = whiteFade.color;
         tap = InputSystem.actions.FindAction("Tap");
 
         // Hide Background Screens
@@ -76,9 +76,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
         treePlaque.enabled = false;
         museumWide.enabled = false;
         marcBack.enabled = false;
-        memoryObjectZoomed.enabled = false;
-        museumTreeClose.enabled = false;
-        memoryObjectHanging.enabled = false;
+    //    memoryObjectZoomed.enabled = false;
+    //    museumTreeClose.enabled = false;
+    //    memoryObjectHanging.enabled = false;
 
         // Hide character portraits
         MainCharPortrait.SetActive(false);
