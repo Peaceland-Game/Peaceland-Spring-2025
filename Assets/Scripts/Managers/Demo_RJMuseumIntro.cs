@@ -31,25 +31,15 @@ public class Demo_RJMuseumIntro : GenericMemManager
 
     private InputAction tap;        // Checks for user input via tap or click
 
-    //[SerializeField]
-    //public TMPro.TextMeshProUGUI continueText;  // Animated "Continue" Text
-
     [SerializeField]
     public Button continueButton;
 
     // Images for the scene
     public UnityEngine.UI.Image newsPaper;
-//    public UnityEngine.UI.Image whiteFade;
     public UnityEngine.UI.Image museumWide;
     public SpriteRenderer marcBack;
     public UnityEngine.UI.Image museumTree;
     public SpriteRenderer treePlaque;
-//    public UnityEngine.UI.Image memoryObjectZoomed;
-//    public UnityEngine.UI.Image museumTreeClose;
-//    public UnityEngine.UI.Image memoryObjectHanging;
-
-    //[SerializeField]
-    //private Color fadeColor;        // Color for fadeout effect
 
     // Methods:
 
@@ -60,15 +50,11 @@ public class Demo_RJMuseumIntro : GenericMemManager
         GM = FindFirstObjectByType<GameManager>();
         LL = FindFirstObjectByType<LevelLoader>();
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
-    //    fadeColor = whiteFade.color;
         tap = InputSystem.actions.FindAction("Tap");
 
         // Hide Background Screens
         started = false;
         textStarted = false;
-
-        //continueText.enabled = false;
-
         continueButton.interactable = false;
         continueButton.GetComponent<Image>().enabled = false;
 
@@ -76,9 +62,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
         treePlaque.enabled = false;
         museumWide.enabled = false;
         marcBack.enabled = false;
-    //    memoryObjectZoomed.enabled = false;
-    //    museumTreeClose.enabled = false;
-    //    memoryObjectHanging.enabled = false;
 
         // Hide character portraits
         MainCharPortrait.SetActive(false);
@@ -117,22 +100,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
                 {
                     StartCoroutine(TextStart());
                 }
-
-                //when pressed, carry out the rest of the intro sequence
-                //if (tap.IsPressed() && !GM.newsRead)
-                //{
-                //    GM.newsRead = true;
-
-                //    Debug.Log("NEWS READ TAPPED");
-
-                //    StartCoroutine(NewsTransition());
-                //}
-
-                //if (tap.IsPressed() && museumWide.enabled == true)
-                //{
-                //    Debug.Log("MUSEUM TAPPED");
-                //    StartCoroutine(MuseumTransition());
-                //}
             }
 
             // Once the intro is done, start the dialogue
@@ -143,25 +110,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
                 NextOrder();
                 NextMinigame();
             }
-
-            // This is now handled in the Yarn Script
-                //enable mira when her dialogue starts
-                //if (dialogueRunner.CurrentNodeName == "MiraMuseum" && GM.miraIntroDone == false)
-                //{
-                //    MainCharPortrait.SetActive(true);
-                //    SecondCharPortrait.SetActive(true);
-                //}
-
-            // ClippingTransition is now called in NextMinigame
-                ////when mira is done
-                //if (GM.miraIntroDone == true && GM.memoryObjectAcquired == false)
-                //{
-                //    //so that this code only runs once
-                //    GM.memoryObjectAcquired = true;
-                ////    mira.enabled = false;
-
-                //    StartCoroutine(ClippingTransition());
-                //}
         }
     }
 
@@ -256,7 +204,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
         GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
         yield return new WaitForSeconds(0f);
         GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
-        //continueText.enabled = false;
         
 
         //disable museum outside, enable museum inside, set var to true, begin black fadout to museum inside
@@ -275,7 +222,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
         textStarted = true;
         yield return new WaitForSeconds(0f);
         transition.SetBool("TextStart", true);
-        //continueText.enabled = true;
         continueButton.interactable = true;
         continueButton.GetComponent<Image>().enabled = true;
     }
