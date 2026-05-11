@@ -168,11 +168,15 @@ MonoBehaviour:
   - {fileID: 311956915}
   - {fileID: 761682465}
   - {fileID: 279053827}
+  scenes: []
+  backgroundList: []
+  backgroundSprite: {fileID: 0}
+  objectImageList: []
+  dialogueRunner: {fileID: 492172087}
   orders:
   - {fileID: 11400000, guid: 08e58547467936140abcc295a3848a84, type: 2}
   - {fileID: 11400000, guid: b7ea8f03dec914fee87fb9129622e4f5, type: 2}
   gameplayGoodNode: 
-  dialogueRunner: {fileID: 492172087}
   flowerTopSprites:
   - {fileID: -7643072482402197539, guid: c39b03f558ead564c86c1e93037f74e0, type: 3}
   - {fileID: -1627919453384748604, guid: b315660da98ebf9449849f0c9eb9f55b, type: 3}
@@ -1092,13 +1096,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 376764469}
+  - component: {fileID: 376764470}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GM_Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &376764469
 Transform:
   m_ObjectHideFlags: 0
@@ -1114,6 +1119,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376764470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376764468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e2a20e62ec47104d9f9937a58c1cb15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newsRead: 0
+  introSprawlDone: 0
+  marcStart: 0
+  miraIntroDone: 0
+  memoryObjectAcquired: 0
+  seenRJMemory: 0
+  defaultCursor: {fileID: 0}
+  interactCursor: {fileID: 0}
+  currentMemoryManager: {fileID: 0}
+  difficulty: 0
 --- !u!1001 &401263669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4003,28 +4030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133fb0abbe44cbcffb79cf3bddc8f16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flowerPrefab: {fileID: 348610294788324795, guid: d29d04746fcd7554880bdbbdee871b2c, type: 3}
-  targetPrefab: {fileID: 590954006385341025, guid: 6b91b5fb69b982b42920bd0d63296058, type: 3}
-  flowerLocations:
-  - {x: 1.82, y: 1.46, z: 0}
-  - {x: 1.82, y: 1.46, z: 0}
-  - {x: 5.3, y: -0.48, z: 0}
-  - {x: 3.94, y: -2.29, z: 0}
-  - {x: 1.29, y: -2.61, z: 0}
-  targetLocations:
-  - {x: -6.24, y: 0.97, z: 0}
-  - {x: -5.16, y: 0.44, z: 0}
-  - {x: -4.24, y: -0.76, z: 0}
-  - {x: -4.87, y: 0.3, z: 0}
-  - {x: -3.63, y: 0.18, z: 0}
-  targetRotations:
-  - {x: 0, y: 0, z: 9}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 348.9966}
-  - {x: 0, y: 0, z: 329.0322}
   draggables: []
-  flowerArrangeNum: 0
+  completedDragCount: 0
 --- !u!1 &1175550130
 GameObject:
   m_ObjectHideFlags: 0
@@ -5940,6 +5947,6 @@ SceneRoots:
   - {fileID: 1365049009}
   - {fileID: 1708528664}
   - {fileID: 692662733}
-  - {fileID: 376764469}
   - {fileID: 299318963}
   - {fileID: 500707761}
+  - {fileID: 376764469}

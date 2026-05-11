@@ -207,6 +207,9 @@ MonoBehaviour:
   - {fileID: 1164951640}
   - {fileID: 431787418}
   scenes: []
+  backgroundList: []
+  backgroundSprite: {fileID: 0}
+  objectImageList: []
   dialogueRunner: {fileID: 492172087}
   orders:
   - {fileID: 11400000, guid: 08e58547467936140abcc295a3848a84, type: 2}
@@ -255,7 +258,6 @@ MonoBehaviour:
   dialogueRunner: {fileID: 492172087}
   characterPortrait: {fileID: 1340726477}
   secondCharacterPortrait: {fileID: 2057993351}
-  isFloristMemory: 1
 --- !u!114 &41747960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,12 +331,12 @@ GameObject:
   - component: {fileID: 61780059}
   - component: {fileID: 61780058}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: GM_Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &61780058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,8 +354,10 @@ MonoBehaviour:
   marcStart: 0
   miraIntroDone: 0
   memoryObjectAcquired: 0
+  seenRJMemory: 0
   defaultCursor: {fileID: 2800000, guid: 844b41a58c1b3bc48adbcefbe7845cb8, type: 3}
   interactCursor: {fileID: 2800000, guid: 5970d5ca86e8ccc4eb4c550842513acb, type: 3}
+  currentMemoryManager: {fileID: 0}
   difficulty: 0
 --- !u!4 &61780059
 Transform:
@@ -1180,37 +1184,6 @@ Transform:
   - {fileID: 1141113595}
   - {fileID: 1386825435}
   - {fileID: 1651738067}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &376764468
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 376764469}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &376764469
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 376764468}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7, y: 0.079153776, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &401263669
@@ -5646,7 +5619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318052e93ecd1fa41aed8110eae9b14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thornyRose: {fileID: 0}
+  thornyRose: {fileID: 148049016}
   stem: {fileID: 9219485524165623847, guid: 11a2887ef671e9e4a9ddcbdccf708f22, type: 3}
   flower: {fileID: 4541604742317120861, guid: 9555a523a8b60904d8d99aeca45b32c8, type: 3}
 --- !u!1 &1772941238
@@ -6354,7 +6327,6 @@ SceneRoots:
   - {fileID: 1340726479}
   - {fileID: 2057993353}
   - {fileID: 425442086}
-  - {fileID: 376764469}
   - {fileID: 299318963}
   - {fileID: 560386157}
   - {fileID: 5546751697100341081}
