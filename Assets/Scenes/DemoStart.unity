@@ -326,6 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 152251883}
   - component: {fileID: 152251882}
+  - component: {fileID: 152251884}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -345,11 +346,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2a20e62ec47104d9f9937a58c1cb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 1
   newsRead: 0
   introSprawlDone: 0
   marcStart: 0
   miraIntroDone: 0
   memoryObjectAcquired: 0
+  pauseMenu: {fileID: 0}
   defaultCursor: {fileID: 2800000, guid: 844b41a58c1b3bc48adbcefbe7845cb8, type: 3}
   interactCursor: {fileID: 2800000, guid: 5970d5ca86e8ccc4eb4c550842513acb, type: 3}
   difficulty: 0
@@ -368,6 +371,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &152251884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152251881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7ce53eeee020d4bbf2e4622687a8e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blankPrefab: {fileID: 6332344080873640254, guid: f615a5e94a303514bb5ac9619ce4326c, type: 3}
+  defaultPrefab: {fileID: 7245016990855208199, guid: 061738a3921d7a44ea904f382fdd68c0, type: 3}
+  pausedPrefab: {fileID: 5324057555577673706, guid: c88b684b468b7e44c921041f17b3014c, type: 3}
+  settingsPrefab: {fileID: 4891616043640624345, guid: b5973bce7d6a3c2448f03a640ac8dbb2, type: 3}
+  saveExitPrefab: {fileID: 4944517442451081257, guid: 76cce76844d6e9942adc875ff2759aa4, type: 3}
+  isBlank: 0
 --- !u!1 &349948869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,7 +1296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0.000061035156}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1659565519

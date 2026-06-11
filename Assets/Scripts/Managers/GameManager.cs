@@ -3,12 +3,23 @@ using UnityEngine;
 //data that needs to be stored globally and transfered between scenes can be stored and referenced in this script
 public class GameManager : MonoBehaviour
 {
+    //larger gamestate tracking variables
+    public enum GameState
+    {
+        Paused, Active
+    };
+    public GameState gameState = GameState.Active;
+
     //bools for the MuseumIntro scene, used in MuseumIntroManager.cs and SceneTransitioner.cs
     public bool newsRead;
     public bool introSprawlDone;
     public bool marcStart;
     public bool miraIntroDone;
     public bool memoryObjectAcquired;
+
+    //menus
+    [SerializeField]
+    private Canvas pauseMenu;
 
     //cursors
     [SerializeField]
@@ -54,6 +65,12 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    //handle pausing the game
+    public void OnPause()
+    {
+        
     }
 
     //cursor methods for entering/exiting buttons/colliders
