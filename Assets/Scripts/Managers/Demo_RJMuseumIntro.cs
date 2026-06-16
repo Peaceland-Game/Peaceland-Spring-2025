@@ -35,6 +35,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
     public Button continueButton;
 
     [SerializeField]
+    public Button warRoomEntrance;
+
+    [SerializeField]
     public Button startDialogueButton; //dummy button to start dialogue (replace with npc interaction later)
 
     // Images for the scene
@@ -43,6 +46,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
     public SpriteRenderer marcBack;
     public UnityEngine.UI.Image museumTree;
     public SpriteRenderer treePlaque;
+
+    // Build index for the war room scene 
+    private int WarRoomBuildIndex = 5;
 
     // Methods:
 
@@ -60,8 +66,10 @@ public class Demo_RJMuseumIntro : GenericMemManager
         textStarted = false;
         continueButton.interactable = false;
         continueButton.GetComponent<Image>().enabled = false;
+        warRoomEntrance.interactable = false;
         startDialogueButton.interactable = false;   
         startDialogueButton.GetComponent<Image>().enabled = false;
+
 
         museumTree.enabled = false;
         treePlaque.enabled = false;
@@ -188,6 +196,12 @@ public class Demo_RJMuseumIntro : GenericMemManager
         }
     }
 
+    public void EnterWarRoom()
+    {
+        Debug.Log("Entering War Room");
+        LL.LoadLevelByBuildIndex(WarRoomBuildIndex);
+    }
+
     //whole transition sequence for newspaper and auto advance screens
     IEnumerator NewsTransition()
     {
@@ -212,10 +226,12 @@ public class Demo_RJMuseumIntro : GenericMemManager
     {
         continueButton.interactable = false;
         continueButton.GetComponent<Image>().enabled = false;
+        warRoomEntrance.interactable = true;
+        Debug.Log("Start Museum Transition");
 
         startDialogueButton.interactable = true;
         startDialogueButton.GetComponent<Image>().enabled = true;
-        Debug.Log("Start Museum Transition");
+       
 
         //fade into white
         GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
