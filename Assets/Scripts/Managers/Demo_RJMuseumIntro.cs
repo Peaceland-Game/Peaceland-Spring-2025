@@ -34,6 +34,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
     [SerializeField]
     public Button continueButton;
 
+    [SerializeField]
+    public Button startDialogueButton; //dummy button to start dialogue (replace with npc interaction later)
+
     // Images for the scene
     public UnityEngine.UI.Image newsPaper;
     public UnityEngine.UI.Image museumWide;
@@ -57,11 +60,15 @@ public class Demo_RJMuseumIntro : GenericMemManager
         textStarted = false;
         continueButton.interactable = false;
         continueButton.GetComponent<Image>().enabled = false;
+        startDialogueButton.interactable = false;   
+        startDialogueButton.GetComponent<Image>().enabled = false;
 
         museumTree.enabled = false;
         treePlaque.enabled = false;
         museumWide.enabled = false;
         marcBack.enabled = false;
+
+
 
         // Hide character portraits
         MainCharPortrait.SetActive(false);
@@ -105,10 +112,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
             // Once the intro is done, start the dialogue
             if (GM.introSprawlDone && !GM.marcStart)
             {
-                GM.marcStart = true;
-                StartCoroutine(Wait());
-                NextOrder();
-                NextMinigame();
+                
             }
         }
     }
@@ -129,6 +133,16 @@ public class Demo_RJMuseumIntro : GenericMemManager
             Debug.Log("MUSEUM TAPPED");
             StartCoroutine(MuseumTransition());
         }
+    }
+
+    public void StartDialogue()
+    {
+        GM.marcStart = true;
+        StartCoroutine(Wait());
+        NextOrder();
+        NextMinigame();
+        startDialogueButton.interactable = false;
+        startDialogueButton.GetComponent<Image>().enabled = false;
     }
 
     /// <summary>
@@ -198,6 +212,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
     {
         continueButton.interactable = false;
         continueButton.GetComponent<Image>().enabled = false;
+
+        startDialogueButton.interactable = true;
+        startDialogueButton.GetComponent<Image>().enabled = true;
         Debug.Log("Start Museum Transition");
 
         //fade into white
