@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class MenuOptions : MonoBehaviour
 {
+    //selected button (only important for controller support)
     [SerializeField] GameObject firstSelectedButton;
+
+    //menu options
     void OnEnable()
     {
         MenuManager.Instance.FocusButton(firstSelectedButton);
@@ -39,5 +42,10 @@ public class MenuOptions : MonoBehaviour
     public void ReloadScene()
     {
         MenuManager.Instance.SwitchScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void LoadNextLevel()
+    {
+        MenuManager.Instance.LoadNextLevel();
     }
 }

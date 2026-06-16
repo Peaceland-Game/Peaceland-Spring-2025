@@ -19,11 +19,14 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject pausedPrefab;
     [SerializeField] private GameObject settingsPrefab;
     [SerializeField] private GameObject saveExitPrefab;
+    [SerializeField] private GameObject mainMenuPrefab;
     private GameObject blankCanvas;
     private GameObject defaultCanvas;
     private GameObject pausedCanvas;
     private GameObject settingsCanvas;
     private GameObject saveExitCanvas;
+    private GameObject mainMenuCanvas;
+
 
     //stack for keeping track of previous menu options
     private Stack<GameObject> menuStack = new Stack<GameObject>();
@@ -94,25 +97,39 @@ public class MenuManager : MonoBehaviour
         if (!defaultCanvas)
         {
             defaultCanvas = Instantiate(defaultPrefab);
+            defaultCanvas.SetActive(false);
         }
         if(!blankCanvas)
         {
             blankCanvas = Instantiate(blankPrefab);
+            blankCanvas.SetActive(false);
         }
 
-        //activate blank menu if blank
-        if (isBlank)
+        //Get the active scene
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Activate specific scene menus
+        if (currentScene.name == "DemoStart")
         {
-            defaultCanvas.SetActive(false);
-            blankCanvas.SetActive(true);
-            currentMenu = blankCanvas;
+            mainMenuCanvas = Instantiate(mainMenuPrefab);
+            mainMenuCanvas.SetActive(true);
+            currentMenu = mainMenuCanvas;
         }
-        //set the default menu active otherwise
+        //otherwise, default to default or blank
         else
         {
-            defaultCanvas.SetActive(true);
-            blankCanvas.SetActive(false);
-            currentMenu = defaultCanvas;
+            //activate blank menu if blank
+            if (isBlank)
+            {
+                blankCanvas.SetActive(true);
+                currentMenu = blankCanvas;
+            }
+            //set the default menu active otherwise
+            else
+            {
+                defaultCanvas.SetActive(true);
+                currentMenu = defaultCanvas;
+            }
         }
 
         menuStack.Push(currentMenu);
@@ -251,5 +268,23 @@ public class MenuManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         isPaused = false;
+    }
+
+    //loads the next level using a level loader (used on the main menu)
+    public void LoadNextLevel()
+    {
+        GameObject loaderObj = GameObject.Find("LevelLoader");
+        //make sure loader exists and has correct components as to not crash if anything is missing
+        if (loaderObj) 
+        { 
+            LevelLoader loader = GameObject.Find("LevelLoader").GetComponent<LevelLoader>();
+            if (loader)
+            {
+                //load the next level using the LevelLoader
+                loader.LoadNextLevel();
+            }
+        }
+    
+
     }
 }

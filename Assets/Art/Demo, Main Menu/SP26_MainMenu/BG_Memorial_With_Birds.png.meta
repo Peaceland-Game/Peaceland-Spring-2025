@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a31cf5e36466e0446b31fe86ce9f2903
+guid: cf55332ccf01d3b4eba816a1011b370d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7913375197038898665
-    second: Demo Text_0
+      213: 2103671699968858399
+    second: BG_Memorial_With_Birds_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Demo Text_0
+      name: BG_Memorial_With_Birds_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 388
-        height: 165
+        width: 2560
+        height: 1400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9ede3e990d4f1dd60800000000000000
-      internalID: 7913375197038898665
+      spriteID: f199fa0f34eb13d10800000000000000
+      internalID: 2103671699968858399
       vertices: []
       indices: 
       edges: []
