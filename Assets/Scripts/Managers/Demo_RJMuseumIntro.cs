@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Manager script for the Spring 2026 demo. Created from MuseumIntroManager.cs and ScreenTransitioner.cs.
 /// Likely not useful for future use, as the backend of the game will change.
-/// </summary>
+/// </summary> 
 public class Demo_RJMuseumIntro : GenericMemManager
 {
     // Fields
