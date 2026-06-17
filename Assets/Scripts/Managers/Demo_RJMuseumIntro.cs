@@ -55,11 +55,24 @@ public class Demo_RJMuseumIntro : GenericMemManager
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         // Set up variables
         GM = FindFirstObjectByType<GameManager>();
         LL = FindFirstObjectByType<LevelLoader>();
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
         tap = InputSystem.actions.FindAction("Tap");
+
+
+        if(GM.introSprawlDone)
+        {
+            newsPaper.enabled = false;
+            MainCharPortrait.SetActive(false);
+            SecondCharPortrait.SetActive(false);
+            StartCoroutine(MuseumTransition());
+            return;
+        }
+        
+
 
         // Hide Background Screens
         started = false;
@@ -118,10 +131,10 @@ public class Demo_RJMuseumIntro : GenericMemManager
             }
 
             // Once the intro is done, start the dialogue
-            if (GM.introSprawlDone && !GM.marcStart)
-            {
-                
-            }
+            //if (GM.introSprawlDone && !GM.marcStart)
+            //{
+            //    StartDialogue();
+            //}
         }
     }
 
