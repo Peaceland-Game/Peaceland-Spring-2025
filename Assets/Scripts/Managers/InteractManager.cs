@@ -69,9 +69,8 @@ public class InteractManager : MinigameBehavior
     /// GrabAndSwipe to run this method.
     /// </summary>
     public void DoClick()
-    {
-
-        if (this.gameObject.activeInHierarchy) {
+    { 
+        if (this.gameObject.activeInHierarchy && GameManager.Instance.gameState != GameManager.GameState.Paused) {
         Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
 
             for (int i = 0; i < numObjects; i++) { 

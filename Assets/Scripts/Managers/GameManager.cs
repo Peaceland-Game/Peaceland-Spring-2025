@@ -1,5 +1,9 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 //data that needs to be stored globally and transfered between scenes can be stored and referenced in this script
 public class GameManager : MonoBehaviour
@@ -10,6 +14,7 @@ public class GameManager : MonoBehaviour
         Paused, Active
     };
     public GameState gameState = GameState.Active;
+    [SerializeField] InputActionAsset inputAsset;
 
     //bools for the MuseumIntro scene, used in MuseumIntroManager.cs and SceneTransitioner.cs
     public bool newsRead;
@@ -90,7 +95,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!inputAsset)
+        {
+            inputAsset = FindFirstObjectByType<InputActionAsset>();
+        }
     }
 
     /// <summary>
@@ -119,6 +127,17 @@ public class GameManager : MonoBehaviour
     public void OnButtonCursorExit()
     {
         Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
+    }
+
+    private void DisablePlayerAction()
+    {
+        inputAsset.FindActionMap("Player").Disable();
+        inputAsset.FindActionMap("UI").Enable();
+    }
+
+    private void EnablePlayerAction()
+    {
+
     }
 
     private void OnMouseEnter()

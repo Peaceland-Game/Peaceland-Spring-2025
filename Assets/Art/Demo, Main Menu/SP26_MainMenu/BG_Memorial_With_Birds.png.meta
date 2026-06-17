@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BG_Memorial_With_Birds_0: 2103671699968858399
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

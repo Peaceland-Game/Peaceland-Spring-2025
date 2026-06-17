@@ -254,6 +254,7 @@ public class MenuManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         isPaused = true;
+        GameManager.Instance.gameState = GameManager.GameState.Paused;
         //ensure there's a paused canvas before openeing one
         if (!pausedCanvas)
         {
@@ -266,6 +267,7 @@ public class MenuManager : MonoBehaviour
     //unpauses the game
     public void UnPauseGame()
     {
+        GameManager.Instance.gameState = GameManager.GameState.Active;
         Time.timeScale = 1.0f;
         isPaused = false;
     }
