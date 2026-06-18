@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
         Paused, Active
     };
     public GameState gameState = GameState.Active;
-    [SerializeField] InputActionAsset inputAsset;
+    //player input to manage input modes
+    [SerializeField] PlayerInput playerInput;
 
     //bools for the MuseumIntro scene, used in MuseumIntroManager.cs and SceneTransitioner.cs
     public bool newsRead;
@@ -22,10 +23,6 @@ public class GameManager : MonoBehaviour
     public bool marcStart;
     public bool miraIntroDone;
     public bool memoryObjectAcquired;
-
-    //menus
-    [SerializeField]
-    private Canvas pauseMenu;
 
     // Bools for Demo_RJMuseumIntro
     public bool seenRJMemory = false;
@@ -90,15 +87,14 @@ public class GameManager : MonoBehaviour
 
             SceneManager.sceneLoaded += GMOnSceneLoaded;
         }
+
+       playerInput = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!inputAsset)
-        {
-            inputAsset = FindFirstObjectByType<InputActionAsset>();
-        }
+
     }
 
     /// <summary>
@@ -129,15 +125,14 @@ public class GameManager : MonoBehaviour
         Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
     }
 
-    private void DisablePlayerAction()
+    private void EnableActionMapPauseUI()
     {
-        inputAsset.FindActionMap("Player").Disable();
-        inputAsset.FindActionMap("UI").Enable();
+        playerInput.SwitchCurrentActionMap("PauseUI");
     }
 
     private void EnablePlayerAction()
     {
-
+        playerInput.SwitchCurrentActionMap("UI");
     }
 
     private void OnMouseEnter()
