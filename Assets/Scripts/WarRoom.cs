@@ -5,14 +5,18 @@ using UnityEngine.UI;
 public class WarRoom : MonoBehaviour
 {
     [SerializeField]
-    public Button returnButton;
+    public Button returnToLobbyButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [SerializeField]
+    public Button exitZoomButton;
 
     private LevelLoader LL;
     void Start()
     {
         LL = FindFirstObjectByType<LevelLoader>();
-      
+        DisableButton(exitZoomButton); // Disable the exit zoom button at the start
+
     }
 
     // Update is called once per frame
@@ -26,5 +30,11 @@ public class WarRoom : MonoBehaviour
         Debug.Log("Returning to lobby...");
         int museumSceneIndex = 2;
         LL.LoadLevelByBuildIndex(museumSceneIndex);
+    }
+
+    private void DisableButton(Button button)
+    {
+        button.interactable = false;
+        button.GetComponent<Image>().enabled = false;
     }
 }
