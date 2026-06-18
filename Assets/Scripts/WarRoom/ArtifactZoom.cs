@@ -1,11 +1,14 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ZoomOnObject : MonoBehaviour
 {
+
     [SerializeField]
-    public Camera camera;
+    public GameObject scrollView;
+
+    [SerializeField]
+    public GameObject camera;
 
     [SerializeField]
     public GameObject image;
@@ -16,11 +19,23 @@ public class ZoomOnObject : MonoBehaviour
     [SerializeField]
     public Button exitZoom;
 
+    [SerializeField]
+    public Button viewDescButton;
+
+
+
+    void Start()
+    {
+        scrollView.SetActive(false);
+        DisableButton(viewDescButton); // Disable the view description button at the start
+    }
+
     public void ZoomOnClick()
     {
         Debug.Log("Zooming in on object...");
         DisableButton(returnToLobbyButton); // Disable the return to lobby button
         EnableButton(exitZoom); // Enable the exit zoom button
+        EnableButton(viewDescButton); // Enable the view description button
 
 
         Vector2 objectPos = image.transform.position;
@@ -28,16 +43,16 @@ public class ZoomOnObject : MonoBehaviour
         camera.GetComponent<Camera>().orthographicSize = 0.6f; // Adjust this value as needed for zoom level
     }
 
-    private void EnableButton(Button button)
+    private void EnableButton(UnityEngine.UI.Button button)
     {
         button.interactable = true;
-        button.GetComponent<Image>().enabled = true;
+        button.GetComponent<UnityEngine.UI.Image>().enabled = true;
     }
 
-    private void DisableButton(Button button)
+    private void DisableButton(UnityEngine.UI.Button button)
     {
         button.interactable = false;
-        button.GetComponent<Image>().enabled = false;
+        button.GetComponent<UnityEngine.UI.Image>().enabled = false;
     }
 
 }

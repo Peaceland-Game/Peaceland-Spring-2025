@@ -13,6 +13,9 @@ public class ExitZoom : MonoBehaviour
     [SerializeField]
     public Button exitZoom;
 
+    [SerializeField]
+    public Button viewDescButton;
+
     public void ExitZoomOnClick()
     {
         Debug.Log("Exiting zoom...");
@@ -20,6 +23,7 @@ public class ExitZoom : MonoBehaviour
         camera.GetComponent<Camera>().orthographicSize = 5f; // Reset to original zoom level
         EnableButton(returnToLobbyButton); // Enable the return to lobby button
         DisableButton(exitZoom); // Disable the exit zoom button
+        DisableButton(viewDescButton); // Disable the view description button
     }
 
     private void EnableButton(Button button)
