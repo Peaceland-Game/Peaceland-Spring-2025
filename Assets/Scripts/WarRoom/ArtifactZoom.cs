@@ -40,7 +40,7 @@ public class ZoomOnObject : MonoBehaviour
 
         Vector2 objectPos = image.transform.position;
         camera.transform.position = new Vector3(objectPos.x, objectPos.y, -10);
-        camera.GetComponent<Camera>().orthographicSize = 0.6f; // Adjust this value as needed for zoom level
+        camera.GetComponent<Camera>().orthographicSize = 1f; // Adjust this value as needed for zoom level
     }
 
     private void EnableButton(UnityEngine.UI.Button button)
