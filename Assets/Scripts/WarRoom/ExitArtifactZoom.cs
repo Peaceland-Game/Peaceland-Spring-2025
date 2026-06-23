@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ExitZoom : MonoBehaviour
+public class ExitZoom : ButtonUtils
 {
     [SerializeField]
     public Camera camera;
@@ -24,17 +24,5 @@ public class ExitZoom : MonoBehaviour
         EnableButton(returnToLobbyButton); // Enable the return to lobby button
         DisableButton(exitZoom); // Disable the exit zoom button
         DisableButton(viewDescButton); // Disable the view description button
-    }
-
-    private void EnableButton(Button button)
-    {
-        button.interactable = true;
-        button.GetComponent<Image>().enabled = true;
-    }
-
-    private void DisableButton(Button button)
-    {
-        button.interactable = false;
-        button.GetComponent<Image>().enabled = false;
     }
 }

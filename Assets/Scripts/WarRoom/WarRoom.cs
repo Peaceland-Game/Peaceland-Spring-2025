@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WarRoom : MonoBehaviour
+public class WarRoom : GenericMemManager
 {
     [SerializeField]
     public Button returnToLobbyButton;
@@ -11,7 +11,6 @@ public class WarRoom : MonoBehaviour
     [SerializeField]
     public Button exitZoomButton;
 
-    private LevelLoader LL;
     void Start()
     {
         LL = FindFirstObjectByType<LevelLoader>();
@@ -30,6 +29,12 @@ public class WarRoom : MonoBehaviour
         Debug.Log("Returning to lobby...");
         int museumSceneIndex = 2;
         LL.LoadLevelByBuildIndex(museumSceneIndex);
+    }
+
+    private void EnableButton(Button button)
+    {
+        button.interactable = true;
+        button.GetComponent<Image>().enabled = true;
     }
 
     private void DisableButton(Button button)

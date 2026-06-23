@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ViewDescription : MonoBehaviour
+public class ViewDescription : ButtonUtils
 {
     [SerializeField]
     public Button viewDescButton;
@@ -29,17 +29,5 @@ public class ViewDescription : MonoBehaviour
         scrollView.SetActive(true); // Show the scroll view with the description
         EnableButton(exitDescButton); // Enable the exit description button
         DisableButton(exitZoomButton); // Disable the exit zoom button while viewing description
-    }
-
-    private void EnableButton(Button button)
-    {
-        button.interactable = true;
-        button.GetComponent<Image>().enabled = true;
-    }
-
-    private void DisableButton(Button button)
-    {
-        button.interactable = false;
-        button.GetComponent<Image>().enabled = false;
     }
 }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ExitDescription : MonoBehaviour
+public class ExitDescription : ButtonUtils
 {
     [SerializeField]
     public Button viewDescButton;
@@ -25,15 +25,4 @@ public class ExitDescription : MonoBehaviour
         EnableButton(exitZoomButton); // Enable the exit zoom button when exiting description
     }
 
-    private void EnableButton(Button button)
-    {
-        button.interactable = true;
-        button.GetComponent<Image>().enabled = true;
-    }
-
-    private void DisableButton(Button button)
-    {
-        button.interactable = false;
-        button.GetComponent<Image>().enabled = false;
-    }
 }
