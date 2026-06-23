@@ -31,6 +31,11 @@ public class WarRoom : GenericMemManager
         LL.LoadLevelByBuildIndex(museumSceneIndex);
     }
 
+    public void WallClicked()
+    {
+        Debug.Log("Wall clicked!");
+    }
+
     private void EnableButton(Button button)
     {
         button.interactable = true;
@@ -42,4 +47,5 @@ public class WarRoom : GenericMemManager
         button.interactable = false;
         button.GetComponent<Image>().enabled = false;
     }
+
 }
