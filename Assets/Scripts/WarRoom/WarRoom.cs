@@ -11,11 +11,14 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     public Button exitZoomButton;
 
+    [SerializeField]
+    public Button artifact1;
+
     void Start()
     {
         LL = FindFirstObjectByType<LevelLoader>();
         DisableButton(exitZoomButton); // Disable the exit zoom button at the start
-
+        DisableButton(artifact1); // Disable the artifact button at the start
     }
 
     // Update is called once per frame
@@ -31,9 +34,12 @@ public class WarRoom : GenericMemManager
         LL.LoadLevelByBuildIndex(museumSceneIndex);
     }
 
-    public void WallClicked()
+    public void RightWallClicked()
     {
-        Debug.Log("Wall clicked!");
+        Debug.Log("Right Wall clicked!");
+        DisableButton(returnToLobbyButton); // Disable the return to lobby button
+        EnableButton(artifact1); // Enable the artifact button
+        ChangeBackgroundSprite(3);
     }
 
     private void EnableButton(Button button)

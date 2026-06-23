@@ -39,20 +39,8 @@ public class ZoomOnObject : ButtonUtils
 
 
         Vector2 objectPos = image.transform.position;
-        camera.transform.position = new Vector3(objectPos.x, objectPos.y, -10);
-        camera.GetComponent<Camera>().orthographicSize = 1f; // Adjust this value as needed for zoom level
-    }
-
-    private void EnableButton(UnityEngine.UI.Button button)
-    {
-        button.interactable = true;
-        button.GetComponent<UnityEngine.UI.Image>().enabled = true;
-    }
-
-    private void DisableButton(UnityEngine.UI.Button button)
-    {
-        button.interactable = false;
-        button.GetComponent<UnityEngine.UI.Image>().enabled = false;
+        camera.GetComponent<Camera>().transform.position = new Vector3(objectPos.x, objectPos.y, -10);
+        camera.GetComponent<Camera>().orthographicSize = 100f; // Adjust this value as needed for zoom level
     }
 
 }
