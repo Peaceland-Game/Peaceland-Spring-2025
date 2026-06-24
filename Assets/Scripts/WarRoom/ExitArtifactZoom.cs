@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +18,11 @@ public class ExitZoom : ButtonUtils
     [SerializeField]
     public Button exitWallViewButton;
 
+    void Start()
+    {
+        DisableButton(viewDescButton); // Disable the view description button at the start
+        DisableButton(exitZoom);
+    }
     public void ExitZoomOnClick()
     {
         Debug.Log("Exiting zoom...");

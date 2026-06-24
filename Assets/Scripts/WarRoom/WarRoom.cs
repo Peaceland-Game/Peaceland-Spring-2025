@@ -35,16 +35,25 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     public Button[] rightWallArtifacts;
 
+    //private bool[] currentWall = new bool[4];
     private bool onWideShot = true;
     private bool onLeftWall = false;
     private bool onMiddleWall = false;
     private bool onRightWall = false;
+    
+    private int currentWallIndex = 0;
 
     void Start()
     {
         LL = FindFirstObjectByType<LevelLoader>();
-        DisableButton(exitZoomButton); // Disable the exit zoom button at the start
+        EnableButton(returnToLobbyButton);
+
+        DisableButton(leftArrow);
+        DisableButton(rightArrow);
         DisableButton(exitWallView); // Disable the exit wall view button at the start
+
+        ToggleButtonArray(true, clickableWalls);
+
         ToggleButtonArray(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
         ToggleButtonArray(false, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
         ToggleButtonArray(false, rightWallArtifacts); // Disable all right wall artifact buttons at the start
@@ -57,18 +66,82 @@ public class WarRoom : GenericMemManager
         ToggleButtonArray(onLeftWall, leftWallArtifacts);
         ToggleButtonArray(onMiddleWall, middleWallArtifacts);
         ToggleButtonArray(onRightWall, rightWallArtifacts);
-        if (!onWideShot)
+        if (onWideShot)
         {
-            DisableButton(returnToLobbyButton);
-            ToggleButtonArray(false, clickableWalls);
-            EnableButton(exitWallView);
+            EnableButton(returnToLobbyButton);
+            DisableButton(leftArrow);
+            DisableButton(rightArrow);
+            DisableButton(exitWallView); // Disable the exit wall view button at the start
+            ToggleButtonArray(true, clickableWalls);
         }
         else
         {
-            EnableButton(returnToLobbyButton);
-            ToggleButtonArray(true, clickableWalls);
+            DisableButton(returnToLobbyButton);
+            EnableButton(leftArrow);
+            EnableButton(rightArrow);
+            ToggleButtonArray(false, clickableWalls);
+            EnableButton(exitWallView);
+        }
+        ChangeBackgroundSprite(currentWallIndex);
+    }
+
+    public void MoveLeft()
+    {
+        currentWallIndex--;
+        if (currentWallIndex < 1) {
+            currentWallIndex = 3;
+        }
+        MoveWallHelper();
+    }
+
+    public void MoveRight()
+    {
+        currentWallIndex++;
+        if (currentWallIndex > 3)
+        {
+            currentWallIndex = 1;
+        }
+        MoveWallHelper();
+    }
+
+    //don't ask
+    private void MoveWallHelper()
+    {
+        if (currentWallIndex == 0)
+        {
+            onWideShot = true;
+        }
+        else
+        {
+            onWideShot= false;
         }
 
+        if (currentWallIndex == 1)
+        {
+            onLeftWall = true;
+        }
+        else
+        {
+            onLeftWall = false;
+        }
+
+        if (currentWallIndex == 2)
+        {
+            onMiddleWall = true;
+        }
+        else
+        {
+            onMiddleWall = false;
+        }
+
+        if (currentWallIndex == 3)
+        {
+            onRightWall = true;
+        }
+        else
+        {
+            onRightWall = false;
+        }
     }
 
     public void ExitWallView()
@@ -78,7 +151,7 @@ public class WarRoom : GenericMemManager
         onMiddleWall = false;
         onRightWall = false;
         Debug.Log("Exiting wall view...");
-        ChangeBackgroundSprite(0);
+        currentWallIndex = 0;
     }
 
     public void ReturnToLobby()
@@ -93,9 +166,10 @@ public class WarRoom : GenericMemManager
         onLeftWall = true;
         onMiddleWall = false;
         onRightWall = false;
+        currentWallIndex = 1;
 
-        Debug.Log("LEft Wall clicked!");
-        ChangeBackgroundSprite(1);
+        Debug.Log("Left Wall clicked!");
+        currentWallIndex = 1;
     }
 
     public void MiddleWallClicked()
@@ -104,9 +178,10 @@ public class WarRoom : GenericMemManager
         onLeftWall = false;
         onMiddleWall = true;
         onRightWall = false;
+        currentWallIndex = 2;
 
         Debug.Log("Middle Wall clicked!");
-        ChangeBackgroundSprite(2);
+        currentWallIndex = 2;
     }
 
     public void RightWallClicked()
@@ -115,9 +190,10 @@ public class WarRoom : GenericMemManager
         onLeftWall = false;
         onMiddleWall = false;
         onRightWall = true;
+        currentWallIndex = 3;
 
         Debug.Log("Right Wall clicked!");
-        ChangeBackgroundSprite(3);
+        currentWallIndex = 3;
     }
 
     private void EnableButton(Button button)

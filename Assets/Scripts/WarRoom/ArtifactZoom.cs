@@ -31,6 +31,7 @@ public class ZoomOnObject : ButtonUtils
     {
         scrollView.SetActive(false);
         DisableButton(viewDescButton); // Disable the view description button at the start
+        DisableButton(exitZoom);
     }
 
     public void ZoomOnClick()

@@ -15,6 +15,10 @@ public class ExitDescription : ButtonUtils
     [SerializeField]
     public Button exitZoomButton;
 
+    void Start()
+    {
+        DisableButton(exitDescButton); // Disable the exit description button at the start
+    }
 
     public void ExitDescriptionOnClick()
     {
