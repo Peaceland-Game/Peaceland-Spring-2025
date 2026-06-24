@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2a5df0800c370734f9ac2b41f2621929
+guid: 4ff962d46d0823f429d5c2fdc7d5f8e2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3280487471977261239
-    second: dummy_left_wall_button_0
+      213: 6726497296473501293
+    second: dummy_rightarrow_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -24,7 +24,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -48,7 +48,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dummy_left_wall_button_0
+      name: dummy_rightarrow_0
       rect:
         serializedVersion: 2
-        x: 211
-        y: 12
-        width: 255
-        height: 344
+        x: 0
+        y: 0
+        width: 25
+        height: 27
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9471da6660e5972d0800000000000000
-      internalID: -3280487471977261239
+      spriteID: d6eade217a1595d50800000000000000
+      internalID: 6726497296473501293
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      dummy_left_wall_button_0: -3280487471977261239
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

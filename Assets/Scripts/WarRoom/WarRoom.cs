@@ -11,14 +11,28 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     public Button exitZoomButton;
 
+    [SerializeField]
+    public Button exitWallView;
+
+    [SerializeField]
+    public Button leftArrow;
+
+    [SerializeField]
+    public Button rightArrow;
+
+    [SerializeField]
+    public Button[] clickableWalls;
+
     //left wall artifacts 
     [SerializeField]
     public Button[] leftWallArtifacts;
 
     //middle wall artifacts 
+    [SerializeField]
     public Button[] middleWallArtifacts;
 
     //right wall artifacts 
+    [SerializeField]
     public Button[] rightWallArtifacts;
 
     private bool onWideShot = true;
@@ -30,29 +44,41 @@ public class WarRoom : GenericMemManager
     {
         LL = FindFirstObjectByType<LevelLoader>();
         DisableButton(exitZoomButton); // Disable the exit zoom button at the start
-        ToggleEntireWall(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        ToggleEntireWall(false, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
-        ToggleEntireWall(false, rightWallArtifacts); // Disable all right wall artifact buttons at the start
+        DisableButton(exitWallView); // Disable the exit wall view button at the start
+        ToggleButtonArray(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
+        ToggleButtonArray(false, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
+        ToggleButtonArray(false, rightWallArtifacts); // Disable all right wall artifact buttons at the start
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!onLeftWall)
+        ToggleButtonArray(onLeftWall, leftWallArtifacts);
+        ToggleButtonArray(onMiddleWall, middleWallArtifacts);
+        ToggleButtonArray(onRightWall, rightWallArtifacts);
+        if (!onWideShot)
         {
-            ToggleEntireWall(false, leftWallArtifacts); // Disable all left wall artifact buttons
+            DisableButton(returnToLobbyButton);
+            ToggleButtonArray(false, clickableWalls);
+            EnableButton(exitWallView);
         }
-        if (!onMiddleWall)
+        else
         {
-            ToggleEntireWall(false, middleWallArtifacts);
-        }
-        if(!onRightWall)
-        {
-            ToggleEntireWall(false, rightWallArtifacts);
+            EnableButton(returnToLobbyButton);
+            ToggleButtonArray(true, clickableWalls);
         }
 
+    }
 
+    public void ExitWallView()
+    {
+        onWideShot = true;
+        onLeftWall = false;
+        onMiddleWall = false;
+        onRightWall = false;
+        Debug.Log("Exiting wall view...");
+        ChangeBackgroundSprite(0);
     }
 
     public void ReturnToLobby()
@@ -63,37 +89,34 @@ public class WarRoom : GenericMemManager
     }
     public void LeftWallClicked()
     {
+        onWideShot = false;
         onLeftWall = true;
         onMiddleWall = false;
         onRightWall = false;
 
         Debug.Log("LEft Wall clicked!");
-        DisableButton(returnToLobbyButton); // Disable the return to lobby button
-        //EnableButton(artifact1); // Enable the artifact button
         ChangeBackgroundSprite(1);
     }
 
     public void MiddleWallClicked()
     {
+        onWideShot = false;
         onLeftWall = false;
         onMiddleWall = true;
         onRightWall = false;
 
         Debug.Log("Middle Wall clicked!");
-        DisableButton(returnToLobbyButton); // Disable the return to lobby button
-        //EnableButton(artifact1); // Enable the artifact button
         ChangeBackgroundSprite(2);
     }
 
     public void RightWallClicked()
     {
+        onWideShot = false;
         onLeftWall = false;
         onMiddleWall = false;
         onRightWall = true;
 
         Debug.Log("Right Wall clicked!");
-        DisableButton(returnToLobbyButton); // Disable the return to lobby button
-        ToggleEntireWall(true, rightWallArtifacts); // Enable all right wall artifact buttons
         ChangeBackgroundSprite(3);
     }
 
@@ -109,7 +132,7 @@ public class WarRoom : GenericMemManager
         button.GetComponent<Image>().enabled = false;
     }
 
-    private void ToggleEntireWall(bool enable, Button[] artifacts)
+    private void ToggleButtonArray(bool enable, Button[] artifacts)
     {
         for (int i = 0; i < artifacts.Length; i++)
         {

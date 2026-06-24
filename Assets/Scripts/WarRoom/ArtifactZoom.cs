@@ -22,6 +22,9 @@ public class ZoomOnObject : ButtonUtils
     [SerializeField]
     public Button viewDescButton;
 
+    [SerializeField]
+    public Button exitWallView;
+
 
 
     void Start()
@@ -33,6 +36,7 @@ public class ZoomOnObject : ButtonUtils
     public void ZoomOnClick()
     {
         Debug.Log("Zooming in on object...");
+        DisableButton(exitWallView);
         DisableButton(returnToLobbyButton); // Disable the return to lobby button
         EnableButton(exitZoom); // Enable the exit zoom button
         EnableButton(viewDescButton); // Enable the view description button
@@ -42,5 +46,7 @@ public class ZoomOnObject : ButtonUtils
         camera.GetComponent<Camera>().transform.position = new Vector3(objectPos.x, objectPos.y, -10);
         camera.GetComponent<Camera>().orthographicSize = 100f; // Adjust this value as needed for zoom level
     }
+
+
 
 }
