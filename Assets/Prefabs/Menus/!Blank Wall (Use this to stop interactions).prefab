@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5314240156136397433}
   - component: {fileID: 9131141731309071019}
   m_Layer: 5
-  m_Name: Blank Wall (Use this to stop interactions)
+  m_Name: '!Blank Wall (Use this to stop interactions)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
