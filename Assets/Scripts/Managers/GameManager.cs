@@ -1,9 +1,22 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 //data that needs to be stored globally and transfered between scenes can be stored and referenced in this script
 public class GameManager : MonoBehaviour
 {
+    //larger gamestate tracking variables
+    public enum GameState
+    {
+        Paused, Active
+    };
+    public GameState gameState = GameState.Active;
+    //player input to manage input modes
+    [SerializeField] PlayerInput playerInput;
+
     //bools for the MuseumIntro scene, used in MuseumIntroManager.cs and SceneTransitioner.cs
     public bool newsRead;
     public bool introSprawlDone;
@@ -74,6 +87,8 @@ public class GameManager : MonoBehaviour
 
             SceneManager.sceneLoaded += GMOnSceneLoaded;
         }
+
+       playerInput = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -108,6 +123,16 @@ public class GameManager : MonoBehaviour
     public void OnButtonCursorExit()
     {
         Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
+    }
+
+    private void EnableActionMapPauseUI()
+    {
+        playerInput.SwitchCurrentActionMap("PauseUI");
+    }
+
+    private void EnablePlayerAction()
+    {
+        playerInput.SwitchCurrentActionMap("UI");
     }
 
     private void OnMouseEnter()

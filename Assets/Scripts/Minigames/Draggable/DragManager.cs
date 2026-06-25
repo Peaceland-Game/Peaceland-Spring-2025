@@ -157,7 +157,7 @@ public class DragManager : MonoBehaviour
         //Debug.Log("Touch input received with phase: " + context.phase);
 
         if (!isActiveAndEnabled) return;
-        
+        if (GameManager.Instance.gameState == GameManager.GameState.Paused) return;
 
         if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled)
         {

@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: 2ad8d428d8a808843a5abea282eb78e2
+guid: dc12f8f36191e0f4dac9a425c5538791
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8187422015717571592
-    second: BG_Memorial_0
+      213: 2722198417778859558
+    second: Pause Text_0
+  - first:
+      213: 810782927034109584
+    second: Pause Text_1
+  - first:
+      213: 2009971437134894645
+    second: Pause Text_2
+  - first:
+      213: -5508323165353188592
+    second: Pause Text_3
+  - first:
+      213: 1853256373244066770
+    second: Pause Text_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG_Memorial_0
+      name: Pause Text_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2560
-        height: 1400
+        x: 148
+        y: 4017
+        width: 1245
+        height: 2177
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +127,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80cfe09c1f09f9170800000000000000
-      internalID: 8187422015717571592
+      spriteID: 62ed6d3c90137c520800000000000000
+      internalID: 2722198417778859558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Text_1
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 3982
+        width: 1479
+        height: 2173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09ec1d3c6ca704b00800000000000000
+      internalID: 810782927034109584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Text_2
+      rect:
+        serializedVersion: 2
+        x: 3274
+        y: 4014
+        width: 1478
+        height: 2184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5365b1f6f5ad4eb10800000000000000
+      internalID: 2009971437134894645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Text_3
+      rect:
+        serializedVersion: 2
+        x: 5132
+        y: 4022
+        width: 1414
+        height: 2169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0136115f3418e83b0800000000000000
+      internalID: -5508323165353188592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Text_4
+      rect:
+        serializedVersion: 2
+        x: 6910
+        y: 4049
+        width: 1430
+        height: 2118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dbf0fc3ad618b910800000000000000
+      internalID: 1853256373244066770
       vertices: []
       indices: 
       edges: []
@@ -125,7 +225,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +235,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BG_Memorial_0: 8187422015717571592
+      Pause Text_0: 2722198417778859558
+      Pause Text_1: 810782927034109584
+      Pause Text_2: 2009971437134894645
+      Pause Text_3: -5508323165353188592
+      Pause Text_4: 1853256373244066770
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

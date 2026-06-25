@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2ad8d428d8a808843a5abea282eb78e2
+guid: cf55332ccf01d3b4eba816a1011b370d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8187422015717571592
-    second: BG_Memorial_0
+      213: 2103671699968858399
+    second: BG_Memorial_With_Birds_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG_Memorial_0
+      name: BG_Memorial_With_Birds_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80cfe09c1f09f9170800000000000000
-      internalID: 8187422015717571592
+      spriteID: f199fa0f34eb13d10800000000000000
+      internalID: 2103671699968858399
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      BG_Memorial_0: 8187422015717571592
+      BG_Memorial_With_Birds_0: 2103671699968858399
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

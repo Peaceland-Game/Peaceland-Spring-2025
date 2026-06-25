@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 2ad8d428d8a808843a5abea282eb78e2
+guid: 4882a7de0e39c79449d1b916ecc92071
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8187422015717571592
-    second: BG_Memorial_0
+      213: 6664597370791217613
+    second: Sound On Button_0
+  - first:
+      213: -9023441066228227194
+    second: Sound On Button_1
+  - first:
+      213: -3375383596473468517
+    second: Sound On Button_2
+  - first:
+      213: 3495210098532591600
+    second: Sound On Button_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG_Memorial_0
+      name: Sound On Button_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2560
-        height: 1400
+        x: 3511
+        y: 3812
+        width: 632
+        height: 911
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80cfe09c1f09f9170800000000000000
-      internalID: 8187422015717571592
+      spriteID: dc943098ff76d7c50800000000000000
+      internalID: 6664597370791217613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sound On Button_1
+      rect:
+        serializedVersion: 2
+        x: 4249
+        y: 4071
+        width: 165
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6836bc3982c46c280800000000000000
+      internalID: -9023441066228227194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sound On Button_2
+      rect:
+        serializedVersion: 2
+        x: 4363
+        y: 3965
+        width: 223
+        height: 605
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b99b487a08a3821d0800000000000000
+      internalID: -3375383596473468517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sound On Button_3
+      rect:
+        serializedVersion: 2
+        x: 4489
+        y: 3827
+        width: 298
+        height: 881
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f7a462f01b718030800000000000000
+      internalID: 3495210098532591600
       vertices: []
       indices: 
       edges: []
@@ -134,8 +209,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      BG_Memorial_0: 8187422015717571592
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

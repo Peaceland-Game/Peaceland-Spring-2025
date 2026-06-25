@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 2ad8d428d8a808843a5abea282eb78e2
+guid: 5b7106d88d911c64f84fe2f2a4504c97
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8187422015717571592
-    second: BG_Memorial_0
+      213: 7041536145237247410
+    second: Sound Off Button_0
+  - first:
+      213: -6376187336793672594
+    second: Sound Off Button_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BG_Memorial_0
+      name: Sound Off Button_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2560
-        height: 1400
+        x: 3655
+        y: 3812
+        width: 631
+        height: 911
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 80cfe09c1f09f9170800000000000000
-      internalID: 8187422015717571592
+      spriteID: 2b580f101df88b160800000000000000
+      internalID: 7041536145237247410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sound Off Button_1
+      rect:
+        serializedVersion: 2
+        x: 4418
+        y: 4035
+        width: 464
+        height: 464
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e64b111566b3387a0800000000000000
+      internalID: -6376187336793672594
       vertices: []
       indices: 
       edges: []
@@ -134,8 +159,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      BG_Memorial_0: 8187422015717571592
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
