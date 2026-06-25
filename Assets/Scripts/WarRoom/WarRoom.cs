@@ -90,10 +90,7 @@ public class WarRoom : GenericMemManager
         else
         {
             DisableButton(returnToLobbyButton);
-            EnableButton(leftArrow);
-            EnableButton(rightArrow);
             ToggleButtonArray(false, clickableWalls);
-            EnableButton(exitWallView);
         }
         ChangeBackgroundSprite(currentWallIndex);
     }
@@ -165,6 +162,8 @@ public class WarRoom : GenericMemManager
         onRightWall = false;
         Debug.Log("Exiting wall view...");
         currentWallIndex = 0;
+
+        DisableButton(exitWallView);
     }
 
     public void ReturnToLobby()
@@ -183,6 +182,10 @@ public class WarRoom : GenericMemManager
 
         Debug.Log("Left Wall clicked!");
         currentWallIndex = 1;
+
+        EnableButton(exitWallView);
+        EnableButton(leftArrow);
+        EnableButton(rightArrow);
     }
 
     public void MiddleWallClicked()
@@ -195,6 +198,10 @@ public class WarRoom : GenericMemManager
 
         Debug.Log("Middle Wall clicked!");
         currentWallIndex = 2;
+
+        EnableButton(exitWallView);
+        EnableButton(leftArrow);
+        EnableButton(rightArrow);
     }
 
     public void RightWallClicked()
@@ -207,36 +214,22 @@ public class WarRoom : GenericMemManager
 
         Debug.Log("Right Wall clicked!");
         currentWallIndex = 3;
+
+        EnableButton(exitWallView);
+        EnableButton(leftArrow);
+        EnableButton(rightArrow);
     }
 
     private void EnableButton(Button button)
     {
         button.interactable = true;
         button.GetComponent<Image>().enabled = true;
-        //if (buttonText != null)
-        //{
-        //    buttonText.gameObject.SetActive(true);
-        //}
-        //TextMeshPro[] childTMPs = GetComponentsInChildren<TextMeshPro>();
-        //foreach (var child in childTMPs)
-        //{
-        //    child.enabled = true;
-        //}
     }
 
     private void DisableButton(Button button)
     {
         button.interactable = false;
         button.GetComponent<Image>().enabled = false;
-        //if (buttonText != null)
-        //{
-        //    buttonText.gameObject.SetActive(false);
-        //}
-        //TextMeshPro[] childTMPs = GetComponentsInChildren<TextMeshPro>();
-        //foreach (var child in childTMPs)
-        //{
-        //    child.enabled = false;
-        //}
     }
 
     private void ToggleButtonArray(bool enable, Button[] buttons)
