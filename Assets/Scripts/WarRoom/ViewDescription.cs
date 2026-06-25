@@ -30,7 +30,7 @@ public class ViewDescription : ButtonUtils
     {
         DisableButton(exitDescButton); // Disable the exit description button at the start
         scrollView.SetActive(false);
-        Debug.Log("tmp: "+ buttonText);
+        
     }
 
     public void ViewDescriptionOnClick()

@@ -4,17 +4,17 @@ using TMPro;
 
 public class ButtonUtils : MonoBehaviour
 {
-    [SerializeField]
-    public TextMeshProUGUI buttonText;
+    //[SerializeField]
+    //public TextMeshProUGUI buttonText;
 
     public void EnableButton(Button button)
     {
         button.interactable = true;
         button.GetComponent<Image>().enabled = true;
-        if (buttonText != null)
-        {
-            buttonText.gameObject.SetActive(true);
-        }
+        //if (buttonText != null)
+        //{
+        //    buttonText.gameObject.SetActive(true);
+        //}
         //TextMeshPro[] childTMPs = GetComponentsInChildren<TextMeshPro>();
         //foreach (var child in childTMPs)
         //{
@@ -26,10 +26,10 @@ public class ButtonUtils : MonoBehaviour
     {
         button.interactable = false;
         button.GetComponent<Image>().enabled = false;
-        if (buttonText != null)
-        {
-            buttonText.gameObject.SetActive(false);
-        }
+        //if (buttonText != null)
+        //{
+        //    buttonText.gameObject.SetActive(false);
+        //}
         //TextMeshPro[] childTMPs = GetComponentsInChildren<TextMeshPro>();
         //foreach (var child in childTMPs)
         //{
