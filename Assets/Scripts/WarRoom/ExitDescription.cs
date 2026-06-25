@@ -13,20 +13,33 @@ public class ExitDescription : ButtonUtils
     public Button exitDescButton;
 
     [SerializeField]
-    public Button exitZoomButton;
+    public Button exitWallView;
+
+    [SerializeField]
+    public Button leftArrow;
+
+    [SerializeField]
+    public Button rightArrow;
+
+    //[SerializeField]
+    //public Button exitZoomButton;
 
     void Start()
     {
-        DisableButton(exitDescButton); // Disable the exit description button at the start
+
     }
 
     public void ExitDescriptionOnClick()
     {
         Debug.Log("Exiting description...");
-        scrollView.SetActive(false); // Hide the description when the exit button is clicked
+        EnableButton(exitWallView);
+        EnableButton(leftArrow);
+        EnableButton(rightArrow);
         EnableButton(viewDescButton); // Enable the view description button
+
+
+        scrollView.SetActive(false); // Hide the scroll view with the description
         DisableButton(exitDescButton); // Disable the exit description button
-        EnableButton(exitZoomButton); // Enable the exit zoom button when exiting description
     }
 
 }

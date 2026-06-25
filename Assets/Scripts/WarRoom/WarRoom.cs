@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +36,18 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     public Button[] rightWallArtifacts;
 
+    //left wall artifacts 
+    [SerializeField]
+    public TextMeshProUGUI[] leftWallTMPs;
+
+    //middle wall artifacts 
+    [SerializeField]
+    public TextMeshProUGUI[] middleWallTMPs;
+
+    //right wall artifacts 
+    [SerializeField]
+    public TextMeshProUGUI[] rightWallTMPs;
+
     //private bool[] currentWall = new bool[4];
     private bool onWideShot = true;
     private bool onLeftWall = false;
@@ -54,18 +67,18 @@ public class WarRoom : GenericMemManager
 
         ToggleButtonArray(true, clickableWalls);
 
-        ToggleButtonArray(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        ToggleButtonArray(false, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
-        ToggleButtonArray(false, rightWallArtifacts); // Disable all right wall artifact buttons at the start
+        ToggleButtonArray(false, leftWallArtifacts, leftWallTMPs); // Disable all left wall artifact buttons at the start
+        ToggleButtonArray(false, middleWallArtifacts, middleWallTMPs); // Disable all middle wall artifact buttons at the start  
+        ToggleButtonArray(false, rightWallArtifacts, rightWallTMPs); // Disable all right wall artifact buttons at the start
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        ToggleButtonArray(onLeftWall, leftWallArtifacts);
-        ToggleButtonArray(onMiddleWall, middleWallArtifacts);
-        ToggleButtonArray(onRightWall, rightWallArtifacts);
+        ToggleButtonArray(onLeftWall, leftWallArtifacts, leftWallTMPs); // Disable all left wall artifact buttons at the start
+        ToggleButtonArray(onMiddleWall, middleWallArtifacts, middleWallTMPs); // Disable all middle wall artifact buttons at the start  
+        ToggleButtonArray(onRightWall, rightWallArtifacts, rightWallTMPs); // Disable all right wall artifact buttons at the start
         if (onWideShot)
         {
             EnableButton(returnToLobbyButton);
@@ -196,29 +209,62 @@ public class WarRoom : GenericMemManager
         currentWallIndex = 3;
     }
 
-    private void EnableButton(Button button)
+    private void EnableButton(Button button, TextMeshProUGUI buttonText = null)
     {
         button.interactable = true;
         button.GetComponent<Image>().enabled = true;
+        if (buttonText != null)
+        {
+            buttonText.gameObject.SetActive(true);
+        }
+        //TextMeshPro[] childTMPs = GetComponentsInChildren<TextMeshPro>();
+        //foreach (var child in childTMPs)
+        //{
+        //    child.enabled = true;
+        //}
     }
 
-    private void DisableButton(Button button)
+    private void DisableButton(Button button, TextMeshProUGUI buttonText = null)
     {
         button.interactable = false;
         button.GetComponent<Image>().enabled = false;
+        if (buttonText != null)
+        {
+            buttonText.gameObject.SetActive(false);
+        }
+        //TextMeshPro[] childTMPs = GetComponentsInChildren<TextMeshPro>();
+        //foreach (var child in childTMPs)
+        //{
+        //    child.enabled = false;
+        //}
     }
 
-    private void ToggleButtonArray(bool enable, Button[] artifacts)
+    private void ToggleButtonArray(bool enable, Button[] buttons, TextMeshProUGUI[] tmps = null)
     {
-        for (int i = 0; i < artifacts.Length; i++)
+        for (int i = 0; i < buttons.Length; i++)
         {
             if (enable)
             {
-                EnableButton(artifacts[i]);
+                if(tmps == null)
+                {
+                    EnableButton(buttons[i]);
+                }
+                else
+                {
+                    EnableButton(buttons[i], tmps[i]);
+                }
+                    
             }
             else
             {
-                DisableButton(artifacts[i]);
+                if (tmps == null)
+                {
+                    DisableButton(buttons[i]);
+                }
+                else
+                {
+                    DisableButton(buttons[i], tmps[i]);
+                }
             }
         }
     }
