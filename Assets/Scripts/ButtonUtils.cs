@@ -36,4 +36,24 @@ public class ButtonUtils : MonoBehaviour
         //    child.enabled = false;
         //}
     }
+
+    public void ToggleButtonArray(bool enable, Button[] buttons, Button exempt = null)
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (buttons[i] == exempt)
+            {
+                continue;
+            }
+            if (enable)
+            {
+                EnableButton(buttons[i]);
+            }
+            else
+            {
+                DisableButton(buttons[i]);
+
+            }
+        }
+    }
 }

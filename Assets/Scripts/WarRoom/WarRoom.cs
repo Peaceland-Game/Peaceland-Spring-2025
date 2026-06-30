@@ -33,6 +33,9 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     public Button[] rightWallArtifacts;
 
+    [SerializeField]
+    public Button exitDescView;
+
     ////left wall artifacts 
     //[SerializeField]
     //public TextMeshProUGUI[] leftWallTMPs;
@@ -73,9 +76,9 @@ public class WarRoom : GenericMemManager
     // Update is called once per frame
     void Update()
     {
-        ToggleButtonArray(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        ToggleButtonArray(onMiddleWall, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
-        ToggleButtonArray(onRightWall, rightWallArtifacts); // Disable all right wall artifact buttons at the start
+        //ToggleButtonArray(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
+        //ToggleButtonArray(onMiddleWall, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
+        //ToggleButtonArray(onRightWall, rightWallArtifacts); // Disable all right wall artifact buttons at the start
         if (onWideShot)
         {
             EnableButton(returnToLobbyButton);
@@ -99,6 +102,7 @@ public class WarRoom : GenericMemManager
             currentWallIndex = 3;
         }
         MoveWallHelper();
+        ToggleWalls();
     }
 
     public void MoveRight()
@@ -109,6 +113,7 @@ public class WarRoom : GenericMemManager
             currentWallIndex = 1;
         }
         MoveWallHelper();
+        ToggleWalls();
     }
 
     //don't ask
@@ -161,6 +166,7 @@ public class WarRoom : GenericMemManager
         currentWallIndex = 0;
 
         DisableButton(exitWallView);
+        ToggleWalls();
     }
 
     public void ReturnToLobby()
@@ -183,6 +189,7 @@ public class WarRoom : GenericMemManager
         EnableButton(exitWallView);
         EnableButton(leftArrow);
         EnableButton(rightArrow);
+        ToggleWalls();
     }
 
     public void MiddleWallClicked()
@@ -199,6 +206,7 @@ public class WarRoom : GenericMemManager
         EnableButton(exitWallView);
         EnableButton(leftArrow);
         EnableButton(rightArrow);
+        ToggleWalls();
     }
 
     public void RightWallClicked()
@@ -215,6 +223,7 @@ public class WarRoom : GenericMemManager
         EnableButton(exitWallView);
         EnableButton(leftArrow);
         EnableButton(rightArrow);
+        ToggleWalls();
     }
 
     private void EnableButton(Button button)
@@ -223,16 +232,25 @@ public class WarRoom : GenericMemManager
         button.GetComponent<Image>().enabled = true;
     }
 
+    private void ToggleWalls()
+    {
+        ToggleButtonArray(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
+        ToggleButtonArray(onMiddleWall, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
+        ToggleButtonArray(onRightWall, rightWallArtifacts); // Disable all right wall artifact buttons at the start
+    }
     private void DisableButton(Button button)
     {
         button.interactable = false;
         button.GetComponent<Image>().enabled = false;
     }
 
-    private void ToggleButtonArray(bool enable, Button[] buttons)
+    private void ToggleButtonArray(bool enable, Button[] buttons, Button exempt = null)
     {
         for (int i = 0; i < buttons.Length; i++)
         {
+            if (buttons[i] == exempt) {
+                continue;
+            }
             if (enable)
             {
                 EnableButton(buttons[i]);    

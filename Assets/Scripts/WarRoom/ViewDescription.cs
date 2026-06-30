@@ -1,16 +1,22 @@
+using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ViewDescription : ButtonUtils
 {
     [SerializeField]
     public Button viewDescButton;
 
+    //[SerializeField]
+    //public GameObject scrollView;
+
     [SerializeField]
-    public GameObject scrollView;
+    public GameObject panel;
 
     [SerializeField]
     public Button exitDescButton;
+    
 
     [SerializeField]
     public Button exitWallView;
@@ -22,6 +28,9 @@ public class ViewDescription : ButtonUtils
     public Button rightArrow;
 
     //[SerializeField]
+    //public string descText="";
+
+    //[SerializeField]
     //public Button exitZoomButton;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,7 +38,8 @@ public class ViewDescription : ButtonUtils
     void Start()
     {
         DisableButton(exitDescButton); // Disable the exit description button at the start
-        scrollView.SetActive(false);
+        //scrollView.SetActive(false);
+        panel.SetActive(false);
         
     }
 
@@ -42,7 +52,9 @@ public class ViewDescription : ButtonUtils
         DisableButton(viewDescButton); // Disable the view description button
 
 
-        scrollView.SetActive(true); // Show the scroll view with the description
+        //scrollView.SetActive(true); // Show the scroll view with the description
+        panel.SetActive(true);
+        //scrollView.GetComponentInChildren<Text>().text = descText;
         EnableButton(exitDescButton); // Enable the exit description button
         //DisableButton(exitZoomButton); // Disable the exit zoom button while viewing description
     }

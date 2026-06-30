@@ -7,7 +7,8 @@ public class ExitDescription : ButtonUtils
     public Button viewDescButton;
 
     [SerializeField]
-    public GameObject scrollView;
+    //public GameObject scrollView;
+    public GameObject panel;
 
     [SerializeField]
     public Button exitDescButton;
@@ -38,7 +39,8 @@ public class ExitDescription : ButtonUtils
         EnableButton(viewDescButton); // Enable the view description button
 
 
-        scrollView.SetActive(false); // Hide the scroll view with the description
+        //scrollView.SetActive(false); // Hide the scroll view with the description
+        panel.SetActive(false);
         DisableButton(exitDescButton); // Disable the exit description button
     }
 
