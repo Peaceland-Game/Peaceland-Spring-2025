@@ -1,34 +1,31 @@
 fileFormatVersion: 2
-guid: 3719dd576ccb44c46b218e1e050e8ff9
+guid: ce3f365354ea6bd4fbc54480d56ca207
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4442411497275894531
-    second: Peaceland Text Title Vector_0
+      213: -5714185018441334095
+    second: Settings text_0
   - first:
-      213: -3876538369121924191
-    second: Peaceland Text Title Vector_1
+      213: 3517097097038507410
+    second: Settings text_1
   - first:
-      213: 4683497928104612034
-    second: Peaceland Text Title Vector_2
+      213: -8020061213614913371
+    second: Settings text_2
   - first:
-      213: -603891323858555214
-    second: Peaceland Text Title Vector_3
+      213: 8308082612503888281
+    second: Settings text_3
   - first:
-      213: -5573173734666452087
-    second: Peaceland Text Title Vector_4
+      213: -617113619838406795
+    second: Settings text_4
   - first:
-      213: -5577755402275382217
-    second: Peaceland Text Title Vector_5
+      213: 2425885264034996229
+    second: Settings text_5
   - first:
-      213: 2808927357539105421
-    second: Peaceland Text Title Vector_6
+      213: 1124392277695911943
+    second: Settings text_6
   - first:
-      213: 98834345146887787
-    second: Peaceland Text Title Vector_7
-  - first:
-      213: -2289798257113427142
-    second: Peaceland Text Title Vector_8
+      213: 4957909974659425323
+    second: Settings text_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -70,7 +67,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -124,13 +121,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Peaceland Text Title Vector_0
+      name: Settings text_0
       rect:
         serializedVersion: 2
-        x: 381
-        y: 4093
-        width: 1273
-        height: 1594
+        x: 215
+        y: 4585
+        width: 1202
+        height: 1843
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,20 +136,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 30bad3948bd96ad30800000000000000
-      internalID: 4442411497275894531
+      spriteID: 1b202f2300323b0b0800000000000000
+      internalID: -5714185018441334095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peaceland Text Title Vector_1
+      name: Settings text_1
       rect:
         serializedVersion: 2
-        x: 1662
-        y: 5081
-        width: 3041
-        height: 971
+        x: 1652
+        y: 4667
+        width: 1134
+        height: 1679
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1abc05e54e4c33ac0800000000000000
-      internalID: -3876538369121924191
+      spriteID: 29da985ec2d3fc030800000000000000
+      internalID: 3517097097038507410
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peaceland Text Title Vector_2
+      name: Settings text_2
       rect:
         serializedVersion: 2
-        x: 4863
-        y: 4078
-        width: 443
-        height: 1469
+        x: 2965
+        y: 4701
+        width: 1042
+        height: 1629
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -183,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2c014f62d802ff040800000000000000
-      internalID: 4683497928104612034
+      spriteID: 5a8489d71d403b090800000000000000
+      internalID: -8020061213614913371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peaceland Text Title Vector_3
+      name: Settings text_3
       rect:
         serializedVersion: 2
-        x: 5458
-        y: 4074
-        width: 2837
-        height: 1924
+        x: 4170
+        y: 4692
+        width: 1041
+        height: 1629
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2be687e5a0c8e97f0800000000000000
-      internalID: -603891323858555214
+      spriteID: 991c4e23e1d3c4370800000000000000
+      internalID: 8308082612503888281
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peaceland Text Title Vector_4
+      name: Settings text_4
       rect:
         serializedVersion: 2
-        x: 1376
-        y: 4082
-        width: 795
-        height: 810
+        x: 5410
+        y: 4702
+        width: 824
+        height: 1609
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -227,20 +224,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9834ba9240c18a2b0800000000000000
-      internalID: -5573173734666452087
+      spriteID: 57fe97fae629f67f0800000000000000
+      internalID: -617113619838406795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peaceland Text Title Vector_5
+      name: Settings text_5
       rect:
         serializedVersion: 2
-        x: 2276
-        y: 4091
-        width: 746
-        height: 805
+        x: 6388
+        y: 4691
+        width: 1277
+        height: 1649
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -249,20 +246,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 73c1c5b8305d792b0800000000000000
-      internalID: -5577755402275382217
+      spriteID: 50029a47bc97aa120800000000000000
+      internalID: 2425885264034996229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peaceland Text Title Vector_6
+      name: Settings text_6
       rect:
         serializedVersion: 2
-        x: 3100
-        y: 4088
-        width: 681
-        height: 791
+        x: 7870
+        y: 4675
+        width: 1274
+        height: 1647
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8abef1ac805bf620800000000000000
-      internalID: 2808927357539105421
+      spriteID: 708d14cb1d4aa9f00800000000000000
+      internalID: 1124392277695911943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Peaceland Text Title Vector_7
+      name: Settings text_7
       rect:
         serializedVersion: 2
-        x: 3940
-        y: 4082
-        width: 795
-        height: 810
+        x: 9305
+        y: 4637
+        width: 1147
+        height: 1758
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -293,30 +290,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b6ea61230512f5100800000000000000
-      internalID: 98834345146887787
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Peaceland Text Title Vector_8
-      rect:
-        serializedVersion: 2
-        x: 5335
-        y: 4083
-        width: 747
-        height: 805
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a331275fd900930e0800000000000000
-      internalID: -2289798257113427142
+      spriteID: b24e0f39ad80ec440800000000000000
+      internalID: 4957909974659425323
       vertices: []
       indices: 
       edges: []
@@ -325,7 +300,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -335,15 +310,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Peaceland Text Title Vector_0: 4442411497275894531
-      Peaceland Text Title Vector_1: -3876538369121924191
-      Peaceland Text Title Vector_2: 4683497928104612034
-      Peaceland Text Title Vector_3: -603891323858555214
-      Peaceland Text Title Vector_4: -5573173734666452087
-      Peaceland Text Title Vector_5: -5577755402275382217
-      Peaceland Text Title Vector_6: 2808927357539105421
-      Peaceland Text Title Vector_7: 98834345146887787
-      Peaceland Text Title Vector_8: -2289798257113427142
+      Settings text_0: -5714185018441334095
+      Settings text_1: 3517097097038507410
+      Settings text_2: -8020061213614913371
+      Settings text_3: 8308082612503888281
+      Settings text_4: -617113619838406795
+      Settings text_5: 2425885264034996229
+      Settings text_6: 1124392277695911943
+      Settings text_7: 4957909974659425323
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
