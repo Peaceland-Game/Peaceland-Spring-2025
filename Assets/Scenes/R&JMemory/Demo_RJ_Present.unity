@@ -3914,7 +3914,7 @@ MonoBehaviour:
   marcStart: 0
   miraIntroDone: 0
   memoryObjectAcquired: 0
-  seenRJMemory: 0
+  seenRJMemory: 1
   defaultCursor: {fileID: 2800000, guid: 844b41a58c1b3bc48adbcefbe7845cb8, type: 3}
   interactCursor: {fileID: 2800000, guid: 5970d5ca86e8ccc4eb4c550842513acb, type: 3}
   currentMemoryManager: {fileID: 583866546}

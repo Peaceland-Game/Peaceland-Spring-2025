@@ -56,8 +56,12 @@ public class WarRoom : GenericMemManager
     
     private int currentWallIndex = 0;
 
+    private GameManager GM;
+
     void Start()
     {
+        GM = FindFirstObjectByType<GameManager>();
+        Debug.Log("seen rj: "+GameManager.Instance.seenRJMemory);
         LL = FindFirstObjectByType<LevelLoader>();
         EnableButton(returnToLobbyButton);
 

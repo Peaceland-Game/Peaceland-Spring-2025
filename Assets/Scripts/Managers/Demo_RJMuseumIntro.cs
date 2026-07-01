@@ -100,11 +100,12 @@ public class Demo_RJMuseumIntro : GenericMemManager
         {
             newsPaper.enabled = false;
             currentMinigame = afterMemStart - 1;    // NextMinigame increments the count
-            NextOrder();
-            NextMinigame();
+            //NextOrder();
+            //NextMinigame();
 
             museumTree.enabled = true;
             treePlaque.enabled = true;
+            warRoomEntrance.interactable = true;
         }
     }
 

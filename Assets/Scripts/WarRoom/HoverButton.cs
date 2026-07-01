@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
-    private Image buttonImage;
+    protected Image buttonImage;
 
     [SerializeField]
-    private TextMeshProUGUI buttonText;
+    protected TextMeshProUGUI buttonText;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -22,8 +22,6 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("ptr exit");
-
         buttonImage.enabled = false;
         if (buttonText != null)
         {

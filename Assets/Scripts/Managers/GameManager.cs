@@ -12,7 +12,11 @@ public class GameManager : MonoBehaviour
     public bool memoryObjectAcquired;
 
     // Bools for Demo_RJMuseumIntro
+    public bool seenFloristMemory = false;
     public bool seenRJMemory = false;
+    public bool seenChildMemory = false;
+    public bool seenVillainMemory = false;
+    public bool seenBorisMemory = false;
 
     //cursors
     [SerializeField]
@@ -73,7 +77,12 @@ public class GameManager : MonoBehaviour
             Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
 
             SceneManager.sceneLoaded += GMOnSceneLoaded;
+        }else if(Instance !=null && Instance != this)
+        {
+            Destroy(gameObject);
         }
+        _instance = this;
+        Debug.Log("RJ complete status: " + seenRJMemory);
     }
 
     // Update is called once per frame
