@@ -62,7 +62,14 @@ public class HideArtifact : HoverButton
             // If the memory is not completed, hide the artifact
             if (!memoryCompleted)
             {
-                buttonText.text = "Locked behind " + lockingMemory.ToString() + " memory";
+                if (lockingMemory == MemoryName.RJ){
+                    buttonText.text = "Unlocked after completing Romeo & Juliet memory";
+                }
+                else
+                {
+                    buttonText.text = "Unlocked after completing " + lockingMemory.ToString() + " memory";
+                }
+                    
                 artifactButton.interactable = false;
             }
             else
