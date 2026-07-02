@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Embroidery_0: -2211380687221378938
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

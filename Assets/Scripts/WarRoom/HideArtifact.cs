@@ -23,6 +23,9 @@ public class HideArtifact : HoverButton
     private string artifactName;
 
     [SerializeField]
+    private Image textBackground;
+
+    [SerializeField]
     private bool togglePlaceholderCondition; //boolean for when Placeholder is the unlock condition, so we can toggle it on and off for testing
 
 
@@ -63,13 +66,16 @@ public class HideArtifact : HoverButton
             // If the memory is not completed, hide the artifact
             if (!unlocked)
             {
+                textBackground.color = new Color(0, 0, 0, 0); // Make the background transparent
                 buttonText.text = "?";
-                
-                    
+                buttonText.color = Color.white;
+                buttonImage.enabled = false;
                 artifactButton.interactable = false;
             }
             else
             {
+                textBackground.color = new Color(1, 1, 1, 0.267f); // Make the background white
+            buttonText.color = Color.black;
                 buttonText.text = artifactName;
                 artifactButton.interactable = true;
             }

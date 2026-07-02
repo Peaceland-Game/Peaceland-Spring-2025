@@ -1,7 +1,6 @@
-using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using System;
 
 public class ViewDescription : ButtonUtils
 {
@@ -17,7 +16,6 @@ public class ViewDescription : ButtonUtils
     [SerializeField]
     public Button exitDescButton;
     
-
     [SerializeField]
     public Button exitWallView;
 
@@ -26,6 +24,8 @@ public class ViewDescription : ButtonUtils
 
     [SerializeField]
     public Button rightArrow;
+
+    public event EventHandler OnViewDescriptionClicked;
 
     //[SerializeField]
     //public string descText="";
@@ -51,11 +51,11 @@ public class ViewDescription : ButtonUtils
         DisableButton(rightArrow);
         DisableButton(viewDescButton); // Disable the view description button
 
-
         //scrollView.SetActive(true); // Show the scroll view with the description
         panel.SetActive(true);
         //scrollView.GetComponentInChildren<Text>().text = descText;
         EnableButton(exitDescButton); // Enable the exit description button
         //DisableButton(exitZoomButton); // Disable the exit zoom button while viewing description
+        OnViewDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
     }
 }

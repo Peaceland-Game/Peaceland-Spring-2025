@@ -311,9 +311,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: A Streynian passport from a few years after the ceasefire. It is both expired
-    and defunct, as the passport systems have changed many times since the end of
-    the conflict. The pine tree on the cover is a neutral symbol of the nation.
+  m_text: 'description text
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -449,7 +449,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3961029063076251598, guid: 9509d98a6316499469f0f1fe5a955f85, type: 3}
+  m_Sprite: {fileID: -6535146941196447695, guid: 369567f3ac2913a42a83ea2954c3222f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -636,6 +636,7 @@ GameObject:
   - component: {fileID: 1980132882500563524}
   - component: {fileID: 86399065049980942}
   - component: {fileID: 2328209019412772251}
+  - component: {fileID: 673228076909692056}
   - component: {fileID: 1141150830450310724}
   m_Layer: 5
   m_Name: Artifact Button
@@ -687,7 +688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -729,7 +730,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.88235295}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -804,6 +805,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 2201073673803887209}
   buttonText: {fileID: 5251270021849180037}
+  viewDescription: {fileID: 86399065049980942}
+  exitDescription: {fileID: 7220205523150193701}
+--- !u!114 &673228076909692056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6251877351251959683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0db8c1fa47bfc2945a608ea20fb7aaf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 2201073673803887209}
+  buttonText: {fileID: 5251270021849180037}
+  viewDescription: {fileID: 86399065049980942}
+  exitDescription: {fileID: 7220205523150193701}
+  unlockCondition: 0
+  artifactButton: {fileID: 1980132882500563524}
+  artifactName: Streynian Passport
+  textBackground: {fileID: 2201073673803887209}
+  togglePlaceholderCondition: 0
 --- !u!114 &1141150830450310724
 MonoBehaviour:
   m_ObjectHideFlags: 0

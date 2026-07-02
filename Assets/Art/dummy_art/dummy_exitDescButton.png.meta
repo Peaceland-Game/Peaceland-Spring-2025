@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dummy_exitDescButton_0: 1819372220421402161
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

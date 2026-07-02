@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dummy_ceasefire_agreement_0: -9164020521788558760
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

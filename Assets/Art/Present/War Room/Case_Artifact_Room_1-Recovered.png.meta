@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Case_Artifact_Room_1-Recovered_0: -1316622667868183830
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

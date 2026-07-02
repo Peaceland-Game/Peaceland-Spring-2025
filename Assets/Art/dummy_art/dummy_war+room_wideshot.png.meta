@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dummy_war+room_wideshot_0: -4165550655718954985
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

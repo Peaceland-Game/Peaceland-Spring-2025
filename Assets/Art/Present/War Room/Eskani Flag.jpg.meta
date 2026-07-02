@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Eskani Flag_0: 3215051862754488015
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

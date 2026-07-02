@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Medal Cleoni_0: -2403128142123368456
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

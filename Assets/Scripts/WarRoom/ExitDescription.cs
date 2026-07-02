@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class ExitDescription : ButtonUtils
 {
@@ -22,6 +23,8 @@ public class ExitDescription : ButtonUtils
     [SerializeField]
     public Button rightArrow;
 
+    public event EventHandler OnExitDescriptionClicked;
+
     //[SerializeField]
     //public Button exitZoomButton;
 
@@ -42,6 +45,7 @@ public class ExitDescription : ButtonUtils
         //scrollView.SetActive(false); // Hide the scroll view with the description
         panel.SetActive(false);
         DisableButton(exitDescButton); // Disable the exit description button
+        OnExitDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
     }
 
 }
