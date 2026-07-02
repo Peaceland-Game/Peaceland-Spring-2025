@@ -33,8 +33,8 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     public Button[] rightWallArtifacts;
 
-    [SerializeField]
-    public Button exitDescView;
+    //[SerializeField]
+    //public Button exitDescView;
 
     ////left wall artifacts 
     //[SerializeField]

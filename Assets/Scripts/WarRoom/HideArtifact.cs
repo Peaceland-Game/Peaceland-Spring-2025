@@ -3,24 +3,27 @@ using UnityEngine.UI;
 
 public class HideArtifact : HoverButton
 {
-    public enum MemoryName
+    public enum UnlockCondition
     {
-        None=0,
-        Florist =1,
-        RJ =2,
-        Child = 3,
-        Villain = 4,
-        Boris=5,
+        Placeholder,
+        CompleteFlorist,
+        CompleteRJ,
+        CompleteChild,
+        CompleteVillain,
+        CompleteBoris,
     }
 
     [SerializeField]
-    private MemoryName lockingMemory; // The memory that will lock the artifact until it is completed
+    private UnlockCondition unlockCondition; // The memory that will lock the artifact until it is completed
 
     [SerializeField]
     private Button artifactButton;
 
     [SerializeField]
     private string artifactName;
+
+    [SerializeField]
+    private bool togglePlaceholderCondition; //boolean for when Placeholder is the unlock condition, so we can toggle it on and off for testing
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,38 +40,31 @@ public class HideArtifact : HoverButton
     // Update is called once per frame
     void Update()
     {
-        if (lockingMemory != MemoryName.None)
-        {
             // Check if the memory has been completed
-            bool memoryCompleted = false;
-            switch (lockingMemory)
+            bool unlocked = false;
+            switch (unlockCondition)
             {
-                case MemoryName.Florist:
-                    memoryCompleted = GameManager.Instance.seenFloristMemory;
+                case UnlockCondition.CompleteFlorist:
+                    unlocked = GameManager.Instance.seenFloristMemory;
                     break;
-                case MemoryName.RJ:
-                    memoryCompleted = GameManager.Instance.seenRJMemory;
+                case UnlockCondition.CompleteRJ:
+                    unlocked = GameManager.Instance.seenRJMemory;
                     break;
-                case MemoryName.Child:
-                    memoryCompleted = GameManager.Instance.seenChildMemory;
+                case UnlockCondition.CompleteChild:
+                    unlocked = GameManager.Instance.seenChildMemory;
                     break;
-                case MemoryName.Villain:
-                    memoryCompleted = GameManager.Instance.seenVillainMemory;
+                case UnlockCondition.CompleteVillain:
+                    unlocked = GameManager.Instance.seenVillainMemory;
                     break;
-                case MemoryName.Boris:
-                    memoryCompleted = GameManager.Instance.seenBorisMemory;
+                case UnlockCondition.CompleteBoris:
+                    unlocked = GameManager.Instance.seenBorisMemory;
                     break;
             }
             // If the memory is not completed, hide the artifact
-            if (!memoryCompleted)
+            if (!unlocked)
             {
-                if (lockingMemory == MemoryName.RJ){
-                    buttonText.text = "Unlocked after completing Romeo & Juliet memory";
-                }
-                else
-                {
-                    buttonText.text = "Unlocked after completing " + lockingMemory.ToString() + " memory";
-                }
+                buttonText.text = "?";
+                
                     
                 artifactButton.interactable = false;
             }
@@ -78,5 +74,5 @@ public class HideArtifact : HoverButton
                 artifactButton.interactable = true;
             }
         }
-    }
+    
 }
