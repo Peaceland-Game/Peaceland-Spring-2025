@@ -25,8 +25,7 @@ public class HideArtifact : HoverButton
     [SerializeField]
     private Image textBackground;
 
-    [SerializeField]
-    private bool togglePlaceholderCondition; //boolean for when Placeholder is the unlock condition, so we can toggle it on and off for testing
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,7 +46,10 @@ public class HideArtifact : HoverButton
             bool unlocked = false;
             switch (unlockCondition)
             {
-                case UnlockCondition.CompleteFlorist:
+                case UnlockCondition.Placeholder:
+                    unlocked = GameManager.Instance.placeholderCondition;
+                    break;
+            case UnlockCondition.CompleteFlorist:
                     unlocked = GameManager.Instance.seenFloristMemory;
                     break;
                 case UnlockCondition.CompleteRJ:
@@ -75,7 +77,7 @@ public class HideArtifact : HoverButton
             else
             {
                 textBackground.color = new Color(1, 1, 1, 0.267f); // Make the background white
-            buttonText.color = Color.black;
+                buttonText.color = Color.black;
                 buttonText.text = artifactName;
                 artifactButton.interactable = true;
             }

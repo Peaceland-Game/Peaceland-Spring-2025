@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public bool seenVillainMemory = false;
     public bool seenBorisMemory = false;
 
+    [SerializeField]
+    public bool placeholderCondition=false; //boolean for when Placeholder is the unlock condition, so we can toggle it on and off for testing
+
     //cursors
     [SerializeField]
     private Texture2D defaultCursor;
