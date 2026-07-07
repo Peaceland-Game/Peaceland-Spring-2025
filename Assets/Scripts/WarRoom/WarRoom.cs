@@ -23,7 +23,8 @@ public class WarRoom : GenericMemManager
 
     //left wall artifacts 
     [SerializeField]
-    public Button[] leftWallArtifacts;
+    //public Button[] leftWallArtifacts;
+    public GameObject[] leftWallArtifacts;
 
     //middle wall artifacts 
     [SerializeField]
@@ -71,7 +72,8 @@ public class WarRoom : GenericMemManager
 
         ToggleButtonArray(true, clickableWalls);
 
-        ToggleButtonArray(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
+        //ToggleButtonArray(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
+        ToggleArtifacts(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
         ToggleButtonArray(false, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
         ToggleButtonArray(false, rightWallArtifacts); // Disable all right wall artifact buttons at the start
 
@@ -238,7 +240,8 @@ public class WarRoom : GenericMemManager
 
     private void ToggleWalls()
     {
-        ToggleButtonArray(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
+        //ToggleButtonArray(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
+        ToggleArtifacts(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
         ToggleButtonArray(onMiddleWall, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
         ToggleButtonArray(onRightWall, rightWallArtifacts); // Disable all right wall artifact buttons at the start
     }
@@ -266,5 +269,13 @@ public class WarRoom : GenericMemManager
             }
         }
     }
+
+    private void ToggleArtifacts(bool enable, GameObject[] artifacts)
+    {
+        for (int i = 0; i < artifacts.Length; i++)
+        {
+            artifacts[i].SetActive(enable);
+        }
+    }   
 
 }
