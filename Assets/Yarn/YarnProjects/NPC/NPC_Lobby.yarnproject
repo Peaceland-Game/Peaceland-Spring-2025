@@ -1,0 +1,13 @@
+﻿{
+  "projectFileVersion": 2,
+  "sourceFiles": [
+    "**/*.yarn",
+    "Marcia.yarn"
+  ],
+  "excludeFiles": [
+    "**/*~/*"
+  ],
+  "localisation": {},
+  "baseLanguage": "en",
+  "compilerOptions": {}
+}

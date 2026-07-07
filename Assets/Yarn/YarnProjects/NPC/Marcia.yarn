@@ -1,0 +1,50 @@
+﻿title: MarciaStart
+---
+<<declare $npcName = "Marcia">> //The NPC's name will go here and can be different for each NPC if needed
+<<declare $charName = "Marc">>
+
+//I currently don't have assigned welcomes for each dialogue like I do for the rest of it, so many welcomes may not look like they fit, may be repeated, or no welcome at all
+
+{$npcName}: This tree gives off a lot of mixed feelings. A lot of things that many would like to forget, but others would like to remember.
+-> <i>Listen to their story</i>
+    <<jump MarciaStory>>
+-> <i>Ask about their day</i>
+    <<jump MarciaDay>>
+-> <i>Back to the lobby</i>
+    <<jump MarciaLeave>>
+===
+
+title: MarciaStory
+---
+{$charName}: Tell me about your story.
+{$npcName}: //This will just be placeholder text until I further understand how yarn works
+===
+
+title: MarciaDay
+---
+{$npcName}: Today is a great day. The sky is clear, the flowers smell amazing, and birds are singing their little hearts out. I just wish every day was like this.
+-> I like that mindset!
+    <<jump DayGood>>
+-> A little rain here and there never hurts.
+    <<jump DayNeutral>>
+-> Nothing too special.
+    <<jump DayBad>>
+===
+
+title: DayGood
+---
+{$charName}: I like that mindset!
+{$npcName}: You should always be positive, even if things are dark for a moment.
+===
+
+title: DayNeutral
+---
+{$charName}: A little rain here and there never hurts.
+{$npcName}: You're not wrong there. Rain is always good for nature.
+===
+
+title: DayBad
+---
+{$charName}: Nothing too special.
+{$npcName}: Oh...well...you should still be greatful for days like this.
+===
