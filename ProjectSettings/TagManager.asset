@@ -78,7 +78,7 @@ TagManager:
   - name: piece
     uniqueID: 130611171
     locked: 0
-  - name: ui button
+  - name: ui component
     uniqueID: 2581409119
     locked: 0
   m_RenderingLayers:

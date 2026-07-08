@@ -23,11 +23,11 @@ public class ToggleNeighbours : ButtonUtils
 
     public void DisableNeighbours()
     {
-        ToggleButtonArray(false, neighbours);
+        ToggleButtonArray(false, neighbours, null, false);
     }
 
     public void EnableNeighbours()
     {
-        ToggleButtonArray(true, neighbours);
+        ToggleButtonArray(true, neighbours, null, false);
     }
 }

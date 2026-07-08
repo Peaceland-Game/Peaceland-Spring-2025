@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
-    protected Image buttonImage;
+    protected Image buttonImage; //for artifacts, this is the text background image, for other buttons, this is the button image
 
     [SerializeField]
     protected TextMeshProUGUI buttonText;

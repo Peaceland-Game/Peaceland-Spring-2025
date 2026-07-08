@@ -28,11 +28,11 @@ public class WarRoom : GenericMemManager
 
     //middle wall artifacts 
     [SerializeField]
-    public Button[] middleWallArtifacts;
+    public GameObject[] middleWallArtifacts;
 
     //right wall artifacts 
     [SerializeField]
-    public Button[] rightWallArtifacts;
+    public GameObject[] rightWallArtifacts;
 
     //[SerializeField]
     //public Button exitDescView;
@@ -74,8 +74,8 @@ public class WarRoom : GenericMemManager
 
         //ToggleButtonArray(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
         ToggleArtifacts(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        ToggleButtonArray(false, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
-        ToggleButtonArray(false, rightWallArtifacts); // Disable all right wall artifact buttons at the start
+        ToggleArtifacts(false, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
+        ToggleArtifacts(false, rightWallArtifacts); // Disable all right wall artifact buttons at the start
 
     }
 
@@ -242,8 +242,8 @@ public class WarRoom : GenericMemManager
     {
         //ToggleButtonArray(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
         ToggleArtifacts(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        ToggleButtonArray(onMiddleWall, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
-        ToggleButtonArray(onRightWall, rightWallArtifacts); // Disable all right wall artifact buttons at the start
+        ToggleArtifacts(onMiddleWall, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
+        ToggleArtifacts(onRightWall, rightWallArtifacts); // Disable all right wall artifact buttons at the start
     }
     private void DisableButton(Button button)
     {

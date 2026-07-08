@@ -25,7 +25,8 @@ public class HideArtifact : HoverButton
     [SerializeField]
     private Image textBackground;
 
-    
+    [SerializeField]
+    private Image[] artifactImages=null; //used for when multiple images are used for the artifact (like the collection of children's toys)
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -49,7 +50,7 @@ public class HideArtifact : HoverButton
                 case UnlockCondition.Placeholder:
                     unlocked = GameManager.Instance.placeholderCondition;
                     break;
-            case UnlockCondition.CompleteFlorist:
+                case UnlockCondition.CompleteFlorist:
                     unlocked = GameManager.Instance.seenFloristMemory;
                     break;
                 case UnlockCondition.CompleteRJ:
@@ -69,9 +70,17 @@ public class HideArtifact : HoverButton
             if (!unlocked)
             {
                 textBackground.color = new Color(0, 0, 0, 0); // Make the background transparent
-                buttonText.text = "?";
+                buttonText.text = "???";
                 buttonText.color = Color.white;
                 buttonImage.enabled = false;
+                if (artifactImages != null)
+                {
+                    foreach (Image img in artifactImages)
+                    {
+                        img.color = new Color(0, 0, 0, 0.882f); // Darken images
+                    }
+               
+                }
                 artifactButton.interactable = false;
             }
             else
@@ -80,6 +89,15 @@ public class HideArtifact : HoverButton
                 buttonText.color = Color.black;
                 buttonText.text = artifactName;
                 artifactButton.interactable = true;
+
+                if (artifactImages != null)
+                {
+                    foreach (Image img in artifactImages)
+                    {
+                        img.color = new Color(255, 255, 255, 1); // reveal images
+                    }
+
+                }
             }
         }
     

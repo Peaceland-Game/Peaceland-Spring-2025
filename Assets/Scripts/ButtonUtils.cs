@@ -7,10 +7,14 @@ public class ButtonUtils : MonoBehaviour
     //[SerializeField]
     //public TextMeshProUGUI buttonText;
 
-    public void EnableButton(Button button)
+    public void EnableButton(Button button, bool enableImage=true)
     {
         button.interactable = true;
-        button.GetComponent<Image>().enabled = true;
+
+        if (enableImage)
+        {
+            button.GetComponent<Image>().enabled = true;
+        }
         //if (buttonText != null)
         //{
         //    buttonText.gameObject.SetActive(true);
@@ -22,10 +26,13 @@ public class ButtonUtils : MonoBehaviour
         //}
     }
 
-    public void DisableButton(Button button)
+    public void DisableButton(Button button, bool disableImage = true)
     {
         button.interactable = false;
-        button.GetComponent<Image>().enabled = false;
+        if (disableImage)
+        {
+            button.GetComponent<Image>().enabled = false;
+        }
         //if (buttonText != null)
         //{
         //    buttonText.gameObject.SetActive(false);
@@ -37,7 +44,7 @@ public class ButtonUtils : MonoBehaviour
         //}
     }
 
-    public void ToggleButtonArray(bool enable, Button[] buttons, Button exempt = null)
+    public void ToggleButtonArray(bool enable, Button[] buttons, Button exempt = null, bool toggleImage=true)
     {
         for (int i = 0; i < buttons.Length; i++)
         {
@@ -47,11 +54,11 @@ public class ButtonUtils : MonoBehaviour
             //}
             if (enable)
             {
-                EnableButton(buttons[i]);
+                EnableButton(buttons[i], toggleImage);
             }
             else
             {
-                DisableButton(buttons[i]);
+                DisableButton(buttons[i], toggleImage);
 
             }
         }
