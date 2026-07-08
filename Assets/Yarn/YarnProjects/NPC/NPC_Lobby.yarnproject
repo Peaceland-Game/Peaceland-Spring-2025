@@ -2,7 +2,11 @@
   "projectFileVersion": 2,
   "sourceFiles": [
     "**/*.yarn",
-    "Marcia.yarn"
+    "Marcia.yarn",
+    "Johnny.yarn",
+    "Alex.yarn",
+    "Jessica.yarn",
+    "Tree.yarn"
   ],
   "excludeFiles": [
     "**/*~/*"

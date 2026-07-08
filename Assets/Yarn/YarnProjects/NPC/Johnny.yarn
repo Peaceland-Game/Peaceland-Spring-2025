@@ -2,19 +2,25 @@
 ---
 <<declare $npcName3 = "Johnny">> //The NPC's name will go here and can be different for each NPC if needed
 
-{$npcName3}: 
+{$npcName3}: Hello, I'm Johnny. I don't have a welcome yet. But hopefully I will soon.
 -> <i>Listen to their story</i>
     <<jump JohnnyStory>>
 -> <i>Ask about their day</i>
     <<jump JohnnyDay>>
 -> <i>Back to the lobby</i>
-    <<jump JohnnyLeave>>
 ===
 
 title: JohnnyStory
 ---
-{$charName}: Tell me about your story.
-{$npcName3}: //This will just be placeholder text until I further understand how yarn works
+Do you want to listen to the story?
+-> <i>Yes</i>
+    <<jump JohnnyStoryStart>>
+-> <i>No</i>
+===
+
+title: JohnnyStoryStart
+---
+<<wait 4>>
 ===
 
 title: JohnnyDay
@@ -30,18 +36,15 @@ title: JohnnyDay
 
 title: JohnnyGood
 ---
-{$charName}: It's always good to keep busy.
 {$npcName3}: That it is. I get bored pretty easily so I try to occupy myself often.
 ===
 
 title: JohnnyNeutral
 ---
-{$charName}: Don't forget to take a break every now and then.
 {$npcName3}: Of course! We all need to take a moment to relax.
 ===
 
 title: JohnnyBad
 ---
-{$charName}: Don't really see a museum tour as fun.
 {$npcName3}: That's pretty rude. It may not be fun to many, but it is to me.
 ===
