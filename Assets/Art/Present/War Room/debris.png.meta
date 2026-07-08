@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2743eb82d5f2b1946aa32281000c9358
+guid: 9ec0884bffda20e48a6bf57971b1efa7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -12116436826532744
-    second: Case_Artifact_Room_1_0
+      213: -5088017817694441252
+    second: debris_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Case_Artifact_Room_1_0
+      name: debris_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2560
-        height: 1400
+        x: 15
+        y: 1
+        width: 1778
+        height: 1111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 874d2073a24f4dff0800000000000000
-      internalID: -12116436826532744
+      spriteID: cd0f67590cab369b0800000000000000
+      internalID: -5088017817694441252
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Case_Artifact_Room_1_0: -12116436826532744
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

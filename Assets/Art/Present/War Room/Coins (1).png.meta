@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b4035dc86935b4247a08b4550c02bc0e
+guid: 8bfe1d737c8e22041a03039b13dddca9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6221588801852586724
-    second: warroom_0
+      213: 3469946768278445886
+    second: Coins (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: warroom_0
+      name: Coins (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1150
-        height: 628
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c154707b2f978a9a0800000000000000
-      internalID: -6221588801852586724
+      spriteID: e3f50c0833ab72030800000000000000
+      internalID: 3469946768278445886
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      warroom_0: -6221588801852586724
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -59,8 +59,26 @@ public class WarRoom : GenericMemManager
 
     private GameManager GM;
 
+    [SerializeField]
+    private bool mingming = false;
+
     void Start()
     {
+        if (mingming)
+        {
+            foreach (var wall in clickableWalls)
+            {
+                wall.GetComponent<Image>().color = new Color(255, 255, 255, 1);
+            }
+        }
+        else
+        {
+            foreach (var wall in clickableWalls)
+            {
+                wall.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+            }
+        }
+
         GM = FindFirstObjectByType<GameManager>();
         Debug.Log("seen rj: "+GameManager.Instance.seenRJMemory);
         LL = FindFirstObjectByType<LevelLoader>();
