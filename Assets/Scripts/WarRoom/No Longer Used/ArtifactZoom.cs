@@ -3,49 +3,36 @@ using UnityEngine.UI;
 
 public class ZoomOnObject : ButtonUtils
 {
-
-    [SerializeField]
-    public GameObject scrollView;
-
     [SerializeField]
     public GameObject camera;
 
     [SerializeField]
-    public GameObject image;
-
-    [SerializeField]
-    public Button returnToLobbyButton;
+    public GameObject focusPoint;
 
     [SerializeField]
     public Button exitZoom;
 
     [SerializeField]
-    public Button viewDescButton;
+    public Button[] artifactButtons;
 
-    [SerializeField]
-    public Button exitWallView;
 
 
 
     void Start()
     {
-        scrollView.SetActive(false);
-        DisableButton(viewDescButton); // Disable the view description button at the start
         DisableButton(exitZoom);
     }
 
-    public void ZoomOnClick()
+    public void ZoomIn()
     {
         Debug.Log("Zooming in on object...");
-        DisableButton(exitWallView);
-        DisableButton(returnToLobbyButton); // Disable the return to lobby button
-        EnableButton(exitZoom); // Enable the exit zoom button
-        EnableButton(viewDescButton); // Enable the view description button
 
 
-        Vector2 objectPos = image.transform.position;
+        Vector2 objectPos = focusPoint.transform.position;
         camera.GetComponent<Camera>().transform.position = new Vector3(objectPos.x, objectPos.y, -10);
-        camera.GetComponent<Camera>().orthographicSize = 100f; // Adjust this value as needed for zoom level
+        camera.GetComponent<Camera>().orthographicSize = 1f; // Adjust this value as needed for zoom level
+        EnableButton(exitZoom);
+        ToggleButtonArray(true, artifactButtons);
     }
 
 

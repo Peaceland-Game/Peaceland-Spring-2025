@@ -331,7 +331,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1819372220421402161, guid: 341b6c74b564b8d47ad5e19c3155fbbd, type: 3}
+  m_Sprite: {fileID: -4781373940957465942, guid: d16996a0c8cc8c948b3cd005e775d184, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1077,6 +1077,7 @@ MonoBehaviour:
   exitWallView: {fileID: 0}
   leftArrow: {fileID: 0}
   rightArrow: {fileID: 0}
+  seeMore: {fileID: 0}
 --- !u!114 &5548816744953601444
 MonoBehaviour:
   m_ObjectHideFlags: 0

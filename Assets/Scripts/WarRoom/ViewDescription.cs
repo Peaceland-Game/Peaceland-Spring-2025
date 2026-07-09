@@ -25,6 +25,9 @@ public class ViewDescription : ButtonUtils
     [SerializeField]
     public Button rightArrow;
 
+    [SerializeField]
+    public Button seeMore=null;
+
     public event EventHandler OnViewDescriptionClicked;
 
     //[SerializeField]
@@ -57,5 +60,10 @@ public class ViewDescription : ButtonUtils
         EnableButton(exitDescButton); // Enable the exit description button
         //DisableButton(exitZoomButton); // Disable the exit zoom button while viewing description
         OnViewDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
+
+        if(seeMore != null)
+        {
+            EnableButton(seeMore);
+        }
     }
 }

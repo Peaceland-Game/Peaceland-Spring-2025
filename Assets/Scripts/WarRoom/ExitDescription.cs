@@ -5,7 +5,7 @@ using System;
 public class ExitDescription : ButtonUtils
 {
     [SerializeField]
-    public Button viewDescButton;
+    public Button viewDescButton = null;
 
     [SerializeField]
     //public GameObject scrollView;
@@ -15,15 +15,15 @@ public class ExitDescription : ButtonUtils
     public Button exitDescButton;
 
     [SerializeField]
-    public Button exitWallView;
+    public Button exitWallView = null;
 
     [SerializeField]
-    public Button leftArrow;
+    public Button leftArrow = null;
 
     [SerializeField]
-    public Button rightArrow;
+    public Button rightArrow = null;
 
-    public event EventHandler OnExitDescriptionClicked;
+    public event EventHandler OnExitDescriptionClicked; //subscribed by HoverButton.cs to re-enable the hover button when exiting the description
 
     //[SerializeField]
     //public Button exitZoomButton;
@@ -45,6 +45,15 @@ public class ExitDescription : ButtonUtils
         //scrollView.SetActive(false); // Hide the scroll view with the description
         panel.SetActive(false);
         DisableButton(exitDescButton); // Disable the exit description button
+        OnExitDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
+    }
+
+    public void ExitDescriptionForZoom()
+    {
+        Debug.Log("Exiting description for zoom...");
+        panel.SetActive(false);
+        DisableButton(exitDescButton);
+
         OnExitDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
     }
 
