@@ -48,9 +48,10 @@ public class NPCClick : MonoBehaviour
                     originalScale = npc.transform.localScale;
                     Debug.Log($"Clicked {npc.name}");
 
+                    //The dialogue only works if the game object name is in the starting dialogue title followed by "Start", which allows this code to work with all NPCs
                     dialogueRunner.StartDialogue(npc.name + "Start");
-                    npc.transform.position = new Vector3(-4f, -4f, 0f);
-                    npc.transform.localScale = new Vector3(transform.localScale.x * 3f, transform.localScale.y * 4f, transform.localScale.z);
+                    npc.transform.position = new Vector3(-4f, -3f, 0f);
+                    npc.transform.localScale = new Vector3(transform.localScale.x * 3f, transform.localScale.y * 3f, transform.localScale.z);
                     npcMoved = true;
                 }
             }
