@@ -28,7 +28,7 @@ public class ViewDescription : ButtonUtils
     [SerializeField]
     public Button seeMore=null;
 
-    public event EventHandler OnViewDescriptionClicked;
+    public event EventHandler OnViewDescriptionClicked; //subscribed by HoverButton.cs to re-enable the hover button when exiting the description
 
     //[SerializeField]
     //public string descText="";
