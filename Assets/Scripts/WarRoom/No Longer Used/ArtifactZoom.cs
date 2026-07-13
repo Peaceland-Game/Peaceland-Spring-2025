@@ -26,15 +26,30 @@ public class ZoomOnObject : ButtonUtils
 
     public void ZoomIn()
     {
+        Debug.Log(zoomContainer.GetComponent<RectTransform>().anchoredPosition);
         Debug.Log("Zooming in on object...");
 
 
         Vector2 objectPos = focusPoint.GetComponent<RectTransform>().position;
-        Debug.Log("Object position: " + objectPos);
+        //Vector3[] corners = new Vector3[4];
+        //focusPoint.GetComponent<RectTransform>().GetWorldCorners(corners);
+       // Vector3 world_center = (corners[0] + corners[2]) / 2f;
+
+        //Vector2 local_center = zoomContainer.GetComponent<RectTransform>().InverseTransformPoint(world_center);
+
+       // zoomContainer.GetComponent<RectTransform>().anchoredPosition -= local_center;
+
+        //Debug.Log("Object position: " + local_center);
         //GetComponent<Camera>().GetComponent<Camera>().transform.position = new Vector3(objectPos.x, objectPos.y, -10);
         //GetComponent<Camera>().GetComponent<Camera>().orthographicSize = 1f; // Adjust this value as needed for zoom level
-        zoomContainer.GetComponent<RectTransform>().position = new Vector2(objectPos.x, objectPos.y);
-        //zoomContainer.GetComponent<RectTransform>().localScale = new Vector2(2f, 2f); // Adjust this value as needed for zoom level
+        Debug.Log("Object position: " + objectPos);
+        Debug.Log("Zoom container position before: " + zoomContainer.GetComponent<RectTransform>().position);
+
+        float scale = 3.5f; // Adjust this value as needed for zoom level
+        zoomContainer.GetComponent<RectTransform>().localScale = new Vector2(scale, scale);
+        zoomContainer.GetComponent<RectTransform>().position = new Vector2(0 - scale * objectPos.x, 0 - scale * objectPos.y);
+        Debug.Log("Zoom container position: " + zoomContainer.GetComponent<RectTransform>().position);
+         // Adjust this value as needed for zoom level
 
         EnableButton(exitZoom);
         ToggleButtonArray(true, artifactButtons);

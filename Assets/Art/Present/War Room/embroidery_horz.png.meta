@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      embroidery_horz_0: -6328618196353687594
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
