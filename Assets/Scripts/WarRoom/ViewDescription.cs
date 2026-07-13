@@ -52,7 +52,7 @@ public class ViewDescription : ButtonUtils
         DisableButton(exitWallView);
         DisableButton(leftArrow);
         DisableButton(rightArrow);
-        DisableButton(viewDescButton); // Disable the view description button
+        viewDescButton.interactable = false; // Disable the view description button
 
         //scrollView.SetActive(true); // Show the scroll view with the description
         panel.SetActive(true);

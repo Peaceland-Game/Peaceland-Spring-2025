@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class ToggleNeighbours : ButtonUtils
 {
@@ -8,7 +9,10 @@ public class ToggleNeighbours : ButtonUtils
 
     [SerializeField]
     public Button self;
-    
+
+    public event EventHandler OnDisableNeighbours;
+    public event EventHandler OnEnableNeighbours;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,11 +27,41 @@ public class ToggleNeighbours : ButtonUtils
 
     public void DisableNeighbours()
     {
+        //Debug.Log("Disabling neighbours...");
         ToggleButtonArray(false, neighbours, null, false);
+        foreach (var btn in neighbours)
+        {
+            var hide = btn.GetComponent<HideArtifact>();
+            if (hide != null)
+            {
+                hide.SetDisabledExternally(true);
+            }
+            
+            var hover = btn.GetComponent<HoverButton>();
+            if (hover != null) { 
+                hover.SetDisabledExternally(true);
+                Debug.Log($"Disabled hover button: {btn.name}");
+            }
+        }
+        //OnDisableNeighbours?.Invoke(this, EventArgs.Empty);
     }
 
     public void EnableNeighbours()
     {
         ToggleButtonArray(true, neighbours, null, false);
+        foreach (var btn in neighbours)
+        {
+            var hide = btn.GetComponent<HideArtifact>();
+            if (hide != null) {
+                hide.SetDisabledExternally(false);
+            }
+            else
+            {
+                var hover = btn.GetComponent<HoverButton>();
+                hover.SetDisabledExternally(false);
+            }
+            
+        }
+        //OnEnableNeighbours?.Invoke(this, EventArgs.Empty);
     }
 }

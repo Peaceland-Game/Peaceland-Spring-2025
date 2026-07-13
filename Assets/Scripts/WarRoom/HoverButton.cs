@@ -19,6 +19,8 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField]
     ExitDescription exitDescription;
 
+    protected bool disabled = false;
+
     private void Awake()
     {
         // Subscribe to the OnViewDescClicked event
@@ -26,8 +28,19 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         exitDescription.OnExitDescriptionClicked += HoverButton_OnExitDescClicked;
     }
 
+
+    public void SetDisabledExternally(bool value)
+    {
+        disabled = value;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (disabled)
+        {
+            Debug.Log("Hover button is disabled, not showing hover button.");
+            return;
+        }
         if (descOpen)
         {
             Debug.Log("Description is open, not showing hover button.");

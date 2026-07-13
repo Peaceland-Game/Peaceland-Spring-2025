@@ -54,7 +54,7 @@ public class ExitDescription : ButtonUtils
         panel.SetActive(false);
         DisableButton(exitDescButton);
 
-        OnExitDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
+        //OnExitDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
     }
 
 }
