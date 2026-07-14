@@ -1,7 +1,7 @@
 title: TreeStart
 ---
 //This dialogue will run using a random, making things more organized and clean
-<<set $tree = random_range(1,11)>>
+<<set $tree = random_range(1,12)>>
 
 <<if $tree == 1>>
     {$charName}: This tree really brings the whole room together.
@@ -23,6 +23,8 @@ title: TreeStart
     {$charName}: I wonder what kind of tree this is.
 <<elseif $tree == 10>>
     {$charName}: The tree looks completely healthy. I guess the staff do a great job taking care of it.
+<<elseif $tree == 11>>
+    {$charName}: Despite being a work-in-progress, this exhibit looks amazing.
 <<else>>
     {$charName}: Another day of putting another memory on the tree.
 <<endif>>

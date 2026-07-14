@@ -1,0 +1,26 @@
+﻿title: BakeryStart
+---
+<<declare $bakeryOwner = "Dalila">>
+<<wait 2>>
+
+{$bakeryOwner}: Hey Marc! You look happy today.
+{$bakeryOwner}: I saw your parents the other day; they mentioned you're starting a new job?
+
+{$charName}: I am. Today was my first shift at the museum, so I figured that I'd look presentable, despite how my morning went.
+
+<i>Shows a bandage on the hand</i>
+
+{$bakeryOwner}: Oh my! Let me guess, it was Art wasn't it?
+
+{$charName}: Yeah, well he tried to make me breakfast. You know how he is, left the kettle on.
+
+{$bakeryOwner}: Well, I can at least give you a doughnut for your troubles. Don't worry, it's on the house.
+
+{$charName}: Thank you, Dalila.
+===
+
+title: BakeryFront
+---
+<<wait 2>>
+Dalila's Bakery
+===
