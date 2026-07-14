@@ -1,13 +1,11 @@
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ExitZoom : ButtonUtils
 {
-    [SerializeField]
-    public Camera camera;
-
-    [SerializeField]
-    public Button returnToLobbyButton;
+    //[SerializeField]
+    //public Button returnToLobbyButton;
 
     [SerializeField]
     public Button exitZoom;
@@ -15,8 +13,13 @@ public class ExitZoom : ButtonUtils
     [SerializeField]
     public Button viewDescButton;
 
+    //[SerializeField]
+    //public Button exitWallViewButton;
+
     [SerializeField]
-    public Button exitWallViewButton;
+    public GameObject zoomContainer;
+
+
 
     void Start()
     {
@@ -26,11 +29,22 @@ public class ExitZoom : ButtonUtils
     public void ExitZoomOnClick()
     {
         Debug.Log("Exiting zoom...");
-        camera.transform.position = new Vector3(0, 0, -10); // Reset to original position
-        camera.GetComponent<Camera>().orthographicSize = 540f; // Reset to original zoom level
-        EnableButton(returnToLobbyButton); // Enable the return to lobby button
-        EnableButton(exitWallViewButton);
+        zoomContainer.GetComponent<RectTransform>().localScale = new Vector2(1, 1);
+        zoomContainer.GetComponent<RectTransform>().position = new Vector2(0, 0);
         DisableButton(exitZoom); // Disable the exit zoom button
-        DisableButton(viewDescButton); // Disable the view description button
+
+        //EnableButton(returnToLobbyButton); // Enable the return to lobby button
+        //EnableButton(exitWallViewButton);
+        //EnableButton(exitDescButton); // Enable the exit description button
+        //panel.SetActive(true); // Enable the description panel
+        //DisableButton(exitZoom); // Disable the exit zoom button
+        //DisableButton(viewDescButton); // Disable the view description button
+
+        //OnViewDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
+
+        //if (seeMore != null)
+        //{
+        //    EnableButton(seeMore);
+        //}
     }
 }

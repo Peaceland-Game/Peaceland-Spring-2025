@@ -14,6 +14,7 @@ public class ButtonUtils : MonoBehaviour
         if (enableImage)
         {
             button.GetComponent<Image>().enabled = true;
+            button.GetComponent<Image>().raycastTarget = true;
         }
         //if (buttonText != null)
         //{
@@ -32,6 +33,7 @@ public class ButtonUtils : MonoBehaviour
         if (disableImage)
         {
             button.GetComponent<Image>().enabled = false;
+            button.GetComponent<Image>().raycastTarget = false;
         }
         //if (buttonText != null)
         //{

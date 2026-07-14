@@ -13,23 +13,21 @@ public class ZoomOnObject : ButtonUtils
     public Button exitZoom;
 
     [SerializeField]
-    public Button[] artifactButtons;
-
-    [SerializeField]
     public GameObject zoomContainer;
 
 
     void Start()
     {
+        Debug.Log("Artifact zoom active");
         DisableButton(exitZoom);
     }
 
     public void ZoomIn()
     {
-        Debug.Log(zoomContainer.GetComponent<RectTransform>().anchoredPosition);
-        Debug.Log("Zooming in on object...");
-
-
+        //for (int i = 0; i < artifactButtons.Length; i++)
+        //{
+        //    EnableButton(artifactButtons[i]);
+        //}
         Vector2 objectPos = focusPoint.GetComponent<RectTransform>().position;
         //Vector3[] corners = new Vector3[4];
         //focusPoint.GetComponent<RectTransform>().GetWorldCorners(corners);
@@ -42,17 +40,15 @@ public class ZoomOnObject : ButtonUtils
         //Debug.Log("Object position: " + local_center);
         //GetComponent<Camera>().GetComponent<Camera>().transform.position = new Vector3(objectPos.x, objectPos.y, -10);
         //GetComponent<Camera>().GetComponent<Camera>().orthographicSize = 1f; // Adjust this value as needed for zoom level
-        Debug.Log("Object position: " + objectPos);
-        Debug.Log("Zoom container position before: " + zoomContainer.GetComponent<RectTransform>().position);
+        
 
         float scale = 3.5f; // Adjust this value as needed for zoom level
         zoomContainer.GetComponent<RectTransform>().localScale = new Vector2(scale, scale);
         zoomContainer.GetComponent<RectTransform>().position = new Vector2(0 - scale * objectPos.x, 0 - scale * objectPos.y);
-        Debug.Log("Zoom container position: " + zoomContainer.GetComponent<RectTransform>().position);
-         // Adjust this value as needed for zoom level
+        
 
         EnableButton(exitZoom);
-        ToggleButtonArray(true, artifactButtons);
+        //ToggleButtonArray(true, artifactButtons);
     }
 
 

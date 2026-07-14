@@ -28,6 +28,9 @@ public class ViewDescription : ButtonUtils
     [SerializeField]
     public Button seeMore=null;
 
+    [SerializeField]
+    public Button exitZoom = null;
+
     public event EventHandler OnViewDescriptionClicked; //subscribed by HoverButton.cs to re-enable the hover button when exiting the description
 
     //[SerializeField]
@@ -64,6 +67,10 @@ public class ViewDescription : ButtonUtils
         if(seeMore != null)
         {
             EnableButton(seeMore);
+        }
+        if(exitZoom != null)
+        {
+            DisableButton(exitZoom);
         }
     }
 }

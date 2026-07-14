@@ -23,6 +23,10 @@ public class ExitDescription : ButtonUtils
     [SerializeField]
     public Button rightArrow = null;
 
+    [SerializeField]
+    public Button exitZoom = null;
+
+
     public event EventHandler OnExitDescriptionClicked; //subscribed by HoverButton.cs to re-enable the hover button when exiting the description
 
     //[SerializeField]
@@ -54,7 +58,12 @@ public class ExitDescription : ButtonUtils
         panel.SetActive(false);
         DisableButton(exitDescButton);
 
-        //OnExitDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
+        if(exitZoom != null)
+        {
+            EnableButton(exitZoom); // Enable the exit zoom button
+        }
+
+        OnExitDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
     }
 
 }
