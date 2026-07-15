@@ -129,16 +129,16 @@ public class HideArtifact : HoverButton
             {
                 foreach (Image img in artifactImages)
                 {
-                    //img.color = new Color(255, 255, 255, 1); // reveal images
-                    img.color = new Color(255, 255, 255, 0); // reveal images
+                    img.color = new Color(255, 255, 255, 1); // reveal images
+                    //img.color = new Color(255, 255, 255, 0); // reveal images
                 }
 
             }
-            else
-            {
-                //artifactButton.GetComponent<Image>().color = new Color(0, 0, 0, 0.882f); // darken img
-                artifactButton.GetComponent<Image>().color = new Color(255, 255, 255, 0);
-            }
+            //else
+            //{
+            //    artifactButton.GetComponent<Image>().color = new Color(255, 255, 255, 1); // darken img
+            //    //artifactButton.GetComponent<Image>().color = new Color(255, 255, 255, 0);
+            //}
         }
     }
     
