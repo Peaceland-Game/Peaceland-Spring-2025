@@ -62,9 +62,9 @@ public class ToggleNeighbours : ButtonUtils
             if (hide != null) {
                 hide.SetDisabledExternally(false);
             }
-            else
+            var hover = btn.GetComponent<HoverButton>();
+            if (hover != null)
             {
-                var hover = btn.GetComponent<HoverButton>();
                 hover.SetDisabledExternally(false);
             }
             
