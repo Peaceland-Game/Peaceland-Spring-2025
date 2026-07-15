@@ -2,7 +2,9 @@ using UnityEngine;
 using Unity.UI;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using Yarn.Unity;
+using UnityEditor.Rendering.Universal.ShaderGUI;
 
 public class TownSquareManager : MonoBehaviour
 {
@@ -13,9 +15,10 @@ public class TownSquareManager : MonoBehaviour
     [SerializeField] BoxCollider2D boxCollider2;
     [SerializeField] DialogueRunner dialogueRunner;
     private bool bakeryStart = false;
+    private bool fightHappened = false;
     public List<GameObject> npcs = new List<GameObject>();
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //Initializes variables and plays the starting dialogue
     void Start()
     {
         bakeryFront.enabled = false;
@@ -28,7 +31,7 @@ public class TownSquareManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    //While the constant repeated use of if statements may seem a bit messy and repetitive, it does help manage the constant event-after-event loop that goes on in this scene after each bit of dialogue
     void Update()
     {
         if (!dialogueRunner.IsDialogueRunning && !bakeryStart)
@@ -45,11 +48,20 @@ public class TownSquareManager : MonoBehaviour
             boxCollider.enabled = false;
             townSquare.enabled = true;
             dialogueRunner.StartDialogue("FightIntro");
+            fightHappened = true;
         }
+        //if (!dialogueRunner.IsDialogueRunning && fightHappened)
+        //{
+        //    SceneManager.LoadScene("Home");
+        //}
         ToBakery();
         InsideBakery();
     }
 
+    /// <summary>
+    /// Triggers dialogue when the bakery is clicked on in the scene
+    /// This transitions to the outside of the bakery, changing the background, as well as disabling NPCs and collider for the bakery itself
+    /// </summary>
     void ToBakery()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -71,6 +83,10 @@ public class TownSquareManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Triggers dialogue when the door to the bakery is clicked on
+    /// This transitions from the outside of the bakery, to its inside when the entrance is clicked on, as well as turning off the door collider as well
+    /// </summary>
     void InsideBakery()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)

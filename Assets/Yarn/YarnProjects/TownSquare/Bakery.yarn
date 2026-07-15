@@ -1,7 +1,7 @@
 ﻿title: BakeryStart
 ---
 <<declare $bakeryOwner = "Dalila">>
-<<wait 2>>
+<<wait 1>>
 
 {$bakeryOwner}: Hey Marc! You look happy today.
 {$bakeryOwner}: I saw your parents the other day; they mentioned you're starting a new job?
@@ -25,6 +25,6 @@
 
 title: BakeryFront
 ---
-<<wait 2>>
+<<wait 1>>
 Dalila's Bakery
 ===
