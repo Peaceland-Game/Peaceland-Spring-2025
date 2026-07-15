@@ -134,6 +134,10 @@ public class HideArtifact : HoverButton
                 }
 
             }
+            else
+            {
+                artifactButton.GetComponent<Image>().color = new Color(255, 255, 255, 1); // reveal img
+            }
             //else
             //{
             //    artifactButton.GetComponent<Image>().color = new Color(255, 255, 255, 1); // darken img
