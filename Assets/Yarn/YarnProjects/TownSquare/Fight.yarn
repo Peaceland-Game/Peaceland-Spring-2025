@@ -1,0 +1,46 @@
+﻿title: FightIntro
+---
+<<declare $friend1Name = "Branko">>
+<<declare $friend2Name = "Katarina">>
+
+<<wait 2>>
+
+As Marc leaves the Bakery, he notices a crowd of people gathering.
+They're all wearing sports jerseys and start to argue amongst each other, which leads to them pushing each other around.
+
+{$friend1Name}: Hey {$charName}! How was your first day?
+{$charName}: Pretty interesting, although I get the impression that my boss doesn't like me that much.
+{$charName}: Overall, the day wasn't bad. I did have some interesting conversations.
+{$charName}: You know Petar, right?
+{$friend1Name}: I can't say I know Petar personally, but he always seemed grumpy.
+{$charName}: I can see why you'd think that.
+
+The crowd is getting louder and shoving has turned into throwing punches.
+
+{$friend1Name}: Sorry, {$charName}, I have to take care of this.
+
+{$friend1Name} runs off, right up to the fight. {$charName} doesn't even have a chance to respond.
+{$charName} watches for a moment before turning to continue heading home.
+
+{$charName}: I should head home now.
+When he hurriedly walks away, he spots Katarina.
+{$charName}: It's Katarina. I wonder what she's doing here? It'd be best to check on her before she gets distracted by the commotion.
+The crowd of people seems to be quieting slightly - someone is probably being detained. Maybe other officers are on the scene.
+
+{$charName}: Hey! Katarina!
+{$friend2Name}: Oh, hey {$charName}, what's up?
+-> Are you alright?
+    <<jump KatarinaTalk>>
+-> What are you doing here?
+    <<jump KatarinaTalk2>>
+===
+
+title: KatarinaTalk
+---
+
+===
+
+title: KatarinaTalk2
+---
+
+===

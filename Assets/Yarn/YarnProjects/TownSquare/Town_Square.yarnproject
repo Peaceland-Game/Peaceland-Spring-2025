@@ -3,7 +3,10 @@
   "sourceFiles": [
     "**/*.yarn",
     "TownSquareIntro.yarn",
-    "Bakery.yarn"
+    "Cara.yarn",
+    "Julia.yarn",
+    "Bakery.yarn",
+    "Fight.yarn"
   ],
   "excludeFiles": [
     "**/*~/*"

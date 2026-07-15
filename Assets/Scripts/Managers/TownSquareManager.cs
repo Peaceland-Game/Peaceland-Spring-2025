@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.UI;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 using Yarn.Unity;
 
 public class TownSquareManager : MonoBehaviour
@@ -12,6 +13,8 @@ public class TownSquareManager : MonoBehaviour
     [SerializeField] BoxCollider2D boxCollider2;
     [SerializeField] DialogueRunner dialogueRunner;
     private bool bakeryStart = false;
+    public List<GameObject> npcs = new List<GameObject>();
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -41,6 +44,7 @@ public class TownSquareManager : MonoBehaviour
             bakeryInside.enabled = false;
             boxCollider.enabled = false;
             townSquare.enabled = true;
+            dialogueRunner.StartDialogue("FightIntro");
         }
         ToBakery();
         InsideBakery();
@@ -54,6 +58,10 @@ public class TownSquareManager : MonoBehaviour
 
             if (boxCollider.OverlapPoint(mouseWorld))
             {
+                for (int i = 0; i < npcs.Count; i++)
+                {
+                    npcs[i].SetActive(false);
+                }
                 townSquare.enabled = false;
                 bakeryFront.enabled = true;
                 boxCollider.enabled = false;

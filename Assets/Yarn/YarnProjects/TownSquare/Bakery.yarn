@@ -17,6 +17,10 @@
 {$bakeryOwner}: Well, I can at least give you a doughnut for your troubles. Don't worry, it's on the house.
 
 {$charName}: Thank you, Dalila.
+
+{$bakeryOwner}: Make sure you get home safe and tell your parents I said hi!
+
+{$charName}: Don't worry, I will!
 ===
 
 title: BakeryFront
