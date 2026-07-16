@@ -17,10 +17,16 @@ public class TownSquareManager : MonoBehaviour
     private bool bakeryStart = false;
     private bool fightHappened = false;
     public List<GameObject> npcs = new List<GameObject>();
+    public GameObject dalila;
+    public GameObject branko;
+    public GameObject katarina;
 
     //Initializes variables and plays the starting dialogue
     void Start()
     {
+        dalila.SetActive(false);
+        branko.SetActive(false);
+        katarina.SetActive(false);
         bakeryFront.enabled = false;
         bakeryInside.enabled = false;
         boxCollider.enabled = false;
@@ -44,6 +50,7 @@ public class TownSquareManager : MonoBehaviour
         }
         if (!dialogueRunner.IsDialogueRunning && bakeryInside.enabled)
         {
+            dalila.SetActive(false);
             bakeryInside.enabled = false;
             boxCollider.enabled = false;
             townSquare.enabled = true;
@@ -95,6 +102,7 @@ public class TownSquareManager : MonoBehaviour
 
             if (boxCollider2.OverlapPoint(mouseWorld))
             {
+                dalila.SetActive(true);
                 bakeryFront.enabled = false;
                 bakeryInside.enabled = true;
                 boxCollider2.enabled = false;
