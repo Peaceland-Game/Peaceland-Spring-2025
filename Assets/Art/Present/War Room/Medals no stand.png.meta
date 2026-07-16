@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 7b89ca804436045409a2db1032adb2d0
+guid: e3c80c3dff449a745a9ce0ceef024905
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4681684659155099152
-    second: 10-107968_transparent-blur-png-water_0
+      213: -2098044385390332083
+    second: Medals no stand_0
+  - first:
+      213: -6915531095179876362
+    second: Medals no stand_1
+  - first:
+      213: -2008950362064476044
+    second: Medals no stand_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 10-107968_transparent-blur-png-water_0
+      name: Medals no stand_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 778
-        height: 544
+        x: 7
+        y: 2
+        width: 70
+        height: 124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0f12aac6b90570fb0800000000000000
-      internalID: -4681684659155099152
+      spriteID: d477ec55fbf32e2e0800000000000000
+      internalID: -2098044385390332083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Medals no stand_1
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 1
+        width: 63
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f7a2a6eb191700a0800000000000000
+      internalID: -6915531095179876362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Medals no stand_2
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 92
+        height: 118
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47821c12a46ce14e0800000000000000
+      internalID: -2008950362064476044
       vertices: []
       indices: 
       edges: []
@@ -134,8 +184,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      10-107968_transparent-blur-png-water_0: -4681684659155099152
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

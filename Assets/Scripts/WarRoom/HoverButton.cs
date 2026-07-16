@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
-    protected Image buttonImage; //for artifacts, this is the text background image, for other buttons, this is the button image
+    protected Image hoverImage; //for artifacts, this is the text background image, for other buttons, this is the button image
 
     [SerializeField]
     protected TextMeshProUGUI buttonText;
@@ -14,6 +14,9 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private bool descOpen = false;
 
     [SerializeField]
+    public Button artifactButton;
+
+    
     ViewDescription viewDescription;
 
     [SerializeField]
@@ -23,9 +26,13 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     private void Awake()
     {
+        artifactButton.enabled = true;
+        viewDescription = artifactButton.GetComponent<ViewDescription>();
         // Subscribe to the OnViewDescClicked event
         viewDescription.OnViewDescriptionClicked += HoverButton_OnViewDescClicked;
         exitDescription.OnExitDescriptionClicked += HoverButton_OnExitDescClicked;
+        hoverImage.enabled = false;
+        buttonText.gameObject.SetActive(false);
     }
 
 
@@ -38,15 +45,15 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if (disabled)
         {
-            Debug.Log("Hover button is disabled, not showing hover button.");
+            //Debug.Log("Hover button is disabled, not showing hover button.");
             return;
         }
         if (descOpen)
         {
-            Debug.Log("Description is open, not showing hover button.");
+            //Debug.Log("Description is open, not showing hover button.");
             return;
         }
-        buttonImage.enabled = true;
+        hoverImage.enabled = true;
         if (buttonText != null)
         {
             buttonText.gameObject.SetActive(true);
@@ -55,7 +62,7 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        buttonImage.enabled = false;
+        hoverImage.enabled = false;
         if (buttonText != null)
         {
             buttonText.gameObject.SetActive(false);
@@ -65,7 +72,7 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private void HoverButton_OnViewDescClicked(object sender, System.EventArgs e)
     {
         descOpen = true;
-        buttonImage.enabled = false;
+        hoverImage.enabled = false;
         if (buttonText != null)
         {
             buttonText.gameObject.SetActive(false);
@@ -80,7 +87,7 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        buttonImage.enabled = false;
+        hoverImage.enabled = false;
         if (buttonText != null)
         {
             buttonText.gameObject.SetActive(false);

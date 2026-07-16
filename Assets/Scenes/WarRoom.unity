@@ -428,6 +428,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5548816744953601444, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
+      propertyPath: artifactButton
+      value: 
+      objectReference: {fileID: 1961753701}
     - target: {fileID: 6968939801752467008, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -757,7 +761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453268616855467610, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -1.6348505
       objectReference: {fileID: 0}
     - target: {fileID: 453268616855467610, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -773,23 +777,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 883921553065995047, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 883921553065995047, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 883921553065995047, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 995.1126
       objectReference: {fileID: 0}
     - target: {fileID: 883921553065995047, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1670.0001
       objectReference: {fileID: 0}
     - target: {fileID: 883921553065995047, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -222.36197
       objectReference: {fileID: 0}
     - target: {fileID: 1380548655000002770, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Name
@@ -797,7 +801,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1380548655000002770, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1592426998779443125, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Interactable
@@ -809,15 +813,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621941670988647396, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1621941670988647396, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1621941670988647396, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 624.8875
       objectReference: {fileID: 0}
     - target: {fileID: 1621941670988647396, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -825,11 +829,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621941670988647396, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1621941670988647396, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -321.92697
       objectReference: {fileID: 0}
     - target: {fileID: 1629208101253302989, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Type
@@ -971,7 +975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3792777758095848895, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 258.86
       objectReference: {fileID: 0}
     - target: {fileID: 3792777758095848895, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1025,7 +1029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5298772743006022241, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: -220.26605
       objectReference: {fileID: 0}
     - target: {fileID: 5548816744953601444, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Enabled
@@ -2147,6 +2151,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: -220.26605
       objectReference: {fileID: 0}
+    - target: {fileID: 5548816744953601444, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
+      propertyPath: artifactButton
+      value: 
+      objectReference: {fileID: 1830684812}
     - target: {fileID: 6968939801752467008, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -2244,9 +2252,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1056929213}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270, y: -597.537}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 375, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &227756911
@@ -2269,7 +2277,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Eskani medal awarding distinction in military service and politics. '
+  m_text: Cleoni medal celebrating contribution to the advancement of Cleoni culture
+    by craftsmen.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9defe4e00639ffb49936e892abc21f28, type: 2}
   m_sharedMaterial: {fileID: -2874221223040523368, guid: 9defe4e00639ffb49936e892abc21f28, type: 2}
@@ -2296,7 +2305,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 43.4
+  m_fontSize: 38.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2390,9 +2399,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 957709227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270, y: -162.19699}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 375, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299254502
@@ -2415,7 +2424,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thebrean medal honouring medics who contributed to reconstruction post-war. '
+  m_text: Eskani medal awarding distinction in military service and politics.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d1da5bcef7c015144bc91882c920dd72, type: 2}
   m_sharedMaterial: {fileID: -2874221223040523368, guid: d1da5bcef7c015144bc91882c920dd72, type: 2}
@@ -2442,7 +2451,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.55
+  m_fontSize: 43.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2879,8 +2888,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -50.567078}
-  m_SizeDelta: {x: 84.53727, y: 140.72}
+  m_AnchoredPosition: {x: 10, y: -31.705757}
+  m_SizeDelta: {x: 118.82587, y: 140.72}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &390505782
 MonoBehaviour:
@@ -2922,7 +2931,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2265151241981613047, guid: a6b7f0ee24985e643b0d8ba653c29bc8, type: 3}
+  m_Sprite: {fileID: -6915531095179876362, guid: e3c80c3dff449a745a9ce0ceef024905, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3432,8 +3441,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 473.86105, y: -13.537079}
-  m_SizeDelta: {x: 379.3238, y: 214.78}
+  m_AnchoredPosition: {x: 445.22116, y: 5.3242416}
+  m_SizeDelta: {x: 316.39526, y: 214.78}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &472147802
 MonoBehaviour:
@@ -3455,10 +3464,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The Thebrean people arrived a few hundred years after the two native peoples
-    of Streynia had established the land. Originally thought of as invaders, they
-    settled in the coastal areas of the country and focused on building an infrastructure
-    of commerce and international trade.\r"
+  m_text: "They developed the country\u2019s agriculture and worked in tandem with
+    the Cleoni to support the development of early Streynia. The Eskani people made
+    up the largest portion of the government before the war began. \r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d1da5bcef7c015144bc91882c920dd72, type: 2}
   m_sharedMaterial: {fileID: -2874221223040523368, guid: d1da5bcef7c015144bc91882c920dd72, type: 2}
@@ -3485,7 +3493,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 15
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3523,7 +3531,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 50, y: 10, z: 0, w: 10}
+  m_margin: {x: 26.7547, y: 10, z: 18.328133, w: 10}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3569,9 +3577,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1056929213}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270, y: -217.67}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 361.84998, y: 435.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &488490395
@@ -3594,7 +3602,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4288556762964372964, guid: 1cc556950d9a1874eac99376bbc24079, type: 3}
+  m_Sprite: {fileID: -2098044385390332083, guid: e3c80c3dff449a745a9ce0ceef024905, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3780,10 +3788,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 107517404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 214.78}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 445.2213, y: 5.3242416}
+  m_SizeDelta: {x: 321.5277, y: 214.78}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &508531205
 MonoBehaviour:
@@ -3805,9 +3813,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "They developed the country\u2019s agriculture and worked in tandem with
-    the Cleoni to support the development of early Streynia. The Eskani people made
-    up the largest portion of the government before the war began.\r"
+  m_text: "The culture is focused on craftsmanship and the development of artisan
+    goods, and Cleoni factories made up the majority of production in early Streynia
+    pre-industrialization. \r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d1da5bcef7c015144bc91882c920dd72, type: 2}
   m_sharedMaterial: {fileID: -2874221223040523368, guid: d1da5bcef7c015144bc91882c920dd72, type: 2}
@@ -3872,7 +3880,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 50, y: 10, z: 0, w: 10}
+  m_margin: {x: 25.413635, y: 10, z: 8.493612, w: 10}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4922,10 +4930,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 548585929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: -30.402077}
-  m_SizeDelta: {x: 120.16504, y: 181.05}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 113.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &672240869
 MonoBehaviour:
@@ -4967,7 +4975,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2403128142123368456, guid: 1b91864bdb6b3e04a97e749168b3a0ae, type: 3}
+  m_Sprite: {fileID: -2008950362064476044, guid: e3c80c3dff449a745a9ce0ceef024905, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5195,9 +5203,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 957709227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270, y: -542.06396}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 361.85, y: 435.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &827603273
@@ -5220,7 +5228,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2265151241981613047, guid: a6b7f0ee24985e643b0d8ba653c29bc8, type: 3}
+  m_Sprite: {fileID: -6915531095179876362, guid: e3c80c3dff449a745a9ce0ceef024905, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5796,10 +5804,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 107517404}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 180.36}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10, y: -33.510757}
+  m_SizeDelta: {x: 113.69358, y: 137.11}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &898207981
 MonoBehaviour:
@@ -5841,7 +5849,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4288556762964372964, guid: 1cc556950d9a1874eac99376bbc24079, type: 3}
+  m_Sprite: {fileID: -2098044385390332083, guid: e3c80c3dff449a745a9ce0ceef024905, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -6527,7 +6535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5298772743006022241, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -220.26605
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5548816744953601444, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Enabled
@@ -6551,6 +6559,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6968939801752467008, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6968939801752467008, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
+      propertyPath: hoverImage
+      value: 
+      objectReference: {fileID: 1612618579}
+    - target: {fileID: 6968939801752467008, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
+      propertyPath: changeColor
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6968939801752467008, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
@@ -6619,7 +6635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7823839356436880927, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7959555456198379685, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: seeMore
@@ -7173,10 +7189,10 @@ RectTransform:
   - {fileID: 827603272}
   m_Father: {fileID: 749044195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 860, y: -429.86697}
-  m_SizeDelta: {x: 540, y: 759.73395}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &957709228
 MonoBehaviour:
@@ -7274,10 +7290,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 548585929}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 473.86108, y: -13.537079}
-  m_SizeDelta: {x: 343.69604, y: 214.78}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 214.78}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &957755920
 MonoBehaviour:
@@ -7299,9 +7315,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The culture is focused on craftsmanship and the development of artisan
-    goods, and Cleoni factories made up the majority of production in early Streynia
-    pre-industrialization. \r"
+  m_text: "The Thebrean people arrived a few hundred years after the two native peoples
+    of Streynia had established the land. Originally thought of as invaders, they
+    settled in the coastal areas of the country and focused on building an infrastructure
+    of commerce and international trade.\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d1da5bcef7c015144bc91882c920dd72, type: 2}
   m_sharedMaterial: {fileID: -2874221223040523368, guid: d1da5bcef7c015144bc91882c920dd72, type: 2}
@@ -7328,12 +7345,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 16
   m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 10
-  m_fontSizeMax: 18
+  m_fontSizeMax: 16
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -8206,10 +8223,10 @@ RectTransform:
   - {fileID: 227756910}
   m_Father: {fileID: 749044195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 320, y: -429.86697}
-  m_SizeDelta: {x: 540, y: 759.73395}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1056929214
 MonoBehaviour:
@@ -9000,6 +9017,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5548816744953601444, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
+      propertyPath: artifactButton
+      value: 
+      objectReference: {fileID: 1440394561}
     - target: {fileID: 6968939801752467008, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -9688,6 +9709,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: -220.26605
       objectReference: {fileID: 0}
+    - target: {fileID: 5548816744953601444, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
+      propertyPath: artifactButton
+      value: 
+      objectReference: {fileID: 1791417659}
     - target: {fileID: 6807182007760646095, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Layer
       value: 13
@@ -10309,10 +10334,10 @@ RectTransform:
   - {fileID: 1733885767}
   m_Father: {fileID: 749044195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1400, y: -429.86697}
-  m_SizeDelta: {x: 540, y: 759.73395}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1545405922
 MonoBehaviour:
@@ -10378,6 +10403,17 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1612618579 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6009473104841071597, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
+  m_PrefabInstance: {fileID: 927088390}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1622573104
 GameObject:
   m_ObjectHideFlags: 0
@@ -10962,9 +10998,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1545405921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270, y: -597.537}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 375, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1733885768
@@ -10987,8 +11023,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cleoni medal celebrating contribution to the advancement of Cleoni culture
-    by craftsmen. '
+  m_text: Thebrean medal honouring medics who contributed to reconstruction post-war.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d1da5bcef7c015144bc91882c920dd72, type: 2}
   m_sharedMaterial: {fileID: -2874221223040523368, guid: d1da5bcef7c015144bc91882c920dd72, type: 2}
@@ -11015,7 +11050,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 38.1
+  m_fontSize: 37.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12248,6 +12283,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: -220.26605
       objectReference: {fileID: 0}
+    - target: {fileID: 5548816744953601444, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
+      propertyPath: artifactButton
+      value: 
+      objectReference: {fileID: 1667990024}
     - target: {fileID: 6968939801752467008, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -12468,11 +12507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c424ddcbee1f4f5f95cdcf89cfd0f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blurShader: {fileID: 4800000, guid: 93c64840c49214c66ba1ecf06aa1604d, type: 3}
-  blurMaterial: {fileID: 2100000, guid: cad782ddb7682124f9e38fa5d54d99ef, type: 2}
-  radius: 3
-  qualityIterations: 2
-  filter: 1
 --- !u!1 &2137710644
 GameObject:
   m_ObjectHideFlags: 0
@@ -12505,10 +12539,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1545405921}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 270, y: -217.67}
-  m_SizeDelta: {x: 361.85, y: 435.34}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 332.1, y: 435.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2137710646
 MonoBehaviour:
@@ -12530,7 +12564,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2403128142123368456, guid: 1b91864bdb6b3e04a97e749168b3a0ae, type: 3}
+  m_Sprite: {fileID: -2008950362064476044, guid: e3c80c3dff449a745a9ce0ceef024905, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -12903,9 +12937,9 @@ RectTransform:
   - {fileID: 3792777759166444323}
   m_Father: {fileID: 2664556079085218636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.703, y: 0.26200002}
-  m_AnchorMax: {x: 0.7524792, y: 0.4365556}
-  m_AnchoredPosition: {x: 0.5, y: 0}
+  m_AnchorMin: {x: 0.7107708, y: 0.26000002}
+  m_AnchorMax: {x: 0.7605209, y: 0.43472654}
+  m_AnchoredPosition: {x: -0.7999878, y: 0}
   m_SizeDelta: {x: 0, y: 0.6300049}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &453268616991829552
@@ -12926,7 +12960,7 @@ RectTransform:
   m_AnchorMin: {x: 0.7135209, y: 0.067}
   m_AnchorMax: {x: 0.86, y: 0.22714816}
   m_AnchoredPosition: {x: -535.4, y: 2}
-  m_SizeDelta: {x: 0, y: 3.86}
+  m_SizeDelta: {x: -99.115326, y: 3.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &453268617105275712
 RectTransform:
@@ -12943,10 +12977,10 @@ RectTransform:
   - {fileID: 3792777758353586341}
   m_Father: {fileID: 2664556077715005642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.768, y: 0.26200002}
-  m_AnchorMax: {x: 0.81900007, y: 0.43748152}
-  m_AnchoredPosition: {x: -0.2000122, y: -0.6000061}
-  m_SizeDelta: {x: 0, y: -0.36999512}
+  m_AnchorMin: {x: 0.7645209, y: 0.259}
+  m_AnchorMax: {x: 0.81500006, y: 0.43567526}
+  m_AnchoredPosition: {x: 0, y: 0.1000061}
+  m_SizeDelta: {x: 0, y: -1.3699951}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &453268617282538904
 RectTransform:
@@ -12963,9 +12997,9 @@ RectTransform:
   - {fileID: 3792777757440331389}
   m_Father: {fileID: 2664556077556602386}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.83300006, y: 0.26200002}
-  m_AnchorMax: {x: 0.88252085, y: 0.4365556}
-  m_AnchoredPosition: {x: -1.0999756, y: -0.1000061}
+  m_AnchorMin: {x: 0.81900007, y: 0.261}
+  m_AnchorMax: {x: 0.869, y: 0.43565246}
+  m_AnchoredPosition: {x: 0.2000122, y: 0}
   m_SizeDelta: {x: 0, y: 0.6300049}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &730979191197139948
@@ -13428,7 +13462,7 @@ GameObject:
   - component: {fileID: 7446727835513573526}
   - component: {fileID: 4119789858939160200}
   m_Layer: 0
-  m_Name: Eskani medal
+  m_Name: Cleoni medal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13446,7 +13480,7 @@ GameObject:
   - component: {fileID: 7446727837042159048}
   - component: {fileID: 4119789860568873942}
   m_Layer: 0
-  m_Name: Cleoni medal (1)
+  m_Name: Thebrean medal (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13464,7 +13498,7 @@ GameObject:
   - component: {fileID: 7446727836866976528}
   - component: {fileID: 4119789859737406734}
   m_Layer: 0
-  m_Name: Thebrean medal
+  m_Name: Eskani medal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13487,7 +13521,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1402481376245814735
 GameObject:
   m_ObjectHideFlags: 0
@@ -14274,7 +14308,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Eskani
+  m_text: 'Cleoni
 
     Medal'
   m_isRightToLeft: 0
@@ -14303,7 +14337,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.25
+  m_fontSize: 27.75
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14367,7 +14401,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cleoni
+  m_text: 'Thebrean
 
     Medal'
   m_isRightToLeft: 0
@@ -14396,7 +14430,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.7
+  m_fontSize: 18.45
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14551,7 +14585,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Thebrean
+  m_text: 'Eskani
 
     Medal'
   m_isRightToLeft: 0
@@ -14580,7 +14614,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.45
+  m_fontSize: 26.3
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15087,9 +15121,9 @@ RectTransform:
   m_Father: {fileID: 453268616991829552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 118.46951, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &3792777759166444323
 RectTransform:
@@ -15473,7 +15507,7 @@ RectTransform:
   m_AnchorMin: {x: 0.66877085, y: 0.24555558}
   m_AnchorMax: {x: 0.9167918, y: 0.44551852}
   m_AnchoredPosition: {x: -15.850037, y: 2.0299988}
-  m_SizeDelta: {x: -20.94, y: 0}
+  m_SizeDelta: {x: -20.94, y: -11.807422}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5298772742756214651
 RectTransform:
@@ -15493,7 +15527,7 @@ RectTransform:
   m_AnchorMin: {x: 0.66877085, y: 0.24555558}
   m_AnchorMax: {x: 0.9167918, y: 0.44551852}
   m_AnchoredPosition: {x: -15.850037, y: 2.0299988}
-  m_SizeDelta: {x: -20.94, y: 0}
+  m_SizeDelta: {x: -20.94, y: -11.807422}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5298772742869660171
 RectTransform:
@@ -15547,9 +15581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d729c7e217abf1241add3a495d9a318c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 6009473105324744751}
+  hoverImage: {fileID: 6009473105324744751}
   buttonText: {fileID: 2718799144523899945}
-  viewDescription: {fileID: 7959555456854127463}
+  artifactButton: {fileID: 1592426999426092151}
   exitDescription: {fileID: 3984122077982262633}
 --- !u!114 &5548816744548861390
 MonoBehaviour:
@@ -15563,9 +15597,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d729c7e217abf1241add3a495d9a318c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 6009473105245832071}
+  hoverImage: {fileID: 1629208100848636583}
   buttonText: {fileID: 2718799145307441025}
-  viewDescription: {fileID: 7959555456062181583}
+  artifactButton: {fileID: 1592426998374641631}
   exitDescription: {fileID: 3984122078532511425}
 --- !u!114 &5548816744695861438
 MonoBehaviour:
@@ -15579,9 +15613,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d729c7e217abf1241add3a495d9a318c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 6009473105099233015}
+  hoverImage: {fileID: 6009473105099233015}
   buttonText: {fileID: 2718799145420362481}
-  viewDescription: {fileID: 7959555455940740543}
+  artifactButton: {fileID: 1592426998512859823}
   exitDescription: {fileID: 3984122078679643057}
 --- !u!114 &5548816746030488376
 MonoBehaviour:
@@ -15595,9 +15629,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d729c7e217abf1241add3a495d9a318c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 6009473105909570929}
+  hoverImage: {fileID: 6009473105909570929}
   buttonText: {fileID: 2718799144102549879}
-  viewDescription: {fileID: 7959555457275268665}
+  artifactButton: {fileID: 1592426999847940393}
   exitDescription: {fileID: 3984122077325654071}
 --- !u!222 &5609753317138246542
 CanvasRenderer:
@@ -15890,15 +15924,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db8c1fa47bfc2945a608ea20fb7aaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 6009473105324744751}
+  hoverImage: {fileID: 6009473105324744751}
   buttonText: {fileID: 2718799144523899945}
-  viewDescription: {fileID: 7959555456854127463}
-  exitDescription: {fileID: 3984122077982262633}
-  unlockCondition: 4
   artifactButton: {fileID: 1592426999426092151}
-  artifactName: Cleoni Medal
-  textBackground: {fileID: 6009473105324744751}
+  exitDescription: {fileID: 3984122077982262633}
+  unlockCondition: 0
+  artifactName: Thebrean Medal
   artifactImages: []
+  changeColor: 0
 --- !u!114 &6968939802035862362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15911,15 +15944,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db8c1fa47bfc2945a608ea20fb7aaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 6009473105099233015}
+  hoverImage: {fileID: 6009473105099233015}
   buttonText: {fileID: 2718799145420362481}
-  viewDescription: {fileID: 7959555455940740543}
-  exitDescription: {fileID: 3984122078679643057}
-  unlockCondition: 4
   artifactButton: {fileID: 1592426998512859823}
-  artifactName: Thebrean Medal
-  textBackground: {fileID: 6009473105099233015}
+  exitDescription: {fileID: 3984122078679643057}
+  unlockCondition: 0
+  artifactName: Eskani Medal
   artifactImages: []
+  changeColor: 0
 --- !u!114 &6968939802157166122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15932,15 +15964,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db8c1fa47bfc2945a608ea20fb7aaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 6009473105245832071}
+  hoverImage: {fileID: 6009473105245832071}
   buttonText: {fileID: 2718799145307441025}
-  viewDescription: {fileID: 7959555456062181583}
+  artifactButton: {fileID: 1592426998374641631}
   exitDescription: {fileID: 3984122078532511425}
   unlockCondition: 4
-  artifactButton: {fileID: 1592426998374641631}
   artifactName: Photographs
-  textBackground: {fileID: 6009473105245832071}
   artifactImages: []
+  changeColor: 1
 --- !u!114 &6968939802831450332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15953,15 +15984,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db8c1fa47bfc2945a608ea20fb7aaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 6009473105909570929}
+  hoverImage: {fileID: 6009473105909570929}
   buttonText: {fileID: 2718799144102549879}
-  viewDescription: {fileID: 7959555457275268665}
-  exitDescription: {fileID: 3984122077325654071}
-  unlockCondition: 4
   artifactButton: {fileID: 1592426999847940393}
-  artifactName: Eskani Medal
-  textBackground: {fileID: 6009473105909570929}
+  exitDescription: {fileID: 3984122077325654071}
+  unlockCondition: 0
+  artifactName: Cleoni Medal
   artifactImages: []
+  changeColor: 0
 --- !u!222 &7446727835513573526
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -16123,7 +16153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &7823839356195492613
 GameObject:
   m_ObjectHideFlags: 0
@@ -16184,7 +16214,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7959555455940740543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16285,7 +16315,7 @@ GameObject:
   - component: {fileID: 3616934581400872310}
   - component: {fileID: 730979192144125210}
   m_Layer: 5
-  m_Name: Eskani medal Button
+  m_Name: Cleoni medal Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16337,7 +16367,7 @@ GameObject:
   - component: {fileID: 3616934582765317872}
   - component: {fileID: 730979191310718620}
   m_Layer: 5
-  m_Name: Thebrean medal Button
+  m_Name: Eskani medal Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16363,7 +16393,7 @@ GameObject:
   - component: {fileID: 3616934581919045672}
   - component: {fileID: 730979191554973764}
   m_Layer: 5
-  m_Name: Cleoni medal Button
+  m_Name: Thebrean medal Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

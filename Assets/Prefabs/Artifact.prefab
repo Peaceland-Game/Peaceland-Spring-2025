@@ -427,6 +427,7 @@ MonoBehaviour:
   exitWallView: {fileID: 0}
   leftArrow: {fileID: 0}
   rightArrow: {fileID: 0}
+  exitZoom: {fileID: 0}
 --- !u!223 &427694925541492920
 Canvas:
   m_ObjectHideFlags: 0
@@ -1078,6 +1079,7 @@ MonoBehaviour:
   leftArrow: {fileID: 0}
   rightArrow: {fileID: 0}
   seeMore: {fileID: 0}
+  exitZoom: {fileID: 0}
 --- !u!114 &5548816744953601444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1090,9 +1092,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d729c7e217abf1241add3a495d9a318c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 6009473104841071597}
+  hoverImage: {fileID: 6009473104841071597}
   buttonText: {fileID: 2718799145171050475}
-  viewDescription: {fileID: 7959555456198379685}
+  artifactButton: {fileID: 1592426998779443125}
   exitDescription: {fileID: 3984122078396251819}
 --- !u!114 &6968939801752467008
 MonoBehaviour:
@@ -1106,15 +1108,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db8c1fa47bfc2945a608ea20fb7aaf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonImage: {fileID: 6009473104841071597}
+  hoverImage: {fileID: 6009473104841071597}
   buttonText: {fileID: 2718799145171050475}
-  viewDescription: {fileID: 7959555456198379685}
+  artifactButton: {fileID: 1592426998779443125}
   exitDescription: {fileID: 3984122078396251819}
   unlockCondition: 0
-  artifactButton: {fileID: 1592426998779443125}
   artifactName: Artifact Name
-  textBackground: {fileID: 6009473104841071597}
   artifactImages: []
+  changeColor: 1
 --- !u!114 &7463752200047771071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1133,6 +1134,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   self: {fileID: 1592426998779443125}
+  disableOnStart: 0
 --- !u!114 &1886587946723626958
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class ExitZoom : ButtonUtils
     }
     public void ExitZoomOnClick()
     {
-        Debug.Log("Exiting zoom...");
+        //Debug.Log("Exiting zoom...");
         zoomContainer.GetComponent<RectTransform>().localScale = new Vector2(1, 1);
         zoomContainer.GetComponent<RectTransform>().position = new Vector2(0, 0);
         DisableButton(exitZoom); // Disable the exit zoom button

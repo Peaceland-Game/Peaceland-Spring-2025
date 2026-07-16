@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Passport no glass_0: 6183340835855752519
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

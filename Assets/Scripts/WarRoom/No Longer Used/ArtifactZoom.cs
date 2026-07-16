@@ -18,7 +18,7 @@ public class ZoomOnObject : ButtonUtils
 
     void Start()
     {
-        Debug.Log("Artifact zoom active");
+        //Debug.Log("Artifact zoom active");
         DisableButton(exitZoom);
     }
 

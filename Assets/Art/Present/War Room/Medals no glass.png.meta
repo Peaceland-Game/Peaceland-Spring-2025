@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Medals no glass_0: 2278987035498520095
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

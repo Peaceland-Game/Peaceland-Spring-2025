@@ -17,17 +17,13 @@ public class HideArtifact : HoverButton
     private UnlockCondition unlockCondition; // The memory that will lock the artifact until it is completed
 
     [SerializeField]
-    private Button artifactButton;
-
-    [SerializeField]
     private string artifactName;
 
     [SerializeField]
-    private Image textBackground;
+    private Image[] artifactImages=null; //used for when multiple images are used for the artifact (like the collection of children's toys)
 
     [SerializeField]
-    private Image[] artifactImages=null; //used for when multiple images are used for the artifact (like the collection of children's toys)
-    
+    private bool changeColor = true;
     //[SerializeField]
     //private ToggleNeighbours toggleNeighbours;
 
@@ -36,7 +32,7 @@ public class HideArtifact : HoverButton
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        buttonImage.enabled = false;
+        hoverImage.enabled = false;
         if (buttonText != null)
         {
             buttonText.gameObject.SetActive(false);
@@ -66,7 +62,7 @@ public class HideArtifact : HoverButton
     {
         if (disabled)
         {
-            textBackground.color = new Color(0, 0, 0, 0); // Make the background transparent
+            hoverImage.color = new Color(0, 0, 0, 0); // Make the background transparent
             buttonText.text = "";
             artifactButton.interactable = false;
             //toggleNeighbours.DisableNeighbours();
@@ -99,28 +95,32 @@ public class HideArtifact : HoverButton
         // If the memory is not completed, hide the artifact
         if (!unlocked)
         {
-            textBackground.color = new Color(0, 0, 0, 0); // Make the background transparent
+            hoverImage.color = new Color(0, 0, 0, 0); // Make the background transparent
             buttonText.text = "???";
             buttonText.color = Color.white;
-            buttonImage.enabled = false;
+            //hoverImage.enabled = false;
             artifactButton.interactable = false;
             if (artifactImages != null && artifactImages.Length != 0)
             {
                 foreach (Image img in artifactImages)
                 {
-                    img.color = new Color(0, 0, 0, 0.882f); // Darken images
+                    if(changeColor)
+                    {
+                        img.color = new Color(0, 0, 0, 0.882f); // Darken images
+                    }                    
                 }
             }
             else
             {
-                artifactButton.GetComponent<Image>().color = new Color(0, 0, 0, 0.882f); // darken img
+                if (changeColor)
+                    artifactButton.GetComponent<Image>().color = new Color(0, 0, 0, 0.882f); // darken img
                 
             }
         }
         else
         {
-                
-            textBackground.color = new Color(1, 1, 1, 0.267f); // Make the background white
+
+            hoverImage.color = new Color(1, 1, 1, 0.267f); // Make the background white
             buttonText.color = Color.black;
             buttonText.text = artifactName;
             artifactButton.interactable = true;
@@ -129,14 +129,16 @@ public class HideArtifact : HoverButton
             {
                 foreach (Image img in artifactImages)
                 {
-                    img.color = new Color(255, 255, 255, 1); // reveal images
+                    if (changeColor)    
+                        img.color = new Color(255, 255, 255, 1); // reveal images
                     //img.color = new Color(255, 255, 255, 0); // reveal images
                 }
 
             }
             else
             {
-                artifactButton.GetComponent<Image>().color = new Color(255, 255, 255, 1); // reveal img
+                if (changeColor)
+                    artifactButton.GetComponent<Image>().color = new Color(255, 255, 255, 1); // reveal img
             }
             //else
             //{

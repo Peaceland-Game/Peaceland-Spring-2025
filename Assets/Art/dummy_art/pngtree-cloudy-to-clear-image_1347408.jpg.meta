@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pngtree-cloudy-to-clear-image_1347408_0: 6038149860167089572
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -62,8 +62,25 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     private bool mingming = false;
 
+    //private Button[] leftWallArtifactButtons;
+    //private Button[] middleWallArtifactButtons;
+    //private Button[] rightWallArtifactButtons;
+
     void Start()
     {
+        //for (int i = 0; i < leftWallArtifacts.Length; i++)
+        //{
+        //    leftWallArtifactButtons[i] = leftWallArtifacts[i].GetComponentInChildren<Button>(true);
+        //}
+        //for (int i = 0; i < middleWallArtifacts.Length; i++)
+        //{
+        //    middleWallArtifactButtons[i] = middleWallArtifacts[i].GetComponentInChildren<Button>(true);
+        //}
+        //for (int i = 0; i < rightWallArtifacts.Length; i++)
+        //{
+        //    rightWallArtifactButtons[i] = rightWallArtifacts[i].GetComponentInChildren<Button>(true);
+        //}
+
         if (mingming)
         {
             foreach (var wall in clickableWalls)
@@ -91,9 +108,9 @@ public class WarRoom : GenericMemManager
         ToggleButtonArray(true, clickableWalls);
 
         //ToggleButtonArray(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        ToggleArtifacts(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        ToggleArtifacts(false, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
-        ToggleArtifacts(false, rightWallArtifacts); // Disable all right wall artifact buttons at the start
+        //ToggleArtifacts(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
+        //ToggleArtifacts(false, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
+        //ToggleArtifacts(false, rightWallArtifacts); // Disable all right wall artifact buttons at the start
 
     }
 
@@ -248,6 +265,10 @@ public class WarRoom : GenericMemManager
         EnableButton(leftArrow);
         EnableButton(rightArrow);
         ToggleWalls();
+
+        //stupid hardcode fix that i  hope never gets uncovered by a future developer
+        //rightWallArtifacts[5].GetComponentInChildren<Button>(true).GetComponent<Image>().enabled=true;
+       // Debug.Log("Enabling artifact button through fuckahh hardcode: " + rightWallArtifacts[5].GetComponentInChildren<Button>(true).name);
     }
 
     private void EnableButton(Button button)
@@ -258,10 +279,9 @@ public class WarRoom : GenericMemManager
 
     private void ToggleWalls()
     {
-        //ToggleButtonArray(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        ToggleArtifacts(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        ToggleArtifacts(onMiddleWall, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
-        ToggleArtifacts(onRightWall, rightWallArtifacts); // Disable all right wall artifact buttons at the start
+        ToggleArtifacts(onLeftWall, leftWallArtifacts); 
+        ToggleArtifacts(onMiddleWall, middleWallArtifacts);   
+        ToggleArtifacts(onRightWall, rightWallArtifacts);
     }
     private void DisableButton(Button button)
     {
@@ -273,9 +293,9 @@ public class WarRoom : GenericMemManager
     {
         for (int i = 0; i < buttons.Length; i++)
         {
-            if (buttons[i] == exempt) {
-                continue;
-            }
+            //if (buttons[i] == exempt) {
+                //continue;
+            //}
             if (enable)
             {
                 EnableButton(buttons[i]);    
@@ -290,9 +310,23 @@ public class WarRoom : GenericMemManager
 
     private void ToggleArtifacts(bool enable, GameObject[] artifacts)
     {
-        for (int i = 0; i < artifacts.Length; i++)
+        foreach (var artifact in artifacts)
         {
-            artifacts[i].SetActive(enable);
+            artifact.SetActive(enable);
+            Button btn = artifact.GetComponentInChildren<Button>(true);
+            Debug.Log("Toggling artifact button: " + btn.name + " to " + enable);
+            if (enable)
+            {
+                EnableButton(btn);
+                btn.GetComponent<Image>().raycastTarget = true;
+                Debug.Log("Enabling artifact button: " + btn.name);
+            }
+            else
+            {
+                //DisableButton(btn);
+                //btn.GetComponent<Image>().raycastTarget = false;
+               
+            }
         }
     }   
 
