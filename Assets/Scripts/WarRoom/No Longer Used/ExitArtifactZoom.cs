@@ -8,7 +8,7 @@ public class ExitZoom : ButtonUtils
     //public Button returnToLobbyButton;
 
     [SerializeField]
-    public Button exitZoom;
+    public GameObject exitZoom;
 
     [SerializeField]
     public Button viewDescButton;
@@ -23,15 +23,15 @@ public class ExitZoom : ButtonUtils
 
     void Start()
     {
-        DisableButton(viewDescButton); // Disable the view description button at the start
-        DisableButton(exitZoom);
+        //DisableButton(viewDescButton); // Disable the view description button at the start
+        //exitZoom.SetActive(false); // Disable the exit zoom button at the start
     }
     public void ExitZoomOnClick()
     {
         //Debug.Log("Exiting zoom...");
         zoomContainer.GetComponent<RectTransform>().localScale = new Vector2(1, 1);
         zoomContainer.GetComponent<RectTransform>().position = new Vector2(0, 0);
-        DisableButton(exitZoom); // Disable the exit zoom button
+        exitZoom.SetActive(false); // Disable the exit zoom button
 
         //EnableButton(returnToLobbyButton); // Enable the return to lobby button
         //EnableButton(exitWallViewButton);
