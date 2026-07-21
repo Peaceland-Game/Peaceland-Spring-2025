@@ -1366,8 +1366,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 257.68176}
-  m_SizeDelta: {x: 487.4373, y: 708.3073}
+  m_AnchoredPosition: {x: -5.5272217, y: 366.0166}
+  m_SizeDelta: {x: 498.4917, y: 924.9771}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1192121514
 MonoBehaviour:
@@ -2688,7 +2688,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650277359}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 097b95c9f69f04f2d8c08a817e7786af, type: 3}
   m_Name: 
@@ -2716,7 +2716,7 @@ MonoBehaviour:
       m_Action: Skip
       m_Flags: 0
     m_Flags: 0
-  enableActionOnStart: 1
+  enableActionOnStart: 0
 --- !u!4 &1650277361
 Transform:
   m_ObjectHideFlags: 0
@@ -2873,7 +2873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2600366535429458009, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4048.0352
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2600366535429458009, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2922,6 +2922,10 @@ PrefabInstance:
     - target: {fileID: 4445910652288198779, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_Name
       value: ContinueButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4445910652288198779, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5362283665661371713, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_Enabled
@@ -3909,6 +3913,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e2a20e62ec47104d9f9937a58c1cb15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 1
+  playerInput: {fileID: 0}
   newsRead: 0
   introSprawlDone: 0
   marcStart: 0
