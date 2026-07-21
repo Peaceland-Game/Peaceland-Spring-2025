@@ -1,0 +1,13 @@
+﻿title: TownSquareIntro
+---
+<<wait 1>>
+<<declare $charName = "Marc">>
+
+{$charName}: That was quite the story those two told.
+{$charName}: I wonder if other couples went through something similar to what they went through?
+
+<i>*grumble grumble*</i>
+
+{$charName}: Listening for so long does work up an apetite though. I guess I'll go the bakery and get a doughnut.
+{$charName}: It'll be nice to say hi to Dalila while I'm there too.
+===

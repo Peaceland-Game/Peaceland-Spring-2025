@@ -1,0 +1,35 @@
+﻿title: AlexStart
+---
+<<declare $npcName2 = "Alex">> //The NPC's name will go here and can be different for each NPC if needed
+
+{$npcName2}: Much like Johnny, I don't have a welcome, but I might in the future.
+-> <i>Ask about their day</i>
+    <<jump AlexDay>>
+-> <i>Back to the lobby</i>
+===
+
+title: AlexDay
+---
+{$npcName2}: Sorry, my day hasn't been the best. I don't really want to get into it, but it's just one of those days you'd rather want to get through already.
+-> Cheer up! Things'll get better.
+    <<jump AlexGood>>
+-> Is everything alright?
+    <<jump AlexNeutral>>
+-> We all have those days. //This may be the case where the dialogue may need changing to fit the outcome or may not have an actual bad outcome
+    <<jump AlexBad>>
+===
+
+title: AlexGood
+---
+{$npcName2}: Thanks, I always try to find light at the end of the tunnel.
+===
+
+title: AlexNeutral
+---
+{$npcName2}: Sorry, as I said, I really don't want to get into it right now.
+===
+
+title: AlexBad
+---
+{$npcName2}: We do, and we all wish we didn't.
+===
