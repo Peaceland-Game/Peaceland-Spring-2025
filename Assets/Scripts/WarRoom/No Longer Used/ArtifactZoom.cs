@@ -10,7 +10,7 @@ public class ZoomOnObject : ButtonUtils
     public GameObject focusPoint;
 
     [SerializeField]
-    public Button exitZoom;
+    public GameObject exitZoom;
 
     [SerializeField]
     public GameObject zoomContainer;
@@ -19,7 +19,7 @@ public class ZoomOnObject : ButtonUtils
     void Start()
     {
         //Debug.Log("Artifact zoom active");
-        DisableButton(exitZoom);
+        exitZoom.SetActive(false); // Disable the exit zoom button at the start
     }
 
     public void ZoomIn()
@@ -47,7 +47,7 @@ public class ZoomOnObject : ButtonUtils
         zoomContainer.GetComponent<RectTransform>().position = new Vector2(0 - scale * objectPos.x, 0 - scale * objectPos.y);
         
 
-        EnableButton(exitZoom);
+        exitZoom.SetActive(true); // Enable the exit zoom button
         //ToggleButtonArray(true, artifactButtons);
     }
 

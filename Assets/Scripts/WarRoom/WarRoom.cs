@@ -97,7 +97,6 @@ public class WarRoom : GenericMemManager
         }
 
         GM = FindFirstObjectByType<GameManager>();
-        Debug.Log("seen rj: "+GameManager.Instance.seenRJMemory);
         LL = FindFirstObjectByType<LevelLoader>();
         EnableButton(returnToLobbyButton);
 
@@ -107,10 +106,7 @@ public class WarRoom : GenericMemManager
 
         ToggleButtonArray(true, clickableWalls);
 
-        //ToggleButtonArray(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        //ToggleArtifacts(false, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        //ToggleArtifacts(false, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
-        //ToggleArtifacts(false, rightWallArtifacts); // Disable all right wall artifact buttons at the start
+        ToggleWalls();
 
     }
 
@@ -323,8 +319,8 @@ public class WarRoom : GenericMemManager
             }
             else
             {
-                //DisableButton(btn);
-                //btn.GetComponent<Image>().raycastTarget = false;
+                DisableButton(btn);
+                btn.GetComponent<Image>().raycastTarget = false;
                
             }
         }
