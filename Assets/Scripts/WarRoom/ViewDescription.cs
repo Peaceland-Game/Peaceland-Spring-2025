@@ -33,13 +33,6 @@ public class ViewDescription : ButtonUtils
 
     public event EventHandler OnViewDescriptionClicked; //subscribed by HoverButton.cs to re-enable the hover button when exiting the description
 
-    //[SerializeField]
-    //public string descText="";
-
-    //[SerializeField]
-    //public Button exitZoomButton;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
     {
@@ -51,7 +44,6 @@ public class ViewDescription : ButtonUtils
 
     public void ViewDescriptionOnClick()
     {
-        Debug.Log("Viewing description...");
         DisableButton(exitWallView);
         DisableButton(leftArrow);
         DisableButton(rightArrow);

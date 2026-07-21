@@ -37,22 +37,6 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     private GameObject wallClickInstructions;
 
-    //[SerializeField]
-    //public Button exitDescView;
-
-    ////left wall artifacts 
-    //[SerializeField]
-    //public TextMeshProUGUI[] leftWallTMPs;
-
-    ////middle wall artifacts 
-    //[SerializeField]
-    //public TextMeshProUGUI[] middleWallTMPs;
-
-    ////right wall artifacts 
-    //[SerializeField]
-    //public TextMeshProUGUI[] rightWallTMPs;
-
-    //private bool[] currentWall = new bool[4];
     private bool onWideShot = true;
     private bool onLeftWall = false;
     private bool onMiddleWall = false;
@@ -65,24 +49,9 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     private bool mingming = false;
 
-    //private Button[] leftWallArtifactButtons;
-    //private Button[] middleWallArtifactButtons;
-    //private Button[] rightWallArtifactButtons;
 
     void Start()
     {
-        //for (int i = 0; i < leftWallArtifacts.Length; i++)
-        //{
-        //    leftWallArtifactButtons[i] = leftWallArtifacts[i].GetComponentInChildren<Button>(true);
-        //}
-        //for (int i = 0; i < middleWallArtifacts.Length; i++)
-        //{
-        //    middleWallArtifactButtons[i] = middleWallArtifacts[i].GetComponentInChildren<Button>(true);
-        //}
-        //for (int i = 0; i < rightWallArtifacts.Length; i++)
-        //{
-        //    rightWallArtifactButtons[i] = rightWallArtifacts[i].GetComponentInChildren<Button>(true);
-        //}
 
         wallClickInstructions.SetActive(true);
 
@@ -114,14 +83,13 @@ public class WarRoom : GenericMemManager
 
         ToggleWalls();
 
+        Debug.Log("WarRoom script initialized; seen rj memory: " + GM.Instance.seenRJMemory);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ToggleButtonArray(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        //ToggleButtonArray(onMiddleWall, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
-        //ToggleButtonArray(onRightWall, rightWallArtifacts); // Disable all right wall artifact buttons at the start
         if (onWideShot)
         {
             EnableButton(returnToLobbyButton);
@@ -272,10 +240,6 @@ public class WarRoom : GenericMemManager
         EnableButton(leftArrow);
         EnableButton(rightArrow);
         ToggleWalls();
-
-        //stupid hardcode fix that i  hope never gets uncovered by a future developer
-        //rightWallArtifacts[5].GetComponentInChildren<Button>(true).GetComponent<Image>().enabled=true;
-       // Debug.Log("Enabling artifact button through fuckahh hardcode: " + rightWallArtifacts[5].GetComponentInChildren<Button>(true).name);
     }
 
     private void EnableButton(Button button)
@@ -300,9 +264,7 @@ public class WarRoom : GenericMemManager
     {
         for (int i = 0; i < buttons.Length; i++)
         {
-            //if (buttons[i] == exempt) {
-                //continue;
-            //}
+            
             if (enable)
             {
                 EnableButton(buttons[i]);    
@@ -321,12 +283,10 @@ public class WarRoom : GenericMemManager
         {
             artifact.SetActive(enable);
             Button btn = artifact.GetComponentInChildren<Button>(true);
-            Debug.Log("Toggling artifact button: " + btn.name + " to " + enable);
             if (enable)
             {
                 EnableButton(btn);
                 btn.GetComponent<Image>().raycastTarget = true;
-                Debug.Log("Enabling artifact button: " + btn.name);
             }
             else
             {

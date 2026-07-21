@@ -23,8 +23,6 @@ public class ExitZoom : ButtonUtils
 
     void Start()
     {
-        //DisableButton(viewDescButton); // Disable the view description button at the start
-        //exitZoom.SetActive(false); // Disable the exit zoom button at the start
     }
     public void ExitZoomOnClick()
     {
@@ -32,19 +30,5 @@ public class ExitZoom : ButtonUtils
         zoomContainer.GetComponent<RectTransform>().localScale = new Vector2(1, 1);
         zoomContainer.GetComponent<RectTransform>().position = new Vector2(0, 0);
         exitZoom.SetActive(false); // Disable the exit zoom button
-
-        //EnableButton(returnToLobbyButton); // Enable the return to lobby button
-        //EnableButton(exitWallViewButton);
-        //EnableButton(exitDescButton); // Enable the exit description button
-        //panel.SetActive(true); // Enable the description panel
-        //DisableButton(exitZoom); // Disable the exit zoom button
-        //DisableButton(viewDescButton); // Disable the view description button
-
-        //OnViewDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
-
-        //if (seeMore != null)
-        //{
-        //    EnableButton(seeMore);
-        //}
     }
 }

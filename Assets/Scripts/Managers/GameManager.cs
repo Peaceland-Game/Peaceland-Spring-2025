@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         _instance = this;
-        Debug.Log("RJ complete status: " + seenRJMemory);
+        Debug.Log("RJ complete status: " + this.seenRJMemory);
 
        playerInput = GetComponent<PlayerInput>();
     }

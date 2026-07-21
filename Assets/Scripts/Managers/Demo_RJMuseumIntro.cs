@@ -61,9 +61,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
         LL = FindFirstObjectByType<LevelLoader>();
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
         tap = InputSystem.actions.FindAction("Tap");
-
-
-        if(GM.introSprawlDone)
+        
+        if (GM.introSprawlDone)
         {
             newsPaper.enabled = false;
             MainCharPortrait.SetActive(false);
