@@ -11,6 +11,7 @@ TagManager:
   - Minigame
   - ScrollView
   - HidingPlace
+  - DialogReplayBox
   layers:
   - Default
   - TransparentFX
