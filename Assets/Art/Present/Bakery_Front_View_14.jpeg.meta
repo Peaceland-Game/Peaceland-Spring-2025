@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Bakery_Front_View_14_0: 5319253394661811579
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

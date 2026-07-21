@@ -83,7 +83,7 @@ public class WarRoom : GenericMemManager
 
         ToggleWalls();
 
-        Debug.Log("WarRoom script initialized; seen rj memory: " + GM.Instance.seenRJMemory);
+        Debug.Log("WarRoom script initialized; seen rj memory: " + GameManager.Instance.seenRJMemory);
 
     }
 
