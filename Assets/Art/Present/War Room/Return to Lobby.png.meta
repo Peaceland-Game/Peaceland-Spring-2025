@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: d7dfdd77de3ffe1408f3fae4c3a2c10f
+guid: ee07711abf593b244b5534b48b89d356
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3747915813996831811
-    second: Ceasefire agreement_0
+      213: -5836444417232968752
+    second: Return to Lobby_0
+  - first:
+      213: -7296698676741662331
+    second: Return to Lobby_1
+  - first:
+      213: 2060986794365295675
+    second: Return to Lobby_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ceasefire agreement_0
+      name: Return to Lobby_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 6
-        width: 529
-        height: 631
+        x: 0
+        y: 2
+        width: 37
+        height: 10
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dbb56aaac6abcfbc0800000000000000
-      internalID: -3747915813996831811
+      spriteID: 0d3648fa9b8c00fa0800000000000000
+      internalID: -5836444417232968752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Return to Lobby_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 2
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58910cb863becba90800000000000000
+      internalID: -7296698676741662331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Return to Lobby_2
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 0
+        width: 34
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3c1ae4e1981a9c10800000000000000
+      internalID: 2060986794365295675
       vertices: []
       indices: 
       edges: []
@@ -125,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +184,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Return to Lobby_0: -5836444417232968752
+      Return to Lobby_1: -7296698676741662331
+      Return to Lobby_2: 2060986794365295675
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

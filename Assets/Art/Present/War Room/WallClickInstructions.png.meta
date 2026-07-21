@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d7dfdd77de3ffe1408f3fae4c3a2c10f
+guid: 780275277aafe1b4f8439e88e564b4c4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3747915813996831811
-    second: Ceasefire agreement_0
+      213: 7515578929942124575
+    second: WallClickInstructions_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ceasefire agreement_0
+      name: WallClickInstructions_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 6
-        width: 529
-        height: 631
+        x: 0
+        y: 0
+        width: 396
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dbb56aaac6abcfbc0800000000000000
-      internalID: -3747915813996831811
+      spriteID: f185c90b733bc4860800000000000000
+      internalID: 7515578929942124575
       vertices: []
       indices: 
       edges: []

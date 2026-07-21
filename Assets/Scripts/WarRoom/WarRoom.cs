@@ -34,6 +34,9 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     public GameObject[] rightWallArtifacts;
 
+    [SerializeField]
+    private GameObject wallClickInstructions;
+
     //[SerializeField]
     //public Button exitDescView;
 
@@ -81,6 +84,8 @@ public class WarRoom : GenericMemManager
         //    rightWallArtifactButtons[i] = rightWallArtifacts[i].GetComponentInChildren<Button>(true);
         //}
 
+        wallClickInstructions.SetActive(true);
+
         if (mingming)
         {
             foreach (var wall in clickableWalls)
@@ -99,6 +104,7 @@ public class WarRoom : GenericMemManager
         GM = FindFirstObjectByType<GameManager>();
         LL = FindFirstObjectByType<LevelLoader>();
         EnableButton(returnToLobbyButton);
+        returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
 
         DisableButton(leftArrow);
         DisableButton(rightArrow);
@@ -119,6 +125,7 @@ public class WarRoom : GenericMemManager
         if (onWideShot)
         {
             EnableButton(returnToLobbyButton);
+            returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
             DisableButton(leftArrow);
             DisableButton(rightArrow);
             DisableButton(exitWallView); // Disable the exit wall view button at the start
@@ -127,6 +134,7 @@ public class WarRoom : GenericMemManager
         else
         {
             DisableButton(returnToLobbyButton);
+            returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
             ToggleButtonArray(false, clickableWalls);
         }
         ChangeBackgroundSprite(currentWallIndex);
@@ -214,6 +222,7 @@ public class WarRoom : GenericMemManager
     }
     public void LeftWallClicked()
     {
+        wallClickInstructions.SetActive(false);
         onWideShot = false;
         onLeftWall = true;
         onMiddleWall = false;
@@ -231,6 +240,7 @@ public class WarRoom : GenericMemManager
 
     public void MiddleWallClicked()
     {
+        wallClickInstructions.SetActive(false);
         onWideShot = false;
         onLeftWall = false;
         onMiddleWall = true;
@@ -248,6 +258,7 @@ public class WarRoom : GenericMemManager
 
     public void RightWallClicked()
     {
+        wallClickInstructions.SetActive(false);
         onWideShot = false;
         onLeftWall = false;
         onMiddleWall = false;
