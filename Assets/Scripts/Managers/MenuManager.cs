@@ -20,13 +20,14 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject settingsPrefab;
     [SerializeField] private GameObject saveExitPrefab;
     [SerializeField] private GameObject mainMenuPrefab;
+    [SerializeField] private GameObject dialogueReplayPrefab;
     private GameObject blankCanvas;
     private GameObject defaultCanvas;
     private GameObject pausedCanvas;
     private GameObject settingsCanvas;
     private GameObject saveExitCanvas;
     private GameObject mainMenuCanvas;
-
+    private GameObject dialogueReplayCanvas;
 
     //stack for keeping track of previous menu options
     private Stack<GameObject> menuStack = new Stack<GameObject>();
@@ -159,6 +160,11 @@ public class MenuManager : MonoBehaviour
         {
             UnPauseGame();
         }
+        //show dialogue replay is closed
+        if (GameManager.Instance.dialogueReplayActive)
+        {
+            GameManager.Instance.dialogueReplayActive = false;
+        }
         //back out by one menu if we're not at the base layer
         if (menuStack.Count > 1)
         {
@@ -171,15 +177,12 @@ public class MenuManager : MonoBehaviour
     //backs out of all menus and returns to base menu
     public void CloseAllMenus()
     {
-        //unpause if closing from paused
-        if (isPaused)
-        {
-            UnPauseGame();
-        }
         //back out by one menu if we're not at the base layer
         if (menuStack.Count > 1)
         {
-            //pop all menus until we're at the base
+            //close the first menu
+            CloseMenu();
+            //pop all remaining menus until we're at the base
             for (int i = menuStack.Count; i > 1; i--)
             {
                 menuStack.Pop().SetActive(false);
@@ -247,6 +250,19 @@ public class MenuManager : MonoBehaviour
             settingsCanvas.SetActive(false);
         }
         OpenMenu(settingsCanvas);
+    }
+
+    public void OpenDialogueReplay()
+    {
+        //ensure there's a dialoguereplay canvas
+        if(dialogueReplayCanvas == null)
+        {
+            dialogueReplayCanvas = Instantiate(dialogueReplayPrefab);
+            dialogueReplayCanvas.SetActive(true);
+        }
+        //set menu flag for dialoguelog script to check for text box
+        GameManager.Instance.dialogueReplayActive = true;
+        OpenMenu(dialogueReplayCanvas);
     }
 
     //pauses the game and creates the paused screen

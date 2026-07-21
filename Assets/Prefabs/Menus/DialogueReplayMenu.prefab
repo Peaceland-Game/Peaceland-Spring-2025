@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6213127205448464208}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.330131
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1117,57 +1117,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam
-    pharetra posuere. Donec imperdiet nulla rutrum dapibus gravida. Sed quis ante
-    ac odio dignissim iaculis at in neque. Proin ultrices urna nulla, sed finibus
-    libero euismod eu. Phasellus tempor, augue quis iaculis condimentum, arcu tortor
-    pretium nunc, ac hendrerit nisi magna vel lacus. Phasellus id quam non est commodo
-    porttitor. Suspendisse aliquam nulla at sodales auctor. Nam in augue vel ipsum
-    gravida rhoncus. Aliquam congue efficitur tortor vitae tempor.
-
-
-
-    Etiam consequat
-    urna elit, at fermentum ex mollis quis. Donec orci dui, tempor sit amet feugiat
-    at, sollicitudin eget ipsum. Aliquam nisl velit, volutpat a sapien nec, iaculis
-    varius mauris. Pellentesque lobortis velit at sodales tristique. Aliquam pretium
-    viverra lorem ut ullamcorper. Class aptent taciti sociosqu ad litora torquent
-    per conubia nostra, per inceptos himenaeos. Cras vestibulum tortor nec magna
-    dignissim condimentum.
-
-
-
-    Cras vehicula vehicula lorem, iaculis tincidunt
-    ipsum scelerisque luctus. Nam pharetra mollis aliquam. Fusce nulla mi, suscipit
-    vel tincidunt sed, pulvinar eu ante. Vivamus vehicula turpis at sem tincidunt
-    congue. Aliquam accumsan nisi et hendrerit lobortis. Mauris fringilla molestie
-    felis, in volutpat lectus aliquam gravida. Vestibulum malesuada sem pellentesque
-    luctus sagittis. Nunc id nulla in nulla sodales varius vitae id eros. Vestibulum
-    pharetra mi vitae ante aliquam aliquam eget et tortor.
-
-
-
-    Suspendisse augue
-    purus, semper sit amet sem ac, fringilla maximus erat. Donec quis neque at libero
-    malesuada dapibus. Ut sapien ante, tincidunt a enim eget, rhoncus maximus arcu.
-    Vivamus interdum, neque non dapibus vehicula, elit urna tempor massa, sed pharetra
-    elit justo eget augue. Fusce elit odio, maximus et hendrerit mattis, sollicitudin
-    non leo. Vivamus et luctus nisl. Sed quis iaculis sem.
-
-
-
-    Vivamus vel purus
-    eu urna consectetur euismod id eu ipsum. Aenean aliquam nisl quis porttitor consectetur.
-    Vestibulum turpis risus, finibus laoreet convallis eu, blandit ac sapien. Fusce
-    ante mauris, ullamcorper a ultrices iaculis, ornare eget quam. In et iaculis
-    diam. Integer lorem odio, faucibus sed pulvinar et, elementum sit amet ex. Nunc
-    fringilla luctus purus in lacinia. Quisque lorem mi, iaculis in eleifend sed,
-    fermentum sed felis. Etiam a urna auctor, aliquam neque non, sagittis nunc. Sed
-    egestas risus eget luctus semper. Donec quis risus interdum, molestie turpis
-    ut, dignissim nisl. Donec commodo magna ligula, eget tempor augue venenatis at.
-    Vivamus malesuada varius consectetur. Nam dui sapien, auctor id ultrices eget,
-    gravida vitae dolor. Aenean eros neque, commodo sed lacinia at, mollis ut lectus.
-    Etiam venenatis nec augue ac pharetra.'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bec09ad86fa1a445be6e73a59921be3, type: 2}
   m_sharedMaterial: {fileID: -2705481054575229854, guid: 8bec09ad86fa1a445be6e73a59921be3, type: 2}
@@ -1521,7 +1471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8a65041c87cd584ea598473c4e5e339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSelectedButton: {fileID: 0}
+  firstSelectedButton: {fileID: 6259061377665218107}
 --- !u!114 &7086395526147447500
 MonoBehaviour:
   m_ObjectHideFlags: 0

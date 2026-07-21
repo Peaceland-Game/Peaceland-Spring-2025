@@ -29,6 +29,12 @@ public class MenuOptions : MonoBehaviour
     {
         MenuManager.Instance.OpenSaveExit();
     }
+
+    public void OpenDialogueReplay()
+    {
+        MenuManager.Instance.OpenDialogueReplay();
+    }
+
     public void QuitGame()
     {
         MenuManager.Instance.QuitGame();
