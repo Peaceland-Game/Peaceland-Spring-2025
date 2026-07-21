@@ -1,7 +1,6 @@
 ﻿title: FightIntro
 ---
 <<declare $friend1Name = "Branko">>
-<<declare $friend2Name = "Katarina">>
 
 <<wait 1>>
 
@@ -23,69 +22,4 @@ The crowd is getting louder and shoving has turned into throwing punches.
 {$charName} watches for a moment before turning to continue heading home.
 
 {$charName}: I should head home now.
-When he hurriedly walks away, he spots Katarina.
-{$charName}: It's Katarina. I wonder what she's doing here? It'd be best to check on her before she gets distracted by the commotion.
-The crowd of people seems to be quieting slightly - someone is probably being detained. Maybe other officers are on the scene.
-
-{$charName}: Hey! Katarina!
-{$friend2Name}: Oh, hey {$charName}, what's up?
--> Are you alright?
-    <<jump KatarinaTalk>>
--> What are you doing here?
-    <<jump KatarinaTalk4>>
-===
-
-title: KatarinaTalk
----
-{$friend2Name}: I'm fine. Are you feeling okay?
-->I'm safe, at least.
-    <<jump KatarinaTalk2>>
-->I'm a bit spooked.
-    <<jump KatarinaTalk3>>
-===
-
-title: KatarinaTalk2
----
-{$friend2Name}: Good. I was expecting this sort of stuff with the election coming up, but it's still unpredictable.
-{$charName}: It's the first one in thirty years, so that makes sense.
-{$friend2Name}: It's the party that wants peace versus a paramilitary group.
-{$charName}: Yikes! Isn't calling them paramilitary a bit harsh?
-{$charName}: When you say it like that, I get why people are so angry.
-<<jump KatarinaBye>>
-===
-
-title: KatarinaTalk3
----
-{$friend2Name}: Me too. Just because this sort of thing isn't rare doesn't mean it's pleasant.
-{$friend2Name}: Don't worry though, I'll protect you.
-{$charName}: My hero.
-Katarina grins
-{$friend2Name}: In that case, I'll protect you from anything that happens.
-{$charName}: Thanks. I still wish people didn't get into fights so often.
-Katarina frowns
-{$friend2Name}: Same here.
-<<jump KatarinaBye>>
-===
-
-title: KatarinaTalk4
----
-{$friend2Name}: I was just heading home. I knew sports fans could get unruly, but I've never seen it in person before.
-{$charName}: I think it's weird how people get so into sports...it's literally just watching people kick a ball around.
-{$friend2Name}: It's never just sports. There's always politics involved, especially here.
-{$charName}: Yeah, I guess you would know Ms. Star Student.
-{$friend2Name}: We actually talked about this in class with my professor...sorry about that.
-{$charName}: You can talk about college; I'm going eventually. Hopefully.
-{$friend2Name}: I know you'll get there.
-{$charName}: I just need to save up for a car.
-{$charName}: My parents are just really worried with the election and all.
-{$friend2Name}: It'll work out
-<<jump KatarinaBye>>
-===
-
-title: KatarinaBye
----
-Katarina looks worried
-{$friend2Name}: Well, I can't miss the bus. Maybe I'll see you later?
-{$charName}: Sure. Hopefully.
-Katarina waves goodbye and exits the square.
 ===

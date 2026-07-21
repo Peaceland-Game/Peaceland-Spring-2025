@@ -6,7 +6,8 @@
     "Cara.yarn",
     "Julia.yarn",
     "Bakery.yarn",
-    "Fight.yarn"
+    "Fight.yarn",
+    "Katarina.yarn"
   ],
   "excludeFiles": [
     "**/*~/*"

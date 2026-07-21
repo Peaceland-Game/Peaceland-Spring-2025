@@ -1326,6 +1326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 1051523173}
+  dialogueRunner: {fileID: 1869002743}
 --- !u!61 &1051523173
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3613,6 +3614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxCollider: {fileID: 1893134119}
+  dialogueRunner: {fileID: 1869002743}
 --- !u!61 &1893134119
 BoxCollider2D:
   m_ObjectHideFlags: 0

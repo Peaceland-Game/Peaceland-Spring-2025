@@ -16,10 +16,12 @@ public class TownSquareManager : MonoBehaviour
     [SerializeField] DialogueRunner dialogueRunner;
     private bool bakeryStart = false;
     private bool fightHappened = false;
+    private bool katarinaTalked = false;
     public List<GameObject> npcs = new List<GameObject>();
     public GameObject dalila;
     public GameObject branko;
     public GameObject katarina;
+
 
     //Initializes variables and plays the starting dialogue
     void Start()
@@ -37,7 +39,15 @@ public class TownSquareManager : MonoBehaviour
         }
     }
 
-    //While the constant repeated use of if statements may seem a bit messy and repetitive, it does help manage the constant event-after-event loop that goes on in this scene after each bit of dialogue
+    /// <summary>
+    /// While the constant repeated use of if statements may seem a bit messy and repetitive,
+    /// it does help manage the constant event-after-event loop that goes on in this scene after each bit of dialogue.
+    /// 
+    /// The fight dialogue was split into two segments, which is the conversation with Branko, and the one with Katarina.
+    /// This allows characters (Placeholders in the scene) to appear when being talked to, and disappear when not (Only works with Branko at the moment).
+    /// 
+    /// The code currently has a segment to move on to the next scene after the conversation with Katarina
+    /// </summary>
     void Update()
     {
         if (!dialogueRunner.IsDialogueRunning && !bakeryStart)
@@ -51,13 +61,21 @@ public class TownSquareManager : MonoBehaviour
         if (!dialogueRunner.IsDialogueRunning && bakeryInside.enabled)
         {
             dalila.SetActive(false);
+            branko.SetActive(true);
             bakeryInside.enabled = false;
             boxCollider.enabled = false;
             townSquare.enabled = true;
             dialogueRunner.StartDialogue("FightIntro");
             fightHappened = true;
         }
-        //if (!dialogueRunner.IsDialogueRunning && fightHappened)
+        if (!dialogueRunner.IsDialogueRunning && fightHappened && !katarinaTalked)
+        {
+            branko.SetActive(false);
+            katarina.SetActive(true);
+            dialogueRunner.StartDialogue("KatarinaIntro");
+            katarinaTalked = true;
+        }
+        //if (!dialogueRunner.IsDialogueRunning && katarinaTalked)
         //{
         //    SceneManager.LoadScene("Home");
         //}
