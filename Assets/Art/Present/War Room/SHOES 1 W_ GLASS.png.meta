@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 7c9c8290f0f19ef4c873ca1a1762275e
+guid: cdedc1323fe610544a9fa6a407e3bf15
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6727841416453809177
-    second: Kick Ball w_ glass_0
+      213: -824177573583525466
+    second: SHOES 1 W_ GLASS_0
+  - first:
+      213: 7550476732143431518
+    second: SHOES 1 W_ GLASS_1
+  - first:
+      213: -4883767215891249191
+    second: SHOES 1 W_ GLASS_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kick Ball w_ glass_0
+      name: SHOES 1 W_ GLASS_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 4
-        width: 218
-        height: 219
+        x: 1661
+        y: 455
+        width: 356
+        height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 914e3e46f181e5d50800000000000000
-      internalID: 6727841416453809177
+      spriteID: 6a9e5be0ddeef84f0800000000000000
+      internalID: -824177573583525466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SHOES 1 W_ GLASS_1
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 561
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5fe240759ea8c860800000000000000
+      internalID: 7550476732143431518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SHOES 1 W_ GLASS_2
+      rect:
+        serializedVersion: 2
+        x: 1985
+        y: 455
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d78a1ba79f593cb0800000000000000
+      internalID: -4883767215891249191
       vertices: []
       indices: 
       edges: []
@@ -134,8 +184,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Kick Ball w_ glass_0: 6727841416453809177
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

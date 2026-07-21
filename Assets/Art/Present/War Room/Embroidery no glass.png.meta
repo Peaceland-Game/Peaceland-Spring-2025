@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Embroidery no glass_0: -6161261630884802137
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

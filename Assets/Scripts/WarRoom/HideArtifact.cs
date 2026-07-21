@@ -24,9 +24,6 @@ public class HideArtifact : HoverButton
 
     [SerializeField]
     private bool changeColor = true;
-    //[SerializeField]
-    //private ToggleNeighbours toggleNeighbours;
-
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -38,23 +35,7 @@ public class HideArtifact : HoverButton
             buttonText.gameObject.SetActive(false);
         }
         artifactButton.interactable = false;
-
-        //toggleNeighbours.OnDisableNeighbours += ToggleNeighbours_OnDisableNeighbours;
-        //toggleNeighbours.OnEnableNeighbours += ToggleNeighbours_OnEnableNeighbours;
     }
-
-    //private void ToggleNeighbours_OnEnableNeighbours(object sender, System.EventArgs e)
-    //{
-    //    disabled = false;
-    //    Debug.Log("Enabling artifact button due to enabled neighbours.");
-    //}
-
-    //private void ToggleNeighbours_OnDisableNeighbours(object sender, System.EventArgs e)
-    //{
-    //    disabled = true;
-    //    Debug.Log("Disabling artifact button due to disabled neighbours.");
-    //}
-
     
 
     // Update is called once per frame
@@ -92,13 +73,13 @@ public class HideArtifact : HoverButton
                 unlocked = GameManager.Instance.seenBorisMemory;
                 break;
         }
+        
         // If the memory is not completed, hide the artifact
         if (!unlocked)
         {
             hoverImage.color = new Color(0, 0, 0, 0); // Make the background transparent
             buttonText.text = "???";
             buttonText.color = Color.white;
-            //hoverImage.enabled = false;
             artifactButton.interactable = false;
             if (artifactImages != null && artifactImages.Length != 0)
             {
@@ -131,7 +112,6 @@ public class HideArtifact : HoverButton
                 {
                     if (changeColor)    
                         img.color = new Color(255, 255, 255, 1); // reveal images
-                    //img.color = new Color(255, 255, 255, 0); // reveal images
                 }
 
             }
@@ -140,11 +120,6 @@ public class HideArtifact : HoverButton
                 if (changeColor)
                     artifactButton.GetComponent<Image>().color = new Color(255, 255, 255, 1); // reveal img
             }
-            //else
-            //{
-            //    artifactButton.GetComponent<Image>().color = new Color(255, 255, 255, 1); // darken img
-            //    //artifactButton.GetComponent<Image>().color = new Color(255, 255, 255, 0);
-            //}
         }
     }
     

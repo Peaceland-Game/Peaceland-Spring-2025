@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7c9c8290f0f19ef4c873ca1a1762275e
+guid: dea0b737a13659247958250fb107a6b9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6727841416453809177
-    second: Kick Ball w_ glass_0
+      213: 6048429368096231409
+    second: Empty cases center_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kick Ball w_ glass_0
+      name: Empty cases center_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 4
-        width: 218
-        height: 219
+        x: 0
+        y: 0
+        width: 2560
+        height: 1400
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 914e3e46f181e5d50800000000000000
-      internalID: 6727841416453809177
+      spriteID: 1ff8a6ed67650f350800000000000000
+      internalID: 6048429368096231409
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Kick Ball w_ glass_0: 6727841416453809177
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
