@@ -17,6 +17,7 @@ public class DialogueLog : DialogueViewBase
         dialogueHistory = new List<DialogueEntry>();
     }
 
+    //
     public void OnEnable()
     {
         OptionsListView.OptionSelected += LogPlayerChoice;
@@ -26,6 +27,7 @@ public class DialogueLog : DialogueViewBase
     {
        OptionsListView.OptionSelected -= LogPlayerChoice;
     }
+
     // Update is called once per frame
     void Update()
     {
