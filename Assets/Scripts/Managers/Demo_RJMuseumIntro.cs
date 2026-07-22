@@ -63,14 +63,14 @@ public class Demo_RJMuseumIntro : GenericMemManager
         tap = InputSystem.actions.FindAction("Tap");
 
 
-        if(GM.introSprawlDone)
-        {
-            newsPaper.enabled = false;
-            MainCharPortrait.SetActive(false);
-            SecondCharPortrait.SetActive(false);
-            StartCoroutine(MuseumTransition());
-            return;
-        }
+        //if(GM.introSprawlDone)
+        //{
+        //    newsPaper.enabled = false;
+        //    MainCharPortrait.SetActive(false);
+        //    SecondCharPortrait.SetActive(false);
+        //    StartCoroutine(MuseumTransition());
+        //    return;
+        //}
         
 
 
@@ -79,6 +79,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         textStarted = false;
         continueButton.interactable = false;
         continueButton.GetComponent<Image>().enabled = false;
+
         warRoomEntrance.interactable = false;
         startDialogueButton.interactable = false;   
         startDialogueButton.GetComponent<Image>().enabled = false;
@@ -89,8 +90,6 @@ public class Demo_RJMuseumIntro : GenericMemManager
         museumWide.enabled = false;
         marcBack.enabled = false;
 
-
-
         // Hide character portraits
         MainCharPortrait.SetActive(false);
         SecondCharPortrait.SetActive(false);
@@ -98,10 +97,11 @@ public class Demo_RJMuseumIntro : GenericMemManager
         // Jump ahead on dialoge if returning from the memory
         if (GM.seenRJMemory)
         {
+            Debug.Log("Returning from memory, skipping to museum tree");
             newsPaper.enabled = false;
             currentMinigame = afterMemStart - 1;    // NextMinigame increments the count
-            //NextOrder();
-            //NextMinigame();
+            NextOrder();
+            NextMinigame();
 
             museumTree.enabled = true;
             treePlaque.enabled = true;
@@ -202,7 +202,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         else if (currentMinigame == 2)
         {
             LL.LoadLevelByBuildIndex(4);
-            StartDialogue();
+            
         }
 
         else
