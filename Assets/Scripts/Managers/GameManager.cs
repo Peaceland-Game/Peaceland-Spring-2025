@@ -80,12 +80,7 @@ public class GameManager : MonoBehaviour
             Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
 
             SceneManager.sceneLoaded += GMOnSceneLoaded;
-        }else if(Instance !=null && Instance != this)
-        {
-            Destroy(gameObject);
         }
-        _instance = this;
-        Debug.Log("RJ complete status: " + seenRJMemory);
     }
 
     // Update is called once per frame

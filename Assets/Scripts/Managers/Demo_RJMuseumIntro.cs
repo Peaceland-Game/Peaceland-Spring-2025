@@ -202,6 +202,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         else if (currentMinigame == 2)
         {
             LL.LoadLevelByBuildIndex(4);
+            StartDialogue();
         }
 
         else

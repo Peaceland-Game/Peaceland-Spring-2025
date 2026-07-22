@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Case_Artifact_Room_fixed dots and shoes_0: 2862060471768610231
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
