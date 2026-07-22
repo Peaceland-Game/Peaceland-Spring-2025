@@ -17,7 +17,7 @@ public class MenuOptions : MonoBehaviour
 
     public void PauseGame()
     {
-        MenuManager.Instance.PauseGame();
+        MenuManager.Instance.OpenPauseMenu();
     }
 
     public void OpenSettings()

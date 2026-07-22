@@ -155,8 +155,8 @@ public class MenuManager : MonoBehaviour
     //backs out and returns to previous menu
     public void CloseMenu()
     {
-        //unpause if closing from paused
-        if (isPaused && currentMenu == pausedCanvas)
+        //unpause if closing from paused or the dialoguelog
+        if (isPaused && currentMenu == pausedCanvas || currentMenu == dialogueReplayCanvas)
         {
             UnPauseGame();
         }
@@ -260,24 +260,32 @@ public class MenuManager : MonoBehaviour
             dialogueReplayCanvas = Instantiate(dialogueReplayPrefab);
             dialogueReplayCanvas.SetActive(true);
         }
+        PauseGame();
         //set menu flag for dialoguelog script to check for text box
         GameManager.Instance.dialogueReplayActive = true;
         OpenMenu(dialogueReplayCanvas);
     }
 
+
     //pauses the game and creates the paused screen
-    public void PauseGame()
+    public void OpenPauseMenu()
     {
-        Time.timeScale = 0.0f;
-        isPaused = true;
-        GameManager.Instance.gameState = GameManager.GameState.Paused;
         //ensure there's a paused canvas before openeing one
         if (!pausedCanvas)
         {
             pausedCanvas = Instantiate(pausedPrefab);
             pausedCanvas.SetActive(false);
         }
+        PauseGame();
         OpenMenu(pausedCanvas);
+    }
+
+    //pauses the game
+    public void PauseGame()
+    {
+        Time.timeScale = 0.0f;
+        isPaused = true;
+        GameManager.Instance.gameState = GameManager.GameState.Paused;
     }
 
     //unpauses the game
