@@ -16,6 +16,10 @@ public class GameManager : MonoBehaviour
     public GameState gameState = GameState.Active;
     //player input to manage input modes
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] GameManager prefab;
+
+    //bools for specific game menu checks
+    public bool dialogueReplayActive;
 
     //bools for the MuseumIntro scene, used in MuseumIntroManager.cs and SceneTransitioner.cs
     public bool newsRead;
@@ -81,6 +85,13 @@ public class GameManager : MonoBehaviour
          * Best practice for Singletons should prevent a second GM from being created.
          * However, there was not time to do this in Spring 2026
         */
+
+        //If this is a second GM being created, destroy itself
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         // Only set the instance if there isn't one already
         if (_instance == null)
