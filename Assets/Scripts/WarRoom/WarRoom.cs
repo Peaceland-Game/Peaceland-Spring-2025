@@ -54,8 +54,7 @@ public class WarRoom : GenericMemManager
 
     void Start()
     {
-        wallClickInstructions.SetActive(true);
-
+        //dont mind this part 
         if (mingming)
         {
             foreach (var wall in clickableWalls)
@@ -71,67 +70,94 @@ public class WarRoom : GenericMemManager
             }
         }
 
-        GM = FindFirstObjectByType<GameManager>();
-        LL = FindFirstObjectByType<LevelLoader>();
+        //enable wall view exclusive buttons/ui elements
+        wallClickInstructions.SetActive(true);
         EnableButton(returnToLobbyButton);
         returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
-
-        DisableButton(leftArrow);
-        DisableButton(rightArrow);
-        DisableButton(exitWallView); // Disable the exit wall view button at the start
-
         ToggleButtonArray(true, clickableWalls);
-
         ToggleWalls();
 
+        //set GameManager instance and LevelLoader isntance
+        GM = FindFirstObjectByType<GameManager>();
+        LL = FindFirstObjectByType<LevelLoader>();
+        
+        //disable wall view exclusive buttons
+        DisableButton(leftArrow);
+        DisableButton(rightArrow);
+        DisableButton(exitWallView); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //ToggleButtonArray(onLeftWall, leftWallArtifacts); // Disable all left wall artifact buttons at the start
-        //ToggleButtonArray(onMiddleWall, middleWallArtifacts); // Disable all middle wall artifact buttons at the start  
-        //ToggleButtonArray(onRightWall, rightWallArtifacts); // Disable all right wall artifact buttons at the start
         if (onWideShot)
         {
+            //enable wideshot exclusive elements
             EnableButton(returnToLobbyButton);
+            ToggleButtonArray(true, clickableWalls);
             returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+
+            //disable wall view exclusive elements
             DisableButton(leftArrow);
             DisableButton(rightArrow);
-            DisableButton(exitWallView); // Disable the exit wall view button at the start
-            ToggleButtonArray(true, clickableWalls);
+            DisableButton(exitWallView); 
         }
         else
         {
+            //disable wideshot exclusive buttons
             DisableButton(returnToLobbyButton);
             returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
             ToggleButtonArray(false, clickableWalls);
         }
+        //set background sprite as current wall 
         ChangeBackgroundSprite(currentWallIndex);
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name=" "></param>
+    /// <param name=" "></param>
+    
+    /// <summary>
+    /// changes wall index, current wall boolean, and
+    /// currently active artifacts to move to the wall
+    /// immediately to the left (loops over to
+    /// rightmost wall if already on left wall)
+    /// </summary>
     public void MoveLeft()
     {
         currentWallIndex--;
+
+        //loop over to right wall if already on left
         if (currentWallIndex < 1) {
             currentWallIndex = 3;
         }
-        MoveWallHelper();
-        ToggleWalls();
+        MoveWallHelper(); //adjust wall/view tracking booleans
+        ToggleWalls(); //disables artifacts of other walls, enables artifacts of current wall
     }
 
+    /// <summary>
+    /// changes wall index, current wall boolean, and
+    /// currently active artifacts to move to the wall
+    /// immediately to the right (loops over to
+    /// leftmost wall if already on right wall)
+    /// </summary>
     public void MoveRight()
     {
         currentWallIndex++;
+
+        //loop over to left wall if already on right
         if (currentWallIndex > 3)
         {
             currentWallIndex = 1;
         }
-        MoveWallHelper();
-        ToggleWalls();
+        MoveWallHelper(); //adjust wall/view tracking booleans
+        ToggleWalls(); //disables artifacts of other walls, enables artifacts of current wall
     }
-
-    //don't ask
+    /// <summary>
+    /// toggles wall tracker booleans based on currentWallIndex
+    /// </summary>
     private void MoveWallHelper()
     {
         if (currentWallIndex == 0)
@@ -171,6 +197,11 @@ public class WarRoom : GenericMemManager
         }
     }
 
+    /// <summary>
+    /// toggles wall tracker booleans (only onWideShot is true), 
+    /// current wall index (set to 0), disables all artifacts,
+    /// and changes background to wideshot background
+    /// </summary>
     public void ExitWallView()
     {
         onWideShot = true;
@@ -184,12 +215,22 @@ public class WarRoom : GenericMemManager
         ToggleWalls();
     }
 
+    /// <summary>
+    /// changes scenes to museum scene
+    /// </summary>
     public void ReturnToLobby()
     {
         Debug.Log("Returning to lobby...");
         int museumSceneIndex = 2;
         LL.LoadLevelByBuildIndex(museumSceneIndex);
     }
+
+    /// <summary>
+    /// disables wideshot exclusive elements, sets
+    /// onLeftWall to true (and all other wall tracker
+    /// bools to false), enables wall view exclusive buttons,
+    /// enables left wall artifacts (and disables all others)
+    /// </summary>
     public void LeftWallClicked()
     {
         wallClickInstructions.SetActive(false);
@@ -208,6 +249,12 @@ public class WarRoom : GenericMemManager
         ToggleWalls();
     }
 
+    /// <summary>
+    /// disables wideshot exclusive elements, sets
+    /// onLeftWall to true (and all other wall tracker
+    /// bools to false), enables wall view exclusive buttons,
+    /// enables center wall artifacts (and disables all others)
+    /// </summary>
     public void MiddleWallClicked()
     {
         wallClickInstructions.SetActive(false);
@@ -226,6 +273,12 @@ public class WarRoom : GenericMemManager
         ToggleWalls();
     }
 
+    /// <summary>
+    /// disables wideshot exclusive elements, sets
+    /// onLeftWall to true (and all other wall tracker
+    /// bools to false), enables wall view exclusive buttons,
+    /// enables right wall artifacts (and disables all others)
+    /// </summary>
     public void RightWallClicked()
     {
         wallClickInstructions.SetActive(false);
@@ -242,37 +295,49 @@ public class WarRoom : GenericMemManager
         EnableButton(leftArrow);
         EnableButton(rightArrow);
         ToggleWalls();
-
-        //stupid hardcode fix that i  hope never gets uncovered by a future developer
-        //rightWallArtifacts[5].GetComponentInChildren<Button>(true).GetComponent<Image>().enabled=true;
-       // Debug.Log("Enabling artifact button through fuckahh hardcode: " + rightWallArtifacts[5].GetComponentInChildren<Button>(true).name);
     }
 
+    /// helper that turns a button interactable and visible
+    /// <param name="button">the button to enable</param>
     private void EnableButton(Button button)
     {
         button.interactable = true;
         button.GetComponent<Image>().enabled = true;
     }
 
-    private void ToggleWalls()
-    {
-        ToggleArtifacts(onLeftWall, leftWallArtifacts); 
-        ToggleArtifacts(onMiddleWall, middleWallArtifacts);   
-        ToggleArtifacts(onRightWall, rightWallArtifacts);
-    }
+    /// helper that turns a button uninteractable and invisible
+    /// <param name="button">the button to disable</param>
     private void DisableButton(Button button)
     {
         button.interactable = false;
         button.GetComponent<Image>().enabled = false;
     }
 
+    /// <summary>
+    /// helper that enables all artifacts on current wall
+    /// while disabling all others
+    /// </summary>
+    private void ToggleWalls()
+    {
+        ToggleArtifacts(onLeftWall, leftWallArtifacts); 
+        ToggleArtifacts(onMiddleWall, middleWallArtifacts);   
+        ToggleArtifacts(onRightWall, rightWallArtifacts);
+    }
+
+    /// <summary>
+    /// helper that enables/disables an entire button array
+    /// </summary>
+    /// <param name="enable">true for enable, false for disable</param>
+    /// <param name="buttons">the array of buttons to toggle</param>
+    /// <param name="exempt">the button to ignore</param>
     private void ToggleButtonArray(bool enable, Button[] buttons, Button exempt = null)
     {
         for (int i = 0; i < buttons.Length; i++)
         {
-            //if (buttons[i] == exempt) {
-                //continue;
-            //}
+            if (buttons[i] == exempt)
+            {
+                continue;
+            }
             if (enable)
             {
                 EnableButton(buttons[i]);    
@@ -285,6 +350,11 @@ public class WarRoom : GenericMemManager
         }
     }
 
+    /// <summary>
+    /// helper that enables/disables an array of artifacts (GameObjects)
+    /// </summary>
+    /// <param name="enable">true for enable, false for disable</param>
+    /// <param name="artifacts">the array of artifacts to toggle</param>
     private void ToggleArtifacts(bool enable, GameObject[] artifacts)
     {
         foreach (var artifact in artifacts)

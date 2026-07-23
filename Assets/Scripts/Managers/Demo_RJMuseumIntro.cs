@@ -136,6 +136,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
             {
                 DisableContinueButton();
             }
+
             // Once the intro is done, start the dialogue
             //if (GM.introSprawlDone && !GM.marcStart)
             //{
