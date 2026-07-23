@@ -63,14 +63,14 @@ public class Demo_RJMuseumIntro : GenericMemManager
         tap = InputSystem.actions.FindAction("Tap");
 
 
-        //if(GM.introSprawlDone)
-        //{
-        //    newsPaper.enabled = false;
-        //    MainCharPortrait.SetActive(false);
-        //    SecondCharPortrait.SetActive(false);
-        //    StartCoroutine(MuseumTransition());
-        //    return;
-        //}
+        if(GM.introSprawlDone && !GM.seenRJMemory)
+        {
+            newsPaper.enabled = false;
+            MainCharPortrait.SetActive(false);
+            SecondCharPortrait.SetActive(false);
+            StartCoroutine(MuseumTransition());
+            return;
+        }
         
 
 
