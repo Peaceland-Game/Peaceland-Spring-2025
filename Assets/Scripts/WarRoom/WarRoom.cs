@@ -7,23 +7,25 @@ public class WarRoom : GenericMemManager
 {
     [SerializeField]
     public Button returnToLobbyButton;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    //return to wideshot
     [SerializeField]
     public Button exitWallView;
 
+    //move left one wall
     [SerializeField]
     public Button leftArrow;
 
+    //move right one wall
     [SerializeField]
     public Button rightArrow;
 
+    //the wall buttons
     [SerializeField]
     public Button[] clickableWalls;
 
     //left wall artifacts 
     [SerializeField]
-    //public Button[] leftWallArtifacts;
     public GameObject[] leftWallArtifacts;
 
     //middle wall artifacts 
@@ -34,56 +36,24 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     public GameObject[] rightWallArtifacts;
 
+    //banner with instructions for player
     [SerializeField]
     private GameObject wallClickInstructions;
 
-    //[SerializeField]
-    //public Button exitDescView;
-
-    ////left wall artifacts 
-    //[SerializeField]
-    //public TextMeshProUGUI[] leftWallTMPs;
-
-    ////middle wall artifacts 
-    //[SerializeField]
-    //public TextMeshProUGUI[] middleWallTMPs;
-
-    ////right wall artifacts 
-    //[SerializeField]
-    //public TextMeshProUGUI[] rightWallTMPs;
-
-    //private bool[] currentWall = new bool[4];
+    //to keep track of current wall/view
     private bool onWideShot = true;
     private bool onLeftWall = false;
     private bool onMiddleWall = false;
     private bool onRightWall = false;
-    
     private int currentWallIndex = 0;
 
     private GameManager GM;
 
     [SerializeField]
-    private bool mingming = false;
-
-    //private Button[] leftWallArtifactButtons;
-    //private Button[] middleWallArtifactButtons;
-    //private Button[] rightWallArtifactButtons;
+    private bool mingming = false; //keep this off AT ALL TIMES 
 
     void Start()
     {
-        //for (int i = 0; i < leftWallArtifacts.Length; i++)
-        //{
-        //    leftWallArtifactButtons[i] = leftWallArtifacts[i].GetComponentInChildren<Button>(true);
-        //}
-        //for (int i = 0; i < middleWallArtifacts.Length; i++)
-        //{
-        //    middleWallArtifactButtons[i] = middleWallArtifacts[i].GetComponentInChildren<Button>(true);
-        //}
-        //for (int i = 0; i < rightWallArtifacts.Length; i++)
-        //{
-        //    rightWallArtifactButtons[i] = rightWallArtifacts[i].GetComponentInChildren<Button>(true);
-        //}
-
         wallClickInstructions.SetActive(true);
 
         if (mingming)
