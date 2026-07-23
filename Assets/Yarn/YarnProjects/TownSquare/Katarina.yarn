@@ -3,7 +3,7 @@
 <<declare $friend2Name = "Katarina">>
 
 When he hurriedly walks away, he spots Katarina.
-{$charName}: It's Katarina. I wonder what she's doing here? It'd be best to check on her before she gets distracted by the commotion.
+{$charName}: (It's Katarina. I wonder what she's doing here? It'd be best to check on her before she gets distracted by the commotion.)
 The crowd of people seems to be quieting slightly - someone is probably being detained. Maybe other officers are on the scene.
 
 {$charName}: Hey! Katarina!
