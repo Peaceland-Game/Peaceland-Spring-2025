@@ -17,7 +17,7 @@ public class MenuOptions : MonoBehaviour
 
     public void PauseGame()
     {
-        MenuManager.Instance.PauseGame();
+        MenuManager.Instance.OpenPauseMenu();
     }
 
     public void OpenSettings()
@@ -29,6 +29,12 @@ public class MenuOptions : MonoBehaviour
     {
         MenuManager.Instance.OpenSaveExit();
     }
+
+    public void OpenDialogueReplay()
+    {
+        MenuManager.Instance.OpenDialogueReplay();
+    }
+
     public void QuitGame()
     {
         MenuManager.Instance.QuitGame();
