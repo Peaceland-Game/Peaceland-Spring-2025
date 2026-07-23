@@ -55,7 +55,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
         // Set up variables
         GM = FindFirstObjectByType<GameManager>();
         LL = FindFirstObjectByType<LevelLoader>();
@@ -63,25 +63,25 @@ public class Demo_RJMuseumIntro : GenericMemManager
         tap = InputSystem.actions.FindAction("Tap");
 
 
-        if(GM.introSprawlDone && !GM.seenRJMemory)
+        if (GM.introSprawlDone && !GM.seenRJMemory)
         {
             newsPaper.enabled = false;
             MainCharPortrait.SetActive(false);
             SecondCharPortrait.SetActive(false);
+            DisableContinueButton();
             StartCoroutine(MuseumTransition());
             return;
         }
-        
 
+        Debug.Log("demo start");
 
         // Hide Background Screens
         started = false;
         textStarted = false;
-        continueButton.interactable = false;
-        continueButton.GetComponent<Image>().enabled = false;
+        DisableContinueButton();
 
         warRoomEntrance.interactable = false;
-        startDialogueButton.interactable = false;   
+        startDialogueButton.interactable = false;
         startDialogueButton.GetComponent<Image>().enabled = false;
 
 
@@ -106,6 +106,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
             museumTree.enabled = true;
             treePlaque.enabled = true;
             warRoomEntrance.interactable = true;
+            DisableContinueButton() ;
         }
     }
 
@@ -131,12 +132,22 @@ public class Demo_RJMuseumIntro : GenericMemManager
                 }
             }
 
+            if (transition.GetBool("MuseumClicked") == true)
+            {
+                DisableContinueButton();
+            }
             // Once the intro is done, start the dialogue
             //if (GM.introSprawlDone && !GM.marcStart)
             //{
             //    StartDialogue();
             //}
         }
+    }
+
+    private void DisableContinueButton()
+    {
+        continueButton.interactable = false;
+        continueButton.GetComponent<Image>().enabled = false;
     }
 
     public void Continue()
@@ -153,6 +164,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         if (museumWide.enabled == true)
         {
             Debug.Log("MUSEUM TAPPED");
+            DisableContinueButton();
             StartCoroutine(MuseumTransition());
         }
     }
@@ -239,8 +251,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
     // Transitions from outside the museum to the memory tree
     IEnumerator MuseumTransition()
     {
-        continueButton.interactable = false;
-        continueButton.GetComponent<Image>().enabled = false;
+        DisableContinueButton();
         warRoomEntrance.interactable = true;
         Debug.Log("Start Museum Transition");
 
@@ -266,12 +277,16 @@ public class Demo_RJMuseumIntro : GenericMemManager
     //start animating text
     IEnumerator TextStart()
     {
-        Debug.Log("Show Continue Text");
-        textStarted = true;
-        yield return new WaitForSeconds(0f);
-        transition.SetBool("TextStart", true);
-        continueButton.interactable = true;
-        continueButton.GetComponent<Image>().enabled = true;
+        if (!GM.introSprawlDone)
+        {
+            Debug.Log("Show Continue Text");
+            textStarted = true;
+            yield return new WaitForSeconds(0f);
+            transition.SetBool("TextStart", true);
+            continueButton.interactable = true;
+            continueButton.GetComponent<Image>().enabled = true;
+        }
+        
     }
 
     //start scene and wait 3 seconds
