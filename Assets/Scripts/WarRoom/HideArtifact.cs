@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
 public class HideArtifact : HoverButton
 {
     public enum UnlockCondition
@@ -24,6 +26,8 @@ public class HideArtifact : HoverButton
 
     [SerializeField]
     private bool changeColor = true;
+
+    private GameManager gm;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -35,6 +39,8 @@ public class HideArtifact : HoverButton
             buttonText.gameObject.SetActive(false);
         }
         artifactButton.interactable = false;
+
+        gm = GameManager.Instance; 
     }
     
 
@@ -55,7 +61,7 @@ public class HideArtifact : HoverButton
         switch (unlockCondition)
         {
             case UnlockCondition.Placeholder:
-                unlocked = GameManager.Instance.placeholderCondition;
+                unlocked = gm.placeholderCondition;
                 break;
             case UnlockCondition.CompleteFlorist:
                 unlocked = GameManager.Instance.seenFloristMemory;

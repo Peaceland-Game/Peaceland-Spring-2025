@@ -3,6 +3,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manager script for the War Room; depends on GameManager
+/// </summary>
+
 public class WarRoom : GenericMemManager
 {
     [SerializeField]
@@ -47,8 +51,6 @@ public class WarRoom : GenericMemManager
     private bool onRightWall = false;
     private int currentWallIndex = 0;
 
-    private GameManager GM;
-
     [SerializeField]
     private bool mingming = false; //keep this off AT ALL TIMES 
 
@@ -77,8 +79,7 @@ public class WarRoom : GenericMemManager
         ToggleButtonArray(true, clickableWalls);
         ToggleWalls();
 
-        //set GameManager instance and LevelLoader isntance
-        GM = FindFirstObjectByType<GameManager>();
+        //set LevelLoader
         LL = FindFirstObjectByType<LevelLoader>();
         
         //disable wall view exclusive buttons
@@ -113,12 +114,6 @@ public class WarRoom : GenericMemManager
         ChangeBackgroundSprite(currentWallIndex);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name=" "></param>
-    /// <param name=" "></param>
-    
     /// <summary>
     /// changes wall index, current wall boolean, and
     /// currently active artifacts to move to the wall
