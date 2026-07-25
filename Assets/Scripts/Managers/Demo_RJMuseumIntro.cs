@@ -48,7 +48,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
     public SpriteRenderer treePlaque;
 
     // Build index for the war room scene 
-    private int WarRoomBuildIndex = 5;
+    private int WarRoomBuildIndex = 6;
 
     // Methods:
 

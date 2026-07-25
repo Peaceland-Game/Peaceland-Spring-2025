@@ -1,0 +1,31 @@
+title: TreeStart
+---
+//This dialogue will run using a random, making things more organized and clean
+<<set $tree = random_range(1,12)>>
+
+<<if $tree == 1>>
+    {$charName}: This tree really brings the whole room together.
+<<elseif $tree == 2>>
+    {$charName}: I believe this tree will really have an impact on others and the future itself.
+<<elseif $tree == 3>>
+    {$charName}: Another memory to add onto this tree.
+<<elseif $tree == 4>>
+    {$charName}: I wonder how others will view these memories.
+<<elseif $tree == 5>>
+    {$charName}: This tree must be countless years old.
+<<elseif $tree == 6>>
+    {$charName}: Was this tree always here? Or was it just added along with everything else in the exhibit.
+<<elseif $tree == 7>>
+    {$charName}: If I look at these memories for too long, I may just burst into tears.
+<<elseif $tree == 8>>
+    {$charName}: Memories on a tree is definitely a way to do things.
+<<elseif $tree == 9>>
+    {$charName}: I wonder what kind of tree this is.
+<<elseif $tree == 10>>
+    {$charName}: The tree looks completely healthy. I guess the staff do a great job taking care of it.
+<<elseif $tree == 11>>
+    {$charName}: Despite being a work-in-progress, this exhibit looks amazing.
+<<else>>
+    {$charName}: Another day of putting another memory on the tree.
+<<endif>>
+===

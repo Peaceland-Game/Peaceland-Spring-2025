@@ -1,9 +1,26 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 //data that needs to be stored globally and transfered between scenes can be stored and referenced in this script
 public class GameManager : MonoBehaviour
 {
+    //larger gamestate tracking variables
+    public enum GameState
+    {
+        Paused, Active
+    };
+    public GameState gameState = GameState.Active;
+    //player input to manage input modes
+    [SerializeField] PlayerInput playerInput;
+    [SerializeField] GameManager prefab;
+
+    //bools for specific game menu checks
+    public bool dialogueReplayActive;
+
     //bools for the MuseumIntro scene, used in MuseumIntroManager.cs and SceneTransitioner.cs
     public bool newsRead;
     public bool introSprawlDone;
@@ -69,6 +86,13 @@ public class GameManager : MonoBehaviour
          * However, there was not time to do this in Spring 2026
         */
 
+        //If this is a second GM being created, destroy itself
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         // Only set the instance if there isn't one already
         if (_instance == null)
         {
@@ -81,6 +105,10 @@ public class GameManager : MonoBehaviour
 
             SceneManager.sceneLoaded += GMOnSceneLoaded;
         }
+        _instance = this;
+        Debug.Log("RJ complete status: " + this.seenRJMemory);
+
+       playerInput = GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -115,6 +143,16 @@ public class GameManager : MonoBehaviour
     public void OnButtonCursorExit()
     {
         Cursor.SetCursor(defaultCursor, cursorHotSpot, CursorMode.Auto);
+    }
+
+    private void EnableActionMapPauseUI()
+    {
+        playerInput.SwitchCurrentActionMap("PauseUI");
+    }
+
+    private void EnablePlayerAction()
+    {
+        playerInput.SwitchCurrentActionMap("UI");
     }
 
     private void OnMouseEnter()

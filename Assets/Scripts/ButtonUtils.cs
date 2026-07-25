@@ -6,7 +6,6 @@ public class ButtonUtils : MonoBehaviour
 {
     public void EnableButton(Button button, bool enableImage=true)
     {
-        Debug.Log("Enabling button: " + button.name);
         button.interactable = true;
 
         if (enableImage)
@@ -18,7 +17,6 @@ public class ButtonUtils : MonoBehaviour
 
     public void DisableButton(Button button, bool disableImage = true)
     {
-        Debug.Log("Disabling button: " + button.name);
         button.interactable = false;
         if (disableImage)
         {

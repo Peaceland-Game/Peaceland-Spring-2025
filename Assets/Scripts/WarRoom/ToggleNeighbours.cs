@@ -61,7 +61,6 @@ public class ToggleNeighbours : ButtonUtils
         ToggleButtonArray(true, neighbours, null, false);
         foreach (var btn in neighbours)
         {
-            Debug.Log("Enabling neighbour button: " + btn.name);
             btn.GetComponent<Image>().raycastTarget = true;
             var hide = btn.GetComponent<HideArtifact>();
             if (hide != null) {
@@ -74,6 +73,5 @@ public class ToggleNeighbours : ButtonUtils
             }
             
         }
-        //OnEnableNeighbours?.Invoke(this, EventArgs.Empty);
     }
 }

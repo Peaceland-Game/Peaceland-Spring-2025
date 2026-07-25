@@ -39,7 +39,6 @@ public class ExitDescription : ButtonUtils
 
     public void ExitDescriptionOnClick()
     {
-        Debug.Log("Exiting description...");
         EnableButton(exitWallView);
         EnableButton(leftArrow);
         EnableButton(rightArrow);
@@ -54,7 +53,6 @@ public class ExitDescription : ButtonUtils
 
     public void ExitDescriptionForZoom()
     {
-        Debug.Log("Exiting description for zoom...");
         panel.SetActive(false);
         DisableButton(exitDescButton);
 

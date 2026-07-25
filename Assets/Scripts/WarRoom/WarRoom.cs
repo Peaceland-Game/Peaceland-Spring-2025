@@ -356,12 +356,10 @@ public class WarRoom : GenericMemManager
         {
             artifact.SetActive(enable);
             Button btn = artifact.GetComponentInChildren<Button>(true);
-            Debug.Log("Toggling artifact button: " + btn.name + " to " + enable);
             if (enable)
             {
                 EnableButton(btn);
                 btn.GetComponent<Image>().raycastTarget = true;
-                Debug.Log("Enabling artifact button: " + btn.name);
             }
             else
             {
