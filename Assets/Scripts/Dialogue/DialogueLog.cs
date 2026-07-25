@@ -20,12 +20,12 @@ public class DialogueLog : DialogueViewBase
     //
     public void OnEnable()
     {
-        OptionsListView.OptionSelected += LogPlayerChoice;
+        CustomOptionsListView.OptionSelected += LogPlayerChoice;
     }
 
     public void OnDisable()
     {
-       OptionsListView.OptionSelected -= LogPlayerChoice;
+        CustomOptionsListView.OptionSelected -= LogPlayerChoice;
     }
 
     // Update is called once per frame
