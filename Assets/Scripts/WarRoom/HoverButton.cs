@@ -3,31 +3,35 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// This class provides functionality for buttons that become visible only upon being hovered over;
+/// can be modified to work as a general class, but currently just works for artifact buttons
+/// performed.
 public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
     protected Image hoverImage; //for artifacts, this is the text background image, for other buttons, this is the button image
 
     [SerializeField]
-    protected TextMeshProUGUI buttonText;
+    protected TextMeshProUGUI buttonText;   
 
     private bool descOpen = false;
 
     [SerializeField]
     public Button artifactButton;
-
     
     ViewDescription viewDescription;
 
     [SerializeField]
     ExitDescription exitDescription;
 
-    protected bool disabled = false;
+    protected bool disabled = false;    //can be set externally to prevent hovering while in description view mode
 
     private void Awake()
     {
         artifactButton.enabled = true;
         viewDescription = artifactButton.GetComponent<ViewDescription>();
+
         // Subscribe to the OnViewDescClicked event
         viewDescription.OnViewDescriptionClicked += HoverButton_OnViewDescClicked;
         exitDescription.OnExitDescriptionClicked += HoverButton_OnExitDescClicked;
@@ -35,24 +39,28 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         buttonText.gameObject.SetActive(false);
     }
 
-
+    /// <summary>
+    /// called by ToggleNeighbours to prevent hover button from working while
+    /// the artifact is meant to be disabled
+    /// </summary>
     public void SetDisabledExternally(bool value)
     {
         disabled = value;
     }
 
+    /// <summary>
+    /// unless hoverbutton is intentionally disabled, enables button image and
+    /// text as soon as pointer enters object
+    /// </summary>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (disabled)
+        //returns immediately if descOpen or disabled
+        if (disabled || descOpen)
         {
-            //Debug.Log("Hover button is disabled, not showing hover button.");
             return;
         }
-        if (descOpen)
-        {
-            //Debug.Log("Description is open, not showing hover button.");
-            return;
-        }
+        
+        //enables image and text
         hoverImage.enabled = true;
         if (buttonText != null)
         {
@@ -60,6 +68,9 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
     }
 
+    /// <summary>
+    /// disables button image and text as soon as pointer exits object
+    /// </summary>
     public void OnPointerExit(PointerEventData eventData)
     {
         hoverImage.enabled = false;
@@ -69,6 +80,10 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
     }
 
+    /// <summary>
+    /// disables image and button when in desc view; 
+    /// sets descOpen to true
+    /// </summary>
     private void HoverButton_OnViewDescClicked(object sender, System.EventArgs e)
     {
         descOpen = true;
@@ -79,6 +94,10 @@ public class HoverButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         }
     }
 
+    /// <summary>
+    /// upon exiting description view, set descOpen
+    /// to false
+    /// </summary>
     private void HoverButton_OnExitDescClicked(object sender, System.EventArgs e)
     {
         descOpen = false;

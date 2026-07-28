@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
+/// <summary>
+/// Script to hide an artifact in wall view of the war room if it hasn't been unlocked yet;
+/// artifact becomes no longer hidden/unlocked if its condition has already been fulfilled
+/// </summary>
 public class HideArtifact : HoverButton
 {
+    /// existing "achievements" that can be used to lock/unlock artifacts;
+    /// more expected to be added over time
     public enum UnlockCondition
     {
         Placeholder,
@@ -16,16 +20,16 @@ public class HideArtifact : HoverButton
     }
 
     [SerializeField]
-    private UnlockCondition unlockCondition; // The memory that will lock the artifact until it is completed
+    private UnlockCondition unlockCondition; // The condition that will lock the artifact until it is completed
 
     [SerializeField]
-    private string artifactName;
+    private string artifactName;    //name of the artifact that will be made visible to the player once the artifact is unlocked
 
     [SerializeField]
     private Image[] artifactImages=null; //used for when multiple images are used for the artifact (like the collection of children's toys)
 
     [SerializeField]
-    private bool changeColor = true;
+    private bool changeColor = true;    //whether or not the artifact's color should be changed when disabled (almsot always a "yes"/true)
 
     private GameManager gm;
     
@@ -33,6 +37,7 @@ public class HideArtifact : HoverButton
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //text background (hoverImage) and artifact name are initially disabled
         hoverImage.enabled = false;
         if (buttonText != null)
         {
@@ -40,23 +45,23 @@ public class HideArtifact : HoverButton
         }
         artifactButton.interactable = false;
 
+        //GameManager is a singleton
         gm = GameManager.Instance; 
     }
-    
 
     // Update is called once per frame
     void Update()
     {
+        // artifact is completely disabled (set externally) when another artifact's description is currently open
         if (disabled)
         {
             hoverImage.color = new Color(0, 0, 0, 0); // Make the background transparent
             buttonText.text = "";
             artifactButton.interactable = false;
-            //toggleNeighbours.DisableNeighbours();
             return;
         }
 
-        // Check if the memory has been completed
+        // Check if the condition has been completed
         bool unlocked = false;
         switch (unlockCondition)
         {
@@ -80,31 +85,32 @@ public class HideArtifact : HoverButton
                 break;
         }
         
-        // If the memory is not completed, hide the artifact
+        // If the condition is not completed, hide the artifact
         if (!unlocked)
         {
             hoverImage.color = new Color(0, 0, 0, 0); // Make the background transparent
             buttonText.text = "???";
             buttonText.color = Color.white;
             artifactButton.interactable = false;
-            if (artifactImages != null && artifactImages.Length != 0)
+
+            if (artifactImages != null && artifactImages.Length != 0) //when there are multiple artifact images
             {
                 foreach (Image img in artifactImages)
                 {
                     if(changeColor)
                     {
-                        img.color = new Color(0, 0, 0, 0.882f); // Darken images
+                        img.color = new Color(0, 0, 0, 0.882f); // Darken artifact images
                     }                    
                 }
             }
-            else
+            else //just one artifact image
             {
                 if (changeColor)
                     artifactButton.GetComponent<Image>().color = new Color(0, 0, 0, 0.882f); // darken img
                 
             }
         }
-        else
+        else //if the condition is completed, make the artifact visible and interactable
         {
 
             hoverImage.color = new Color(1, 1, 1, 0.267f); // Make the background white
@@ -112,7 +118,7 @@ public class HideArtifact : HoverButton
             buttonText.text = artifactName;
             artifactButton.interactable = true;
 
-            if (artifactImages != null && artifactImages.Length != 0)
+            if (artifactImages != null && artifactImages.Length != 0) //multiple images
             {
                 foreach (Image img in artifactImages)
                 {
@@ -121,7 +127,7 @@ public class HideArtifact : HoverButton
                 }
 
             }
-            else
+            else //just one image
             {
                 if (changeColor)
                     artifactButton.GetComponent<Image>().color = new Color(255, 255, 255, 1); // reveal img

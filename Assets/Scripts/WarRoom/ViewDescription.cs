@@ -2,13 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
+/// <summary>
+/// Enables description view for an artifact, by enabling and disabling specific buttons and panels when
+/// </summary>
 public class ViewDescription : ButtonUtils
 {
     [SerializeField]
-    public Button viewDescButton;
-
-    //[SerializeField]
-    //public GameObject scrollView;
+    public Button viewDescButton;   
 
     [SerializeField]
     public GameObject panel;
@@ -26,7 +26,7 @@ public class ViewDescription : ButtonUtils
     public Button rightArrow;
 
     [SerializeField]
-    public Button seeMore=null;
+    public Button seeMore=null;     //for artifacts that have additional content beyond just the simple description
 
     [SerializeField]
     public Button exitZoom = null;
@@ -37,32 +37,30 @@ public class ViewDescription : ButtonUtils
     void Start()
     {
         DisableButton(exitDescButton); // Disable the exit description button at the start
-        //scrollView.SetActive(false);
         panel.SetActive(false);
         
     }
 
     public void ViewDescriptionOnClick()
     {
+        //disables wall view buttons
         DisableButton(exitWallView);
         DisableButton(leftArrow);
         DisableButton(rightArrow);
-        viewDescButton.interactable = false; // Disable the view description button
-
-        //scrollView.SetActive(true); // Show the scroll view with the description
-        panel.SetActive(true);
-        //scrollView.GetComponentInChildren<Text>().text = descText;
-        EnableButton(exitDescButton); // Enable the exit description button
-        //DisableButton(exitZoomButton); // Disable the exit zoom button while viewing description
-        OnViewDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
-
-        if(seeMore != null)
-        {
-            EnableButton(seeMore);
-        }
-        if(exitZoom != null)
+        viewDescButton.interactable = false;
+        if (exitZoom != null)
         {
             DisableButton(exitZoom);
         }
+
+        //enables desc view buttons
+        panel.SetActive(true);
+        EnableButton(exitDescButton);
+        if (seeMore != null)
+        {
+            EnableButton(seeMore);
+        }
+
+        OnViewDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
     }
 }
