@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
 
     public int difficulty = 0;
 
+    public bool allMuseumDialogueComplete = false;
+
     //create the private instance
     private static GameManager _instance;
 

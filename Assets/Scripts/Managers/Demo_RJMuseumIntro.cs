@@ -40,6 +40,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
     [SerializeField]
     public Button startDialogueButton; //dummy button to start dialogue (replace with npc interaction later)
 
+    [SerializeField]
+    public Button endDemoButton;
+
     // Images for the scene
     public UnityEngine.UI.Image newsPaper;
     public UnityEngine.UI.Image museumWide;
@@ -47,7 +50,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
     public UnityEngine.UI.Image museumTree;
     public SpriteRenderer treePlaque;
 
-    // Build index for the war room scene 
+    // Build indices
+    private int DemoEndBuildIndex = 4;
     private int WarRoomBuildIndex = 6;
 
     // Methods:
@@ -55,13 +59,16 @@ public class Demo_RJMuseumIntro : GenericMemManager
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
         // Set up variables
         GM = FindFirstObjectByType<GameManager>();
         LL = FindFirstObjectByType<LevelLoader>();
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
         tap = InputSystem.actions.FindAction("Tap");
 
+        if (GM.allMuseumDialogueComplete)
+        {
+            currentMinigame = 2;
+        }
 
         if (GM.introSprawlDone && !GM.seenRJMemory)
         {
@@ -83,7 +90,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
         warRoomEntrance.interactable = false;
         startDialogueButton.interactable = false;
         startDialogueButton.GetComponent<Image>().enabled = false;
-
+        DisableDemoEndButton();
 
         museumTree.enabled = false;
         treePlaque.enabled = false;
@@ -94,19 +101,31 @@ public class Demo_RJMuseumIntro : GenericMemManager
         MainCharPortrait.SetActive(false);
         SecondCharPortrait.SetActive(false);
 
-        // Jump ahead on dialoge if returning from the memory
+        // Jump ahead on dialog if returning from the memory
         if (GM.seenRJMemory)
         {
-            Debug.Log("Returning from memory, skipping to museum tree");
-            newsPaper.enabled = false;
-            currentMinigame = afterMemStart - 1;    // NextMinigame increments the count
-            NextOrder();
-            NextMinigame();
+            if (!GM.allMuseumDialogueComplete)
+            {
+                Debug.Log("Returning from memory, skipping to museum tree");
+                
+                currentMinigame = afterMemStart - 1;    // NextMinigame increments the count
+                NextOrder();
+                NextMinigame();
+                DisableDemoEndButton();
+            }
+            else
+            {
+                endDemoButton.interactable = true;
+                endDemoButton.GetComponent<Image>().enabled = true;
+            }
 
+
+            newsPaper.enabled = false;
             museumTree.enabled = true;
             treePlaque.enabled = true;
             warRoomEntrance.interactable = true;
-            DisableContinueButton() ;
+            DisableContinueButton();
+            
         }
     }
 
@@ -135,6 +154,15 @@ public class Demo_RJMuseumIntro : GenericMemManager
             if (transition.GetBool("MuseumClicked") == true)
             {
                 DisableContinueButton();
+                DisableDemoEndButton();
+            }
+
+            //enable endDemoButton after all dialogue is complete
+            if (currentMinigame == 2 || GM.allMuseumDialogueComplete == true)
+            {
+                GM.allMuseumDialogueComplete = true;
+                endDemoButton.interactable = true;
+                endDemoButton.GetComponent<Image>().enabled = true;
             }
 
             // Once the intro is done, start the dialogue
@@ -149,6 +177,12 @@ public class Demo_RJMuseumIntro : GenericMemManager
     {
         continueButton.interactable = false;
         continueButton.GetComponent<Image>().enabled = false;
+    }
+
+    private void DisableDemoEndButton()
+    {
+        endDemoButton.interactable = false;
+        endDemoButton.GetComponent<Image>().enabled = false;
     }
 
     public void Continue()
@@ -166,12 +200,15 @@ public class Demo_RJMuseumIntro : GenericMemManager
         {
             Debug.Log("MUSEUM TAPPED");
             DisableContinueButton();
+            DisableDemoEndButton();
             StartCoroutine(MuseumTransition());
         }
     }
 
     public void StartDialogue()
     {
+        warRoomEntrance.interactable = false;
+        
         GM.marcStart = true;
         StartCoroutine(Wait());
         NextOrder();
@@ -185,6 +222,13 @@ public class Demo_RJMuseumIntro : GenericMemManager
     /// </summary>
     public override void NextMinigame()
     {
+        if (GM.allMuseumDialogueComplete)
+        {
+            currentMinigame = 2;
+            Debug.Log("All dialogue is complete. currentMinigame clamped to 2.");
+            return;
+        }
+
         Debug.Log("Current Minigame " + currentMinigame);
 
         // Stope the current mingame, if there is one.
@@ -206,22 +250,31 @@ public class Demo_RJMuseumIntro : GenericMemManager
         }
 
         // If returning from the memory, run the dialogue
-        else if (currentMinigame == 1 && GM.seenRJMemory)
+        else if (currentMinigame == 1 && GM.seenRJMemory && !GM.allMuseumDialogueComplete)
         {
+            warRoomEntrance.interactable = false;
             minigames[currentMinigame].StartMinigame();
         }
 
-        // If after the ending dialogue, go to the demo end screen.
+        // If after the ending dialogue, enable the button that transitions to 
+        // demo end screen and make warRoomEntrance interactable again
         else if (currentMinigame == 2)
         {
-            LL.LoadLevelByBuildIndex(4);
-            
+            GM.allMuseumDialogueComplete = true;
+            warRoomEntrance.interactable = true;
+            endDemoButton.interactable = true;
+            endDemoButton.GetComponent<Image>().enabled = true;
         }
 
         else
         {
             Debug.Log($"Curent mingame index = {currentMinigame}. Only 1 or 2 change the scene");
         }
+    }
+
+    public void EndDemo()
+    {
+        LL.LoadLevelByBuildIndex(DemoEndBuildIndex);
     }
 
     public void EnterWarRoom()
@@ -253,6 +306,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
     IEnumerator MuseumTransition()
     {
         DisableContinueButton();
+        DisableDemoEndButton();
         warRoomEntrance.interactable = true;
         Debug.Log("Start Museum Transition");
 
