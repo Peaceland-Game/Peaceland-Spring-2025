@@ -520,7 +520,7 @@ MonoBehaviour:
   continueButton: {fileID: 1741712521}
   warRoomEntrance: {fileID: 552369555}
   startDialogueButton: {fileID: 2035712161}
-  endDemoButton: {fileID: 1596623114}
+  goToTownSquareButton: {fileID: 1596623114}
   newsPaper: {fileID: 744568348}
   museumWide: {fileID: 1057038237}
   marcBack: {fileID: 456443709}
@@ -2840,7 +2840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4445910652288198779, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_Name
-      value: EndDemoButton
+      value: GoToTownSquareButton
       objectReference: {fileID: 0}
     - target: {fileID: 4445910652288198779, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_IsActive
@@ -2876,7 +2876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: EndDemo
+      value: GoToTownSquare
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -4219,6 +4219,7 @@ MonoBehaviour:
   interactCursor: {fileID: 2800000, guid: 5970d5ca86e8ccc4eb4c550842513acb, type: 3}
   currentMemoryManager: {fileID: 583866546}
   difficulty: 0
+  allMuseumDialogueComplete: 0
 --- !u!4 &1901868927
 Transform:
   m_ObjectHideFlags: 0

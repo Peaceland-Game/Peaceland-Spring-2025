@@ -41,7 +41,7 @@ public class Demo_RJMuseumIntro : GenericMemManager
     public Button startDialogueButton; //dummy button to start dialogue (replace with npc interaction later)
 
     [SerializeField]
-    public Button endDemoButton;
+    public Button goToTownSquareButton;
 
     // Images for the scene
     public UnityEngine.UI.Image newsPaper;
@@ -50,9 +50,16 @@ public class Demo_RJMuseumIntro : GenericMemManager
     public UnityEngine.UI.Image museumTree;
     public SpriteRenderer treePlaque;
 
-    // Build indices
+    // Build indices for LevelLoader
+    private int DemoStartBuildIndex = 0;
+    private int DemoDisclaimerBuilIndex = 1;
+    private int DemoRJPresentBuildIndex = 2;
+    private int RJ_MemoryBuildIndex = 3;
     private int DemoEndBuildIndex = 4;
-    private int WarRoomBuildIndex = 6;
+    private int PresentLobbyBuildIndex = 5;
+    private int TownSquareBuildIndex = 6;
+    private int WarRoomBuildIndex = 7;
+    
 
     // Methods:
 
@@ -115,8 +122,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
             }
             else
             {
-                endDemoButton.interactable = true;
-                endDemoButton.GetComponent<Image>().enabled = true;
+                goToTownSquareButton.interactable = true;
+                goToTownSquareButton.GetComponent<Image>().enabled = true;
             }
 
 
@@ -157,12 +164,12 @@ public class Demo_RJMuseumIntro : GenericMemManager
                 DisableDemoEndButton();
             }
 
-            //enable endDemoButton after all dialogue is complete
+            //enable goToTownSquareButton after all dialogue is complete
             if (currentMinigame == 2 || GM.allMuseumDialogueComplete == true)
             {
                 GM.allMuseumDialogueComplete = true;
-                endDemoButton.interactable = true;
-                endDemoButton.GetComponent<Image>().enabled = true;
+                goToTownSquareButton.interactable = true;
+                goToTownSquareButton.GetComponent<Image>().enabled = true;
             }
 
             // Once the intro is done, start the dialogue
@@ -181,8 +188,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
 
     private void DisableDemoEndButton()
     {
-        endDemoButton.interactable = false;
-        endDemoButton.GetComponent<Image>().enabled = false;
+        goToTownSquareButton.interactable = false;
+        goToTownSquareButton.GetComponent<Image>().enabled = false;
     }
 
     public void Continue()
@@ -262,8 +269,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
         {
             GM.allMuseumDialogueComplete = true;
             warRoomEntrance.interactable = true;
-            endDemoButton.interactable = true;
-            endDemoButton.GetComponent<Image>().enabled = true;
+            goToTownSquareButton.interactable = true;
+            goToTownSquareButton.GetComponent<Image>().enabled = true;
         }
 
         else
@@ -272,9 +279,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
         }
     }
 
-    public void EndDemo()
+    public void GoToTownSquare()
     {
-        LL.LoadLevelByBuildIndex(DemoEndBuildIndex);
+        LL.LoadLevelByBuildIndex(TownSquareBuildIndex);
     }
 
     public void EnterWarRoom()
