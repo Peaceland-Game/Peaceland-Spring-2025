@@ -58,7 +58,7 @@ public class NPCClick : MonoBehaviour
         }
         if (dialogueRunner.CurrentNodeName == "MarciaStoryStart" || dialogueRunner.CurrentNodeName == "JohnnyStoryStart")
         {
-            SceneManager.LoadScene("DemoStart");
+            SceneManager.LoadScene("Demo_RJ_Present");
         }
     }
 

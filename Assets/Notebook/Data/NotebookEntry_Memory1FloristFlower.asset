@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0033fb1c07e24fc4b9f75a2f53646098, type: 3}
+  m_Name: NotebookEntry_Memory1FloristFlower
+  m_EditorClassIdentifier:
+  entryId: NotebookEntry_Memory1FloristFlower
+  section: 2
+  groupId:
+  groupDisplayName:
+  groupSortOrder: 0
+  subgroupId:
+  subgroupDisplayName:
+  subgroupSortOrder: 0
+  categoryId: minigame
+  categoryDisplayName: minigame
+  categorySortOrder: 20
+  title: Flower Request
+  bodyText: A notebook line unlocked after the florist flower flow, focused on the
+    flowers themselves rather than the small talk around them.
+  image: {fileID: 0}
+  theoreticalOrder: 30
+  layoutHeight: 260
+  sortOrder: 30
+  requiresRecordChoice: 1
+  recordChoicePrompt: How should you remember this request?
+  recordChoices:
+  - choiceId: compassionate
+    label: Read it as a compassionate request (+1 Kindness)
+    statId: 3
+    statDelta: 1
+  - choiceId: practical
+    label: Read it as a practical request (+1 Insight)
+    statId: 1
+    statDelta: 1
+  - choiceId: guarded
+    label: Read it as a guarded request (-1 Altruism)
+    statId: 0
+    statDelta: -1
