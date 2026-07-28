@@ -22,7 +22,6 @@ public class TownSquareManager : MonoBehaviour
     public GameObject branko;
     public GameObject katarina;
 
-
     //Initializes variables and plays the starting dialogue
     void Start()
     {
@@ -75,10 +74,10 @@ public class TownSquareManager : MonoBehaviour
             dialogueRunner.StartDialogue("KatarinaIntro");
             katarinaTalked = true;
         }
-        //if (!dialogueRunner.IsDialogueRunning && katarinaTalked)
-        //{
-        //    SceneManager.LoadScene("Home");
-        //}
+        if (!dialogueRunner.IsDialogueRunning && katarinaTalked)
+        {
+            SceneManager.LoadScene("DemoEnd");
+        }
         ToBakery();
         InsideBakery();
     }
