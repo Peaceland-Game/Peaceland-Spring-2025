@@ -57,8 +57,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
     private int RJ_MemoryBuildIndex = 3;
     private int DemoEndBuildIndex = 4;
     private int PresentLobbyBuildIndex = 5;
-    private int TownSquareBuildIndex = 6;
-    private int WarRoomBuildIndex = 7;
+    private int WarRoomBuildIndex = 6;
+    private int TownSquareBuildIndex = 7;
     
 
     // Methods:
