@@ -1,0 +1,50 @@
+﻿title: JohnnyStart
+---
+<<declare $npcName3 = "Johnny">> //The NPC's name will go here and can be different for each NPC if needed
+
+{$npcName3}: Hello, I'm Johnny. I don't have a welcome yet. But hopefully I will soon.
+-> <i>Listen to their story</i>
+    <<jump JohnnyStory>>
+-> <i>Ask about their day</i>
+    <<jump JohnnyDay>>
+-> <i>Back to the lobby</i>
+===
+
+title: JohnnyStory
+---
+Do you want to listen to the story?
+-> <i>Yes</i>
+    <<jump JohnnyStoryStart>>
+-> <i>No</i>
+===
+
+title: JohnnyStoryStart
+---
+<<wait 4>>
+===
+
+title: JohnnyDay
+---
+{$npcName3}: My day has been pretty uneventful so far. I try to do as many activities during the day to make every day as interesting and fun as possible. That's why I'm here today.
+-> It's always good to keep busy.
+    <<jump JohnnyGood>>
+-> Don't forget to take a break every now and then.
+    <<jump JohnnyNeutral>>
+-> Don't really see a museum tour as fun.
+    <<jump JohnnyBad>>
+===
+
+title: JohnnyGood
+---
+{$npcName3}: That it is. I get bored pretty easily so I try to occupy myself often.
+===
+
+title: JohnnyNeutral
+---
+{$npcName3}: Of course! We all need to take a moment to relax.
+===
+
+title: JohnnyBad
+---
+{$npcName3}: That's pretty rude. It may not be fun to many, but it is to me.
+===

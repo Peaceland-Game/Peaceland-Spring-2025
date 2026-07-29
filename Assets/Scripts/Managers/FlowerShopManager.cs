@@ -2,27 +2,16 @@ using UnityEngine;
 using System.Collections.Generic;
 using Yarn.Unity;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
-public class FlowerShopManager : MonoBehaviour
+public class FlowerShopManager : GenericMemManager
 {
-    /// <summary>
-    /// Enum states for the flower memory
-    /// </summary>
-    //public enum FlowerGameState
-    //{
-    //    START_DIALOGUE = 0,
-    //    DETHORN,
-    //    TRIM,
-    //    ARRANGE,
-    //    END_DIALOGUE
-    //}
-
     /// <summary>
     /// List of "minigames"
     /// </summary>
-    [SerializeField]
-    private List<MinigameBehavior> minigames;
-    private int currentMinigame = -1;
+    //[SerializeField]
+    //private List<MinigameBehavior> minigames;
+    //private int currentMinigame = -1;
 
     [SerializeField]
     private List<OrderObject> orders;
@@ -45,8 +34,8 @@ public class FlowerShopManager : MonoBehaviour
     [SerializeField]
     private string gameplayGoodNode;
 
-    [SerializeField]
-    private DialogueRunner dialogueRunner;
+    //[SerializeField]
+    //private DialogueRunner dialogueRunner;
 
     /// <summary>
     /// List of sprites associated with flower types
@@ -60,50 +49,92 @@ public class FlowerShopManager : MonoBehaviour
     /// <summary>
     /// The current order being worked on
     /// </summary>
-    private static int currentOrder = -1;
+//    private static int currentOrder = -1;
 
     /// <summary>
     /// Gives access to the current order in the minigame
     /// </summary>
     /// <returns>The current order being worked on</returns>
-    public static OrderObject GetCurrentOrder()
+    public static new OrderObject GetCurrentOrder()
     {
-        return Instance.orders[currentOrder];
+        return Instance.orders[Instance.currentOrder];
     }
 
     /// <summary>
     /// Increment the current order and go to the next one
     /// </summary>
-    public static void NextOrder()
+    public static new void NextOrder()
     {
-        currentOrder++;
+       Instance.currentOrder++;
+    }
+
+    #region Problem Area: Sprite Arrays
+    /* The problem:
+     * Memory managers are being reworked to inherit shared behaviors from an abstract generic class.
+     * Many minigames in the Florist Memory require static methods to get data from the FlowerShopManager.
+     * Static methods cannot override the virtual methods from the generic class.
+     * PortraitLogic.cs needs to get character sprites from a non-static method, NextOrderMinigame needs
+     *      to get them from a static method.
+     *      
+     * The Band-Aid Solution: 
+     * Evan renamed the original "GetXSprite" methods to be "GetXSpritesStatic" which call the new override 
+     *     "GetXSprite" methods.
+     * Now both PortraitLogic and the minigame scripts can get the sprite arrays.
+     * 
+     * Future consideration:
+     * Certain parts of the codebase should be reworked, but are not in scope for Spring 2026.
+     * NextOrderMinigame loads new sprites and orders, as well as playing the door opening animation.
+     *      Considering other memories also need to load sprites and change backgrounds, there should
+     *      be a way to do so in a way that works for any memory.
+     * The "new" keyword allows static methods to "hide" the base class methods from the compiler, 
+     *      but is not proper polymorphism. It may be best to refactor the Florist Memory to not need 
+     *      static methods, or refactor other memory segments to be static for consistency.
+     */
+
+    /// <summary>
+    /// Returns an array of the main character's sprites
+    /// </summary>
+    /// <returns>A sprite array</returns>
+    public override Sprite[] GetMainSprites()
+    {
+        return GetCurrentOrder().MainCharSprites;
     }
 
     /// <summary>
-    /// Returns an array of the main character sprites
+    /// Returns an array of the secondary character's sprites, if they exist
     /// </summary>
-    public static Sprite[] GetMainSprites()
+    /// <returns></returns>
+    public override Sprite[] GetSecondSprites()
     {
-        return GetCurrentOrder().mainCharSprites;
-    }
-
-    /// <summary>
-    /// Returns an array of the secondary character sprites if not null
-    /// </summary>
-    public static Sprite[] GetSecondSprites()
-    {
-        if (GetCurrentOrder().secondCharSprites.Length > 0)
+        if (GetCurrentOrder().SecondCharSprites.Length > 0)
         {
-            return GetCurrentOrder().secondCharSprites;
+            return GetCurrentOrder().SecondCharSprites;
         }
         return null;
     }
 
     /// <summary>
+    /// Static work-around to get the Main Character's sprite array
+    /// </summary>
+    public static Sprite[] GetMainSpritesStatic()
+    {
+        return Instance.GetMainSprites();
+    }
+
+    /// <summary>
+    /// Static work-around to get the Second Character's sprite array
+    /// </summary>
+    public static Sprite[] GetSecondSpritesStatic()
+    {
+        return Instance.GetSecondSprites();
+    }
+    #endregion
+
+    /// <summary>
     /// The index of the current minigame that this memory is on
     /// </summary>
     /// <returns>The index of the current minigame this memory is on</returns>
-    public static int GetCurrentMinigameIndex()
+    public static new int GetCurrentMinigameIndex()
     {
         return Instance.currentMinigame;
     }
@@ -112,7 +143,7 @@ public class FlowerShopManager : MonoBehaviour
     /// The current minigame that this memory is on
     /// </summary>
     /// <returns>The current minigame this memory is on</returns>
-    public static MinigameBehavior GetCurrentMinigame()
+    public static new MinigameBehavior GetCurrentMinigame()
     {
         return Instance.minigames[GetCurrentMinigameIndex()];
     }
@@ -171,7 +202,7 @@ public class FlowerShopManager : MonoBehaviour
     /// Changes the state of the flower shop memory
     /// </summary>
     /// <param name="state">The enum state to change to</param>
-    public void NextMinigame()
+    public override void NextMinigame()
     {
         Debug.Log("Minigame: " + currentMinigame);
 

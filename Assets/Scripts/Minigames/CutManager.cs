@@ -19,7 +19,7 @@ public class CutManager : MinigameBehavior
         set { curIndex = value; }
     }
 
-    private static CutManager instance;
+    public static CutManager instance;
 
     private static GameObject instantiatedFlower;
 
@@ -93,12 +93,19 @@ public class CutManager : MinigameBehavior
         instantiatedFlower = Instantiate(instance.stem);
     }
 
+    public void AllCutsCheck()
+    {
+        StartCoroutine(AllCutsMade());
+    }
+
     public static IEnumerator AllCutsMade()
     {
+        Debug.Log("AllCutsMade STARTED on " );
         yield return new WaitForSeconds(1);
         Destroy(instantiatedFlower);
         curIndex++;
         FlowerShopManager.currentFlower = curIndex;
+        Debug.Log("curIndex: " + curIndex + " The currentOrder: " + FlowerShopManager.GetCurrentOrder().flowers.Count + " nextMinigame: " + !(curIndex < FlowerShopManager.GetCurrentOrder().flowers.Count) );
 
         //As long as the next flower in the list for this order exists, continue below
         if (curIndex < FlowerShopManager.GetCurrentOrder().flowers.Count)

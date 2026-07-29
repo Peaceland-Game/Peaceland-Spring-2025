@@ -1,0 +1,18 @@
+﻿{
+  "projectFileVersion": 2,
+  "sourceFiles": [
+    "**/*.yarn",
+    "TownSquareIntro.yarn",
+    "Cara.yarn",
+    "Julia.yarn",
+    "Bakery.yarn",
+    "Fight.yarn",
+    "Katarina.yarn"
+  ],
+  "excludeFiles": [
+    "**/*~/*"
+  ],
+  "localisation": {},
+  "baseLanguage": "en",
+  "compilerOptions": {}
+}

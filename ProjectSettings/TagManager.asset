@@ -7,6 +7,11 @@ TagManager:
   - Shears
   - CuttableFlower
   - Hitbox
+  - ScrollContent
+  - Minigame
+  - ScrollView
+  - HidingPlace
+  - DialogReplayBox
   layers:
   - Default
   - TransparentFX
@@ -19,10 +24,10 @@ TagManager:
   - FlowerBottom
   - Wall
   - post processing
-  - 
-  - 
-  - 
-  - 
+  - piece
+  - WhiteFade
+  - ItemDescription
+  - Button
   - 
   - 
   - 
@@ -67,6 +72,15 @@ TagManager:
     locked: 0
   - name: calendar
     uniqueID: 1965153517
+    locked: 0
+  - name: outline
+    uniqueID: 4195715785
+    locked: 0
+  - name: piece
+    uniqueID: 130611171
+    locked: 0
+  - name: ui component
+    uniqueID: 2581409119
     locked: 0
   m_RenderingLayers:
   - Default

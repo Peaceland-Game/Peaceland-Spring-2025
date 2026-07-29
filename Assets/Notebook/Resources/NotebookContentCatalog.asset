@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea0f37622cd3734ea68dcc036296476, type: 3}
+  m_Name: NotebookContentCatalog
+  m_EditorClassIdentifier:
+  specs:
+  - entryId: NotebookEntry_PresentNewspaper
+    kind: 0
+    section: 1
+    categoryId: newspaper
+    requireBodyText: 1
+    requireCollectTrigger: 1
+    collectSceneName: NotebookTest_IntroNewspaper
+    notes: Present intro newspaper click
+  - entryId: NotebookEntry_Memory1FloristNormal
+    kind: 0
+    section: 2
+    categoryId: scene-collected
+    requireBodyText: 1
+    requireCollectTrigger: 0
+    collectSceneName:
+    notes: "Florist greeting \u2014 optional test scene hook"
+  - entryId: NotebookEntry_Memory1FloristFlower
+    kind: 0
+    section: 2
+    categoryId: minigame
+    requireBodyText: 1
+    requireCollectTrigger: 1
+    collectSceneName: NotebookTest_FloristMinigame
+    notes: Florist minigame complete button
+  - entryId: NotebookEntry_FloristFlower_01
+    kind: 0
+    section: 2
+    categoryId: scene-collected
+    requireBodyText: 1
+    requireCollectTrigger: 1
+    collectSceneName: NotebookTest_FloristItemCollect
+    notes: Florist world flower 1
+  - entryId: NotebookEntry_FloristFlower_02
+    kind: 0
+    section: 2
+    categoryId: scene-collected
+    requireBodyText: 1
+    requireCollectTrigger: 1
+    collectSceneName: NotebookTest_FloristItemCollect
+    notes: Florist world flower 2
+  - entryId: NotebookEntry_FloristFlower_03
+    kind: 0
+    section: 2
+    categoryId: scene-collected
+    requireBodyText: 1
+    requireCollectTrigger: 1
+    collectSceneName: NotebookTest_FloristItemCollect
+    notes: Florist world flower 3
+  - entryId: NotebookEntry_FloristFlower_04
+    kind: 0
+    section: 2
+    categoryId: scene-collected
+    requireBodyText: 1
+    requireCollectTrigger: 1
+    collectSceneName: NotebookTest_FloristItemCollect
+    notes: Florist world flower 4
+  - entryId: NotebookEntry_FloristFlower_05
+    kind: 0
+    section: 2
+    categoryId: scene-collected
+    requireBodyText: 1
+    requireCollectTrigger: 1
+    collectSceneName: NotebookTest_FloristItemCollect
+    notes: Florist world flower 5
+  - entryId: NotebookEntry_Memory2RJBalcony
+    kind: 0
+    section: 3
+    categoryId: scene-collected
+    requireBodyText: 1
+    requireCollectTrigger: 1
+    collectSceneName: NotebookTest_RandJItemCollect
+    notes: R&J balcony fragment
+  - entryId: NotebookEntry_Memory2RJLetter
+    kind: 0
+    section: 3
+    categoryId: scene-collected
+    requireBodyText: 1
+    requireCollectTrigger: 1
+    collectSceneName: NotebookTest_RandJItemCollect
+    notes: R&J letter draft
+  warnOnUnknownEntries: 1

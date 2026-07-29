@@ -1,0 +1,215 @@
+﻿title: AfterMemory
+// Corresponds to scene 8 in the narrative script
+// Ruzica = char 1
+// Jovan = char 2
+
+// NOTE: Jovan used to be char 1, and is still lover1 because he appears first in the past.
+    // The character order was switch last minute for the 4/10/2026 build.
+    // The past was originally planned to be first-person POV, but was changed.
+    // Jovan's cousin had to be on the left in the past to sit in the chair,
+    // so keeping Jovan on the right added the most visual consistency.
+---
+<<declare $CousinName = "Damir">>
+// Both characters start neutral
+<<changeSprite 1 0>>
+<<changeSprite 2 0>>
+<<twoChar>>
+
+<<darken 2>>
+{$lover2Name}: And there really isn't much else for us to say…
+<<lighten 1>>
+<<lighten 2>>
+{$lover1Name} and {$lover2Name} sit in silence for a while.
+<<darken 2>>
+<<darken 1>>
+
+-> Ask about {$CousinName}.
+    {$protagName}: So you got out, but what happened to {$CousinName}?
+    <<jump Damir>>
+-> Ask where they went.
+    {$protagName}: Where did you go?
+    <<jump Away>>
+-> Wait for them to continue.
+    <<jump Damir>>
+===
+
+title: Damir
+---
+<<lighten 2>>   // Change Jovan's Expression: Frown
+{$lover1Name} opens and closes his mouth as if to speak.
+<<darken 2>>
+
+<<lighten 1>>   // Change Ruzica's Expression: Soft
+{$lover2Name}:  We can never repay {$CousinName} for what he did for us.
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name}: He died-
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name}: {$lover1Name}...
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name}: They burned his house and he died.
+<<darken 2>>
+
+<<lighten 1>>   // Change Ruzica's Expression: Angry
+{$lover2Name} glares at you.
+<<darken 1>>
+
+<<lighten 2>>   // Change Jovan's Expression: Grieving
+{$lover1Name} closes his eyes.
+{$lover1Name}: {$CousinName} is why we're here. He deserved to be remembered.
+<<darken 2>>
+
+<<lighten 1>>   // Change Ruzica's Expression: Soft
+{$lover2Name}'s expression softens.
+{$lover2Name}: We stopped by a bakery to buy his favorite cake.
+<<darken 1>>
+
+<<lighten 2>>   // Change Jovan's Expression: Smile
+{$lover1Name} smiles.
+{$lover1Name}: He loved chocolate cake. It drove our family crazy. He never shared either.
+<<darken 2>>
+
+<<lighten 1>>   // Change Ruzica's Expression: Smile
+{$lover2Name} smiles too.
+{$lover2Name}: {$CousinName} had a good taste in dessert.
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name} turns to {$lover2Name}.
+{$lover1Name}: And you never told me you liked chocolate cake too!
+He turns back to you.
+{$lover1Name}: My own wife hid this from me for years!
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name}: You're being dramatic.
+She turns serious.  // Change Ruzica's Expression Neutral
+<<darken 1>>
+<<jump Leave>>
+===
+
+title: Away
+---
+<<lighten 1>>
+{$lover2Name}: We kept running until we got to another city. We ran here.
+<<darken 1>>
+
+<<lighten 2>>   // Jovan smile
+{$lover1Name}: There was a very kind woman who let us stay in her spare room for a few days. 
+{$lover1Name}: Then we wrote letters to our families to let them know we were okay. 
+// Jovan Frown
+{$lover1Name}: That's how {$CousinName}-
+<<darken 2>>
+
+<<lighten 1>>   // Change Ruzica's Expression: Soft
+{$lover2Name}: {$lover1Name}...
+<<darken 1>>
+
+<<lighten 2>>   // Change Jovan's Expression: Grieving
+{$lover1Name}: He's why we're here! 
+{$lover1Name}: He took such a big risk helping us and they burned down his house.
+{$lover1Name}: He died, he died for us!
+<<darken 2>>
+
+<<lighten 1>>   
+{$lover2Name}: {$CousinName} was kind. 
+{$lover2Name}: I never met him, but he gave his life for us.
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name}: He deserves to be remembered. 
+{$lover1Name}: That's why we wanted to talk to you. 
+{$lover1Name}: Even after we're gone, the tree will be here and so will {$CousinName}'s memory.
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name}: But we also need to move on, even if it's hard.
+{$lover2Name} focuses on {$lover1Name}.
+{$lover2Name}: Remember how he was when he was alive.
+<<darken 1>>
+
+<<lighten 2>>   // Change Jovan's expression: Smile
+{$lover1Name} smiles.
+{$lover1Name}: He loved chocolate cake. I think he would've had it for every meal if he could.
+<<darken 2>>
+
+<<lighten 1>>   // Change Ruzica's Expression: Smile
+{$lover2Name}: {$CousinName} had good taste.
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name} focuses on {$lover2Name}.
+{$lover1Name}: And you never told me you liked chocolate cake until <i>after</i> we left the bakery.
+<<darken 2>>
+
+<<lighten 1>>
+{$lover2Name}: Can't I have my secrets?
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name}: Not about cake.
+<<darken 2>>
+
+<<lighten 1>>   // Ruzica neutral
+{$lover2Name}: Speaking of which...
+<<darken 1>>
+
+<<jump Leave>>
+===
+
+// NOTE: This node was removed in the last draft.
+// title: Silence
+// ---
+// <<lighten 2>>
+// {$lover1Name}: Well, we don't have much else to say.
+// {$lover1Name}: Just please make sure you include {$CousinName}. 
+// {$lover1Name}: He was important.
+// <<darken 2>>
+// <<lighten 1>>
+// {$lover2Name}: We actually stopped by the bakery to get something for him.
+// <<darken 1>>
+
+// <<jump Leave>>
+// ===
+
+title: Leave
+---
+// Set both expressions to neutral
+<<lighten 1>>
+{$lover2Name}: We have to get going, the cake is going to melt.
+<<darken 1>>
+
+<<lighten 2>>
+{$lover1Name}: I completely forgot!
+<<darken 2>>
+
+<<lighten 1>>   // Change Ruzica's expression: Smile
+{$lover2Name} smiles at {$lover1Name}.
+{$lover2Name}: Of course you did.
+{$lover2Name} turns back to you.
+{$lover2Name}: Thank you for interviewing us. I hope our memory will look good on the tree.
+<<darken 1>>
+
+{$protagName}: I'm sure it will.
+
+<<lighten 2>>   // Change Jovan's Expression: Smile
+{$lover1Name}: Thank you, again. Have a good day, {$protagName}.
+<<darken 2>>
+
+-> {$protagName}: You too!
+    <<jump End>>
+-> {$protagName}: Thanks, I will.
+    <<jump End>>
+===
+
+title: End
+---
+{$lover1Name} and {$lover2Name} turn and leave.
+<<zeroChar>>
+{$protagName}: Time to put this all together. Then I can go home.
+===

@@ -6,6 +6,8 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using System.Transactions;
 
+using UnityEngine.UI;
+
 // Component for draggable objects. Requires a Drag Manager.
 
 [RequireComponent(typeof(Collider2D))]
@@ -36,6 +38,9 @@ public class Draggable : MonoBehaviour
     [SerializeField]
     UnityEvent<Transform> draggedOnTargetEvent;
 
+    ///[SerializeField] 
+    private int boundsOffset = 0;
+
     /// <summary>
     /// Can we drag this object?
     /// </summary>
@@ -56,10 +61,11 @@ public class Draggable : MonoBehaviour
     /// </summary>
     private int snapIndex = -1;
 
+
     /// <summary>
-    /// Tepresents the flower type enum value from order object
+    /// Stores the type of the current draggable, used for checking if it can snap to a target
     /// </summary>
-    FlowerType typeofFlower;
+    private object dragType;
     
     /// <summary>
     /// Collison for object
@@ -92,6 +98,9 @@ public class Draggable : MonoBehaviour
     /// </summary>
     public DragManager dm;
 
+    public bool IsDragging { get; }
+    public DragManager originParent;
+
 
     void Start()
     {   
@@ -103,19 +112,36 @@ public class Draggable : MonoBehaviour
 
         renderer = GetComponent<Renderer>();
         camera = FindFirstObjectByType<Camera>();
+        
     }
 
     // Called when object is instantiated
-    public void Constructor(GameObject[] _dragTargets, FlowerType _typeOfFlower)
+    public void Constructor<T>(GameObject[] _dragTargets, T _dataType, Sprite sprite = null)
     {
         foreach (GameObject dragTarget in _dragTargets)
         {
             dragTargets.Add(dragTarget.transform);
         }
-        typeofFlower = _typeOfFlower;
+        dragType = _dataType;
 
         // Set the sprite
-        GetComponent<SpriteRenderer>().sprite = FlowerShopManager.GetFlowerTopSprite(_typeOfFlower);
+        
+        if (sprite != null)
+        {
+            GetComponent<SpriteRenderer>().sprite = sprite;
+        }
+
+        //fixed image box collider not matching the piece size by setting the size of the box collider to match the sprite size
+        SpriteRenderer sr = this.GetComponent<SpriteRenderer>();
+        BoxCollider2D bc = this.GetComponent<BoxCollider2D>();
+        if (sr != null && bc != null)
+        {
+            Debug.Log("box2d size: " + bc.size);
+            Debug.Log(sr.sprite.name + " sprite size: " + sr.sprite.bounds.size);
+            bc.size = new Vector2(sr.sprite.bounds.size.x, sr.sprite.bounds.size.y);
+            //bc.offset = sr.sprite.bounds.center;
+        }
+
     }
 
     public bool CanDrag(Vector3 touch_wp) {
@@ -135,12 +161,24 @@ public class Draggable : MonoBehaviour
     /// We start dragging this object
     /// </summary>
     /// <param name="touch_wp">Touch world position</param>
-    public void StartDrag(Vector3 touch_wp, int currentDifficulty) {
+    public void StartDrag(Vector3 touch_wp, int currentDifficulty)
+    {
         dragging = true;
         offset = transform.position - touch_wp;
         difficulty = currentDifficulty;
-    }
 
+        GameObject scrollView = GameObject.FindGameObjectWithTag("ScrollView");
+        if (scrollView != null)
+        {
+            scrollView.GetComponent<ScrollRect>().enabled = false;
+        }
+
+        GameObject gameObj = this.gameObject;
+        if (gameObj != null && gameObj.transform.parent.CompareTag("ScrollContent"))
+        {
+            gameObj.transform.SetParent(GameObject.FindGameObjectWithTag("Minigame").transform, true);
+        }
+    }
     /// <summary>
     /// Drag disabled
     /// </summary>
@@ -152,6 +190,7 @@ public class Draggable : MonoBehaviour
     /// Drag enabled
     /// </summary>
     public void EnableDrag() {
+
         draggable = true;
     }
 
@@ -162,10 +201,18 @@ public class Draggable : MonoBehaviour
         // End drag
         dragging = false;
 
+        GameObject scrollView = GameObject.FindGameObjectWithTag("ScrollView");
+        if (scrollView!=null)
+        {
+            scrollView.GetComponent<ScrollRect>().enabled = true;
+        }
+
         if (snapIndex != -1) {
             DisableDrag();
             dragTargets[snapIndex].GetComponent<DragTarget>().isSnapped = true;
             draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
+
+            
         }
 
         else
@@ -173,22 +220,20 @@ public class Draggable : MonoBehaviour
             BoundsCheck();
         }
 
-        //If the num of flowers is greater than or equal to the length of the draggables array, stop the minigame and
-        //reset the num of flowers arranged
-        if (dm.flowerArrangeNum >= dm.draggables.Length)
-        {
-            dm.flowerArrangeNum = 0;
-            FlowerShopManager.Instance.NextMinigame();
-        }
+        
     } 
 
+    public void setBoundsOffset(int offset)
+    {
+        this.boundsOffset = offset;
+    }
     /// <summary>
     /// check if object is off screen, return to starting position if it is
     /// </summary>
     public void BoundsCheck()
     {
         Vector3 screenpos = camera.WorldToScreenPoint(transform.position);
-        bool onScreen = screenpos.x > 0f && screenpos.x < Screen.width && screenpos.y > 0f && screenpos.y < Screen.height;
+        bool onScreen = screenpos.x > 0f && screenpos.x < (Screen.width -boundsOffset) && screenpos.y > 0f && screenpos.y < Screen.height;
 
         if (onScreen && renderer.isVisible)
         {
@@ -201,10 +246,26 @@ public class Draggable : MonoBehaviour
 
     }
 
+    //public void BoundsCheck()
+    //{
+    //    Vector3 screenpos = camera.WorldToScreenPoint(transform.position);
+    //    bool onScreen = screenpos.x > 0f && screenpos.x < Screen.width && screenpos.y > 0f && screenpos.y < Screen.height;
+
+    //    if (onScreen && renderer.isVisible)
+    //    {
+    //        return;
+    //    }
+    //    else
+    //    {
+    //        transform.position = startPos;
+    //    }
+
+    //}
+
     void Update()
     {
         if (!draggable || !dragging) return;
-
+        
         Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
 
         if (dragging)
@@ -237,14 +298,15 @@ public class Draggable : MonoBehaviour
                     if (!target.GetComponent<DragTarget>().isSnapped)
                     {
                         float dist = (newPos - target.position).magnitude;
-                        // Snap position and rotation if close enough AND if their flower types are the same
-                        if (dist < dragDistanceThreshold && dist < lowest_dist && target.gameObject.GetComponent<DragTarget>().TypeOfFlower == typeofFlower)
+                        // Snap position and rotation if close enough AND if the draggable obj types are the same
+                        if (dist < dragDistanceThreshold && dist < lowest_dist && target.gameObject.GetComponent<DragTarget>().CanSnap(dragType))
                         {
                             newPos = target.position;
                             newRot = target.eulerAngles;
                             snapIndex = i;
                             DisableDrag();
-                            dm.flowerArrangeNum += 1;
+                            dm.completedDragCount += 1;
+                            dm.CompletionCheck();
                         }
                     }
                     i++;

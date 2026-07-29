@@ -1,0 +1,245 @@
+using Unity.VisualScripting;
+//using UnityEditorInternal;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
+
+public class LetterPuzzleMinigame : MinigameBehavior
+{
+    /// <summary>
+    /// Reference to the GameObject used for the puzzle minigame.
+    /// </summary>
+    [SerializeField] GameObject puzzleMinigame;
+
+    /// <summary>
+    /// Reference to the Puzzle Container GameObject
+    /// </summary>
+    //[SerializeField] GameObject puzzleContainer;
+
+    /// <summary>
+    /// Prefab used to instantiate piece GameObjects in the scene.
+    /// </summary>
+    [SerializeField] GameObject piecePrefab;
+
+    /// <summary>
+    /// Prefab to instantiate as the target object.
+    /// </summary>
+    [SerializeField] GameObject targetPrefab;
+
+
+    /// <summary>
+    /// The positions of the pieces when the minigame starts
+    /// </summary>
+    [SerializeField] Vector3[] pieceLocations;
+
+    /// <summary>
+    /// The locations of the targets
+    /// </summary>
+    [SerializeField] Vector3[] targetLocations;
+
+    /// <summary>
+    /// The rotations of the targets
+    /// </summary>
+    [SerializeField] Vector3[] targetRotations;
+
+    /// <summary>
+    /// Number of puzzle pieces
+    /// </summary>
+    [SerializeField] int count;
+
+    /// <summary>
+    /// Sprites for each piece (in order)
+    /// </summary>
+    [SerializeField] Sprite[] sprites;
+
+    [SerializeField] Draggable[] puzzleList;
+
+    //[SerializeField] Button[] buttons;
+
+    private bool isTransitioning;
+    private float timer = 1.5f;
+
+    /// <summary>
+    /// For scroll view. Uncomment to use. This is the parent object that holds the pieces in the scroll view, and the prefab for the pieces in the scroll view. The piece prefab should be a child of the ScrollPiece prefab, which has the script for dragging from the scroll view to the puzzle area.
+    ///</summary>
+    //public GameObject puzzlePieceHolder;
+
+    /// <summary>
+    /// For scroll view. Uncomment to use. This is the prefab for the pieces in the scroll view. The piece prefab should be a child of the ScrollPiece prefab, which has the script for dragging from the scroll view to the puzzle area.
+    ///</summary>
+    //public GameObject ScrollPiecePrefab;
+
+    /// <summary>
+    /// Sets the blur on the camera
+    /// </summary>
+    private PostProcessVolume ppVolume;
+
+    // Tap action for ending the minigame. Should work for both PC and Android
+    private InputAction tap;
+
+    // The "Tap to Continue" text that pops up after completing the minigame
+    /*[SerializeField]
+    private GameObject continueText;*/
+    [SerializeField]
+    private Button continueButton;
+
+    // The box game object that contains a collider to cover the screen
+    [SerializeField]
+    private GameObject box1;
+
+    private void Start()
+    {
+        continueButton.interactable = false;  // Ensure button is disabled
+        continueButton.GetComponent<Image>().enabled = false; // Ensure button image is disabled
+        puzzleMinigame.GetComponent<DragManager>().OnCompleted += HandleCompleted;
+        //registers HandleCompleted as a listener for the OnCompleted event on the DragManager.
+        //When DragManager raises OnCompleted, HandleCompleted method will be invoked.
+
+        tap = InputSystem.actions.FindAction("Tap");
+        
+    }
+
+    private void Update()
+    {
+        if (!isTransitioning)
+        {
+            return;
+        }
+
+        if (timer >= 0) timer -= Time.deltaTime;
+        if (timer <= 0)
+        {
+            continueButton.interactable = true;
+            continueButton.GetComponent<Image>().enabled = true;
+            box1.SetActive(false);
+        }
+
+    }
+
+    public void Continue()
+    {
+        
+        //    if (Mouse.current.leftButton.wasPressedThisFrame)
+        //if (tap.IsPressed())
+        //{
+            //Debug.Log("Transitioning to next minigame");
+            isTransitioning = false;
+            puzzleMinigame.GetComponent<DragManager>().Reset();
+        //continueText.SetActive(false);
+
+        // Turn off button
+        Debug.Log("Continue Button Clicked");
+        continueButton.interactable = false;
+        continueButton.GetComponent<Image>().enabled = false;
+
+        // Assuming this is the victory condition, call NextMinigame
+        Debug.Log("Next minigame called");
+            GameManager.Instance.CurrentMemoryManager.NextMinigame();
+                
+        //}
+
+        
+    }
+
+    /// <summary>
+    /// Initiates a transition by setting the transitioning flag and resetting the timer.
+    /// </summary>
+    public void HandleCompleted()
+    {
+        isTransitioning = true;
+        timer = 0.5f; // Reset timer for transition
+        continueButton.GetComponent<Image>().enabled = true; // Show the continue button
+        continueButton.interactable=true;   // Enable text when puzzle is complete
+    }
+
+    public override void StartMinigame()
+    {
+        gameObject.SetActive(true);
+        //puzzleContainer.SetActive(true);
+
+    //    ppVolume = Camera.main.gameObject.GetComponent<PostProcessVolume>();
+
+        Vector3[] dragPos = new Vector3[count];
+        Vector3[] targetPos = new Vector3[count];
+        Vector3[] targetRot = new Vector3[count];
+        int[] pieceIds = new int[count]; // used to identify which piece is which
+        
+
+
+        for (int i = 0; i < count; i++)
+        {
+            // randomize the piece locations
+            int randomIndex = Random.Range(0, pieceLocations.Length); //index, -1 (inclusive)
+            dragPos[i] = pieceLocations[randomIndex];
+            targetPos[i] = targetLocations[i];
+            targetRot[i] = targetRotations[i];
+            pieceIds[i] = i;
+        }
+
+        Draggable[] pieceList = puzzleMinigame.GetComponent<DragManager>().CreateDragToTarget(
+            count,
+            piecePrefab,
+            targetPrefab,
+            dragPos,
+            targetPos,
+            targetRot,
+            pieceIds,
+            sprites);
+
+        if  (pieceList.Length > 0)
+        {
+
+            // for scroll view. uncomment to use
+
+            //for (int i = 0; i < pieceList.Length; i++)
+            //{
+            //    pieceList[i].GetComponent<Draggable>().originParent = puzzleMinigame.GetComponent<DragManager>();
+            //    GameObject holder = Instantiate(ScrollPiecePrefab, puzzlePieceHolder.transform);
+            //    pieceList[i].transform.SetParent(holder.transform, true);
+            //    pieceList[i].transform.localPosition = Vector2.zero;
+            //    pieceList[i].setBoundsOffset(83);
+
+
+
+            //    holder.GetComponent<ScrollPiece>().Constructor(pieceList[i]);
+            //}
+        }
+
+        
+
+
+        //Set the minigame to active
+        puzzleMinigame.SetActive(true);
+
+        //Adds the blur to minigames with added difficulty
+        //if (GameManager.Instance.difficulty > 1)
+        //{
+        //    ppVolume.enabled = true;
+        //    ppVolume.weight = 1;
+        //    if (GameManager.Instance.difficulty >= 2)
+        //    { //Scales from 2 to 11
+        //        ppVolume.weight = 0.45f + (GameManager.Instance.difficulty * 0.05f);
+        //    }
+        //}
+    }
+
+
+    public override void StopMinigame()
+    {
+        puzzleMinigame.GetComponent<DragManager>().Reset();
+
+        //Remove the blur from minigames with added difficulty
+        //    ppVolume.enabled = false;
+
+        // Unregister the event handler to prevent potential memory leaks or unintended behavior
+        puzzleMinigame.GetComponent<DragManager>().OnCompleted -= HandleCompleted;
+
+        //deactivate the minigame
+
+        // If using a puzzle container, deactivate it here. Otherwise, just deactivate the puzzle minigame.
+        //puzzleContainer.SetActive(false);
+        puzzleMinigame.SetActive(false);
+    }
+}

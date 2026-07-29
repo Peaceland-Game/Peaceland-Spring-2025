@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b164552845f3334449525ef1552d4db0, type: 3}
+  m_Name: MuseumPresent
+  m_EditorClassIdentifier: 
+  mainCharSprites:
+  - {fileID: -5254250293326989361, guid: 3f4d2fbe8a7c70548a110354350ad9b6, type: 3}
+  - {fileID: -4293098973464690413, guid: b6cd5334ad16bb641ac9d373b3d67cd3, type: 3}
+  - {fileID: 4257293326951597145, guid: 942893987080d8d4a8c1afc5aafa949d, type: 3}
+  - {fileID: 765739686550708605, guid: 46f742341b345fa4295265044713818a, type: 3}
+  secondCharSprites:
+  - {fileID: -5969785612072809107, guid: 24eb948a5a6b0ce4cbaf6a4c5ddeac8e, type: 3}
+  dialogueStartNode: Start
+  dialogueEndNode: AfterMemory
+  nameForScene: MuseumPresent

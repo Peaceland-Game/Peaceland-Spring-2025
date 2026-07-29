@@ -1,0 +1,35 @@
+﻿title: JessicaStart
+---
+<<declare $npcName4 = "Jessica">> //The NPC's name will go here and can be different for each NPC if needed
+
+{$npcName4}: Oh, sorry, I was deep in thought looking through the exhibit. A lot of good and a lot of bad. Really makes you think huh? Well, that's history for you.
+-> <i>Ask about their day</i>
+    <<jump JessicaDay>>
+-> <i>Back to the lobby</i>
+===
+
+title: JessicaDay
+---
+{$npcName4}: My teacher asked us to do a research project, so I decided to research the civil war. I'm learning a lot here and can't wait to put all this information together. I'm hoping to get a good grade. Wish me luck.
+-> What do you like about the museum?
+    <<jump JessicaGood>>
+-> Did you see the memory tree yet?
+    <<jump JessicaNeutral>>
+-> Good luck.
+    <<jump JessicaBad>>
+===
+
+title: JessicaGood
+---
+{$npcName4}: I really like the tree. So many memories tied on its branches that tell so many stories with different viewpoints.
+===
+
+title: JessicaNeutral
+---
+{$npcName4}: I did! It really is a beautiful tree. I wonder how it got here.
+===
+
+title: JessicaBad
+---
+{$npcName4}: Thanks! I hope my teacher will like what I come up with.
+===
