@@ -180,18 +180,23 @@ public class Demo_RJMuseumIntro : GenericMemManager
         }
     }
 
+    //helper function for disabling continue button
     private void DisableContinueButton()
     {
         continueButton.interactable = false;
         continueButton.GetComponent<Image>().enabled = false;
     }
 
+    //helper function for disabling goToTownSquare button (poorly named function i know)
     private void DisableDemoEndButton()
     {
         goToTownSquareButton.interactable = false;
         goToTownSquareButton.GetComponent<Image>().enabled = false;
     }
 
+    /// <summary>
+    /// Allows player to advance through the intro (news and museum parts)
+    /// </summary>
     public void Continue()
     {
         if (!GM.newsRead)
@@ -212,6 +217,9 @@ public class Demo_RJMuseumIntro : GenericMemManager
         }
     }
 
+    /// <summary>
+    /// Starts museum dialogue and goes to the next "minigame"
+    /// </summary>
     public void StartDialogue()
     {
         warRoomEntrance.interactable = false;
@@ -279,11 +287,17 @@ public class Demo_RJMuseumIntro : GenericMemManager
         }
     }
 
+    /// <summary>
+    /// Transitions to scene: Town Square
+    /// </summary>
     public void GoToTownSquare()
     {
         LL.LoadLevelByBuildIndex(TownSquareBuildIndex);
     }
 
+    /// <summary>
+    /// Transitions to scene: War Room
+    /// </summary>
     public void EnterWarRoom()
     {
         Debug.Log("Entering War Room");
