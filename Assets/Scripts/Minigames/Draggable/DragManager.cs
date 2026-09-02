@@ -89,7 +89,7 @@ public class DragManager : MonoBehaviour
             draggables[i].EnableDrag();
 
             //run the constructor of each of the draggables and targets
-            draggables[i].Constructor(targets, draggableData[i], sprites[i]);
+            draggables[i].Constructor(new GameObject[] { targets[i] }, draggableData[i], sprites[i]);
             targets[i].GetComponent<DragTarget>().Constructor(draggableData[i], sprites[i]);
         }
 

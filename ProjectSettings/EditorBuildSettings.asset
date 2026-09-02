@@ -53,6 +53,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Notebook/Scenes/NotebookTest_RandJItemCollect.unity
     guid: 0a72e1f14bc0d214bad1172f4da475f3
+  - enabled: 1
+    path: Assets/Scenes/Fall26Demo/Demo_RJ_Present.unity
+    guid: a305164c7ef985844bd7ff1ee865e4a6
+  - enabled: 1
+    path: Assets/Scenes/Fall26Demo/R&JMemoryScene.unity
+    guid: a26575a4130354f48b38f9e485b2245a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f0575c88935330e43a5e85ee93b729a5, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 81253cb86dd87734391587a09a6a872c, type: 3}
