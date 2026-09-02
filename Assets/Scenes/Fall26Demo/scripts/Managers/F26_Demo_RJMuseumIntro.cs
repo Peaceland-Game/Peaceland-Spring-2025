@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// Manager script for the Spring 2026 demo. Created from MuseumIntroManager.cs and ScreenTransitioner.cs.
 /// Likely not useful for future use, as the backend of the game will change.
 /// </summary> 
-public class Demo_RJMuseumIntro : GenericMemManager
+public class F26_Demo_RJMuseumIntro : GenericMemManager
 {
     // Fields
     // List of minigames, SceneCharacters, and DialogueRunner inherited from parent.
@@ -53,8 +53,8 @@ public class Demo_RJMuseumIntro : GenericMemManager
     // Build indices for LevelLoader
     private int DemoStartBuildIndex = 0;
     private int DemoDisclaimerBuilIndex = 1;
-    private int DemoRJPresentBuildIndex = 2;
-    private int RJ_MemoryBuildIndex = 3;
+    private int DemoRJPresentBuildIndex = 8;
+    private int RJ_MemoryBuildIndex = 9;
     private int DemoEndBuildIndex = 4;
     private int PresentLobbyBuildIndex = 5;
     private int WarRoomBuildIndex = 6;

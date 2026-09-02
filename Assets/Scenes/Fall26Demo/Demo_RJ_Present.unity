@@ -182,7 +182,7 @@ Animator:
   m_GameObject: {fileID: 320817796}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: de5ede09b485ace498bbf0b3e2ce1ffe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 05a698270a6c0b64699730b3da3cba58, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -483,7 +483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583866549}
   - component: {fileID: 583866547}
-  - component: {fileID: 583866546}
+  - component: {fileID: 583866550}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -491,41 +491,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &583866546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583866545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9973a84d5d4ffe44dadb2108c8a9b881, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minigames:
-  - {fileID: 1151276897}
-  - {fileID: 964700709}
-  scenes:
-  - {fileID: 11400000, guid: c63819933b0dedd4c93e37fb47b97edc, type: 2}
-  - {fileID: 11400000, guid: c63819933b0dedd4c93e37fb47b97edc, type: 2}
-  backgroundList: []
-  backgroundSprite: {fileID: 0}
-  objectImageList: []
-  dialogueRunner: {fileID: 1791870416}
-  afterMemStart: 1
-  MainCharPortrait: {fileID: 752152684}
-  SecondCharPortrait: {fileID: 1299239116}
-  transition: {fileID: 320817797}
-  continueButton: {fileID: 1741712521}
-  warRoomEntrance: {fileID: 552369555}
-  startDialogueButton: {fileID: 2035712161}
-  goToTownSquareButton: {fileID: 1596623114}
-  newsPaper: {fileID: 744568348}
-  museumWide: {fileID: 1057038237}
-  marcBack: {fileID: 456443709}
-  museumTree: {fileID: 1422792148}
-  treePlaque: {fileID: 1434431994}
 --- !u!114 &583866547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +522,41 @@ Transform:
   - {fileID: 320817801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &583866550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583866545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff6f17b502b8b04e9ac8517681abd75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minigames:
+  - {fileID: 1151276897}
+  - {fileID: 964700709}
+  scenes:
+  - {fileID: 11400000, guid: 927aa52cdaecdf649a7584a3b395dde6, type: 2}
+  - {fileID: 11400000, guid: 927aa52cdaecdf649a7584a3b395dde6, type: 2}
+  backgroundList: []
+  backgroundSprite: {fileID: 0}
+  objectImageList: []
+  dialogueRunner: {fileID: 1791870416}
+  afterMemStart: 1
+  MainCharPortrait: {fileID: 752152684}
+  SecondCharPortrait: {fileID: 1299239116}
+  transition: {fileID: 320817797}
+  continueButton: {fileID: 1741712521}
+  warRoomEntrance: {fileID: 552369555}
+  startDialogueButton: {fileID: 2035712161}
+  goToTownSquareButton: {fileID: 1596623114}
+  newsPaper: {fileID: 744568348}
+  museumWide: {fileID: 1057038237}
+  marcBack: {fileID: 456443709}
+  museumTree: {fileID: 1422792148}
+  treePlaque: {fileID: 1434431994}
 --- !u!1 &660415578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1039,7 +1039,7 @@ PrefabInstance:
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 583866546}
+      objectReference: {fileID: 583866550}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1050,7 +1050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Demo_RJMuseumIntro, Assembly-CSharp
+      value: F26_Demo_RJMuseumIntro, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1343,7 +1343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 1791870416}
-  startNode: Start
+  startNode: MuseumIntro
 --- !u!4 &1151276898
 Transform:
   m_ObjectHideFlags: 0
@@ -2059,7 +2059,7 @@ PrefabInstance:
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 583866546}
+      objectReference: {fileID: 583866550}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -2082,7 +2082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Demo_RJMuseumIntro, Assembly-CSharp
+      value: F26_Demo_RJMuseumIntro, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -2865,7 +2865,7 @@ PrefabInstance:
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 583866546}
+      objectReference: {fileID: 583866550}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2880,7 +2880,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Demo_RJMuseumIntro, Assembly-CSharp
+      value: F26_Demo_RJMuseumIntro, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -3193,7 +3193,7 @@ PrefabInstance:
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 583866546}
+      objectReference: {fileID: 583866550}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3208,7 +3208,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Demo_RJMuseumIntro, Assembly-CSharp
+      value: F26_Demo_RJMuseumIntro, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -3719,7 +3719,7 @@ PrefabInstance:
     - target: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: yarnProject
       value: 
-      objectReference: {fileID: 7545569452688597077, guid: 6ed932170115a0246804c8a5fe59016f, type: 3}
+      objectReference: {fileID: 7545569452688597077, guid: 44bc534a9d28dad4ba33569f125476b0, type: 3}
     - target: {fileID: 3579681405068720530, guid: 7f29e5f7ffdea4a6793cefb278b61f0c, type: 3}
       propertyPath: startAutomatically
       value: 0
@@ -4217,7 +4217,7 @@ MonoBehaviour:
   placeholderCondition: 0
   defaultCursor: {fileID: 2800000, guid: 844b41a58c1b3bc48adbcefbe7845cb8, type: 3}
   interactCursor: {fileID: 2800000, guid: 5970d5ca86e8ccc4eb4c550842513acb, type: 3}
-  currentMemoryManager: {fileID: 583866546}
+  currentMemoryManager: {fileID: 583866550}
   difficulty: 0
   allMuseumDialogueComplete: 0
 --- !u!4 &1901868927

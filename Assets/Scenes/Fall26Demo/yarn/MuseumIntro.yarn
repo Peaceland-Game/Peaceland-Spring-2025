@@ -1,6 +1,22 @@
 ﻿title: MuseumIntro
 tags:
 ---
-Marc: test
+<<set $protagName = "<color=#119999>Marc</color>">>
+<<set $lover1Name = "<color=#dd1111>Jovan</color>">>
+<<set $lover2Name = "<color=#11bb11>Ruzica</color>">>
+<<set $directorName = "<color=#dd1111>Petar</color>">>
+
+{$protagName}: test
+
+<<oneChar>>
+<<changeSprite 1 0>>
+
+{$directorName}: hello
+
+<<twoChar>>
+<<changeSprite 1 1>>
+<<changeSprite 2 0>>
+
+{$lover1Name}: asdasdsadsadsa
 
 ===
