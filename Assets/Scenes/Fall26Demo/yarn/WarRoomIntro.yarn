@@ -1,0 +1,12 @@
+﻿title: WarRoomIntro
+tags:
+---
+<<oneChar>>
+<<changeSprite 1 0>>
+
+{$directorName}: As you can see, this room contains many artifacts from the war.
+{$directorName}: Flags, medals, childrens toys, you name it.
+{$directorName}: Give yourself a quick history lesson, then talk with me back in the lobby.
+
+<<zeroChar>>
+===
