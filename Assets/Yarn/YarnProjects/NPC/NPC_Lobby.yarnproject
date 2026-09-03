@@ -1,17 +1,17 @@
 ﻿{
-  "projectFileVersion": 2,
-  "sourceFiles": [
-    "**/*.yarn",
-    "Marcia.yarn",
-    "Johnny.yarn",
-    "Alex.yarn",
-    "Jessica.yarn",
-    "Tree.yarn"
-  ],
-  "excludeFiles": [
-    "**/*~/*"
-  ],
-  "localisation": {},
-  "baseLanguage": "en",
-  "compilerOptions": {}
+    "projectFileVersion": 2,
+    "sourceFiles": [
+        "**/*.yarn",
+        "Marcia.yarn",
+        "Johnny.yarn",
+        "Alex.yarn",
+        "Jessica.yarn",
+        "Tree.yarn"
+    ],
+    "excludeFiles": [
+        "**/*~/*"
+    ],
+    "localisation": {},
+    "baseLanguage": "en",
+    "compilerOptions": {}
 }

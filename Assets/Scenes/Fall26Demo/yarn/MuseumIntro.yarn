@@ -25,6 +25,8 @@ tags:
 ->I feel like I've done something wrong.
     {$directorName} glares at {$protagName}, but says nothing.
 ->So, where should I get started?
-{$directorName}: Well, for starters, this is the <b>Memory Tree</b>. and down the hallway is the <b>War Artifact</b> room. Feel free to take a look around and get familiar with the place, then come back to me when you're ready for your first task.
+{$directorName}: Follow me to the <b>War Artifact</b> room.
 
+<<zeroChar>>
+<color=\#7F7F7F>You can move to another room by tapping/clicking on the entrance.</color>
 ===

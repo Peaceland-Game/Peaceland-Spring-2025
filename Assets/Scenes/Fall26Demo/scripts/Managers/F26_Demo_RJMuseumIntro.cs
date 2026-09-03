@@ -57,7 +57,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     private int RJ_MemoryBuildIndex = 9;
     private int DemoEndBuildIndex = 4;
     private int PresentLobbyBuildIndex = 5;
-    private int WarRoomBuildIndex = 6;
+    private int WarRoomBuildIndex = 10;
     private int TownSquareBuildIndex = 7;
     
 
@@ -258,14 +258,21 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             minigames[currentMinigame].StartMinigame();
         }
 
+        //Allow travel to war room after initial dialogue
+        else if (currentMinigame == 1)
+        {
+            Debug.Log("War room enabled");
+            warRoomEntrance.interactable = true;
+        }
+
         // If after the initial dialogue, jump into the memory sequence.
-        else if (currentMinigame == 1 && !GM.seenRJMemory)
+        else if (currentMinigame == afterMemStart && !GM.seenRJMemory)
         {
             LL.LoadNextLevel();
         }
 
         // If returning from the memory, run the dialogue
-        else if (currentMinigame == 1 && GM.seenRJMemory && !GM.allMuseumDialogueComplete)
+        else if (currentMinigame == afterMemStart && GM.seenRJMemory && !GM.allMuseumDialogueComplete)
         {
             warRoomEntrance.interactable = false;
             minigames[currentMinigame].StartMinigame();
@@ -328,7 +335,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     {
         DisableContinueButton();
         DisableDemoEndButton();
-        warRoomEntrance.interactable = true;
+        warRoomEntrance.interactable = false;
         Debug.Log("Start Museum Transition");
 
         startDialogueButton.interactable = true;
