@@ -6,17 +6,25 @@ tags:
 <<set $lover2Name = "<color=#11bb11>Ruzica</color>">>
 <<set $directorName = "<color=#dd1111>Petar</color>">>
 
-{$protagName}: test
-
 <<oneChar>>
 <<changeSprite 1 0>>
 
-{$directorName}: hello
-
-<<twoChar>>
-<<changeSprite 1 1>>
-<<changeSprite 2 0>>
-
-{$lover1Name}: asdasdsadsadsa
+{$protagName} looks around the museum in awe.
+->So this is the tree?
+    {$directorName}: Congrats, you know what a tree is.
+->You must be the manager?
+    {$directorName}: Yes, I am. You'd better show some respect.
+-><i>Stay Silent</i>
+    {$directorName}: Are you gonna speak up?
+{$directorName} gives {$protagName} a look.
+{$directorName}: Do you even know why you're here?
+{$directorName} points at {$protagName}'s hand.
+{$directorName}: And do I even want to know what happened there?
+{$protagName}: Siblings.
+{$protagName} and {$directorName} stare at each other in awkward silence. {$protagName}, confused, clears his throat.
+->I feel like I've done something wrong.
+    {$directorName} glares at {$protagName}, but says nothing.
+->So, where should I get started?
+{$directorName}: Well, for starters, this is the <b>Memory Tree</b>. and down the hallway is the <b>War Artifact</b> room. Feel free to take a look around and get familiar with the place, then come back to me when you're ready for your first task.
 
 ===
