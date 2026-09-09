@@ -568,10 +568,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minigames:
   - {fileID: 1151276897}
-  - {fileID: 964700709}
+  - {fileID: 521999150}
   scenes:
   - {fileID: 11400000, guid: 927aa52cdaecdf649a7584a3b395dde6, type: 2}
-  - {fileID: 11400000, guid: 927aa52cdaecdf649a7584a3b395dde6, type: 2}
+  - {fileID: 11400000, guid: ea37a50265d616548bd6d3e2abc6a691, type: 2}
   backgroundList: []
   backgroundSprite: {fileID: 0}
   objectImageList: []
@@ -592,8 +592,6 @@ MonoBehaviour:
   newsRead: 0
   introSprawlDone: 0
   marcStart: 0
-  miraIntroDone: 0
-  memoryObjectAcquired: 0
 --- !u!114 &583866551
 MonoBehaviour:
   m_ObjectHideFlags: 0

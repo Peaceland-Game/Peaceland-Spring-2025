@@ -82,26 +82,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             currentMinigame = 2;
         }
 
-        //skip the intro if war room has been completed
-        if (GM.completedScenes["WarRoomIntro"])
-        {
-            newsRead = true;
-            introSprawlDone = true;
-            currentMinigame = 0;
-            NextOrder();
-            NextMinigame();
-        }
-
-        if (introSprawlDone && !GM.completedScenes["R+JMemory"])
-        {
-            newsPaper.enabled = false;
-            MainCharPortrait.SetActive(false);
-            SecondCharPortrait.SetActive(false);
-            DisableContinueButton();
-            StartCoroutine(MuseumTransition());
-            return;
-        }
-
         Debug.Log("demo start");
 
         // Hide Background Screens
@@ -122,6 +102,29 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         // Hide character portraits
         MainCharPortrait.SetActive(false);
         SecondCharPortrait.SetActive(false);
+
+        //skip the intro if war room has been completed
+        if (GM.completedScenes["WarRoomIntro"])
+        {;
+            newsPaper.enabled = false;
+            currentMinigame = 0;
+            StartCoroutine(MuseumTransition());
+            StartDialogue();
+            DisableDemoEndButton();
+            DisableContinueButton();
+            NextOrder();
+            NextMinigame();
+        }
+
+        if (introSprawlDone && !GM.completedScenes["R+JMemory"])
+        {
+            newsPaper.enabled = false;
+            MainCharPortrait.SetActive(false);
+            SecondCharPortrait.SetActive(false);
+            DisableContinueButton();
+            StartCoroutine(MuseumTransition());
+            return;
+        }
 
         // Jump ahead on dialog if returning from the memory
         if (GM.completedScenes["R+JMemory"])
@@ -155,7 +158,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     void Update()
     {
         // Run coroutines if the memory hasn't been played yet
-        if (!GM.completedScenes["R+JMemory"])
+        if (!GM.completedScenes["MuseumIntro"])
         {
             //if the news (first screen) hasn't been read yet
             if (transition.GetBool("NewsRead") == false || transition.GetBool("MuseumClicked") == false)
@@ -282,6 +285,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
 
         else if (GM.CurrentScene.Equals("R+JIntro"))
         {
+            currentMinigame = 1;
             minigames[currentMinigame].StartMinigame();
         }
 
@@ -322,13 +326,13 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     /// </summary>
     public void EnterWarRoom()
     {
-        Debug.Log("Entering War Room");
+        warRoomEntrance.enabled = false;
         if (!GM.completedScenes["MuseumIntro"])
         {
             GM.completedScenes["MuseumIntro"] = true;
             GM.CurrentScene = "WarRoomIntro";
         }
-        LL.LoadLevelByBuildIndex(WarRoomBuildIndex);
+        LL.LoadLevelByBuildIndex(WarRoomBuildIndex, true);
     }
 
     //whole transition sequence for newspaper and auto advance screens

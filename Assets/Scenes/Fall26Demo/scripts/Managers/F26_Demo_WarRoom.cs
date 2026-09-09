@@ -233,7 +233,7 @@ public class F26_Demo_WarRoom : GenericMemManager
             GM.CurrentScene = "R+JIntro";
         }
         int museumSceneIndex = 8;
-        LL.LoadLevelByBuildIndex(museumSceneIndex);
+        LL.LoadLevelByBuildIndex(museumSceneIndex, true);
     }
 
     /// <summary>

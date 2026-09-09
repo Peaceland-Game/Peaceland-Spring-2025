@@ -32,20 +32,48 @@ public class LevelLoader : MonoBehaviour
     }
 
     /// <summary>
+    /// Loads a level based on a given build index
+    /// </summary>
+    /// <param name="buildIndex">An int of the scene to load.</param>
+    /// <param name="useBlackFade">Whether or not to use a black fade instead of a white one</param>
+    public void LoadLevelByBuildIndex(int buildIndex, bool useBlackFade)
+    {
+        StartCoroutine(LoadLevel(buildIndex, useBlackFade));
+    }
+
+    /// <summary>
     /// Loads a level by a given index and plays fade animations.
     /// </summary>
     /// <param name="levelIndex">An integer containing the build index to load.</param>
     /// <returns>Returns a yield statement</returns>
     IEnumerator LoadLevel(int levelIndex)
     {
+        return LoadLevel(levelIndex, false);
+    }
+
+    /// <summary>
+    /// Loads a level by a given index and plays fade animations.
+    /// </summary>
+    /// <param name="levelIndex">An integer containing the build index to load.</param>
+    /// <param name="useBlackFade">Whether or not to use a black fade instead of a white one</param>
+    /// <returns>Returns a yield statement</returns>
+    IEnumerator LoadLevel(int levelIndex, bool useBlackFade)
+    {
         Debug.Log("Running fade out animation.");
         //    transition.SetTrigger("Start");
 
-        WhiteFadeAnimation(true);
+        if (useBlackFade)
+        {
+            BlackFadeAnimation(true);
+        }
+        else
+        {
+            WhiteFadeAnimation(true);
+        }
 
         yield return new WaitForSeconds(transitionTime);
 
-    //    WhiteFadeAnimation(false);
+        //    WhiteFadeAnimation(false);
 
         SceneManager.LoadScene(levelIndex);
     }
