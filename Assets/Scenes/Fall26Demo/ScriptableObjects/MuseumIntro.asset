@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b164552845f3334449525ef1552d4db0, type: 3}
-  m_Name: MuseumPresent
+  m_Name: MuseumIntro
   m_EditorClassIdentifier: 
   mainCharSprites:
   - {fileID: -2491030826398040636, guid: 9c04023da0ef8484e9fda8ce3abaa9b5, type: 3}

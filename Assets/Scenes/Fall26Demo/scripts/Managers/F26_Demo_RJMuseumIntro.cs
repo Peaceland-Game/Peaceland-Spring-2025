@@ -20,7 +20,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     private GameObject SecondCharPortrait;
 
     // From MuseumIntroManager.cs:
-    private GameManager GM;     // Reference to the Game Manager
+    private F26_GameManager GM;     // Reference to the Game Manager
 
     // From ScreenTransitioner.cs
     [SerializeField]
@@ -59,7 +59,12 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     private int PresentLobbyBuildIndex = 5;
     private int WarRoomBuildIndex = 10;
     private int TownSquareBuildIndex = 7;
-    
+
+    //State tracking
+    public bool newsRead;
+    public bool introSprawlDone;
+    public bool marcStart;
+
 
     // Methods:
 
@@ -67,7 +72,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     void Start()
     {
         // Set up variables
-        GM = FindFirstObjectByType<GameManager>();
+        GM = FindFirstObjectByType<F26_GameManager>();
         LL = FindFirstObjectByType<LevelLoader>();
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
         tap = InputSystem.actions.FindAction("Tap");
@@ -77,7 +82,17 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             currentMinigame = 2;
         }
 
-        if (GM.introSprawlDone && !GM.seenRJMemory)
+        //skip the intro if war room has been completed
+        if (GM.completedScenes["WarRoomIntro"])
+        {
+            newsRead = true;
+            introSprawlDone = true;
+            currentMinigame = 0;
+            NextOrder();
+            NextMinigame();
+        }
+
+        if (introSprawlDone && !GM.completedScenes["R+JMemory"])
         {
             newsPaper.enabled = false;
             MainCharPortrait.SetActive(false);
@@ -109,7 +124,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         SecondCharPortrait.SetActive(false);
 
         // Jump ahead on dialog if returning from the memory
-        if (GM.seenRJMemory)
+        if (GM.completedScenes["R+JMemory"])
         {
             if (!GM.allMuseumDialogueComplete)
             {
@@ -140,7 +155,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     void Update()
     {
         // Run coroutines if the memory hasn't been played yet
-        if (!GM.seenRJMemory)
+        if (!GM.completedScenes["R+JMemory"])
         {
             //if the news (first screen) hasn't been read yet
             if (transition.GetBool("NewsRead") == false || transition.GetBool("MuseumClicked") == false)
@@ -199,9 +214,9 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     /// </summary>
     public void Continue()
     {
-        if (!GM.newsRead)
+        if (!newsRead)
         {
-            GM.newsRead = true;
+            newsRead = true;
 
             Debug.Log("NEWS READ TAPPED");
 
@@ -224,7 +239,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     {
         warRoomEntrance.interactable = false;
         
-        GM.marcStart = true;
+        marcStart = true;
         StartCoroutine(Wait());
         NextOrder();
         NextMinigame();
@@ -259,23 +274,27 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         }
 
         //Allow travel to war room after initial dialogue
-        else if (currentMinigame == 1)
+        else if (GM.CurrentScene.Equals("MuseumIntro"))
         {
             Debug.Log("War room enabled");
-            warRoomEntrance.interactable = true;
+            warRoomEntrance.interactable = true; 
+        }
+
+        else if (GM.CurrentScene.Equals("R+JIntro"))
+        {
+            minigames[currentMinigame].StartMinigame();
         }
 
         // If after the initial dialogue, jump into the memory sequence.
-        else if (currentMinigame == afterMemStart && !GM.seenRJMemory)
+        else if (currentMinigame == afterMemStart && !GM.completedScenes["R+JMemory"])
         {
             LL.LoadNextLevel();
         }
 
         // If returning from the memory, run the dialogue
-        else if (currentMinigame == afterMemStart && GM.seenRJMemory && !GM.allMuseumDialogueComplete)
+        else if (currentMinigame == afterMemStart && GM.completedScenes["R+JMemory"] && !GM.allMuseumDialogueComplete)
         {
             warRoomEntrance.interactable = false;
-            minigames[currentMinigame].StartMinigame();
         }
 
         // If after the ending dialogue, enable the button that transitions to 
@@ -288,10 +307,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             goToTownSquareButton.GetComponent<Image>().enabled = true;
         }
 
-        else
-        {
-            Debug.Log($"Curent mingame index = {currentMinigame}. Only 1 or 2 change the scene");
-        }
     }
 
     /// <summary>
@@ -308,6 +323,11 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     public void EnterWarRoom()
     {
         Debug.Log("Entering War Room");
+        if (!GM.completedScenes["MuseumIntro"])
+        {
+            GM.completedScenes["MuseumIntro"] = true;
+            GM.CurrentScene = "WarRoomIntro";
+        }
         LL.LoadLevelByBuildIndex(WarRoomBuildIndex);
     }
 
@@ -317,7 +337,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         //screen fade, disable news and text
         Debug.Log("Begin News Transition");
         // Fade in
-        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
+        F26_GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
         yield return new WaitForSeconds(0f); //orig 2f
 
         //Hide newspaper, show outside of musuem
@@ -327,7 +347,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         Debug.Log("Museum Enabled: " + museumWide.enabled);
 
         // Fade out
-        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
+        F26_GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
     }
 
     // Transitions from outside the museum to the memory tree
@@ -343,9 +363,9 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
        
 
         //fade into white
-        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
+        F26_GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(true);
         yield return new WaitForSeconds(0f);
-        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
+        F26_GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
         
 
         //disable museum outside, enable museum inside, set var to true, begin black fadout to museum inside
@@ -353,14 +373,14 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         marcBack.enabled = false;
         museumTree.enabled = true;
         treePlaque.enabled = true;
-        GM.introSprawlDone = true;
-        GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
+        introSprawlDone = true;
+        F26_GameManager.Instance.CurrentMemoryManager.LevelLoader.BlackFadeAnimation(false);
     }
 
     //start animating text
     IEnumerator TextStart()
     {
-        if (!GM.introSprawlDone)
+        if (!introSprawlDone)
         {
             Debug.Log("Show Continue Text");
             textStarted = true;

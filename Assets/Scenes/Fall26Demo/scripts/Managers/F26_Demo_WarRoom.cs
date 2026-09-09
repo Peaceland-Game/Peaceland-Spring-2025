@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class F26_Demo_WarRoom : GenericMemManager
 {
+    private F26_GameManager GM;     // Reference to the Game Manager
+
     [SerializeField]
     public Button returnToLobbyButton;
 
@@ -56,6 +58,8 @@ public class F26_Demo_WarRoom : GenericMemManager
 
     void Start()
     {
+        GM = FindFirstObjectByType<F26_GameManager>();
+
         //dont mind this part 
         if (mingming)
         {
@@ -88,8 +92,11 @@ public class F26_Demo_WarRoom : GenericMemManager
         DisableButton(exitWallView);
 
         //Begin Dialog
-        NextMinigame();
-        NextOrder();
+        if (GM.CurrentScene.Equals("WarRoomIntro"))
+        {
+            NextMinigame();
+            NextOrder();
+        }
     }
 
     // Update is called once per frame
@@ -220,6 +227,11 @@ public class F26_Demo_WarRoom : GenericMemManager
     public void ReturnToLobby()
     {
         Debug.Log("Returning to lobby...");
+        if (!GM.completedScenes["WarRoomIntro"])
+        {
+            GM.completedScenes["WarRoomIntro"] = true;
+            GM.CurrentScene = "R+JIntro";
+        }
         int museumSceneIndex = 8;
         LL.LoadLevelByBuildIndex(museumSceneIndex);
     }

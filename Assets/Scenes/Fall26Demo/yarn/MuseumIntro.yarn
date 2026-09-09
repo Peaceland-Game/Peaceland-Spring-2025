@@ -1,10 +1,10 @@
 ﻿title: MuseumIntro
 tags:
 ---
-<<set $protagName = "<color=#119999>Marc</color>">>
-<<set $lover1Name = "<color=#dd1111>Jovan</color>">>
-<<set $lover2Name = "<color=#11bb11>Ruzica</color>">>
-<<declare $directorName = "<color=#dd1111>Petar</color>">>
+<<set $protagName = "Marc">>
+<<set $lover1Name = "Jovan">>
+<<set $lover2Name = "Ruzica">>
+<<declare $directorName = "Petar">>
 
 <<oneChar>>
 <<changeSprite 1 0>>
