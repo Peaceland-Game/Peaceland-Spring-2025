@@ -132,10 +132,8 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             if (!GM.allMuseumDialogueComplete)
             {
                 Debug.Log("Returning from memory, skipping to museum tree");
-                
-                currentMinigame = afterMemStart - 1;    // NextMinigame increments the count
                 NextOrder();
-                NextMinigame();
+                PlayMinigameAtIndex(afterMemStart);
                 DisableDemoEndButton();
             }
             else
@@ -285,8 +283,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
 
         else if (GM.CurrentScene.Equals("R+JIntro"))
         {
-            currentMinigame = 1;
-            minigames[currentMinigame].StartMinigame();
+            PlayMinigameAtIndex(1);
         }
 
         // If after the initial dialogue, jump into the memory sequence.

@@ -115,6 +115,15 @@ public abstract class GenericMemManager : MonoBehaviour
         // Otherwise, start the next minigame.
         minigames[currentMinigame].StartMinigame();
     }
+    /// <summary>
+    /// Go to a minigame at a given minigame index and play it
+    /// </summary>
+    /// <param name="index">Index of minigame to play</param>
+    public virtual void PlayMinigameAtIndex(int index)
+    {
+        currentMinigame = index - 1;
+        NextMinigame();
+    }
 
     /// <summary>
     /// Behavior to reset the memory sequence
