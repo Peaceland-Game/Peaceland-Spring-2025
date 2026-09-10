@@ -46,6 +46,10 @@ public class F26_Demo_WarRoom : GenericMemManager
     [SerializeField]
     private GameObject wallClickInstructions;
 
+    //Keeps track of whether or not the wall click instructions should be shown
+    //NOTE: This does not track whether or not they should be hidden due to dialog on screen
+    private bool showWallClickInstructions;
+
     //to keep track of current wall/view
     private bool onWideShot = true;
     private bool onLeftWall = false;
@@ -88,7 +92,7 @@ public class F26_Demo_WarRoom : GenericMemManager
         }
 
         //enable wall view exclusive buttons/ui elements
-        wallClickInstructions.SetActive(true);
+        showWallClickInstructions = true;
         EnableButton(returnToLobbyButton);
         returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
         ToggleButtonArray(true, clickableWalls);
@@ -126,6 +130,13 @@ public class F26_Demo_WarRoom : GenericMemManager
             {
                 DisableButton(returnToLobbyButton);
                 returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+            }
+
+            //Show wall click instructions when new to the room, when dialog is not running
+            wallClickInstructions.SetActive(showWallClickInstructions);
+            if (dialogueRunner.IsDialogueRunning)
+            {
+                wallClickInstructions.SetActive(false);
             }
 
             //Prevent walls from being clicked while dialog is on screen
@@ -272,6 +283,7 @@ public class F26_Demo_WarRoom : GenericMemManager
     /// </summary>
     public void LeftWallClicked()
     {
+        showWallClickInstructions = false;
         wallClickInstructions.SetActive(false);
         onWideShot = false;
         onLeftWall = true;
@@ -296,6 +308,7 @@ public class F26_Demo_WarRoom : GenericMemManager
     /// </summary>
     public void MiddleWallClicked()
     {
+        showWallClickInstructions = false;
         wallClickInstructions.SetActive(false);
         onWideShot = false;
         onLeftWall = false;
@@ -320,6 +333,7 @@ public class F26_Demo_WarRoom : GenericMemManager
     /// </summary>
     public void RightWallClicked()
     {
+        showWallClickInstructions = false;
         wallClickInstructions.SetActive(false);
         onWideShot = false;
         onLeftWall = false;
