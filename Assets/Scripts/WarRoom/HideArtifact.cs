@@ -46,7 +46,7 @@ public class HideArtifact : HoverButton
         artifactButton.interactable = false;
 
         //GameManager is a singleton
-        gm = GameManager.Instance; 
+        //gm = GameManager.Instance; 
     }
 
     // Update is called once per frame
@@ -63,28 +63,28 @@ public class HideArtifact : HoverButton
 
         // Check if the condition has been completed
         bool unlocked = false;
-        switch (unlockCondition)
-        {
-            case UnlockCondition.Placeholder:
-                unlocked = gm.placeholderCondition;
-                break;
-            case UnlockCondition.CompleteFlorist:
-                unlocked = GameManager.Instance.seenFloristMemory;
-                break;
-            case UnlockCondition.CompleteRJ:
-                unlocked = GameManager.Instance.seenRJMemory;
-                break;
-            case UnlockCondition.CompleteChild:
-                unlocked = GameManager.Instance.seenChildMemory;
-                break;
-            case UnlockCondition.CompleteVillain:
-                unlocked = GameManager.Instance.seenVillainMemory;
-                break;
-            case UnlockCondition.CompleteBoris:
-                unlocked = GameManager.Instance.seenBorisMemory;
-                break;
-        }
-        
+        //switch (unlockCondition)
+        //{
+        //    case UnlockCondition.Placeholder:
+        //        unlocked = gm.placeholderCondition;
+        //        break;
+        //    case UnlockCondition.CompleteFlorist:
+        //        unlocked = GameManager.Instance.seenFloristMemory;
+        //        break;
+        //    case UnlockCondition.CompleteRJ:
+        //        unlocked = GameManager.Instance.seenRJMemory;
+        //        break;
+        //    case UnlockCondition.CompleteChild:
+        //        unlocked = GameManager.Instance.seenChildMemory;
+        //        break;
+        //    case UnlockCondition.CompleteVillain:
+        //        unlocked = GameManager.Instance.seenVillainMemory;
+        //        break;
+        //    case UnlockCondition.CompleteBoris:
+        //        unlocked = GameManager.Instance.seenBorisMemory;
+        //        break;
+        //}
+
         // If the condition is not completed, hide the artifact
         if (!unlocked)
         {

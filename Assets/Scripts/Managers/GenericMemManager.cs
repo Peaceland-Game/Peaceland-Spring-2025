@@ -121,8 +121,8 @@ public abstract class GenericMemManager : MonoBehaviour
     /// <param name="index">Index of minigame to play</param>
     public virtual void PlayMinigameAtIndex(int index)
     {
-        currentMinigame = index - 1;
-        NextMinigame();
+        currentMinigame = index;
+        minigames[currentMinigame].StartMinigame();
     }
 
     /// <summary>

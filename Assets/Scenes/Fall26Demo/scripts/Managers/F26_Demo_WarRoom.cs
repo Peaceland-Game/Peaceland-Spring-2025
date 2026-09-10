@@ -54,11 +54,22 @@ public class F26_Demo_WarRoom : GenericMemManager
     private int currentWallIndex = 0;
 
     [SerializeField]
-    private bool mingming = false; //keep this off AT ALL TIMES 
+    private bool mingming = false; //keep this off AT ALL TIMES
+
+    //Required items to progress through the war room
+    public bool TFlagClicked { get; set; }
+    public bool EFlagClicked { get; set; }
+    public bool CFlagClicked { get; set; }
+
+    private bool allIntroItemsClicked = false;
 
     void Start()
     {
         GM = FindFirstObjectByType<F26_GameManager>();
+        if (GM.completedScenes["WarRoomIntro"])
+        {
+            allIntroItemsClicked = true;
+        }
 
         //dont mind this part 
         if (mingming)
@@ -105,14 +116,29 @@ public class F26_Demo_WarRoom : GenericMemManager
         if (onWideShot)
         {
             //enable wideshot exclusive elements
-            EnableButton(returnToLobbyButton);
+            if (allIntroItemsClicked)
+            {
+                EnableButton(returnToLobbyButton);
+                returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+            }
+            else
+            {
+                DisableButton(returnToLobbyButton);
+                returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+            }
             ToggleButtonArray(true, clickableWalls);
-            returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
 
             //disable wall view exclusive elements
             DisableButton(leftArrow);
             DisableButton(rightArrow);
             DisableButton(exitWallView); 
+
+            //play "I should return" dialogue if viewed all required items in the intro
+            if(!allIntroItemsClicked && TFlagClicked && EFlagClicked && CFlagClicked)
+            {
+                PlayMinigameAtIndex(1);
+                allIntroItemsClicked = true;
+            }
         }
         else
         {

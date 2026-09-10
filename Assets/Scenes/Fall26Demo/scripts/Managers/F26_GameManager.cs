@@ -93,7 +93,10 @@ public class F26_GameManager : MonoBehaviour
         {
             completedScenes.Add(sceneName, false);
         }
-        CurrentScene = "MuseumIntro";
+        if(currentScene == "")
+        {
+            CurrentScene = "MuseumIntro";
+        }
     }
 
     //initialize private instance
