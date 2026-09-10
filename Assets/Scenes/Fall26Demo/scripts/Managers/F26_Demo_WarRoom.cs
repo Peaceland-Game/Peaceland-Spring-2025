@@ -103,8 +103,9 @@ public class F26_Demo_WarRoom : GenericMemManager
         DisableButton(exitWallView);
 
         //Begin Dialog
-        if (GM.CurrentScene.Equals("WarRoomIntro"))
+        if (GM.CurrentScene.Equals("MuseumIntro"))
         {
+            GM.CurrentScene = "WarRoomIntro";
             NextMinigame();
             NextOrder();
         }
@@ -116,7 +117,7 @@ public class F26_Demo_WarRoom : GenericMemManager
         if (onWideShot)
         {
             //enable wideshot exclusive elements
-            if (allIntroItemsClicked)
+            if (allIntroItemsClicked && !dialogueRunner.IsDialogueRunning)
             {
                 EnableButton(returnToLobbyButton);
                 returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
@@ -126,7 +127,9 @@ public class F26_Demo_WarRoom : GenericMemManager
                 DisableButton(returnToLobbyButton);
                 returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
             }
-            ToggleButtonArray(true, clickableWalls);
+
+            //Prevent walls from being clicked while dialog is on screen
+            ToggleButtonArray(!dialogueRunner.IsDialogueRunning, clickableWalls);
 
             //disable wall view exclusive elements
             DisableButton(leftArrow);
@@ -256,7 +259,6 @@ public class F26_Demo_WarRoom : GenericMemManager
         if (!GM.completedScenes["WarRoomIntro"])
         {
             GM.completedScenes["WarRoomIntro"] = true;
-            GM.CurrentScene = "R+JIntro";
         }
         int museumSceneIndex = 8;
         LL.LoadLevelByBuildIndex(museumSceneIndex, true);

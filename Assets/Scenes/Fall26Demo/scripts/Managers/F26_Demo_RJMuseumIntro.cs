@@ -103,9 +103,9 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         MainCharPortrait.SetActive(false);
         SecondCharPortrait.SetActive(false);
 
-        //skip the intro if war room has been completed
-        if (GM.completedScenes["WarRoomIntro"])
-        {;
+        //skip to R+J if war room has been completed
+        if (GM.CurrentScene == "WarRoomIntro")
+        {
             newsPaper.enabled = false;
             currentMinigame = 0;
             StartCoroutine(MuseumTransition());
@@ -113,7 +113,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             DisableDemoEndButton();
             DisableContinueButton();
             NextOrder();
-            NextMinigame();
         }
 
         if (introSprawlDone && !GM.completedScenes["R+JMemory"])
@@ -281,14 +280,16 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             warRoomEntrance.interactable = true; 
         }
 
-        else if (GM.CurrentScene.Equals("R+JIntro"))
+        else if (GM.CurrentScene.Equals("WarRoomIntro"))
         {
+            GM.CurrentScene = "R+JIntro";
             PlayMinigameAtIndex(1);
         }
 
         // If after the initial dialogue, jump into the memory sequence.
         else if (currentMinigame == afterMemStart && !GM.completedScenes["R+JMemory"])
         {
+            Debug.Log("bruh");
             LL.LoadNextLevel();
         }
 
@@ -327,7 +328,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         if (!GM.completedScenes["MuseumIntro"])
         {
             GM.completedScenes["MuseumIntro"] = true;
-            GM.CurrentScene = "WarRoomIntro";
         }
         LL.LoadLevelByBuildIndex(WarRoomBuildIndex, true);
     }
