@@ -7,6 +7,8 @@ public class SneakPlayer : MonoBehaviour
     private float speed;                        // The player's base speed
     [SerializeField]
     private float speedScalar = 2.0f;           // The speed boost gained by sprinting
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;      // The SpriterRenderer for the player
     private bool isHiding = false;              // Checks if the player is currently pressing the HIDE button
     private bool isWithinHidingPlace = false;   // Checks if the player is in range of a hiding spot
     private bool isSprinting = false;           // Checks if the player is currently sprinting
@@ -139,5 +141,17 @@ public class SneakPlayer : MonoBehaviour
         isHiding = false;
         isWithinHidingPlace = false;
         isCaught = false;
+    }
+
+    /// <summary>
+    /// Moves the sprite between layers to put it under the shadows of hiding spots when hiding
+    /// </summary>
+    public void ChangeSpriteLayer(int newLayer)
+    {
+        if(spriteRenderer != null)
+        {
+            Debug.Log("Attempting to change layer.");
+            spriteRenderer.sortingOrder = newLayer;
+        }
     }
 }

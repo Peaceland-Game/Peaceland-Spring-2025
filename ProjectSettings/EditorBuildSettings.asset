@@ -53,6 +53,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Notebook/Scenes/NotebookTest_RandJItemCollect.unity
     guid: 0a72e1f14bc0d214bad1172f4da475f3
+  - enabled: 1
+    path: Assets/Scenes/R&JMemory/Test_Sneaking.unity
+    guid: 2884f037ef5aee14897318ee4508eb96
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: f0575c88935330e43a5e85ee93b729a5, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 81253cb86dd87734391587a09a6a872c, type: 3}

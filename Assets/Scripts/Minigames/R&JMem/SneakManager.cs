@@ -34,6 +34,10 @@ public class SneakManager : MinigameBehavior
     [SerializeField]
     private GameObject victoryScreen;   // UI for when the player has reached the goal
 
+    // Level Loader
+    protected LevelLoader LL;
+    public LevelLoader LevelLoader { get { return LL; } }
+
 
     /// <summary>
     /// Starts the minigame sequence.
@@ -62,6 +66,7 @@ public class SneakManager : MinigameBehavior
     {
         // TEST CODE! Likely not needed for final version.
         StartMinigame();
+        LL = FindFirstObjectByType<LevelLoader>();
     }
 
     // Update is called once per frame
@@ -89,7 +94,7 @@ public class SneakManager : MinigameBehavior
             if (currentSentrySpawner < sentrySpawners.Length &&
                 player.transform.position.x >= sentrySpawners[currentSentrySpawner].x)
             {
-                SpawnSentry(new Vector3(sentrySpawners[currentSentrySpawner].x + sentrySpawnOffset, 0, 0));
+                SpawnSentry(new Vector3(sentrySpawners[currentSentrySpawner].x + sentrySpawnOffset, 2.5f, 0));
                 currentSentrySpawner++;
             }
 
@@ -124,7 +129,7 @@ public class SneakManager : MinigameBehavior
     private void SpawnSentry(Vector3 spawnPos)
     {
         sentryList.Add(
-            Instantiate(sentryPrefab, spawnPos, new Quaternion())
+            Instantiate(sentryPrefab, spawnPos, Quaternion.AngleAxis(45f, Vector3.forward))
             );
     }
 
@@ -183,5 +188,10 @@ public class SneakManager : MinigameBehavior
         isRunning = false;
         sneakUI.SetActive(false);
         victoryScreen.SetActive(true);
+    }
+
+    public void loadNextLevel()
+    {
+        LL.LoadLevelByBuildIndex(2);
     }
 }

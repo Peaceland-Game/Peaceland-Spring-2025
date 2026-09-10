@@ -23,6 +23,6 @@ public class SneakSentry : MonoBehaviour
     public void Move()
     {
         // Speed is negative because sentries move right to left
-        gameObject.transform.Translate(-speed, 0, 0);
+        gameObject.transform.Translate(-speed, speed, 0);
     }
 }
