@@ -7,7 +7,7 @@ tags:
 <<declare $directorName = "Petar">>
 
 <<oneChar>>
-<<changeSprite 1 0>>
+<<changeSprite 1 4>>
 
 {$protagName} looks around the museum in awe.
 ->So this is the tree?

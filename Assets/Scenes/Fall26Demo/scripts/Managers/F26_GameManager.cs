@@ -88,15 +88,7 @@ public class F26_GameManager : MonoBehaviour
     }
     private void Start()
     {
-        completedScenes = new Dictionary<string, bool>();
-        foreach (string sceneName in SCENE_LIST_DEMO)
-        {
-            completedScenes.Add(sceneName, false);
-        }
-        if(currentScene == "")
-        {
-            CurrentScene = "MuseumIntro";
-        }
+        
     }
 
     //initialize private instance
@@ -133,6 +125,16 @@ public class F26_GameManager : MonoBehaviour
         _instance = this;
 
         playerInput = GetComponent<PlayerInput>();
+
+        completedScenes = new Dictionary<string, bool>();
+        foreach (string sceneName in SCENE_LIST_DEMO)
+        {
+            completedScenes.Add(sceneName, false);
+        }
+        if (currentScene == "")
+        {
+            CurrentScene = "MuseumIntro";
+        }
     }
 
     // Update is called once per frame

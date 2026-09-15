@@ -65,6 +65,9 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     public bool introSprawlDone;
     public bool marcStart;
 
+    //NPCs
+    [SerializeField]
+    private GameObject RJIntroPetarNPC;
 
     // Methods:
 
@@ -98,23 +101,14 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         treePlaque.enabled = false;
         museumWide.enabled = false;
         marcBack.enabled = false;
+        RJIntroPetarNPC.GetComponent<SpriteRenderer>().enabled = false;
+        RJIntroPetarNPC.SetActive(false);
 
         // Hide character portraits
         MainCharPortrait.SetActive(false);
         SecondCharPortrait.SetActive(false);
 
-        //skip to R+J if war room has been completed
-        if (GM.CurrentScene == "WarRoomIntro")
-        {
-            newsPaper.enabled = false;
-            currentMinigame = 0;
-            StartCoroutine(MuseumTransition());
-            StartDialogue();
-            DisableDemoEndButton();
-            DisableContinueButton();
-            NextOrder();
-        }
-
+        
         if (introSprawlDone && !GM.completedScenes["R+JMemory"])
         {
             newsPaper.enabled = false;
@@ -154,7 +148,9 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     // Update is called once per frame
     void Update()
     {
-        // Run coroutines if the memory hasn't been played yet
+        
+
+        // Run coroutines if the intro hasn't been played yet
         if (!GM.completedScenes["MuseumIntro"])
         {
             //if the news (first screen) hasn't been read yet
@@ -193,6 +189,24 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             //    StartDialogue();
             //}
         }
+        //Show Petar NPC when in the correct scene and when there isn't dialog
+        RJIntroPetarNPC.GetComponent<SpriteRenderer>().enabled = GM.CurrentScene == "R+JIntro" && !dialogueRunner.IsDialogueRunning;
+        RJIntroPetarNPC.SetActive(GM.CurrentScene == "R+JIntro" && !dialogueRunner.IsDialogueRunning);
+
+        //skip to R+J intro if war room has been completed
+        if (GM.CurrentScene == "WarRoomIntro")
+        {
+            GM.CurrentScene = "R+JIntro";
+            newsPaper.enabled = false;
+            currentMinigame = 1;
+            StartCoroutine(MuseumTransition());
+            DisableDemoEndButton();
+            DisableContinueButton();
+            startDialogueButton.interactable = false;
+            startDialogueButton.GetComponent<Image>().enabled = false;
+            NextOrder();
+        }
+
     }
 
     //helper function for disabling continue button
@@ -289,7 +303,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         // If after the initial dialogue, jump into the memory sequence.
         else if (currentMinigame == afterMemStart && !GM.completedScenes["R+JMemory"])
         {
-            Debug.Log("bruh");
             LL.LoadNextLevel();
         }
 
@@ -354,6 +367,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     // Transitions from outside the museum to the memory tree
     IEnumerator MuseumTransition()
     {
+        RJIntroPetarNPC.GetComponent<SpriteRenderer>().enabled = false;
         DisableContinueButton();
         DisableDemoEndButton();
         warRoomEntrance.interactable = false;

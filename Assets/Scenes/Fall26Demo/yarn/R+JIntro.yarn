@@ -1,4 +1,4 @@
-﻿title: RJIntro
+﻿title: RJIntroPetarStart
 // Corresponds to Scene 1 in the narrative script
 // Ruzica = char 1
 // Jovan = char 2
@@ -12,6 +12,18 @@
 <<declare $protagName = "Marc">>
 <<declare $lover1Name = "Jovan">>
 <<declare $lover2Name = "Ruzica">>
+
+<<oneChar>>
+<<changeSprite 1 4>>
+{$directorName}: Your first interview will be with a couple who lived through the war together. 
+{$directorName}: Their names are Ruzica and Jovan. They will tell you about their past, and you will be kind and polite to them. 
+{$directorName}: Am I understood?
+
+Marc nods and Petar walks away.
+<<zeroChar>>
+Marc sits down and looks at the memory tree as his mind starts to wonder.
+{$protagName}: (<i>It's going to be a while before I build my reputation back after the incident.</i>)
+{$protagName}: (<i>Will people </i>ever<i> look at me the same again?</i>)
 
 <<zeroChar>>
 Over the PA System: Good morning, the museum is now open. 
