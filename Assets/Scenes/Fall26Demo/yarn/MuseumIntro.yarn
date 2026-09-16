@@ -8,24 +8,37 @@ tags:
 
 <<oneChar>>
 <<changeSprite 1 4>>
+<<darken 1>>
 
 {$protagName} looks around the museum in awe.
 ->So this is the tree?
+    <<lighten 1>>
     {$directorName}: Congrats, you know what a tree is.
+    <<darken 1>>
 ->You must be the manager?
+    <<lighten 1>>
     {$directorName}: Yes, I am. You'd better show some respect.
+    <<darken 1>>
 -><i>Stay Silent</i>
+    <<lighten 1>>
     {$directorName}: Are you gonna speak up?
+    <<darken 1>>
 {$directorName} gives {$protagName} a look.
+<<lighten 1>>
 {$directorName}: Do you even know why you're here?
+<<darken 1>>
 {$directorName} points at {$protagName}'s hand.
+<<lighten 1>>
 {$directorName}: And do I even want to know what happened there?
+<<darken 1>>
 {$protagName}: Siblings.
 {$protagName} and {$directorName} stare at each other in awkward silence. {$protagName}, confused, clears his throat.
 ->I feel like I've done something wrong.
     {$directorName} glares at {$protagName}, but says nothing.
 ->So, where should I get started?
+<<lighten 1>>
 {$directorName}: Follow me to the <b>War Artifact</b> room.
+<<darken 1>>
 
 <<zeroChar>>
 <color=\#7F7F7F>You can move to another room by tapping/clicking on the entrance.</color>

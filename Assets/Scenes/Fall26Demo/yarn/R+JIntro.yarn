@@ -15,9 +15,11 @@
 
 <<oneChar>>
 <<changeSprite 1 4>>
+<<lighten 1>>
 {$directorName}: Your first interview will be with a couple who lived through the war together. 
 {$directorName}: Their names are Ruzica and Jovan. They will tell you about their past, and you will be kind and polite to them. 
 {$directorName}: Am I understood?
+<<darken 1>>
 
 Marc nods and Petar walks away.
 <<zeroChar>>

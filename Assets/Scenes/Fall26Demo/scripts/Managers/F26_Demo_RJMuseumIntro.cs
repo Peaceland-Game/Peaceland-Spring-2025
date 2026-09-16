@@ -82,7 +82,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
 
         if (GM.allMuseumDialogueComplete)
         {
-            currentMinigame = 2;
+            currentMinigame = 3;
         }
 
         Debug.Log("demo start");
@@ -122,12 +122,19 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         // Jump ahead on dialog if returning from the memory
         if (GM.completedScenes["R+JMemory"])
         {
-            if (!GM.allMuseumDialogueComplete)
+            if (GM.CurrentScene == "R+JMemory")
             {
                 Debug.Log("Returning from memory, skipping to museum tree");
-                NextOrder();
-                PlayMinigameAtIndex(afterMemStart);
+                textStarted = true;
+                newsPaper.enabled = false;
+                MainCharPortrait.SetActive(false);
+                SecondCharPortrait.SetActive(false);
+                DisableContinueButton();
                 DisableDemoEndButton();
+                goToTownSquareButton.interactable = false;
+                goToTownSquareButton.GetComponent<Image>().enabled = false;
+                NextOrder();
+                PlayMinigameAtIndex(2);
             }
             else
             {
@@ -173,14 +180,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             {
                 DisableContinueButton();
                 DisableDemoEndButton();
-            }
-
-            //enable goToTownSquareButton after all dialogue is complete
-            if (currentMinigame == 2 || GM.allMuseumDialogueComplete == true)
-            {
-                GM.allMuseumDialogueComplete = true;
-                goToTownSquareButton.interactable = true;
-                goToTownSquareButton.GetComponent<Image>().enabled = true;
             }
 
             // Once the intro is done, start the dialogue
@@ -268,8 +267,8 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     {
         if (GM.allMuseumDialogueComplete)
         {
-            currentMinigame = 2;
-            Debug.Log("All dialogue is complete. currentMinigame clamped to 2.");
+            currentMinigame = 3;
+            Debug.Log("All dialogue is complete. currentMinigame clamped to 3.");
             return;
         }
 
@@ -314,7 +313,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
 
         // If after the ending dialogue, enable the button that transitions to 
         // demo end screen and make warRoomEntrance interactable again
-        else if (currentMinigame == 2)
+        else if (currentMinigame == 3)
         {
             GM.allMuseumDialogueComplete = true;
             warRoomEntrance.interactable = true;

@@ -570,9 +570,11 @@ MonoBehaviour:
   minigames:
   - {fileID: 1151276897}
   - {fileID: 521999150}
+  - {fileID: 964700709}
   scenes:
   - {fileID: 11400000, guid: 927aa52cdaecdf649a7584a3b395dde6, type: 2}
   - {fileID: 11400000, guid: ea37a50265d616548bd6d3e2abc6a691, type: 2}
+  - {fileID: 11400000, guid: 927aa52cdaecdf649a7584a3b395dde6, type: 2}
   backgroundList: []
   backgroundSprite: {fileID: 0}
   objectImageList: []
@@ -909,7 +911,7 @@ GameObject:
   - component: {fileID: 964700708}
   - component: {fileID: 964700709}
   m_Layer: 0
-  m_Name: PresentEnd
+  m_Name: PostR+JMemory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -943,7 +945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 1791870416}
-  startNode: AfterMemory
+  startNode: PostRJMemory
 --- !u!1001 &1040188337
 PrefabInstance:
   m_ObjectHideFlags: 0
