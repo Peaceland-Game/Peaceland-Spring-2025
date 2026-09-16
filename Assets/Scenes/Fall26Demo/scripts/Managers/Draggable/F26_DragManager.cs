@@ -157,7 +157,7 @@ public class F26_DragManager : MonoBehaviour
         //Debug.Log("Touch input received with phase: " + context.phase);
 
         if (!isActiveAndEnabled) return;
-        if (GameManager.Instance.gameState == GameManager.GameState.Paused) return;
+        if (F26_GameManager.Instance.gameState == F26_GameManager.GameState.Paused) return;
 
         if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled)
         {
@@ -185,7 +185,7 @@ public class F26_DragManager : MonoBehaviour
             if (candidate is not null)
             {
                 currentF26_Draggable = candidate;
-                currentF26_Draggable.StartDrag(touch_wp, GameManager.Instance.difficulty);
+                currentF26_Draggable.StartDrag(touch_wp, F26_GameManager.Instance.difficulty);
             }
         }
     }

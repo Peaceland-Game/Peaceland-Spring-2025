@@ -147,7 +147,6 @@ public class F26_GameManager : MonoBehaviour
         if (debugSkipInputAction.WasPressedThisFrame())
         {
             DialogueRunner currentDR = FindFirstObjectByType<DialogueRunner>();
-            Debug.Log("DR running: " +  currentDR.IsDialogueRunning);
             if (currentDR.IsDialogueRunning)
             {
                 currentDR.Stop();
