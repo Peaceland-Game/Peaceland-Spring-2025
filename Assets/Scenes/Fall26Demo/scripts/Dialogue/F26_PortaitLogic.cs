@@ -123,7 +123,7 @@ public class F26_PortaitLogic : MonoBehaviour
     /// <summary>
     /// Makes no character show on screen
     /// </summary>
-    private void ZeroChar()
+    public void ZeroChar()
     {
         characterPortrait.SetActive(false);
         secondCharacterPortrait.SetActive(false);

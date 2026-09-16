@@ -70,7 +70,7 @@ public class F26_GameManager : MonoBehaviour
         set { currentScene = value; } 
     }
 
-    
+    private InputAction debugSkipInputAction;
 
     //create the private instance
     private static F26_GameManager _instance;
@@ -135,12 +135,29 @@ public class F26_GameManager : MonoBehaviour
         {
             CurrentScene = "MuseumIntro";
         }
+
+        debugSkipInputAction = InputSystem.actions.FindAction("DebugSkip");
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        //DEBUG TOOL: REMOVE IN FULL RELEASE
+        //Pressing "/" will automatically advance to the next minigame
+        if (debugSkipInputAction.WasPressedThisFrame())
+        {
+            DialogueRunner currentDR = FindFirstObjectByType<DialogueRunner>();
+            Debug.Log("DR running: " +  currentDR.IsDialogueRunning);
+            if (currentDR.IsDialogueRunning)
+            {
+                currentDR.Stop();
+            }
+            else
+            {
+                currentMemoryManager.NextMinigame();
+            }
+            FindFirstObjectByType<F26_PortaitLogic>().ZeroChar();
+        }
     }
 
     /// <summary>

@@ -1,0 +1,231 @@
+using System.Linq;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.UI;
+using static OrderObject;
+
+// Manages F26_Draggable Objects
+public class F26_DragManager : MonoBehaviour
+{
+    // NOTE: May need to create other functions to make this more "generic" for draggables in general.
+    // F26_Draggable.cs will require some changes, potentially making it a parent and creating subclasses of different types of draggables (inventory, other functionality)
+    // this includes DragTarget.cs as well.
+
+
+    /// <summary>
+    /// Firing event for when minigame is completed
+    /// </summary>
+    public event System.Action OnCompleted;
+
+
+    /// <summary>
+    /// a list of draggable objects that the player can drag
+    /// </summary>
+    [SerializeField]
+    public F26_Draggable[] draggables;
+
+    /// <summary>
+    /// Keeps track of the number of draggables, used for resetting and completion check
+    /// </summary>
+    private int numDraggables;
+
+    /// <summary>
+    /// a list of gameObjects the player must drag to, the targets
+    /// </summary>
+    private GameObject[] targets;
+
+    /// <summary>
+    /// Keeps track of the current object being dragged
+    /// </summary>
+    F26_Draggable currentF26_Draggable = null;
+
+    /// <summary>
+    /// Stores the number of completed drag operations.
+    /// </summary>
+    public int completedDragCount = 0;
+
+
+
+
+    /// <summary>
+    /// Created draggable and target of that draggable and sets their positions, rotations, and data
+    /// *** Can be used generically for any type of draggable and target data, as long as the draggable and target prefabs can handle that data type in their constructors. ***
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="_numDraggables">number of draggables</param>
+    /// <param name="draggablePrefab"></param>
+    /// <param name="targetPrefab"></param>
+    /// <param name="dragPositions"></param>
+    /// <param name="targetPositions"></param>
+    /// <param name="targetRotations"></param>
+    /// <param name="draggableData"></param>
+    /// <param name="sprites"></param>
+    public F26_Draggable[] CreateDragToTarget<T>(int _numDraggables, GameObject draggablePrefab, GameObject targetPrefab,
+        Vector3[] dragPositions, Vector3[] targetPositions, Vector3[] targetRotations, T[] draggableData, Sprite[] sprites)
+    {
+        numDraggables = _numDraggables;
+        draggables = new F26_Draggable[numDraggables];
+        targets = new GameObject[numDraggables];
+        for (int i = 0; i < numDraggables; i++)
+        {
+            // Instantiate the draggable and target prefabs to fill the arrays
+            // this is for draggables
+            GameObject dragObj = Instantiate(draggablePrefab);
+            draggables[i] = dragObj.GetComponent<F26_Draggable>();
+            dragObj.transform.parent = transform;
+
+            GameObject newTarget = Instantiate(targetPrefab);
+            targets[i] = newTarget;
+            newTarget.transform.parent = transform;
+        }
+
+        for (int i = 0; i < numDraggables; i++)
+        {
+            // Set the positions of the draggables and dragPositions
+            draggables[i].gameObject.transform.localPosition = dragPositions[i];
+            targets[i].transform.localPosition = targetPositions[i];
+            targets[i].transform.eulerAngles = targetRotations[i];
+            draggables[i].EnableDrag();
+
+            //run the constructor of each of the draggables and targets
+            draggables[i].Constructor(new GameObject[] { targets[i] }, draggableData[i], sprites[i]);
+            targets[i].GetComponent<DragTarget>().Constructor(draggableData[i], sprites[i]);
+        }
+
+        return draggables;
+
+    }
+
+    /// <summary>
+    /// Testing
+    /// </summary>
+    /// <param name="dragGameObject"></param>
+    public void CreateDrag(F26_Draggable[] dragGameObject)
+    {
+        numDraggables = dragGameObject.Length;
+
+        if (draggables.Length > 0)
+        {
+            draggables = draggables.Concat(dragGameObject).ToArray();
+        }
+
+        for (int i = 0; i < numDraggables; i++)
+        {
+            draggables[i].EnableDrag();
+
+        }
+    }
+
+    public void InstantiateDragObjects()
+    {
+        
+    }
+
+    ///tentative helpers:
+    ///disable gameObject of each draggable (used for letter puzzle minigame)
+    public void disableF26_DraggableObjs()
+    {
+        for (int i = 0; i < numDraggables; i++)
+        {
+            draggables[i].gameObject.SetActive(false);
+        }
+    }
+
+    public GameObject[] getF26_DraggableObjs()
+    {
+        GameObject[] objs = new GameObject[numDraggables];
+        ;
+        for (int i = 0; i < numDraggables; i++)
+        {
+            objs[i]=draggables[i].gameObject;
+        }
+
+        return objs;
+    }
+
+
+    /// <summary>
+    /// Handles touch input to start or end dragging of draggable objects based on the input action phase.
+    /// Auto calls.
+    /// </summary>
+    /// <param name="context">The input action callback context containing information about the touch event.</param>
+    public void OnTouch(InputAction.CallbackContext context)
+    {
+        // Debug log: very useful for testing what object is receiving the touch input and if it is active and enabled, as well as the phase of the touch input
+        //Debug.Log("Object: " + gameObject.name + " | enabled: " + enabled + " | active: " + gameObject.activeSelf);
+        //Debug.Log("Touch input received with phase: " + context.phase);
+
+        if (!isActiveAndEnabled) return;
+        if (GameManager.Instance.gameState == GameManager.GameState.Paused) return;
+
+        if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled)
+        {
+            if (currentF26_Draggable is not null)
+            {
+
+                //End the drag of the current draggable
+                currentF26_Draggable.EndDrag();
+            }
+        }
+        else if (context.phase == InputActionPhase.Started)
+        {
+
+            Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
+            int highestOrderInLayer = int.MinValue;
+            F26_Draggable candidate = null;
+            foreach (var draggable in draggables)
+            {
+                // Select the draggable in front
+                if (draggable.CanDrag(touch_wp) && draggable.GetComponent<SpriteRenderer>().sortingOrder > highestOrderInLayer)
+                {
+                    candidate = draggable;
+                }
+            }
+            if (candidate is not null)
+            {
+                currentF26_Draggable = candidate;
+                currentF26_Draggable.StartDrag(touch_wp, GameManager.Instance.difficulty);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Checks if the number of completed drags is equal to the number of draggables, if so, invokes the OnCompleted event and resets the completed drag count
+    /// </summary>
+    public void CompletionCheck()
+    {
+        if (completedDragCount >= draggables.Length)
+        {
+            //reset the number of completed drags and successfully drag to target num
+            completedDragCount = 0;
+
+            OnCompleted?.Invoke();
+
+        }
+
+
+    }
+
+    /// <summary>
+    /// Resets the current draggable and destroys all draggable and target objects.
+    /// </summary>
+    public void Reset()
+    {
+        // Reset the current draggable
+        currentF26_Draggable = null;
+
+
+
+        // Delete all draggable and target objects
+        for (int i = 0; i < numDraggables; i++)
+        {
+            Destroy(draggables[i].gameObject);
+            Destroy(targets[i]);
+        }
+
+
+    }
+}
+
+
