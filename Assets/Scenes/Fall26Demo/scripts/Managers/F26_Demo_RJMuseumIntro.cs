@@ -68,10 +68,12 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     //NPCs
     [SerializeField]
     private GameObject RJIntroPetarNPC;
+    [SerializeField]
+    private GameObject PostRJPetarNPC;
 
     //Tracks whether the NPC is in the scene
     private Dictionary<GameObject, bool> NPCInScene;
-    private bool showNPCs;
+    public bool showNPCs;
 
     // Methods:
 
@@ -109,7 +111,9 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         //NPCs
         NPCInScene = new Dictionary<GameObject, bool>();
         showNPCs = false;
+        //Add all the NPCs to the list
         NPCInScene.Add(RJIntroPetarNPC, false);
+        NPCInScene.Add(PostRJPetarNPC, false);
         foreach (GameObject go in NPCInScene.Keys)
         {
             go.SetActive(NPCInScene[go]);
@@ -160,6 +164,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
                 goToTownSquareButton.GetComponent<Image>().enabled = false;
                 NextOrder();
                 PlayMinigameAtIndex(2);
+                GM.CurrentScene = "PostR+JMemory";
             }
             else
             {
@@ -184,11 +189,15 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         //Set up NPCs before displaying them
         if (!showNPCs)
         {
+            Debug.Break();
             showNPCs = true;
             switch (GM.CurrentScene)
             {
                 case "R+JIntro":
                     NPCInScene[RJIntroPetarNPC] = true;
+                    break;
+                case "PostR+JMemory":
+                    NPCInScene[PostRJPetarNPC] = true;
                     break;
             }
         }
@@ -197,7 +206,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         {
             foreach (GameObject go in NPCInScene.Keys)
             {
-                go.SetActive(dialogueRunner.IsDialogueRunning ? false : NPCInScene[go]);
+                go.SetActive(NPCInScene[go] && !dialogueRunner.IsDialogueRunning);
             }
         }
 
@@ -206,6 +215,9 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         {
             case "RJIntroPetarStart":
                 NPCInScene[RJIntroPetarNPC] = false;
+                break;
+            case "PostRJPetarStart":
+                NPCInScene[PostRJPetarNPC] = false;
                 break;
         }
         #endregion

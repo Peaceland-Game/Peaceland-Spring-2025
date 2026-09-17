@@ -34,6 +34,18 @@
 {$lover1Name} and {$lover2Name} walk away, hand-in-hand.
 ===
 
+title: PostRJPetarStart
+---
+<<oneChar>>
+<<changeSprite 1 4>>
+<<lighten 1>>
+{$directorName}: How did the interview go? You didn't upset them, did you?
+-> Could've been better. Don't think I upset them, though.
+-> I think it went pretty well.
+-> Excellent!
+<<zeroChar>>
+===
+
 title: AfterMemory
 // Corresponds to scene 8 in the narrative script
 // Ruzica = char 1
