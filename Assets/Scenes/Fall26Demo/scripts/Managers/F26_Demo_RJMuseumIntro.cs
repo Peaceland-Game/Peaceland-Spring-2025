@@ -189,7 +189,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         //Set up NPCs before displaying them
         if (!showNPCs)
         {
-            Debug.Break();
             showNPCs = true;
             switch (GM.CurrentScene)
             {

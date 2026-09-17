@@ -52,6 +52,8 @@ public class F26_GameManager : MonoBehaviour
     public bool allMuseumDialogueComplete = false;
 
     //List of game scenes
+    //NOTE: this must be in chronological order in order for skipping to specific scenes to work properly
+    //as the list order is the order used to determine if the scene should have been completed already
     private readonly string[] SCENE_LIST_DEMO =
         {"MuseumIntro",
         "WarRoomIntro",
@@ -126,14 +128,30 @@ public class F26_GameManager : MonoBehaviour
 
         playerInput = GetComponent<PlayerInput>();
 
+        //Set up tracking for which scene we are one
         completedScenes = new Dictionary<string, bool>();
-        foreach (string sceneName in SCENE_LIST_DEMO)
-        {
-            completedScenes.Add(sceneName, false);
-        }
+        bool treatSceneAsCompleted = true;
         if (currentScene == "")
         {
-            CurrentScene = "MuseumIntro";
+            CurrentScene = SCENE_LIST_DEMO[0];
+        }
+        foreach (string sceneName in SCENE_LIST_DEMO)
+        {
+            //Because scenes are changed at the start of the next scene, the "current scene" should be completed
+            //The first scene is an exception to this
+            if (currentScene.Equals(SCENE_LIST_DEMO[0]))
+            {
+                completedScenes.Add(sceneName, false);
+            }
+            else
+            {
+                completedScenes.Add(sceneName, treatSceneAsCompleted);
+            }
+            if (currentScene == sceneName)
+            {
+                treatSceneAsCompleted = false;
+            }
+
         }
 
         debugSkipInputAction = InputSystem.actions.FindAction("DebugSkip");

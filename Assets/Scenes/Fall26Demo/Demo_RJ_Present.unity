@@ -634,6 +634,7 @@ MonoBehaviour:
   marcStart: 0
   RJIntroPetarNPC: {fileID: 1850545348}
   PostRJPetarNPC: {fileID: 1686900760}
+  showNPCs: 0
 --- !u!114 &583866551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4623,7 +4624,7 @@ MonoBehaviour:
   currentMemoryManager: {fileID: 583866550}
   difficulty: 0
   allMuseumDialogueComplete: 0
-  currentScene: 
+  currentScene: R+JMemory
 --- !u!224 &2035712160 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2600366535429458009, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
