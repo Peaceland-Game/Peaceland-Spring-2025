@@ -1536,7 +1536,7 @@ PrefabInstance:
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1699169288297209899}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1547,7 +1547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LetterPuzzleMinigame, Assembly-CSharp
+      value: F26_LetterPuzzleMinigame, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5933980654551463456, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

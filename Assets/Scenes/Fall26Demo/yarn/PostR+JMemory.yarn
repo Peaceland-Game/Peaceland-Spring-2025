@@ -28,8 +28,9 @@
 <<darken 2>>
 
 <<lighten 1>>
-{$lover1Name}: Bye, {$protagName}! I hope we were able to help with the tree.
+{$lover2Name}: Bye, {$protagName}! I hope we were able to help with the tree.
 <<darken 1>>
+<<zeroChar>>
 {$lover1Name} and {$lover2Name} walk away, hand-in-hand.
 ===
 
