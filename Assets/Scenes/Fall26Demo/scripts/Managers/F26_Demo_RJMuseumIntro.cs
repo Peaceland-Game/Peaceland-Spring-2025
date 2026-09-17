@@ -69,6 +69,10 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     [SerializeField]
     private GameObject RJIntroPetarNPC;
 
+    //Tracks whether the NPC is in the scene
+    private Dictionary<GameObject, bool> NPCInScene;
+    private bool showNPCs;
+
     // Methods:
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -101,8 +105,15 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         treePlaque.enabled = false;
         museumWide.enabled = false;
         marcBack.enabled = false;
-        RJIntroPetarNPC.GetComponent<SpriteRenderer>().enabled = false;
-        RJIntroPetarNPC.SetActive(false);
+
+        //NPCs
+        NPCInScene = new Dictionary<GameObject, bool>();
+        showNPCs = false;
+        NPCInScene.Add(RJIntroPetarNPC, false);
+        foreach (GameObject go in NPCInScene.Keys)
+        {
+            go.SetActive(NPCInScene[go]);
+        }
 
         // Hide character portraits
         MainCharPortrait.SetActive(false);
@@ -117,6 +128,20 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             DisableContinueButton();
             StartCoroutine(MuseumTransition());
             return;
+        }
+
+        //skip to R+J intro if war room has been completed
+        if (GM.CurrentScene == "WarRoomIntro")
+        {
+            GM.CurrentScene = "R+JIntro";
+            newsPaper.enabled = false;
+            currentMinigame = 1;
+            StartCoroutine(MuseumTransition());
+            DisableDemoEndButton();
+            DisableContinueButton();
+            startDialogueButton.interactable = false;
+            startDialogueButton.GetComponent<Image>().enabled = false;
+            NextOrder();
         }
 
         // Jump ahead on dialog if returning from the memory
@@ -155,7 +180,35 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     // Update is called once per frame
     void Update()
     {
-        
+        #region NPCs
+        //Set up NPCs before displaying them
+        if (!showNPCs)
+        {
+            showNPCs = true;
+            switch (GM.CurrentScene)
+            {
+                case "R+JIntro":
+                    NPCInScene[RJIntroPetarNPC] = true;
+                    break;
+            }
+        }
+        //If ready to show NPCs, display them (as long as dialogue isn't running)
+        else
+        {
+            foreach (GameObject go in NPCInScene.Keys)
+            {
+                go.SetActive(dialogueRunner.IsDialogueRunning ? false : NPCInScene[go]);
+            }
+        }
+
+        //Hide NPCs if their dialogue has been clicked on
+        switch (dialogueRunner.CurrentNodeName)
+        {
+            case "RJIntroPetarStart":
+                NPCInScene[RJIntroPetarNPC] = false;
+                break;
+        }
+        #endregion
 
         // Run coroutines if the intro hasn't been played yet
         if (!GM.completedScenes["MuseumIntro"])
@@ -188,24 +241,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             //    StartDialogue();
             //}
         }
-        //Show Petar NPC when in the correct scene and when there isn't dialog
-        RJIntroPetarNPC.GetComponent<SpriteRenderer>().enabled = GM.CurrentScene == "R+JIntro" && !dialogueRunner.IsDialogueRunning;
-        RJIntroPetarNPC.SetActive(GM.CurrentScene == "R+JIntro" && !dialogueRunner.IsDialogueRunning);
-
-        //skip to R+J intro if war room has been completed
-        if (GM.CurrentScene == "WarRoomIntro")
-        {
-            GM.CurrentScene = "R+JIntro";
-            newsPaper.enabled = false;
-            currentMinigame = 1;
-            StartCoroutine(MuseumTransition());
-            DisableDemoEndButton();
-            DisableContinueButton();
-            startDialogueButton.interactable = false;
-            startDialogueButton.GetComponent<Image>().enabled = false;
-            NextOrder();
-        }
-
     }
 
     //helper function for disabling continue button
@@ -366,7 +401,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     // Transitions from outside the museum to the memory tree
     IEnumerator MuseumTransition()
     {
-        RJIntroPetarNPC.GetComponent<SpriteRenderer>().enabled = false;
         DisableContinueButton();
         DisableDemoEndButton();
         warRoomEntrance.interactable = false;

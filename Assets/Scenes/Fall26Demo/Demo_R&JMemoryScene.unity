@@ -524,7 +524,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 726691799}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e4c03ef0a948c64bb91ee335762e0c7, type: 3}
+  m_Script: {fileID: 11500000, guid: dd55b53f54a915247ae9d6531fa5fd26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   transitionWaitTime: 2.5
