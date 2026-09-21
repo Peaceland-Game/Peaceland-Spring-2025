@@ -70,6 +70,8 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     private GameObject RJIntroPetarNPC;
     [SerializeField]
     private GameObject PostRJPetarNPC;
+    [SerializeField]
+    private GameObject PostMemRJNPC;
 
     //Tracks whether the NPC is in the scene
     private Dictionary<GameObject, bool> NPCInScene;
@@ -114,6 +116,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         //Add all the NPCs to the list
         NPCInScene.Add(RJIntroPetarNPC, false);
         NPCInScene.Add(PostRJPetarNPC, false);
+        NPCInScene.Add(PostMemRJNPC, false);
         foreach (GameObject go in NPCInScene.Keys)
         {
             go.SetActive(NPCInScene[go]);
@@ -197,6 +200,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
                     break;
                 case "PostR+JMemory":
                     NPCInScene[PostRJPetarNPC] = true;
+                    NPCInScene[PostMemRJNPC] = true;
                     break;
             }
         }
@@ -217,6 +221,9 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
                 break;
             case "PostRJPetarStart":
                 NPCInScene[PostRJPetarNPC] = false;
+                break;
+            case "PostMemRJStart":
+                NPCInScene[PostMemRJNPC] = false;
                 break;
         }
         #endregion
