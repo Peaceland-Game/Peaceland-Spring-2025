@@ -88,8 +88,12 @@ title: PostRJPetarStart
 <<lighten 1>>
 {$directorName}: How did the interview go? You didn't upset them, did you?
 -> Could've been better. Don't think I upset them, though.
+    {$protagName}: Could've been better. Don't think I upset them, though.
 -> I think it went pretty well.
+    {$protagName}: I think it went pretty well.
 -> Excellent!
+    {$protagName}: Excellent!
+{$directorName}: We'll see about that.
 <<zeroChar>>
 ===
 

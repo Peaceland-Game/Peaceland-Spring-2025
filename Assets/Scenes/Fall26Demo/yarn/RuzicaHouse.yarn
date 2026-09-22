@@ -93,7 +93,8 @@ They pause after hearing a voice from outside her door.
         {$lover2Name}: ...
 <<darken 1>>
 
-{$lover2Name}'s Mom:  I just wanted to make sure you were ok. Your father told me that there was a commotion in the street, and all the noise is making me nervous.
+{$lover2Name}'s Mom: I just wanted to make sure you were ok. 
+{$lover2Name}'s Mom: Your father told me that there was a commotion in the street, and all the noise is making me nervous.
 
 <<lighten 1>>
 {$lover2Name}: No, no. Everything is okay.
@@ -101,7 +102,8 @@ They pause after hearing a voice from outside her door.
 
 They both pause packing for a moment after hearing {$lover2Name}'s Mom walking toward her room. 
 
-{$lover2Name}'s Mom: (Begins to open the door) Are you sure?
+{$lover2Name}'s Mom begins to open the door.
+{$lover2Name}'s Mom: Are you sure?
 
 <<lighten 1>>
 {$lover2Name}: Yeah, yeah. I'm just getting ready for bed!
@@ -110,7 +112,7 @@ They both pause packing for a moment after hearing {$lover2Name}'s Mom walking t
 {$lover2Name}'s mom stops opening the door and walks away. 
 {$lover2Name} and {$lover1Name} look at each other. 
 
-<<wait 2>>
+<<wait 1.5>>
 <<changeSprite 1 2>>// Change Ruzica's Expression: Determined
 <<lighten 1>>   
 {$lover2Name}: <size=90%>We can't keep living like this.</size>
@@ -121,6 +123,8 @@ They both pause packing for a moment after hearing {$lover2Name}'s Mom walking t
 {$lover1Name}: <size=90%>OK. We need to be careful about not being seen. Somebody might try to stop us.</size>
 <<darken 2>>
 
+//Change Ruzica's Expression: Fear
+<<changeSprite 1 3>>
 <<lighten 1>>
 {$lover2Name}: <size=80%>Or worse...</size>
 <<darken 1>>

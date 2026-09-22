@@ -17,7 +17,7 @@
 <<changeSprite 1 4>>
 <<lighten 1>>
 {$directorName}: Your first interview will be with a couple who lived through the war together. 
-{$directorName}: Their names are Ruzica and Jovan. They will tell you about their past, and you will be kind and polite to them. 
+{$directorName}: Their names are {$lover2Name} and {$lover1Name}. They will tell you about their past, and you will be kind and polite to them. 
 {$directorName}: Am I understood?
 <<darken 1>>
 
@@ -35,7 +35,7 @@ Over the PA System: Explore the past, embrace the present.
 
 {$protagName}: (<i>Guess that's my cue.</i>)
 
-Unknown Voice: Hi, are you {$protagName}?
+???: Hi, are you {$protagName}?
 
 <<twoChar>>
 <<changeSprite 1 0>>
@@ -48,9 +48,7 @@ The man is gazing intently at the <b>Memory Tree</b>.
 
 {$protagName}: Yes, I am. {$lover2Name} and {$lover1Name}, I assume?
 
-<<lighten 1>>
 {$lover2Name} nods her head.
-<<darken 1>>
 
 {$protagName}: It's nice to meet you both. 
 
@@ -61,17 +59,17 @@ The man is gazing intently at the <b>Memory Tree</b>.
 -> {$protagName}: Yeah, it's still a work in progress.
     {$protagName}: Yeah, it's still a work in progress.
     <<lighten 2>>
-    The Man: I see. Well, I'm sure that the end result will look fantastic!
+    {$lover1Name}: I see. Well, I'm sure that the end result will look fantastic!
     <<darken 2>>
 -> {$protagName}: It's going to take a while.
     {$protagName}: It's going to take a while.
     <<lighten 2>>
-    The Man: Well, if it looks this great now, I'm sure that it can only get better!
+    {$lover1Name}: Well, if it looks this great now, I'm sure that it can only get better!
     <<darken 2>>
 -> {$protagName}: I don't think it's going to look much better.
     {$protagName}: I don't think it's going to look much better.
     <<lighten 2>>    // change Jovan's expression to frown
-    The Man: (Frowning) I see. Well, difference of opinion, I suppose.
+    {$lover1Name}: (Frowning) I see. Well, difference of opinion, I suppose.
     <<darken 2>>    
 
 // This line was added because otherwise Jovan's response hovered in the text box

@@ -259,6 +259,12 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             //    StartDialogue();
             //}
         }
+        //Display the town square button if able to go to the town square
+        if(currentMinigame >= 3)
+        {
+            goToTownSquareButton.interactable = !dialogueRunner.IsDialogueRunning;
+            goToTownSquareButton.GetComponent<Image>().enabled = !dialogueRunner.IsDialogueRunning;
+        }
     }
 
     //helper function for disabling continue button
@@ -370,8 +376,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         {
             GM.allMuseumDialogueComplete = true;
             warRoomEntrance.interactable = true;
-            goToTownSquareButton.interactable = true;
-            goToTownSquareButton.GetComponent<Image>().enabled = true;
+            warRoomEntrance.interactable = false;
         }
 
     }
