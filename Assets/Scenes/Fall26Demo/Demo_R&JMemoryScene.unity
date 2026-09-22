@@ -2199,7 +2199,7 @@ PrefabInstance:
     - target: {fileID: 8880641255474623990, guid: aeb492adda39ade44a72a56f6201bdfe, type: 3}
       propertyPath: yarnProject
       value: 
-      objectReference: {fileID: 7545569452688597077, guid: d549fbdf0daf4b944a9697dcc82965f0, type: 3}
+      objectReference: {fileID: 7545569452688597077, guid: 44bc534a9d28dad4ba33569f125476b0, type: 3}
     - target: {fileID: 8880641255474623990, guid: aeb492adda39ade44a72a56f6201bdfe, type: 3}
       propertyPath: 'dialogueViews.Array.data[2]'
       value: 

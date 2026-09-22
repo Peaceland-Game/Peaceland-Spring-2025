@@ -130,6 +130,7 @@ title: PostMemRJChildren
 {$lover1Name}: I'm a teacher. I had just started my career when the war started, and I had to leave those students behind when we left.
 <<darken 2>>
 -> I'm sure they were in good hands.
+    {$protagName}: I'm sure they were in good hands.
     <<lighten 1>>
     {$lover2Name}: In times of war, there's no guarantee.
     <<darken 1>>
@@ -137,11 +138,13 @@ title: PostMemRJChildren
     {$lover1Name}: Still, I like to hope.
     <<darken 2>>
     -> Hope is a good thing to have.
+        {$protagName}: Hope is a good thing to have.
         <<lighten 2>>
         {$lover1Name}: It's what keeps us going.
         <<darken 2>>
         <<jump PostMemRJEnd>>
     -> Have you checked in on them?
+        {$protagName}: Have you checked in on them?
         <<lighten 2>>
         {$lover1Name}: I've tried, but-
         <<darken 2>>
@@ -150,6 +153,7 @@ title: PostMemRJChildren
         <<darken 1>>
         <<jump PostMemRJEnd>>
 -> That must have been difficult on top of everything.
+    {$protagName}: That must have been difficult on top of everything.
     <<lighten 2>>
     {$lover1Name}: It really was.
     <<darken 2>>

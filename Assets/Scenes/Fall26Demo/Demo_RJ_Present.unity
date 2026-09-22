@@ -4780,7 +4780,7 @@ MonoBehaviour:
   currentMemoryManager: {fileID: 583866550}
   difficulty: 0
   allMuseumDialogueComplete: 0
-  currentScene: R+JMemory
+  currentScene: 
 --- !u!1 &2032065664
 GameObject:
   m_ObjectHideFlags: 0
