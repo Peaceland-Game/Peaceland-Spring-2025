@@ -6,9 +6,14 @@ using UnityEngine.EventSystems;
 
 namespace Peaceland.Notebook
 {
+    /// <summary>
+    /// Scene adapter: assign NotebookEntryDefinition assets here, then call Collect()
+    /// when the player finishes the interaction. This component does not decide minigame rules.
+    /// </summary>
     public class NotebookCollectTrigger : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private NotebookController notebookController;
+        [Tooltip("Entries unlocked when Collect() runs. Reference assets from Assets/Notebook/Data.")]
         [SerializeField] private List<NotebookEntryDefinition> entries = new List<NotebookEntryDefinition>();
         [SerializeField] private bool disableAfterCollect = true;
         [SerializeField] private bool collectOnPointerClick = true;
@@ -37,6 +42,10 @@ namespace Peaceland.Notebook
             UnregisterCollectableSource();
         }
 
+        /// <summary>
+        /// Unlocks every assigned entry that is not already collected, then saves.
+        /// Call this from a UnityEvent, drag-complete adapter, or other gameplay script.
+        /// </summary>
         public void Collect()
         {
             UnregisterCollectableSource();

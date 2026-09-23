@@ -5,12 +5,14 @@ namespace Peaceland
 {
     /// <summary>
     /// DontDestroyOnLoad host for unified save, stats, and progress.
+    /// Runs before scene Awake so Notebook/Save consumers never hit a missing instance.
     /// </summary>
+    [DefaultExecutionOrder(-10000)]
     public sealed class PeacelandGameBootstrap : MonoBehaviour
     {
         private static PeacelandGameBootstrap instance;
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void AutoCreateForPlayMode()
         {
             if (!Application.isPlaying)
@@ -32,6 +34,7 @@ namespace Peaceland
             if (existing != null)
             {
                 instance = existing;
+                existing.EnsureHostReady();
                 return;
             }
 
@@ -49,7 +52,12 @@ namespace Peaceland
 
             instance = this;
             DontDestroyOnLoad(gameObject);
+            EnsureHostReady();
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
 
+        private void EnsureHostReady()
+        {
             PeacelandSaveService saveService = GetComponent<PeacelandSaveService>();
             if (saveService == null)
             {
@@ -67,17 +75,17 @@ namespace Peaceland
             {
                 gameObject.AddComponent<PeacelandProgress>();
             }
-
-            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         private void OnDestroy()
         {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-            if (instance == this)
+            if (instance != this)
             {
-                instance = null;
+                return;
             }
+
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            instance = null;
         }
 
         private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -87,13 +95,48 @@ namespace Peaceland
                 return;
             }
 
-            PeacelandSceneCheckpointPolicy policy = FindFirstObjectByType<PeacelandSceneCheckpointPolicy>();
-            if (policy != null && !policy.RecordAsGameplayCheckpoint)
+            PeacelandSceneCheckpointPolicy policy = FindCheckpointPolicy(scene);
+            if (policy == null)
+            {
+                Debug.LogWarning(
+                    "[SaveLoad] Scene '" + scene.name
+                    + "' has no PeacelandSceneCheckpointPolicy. Checkpoint was not changed.");
+                return;
+            }
+
+            if (!policy.RecordAsGameplayCheckpoint)
             {
                 return;
             }
 
-            PeacelandProgress.Instance.SetCurrentSceneCheckpoint(scene.name);
+            if (!Application.CanStreamedLevelBeLoaded(scene.name))
+            {
+                Debug.LogError(
+                    "[SaveLoad] Scene '" + scene.name
+                    + "' is marked as a checkpoint but is not enabled in Build Settings.");
+                return;
+            }
+
+            PeacelandProgress.Instance.SetCurrentSceneCheckpoint(
+                scene.name,
+                policy.CheckpointKey,
+                policy.CheckpointDisplayName,
+                policy.ReplaceMatchingCheckpoint);
+        }
+
+        private static PeacelandSceneCheckpointPolicy FindCheckpointPolicy(Scene scene)
+        {
+            foreach (GameObject root in scene.GetRootGameObjects())
+            {
+                PeacelandSceneCheckpointPolicy policy =
+                    root.GetComponentInChildren<PeacelandSceneCheckpointPolicy>(true);
+                if (policy != null)
+                {
+                    return policy;
+                }
+            }
+
+            return null;
         }
     }
 }

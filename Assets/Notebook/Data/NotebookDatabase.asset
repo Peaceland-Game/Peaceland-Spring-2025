@@ -11,12 +11,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7218d23412fca8e4b993a04c6a19c40a, type: 3}
   m_Name: NotebookDatabase
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   entries:
   - {fileID: 11400000, guid: b99ed0e9cf890964bb7a0eea28d15c0b, type: 2}
   - {fileID: 11400000, guid: 8e9b85fd952f6c044970d9a0e1ff8188, type: 2}
   - {fileID: 11400000, guid: 7582c17dab18f784ba94c8eddaae12bd, type: 2}
   - {fileID: 11400000, guid: c7a04fe65851e0e4a8419eb3ac63002a, type: 2}
+  - {fileID: 11400000, guid: a480cb29265d1524cb15e3adeed88572, type: 2}
+  - {fileID: 11400000, guid: 58b9e24a845aa8f428c89bd6ced7b014, type: 2}
+  - {fileID: 11400000, guid: 083e4408fddb74042a00a93244e2e017, type: 2}
+  - {fileID: 11400000, guid: fd25abb00848c9745a0c658dec59cc90, type: 2}
+  - {fileID: 11400000, guid: 0328acc8eebd04840af521b604226cb9, type: 2}
   - {fileID: 11400000, guid: 6df8f98dd84568142b77c49188bfb425, type: 2}
   - {fileID: 11400000, guid: 1fd5edd6caf05df4dbd5fef4c26b0a13, type: 2}
   - {fileID: 11400000, guid: 997f0af213f806f4b8974b897145bc3f, type: 2}

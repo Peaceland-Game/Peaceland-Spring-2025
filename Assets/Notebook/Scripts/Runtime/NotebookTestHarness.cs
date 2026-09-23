@@ -1,182 +1,188 @@
+using System;
 using System.Linq;
 using Peaceland;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Peaceland.Notebook
 {
     /// <summary>
-    /// Runtime-only test tools panel. Attach to test bootstrap — not part of the shipped NotebookOpen prefab.
+    /// Behaviour for the prefab-authored Notebook test controls.
+    /// It binds actions only; it never creates UI at runtime.
     /// </summary>
-    public class NotebookTestHarness : MonoBehaviour
+    [DisallowMultipleComponent]
+    public sealed class NotebookTestHarness : MonoBehaviour
     {
+        [Serializable]
+        public struct SceneButtonLink
+        {
+            public Button button;
+            public string sceneName;
+        }
+
+        [Header("Notebook")]
         [SerializeField] private NotebookController notebookController;
         [SerializeField] private NotebookUIShellReferences shell;
         [SerializeField] private NotebookDatabase database;
         [SerializeField] private NotebookContentCatalog contentCatalog;
-        [SerializeField] private bool includeClearSave = true;
 
-        private GameObject harnessRoot;
-        private TMP_Text statusText;
+        [Header("Prefab UI")]
+        [SerializeField] private Button toggleButton;
+        [SerializeField] private TMP_Text toggleLabel;
+        [SerializeField] private GameObject panel;
+        [SerializeField] private TMP_Text statusText;
+        [SerializeField] private Button runContentCheckButton;
+        [SerializeField] private Button collectAllButton;
+        [SerializeField] private Button kindnessPlusButton;
+        [SerializeField] private Button kindnessMinusButton;
+        [SerializeField] private Button saveButton;
+        [SerializeField] private Button loadButton;
+        [SerializeField] private Button toggleFlagButton;
+        [SerializeField] private Button logStatsButton;
+        [SerializeField] private Button clearNotebookButton;
+        [SerializeField] private SceneButtonLink[] sceneButtons = Array.Empty<SceneButtonLink>();
+
+        private bool listenersBound;
 
         private void Awake()
         {
-            if (shell == null)
-            {
-                shell = NotebookSceneLookup.FindShell();
-            }
+            ResolveNotebookReferences();
+            RebindListeners();
+            RefreshHarnessStatus();
+        }
 
-            if (notebookController == null)
-            {
-                notebookController = FindFirstObjectByType<NotebookController>();
-            }
-
-            if (database == null && notebookController != null)
-            {
-                database = notebookController.Database;
-            }
-
-            if (contentCatalog == null)
-            {
-                contentCatalog = Resources.Load<NotebookContentCatalog>("NotebookContentCatalog");
-            }
-
-            BuildHarness();
+        private void OnEnable()
+        {
+            ResolveNotebookReferences();
+            RebindListeners();
         }
 
         private void OnDestroy()
         {
-            if (harnessRoot != null)
-            {
-                Destroy(harnessRoot);
-            }
+            UnbindListeners();
         }
 
-        private void BuildHarness()
+        public void Configure(NotebookController controller, NotebookUIShellReferences shellReferences)
         {
-            Transform anchor = shell != null ? shell.TestToolsAnchor : null;
-            if (anchor == null)
+            notebookController = controller;
+            shell = shellReferences;
+            database = notebookController != null ? notebookController.Database : database;
+            RebindListeners();
+            RefreshHarnessStatus();
+        }
+
+        private void RebindListeners()
+        {
+            UnbindListeners();
+            BindListeners();
+        }
+
+        private void ResolveNotebookReferences()
+        {
+            shell ??= NotebookSceneLookup.FindShell();
+            notebookController ??= FindFirstObjectByType<NotebookController>(FindObjectsInactive.Include);
+            database ??= notebookController != null ? notebookController.Database : null;
+            contentCatalog ??= Resources.Load<NotebookContentCatalog>("NotebookContentCatalog");
+        }
+
+        private void BindListeners()
+        {
+            if (listenersBound)
             {
                 return;
             }
 
-            harnessRoot = new GameObject("Test Tools (Runtime)", typeof(RectTransform));
-            harnessRoot.transform.SetParent(anchor, false);
-            RectTransform rootRect = harnessRoot.GetComponent<RectTransform>();
-            rootRect.anchorMin = new Vector2(0f, 0f);
-            rootRect.anchorMax = new Vector2(1f, 0f);
-            rootRect.pivot = new Vector2(0.5f, 0f);
-            rootRect.anchoredPosition = Vector2.zero;
-            rootRect.sizeDelta = new Vector2(0f, 36f);
+            Bind(toggleButton, TogglePanel);
+            Bind(runContentCheckButton, RunContentCheck);
+            Bind(collectAllButton, CollectAllGameplay);
+            Bind(kindnessPlusButton, AddKindness);
+            Bind(kindnessMinusButton, RemoveKindness);
+            Bind(saveButton, SaveGame);
+            Bind(loadButton, LoadGame);
+            Bind(toggleFlagButton, ToggleTestProgressFlag);
+            Bind(logStatsButton, LogAllStats);
+            Bind(clearNotebookButton, ClearNotebookSave);
 
-            GameObject toggleObject = new GameObject("Toggle", typeof(RectTransform), typeof(Image), typeof(Button));
-            toggleObject.transform.SetParent(harnessRoot.transform, false);
-            RectTransform toggleRect = toggleObject.GetComponent<RectTransform>();
-            toggleRect.anchorMin = new Vector2(0f, 0f);
-            toggleRect.anchorMax = new Vector2(1f, 1f);
-            toggleRect.offsetMin = Vector2.zero;
-            toggleRect.offsetMax = Vector2.zero;
-            toggleObject.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.04f);
-
-            GameObject labelObject = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
-            labelObject.transform.SetParent(toggleObject.transform, false);
-            TMP_Text label = labelObject.GetComponent<TextMeshProUGUI>();
-            label.text = "▸ Content harness";
-            label.fontSize = 14f;
-            label.alignment = TextAlignmentOptions.Left;
-            label.color = new Color(0.19f, 0.15f, 0.11f, 0.55f);
-            RectTransform labelRect = label.rectTransform;
-            labelRect.anchorMin = Vector2.zero;
-            labelRect.anchorMax = Vector2.one;
-            labelRect.offsetMin = new Vector2(4f, 0f);
-            labelRect.offsetMax = new Vector2(-4f, 0f);
-
-            GameObject panelObject = new GameObject("Panel", typeof(RectTransform), typeof(VerticalLayoutGroup), typeof(ContentSizeFitter));
-            panelObject.transform.SetParent(harnessRoot.transform, false);
-            panelObject.SetActive(false);
-            RectTransform panelRect = panelObject.GetComponent<RectTransform>();
-            panelRect.anchorMin = new Vector2(0f, 1f);
-            panelRect.anchorMax = new Vector2(1f, 1f);
-            panelRect.pivot = new Vector2(0.5f, 0f);
-            panelRect.anchoredPosition = new Vector2(0f, 4f);
-
-            VerticalLayoutGroup layout = panelObject.GetComponent<VerticalLayoutGroup>();
-            layout.spacing = 6f;
-            layout.childControlHeight = true;
-            layout.childControlWidth = true;
-            layout.childForceExpandHeight = false;
-            layout.childForceExpandWidth = true;
-            ContentSizeFitter fitter = panelObject.GetComponent<ContentSizeFitter>();
-            fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
-
-            Button toggle = toggleObject.GetComponent<Button>();
-            toggle.onClick.AddListener(() =>
+            for (int i = 0; i < sceneButtons.Length; i++)
             {
-                bool next = !panelObject.activeSelf;
-                panelObject.SetActive(next);
-                label.text = next ? "▾ Content harness" : "▸ Content harness";
-            });
-
-            GameObject statusObject = new GameObject("Status", typeof(RectTransform), typeof(TextMeshProUGUI));
-            statusObject.transform.SetParent(panelObject.transform, false);
-            statusText = statusObject.GetComponent<TextMeshProUGUI>();
-            statusText.fontSize = 13f;
-            statusText.alignment = TextAlignmentOptions.Left;
-            statusText.color = new Color(0.25f, 0.2f, 0.14f, 0.85f);
-            statusText.textWrappingMode = TextWrappingModes.Normal;
-            LayoutElement statusLayout = statusObject.AddComponent<LayoutElement>();
-            statusLayout.preferredHeight = 48f;
-            RefreshHarnessStatus();
-
-            CreateHarnessButton(panelObject.transform, "Run content check", RunContentCheck);
-            CreateHarnessButton(panelObject.transform, "Collect all gameplay (catalog)", CollectAllGameplay);
-
-            CreateHarnessButton(panelObject.transform, "Kindness +1 (K/C)", () => AdjustKindness(1));
-            CreateHarnessButton(panelObject.transform, "Kindness -1", () => AdjustKindness(-1));
-            CreateHarnessButton(panelObject.transform, "Save game", () =>
-            {
-                PeacelandSaveService.Instance.Save();
-                RefreshHarnessStatus();
-            });
-            CreateHarnessButton(panelObject.transform, "Load game", () =>
-            {
-                PeacelandSaveService.Instance.Load();
-                RefreshHarnessStatus();
-            });
-            CreateHarnessButton(panelObject.transform, "Toggle test_flag progress", ToggleTestProgressFlag);
-            CreateHarnessButton(panelObject.transform, "Log all stats", LogAllStats);
-            if (includeClearSave && notebookController != null)
-            {
-                CreateHarnessButton(panelObject.transform, "Clear notebook save", () =>
+                SceneButtonLink link = sceneButtons[i];
+                if (link.button == null || string.IsNullOrWhiteSpace(link.sceneName))
                 {
-                    notebookController.ClearSavedStateForDebug();
-                    RefreshHarnessStatus();
-                });
+                    continue;
+                }
+
+                string targetScene = link.sceneName;
+                link.button.onClick.AddListener(() => SceneManager.LoadScene(targetScene));
             }
 
-            CreateSceneJumpButtons(panelObject.transform);
+            listenersBound = true;
+        }
+
+        private void UnbindListeners()
+        {
+            if (!listenersBound)
+            {
+                return;
+            }
+
+            Unbind(toggleButton, TogglePanel);
+            Unbind(runContentCheckButton, RunContentCheck);
+            Unbind(collectAllButton, CollectAllGameplay);
+            Unbind(kindnessPlusButton, AddKindness);
+            Unbind(kindnessMinusButton, RemoveKindness);
+            Unbind(saveButton, SaveGame);
+            Unbind(loadButton, LoadGame);
+            Unbind(toggleFlagButton, ToggleTestProgressFlag);
+            Unbind(logStatsButton, LogAllStats);
+            Unbind(clearNotebookButton, ClearNotebookSave);
+
+            for (int i = 0; i < sceneButtons.Length; i++)
+            {
+                sceneButtons[i].button?.onClick.RemoveAllListeners();
+            }
+
+            listenersBound = false;
+        }
+
+        private void TogglePanel()
+        {
+            if (panel == null)
+            {
+                return;
+            }
+
+            bool showPanel = !panel.activeSelf;
+            if (showPanel && notebookController != null)
+            {
+                notebookController.CloseNotebook();
+            }
+
+            panel.SetActive(showPanel);
+            if (toggleLabel != null)
+            {
+                toggleLabel.text = panel.activeSelf ? "Hide notebook test tools" : "Show notebook test tools";
+            }
         }
 
         private void RunContentCheck()
         {
             if (database == null || contentCatalog == null)
             {
-                SetStatus("Missing database or content catalog. Run Peaceland → Notebook → Harness → Create Or Refresh Content Catalog.");
+                SetStatus("Missing NotebookDatabase or NotebookContentCatalog.");
                 return;
             }
 
             NotebookHarnessReport report = NotebookHarnessValidator.Validate(database, contentCatalog);
             SetStatus(report.Passed
-                ? "Content check PASS (" + report.WarningCount + " warnings)."
-                : "Content check FAIL: " + report.ErrorCount + " errors. See Console.");
-            for (int i = 0; i < report.Issues.Count; i++)
+                ? $"Content check PASS ({report.WarningCount} warnings)."
+                : $"Content check FAIL: {report.ErrorCount} errors. See Console.");
+
+            foreach (NotebookHarnessIssue issue in report.Issues.Where(item =>
+                         item.severity == NotebookHarnessSeverity.Error))
             {
-                NotebookHarnessIssue issue = report.Issues[i];
-                if (issue.severity == NotebookHarnessSeverity.Error)
-                {
-                    Debug.LogError("[NotebookHarness] " + issue.code + ": " + issue.message + " " + issue.entryId);
-                }
+                Debug.LogError($"[NotebookHarness] {issue.code}: {issue.message} {issue.entryId}");
             }
         }
 
@@ -184,13 +190,44 @@ namespace Peaceland.Notebook
         {
             if (contentCatalog == null)
             {
-                SetStatus("Content catalog missing.");
+                SetStatus("NotebookContentCatalog is missing.");
                 return;
             }
 
             NotebookHarnessValidator.CollectAllGameplayEntries(contentCatalog);
             RefreshHarnessStatus();
-            SetStatus("Collected all catalog gameplay entries.");
+        }
+
+        private void AddKindness()
+        {
+            AdjustKindness(1);
+        }
+
+        private void RemoveKindness()
+        {
+            AdjustKindness(-1);
+        }
+
+        private void AdjustKindness(int delta)
+        {
+            PeacelandStatManager.Instance.AddDelta(PeacelandStatId.KindnessCruelty, delta);
+            RefreshHarnessStatus();
+        }
+
+        private void SaveGame()
+        {
+            PeacelandGameBootstrap.EnsureExists();
+            PeacelandSaveService.Instance.EnsureActiveSlotBound(preferExistingSlotZero: true);
+            PeacelandSaveService.Instance.Save();
+            RefreshHarnessStatus();
+        }
+
+        private void LoadGame()
+        {
+            PeacelandGameBootstrap.EnsureExists();
+            PeacelandSaveService.Instance.EnsureActiveSlotBound(preferExistingSlotZero: true);
+            PeacelandSaveService.Instance.Load();
+            RefreshHarnessStatus();
         }
 
         private void ToggleTestProgressFlag()
@@ -198,7 +235,6 @@ namespace Peaceland.Notebook
             bool next = !PeacelandProgress.Instance.HasFlag("test_flag");
             PeacelandProgress.Instance.SetFlag("test_flag", next);
             RefreshHarnessStatus();
-            SetStatus("test_flag = " + next);
         }
 
         private static void LogAllStats()
@@ -207,11 +243,10 @@ namespace Peaceland.Notebook
                 + " | test_flag=" + PeacelandProgress.Instance.HasFlag("test_flag"));
         }
 
-        private void AdjustKindness(int delta)
+        private void ClearNotebookSave()
         {
-            PeacelandStatManager.Instance.AddDelta(PeacelandStatId.KindnessCruelty, delta);
+            notebookController?.ClearSavedStateForDebug();
             RefreshHarnessStatus();
-            SetStatus("Kindness/Cruelty = " + PeacelandStatManager.Instance.Get(PeacelandStatId.KindnessCruelty));
         }
 
         private void RefreshHarnessStatus()
@@ -226,7 +261,7 @@ namespace Peaceland.Notebook
             string stats = PeacelandStatManager.Instance != null
                 ? PeacelandStatManager.Instance.FormatAllStats()
                 : "stats n/a";
-            statusText.text = "Save: " + saved + " notebook | gameplay specs: " + gameplay + " | " + stats;
+            statusText.text = $"Save: {saved} notebook | gameplay specs: {gameplay} | {stats}";
         }
 
         private void SetStatus(string message)
@@ -237,54 +272,14 @@ namespace Peaceland.Notebook
             }
         }
 
-        private void CreateSceneJumpButtons(Transform parent)
+        private static void Bind(Button button, UnityEngine.Events.UnityAction action)
         {
-            string[] labels =
-            {
-                "Notebook Home",
-                "Florist Minigame",
-                "Florist Collect",
-                "R&J Collect",
-                "Intro Newspaper",
-            };
-
-            string[] sceneNames =
-            {
-                "NoteBookTesting",
-                "NotebookTest_FloristMinigame",
-                "NotebookTest_FloristItemCollect",
-                "NotebookTest_RandJItemCollect",
-                "NotebookTest_IntroNewspaper",
-            };
-
-            for (int i = 0; i < labels.Length; i++)
-            {
-                string sceneName = sceneNames[i];
-                CreateHarnessButton(parent, labels[i], () => UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName));
-            }
+            button?.onClick.AddListener(action);
         }
 
-        private static void CreateHarnessButton(Transform parent, string text, UnityEngine.Events.UnityAction onClick)
+        private static void Unbind(Button button, UnityEngine.Events.UnityAction action)
         {
-            GameObject buttonObject = new GameObject(text, typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
-            buttonObject.transform.SetParent(parent, false);
-            buttonObject.GetComponent<Image>().color = new Color(0.42f, 0.31f, 0.21f, 0.9f);
-            buttonObject.GetComponent<LayoutElement>().preferredHeight = 32f;
-            Button button = buttonObject.GetComponent<Button>();
-            button.onClick.AddListener(onClick);
-
-            GameObject labelObject = new GameObject("Label", typeof(RectTransform), typeof(TextMeshProUGUI));
-            labelObject.transform.SetParent(buttonObject.transform, false);
-            TMP_Text label = labelObject.GetComponent<TextMeshProUGUI>();
-            label.text = text;
-            label.fontSize = 14f;
-            label.alignment = TextAlignmentOptions.Center;
-            label.color = Color.white;
-            RectTransform labelRect = label.rectTransform;
-            labelRect.anchorMin = Vector2.zero;
-            labelRect.anchorMax = Vector2.one;
-            labelRect.offsetMin = new Vector2(8f, 2f);
-            labelRect.offsetMax = new Vector2(-8f, -2f);
+            button?.onClick.RemoveListener(action);
         }
     }
 }

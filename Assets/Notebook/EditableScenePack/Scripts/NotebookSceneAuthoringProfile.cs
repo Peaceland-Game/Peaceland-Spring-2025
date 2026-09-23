@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Peaceland.Notebook.EditableScenePack
 {
@@ -30,6 +31,42 @@ namespace Peaceland.Notebook.EditableScenePack
         public static NotebookSceneAuthoringProfile FindInScene()
         {
             return FindFirstObjectByType<NotebookSceneAuthoringProfile>();
+        }
+
+        private void Start()
+        {
+            if (!Application.isPlaying || !collectDummyEntriesOnPlay)
+            {
+                return;
+            }
+
+            if (SceneManager.GetActiveScene().name != "NoteBookTesting")
+            {
+                return;
+            }
+
+            NotebookController controller = FindFirstObjectByType<NotebookController>(FindObjectsInactive.Include);
+            if (controller == null || controller.Database == null)
+            {
+                return;
+            }
+
+            List<string> dummyIds = new List<string>(20);
+            for (int i = 1; i <= 20; i++)
+            {
+                string entryId = "NotebookEntry_DummyPage_" + i.ToString("00");
+                if (controller.Database.GetEntry(entryId) != null)
+                {
+                    dummyIds.Add(entryId);
+                }
+            }
+
+            if (dummyIds.Count == 0)
+            {
+                return;
+            }
+
+            controller.CollectEntriesByIds(dummyIds);
         }
     }
 }

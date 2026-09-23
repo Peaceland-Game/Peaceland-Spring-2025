@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0033fb1c07e24fc4b9f75a2f53646098, type: 3}
+  m_Name: NotebookEntry_WarRoomMedalCleoni
+  m_EditorClassIdentifier: 
+  entryId: present.warroom.medal.cleoni
+  section: 1
+  groupId: 
+  groupDisplayName: 
+  groupSortOrder: 0
+  subgroupId: 
+  subgroupDisplayName: 
+  subgroupSortOrder: 0
+  categoryId: war-room-artifacts
+  categoryDisplayName: War Room Artifacts
+  categorySortOrder: 0
+  title: Cleoni Medal
+  bodyText: A medal attributed to Cleoni, displayed among the War Room artifacts.
+  image: {fileID: 0}
+  theoreticalOrder: 0
+  layoutHeight: 220
+  sortOrder: 30
+  requiresRecordChoice: 0
+  recordChoicePrompt: How do you want to record this?
+  recordChoices: []
