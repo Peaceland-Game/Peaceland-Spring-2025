@@ -1,0 +1,194 @@
+﻿title: TownSquareIntro
+---
+<<declare $bakerName = "Dalila">>
+<<declare $officerName= "Branko">>
+<<declare $collegeFriendName= "Katarina">>
+
+<<zeroChar>>
+{$protagName}: (<i>Well, looks like I have the rest of the afternoon to myself.</i>)
+{$protagName}: (<i>I should grab something to eat.</i>)
+
+//go to outside of bakery
+<<changeBG 1>>
+
+{$protagName} walks into {$bakerName}'s Bakery
+
+//go in to bakery
+<<changeBG 2>>
+
+//Put Dalila in the person 2 slot (it lines up better with the layout of the bakery)
+<<twoChar>>
+<<changeSprite 1 0>>
+<<changeSprite 2 0>>
+
+<<lighten 2>>
+{$bakerName}: Hey, {$protagName}! You look sharp today.
+{$bakerName}: I saw your parents the other day. They mentioned that you're starting a new job?
+<<darken 2>>
+
+{$protagName}: I am. Today was my first shift at the new museum, so I figured that I'd look presentable, despite how my morning went.
+
+{$protagName} shows {$bakerName} the bandage on his hand.
+
+<<lighten 2>>
+{$bakerName}: Oh my! Let me guess, it was Art, wasn't it?
+<<darken 2>>
+
+{$protagName}: Yeah, he tried to make me breakfast. You know how he is, left the kettle on.
+
+<<lighten 2>>
+{$bakerName}: Well, I can at least give you a doughnut for your troubles.
+{$bakerName}: Don't worry, it's on the house!
+<<darken 2>>
+
+{$bakerName} grabs a doughnut from the display case and hands it to {$protagName}.  
+
+{$protagName}: Really? Thanks a lot!
+
+<<lighten 2>>
+{$bakerName}: You're welcome!
+<<darken 2>>
+
+{$protagName}: Anyways, I should be going now. It was nice talking to you, {$bakerName}!
+
+<<lighten 2>>
+{$bakerName}: Make sure you get home safe and tell your parents I said hi!
+<<darken 2>>
+
+{$protagName}: Don’t worry, I will!
+
+<<zeroChar>>
+<<changeBG 0>>
+
+{$protagName} walks out of the bakery and starts heading home.
+While enjoying his doughnut, he sees a crowd of people gathered.
+The crowd consists of two school sports teams, and they begin to argue and push each other around.
+
+//Display Branko
+<<oneChar>>
+<<changeSprite 1 1>>
+Officer {$officerName} waves to {$protagName} and walks over to him.
+
+<<lighten 1>>
+{$officerName}: Hey, {$protagName}! How was your first day at the museum?
+<<darken 1>>
+-> Pretty interesting, but I don't think {$directorName} likes me much.
+    {$protagName}: Pretty interesting, but I don't think {$directorName} likes me much.
+-> It wasn't bad, and I had some interesting conversations.
+    {$protagName}: It wasn't bad, and I had some interesting conversations.
+    {$protagName}: You know {$directorName}, right?
+
+<<lighten 1>>
+{$officerName}: I can't say I know {$directorName} well, but he always seemed grumpy.
+<<darken 1>>
+
+{$protagName}: I can see why you'd think that.
+
+The crowd of people is getting louder, and shoving has turned into throwing punches.
+
+<<lighten 1>>
+{$officerName}: Sorry, {$protagName}, I have to take care of this.
+<<darken 1>>
+
+<<zeroChar>>
+Before {$protagName} could respond, {$officerName} runs off to stop the fight.
+{$protagName} watches {$officerName} try to scare off the students, before deciding it was best to head home.
+
+//Display Katarina
+<<oneChar>>
+<<changeSprite 1 2>>
+While he hurriedly walks away, he spots {$collegeFriendName}.
+
+{$protagName}: (<i>I wonder what she's doing here?</i>)
+{$protagName}: (<i>It'd be best to check on her before she gets too distracted by the commotion.</i>)
+
+The crowd of people seems to be quieting slightly - someone is probably being detained.
+
+{$protagName}: Hey, Katarina!
+-> Are you alright?
+    {$protagName}: Are you alright?
+    <<jump TownSquareKatarina1>>
+-> What are you doing here?
+    {$protagName}: What are you doing here?
+    <<jump TownSquareKatarina2>>
+===
+
+title: TownSquareKatarina1
+---
+<<lighten 1>>
+{$collegeFriendName}: I'm fine. How about you?
+<<darken 1>>
+-> I'm safe, at least.
+    {$protagName}: I'm safe, at least.
+    <<lighten 1>>
+    {$collegeFriendName}: That's good. I was expecting this sort of stuff with the election coming up, but it's still unpredictable.
+    <<darken 1>>
+    {$protagName}: It's the first one in thirty years, so that makes sense.
+    <<lighten 1>>
+    {$collegeFriendName}: It’s the party that wants peace versus a paramilitary group.
+    <<darken 1>>
+    -> Isn't calling them paramilitary a bit harsh?
+        {$protagName}: Isn't calling them paramilitary a bit harsh?
+        <<lighten 1>>
+        {$collegeFriendName}: Not when they advocate for forceful segregation.
+        <<darken 1>>
+    -> Yikes. When you put it like that, I get why people are so angry.
+        {$protagName}: Yikes. When you put it like that, I get why people are so angry.
+    <<wait 1>>
+    <<jump TownSquareKatarinaEnd>>
+-> I'm a bit spooked.
+    {$protagName}: I'm a bit spooked.
+    <<lighten 1>>
+    {$collegeFriendName}: Me too. Just because this sort of thing isn’t rare doesn’t mean it’s pleasant. Don’t worry, though, I’ll protect you.
+    <<darken 1>>
+    -> My hero.
+        {$protagName}: My hero.
+        {$collegeFriendName} smirks.
+    -> Thanks. I still wish people didn’t get into fights so often.
+        {$protagName}: Thanks. I still wish people didn’t get into fights so often.
+        {$collegeFriendName} frowns.
+        <<lighten 1>>
+        {$collegeFriendName}: Same here.
+        <<darken 1>>
+    <<jump TownSquareKatarinaEnd>>
+===
+
+title: TownSquareKatarina2
+---
+<<lighten 1>>
+{$collegeFriendName}: I was just heading home. I know sports fans could get unruly, but I’ve never seen it in person before.
+<<darken 1>>
+{$protagName}: I think it’s weird that people get so into sports… It’s literally just watching people kick around a ball.
+<<lighten 1>>
+{$collegeFriendName}: It’s never just sports. There’s always politics involved, especially here.
+<<darken 1>>
+{$protagName}: Yeah, I guess you would know, Ms. Star Student.
+{$collegeFriendName} chuckles.
+<<lighten 1>>
+{$collegeFriendName}: We actually talked about this in my class with Professor…sorry about that.
+<<darken 1>>
+{$protagName}: You can talk about college; I’m going eventually. Hopefully.
+<<lighten 1>>
+{$collegeFriendName}: I know you’ll get there.
+<<darken 1>>
+-> I just need to save up for a car
+    {$protagName}: I just need to save up for a car
+-> My parents are just really worried about the election and all
+    {$protagName}: My parents are just really worried about the election and all
+<<lighten 1>>
+{$collegeFriendName}: It'll work out.
+<<darken 1>>
+<<jump TownSquareKatarinaEnd>>
+===
+
+title: TownSquareKatarinaEnd
+---
+{$collegeFriendName}: Well, I can't miss the bus. Maybe i'll see you later?
+-> Sure.
+    {$protagName}: Sure.
+-> Hopefully.
+    {$protagName}: Hopefully.
+<<zeroChar>>
+{$collegeFriendName} waves goodbye and exits the square.
+{$protagName} is finally able to go home.
+===
