@@ -58,7 +58,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     private int DemoEndBuildIndex = 4;
     private int PresentLobbyBuildIndex = 5;
     private int WarRoomBuildIndex = 10;
-    private int TownSquareBuildIndex = 7;
+    private int TownSquareBuildIndex = 11;
 
     //State tracking
     public bool newsRead;
@@ -386,7 +386,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     /// </summary>
     public void GoToTownSquare()
     {
-        LL.LoadLevelByBuildIndex(TownSquareBuildIndex);
+        LL.LoadLevelByBuildIndex(TownSquareBuildIndex, true);
     }
 
     /// <summary>
