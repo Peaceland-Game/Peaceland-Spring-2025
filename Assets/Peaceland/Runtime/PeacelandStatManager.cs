@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace Peaceland
 {
+    /// <summary>
+    /// Hidden stats API for any scene. Values live on the active save slot and clamp to -5..+5.
+    /// KindnessCruelty is the primary good/evil axis.
+    /// </summary>
     public sealed class PeacelandStatManager : MonoBehaviour
     {
         private static PeacelandStatManager instance;
@@ -44,6 +48,7 @@ namespace Peaceland
             }
         }
 
+        /// <summary>Current clamped value for this axis. Creates the bootstrap host if needed.</summary>
         public int Get(PeacelandStatId statId)
         {
             return PeacelandSaveService.Instance.GetStat(statId);
@@ -54,6 +59,9 @@ namespace Peaceland
             PeacelandSaveService.Instance.SetStat(statId, value);
         }
 
+        /// <summary>
+        /// Adds delta and clamps. Use this from gameplay / Yarn, not Set, unless you are restoring a save.
+        /// </summary>
         public void AddDelta(PeacelandStatId statId, int delta)
         {
             PeacelandSaveService.Instance.AddStat(statId, delta);

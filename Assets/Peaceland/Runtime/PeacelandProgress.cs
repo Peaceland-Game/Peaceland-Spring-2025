@@ -2,6 +2,9 @@ using UnityEngine;
 
 namespace Peaceland
 {
+    /// <summary>
+    /// Story flags and the resume scene. Same JSON as notebook + stats.
+    /// </summary>
     public sealed class PeacelandProgress : MonoBehaviour
     {
         private static PeacelandProgress instance;
@@ -49,6 +52,9 @@ namespace Peaceland
             return PeacelandSaveService.Instance.HasProgressFlag(flagId);
         }
 
+        /// <summary>
+        /// Sets a named flag on the active slot (example: memory1_completed).
+        /// </summary>
         public void SetFlag(string flagId, bool value = true)
         {
             PeacelandSaveService.Instance.SetProgressFlag(flagId, value);
@@ -66,7 +72,31 @@ namespace Peaceland
 
         public void SetCurrentSceneCheckpoint(string sceneName)
         {
-            PeacelandSaveService.Instance.SetLastSceneName(sceneName);
+            SetCurrentSceneCheckpoint(sceneName, sceneName, sceneName, true);
+        }
+
+        /// <summary>
+        /// Writes the resume scene onto the active slot. SaveLoad itself should not call this;
+        /// put PeacelandSceneCheckpointPolicy on that scene with recordAsGameplayCheckpoint off.
+        /// </summary>
+        public void SetCurrentSceneCheckpoint(
+            string sceneName,
+            string checkpointKey,
+            string displayName,
+            bool replaceMatchingKey)
+        {
+            PeacelandSaveService saveService = PeacelandSaveService.Instance;
+            if (!saveService.HasActiveSlot)
+            {
+                saveService.SetLastSceneName(sceneName);
+                return;
+            }
+
+            saveService.CaptureCheckpoint(
+                string.IsNullOrWhiteSpace(checkpointKey) ? sceneName : checkpointKey,
+                string.IsNullOrWhiteSpace(displayName) ? sceneName : displayName,
+                sceneName,
+                replaceMatchingKey);
         }
     }
 }

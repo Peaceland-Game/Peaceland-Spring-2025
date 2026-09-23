@@ -10,12 +10,16 @@ namespace Peaceland
     {
         public int slotIndex;
         public bool hasData;
+        /// <summary>True when a slot file exists but could not be parsed. Never treat as empty.</summary>
+        public bool isCorrupt;
         public string savedUtc;
         public string lastSceneName;
         public string displayLocationName;
         public int currentDay;
         public int kindnessCruelty;
         public int collectedNotebookEntryCount;
+        public int checkpointCount;
+        public string latestCheckpointName;
 
         public string GetDisplayLocationName()
         {
