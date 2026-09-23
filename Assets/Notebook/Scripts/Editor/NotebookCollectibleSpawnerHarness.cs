@@ -28,8 +28,18 @@ namespace Peaceland.Notebook
 
             Scene previousActive = SceneManager.GetActiveScene();
             GameObject previousSelection = Selection.activeGameObject;
-            Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
-            SceneManager.SetActiveScene(scene);
+            // Additive leaves the scene the user has open alone, but Unity refuses to add a scene
+            // next to an untitled one, which is all a batchmode run ever starts with. Nothing is at
+            // stake in that case, so replace it instead.
+            bool additive = !string.IsNullOrEmpty(previousActive.path);
+            Scene scene = EditorSceneManager.NewScene(
+                NewSceneSetup.EmptyScene,
+                additive ? NewSceneMode.Additive : NewSceneMode.Single);
+            if (additive)
+            {
+                SceneManager.SetActiveScene(scene);
+            }
+
             Selection.activeGameObject = null;
 
             // The spawner reuses any Canvas already loaded, which may live in the scene the user
@@ -48,8 +58,12 @@ namespace Peaceland.Notebook
             finally
             {
                 Undo.RevertAllDownToGroup(undoGroup);
-                SceneManager.SetActiveScene(previousActive);
-                EditorSceneManager.CloseScene(scene, true);
+                if (additive)
+                {
+                    SceneManager.SetActiveScene(previousActive);
+                    EditorSceneManager.CloseScene(scene, true);
+                }
+
                 Selection.activeGameObject = previousSelection;
             }
 
