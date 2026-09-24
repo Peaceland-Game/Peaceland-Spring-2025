@@ -12,6 +12,7 @@ namespace Peaceland.Notebook
     {
         public const string DefaultSaveKey = "peaceland.notebook.state";
 
+        /// <summary>True if this entryId is already collected in the current save (or PlayerPrefs fallback).</summary>
         public static bool IsCollected(string entryId, string saveKey = DefaultSaveKey)
         {
             if (string.IsNullOrWhiteSpace(entryId))
@@ -23,6 +24,10 @@ namespace Peaceland.Notebook
             return state != null && state.isCollected;
         }
 
+        /// <summary>
+        /// Marks collected without a live NotebookController. Used by NotebookGlobalBridge when the book is not in the scene.
+        /// Returns false if the id was already collected.
+        /// </summary>
         public static bool TryMarkCollected(string entryId, string saveKey = DefaultSaveKey)
         {
             if (string.IsNullOrWhiteSpace(entryId))
@@ -129,6 +134,7 @@ namespace Peaceland.Notebook
 
         private static NotebookSaveData Load(string saveKey)
         {
+            PeacelandGameBootstrap.EnsureExists();
             if (PeacelandSaveService.HasInstance)
             {
                 return PeacelandSaveService.Instance.GetNotebookData();
@@ -151,8 +157,10 @@ namespace Peaceland.Notebook
 
         private static void Save(NotebookSaveData saveData, string saveKey)
         {
+            PeacelandGameBootstrap.EnsureExists();
             if (PeacelandSaveService.HasInstance)
             {
+                PeacelandSaveService.Instance.ReplaceNotebookData(saveData);
                 PeacelandSaveService.Instance.Save();
                 return;
             }

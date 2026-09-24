@@ -25,7 +25,7 @@ namespace Peaceland.Notebook.Editor
             Transform collectibleHintRoot = EnsureChild(overlayRoot, "Collectible Hint");
             Image collectibleHintBackground = GetOrAddComponent<Image>(collectibleHintRoot.gameObject);
             collectibleHintBackground.color = new Color(0.17f, 0.13f, 0.09f, 0.9f);
-            SetAnchored(collectibleHintRoot as RectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(24f, -108f), new Vector2(420f, 52f));
+            SetAnchored(collectibleHintRoot as RectTransform, new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(24f, -190f), new Vector2(420f, 52f));
             TMP_Text collectibleHintText = EnsureText(collectibleHintRoot, "Label", "Collectable available", 20f, FontStyles.Bold, TextAlignmentOptions.Center);
             collectibleHintText.color = new Color(0.98f, 0.95f, 0.83f, 1f);
             Stretch(collectibleHintText.rectTransform, new Vector2(12f, 6f), new Vector2(-12f, -6f));

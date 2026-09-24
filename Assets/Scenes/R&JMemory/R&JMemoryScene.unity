@@ -285,6 +285,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &501715924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 501715925}
+  - component: {fileID: 501715927}
+  - component: {fileID: 501715926}
+  m_Layer: 0
+  m_Name: Save Point - Ruzica House
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &501715925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501715924}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1147119360}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &501715926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501715924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99212da9d48de7641be96164e4022b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBridge: {fileID: 782885772}
+  whenMinigameStarts: {fileID: 647304827}
+  checkpointTrigger: {fileID: 501715927}
+--- !u!114 &501715927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501715924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e06437da45b7a448d5771e84c6f44d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointKey: rj/ruzica-house
+  displayName: Ruzica's House
+  replaceMatchingCheckpoint: 1
 --- !u!1001 &577278849
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -513,6 +576,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionWaitTime: 2.5
   newBackgroundIndex: 1
+--- !u!1 &764317124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 764317126}
+  - component: {fileID: 764317125}
+  m_Layer: 0
+  m_Name: Peaceland Scene Checkpoint Policy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &764317125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764317124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17498181bfa95e749a52693eb7435aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recordAsGameplayCheckpoint: 1
+  exclusionReason: 
+  checkpointKey: scene/rj-memory
+  checkpointDisplayName: R&JMemoryScene
+  replaceMatchingCheckpoint: 1
+--- !u!4 &764317126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764317124}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &782885768
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +636,7 @@ GameObject:
   - component: {fileID: 782885770}
   - component: {fileID: 782885769}
   - component: {fileID: 782885771}
+  - component: {fileID: 782885772}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -558,7 +671,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1147119360}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &782885771
@@ -589,6 +703,21 @@ MonoBehaviour:
   objectImageList:
   - {fileID: 65615383}
   dialogueRunner: {fileID: 1030130987}
+--- !u!114 &782885772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782885768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c29b28a0f3825478ae77bf8baa7f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressKey: rj-memory
+  manager: {fileID: 782885771}
+  restoreOnStart: 1
 --- !u!1 &798517617
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,6 +956,7 @@ MonoBehaviour:
   interactCursor: {fileID: 2800000, guid: 5970d5ca86e8ccc4eb4c550842513acb, type: 3}
   currentMemoryManager: {fileID: 782885771}
   difficulty: 0
+  allMuseumDialogueComplete: 0
 --- !u!4 &949325194
 Transform:
   m_ObjectHideFlags: 0
@@ -847,6 +977,69 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3110970242014625287, guid: edb254c19f580ed43aaaafb41b9a4205, type: 3}
   m_PrefabInstance: {fileID: 1699169288297209894}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &976252052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 976252053}
+  - component: {fileID: 976252055}
+  - component: {fileID: 976252054}
+  m_Layer: 0
+  m_Name: Save Point - After Letter Puzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &976252053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976252052}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1147119360}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &976252054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976252052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99212da9d48de7641be96164e4022b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBridge: {fileID: 782885772}
+  whenMinigameStarts: {fileID: 798517619}
+  checkpointTrigger: {fileID: 976252055}
+--- !u!114 &976252055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976252052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e06437da45b7a448d5771e84c6f44d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointKey: rj/letter-assembled
+  displayName: Letter Reassembled
+  replaceMatchingCheckpoint: 1
 --- !u!114 &1030130987 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8880641255474623990, guid: aeb492adda39ade44a72a56f6201bdfe, type: 3}
@@ -974,6 +1167,39 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &1147119359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147119360}
+  m_Layer: 0
+  m_Name: Peaceland Save Points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1147119360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147119359}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 976252053}
+  - {fileID: 501715925}
+  m_Father: {fileID: 782885770}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1314565337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2037,3 +2263,4 @@ SceneRoots:
   - {fileID: 1314565337}
   - {fileID: 949325194}
   - {fileID: 896425000}
+  - {fileID: 764317126}

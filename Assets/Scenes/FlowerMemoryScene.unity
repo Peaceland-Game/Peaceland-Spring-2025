@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 41747958}
   - component: {fileID: 41747959}
   - component: {fileID: 41747960}
+  - component: {fileID: 41747961}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -150,7 +151,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1019132503}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &41747958
@@ -274,6 +276,21 @@ MonoBehaviour:
   dethornShears: {fileID: 1331315764}
   trimShears: {fileID: 401263671}
   arrange: {fileID: 1164951637}
+--- !u!114 &41747961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41747954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c29b28a0f3825478ae77bf8baa7f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressKey: flower-memory
+  manager: {fileID: 41747958}
+  restoreOnStart: 1
 --- !u!1 &52505738
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,11 +375,17 @@ MonoBehaviour:
   marcStart: 0
   miraIntroDone: 0
   memoryObjectAcquired: 0
+  seenFloristMemory: 0
   seenRJMemory: 0
+  seenChildMemory: 0
+  seenVillainMemory: 0
+  seenBorisMemory: 0
+  placeholderCondition: 0
   defaultCursor: {fileID: 2800000, guid: 844b41a58c1b3bc48adbcefbe7845cb8, type: 3}
   interactCursor: {fileID: 2800000, guid: 5970d5ca86e8ccc4eb4c550842513acb, type: 3}
   currentMemoryManager: {fileID: 0}
   difficulty: 0
+  allMuseumDialogueComplete: 0
 --- !u!4 &61780059
 Transform:
   m_ObjectHideFlags: 0
@@ -2079,6 +2102,132 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef36d6028e2d7d347b462e56e3ad031b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &493282077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 493282078}
+  - component: {fileID: 493282080}
+  - component: {fileID: 493282079}
+  m_Layer: 0
+  m_Name: Save Point - After First Orders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &493282078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493282077}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1019132503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &493282079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493282077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99212da9d48de7641be96164e4022b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBridge: {fileID: 41747961}
+  whenMinigameStarts: {fileID: 692662732}
+  checkpointTrigger: {fileID: 493282080}
+--- !u!114 &493282080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493282077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e06437da45b7a448d5771e84c6f44d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointKey: flower/first-orders
+  displayName: First Orders Complete
+  replaceMatchingCheckpoint: 1
+--- !u!1 &501715924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 501715925}
+  - component: {fileID: 501715927}
+  - component: {fileID: 501715926}
+  m_Layer: 0
+  m_Name: Save Point - End Of Shift
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &501715925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501715924}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1019132503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &501715926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501715924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99212da9d48de7641be96164e4022b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBridge: {fileID: 41747961}
+  whenMinigameStarts: {fileID: 431787418}
+  checkpointTrigger: {fileID: 501715927}
+--- !u!114 &501715927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501715924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e06437da45b7a448d5771e84c6f44d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointKey: flower/end-of-shift
+  displayName: End of Shift
+  replaceMatchingCheckpoint: 1
 --- !u!1 &511491062
 GameObject:
   m_ObjectHideFlags: 0
@@ -3182,6 +3331,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 492172087}
   startNode: Stem3
+--- !u!1 &764317124
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 764317126}
+  - component: {fileID: 764317125}
+  m_Layer: 0
+  m_Name: Peaceland Scene Checkpoint Policy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &764317125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764317124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17498181bfa95e749a52693eb7435aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recordAsGameplayCheckpoint: 1
+  exclusionReason: 
+  checkpointKey: scene/flower-memory
+  checkpointDisplayName: FlowerMemoryScene
+  replaceMatchingCheckpoint: 1
+--- !u!4 &764317126
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764317124}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &766888930
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,6 +4051,69 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &976252052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 976252053}
+  - component: {fileID: 976252055}
+  - component: {fileID: 976252054}
+  m_Layer: 0
+  m_Name: Save Point - Children Visit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &976252053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976252052}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1019132503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &976252054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976252052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99212da9d48de7641be96164e4022b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBridge: {fileID: 41747961}
+  whenMinigameStarts: {fileID: 1195790986}
+  checkpointTrigger: {fileID: 976252055}
+--- !u!114 &976252055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976252052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e06437da45b7a448d5771e84c6f44d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointKey: flower/children-visit
+  displayName: Children's Visit
+  replaceMatchingCheckpoint: 1
 --- !u!1 &1002936614
 GameObject:
   m_ObjectHideFlags: 0
@@ -3940,6 +4201,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1019132502
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1019132503}
+  m_Layer: 0
+  m_Name: Peaceland Save Points
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1019132503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019132502}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 493282078}
+  - {fileID: 1147119360}
+  - {fileID: 976252053}
+  - {fileID: 501715925}
+  m_Father: {fileID: 41747955}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1141113594
 GameObject:
   m_ObjectHideFlags: 0
@@ -4188,6 +4484,69 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
+--- !u!1 &1147119359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147119360}
+  - component: {fileID: 1147119362}
+  - component: {fileID: 1147119361}
+  m_Layer: 0
+  m_Name: Save Point - Boris Visit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1147119360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147119359}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1019132503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1147119361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147119359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99212da9d48de7641be96164e4022b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressBridge: {fileID: 41747961}
+  whenMinigameStarts: {fileID: 1985202907}
+  checkpointTrigger: {fileID: 1147119362}
+--- !u!114 &1147119362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147119359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2e06437da45b7a448d5771e84c6f44d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpointKey: flower/boris-visit
+  displayName: Boris's Visit
+  replaceMatchingCheckpoint: 1
 --- !u!1 &1164951637
 GameObject:
   m_ObjectHideFlags: 0
@@ -6364,3 +6723,4 @@ SceneRoots:
   - {fileID: 5546751697100341081}
   - {fileID: 87088348}
   - {fileID: 61780059}
+  - {fileID: 764317126}

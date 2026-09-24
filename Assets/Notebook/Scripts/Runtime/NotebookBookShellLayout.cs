@@ -30,9 +30,10 @@ namespace Peaceland.Notebook
         public static readonly Vector2 PageGutterCenterRightPage = new Vector2(10f, 20f);
         public static readonly Vector2 PageGutterCenterRightPageMax = new Vector2(-20f, -20f);
 
-        public static void ApplyOpenRoot(RectTransform openRoot)
+        public static void ApplyOpenRoot(RectTransform openRoot, bool force = false)
         {
-            if (openRoot == null || NotebookUILayoutGuard.ShouldSkipLayoutApply(openRoot))
+            if (openRoot == null
+                || (!force && NotebookUILayoutGuard.ShouldSkipLayoutApply(openRoot)))
             {
                 return;
             }
@@ -51,9 +52,10 @@ namespace Peaceland.Notebook
             }
         }
 
-        public static void ApplyPagesViewport(RectTransform pagesViewport)
+        public static void ApplyPagesViewport(RectTransform pagesViewport, bool force = false)
         {
-            if (pagesViewport == null || NotebookUILayoutGuard.ShouldSkipLayoutApply(pagesViewport))
+            if (pagesViewport == null
+                || (!force && NotebookUILayoutGuard.ShouldSkipLayoutApply(pagesViewport)))
             {
                 return;
             }
@@ -66,9 +68,13 @@ namespace Peaceland.Notebook
             pagesViewport.offsetMax = PageInsetMax;
         }
 
-        public static void ApplySpreadPage(RectTransform pageRect, bool isLeftPage)
+        public static void ApplySpreadPage(
+            RectTransform pageRect,
+            bool isLeftPage,
+            bool force = false)
         {
-            if (pageRect == null || NotebookUILayoutGuard.ShouldSkipLayoutApply(pageRect))
+            if (pageRect == null
+                || (!force && NotebookUILayoutGuard.ShouldSkipLayoutApply(pageRect)))
             {
                 return;
             }
@@ -107,9 +113,10 @@ namespace Peaceland.Notebook
             chromeRect.offsetMax = new Vector2(-16f, 0f);
         }
 
-        public static void ApplySpreadBody(RectTransform bodyRect)
+        public static void ApplySpreadBody(RectTransform bodyRect, bool force = false)
         {
-            if (bodyRect == null || NotebookUILayoutGuard.ShouldSkipLayoutApply(bodyRect))
+            if (bodyRect == null
+                || (!force && NotebookUILayoutGuard.ShouldSkipLayoutApply(bodyRect)))
             {
                 return;
             }
@@ -124,9 +131,14 @@ namespace Peaceland.Notebook
 
         public const float DefaultPageTurnHitWidth = 160f;
 
-        public static void ApplyPageTurnHitArea(RectTransform hitRect, bool isPrevious, float hitWidth = DefaultPageTurnHitWidth)
+        public static void ApplyPageTurnHitArea(
+            RectTransform hitRect,
+            bool isPrevious,
+            float hitWidth = DefaultPageTurnHitWidth,
+            bool force = false)
         {
-            if (hitRect == null || NotebookUILayoutGuard.ShouldSkipLayoutApply(hitRect))
+            if (hitRect == null
+                || (!force && NotebookUILayoutGuard.ShouldSkipLayoutApply(hitRect)))
             {
                 return;
             }
@@ -151,9 +163,10 @@ namespace Peaceland.Notebook
             hitRect.sizeDelta = new Vector2(hitWidth, 0f);
         }
 
-        public static void ApplyPageTurnHitLayer(RectTransform layerRect)
+        public static void ApplyPageTurnHitLayer(RectTransform layerRect, bool force = false)
         {
-            if (layerRect == null || NotebookUILayoutGuard.ShouldSkipLayoutApply(layerRect))
+            if (layerRect == null
+                || (!force && NotebookUILayoutGuard.ShouldSkipLayoutApply(layerRect)))
             {
                 return;
             }
@@ -174,9 +187,11 @@ namespace Peaceland.Notebook
         public static void ApplyBookmarkRailLeft(
             RectTransform railRect,
             float topInset = BookmarkTopInset,
-            float horizontalOffset = BookmarkHorizontalOffset)
+            float horizontalOffset = BookmarkHorizontalOffset,
+            bool force = false)
         {
-            if (railRect == null || NotebookUILayoutGuard.ShouldSkipLayoutApply(railRect))
+            if (railRect == null
+                || (!force && NotebookUILayoutGuard.ShouldSkipLayoutApply(railRect)))
             {
                 return;
             }
@@ -191,9 +206,11 @@ namespace Peaceland.Notebook
         public static void ApplyBookmarkRailRight(
             RectTransform railRect,
             float topInset = BookmarkTopInset,
-            float horizontalOffset = BookmarkHorizontalOffset)
+            float horizontalOffset = BookmarkHorizontalOffset,
+            bool force = false)
         {
-            if (railRect == null || NotebookUILayoutGuard.ShouldSkipLayoutApply(railRect))
+            if (railRect == null
+                || (!force && NotebookUILayoutGuard.ShouldSkipLayoutApply(railRect)))
             {
                 return;
             }
@@ -243,9 +260,10 @@ namespace Peaceland.Notebook
             ApplyBookmarkTabLeft(tabRect, indexFromTop);
         }
 
-        public static void ApplyAnimationOverlay(RectTransform animationRect)
+        public static void ApplyAnimationOverlay(RectTransform animationRect, bool force = false)
         {
-            if (animationRect == null || NotebookUILayoutGuard.ShouldSkipLayoutApply(animationRect))
+            if (animationRect == null
+                || (!force && NotebookUILayoutGuard.ShouldSkipLayoutApply(animationRect)))
             {
                 return;
             }

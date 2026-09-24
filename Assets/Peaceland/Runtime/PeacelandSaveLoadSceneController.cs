@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,12 +14,13 @@ namespace Peaceland
     {
         [Header("UI")]
         [SerializeField] private PeacelandSaveSlotPanel slotPanel;
+        [SerializeField] private PeacelandCheckpointListPanel checkpointPanel;
         [SerializeField] private Button backButton;
         [SerializeField] private TMP_Text feedbackText;
 
         [Header("Navigation")]
         [SerializeField] private string returnSceneName = "DemoStart";
-        [SerializeField] private string firstGameplaySceneName = "NoteBookTesting";
+        [SerializeField] private string firstGameplaySceneName = "DemoDisclaimer";
         [SerializeField] private bool loadGameplaySceneAfterSelection;
         [SerializeField] private bool clearActiveSlotOnOpen = true;
 
@@ -59,9 +61,32 @@ namespace Peaceland
             PeacelandSaveService saveService = PeacelandSaveService.Instance;
             saveService.TryGetSlotSummary(slotIndex, out PeacelandSaveSlotSummary summary);
 
+            if (summary.isCorrupt)
+            {
+                SetFeedback(
+                    "Save " + (slotIndex + 1)
+                    + " is damaged and was not overwritten. Delete it explicitly to reuse the slot.");
+                selectionInProgress = false;
+                return;
+            }
+
             bool ready;
             if (summary.hasData)
             {
+                if (checkpointPanel != null
+                    && saveService.TryGetCheckpointSummaries(
+                        slotIndex,
+                        out List<PeacelandCheckpointSummary> checkpoints)
+                    && checkpoints.Count > 1
+                    && checkpointPanel.Show(slotIndex, checkpoints, SelectCheckpoint))
+                {
+                    SetFeedback(
+                        "Save " + (slotIndex + 1) + " has "
+                        + checkpoints.Count + " checkpoints. Choose one to continue.");
+                    selectionInProgress = false;
+                    return;
+                }
+
                 ready = saveService.ActivateSlotAndContinue(slotIndex);
             }
             else
@@ -91,6 +116,38 @@ namespace Peaceland
             selectionInProgress = false;
         }
 
+        private void SelectCheckpoint(PeacelandCheckpointSummary checkpoint)
+        {
+            if (selectionInProgress)
+            {
+                return;
+            }
+
+            selectionInProgress = true;
+            PeacelandSaveService saveService = PeacelandSaveService.Instance;
+            if (!saveService.ActivateSlotAtCheckpoint(
+                    checkpoint.slotIndex,
+                    checkpoint.checkpointId))
+            {
+                SetFeedback("That checkpoint could not be loaded.");
+                selectionInProgress = false;
+                return;
+            }
+
+            slotPanel.Refresh();
+            SetFeedback(
+                "Loaded " + checkpoint.GetDisplayName()
+                + " from Save " + (checkpoint.slotIndex + 1) + ".");
+
+            if (loadGameplaySceneAfterSelection)
+            {
+                LoadGameplayScene(checkpoint.sceneName);
+                return;
+            }
+
+            selectionInProgress = false;
+        }
+
         private void LoadGameplayScene(string lastSceneName)
         {
             string targetScene = !string.IsNullOrWhiteSpace(lastSceneName)
@@ -110,6 +167,11 @@ namespace Peaceland
 
         private void RequestDeleteSlot(int slotIndex)
         {
+            if (checkpointPanel != null)
+            {
+                checkpointPanel.Hide();
+            }
+
             if (pendingDeleteSlotIndex != slotIndex)
             {
                 pendingDeleteSlotIndex = slotIndex;
