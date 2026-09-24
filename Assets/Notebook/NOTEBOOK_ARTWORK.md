@@ -21,7 +21,7 @@ Status key: **Required** = already required for current spec · **Likely** = lik
 | Asset | Purpose | Notes |
 |-------|---------|-------|
 | **Bookmark tab sprites** | Left/right cloth/paper tabs instead of flat UI rects | One sprite per section color, or one 9-slice strip |
-| **Handwriting TMP font** | Directory lines, entry body, page numbers | See `NOTEBOOK_IMPLEMENTATION_PLAN.md` → Typography |
+| **Handwriting TMP font** | Directory lines, entry body, page numbers | Set on the TMP text components in `NotebookProductionSceneUI.prefab` |
 | Entry inline images | Optional image per `NotebookEntryDefinition` | Placeholder OK for v1; real art per memory thread |
 | Collectible **glow / sparkle** sprite | World-space highlight on flowers & interactables | Currently procedural pulse on flower sprite |
 | `notebookUi.png` | Extra chrome (corners, stains, tape) | In repo; usage TBD |

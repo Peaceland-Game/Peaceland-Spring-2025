@@ -1,7 +1,7 @@
 # Notebook Workflow — Start Here
 
 Use this file as the **only entry point** for day-to-day notebook work.  
-Spec details: `NOTEBOOK_IMPLEMENTATION_PLAN.md` · QA: `NOTEBOOK_TEST_CHECKLIST.md` · Art: `NOTEBOOK_ARTWORK.md`
+QA: `NOTEBOOK_TEST_CHECKLIST.md` · Art: `NOTEBOOK_ARTWORK.md`
 
 ---
 
@@ -162,8 +162,6 @@ You should **not** need to edit pagination code to tune the book. Tune **Layout*
 - Every interact has `NotebookSceneInteractMarker` in Hierarchy (editable).
 - Menus under `Peaceland/Notebook/Editable Pack/`.
 - 5-round self-check writes `EditableScenePack/Reports/scene_self_check_latest.md`.
-
-See [EditableScenePack/README.md](EditableScenePack/README.md).
 
 
 ---
