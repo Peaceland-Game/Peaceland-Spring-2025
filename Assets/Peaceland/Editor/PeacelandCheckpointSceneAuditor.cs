@@ -74,7 +74,10 @@ namespace Peaceland.Editor
             }
             finally
             {
-                EditorSceneManager.RestoreSceneManagerSetup(previousSetup);
+                if (previousSetup.Length > 0)
+                {
+                    EditorSceneManager.RestoreSceneManagerSetup(previousSetup);
+                }
             }
 
             Debug.Log("[SaveLoad Matrix] Added explicit checkpoint policy to "
@@ -135,7 +138,10 @@ namespace Peaceland.Editor
             }
             finally
             {
-                EditorSceneManager.RestoreSceneManagerSetup(previousSetup);
+                if (previousSetup.Length > 0)
+                {
+                    EditorSceneManager.RestoreSceneManagerSetup(previousSetup);
+                }
             }
 
             if (failures.Count > 0)
@@ -175,7 +181,10 @@ namespace Peaceland.Editor
             }
             finally
             {
-                EditorSceneManager.RestoreSceneManagerSetup(previousSetup);
+                if (previousSetup.Length > 0)
+                {
+                    EditorSceneManager.RestoreSceneManagerSetup(previousSetup);
+                }
             }
 
             return sceneNames;

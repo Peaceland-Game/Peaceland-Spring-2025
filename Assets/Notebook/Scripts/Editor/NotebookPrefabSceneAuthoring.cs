@@ -86,7 +86,10 @@ namespace Peaceland.Notebook.Editor
             {
                 if (!Application.isBatchMode && previousSetup.Length > 0)
                 {
-                    EditorSceneManager.RestoreSceneManagerSetup(previousSetup);
+                    if (previousSetup.Length > 0)
+                    {
+                        EditorSceneManager.RestoreSceneManagerSetup(previousSetup);
+                    }
                 }
             }
         }
