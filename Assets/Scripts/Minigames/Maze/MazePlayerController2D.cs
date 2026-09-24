@@ -94,7 +94,7 @@ public sealed class MazePlayerController2D : MonoBehaviour
         ApplyFacingRotation();
     }
 
-public bool RequestStep(Vector2 screenPosition)
+    public bool RequestStep(Vector2 screenPosition)
     {
         if (!movementEnabled || IsMoving)
         {
@@ -124,7 +124,7 @@ public bool RequestStep(Vector2 screenPosition)
         return true;
     }
 
-private IEnumerator MoveToCell(Vector2 target)
+    private IEnumerator MoveToCell(Vector2 target)
     {
         Vector3 start = transform.position;
         Vector3 end = new Vector3(target.x, target.y, start.z);
@@ -150,7 +150,7 @@ private IEnumerator MoveToCell(Vector2 target)
     }
 
 
-private IEnumerator MoveAlongPath(System.Collections.Generic.List<Vector2> path)
+    private IEnumerator MoveAlongPath(System.Collections.Generic.List<Vector2> path)
     {
         foreach (Vector2 target in path)
         {
@@ -187,7 +187,7 @@ private IEnumerator MoveAlongPath(System.Collections.Generic.List<Vector2> path)
     }
 
 
-private bool TryBuildPath(Vector2 startWorld, Vector2 targetWorld, out System.Collections.Generic.List<Vector2> path)
+    private bool TryBuildPath(Vector2 startWorld, Vector2 targetWorld, out System.Collections.Generic.List<Vector2> path)
     {
         return MazeGridPathfinder2D.TryBuildPath(
             startWorld,

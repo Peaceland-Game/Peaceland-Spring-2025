@@ -15,7 +15,7 @@ public sealed class MazePatrolNpc2D : MonoBehaviour
 
     public bool IsPatrolling => isPatrolling;
 
-private void Start()
+    private void Start()
     {
         // Keep the gameplay root axis-aligned. Only the visual representation
         // should turn; rotating the root can flip the 2D sprite out of view.
@@ -30,7 +30,7 @@ private void Start()
         }
     }
 
-private IEnumerator PatrolLoop()
+    private IEnumerator PatrolLoop()
     {
         while (true)
         {
@@ -74,7 +74,7 @@ private IEnumerator PatrolLoop()
     }
 
 
-private IEnumerator MoveToCell(Vector2 target)
+    private IEnumerator MoveToCell(Vector2 target)
     {
         Vector3 start = transform.position;
         Vector3 end = new Vector3(target.x, target.y, start.z);
@@ -92,7 +92,7 @@ private IEnumerator MoveToCell(Vector2 target)
     }
 
 
-private IEnumerator MoveAlongPath(System.Collections.Generic.List<Vector2> path)
+    private IEnumerator MoveAlongPath(System.Collections.Generic.List<Vector2> path)
     {
         foreach (Vector2 target in path)
         {
@@ -128,7 +128,7 @@ private IEnumerator MoveAlongPath(System.Collections.Generic.List<Vector2> path)
     }
 
 
-private bool TryBuildPath(Vector2 startWorld, Vector2 targetWorld, out System.Collections.Generic.List<Vector2> path)
+    private bool TryBuildPath(Vector2 startWorld, Vector2 targetWorld, out System.Collections.Generic.List<Vector2> path)
     {
         const float npcCellSize = 1f;
         Vector2 collisionSize = new Vector2(0.55f, 0.55f);
