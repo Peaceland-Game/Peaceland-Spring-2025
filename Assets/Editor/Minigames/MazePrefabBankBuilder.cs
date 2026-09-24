@@ -93,7 +93,24 @@ public static class MazePrefabBankBuilder
             }
         }
 
-        Debug.Log("Maze prefab bank validation PASS: 6 elements + complete minigame root.");
+        int drifted = 0;
+        foreach (Transform item in root.GetComponentsInChildren<Transform>(true))
+        {
+            GameObject source = PrefabUtility.GetCorrespondingObjectFromSource(item.gameObject);
+            if (source != null && source.layer != item.gameObject.layer)
+            {
+                drifted++;
+            }
+        }
+
+        if (drifted > 0)
+        {
+            throw new InvalidOperationException(
+                drifted + " object(s) in the complete root sit on a different Layer than the element "
+                + "they come from. Run Peaceland/Maze/Rebake Element Layers.");
+        }
+
+        Debug.Log("Maze prefab bank validation PASS: 6 elements + complete minigame root, no Layer drift.");
     }
 
     [MenuItem("Peaceland/Maze/Open Prefab Playtest")]
@@ -138,8 +155,37 @@ public static class MazePrefabBankBuilder
 
         ConfigureMasks("PF_Maze_Player.prefab");
         ConfigureMasks("PF_Maze_PatrolNpc.prefab");
+        RebakeCompleteRoot();
         AssetDatabase.SaveAssets();
         Debug.Log("Maze element layers rebaked onto " + MazeLayers.WallLayerName + " / Default.");
+    }
+
+    /// <summary>
+    /// The complete root is made of nested element instances, and the old bake left
+    /// per-instance Layer overrides on some of them - a wall pinned to whatever index
+    /// happened to sit in that slot stops blocking the moment the elements are fixed.
+    /// Following the source puts every one of them back on the element's own Layer.
+    /// </summary>
+    private static void RebakeCompleteRoot()
+    {
+        GameObject root = PrefabUtility.LoadPrefabContents(RootPrefabPath);
+        int reverted = 0;
+
+        foreach (Transform item in root.GetComponentsInChildren<Transform>(true))
+        {
+            GameObject source = PrefabUtility.GetCorrespondingObjectFromSource(item.gameObject);
+            if (source == null || source.layer == item.gameObject.layer)
+            {
+                continue;
+            }
+
+            item.gameObject.layer = source.layer;
+            reverted++;
+        }
+
+        PrefabUtility.SaveAsPrefabAsset(root, RootPrefabPath);
+        PrefabUtility.UnloadPrefabContents(root);
+        Debug.Log("Complete maze root: " + reverted + " stale Layer override(s) put back on the element Layer.");
     }
 
     private static void SetPrefabLayer(string fileName, int layer)
