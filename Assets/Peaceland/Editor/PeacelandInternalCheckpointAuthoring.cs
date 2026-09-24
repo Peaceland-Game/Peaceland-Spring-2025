@@ -71,7 +71,10 @@ namespace Peaceland.Editor
             }
             finally
             {
-                EditorSceneManager.RestoreSceneManagerSetup(previousSetup);
+                if (previousSetup.Length > 0)
+                {
+                    EditorSceneManager.RestoreSceneManagerSetup(previousSetup);
+                }
             }
         }
 
