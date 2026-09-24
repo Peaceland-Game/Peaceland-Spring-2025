@@ -105,7 +105,7 @@ MonoBehaviour:
   rayCount: 48
   occlusionMask:
     serializedVersion: 2
-    m_Bits: 16896
+    m_Bits: 512
   coneColor: {r: 1, g: 0.85, b: 0.35, a: 0.06}
   showDebugRays: 0
 --- !u!1 &7937539195769370966
@@ -182,7 +182,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 719012015
-  m_SortingLayer: 11
+  m_SortingLayer: 0
   m_SortingOrder: 30
   m_Sprite: {fileID: -494557840674994734, guid: 96a32e458f8cbb54db2a45ddd4004640, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -321,7 +321,7 @@ MonoBehaviour:
   collisionSize: {x: 0.55, y: 0.55}
   blockingMask:
     serializedVersion: 2
-    m_Bits: 8704
+    m_Bits: 512
   worldCamera: {fileID: 0}
   acceptPointerInput: 1
   startPoint: {fileID: 0}

@@ -105,7 +105,7 @@ MonoBehaviour:
   rayCount: 48
   occlusionMask:
     serializedVersion: 2
-    m_Bits: 16896
+    m_Bits: 512
   coneColor: {r: 1, g: 0.85, b: 0.35, a: 0.06}
   showDebugRays: 0
 --- !u!1 &2403718939016695518
@@ -182,7 +182,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 719012015
-  m_SortingLayer: 11
+  m_SortingLayer: 0
   m_SortingOrder: 28
   m_Sprite: {fileID: -494557840674994734, guid: 96a32e458f8cbb54db2a45ddd4004640, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -245,3 +245,14 @@ MonoBehaviour:
   moveDuration: 0.32
   waitAtPoint: 0.45
   loop: 1
+  visionCone: {fileID: 0}
+  player: {fileID: 0}
+  suspicionToCatch: 1.2
+  suspicionDecayRate: 0.8
+  chaseSpeedMultiplier: 1.4
+  onPlayerSpotted:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerCaught:
+    m_PersistentCalls:
+      m_Calls: []

@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 7949808148558478682}
   - component: {fileID: 6041171231769439113}
   - component: {fileID: 2731457039688205310}
-  - component: {fileID: 3934757359957049154}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: PF_Maze_EventTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,20 +98,6 @@ MonoBehaviour:
       m_Calls: []
   dialogueRunner: {fileID: 0}
   startNode: 
---- !u!114 &3934757359957049154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3362864602048789597}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7639c26916623a04ab357db5bb40dcf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerName: MazeEventTrigger
-  includeChildren: 1
 --- !u!1 &5657634535526576024
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,7 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1309370431678899248}
   - component: {fileID: 3668509572914525231}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -24,20 +24,13 @@ public sealed class MazeVisionCone2D : MonoBehaviour
 
     private void Awake()
     {
-        int portableOcclusionMask = LayerMask.GetMask("MazeVisionOccluder", "Wall");
-        if (portableOcclusionMask != 0)
-        {
-            occlusionMask = portableOcclusionMask;
-        }
+        // See MazePlayerController2D: the serialized mask is baked against layers
+        // this project does not have. MazeLayers is the only source.
+        occlusionMask = MazeLayers.Blocking;
 
         if (source == null)
         {
             source = transform.parent != null ? transform.parent : transform;
-        }
-
-        if (occlusionMask.value == 0)
-        {
-            occlusionMask = LayerMask.GetMask("MazeVisionOccluder", "Wall");
         }
 
         meshFilter = GetComponent<MeshFilter>();
@@ -56,8 +49,11 @@ public sealed class MazeVisionCone2D : MonoBehaviour
             return;
         }
 
+        // Follow the source's position but never its rotation: the maze keeps NPC and
+        // player roots axis-aligned so their sprites cannot flip, and copying that
+        // identity rotation every LateUpdate used to snap the cone back to world up,
+        // undoing the facing the owner had just set on this transform.
         transform.position = source.position;
-        transform.rotation = source.rotation;
         RebuildMesh();
     }
 
@@ -75,7 +71,7 @@ public sealed class MazeVisionCone2D : MonoBehaviour
             return false;
         }
 
-        float angle = Vector2.Angle(source.up, toTarget);
+        float angle = Vector2.Angle(transform.up, toTarget);
         if (angle > viewAngle * 0.5f)
         {
             return false;

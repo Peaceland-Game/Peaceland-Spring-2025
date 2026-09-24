@@ -31,20 +31,13 @@ public sealed class MazePlayerController2D : MonoBehaviour
 
     private void Awake()
     {
-        int portableBlockingMask = LayerMask.GetMask("MazePhysical", "Wall");
-        if (portableBlockingMask != 0)
-        {
-            blockingMask = portableBlockingMask;
-        }
+        // The prefabs carry a serialized mask baked against layers this project does
+        // not have, so it is never trusted. MazeLayers is the only source.
+        blockingMask = MazeLayers.Blocking;
 
         if (worldCamera == null)
         {
             worldCamera = Camera.main;
-        }
-
-        if (blockingMask.value == 0)
-        {
-            blockingMask = LayerMask.GetMask("MazePhysical", "Wall");
         }
 
         if (startPoint != null)

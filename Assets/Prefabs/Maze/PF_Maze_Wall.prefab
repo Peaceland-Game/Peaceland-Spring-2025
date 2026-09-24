@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7385374990761996752}
   - component: {fileID: 1126589429558458193}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: PhysicalCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,8 +87,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1405690299814661039}
-  - component: {fileID: 3631603269093135159}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: PF_Maze_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,20 +112,6 @@ Transform:
   - {fileID: 6198567344401590662}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3631603269093135159
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270313984803095900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7639c26916623a04ab357db5bb40dcf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerName: MazePhysical
-  includeChildren: 1
 --- !u!1 &1304159139125206257
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6198567344401590662}
   - component: {fileID: 6902641006925922544}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: VisionOccluder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6464157194447782674}
   - component: {fileID: 8291913137678262028}
-  m_Layer: 13
+  m_Layer: 9
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +264,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 719012015
-  m_SortingLayer: 11
+  m_SortingLayer: 0
   m_SortingOrder: 25
   m_Sprite: {fileID: -494557840674994734, guid: 96a32e458f8cbb54db2a45ddd4004640, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
