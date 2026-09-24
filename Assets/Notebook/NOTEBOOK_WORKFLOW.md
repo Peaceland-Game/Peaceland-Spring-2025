@@ -163,7 +163,7 @@ You should **not** need to edit pagination code to tune the book. Tune **Layout*
 - Menus under `Peaceland/Notebook/Editable Pack/`.
 - 5-round self-check writes `EditableScenePack/Reports/scene_self_check_latest.md`.
 
-See [EditableScenePack/README.md](/D:/Peaceland/peaceland_Yu_Edit/Assets/Notebook/EditableScenePack/README.md).
+See [EditableScenePack/README.md](EditableScenePack/README.md).
 
 
 ---

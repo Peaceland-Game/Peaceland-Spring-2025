@@ -9,14 +9,14 @@ using UnityEngine.UI;
 
 public static class RhythmPrefabBankBuilder
 {
-    // 所有可复用节奏资源统一放在这个目录，方便在 Project 窗口中作为 Prefab Bank 管理。
+    // Every reusable rhythm asset lives in this one folder, so the Project window can treat it as a prefab bank.
     private const string Folder = "Assets/Prefabs/Rhythm";
     private const string PlaytestScene = "Assets/Scenes/Rhythm/RhythmPrefabPlaytest.unity";
 
     [MenuItem("Peaceland/Rhythm/Create Prefab Bank")]
     public static void CreatePrefabBank()
     {
-        // 该菜单命令是幂等式生成入口：重复执行会覆盖同名 Prefab 的当前模板版本。
+        // This menu command is idempotent: running it again overwrites the current template version of a prefab of the same name.
         EnsureFolder("Assets/Prefabs");
         EnsureFolder(Folder);
 
@@ -86,7 +86,7 @@ public static class RhythmPrefabBankBuilder
             "Result", sequenceObject.transform, 30, new Vector2(0.5f, 0f),
             new Vector2(0f, 100f), new Vector2(800f, 60f));
 
-        // 通过 SerializedObject 写入私有 Inspector 字段，避免为了编辑器工具公开运行时配置。
+        // Write the private Inspector fields through SerializedObject, rather than make runtime config public for the sake of an editor tool.
         SerializedObject serializedSequence = new SerializedObject(sequence);
         serializedSequence.FindProperty("storyTapPrefab").objectReferenceValue = storyTap;
         serializedSequence.FindProperty("holdPrefab").objectReferenceValue = hold;
@@ -216,7 +216,7 @@ public static class RhythmPrefabBankBuilder
         int requiredTaps,
         float moveDistance)
     {
-        // Beat Prefab 保持轻量，只保存组件和基础颜色；环形光圈、标签在运行时生成。
+        // Beat prefabs stay light, holding the component and its base colours only. The ring and the label are made at runtime.
         GameObject beatObject = new GameObject(prefabName, typeof(RectTransform), typeof(CanvasGroup), typeof(Image), typeof(RhythmBeatInteraction));
         RectTransform rect = beatObject.GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(220f, 220f);
@@ -303,7 +303,7 @@ public static class RhythmPrefabBankBuilder
 
     private static void EnsureFolder(string path)
     {
-        // AssetDatabase.CreateFolder 一次只能创建一级目录，所以按层级调用本方法。
+        // AssetDatabase.CreateFolder makes one level at a time, so this method calls itself down the hierarchy.
         if (AssetDatabase.IsValidFolder(path))
         {
             return;

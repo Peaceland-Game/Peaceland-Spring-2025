@@ -8,7 +8,7 @@ using Yarn.Unity;
 [Serializable]
 public sealed class RhythmNarrativeStep
 {
-    // 一个剧情步骤 = 一句叙事文本 + 一个需要完成的 Beat 手势。
+    // One story step is one line of narration plus one beat gesture to complete.
     public string speaker = "THE ORGANIZER";
 
     [TextArea(2, 5)]
@@ -26,8 +26,8 @@ public sealed class RhythmNarrativeStep
 [RequireComponent(typeof(GraphicRaycaster))]
 public sealed class RhythmNarrativeMinigame : MinigameBehavior
 {
-    // 这个组件负责“剧情文本 -> Beat -> 判定 -> 下一句”的闭环。
-    // Miss 不会结束流程，而是重新生成当前 Beat，符合探索/叙事优先的设计。
+    // This component runs the loop of story line -> beat -> verdict -> next line.
+    // A miss does not end the run, it respawns the current beat, which keeps the emphasis on the story.
     [Header("Beat prefabs")]
     [SerializeField] private RhythmBeatInteraction storyTapPrefab;
     [SerializeField] private RhythmBeatInteraction holdPrefab;
@@ -65,7 +65,7 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
 
     private void Awake()
     {
-        // Prefab 可以直接放入场景；UI 和默认步骤会在运行时补齐。
+        // The prefab can be dropped straight into a scene; the UI and the default steps fill themselves in at runtime.
         EnsureUi();
         EnsureDefaultSteps();
         if (startOnAwake)
@@ -76,7 +76,7 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
 
     public override void StartMinigame()
     {
-        // 既可以被 GenericMemManager.NextMinigame 调用，也可以通过 startOnAwake 自动启动。
+        // Can be driven by GenericMemManager.NextMinigame, or start itself through startOnAwake.
         StopMinigame();
         EnsureUi();
         EnsureDefaultSteps();
@@ -93,7 +93,7 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
 
     public override void StopMinigame()
     {
-        // 停止协程并销毁当前 Beat 实例，防止切换场景后旧输入继续回调。
+        // Stop the coroutines and destroy the live beat, so old input cannot call back after a scene change.
         running = false;
         if (sequenceCoroutine != null)
         {
@@ -116,7 +116,7 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
 
     private IEnumerator RunSequence()
     {
-        // 外层循环推进剧情步骤；内层循环负责 Miss 重试当前步骤。
+        // The outer loop walks the story steps; the inner one retries the current step after a miss.
         for (currentStepIndex = 0; currentStepIndex < steps.Length && running; currentStepIndex++)
         {
             RhythmNarrativeStep step = steps[currentStepIndex];
@@ -134,7 +134,7 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
                 }
 
                 activeBeat = Instantiate(template, beatContainer);
-                // 每次重试都创建一个干净的实例，避免残留上一次的 tapIndex/hold 状态。
+                // Each retry gets a clean instance, so no tapIndex or hold state survives from the last attempt.
                 activeBeat.transform.localPosition = Vector3.zero;
                 activeBeat.transform.localScale = Vector3.one;
                 activeBeat.BeginBeat(Time.unscaledTime + Mathf.Max(0.1f, step.leadTime), OnBeatResolved);
@@ -159,14 +159,14 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
                 Destroy(completedBeat.gameObject);
                 if (lastJudgement == RhythmJudgement.Miss)
                 {
-                    // 失败反馈只表现为“再次要求”，不设置 Game Over 或惩罚传送。
+                    // Failure only ever means being asked again - no game over, no punishing teleport.
                     onStepMissed?.Invoke();
                     resultLabel.text = "MISS — TRY AGAIN";
                     yield return new WaitForSecondsRealtime(Mathf.Max(0.05f, retryDelay));
                 }
                 else
                 {
-                    // Perfect 和 Good 都允许剧情继续，只在反馈文字上区分质量。
+                    // Perfect and good both let the story continue; only the feedback line tells them apart.
                     resolved = true;
                     onStepSucceeded?.Invoke();
                     resultLabel.text = lastJudgement.ToString().ToUpperInvariant();
@@ -187,7 +187,7 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
 
     private void OnBeatResolved(RhythmBeatInteraction beat, RhythmJudgement judgement, float offset)
     {
-        // Beat 组件不直接依赖剧情系统，只通过这个回调交付判定结果。
+        // The beat component knows nothing about the story system and reports its verdict through this callback alone.
         lastJudgement = judgement;
         resultLabel.text = judgement.ToString().ToUpperInvariant();
     }
@@ -216,7 +216,7 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
 
     private void EnsureDefaultSteps()
     {
-        // Prefab 未配置步骤时，提供四种手势各一次的可运行示例。
+        // When a prefab has no steps configured, offer a runnable example with one of each gesture.
         if (steps != null && steps.Length > 0)
         {
             return;
@@ -233,7 +233,7 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
 
     private void EnsureUi()
     {
-        // 这里创建最小剧情 UI；正式项目可以在 Prefab 上替换成自己的对话框和肖像。
+        // A minimal story UI. A real scene would swap in its own dialogue box and portraits on the prefab.
         if (speakerLabel != null)
         {
             return;

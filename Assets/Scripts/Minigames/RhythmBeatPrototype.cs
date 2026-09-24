@@ -11,7 +11,7 @@ using UnityEngine.UI;
 /// </summary>
 public sealed class RhythmBeatPrototype : MonoBehaviour
 {
-    // 三种最终判定：完美、一般、失误。
+    // The three verdicts: perfect, good, miss.
     public enum Judgement
     {
         Perfect,
@@ -19,13 +19,13 @@ public sealed class RhythmBeatPrototype : MonoBehaviour
         Miss
     }
 
-    // 这一组字段决定四拍的节奏表和每个 Beat 的出现时间。
+    // These fields set out the four beat rhythm and when each beat appears.
     [Header("Chart")]
     [SerializeField] private int beatCount = 4;
     [SerializeField] private float beatInterval = 1.2f;
     [SerializeField] private float previewLead = 0.85f;
 
-    // 注意：判定窗口使用秒，而 UI 结果会转换成毫秒显示。
+    // Note the windows are in seconds, while the result UI shows milliseconds.
     [Header("Timing windows in seconds")]
     [SerializeField] private float perfectWindow = 0.05f;
     [SerializeField] private float goodWindow = 0.15f;
@@ -63,14 +63,14 @@ public sealed class RhythmBeatPrototype : MonoBehaviour
 
     private void Awake()
     {
-        // 原型场景只保存一个根物体，所有 UI 在运行时创建，便于快速调参。
+        // The prototype scene holds a single root object and builds the UI at runtime, which makes it quick to retune.
         BuildRuntimeUi();
         StartSequence();
     }
 
     private void Update()
     {
-        // Update 只负责显示 Beat、缩放光圈，以及处理“超过窗口仍未点击”的自动 Miss。
+        // Update only shows beats, shrinks the rings, and turns "window passed with no tap" into a miss.
         if (!sequenceRunning)
         {
             return;
@@ -111,7 +111,7 @@ public sealed class RhythmBeatPrototype : MonoBehaviour
     /// </summary>
     public void OnBeatClicked()
     {
-        // Button 的 onClick 会进入这里；点击时间减去目标时间就是本次偏差。
+        // The button's onClick lands here; the tap time minus the target time is the error for this beat.
         if (!sequenceRunning || !beatVisible || nextBeatIndex >= beatCount)
         {
             return;
@@ -135,7 +135,7 @@ public sealed class RhythmBeatPrototype : MonoBehaviour
     /// </summary>
     public Judgement EvaluateOffset(float offsetSeconds)
     {
-        // 这是纯函数式的判定入口，方便以后做单元测试或由别的输入设备复用。
+        // A pure function, so this can be unit tested later or driven by another input device.
         float absoluteOffset = Mathf.Abs(offsetSeconds);
         if (absoluteOffset <= Mathf.Max(0f, perfectWindow))
         {
@@ -165,7 +165,7 @@ public sealed class RhythmBeatPrototype : MonoBehaviour
 
     private void StartSequence()
     {
-        // 重置进度和统计，但不销毁 UI；这样 Restart 不需要重新创建 Canvas。
+        // Reset the progress and the tally but keep the UI, so Restart does not have to rebuild the canvas.
         beatCount = Mathf.Max(1, beatCount);
         beatInterval = Mathf.Max(0.25f, beatInterval);
         previewLead = Mathf.Max(0.1f, previewLead);
@@ -201,7 +201,7 @@ public sealed class RhythmBeatPrototype : MonoBehaviour
 
     private void ShowBeat()
     {
-        // Beat 只在进入预览区间时显示，玩家可以看到它逐渐收缩到目标时刻。
+        // A beat only appears once it enters the preview window, where the player watches it shrink towards its moment.
         beatVisible = true;
         beatVisual.SetActive(true);
         beatRing.rectTransform.localScale = Vector3.one * RingStartScale;
@@ -210,7 +210,7 @@ public sealed class RhythmBeatPrototype : MonoBehaviour
 
     private void ResolveBeat(Judgement judgement, float offsetSeconds, string detail)
     {
-        // 结算当前 Beat，更新统计，并让下一个 Beat 接管时间线。
+        // Resolve the current beat, update the tally, and hand the timeline to the next one.
         if (!beatVisible)
         {
             return;
@@ -244,7 +244,7 @@ public sealed class RhythmBeatPrototype : MonoBehaviour
 
     private void FinishSequence()
     {
-        // 四个 Beat 都结算后停止 Update 逻辑，显示总结和重新开始入口。
+        // Once all four have resolved, stop updating and show the summary and the restart button.
         sequenceRunning = false;
         beatVisible = false;
         beatVisual.SetActive(false);
@@ -269,7 +269,7 @@ public sealed class RhythmBeatPrototype : MonoBehaviour
 
     private void BuildRuntimeUi()
     {
-        // 原型 UI 的所有对象都由这里构建；正式 Prefab 版本使用 RhythmNarrativeMinigame。
+        // Everything in the prototype UI is built here. The prefab version is RhythmNarrativeMinigame.
         EnsureCamera();
         EnsureEventSystem();
 
@@ -455,7 +455,7 @@ public sealed class RhythmBeatPrototype : MonoBehaviour
 
     private static void EnsureCamera()
     {
-        // 独立运行场景没有 Camera 时才补一个，避免覆盖项目已有 Camera。
+        // Only add a camera when running this scene on its own, so a camera the project already has is left alone.
         if (Camera.main != null)
         {
             return;
@@ -470,7 +470,7 @@ public sealed class RhythmBeatPrototype : MonoBehaviour
 
     private static void EnsureEventSystem()
     {
-        // uGUI Button 需要 EventSystem 才能收到鼠标或触摸事件。
+        // A uGUI Button needs an EventSystem before it sees mouse or touch events.
         if (EventSystem.current != null)
         {
             return;
