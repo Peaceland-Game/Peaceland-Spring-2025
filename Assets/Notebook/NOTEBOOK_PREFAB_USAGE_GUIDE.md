@@ -1,177 +1,174 @@
-# Notebook Prefab 使用指南
+# Notebook Prefab Usage Guide
 
-本指南适用于 `D:\Peaceland\_migration-notebook-clean`。Notebook 的 UI 来源只有一个：
+The notebook UI has exactly one source:
 
 - `Assets/Notebook/Prefabs/NotebookProductionSceneUI.prefab`
-- 测试工具来源：`Assets/Notebook/Prefabs/NotebookTestSceneControls.prefab`
+- Test tooling: `Assets/Notebook/Prefabs/NotebookTestSceneControls.prefab`
 
-不要在 Scene 中手工复制 Notebook Canvas，也不要让 runtime script 创建 Notebook UI。
+Do not copy the notebook canvas into a scene by hand, and do not let a runtime script build the notebook UI.
 
-## 1. Production Scene 接入
+## 1. Adding the notebook to a production scene
 
-1. 打开目标 Scene。
-2. 将 `NotebookProductionSceneUI.prefab` 拖到 Scene 根节点。
-3. 确认 Scene 中只有：
-   - 1 个 `NotebookController`
-   - 1 个 `NotebookUIShellReferences`
-   - 1 个 `NotebookOpenButton`
-   - 1 个 Notebook Canvas
-4. 如果 Scene 没有 `EventSystem`，创建一个，并使用项目当前 Input System 对应的 UI Input Module。
-5. 保存 Scene，进入 Play Mode：
-   - 点击左上角 Notebook icon。
-   - 打开、切换 section、翻页、关闭。
-   - 离开并重新进入 Scene，确认收集状态一致。
+1. Open the scene.
+2. Drag `NotebookProductionSceneUI.prefab` onto the scene root.
+3. Check the scene has exactly one of each:
+   - `NotebookController`
+   - `NotebookUIShellReferences`
+   - `NotebookOpenButton`
+   - notebook canvas
+4. If the scene has no `EventSystem`, add one, with the UI input module that matches the project's current input system.
+5. Save, enter Play Mode, and check:
+   - the notebook icon in the top left responds to a click
+   - open, switch section, turn pages, close
+   - leave the scene and come back: collected state is unchanged
 
-也可以使用：
+There is also a menu item:
 
 `Peaceland > Notebook > Author Open UI In Active Scene`
 
-该命令只放置和绑定 prefab，不再动态生成 UI。
+It only places and binds the prefab. It no longer generates UI.
 
-## 2. Notebook 测试 Scene 接入
+## 2. Adding the notebook to a test scene
 
-测试 Scene 应同时包含：
+A test scene holds all three:
 
 - `NotebookProductionSceneUI.prefab`
 - `NotebookTestSceneControls.prefab`
-- Scene 自己的真实 collectible、minigame 或 interaction adapter
+- the scene's own real collectible, minigame or interaction adapter
 
-不要把 `NotebookTestSceneControls.prefab` 放进 production Scene。
+Never put `NotebookTestSceneControls.prefab` in a production scene.
 
-批量准备 5 个 Notebook 测试 Scene：
+To prepare all five notebook test scenes at once:
 
 `Peaceland > Notebook > Prefabs > Migrate All Notebook Test Scenes`
 
-这个命令会：
+That command:
 
-1. 重建 `NotebookTestSceneControls.prefab`。
-2. 清理旧 bootstrap 动态 UI。
-3. 在每个测试 Scene 放置 production UI prefab。
-4. 放置 test-controls prefab。
-5. 绑定 controller、shell、open button 与 harness。
-6. 保存 Scene。
+1. Rebuilds `NotebookTestSceneControls.prefab`.
+2. Clears out the old bootstrap's generated UI.
+3. Places the production UI prefab in each test scene.
+4. Places the test controls prefab.
+5. Binds the controller, the shell, the open button and the harness.
+6. Saves the scene.
 
-## 3. 修改 Notebook 外观
+## 3. Changing how the notebook looks
 
-打开 `NotebookProductionSceneUI.prefab` 的 Prefab Mode 修改：
+Open `NotebookProductionSceneUI.prefab` in Prefab Mode and edit it there:
 
 - notebook icon
 - book background
 - directory
 - bookmark tabs
 - entry template
-- record-choice panel
-- page-turn controls
-- toast/notification
+- record choice panel
+- page turn controls
+- toast / notification
 
-不要直接在每个 Scene 重做相同修改。Scene override 只用于：
+Do not repeat the same edit scene by scene. Keep scene overrides for:
 
-- Canvas sorting order 的特殊冲突
-- 该 Scene 明确需要的可见性差异
-- 与 Scene-specific UI 的小范围位置协调
+- a genuine canvas sorting order clash
+- a visibility difference that scene specifically needs
+- small positional give and take with scene specific UI
 
-如果多个 Scene 都需要同一 override，应把修改应用回 prefab。
+If several scenes need the same override, apply it back to the prefab instead.
 
-## 4. 添加可收集 Note
+## 4. Adding a collectible note
 
-1. 在 `Assets/Notebook/Data` 创建或复制一个 `NotebookEntryDefinition`。
-2. 设置唯一 `entryId`。
-3. 设置 section、title、body、image、sort order。
-4. 将该 Entry 加入 `NotebookDatabase.asset`。
-5. 在真实可交互对象上添加对应 Notebook collectible/adapter。
-6. 在 Inspector 中引用该 Entry asset，不要在代码中写死 Entry 文本。
-7. Play Mode 验证：
-   - interaction 前未收集
-   - interaction 后出现 detected/updated 提示
-   - Notebook 中出现正确图片、标题和自适应正文
-   - 重复 interaction 不重复添加
+1. Create or duplicate a `NotebookEntryDefinition` in `Assets/Notebook/Data`.
+2. Give it a unique `entryId`.
+3. Set its section, title, body, image and sort order.
+4. Add the entry to `NotebookDatabase.asset`.
+5. Add the matching notebook collectible or adapter to the real interactable object.
+6. Reference the entry asset in the Inspector. Never hard code entry text in a script.
+7. Check in Play Mode that:
+   - it reads as uncollected before the interaction
+   - a detected / updated toast appears after it
+   - the notebook shows the right image, title and a body that reflows
+   - interacting again does not add it twice
 
-## 5. 添加 Minigame 完成收集
+## 5. Collecting on minigame completion
 
-Minigame Scene 保留自己的完成条件。完成时由 Scene adapter 调用 Notebook 收集入口：
+A minigame scene keeps its own completion condition. On completion, the scene's adapter calls into the notebook:
 
-1. Adapter 引用 `NotebookEntryDefinition`。
-2. 只在 minigame 成功完成时 collect。
-3. 不要在 Notebook UI 内判断 minigame 规则。
-4. 如果 Entry 需要 interpretation，启用 record-choice 配置。
-5. 再次打开 Notebook 时确认选择面板出现。
+1. The adapter references a `NotebookEntryDefinition`.
+2. It collects only when the minigame is genuinely complete.
+3. Minigame rules never live inside the notebook UI.
+4. If the entry needs an interpretation, turn on its record choice configuration.
+5. Confirm the choice panel appears the next time the notebook is opened.
 
-Notebook、minigame 和 Scene 的职责：
+Who owns what:
 
-- Minigame：判断完成。
-- Adapter：把完成结果转换为 Entry collect。
-- Notebook：显示待 interpretation 状态并保存选择。
-- Stat system：应用该选择配置的 stat delta。
+- **Minigame** decides it is complete.
+- **Adapter** turns that into an entry collect.
+- **Notebook** shows the awaiting interpretation state and stores the choice.
+- **Stat system** applies the stat delta that choice carries.
 
-## 6. 配置 Interpretation 与 Stats
+## 6. Interpretations and stats
 
-在 `NotebookEntryDefinition` 中：
+On the `NotebookEntryDefinition`:
 
-1. 启用需要 record choice 的选项。
-2. 配置 2–4 个 interpretation choices。
-3. 每个 choice 使用稳定的 choice id。
-4. 设置要改变的 `PeacelandStatId` 与 delta。
-5. 不要把 stat 名称或数值写进 Scene button 代码。
+1. Turn on the record choice option.
+2. Configure two to four interpretation choices.
+3. Give each a stable choice id.
+4. Set the `PeacelandStatId` it moves, and by how much.
+5. Never write a stat name or number into a scene button's code.
 
-测试闭环：
+To test the whole loop:
 
-1. 完成 minigame 并 collect。
-2. 关闭后再次打开 Notebook。
-3. 选择 interpretation。
-4. 检查 stat 只变化一次。
-5. Save。
-6. 切换 Scene。
-7. Load 或重启 Play Mode。
-8. 确认 choice、Entry 和 stat 都恢复。
-9. 再次打开，不得重复应用 delta。
+1. Finish the minigame and collect.
+2. Close the notebook and open it again.
+3. Pick an interpretation.
+4. Check the stat moved exactly once.
+5. Save.
+6. Change scene.
+7. Load, or restart Play Mode.
+8. Check the choice, the entry and the stat all came back.
+9. Open it again: the delta must not apply a second time.
 
-## 7. `NotebookTestSceneBootstrap` 的新职责
+## 7. What `NotebookTestSceneBootstrap` does now
 
-该类型仅为旧 Scene/序列化引用保留。它现在只会：
+The type exists only for old scenes and serialized references. All it still does:
 
-- 查找已有 prefab instance
-- 把 `NotebookUIShellReferences` 应用到 `NotebookController`
-- 配置 `NotebookOpenButton`
-- 配置可选 `NotebookTestHarness`
+- find the existing prefab instance
+- apply `NotebookUIShellReferences` to the `NotebookController`
+- configure the `NotebookOpenButton`
+- configure an optional `NotebookTestHarness`
 
-它不会：
+It no longer:
 
-- 创建 Canvas/EventSystem
-- 创建 Button/TMP/entry template
-- 创建 Entry asset 或 Database
-- collect dummy entries
-- 修复或重写 RectTransform
+- creates a canvas or an EventSystem
+- creates buttons, TMP objects or the entry template
+- creates entry assets or a database
+- collects dummy entries
+- repairs or rewrites RectTransforms
 
-新 Scene 通常不需要添加该 component。
+A new scene normally does not need this component at all.
 
-## 8. Inspector Debug Checklist
+## 8. Inspector debug checklist
 
-- [ ] Scene 中只有一个 production Notebook prefab instance
-- [ ] Production Scene 中没有 `NotebookTestHarness`
-- [ ] 测试 Scene 中存在一个 test-controls prefab instance
-- [ ] `NotebookController.Database` 非空
-- [ ] `NotebookUIShellReferences` 的关键引用非空
-- [ ] `NotebookOpenButton` 指向当前 controller
-- [ ] 没有 `Test Tools (Runtime)` 或动态生成 Canvas
-- [ ] Console 没有 missing script、duplicate EventSystem 或 duplicate controller
-- [ ] 16:9、16:10 与窗口缩放下，icon/toast 保持在左上安全区
-- [ ] Entry 正文高度随文字变化，图片不会挤压正文
+- [ ] exactly one production notebook prefab instance in the scene
+- [ ] no `NotebookTestHarness` in a production scene
+- [ ] exactly one test controls prefab instance in a test scene
+- [ ] `NotebookController.Database` is not empty
+- [ ] the key references on `NotebookUIShellReferences` are not empty
+- [ ] `NotebookOpenButton` points at the current controller
+- [ ] no `Test Tools (Runtime)` object and no generated canvas
+- [ ] console is clear of missing scripts, duplicate EventSystems and duplicate controllers
+- [ ] at 16:9, at 16:10 and while resizing the window, the icon and toasts stay in the top left safe area
+- [ ] entry body height follows the text, and the image does not squash it
 
-## 9. Migration Checklist
+## 9. Migration checklist
 
-- [ ] 先在 duplicate 中执行迁移菜单
-- [ ] 检查 5 个 Notebook test Scenes
-- [ ] 检查 production prefab 没有 test-only component
-- [ ] 检查 production Scenes 没有被批量迁移命令修改
-- [ ] Unity Console 0 个 compile error
-- [ ] 运行 content Harness
-- [ ] 运行 save/load closed loop
-- [ ] 完成人工 Play Mode 清单
-- [ ] 审查 Git diff 后再决定是否 stage/commit
+- [ ] run the migration menu on a duplicate first
+- [ ] check all five notebook test scenes
+- [ ] check the production prefab carries no test only component
+- [ ] check the batch migration command left production scenes alone
+- [ ] zero compile errors in the console
+- [ ] run the content harness
+- [ ] run the save / load closed loop
+- [ ] work through the manual Play Mode checklist
+- [ ] read the git diff before staging anything
 
-## 10. 回滚
+## 10. Rolling back
 
-所有工作必须在 `_migration-notebook-clean` 中进行。
-
-回滚单个文件或 Scene 时，只恢复明确目标，不要 reset 整个 dirty worktree。迁移前可复制目标 Scene，或先创建本地 checkpoint commit；未经确认不要 push。
-
+When rolling back a file or a scene, restore only what you meant to and do not reset a whole dirty worktree. Duplicate the scene before migrating it, or make a local checkpoint commit first.

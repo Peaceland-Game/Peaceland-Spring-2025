@@ -33,7 +33,7 @@ Satellite collect scenes:
 
 ## Preflight Checks
 
-1. Open Unity with project `D:/Peaceland/peaceland_Yu_Edit`.
+1. Open the project in Unity.
 2. Confirm the Console has no compile errors.
 3. Run `Peaceland > Notebook > Harness > Run Full Harness`.
 4. Open `Assets/Notebook/Harness/Reports/last_harness_report.md`.

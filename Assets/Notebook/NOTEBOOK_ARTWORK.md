@@ -1,10 +1,10 @@
 # Notebook Artwork Checklist
 
-Status key: **必需** = already required for current spec · **很可能** = likely needed soon · **有最好** = optional polish
+Status key: **Required** = already required for current spec · **Likely** = likely needed soon · **Polish** = optional polish
 
 ---
 
-## 必需（已确定需要）
+## Required (confirmed)
 
 | Asset | Purpose | Current status |
 |-------|---------|----------------|
@@ -16,7 +16,7 @@ Status key: **必需** = already required for current spec · **很可能** = li
 
 ---
 
-## 很可能（有概率需要）
+## Likely (probably needed)
 
 | Asset | Purpose | Notes |
 |-------|---------|-------|
@@ -29,7 +29,7 @@ Status key: **必需** = already required for current spec · **很可能** = li
 
 ---
 
-## 有最好（optional polish）
+## Polish (optional)
 
 | Asset | Purpose |
 |-------|---------|

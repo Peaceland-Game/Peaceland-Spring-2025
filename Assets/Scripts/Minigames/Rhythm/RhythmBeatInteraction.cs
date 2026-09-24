@@ -6,23 +6,23 @@ using UnityEngine.UI;
 
 public enum RhythmBeatKind
 {
-    // 点击剧情按钮：用于推进剧情或回应台词。
+    // Tap a story button, to move the story on or answer a line.
     StoryTap,
-    // 按住按钮一段时间，提前松开会 Miss。
+    // Hold the button down; letting go early is a miss.
     Hold,
-    // 在多个预定时间点连续点击。
+    // Tap again on each of several scheduled beats.
     MultiTap,
-    // 拖动按钮达到指定距离，并且拖动发生在判定窗口内。
+    // Drag the button a set distance, with the drag inside the timing window.
     Move
 }
 
 public enum RhythmJudgement
 {
-    // 与目标时间的偏差不超过 Perfect 窗口。
+    // Within the perfect window of the target time.
     Perfect,
-    // 超过 Perfect 但仍在 Good 窗口内。
+    // Outside perfect, but still inside the good window.
     Good,
-    // 过早、过晚、松手过早或动作未完成。
+    // Too early, too late, released early, or never finished.
     Miss
 }
 
@@ -37,25 +37,25 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
     IPointerUpHandler,
     IDragHandler
 {
-    // 这个组件是四种 Beat Prefab 的共同输入和判定内核。
-    // Prefab 之间主要通过 beatKind 和参数差异来复用同一份代码。
-    // 基础节奏参数。所有时间都使用 unscaledTime，避免暂停或慢动作改变判定。
+    // The shared input and timing core behind all four beat prefabs.
+    // They reuse this one script and differ only by beatKind and the fields below.
+    // Shared timing fields. Everything runs on unscaledTime, so a pause or a slow motion effect cannot shift the judgement.
     [Header("Beat")]
     [SerializeField] private RhythmBeatKind beatKind = RhythmBeatKind.StoryTap;
     [SerializeField] private float previewLead = 0.85f;
     [SerializeField] private float perfectWindow = 0.05f;
     [SerializeField] private float goodWindow = 0.15f;
 
-    // Hold 专用参数：按下必须先落在时间窗口内，然后持续 holdDuration 秒。
+    // Hold only: the press has to land inside the window, then last holdDuration seconds.
     [Header("Hold")]
     [SerializeField] private float holdDuration = 0.75f;
 
-    // MultiTap 专用参数：每次点击的目标时间按 multiTapInterval 递进。
+    // MultiTap only: each tap's target time steps on by multiTapInterval.
     [Header("Multi Tap")]
     [SerializeField] private int requiredTaps = 3;
     [SerializeField] private float multiTapInterval = 0.18f;
 
-    // Move 专用参数：从按下位置移动到指定像素距离后结算。
+    // Move only: resolves once the drag covers the given pixel distance from where it started.
     [Header("Move")]
     [SerializeField] private float requiredMoveDistance = 120f;
 
@@ -87,7 +87,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
 
     private void Awake()
     {
-        // Prefab 只需要保存最小的根节点；光圈和文字缺失时由这里补齐。
+        // A prefab only has to store the bare root; the ring and the label are built here when they are missing.
         canvasGroup = GetComponent<CanvasGroup>();
         EnsureVisuals();
         HideBeat();
@@ -95,7 +95,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
 
     private void Update()
     {
-        // 除了更新视觉光圈，Update 还负责自动 Miss，避免玩家不点击时序列卡住。
+        // Besides driving the ring, Update times out into a miss, so a player who never taps cannot stall the sequence.
         if (!activeBeat)
         {
             return;
@@ -134,7 +134,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
 
     public void BeginBeat(float beatTargetTime, Action<RhythmBeatInteraction, RhythmJudgement, float> callback)
     {
-        // Sequence 控制器在生成实例后调用 BeginBeat，传入绝对目标时间和结算回调。
+        // The sequence controller spawns an instance, then calls BeginBeat with an absolute target time and the callback to report back through.
         targetTime = beatTargetTime;
         resolvedCallback = callback;
         tapIndex = 0;
@@ -157,7 +157,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        // StoryTap 和 MultiTap 通过点击事件处理；Hold/Move 使用专属指针事件。
+        // StoryTap and MultiTap come through the click event; Hold and Move need the pointer events.
         if (!activeBeat || beatKind == RhythmBeatKind.Hold || beatKind == RhythmBeatKind.Move)
         {
             return;
@@ -192,7 +192,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // Hold 在按下时锁定起始偏差；Move 在按下时记录拖动起点。
+        // Hold locks in its starting error on press; Move records where the drag began.
         if (!activeBeat)
         {
             return;
@@ -250,7 +250,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
 
     public RhythmJudgement EvaluateOffset(float offsetSeconds)
     {
-        // 统一的时间判定函数，保证四种手势共享同一套 Perfect/Good/Miss 规则。
+        // One timing check, so all four gestures share the same perfect / good / miss rules.
         float absoluteOffset = Mathf.Abs(offsetSeconds);
         if (absoluteOffset <= Mathf.Max(0f, perfectWindow))
         {
@@ -267,7 +267,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
 
     private void Resolve(RhythmJudgement judgement, float offset)
     {
-        // Resolve 只执行一次：触发 Inspector UnityEvent、隐藏视觉，并通知剧情控制器。
+        // Resolve runs once: fire the Inspector event, hide the visuals, tell the story controller.
         if (!activeBeat)
         {
             return;
@@ -311,7 +311,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
 
     private void EnsureVisuals()
     {
-        // 运行时补充按钮本体、同心收缩光圈和文字标签。
+        // Build the button itself, the ring that shrinks around it, and the text label at runtime.
         Image body = GetComponent<Image>();
         body.sprite = GetSolidSprite();
         body.raycastTarget = true;
@@ -377,7 +377,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
 
     private static Sprite GetRingSprite()
     {
-        // 用运行时纹理生成简单环形 Sprite，避免依赖外部 UI 美术资源。
+        // Generate the ring sprite from a runtime texture rather than depend on outside UI art.
         if (ringSprite != null)
         {
             return ringSprite;
