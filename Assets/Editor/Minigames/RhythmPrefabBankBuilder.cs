@@ -125,7 +125,8 @@ public static class RhythmPrefabBankBuilder
             NewSceneSetup.EmptyScene, NewSceneMode.Additive);
         try
         {
-            GameObject cameraObject = new GameObject("Main Camera", typeof(Camera));
+            // The beats tick; without a listener Unity complains every frame one plays.
+            GameObject cameraObject = new GameObject("Main Camera", typeof(Camera), typeof(AudioListener));
             cameraObject.tag = "MainCamera";
             cameraObject.transform.position = new Vector3(0f, 0f, -10f);
             SceneManager.MoveGameObjectToScene(cameraObject, scene);

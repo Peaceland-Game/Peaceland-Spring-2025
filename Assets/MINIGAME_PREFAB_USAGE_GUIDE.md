@@ -16,8 +16,51 @@ The four element prefabs can also be used separately:
 Edit timing and gesture values on `RhythmBeatInteraction`. Edit narrative text,
 step order, Yarn entry, and completion events on `RhythmNarrativeMinigame`.
 Call `StartMinigame()` from the scene manager, dialogue hook, or UnityEvent.
+The beat's own children (ring, label) are left as the Editor set them; only
+sprites a prefab cannot store are filled in at runtime.
 
-Regenerate the bank with `Peaceland > Rhythm > Create Prefab Bank`.
+### Beats from Yarn
+
+Put `RhythmYarnCommands` on the object that has the `DialogueRunner`, and keep
+a `RhythmNarrativeSequence` in the scene. A script can then ask for a gesture
+between any two lines:
+
+```
+Organizer: Stay with the pressure.
+<<rhythm_beat Hold>>
+Organizer: Again. Again. Again.
+<<rhythm_beat MultiTap 1.2>>
+```
+
+The dialogue waits until the beat lands; a miss only asks again. The second
+argument is the lead time in seconds and is optional. Kinds are `StoryTap`,
+`Hold`, `MultiTap`, `Move`.
+
+### Sound
+
+Each beat ticks a count-in across its lead and once more on the target, so the
+player has a tempo to lock to. The ticks are generated; drop clips into
+`Count In Clip` / `Target Clip` on the beat prefabs to replace them. Perfect,
+Good and Miss sounds go on the beat's `onPerfect` / `onGood` / `onMiss` events.
+
+### Feedback
+
+The result line says early or late and by how many milliseconds, and names
+what went wrong on a miss (`TOO EARLY`, `TOO LATE`, `LET GO EARLY`, `NO INPUT`).
+
+### Commands
+
+- `Peaceland > Rhythm > Create Prefab Bank` - regenerate the bank.
+- `Peaceland > Rhythm > Validate Prefab Bank` - run before migration.
+- `Peaceland > Rhythm > Run Beat Check (Play Mode)` - drives the playtest scene
+  with simulated input and fails if judgement, feedback, retry or the hold
+  timeout regress. Headless:
+
+```
+Unity.exe -batchmode -nographics -projectPath .   -executeMethod RhythmPlayModeCheck.Run -logFile rhythm.log
+```
+
+It calls `Exit` itself, so it takes no `-quit`.
 
 ## Maze
 
