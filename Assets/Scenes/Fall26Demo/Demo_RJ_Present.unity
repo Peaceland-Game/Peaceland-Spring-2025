@@ -4573,6 +4573,55 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3482253956382382075, guid: 5803e1d7bdc0b42d88017d33800d2635, type: 3}
   m_PrefabInstance: {fileID: 1521154268}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1823596925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1823596927}
+  - component: {fileID: 1823596926}
+  m_Layer: 0
+  m_Name: Peaceland Scene Checkpoint Policy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1823596926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823596925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17498181bfa95e749a52693eb7435aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recordAsGameplayCheckpoint: 1
+  exclusionReason: 
+  checkpointKey: 
+  checkpointDisplayName: 
+  replaceMatchingCheckpoint: 1
+--- !u!4 &1823596927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823596925}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1850545348
 GameObject:
   m_ObjectHideFlags: 0
@@ -4933,3 +4982,4 @@ SceneRoots:
   - {fileID: 1201928310}
   - {fileID: 58081627}
   - {fileID: 1901868927}
+  - {fileID: 1823596927}
