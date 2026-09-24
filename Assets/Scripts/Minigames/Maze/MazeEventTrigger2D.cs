@@ -16,7 +16,7 @@ public sealed class MazeEventTrigger2D : MonoBehaviour
 
     private bool hasTriggered;
 
-private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         MazePlayerController2D player = other.GetComponentInParent<MazePlayerController2D>();
         if (player == null || (oneShot && hasTriggered))
@@ -25,7 +25,6 @@ private void OnTriggerEnter2D(Collider2D other)
         }
 
         hasTriggered = true;
-        Debug.Log($"Maze event triggered: {name}", this);
         onPlayerEntered?.Invoke();
 
         if (dialogueRunner != null && !dialogueRunner.IsDialogueRunning && !string.IsNullOrWhiteSpace(startNode))
