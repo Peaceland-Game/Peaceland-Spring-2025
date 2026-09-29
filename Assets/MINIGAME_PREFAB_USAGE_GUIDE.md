@@ -52,15 +52,25 @@ what went wrong on a miss (`TOO EARLY`, `TOO LATE`, `LET GO EARLY`, `NO INPUT`).
 
 - `Peaceland > Rhythm > Create Prefab Bank` - regenerate the bank.
 - `Peaceland > Rhythm > Validate Prefab Bank` - run before migration.
-- `Peaceland > Rhythm > Run Beat Check (Play Mode)` - drives the playtest scene
-  with simulated input and fails if judgement, feedback, retry or the hold
-  timeout regress. Headless:
+- `Peaceland > Rhythm > Create Yarn Playtest Scene` - writes a three-line
+  script with two `<<rhythm_beat>>` commands and a scene that runs it
+  (`Assets/Scenes/Rhythm/RhythmYarnPlaytest.unity`).
+- `Peaceland > Rhythm > Run Beat Check (Play Mode)` - drives the prefab
+  playtest scene with simulated input, locked to 60 fps, and fails if any of
+  the four gestures, the early/late feedback, the retry or the hold timeout
+  regress.
+- `Peaceland > Rhythm > Run Yarn Command Check (Play Mode)` - runs the Yarn
+  playtest script and fails if a miss lets the line move on or a landed beat
+  does not.
+
+Headless:
 
 ```
-Unity.exe -batchmode -nographics -projectPath .   -executeMethod RhythmPlayModeCheck.Run -logFile rhythm.log
+Unity.exe -batchmode -nographics -projectPath . -executeMethod RhythmPlayModeCheck.Run -logFile rhythm.log
+Unity.exe -batchmode -nographics -projectPath . -executeMethod RhythmPlayModeCheck.RunYarn -logFile rhythm-yarn.log
 ```
 
-It calls `Exit` itself, so it takes no `-quit`.
+Both call `Exit` themselves, so they take no `-quit`.
 
 ## Maze
 
