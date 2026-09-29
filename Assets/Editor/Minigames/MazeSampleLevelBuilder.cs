@@ -7,6 +7,8 @@ using UnityEditor.Events;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 
 /// <summary>
@@ -41,6 +43,8 @@ public static class MazeSampleLevelBuilder
         Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
         CreateCamera();
+        // The pause menu that follows the player between scenes selects a button on arrival.
+        new GameObject("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
         BuildWalls();
 
         Transform startPoint = new GameObject("StartPoint").transform;
@@ -123,6 +127,7 @@ public static class MazeSampleLevelBuilder
         MazePatrolNpc2D npc = UnityEngine.Object.FindFirstObjectByType<MazePatrolNpc2D>();
         MazeObjectiveSequence sequence = UnityEngine.Object.FindFirstObjectByType<MazeObjectiveSequence>();
 
+        if (UnityEngine.Object.FindFirstObjectByType<EventSystem>() == null) failures.Add("no EventSystem, so the pause menu would throw here");
         if (player == null) failures.Add("no player");
         if (npc == null) failures.Add("no patrol NPC");
         if (sequence == null) failures.Add("no objective sequence");
