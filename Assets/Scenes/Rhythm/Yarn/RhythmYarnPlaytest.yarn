@@ -1,0 +1,8 @@
+title: RhythmYarnPlaytest
+---
+Organizer: Listen first. Then answer.
+<<rhythm_beat StoryTap 0.4>>
+Organizer: Stay with the pressure.
+<<rhythm_beat Hold 0.4>>
+Organizer: That is the rhythm.
+===

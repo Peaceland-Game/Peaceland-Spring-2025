@@ -102,6 +102,8 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
     public float PerfectWindow => perfectWindow;
     public float GoodWindow => goodWindow;
     public float TargetTime => targetTime;
+    public float MultiTapInterval => multiTapInterval;
+    public float HoldDuration => holdDuration;
 
     private void Awake()
     {
