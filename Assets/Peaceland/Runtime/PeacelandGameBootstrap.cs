@@ -111,9 +111,12 @@ namespace Peaceland
 
             if (!Application.CanStreamedLevelBeLoaded(scene.name))
             {
-                Debug.LogError(
+                // Only the Editor can get here - a build cannot load a scene it does not
+                // contain - so this is a note for whoever pressed Play, not a failure.
+                Debug.LogWarning(
                     "[SaveLoad] Scene '" + scene.name
-                    + "' is marked as a checkpoint but is not enabled in Build Settings.");
+                    + "' is marked as a checkpoint but is not enabled in Build Settings,"
+                    + " so a build could not resume here. Checkpoint was not changed.");
                 return;
             }
 
