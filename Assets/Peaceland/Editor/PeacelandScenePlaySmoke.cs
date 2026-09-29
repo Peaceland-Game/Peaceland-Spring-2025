@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace Peaceland.Editor
@@ -200,6 +201,14 @@ namespace Peaceland.Editor
         {
             DontDestroyOnLoad(gameObject);
             Report = null;
+
+            // Headless Unity has no input devices, and half the scenes read Mouse.current
+            // every frame. A player always has a mouse, so the smoke gets one too.
+            if (Mouse.current == null)
+            {
+                InputSystem.AddDevice<Mouse>();
+            }
+
             StartCoroutine(PeacelandScenePlaySmoke.Run(Scenes, report => Report = report));
         }
     }
