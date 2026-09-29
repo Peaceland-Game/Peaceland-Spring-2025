@@ -288,8 +288,15 @@ namespace Peaceland
             string sceneName,
             bool replaceMatchingKey = false)
         {
-            if (!HasActiveSlot || string.IsNullOrWhiteSpace(sceneName))
+            if (string.IsNullOrWhiteSpace(sceneName))
             {
+                return null;
+            }
+
+            BindLiveDocument();
+            if (!HasActiveSlot)
+            {
+                // Slot 0 is corrupt and nothing else was chosen; there is nowhere to write.
                 return null;
             }
 

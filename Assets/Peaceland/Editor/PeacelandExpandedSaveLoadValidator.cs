@@ -357,10 +357,15 @@ namespace Peaceland.Editor
                 Require(notebook.states.Any(state => state.entryId == "unbound-existing-entry" && state.isCollected),
                     "binding after a collect wiped the entries slot 0 already had");
 
+                // The path a scene load takes: bootstrap -> progress -> checkpoint.
                 service.ClearActiveSlotSelection();
-                service.SetLastSceneName("UnboundScene");
+                PeacelandProgress.Instance.SetCurrentSceneCheckpoint("UnboundScene");
                 Require(service.GetLastSceneName() == "UnboundScene",
                     "the scene name recorded before binding was lost");
+                Require(
+                    service.TryGetCheckpointSummaries(0, out List<PeacelandCheckpointSummary> unboundCheckpoints)
+                    && unboundCheckpoints.Any(checkpoint => checkpoint.sceneName == "UnboundScene"),
+                    "the scene load before binding recorded no checkpoint");
 
                 PeacelandGameSaveData disk =
                     JsonUtility.FromJson<PeacelandGameSaveData>(File.ReadAllText(slotZeroPath));

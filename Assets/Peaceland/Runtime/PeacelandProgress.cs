@@ -85,14 +85,9 @@ namespace Peaceland
             string displayName,
             bool replaceMatchingKey)
         {
-            PeacelandSaveService saveService = PeacelandSaveService.Instance;
-            if (!saveService.HasActiveSlot)
-            {
-                saveService.SetLastSceneName(sceneName);
-                return;
-            }
-
-            saveService.CaptureCheckpoint(
+            // With no slot chosen the service binds the playtest slot itself, so the
+            // checkpoint is recorded either way rather than just the scene name.
+            PeacelandSaveService.Instance.CaptureCheckpoint(
                 string.IsNullOrWhiteSpace(checkpointKey) ? sceneName : checkpointKey,
                 string.IsNullOrWhiteSpace(displayName) ? sceneName : displayName,
                 sceneName,
