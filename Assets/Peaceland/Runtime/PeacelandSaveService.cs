@@ -462,6 +462,7 @@ namespace Peaceland
 
         public Peaceland.Notebook.NotebookSaveData GetNotebookData()
         {
+            BindLiveDocument();
             if (data.notebook == null)
             {
                 data.notebook = new Peaceland.Notebook.NotebookSaveData();
@@ -520,11 +521,13 @@ namespace Peaceland
 
         public int GetStat(PeacelandStatId statId)
         {
+            BindLiveDocument();
             return data.stats.Get(statId);
         }
 
         public void SetStat(PeacelandStatId statId, int value)
         {
+            BindLiveDocument();
             data.stats.Set(statId, value);
             OnDataChanged();
         }
@@ -532,11 +535,14 @@ namespace Peaceland
         /// <summary>Adds delta then clamps to -5..+5. Same path as PeacelandStatManager.AddDelta.</summary>
         public void AddStat(PeacelandStatId statId, int delta)
         {
+            // Read after binding, or the delta is added to an empty document's zero.
+            BindLiveDocument();
             SetStat(statId, data.stats.Get(statId) + delta);
         }
 
         public bool HasProgressFlag(string flagId)
         {
+            BindLiveDocument();
             if (string.IsNullOrWhiteSpace(flagId) || data.progress == null)
             {
                 return false;
@@ -547,6 +553,7 @@ namespace Peaceland
 
         public bool TryGetProgressInt(string key, out int value)
         {
+            BindLiveDocument();
             value = 0;
             if (string.IsNullOrWhiteSpace(key)
                 || data.progress == null
@@ -568,6 +575,7 @@ namespace Peaceland
 
         public void SetProgressInt(string key, int value)
         {
+            BindLiveDocument();
             if (string.IsNullOrWhiteSpace(key))
             {
                 return;
@@ -588,6 +596,7 @@ namespace Peaceland
 
         public void SetProgressFlag(string flagId, bool value)
         {
+            BindLiveDocument();
             if (string.IsNullOrWhiteSpace(flagId))
             {
                 return;
@@ -620,6 +629,7 @@ namespace Peaceland
 
         public void SetLastSceneName(string sceneName)
         {
+            BindLiveDocument();
             if (data.progress == null)
             {
                 data.progress = new PeacelandProgressSnapshot();
@@ -631,6 +641,7 @@ namespace Peaceland
 
         public void SetSaveDisplayProgress(string locationName, int day)
         {
+            BindLiveDocument();
             if (data.progress == null)
             {
                 data.progress = new PeacelandProgressSnapshot();
@@ -639,6 +650,20 @@ namespace Peaceland
             data.progress.displayLocationName = locationName ?? string.Empty;
             data.progress.currentDay = Mathf.Max(1, day);
             OnDataChanged();
+        }
+
+        /// <summary>
+        /// Gameplay reads and writes go through here first. A document nobody has bound to
+        /// a slot is replaced by that slot's file the moment it is saved, and the change
+        /// goes with it - a collected entry, a stat delta, the scene name. Binding before
+        /// the document is touched means the change lands on top of what the slot holds.
+        /// </summary>
+        private void BindLiveDocument()
+        {
+            if (!HasActiveSlot)
+            {
+                EnsureActiveSlotBound(preferExistingSlotZero: true);
+            }
         }
 
         /// <summary>
@@ -778,6 +803,7 @@ namespace Peaceland
 
         public void ClearNotebookSection()
         {
+            BindLiveDocument();
             data.notebook = new Peaceland.Notebook.NotebookSaveData();
             Save();
             DataLoaded?.Invoke();
@@ -785,6 +811,7 @@ namespace Peaceland
 
         public void ReplaceNotebookData(Peaceland.Notebook.NotebookSaveData notebookData)
         {
+            BindLiveDocument();
             data.notebook = notebookData ?? new Peaceland.Notebook.NotebookSaveData();
         }
 

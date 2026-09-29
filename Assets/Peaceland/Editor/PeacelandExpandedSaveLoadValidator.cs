@@ -304,6 +304,95 @@ namespace Peaceland.Editor
             return checkpointId;
         }
 
+        /// <summary>
+        /// Gameplay that runs before anyone picked a slot - a scene opened straight from
+        /// the Editor, a tester who cleared the title screen - falls back to slot 0. The
+        /// fallback used to load slot 0's file over the document that had just been
+        /// changed, so the first stat delta, collected entry and scene name were lost.
+        /// </summary>
+        [MenuItem("Peaceland/Save/Run Unbound Slot Fallback Check (Play Mode)")]
+        public static void RunUnboundSlotFallback()
+        {
+            if (!EditorApplication.isPlaying)
+            {
+                throw new InvalidOperationException(
+                    "Enter Play Mode in SaveLoad, then run this validation.");
+            }
+
+            PeacelandSaveService service = PeacelandSaveService.Instance;
+            int previousSlot = service.ActiveSlotIndex;
+            string slotZeroPath = PeacelandSaveService.GetSlotPath(0);
+            // The fallback slot is always 0, so a real slot 0 is parked and put back.
+            string parked = File.Exists(slotZeroPath) ? File.ReadAllText(slotZeroPath) : null;
+
+            try
+            {
+                PeacelandGameSaveData existing = PeacelandGameSaveData.CreateNewGame();
+                existing.savedUtc = DateTime.UtcNow.ToString("o");
+                existing.stats.Set(PeacelandStatId.KindnessCruelty, 2);
+                existing.notebook.states.Add(new NotebookEntryStateData
+                {
+                    entryId = "unbound-existing-entry",
+                    isCollected = true,
+                    collectedOrder = 1,
+                });
+                File.WriteAllText(slotZeroPath, JsonUtility.ToJson(existing, true));
+
+                service.ClearActiveSlotSelection();
+                Require(!service.HasActiveSlot, "the slot selection did not clear");
+
+                service.AddStat(PeacelandStatId.KindnessCruelty, 1);
+                Require(service.HasActiveSlot && service.ActiveSlotIndex == 0,
+                    "the first stat change did not bind slot 0");
+                Require(service.GetStat(PeacelandStatId.KindnessCruelty) == 3,
+                    "the stat delta made before binding was lost; K/C is "
+                    + service.GetStat(PeacelandStatId.KindnessCruelty) + ", expected 3");
+
+                service.ClearActiveSlotSelection();
+                Require(NotebookSaveUtility.TryMarkCollected("unbound-new-entry"),
+                    "the unbound collect was refused");
+                NotebookSaveData notebook = service.GetNotebookData();
+                Require(notebook.states.Any(state => state.entryId == "unbound-new-entry" && state.isCollected),
+                    "the entry collected before binding was lost");
+                Require(notebook.states.Any(state => state.entryId == "unbound-existing-entry" && state.isCollected),
+                    "binding after a collect wiped the entries slot 0 already had");
+
+                service.ClearActiveSlotSelection();
+                service.SetLastSceneName("UnboundScene");
+                Require(service.GetLastSceneName() == "UnboundScene",
+                    "the scene name recorded before binding was lost");
+
+                PeacelandGameSaveData disk =
+                    JsonUtility.FromJson<PeacelandGameSaveData>(File.ReadAllText(slotZeroPath));
+                Require(disk.stats.Get(PeacelandStatId.KindnessCruelty) == 3
+                        && disk.notebook.states.Count == 2
+                        && disk.progress.lastSceneName == "UnboundScene",
+                    "slot 0 on disk does not hold the changes made before binding");
+
+                Debug.Log("[Unbound Slot Fallback] PASS | stat, notebook entry and scene name survive binding to slot 0.");
+            }
+            finally
+            {
+                if (parked != null)
+                {
+                    File.WriteAllText(slotZeroPath, parked);
+                }
+                else if (File.Exists(slotZeroPath))
+                {
+                    File.Delete(slotZeroPath);
+                }
+
+                if (previousSlot >= 0)
+                {
+                    service.ActivateSlotAndContinue(previousSlot);
+                }
+                else
+                {
+                    service.ClearActiveSlotSelection();
+                }
+            }
+        }
+
         private static int FindUnusedSlot(int minimum)
         {
             int slotIndex = Mathf.Max(10, minimum);
