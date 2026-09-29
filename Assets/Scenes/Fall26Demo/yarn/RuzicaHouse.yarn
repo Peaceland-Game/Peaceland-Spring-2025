@@ -81,7 +81,7 @@ They turn their heads to the window after hearing voices outside.
 They both start packing her essentials into the bag. 
 They pause after hearing a voice from outside her door.
 
-{$lover2Name}'s Mom: (Yelling from another room) {$lover2Name}, are you talking to somebody? Who's in the room with you?
+{$lover2Name}'s Mom: {$lover2Name}, are you talking to somebody? Who's in the room with you?
 
 // Change both to fear
 <<changeSprite 1 3>>

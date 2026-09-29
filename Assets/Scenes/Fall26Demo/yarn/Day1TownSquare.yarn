@@ -171,10 +171,10 @@ title: TownSquareKatarina2
 <<lighten 1>>
 {$collegeFriendName}: I know you’ll get there.
 <<darken 1>>
--> I just need to save up for a car
-    {$protagName}: I just need to save up for a car
--> My parents are just really worried about the election and all
-    {$protagName}: My parents are just really worried about the election and all
+-> I just need to save up for a car.
+    {$protagName}: I just need to save up for a car.
+-> My parents are just really worried about the election and all.
+    {$protagName}: My parents are just really worried about the election and all.
 <<lighten 1>>
 {$collegeFriendName}: It'll work out.
 <<darken 1>>
@@ -183,7 +183,7 @@ title: TownSquareKatarina2
 
 title: TownSquareKatarinaEnd
 ---
-{$collegeFriendName}: Well, I can't miss the bus. Maybe i'll see you later?
+{$collegeFriendName}: Well, I can't miss the bus. Maybe I'll see you later?
 -> Sure.
     {$protagName}: Sure.
 -> Hopefully.

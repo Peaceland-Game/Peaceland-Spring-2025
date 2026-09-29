@@ -6,7 +6,7 @@ tags:
 <<wait 0.5>>
 <<lighten 1>>
 {$directorName}: As you can see, this room contains many artifacts from the war.
-{$directorName}: Flags, medals, childrens toys, you name it.
+{$directorName}: Flags, medals, children's toys, you name it.
 {$directorName}: Give yourself a quick history lesson, then talk with me back in the lobby.
 <<darken 1>>
 

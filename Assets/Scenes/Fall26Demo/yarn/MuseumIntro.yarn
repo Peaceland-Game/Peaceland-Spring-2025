@@ -23,7 +23,7 @@ tags:
     <<darken 1>>
 -><i>Stay Silent</i>
     <<lighten 1>>
-    {$directorName}: Are you gonna speak up?
+    {$directorName}: Well? Any thoughts rattling around up there?
     <<darken 1>>
 {$directorName} gives {$protagName} a look.
 <<lighten 1>>

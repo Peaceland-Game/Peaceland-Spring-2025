@@ -15,9 +15,9 @@
 {$lover1Name} is running around his dining room frantically. 
 He's looking in drawers and behind furniture. 
 He gets more and more desperate as he mutters to himself.
-{$lover1Name}: (<i>I must have misplaced it.</i>)
-{$lover1Name}: (<i>I must have picked it up and put it somewhere.</i>)
-{$lover1Name}: (<i>It's fine, no one else has-</i>)
+{$lover1Name}: I must have misplaced it.
+{$lover1Name}: I must have picked it up and put it somewhere.
+{$lover1Name}: It's fine, no one else has-
 <<darken 2>>
 
 <<changeSprite 1 0>>    // Damir starts with a neutral expression
@@ -80,7 +80,7 @@ He gets more and more desperate as he mutters to himself.
 <<changeSprite 1 2>>// Change Damir's Expression: Determined
 <<lighten 1>>   
 {$cousinName} puts down his fork.
-{$cousinName}: A letter with no return address thats clearly filled with shredded paper was left in a park for you to find. 
+{$cousinName}: A letter with no return address that's clearly filled with shredded paper was left in a park for you to find. 
 {$cousinName}: On top of that, you won't tell me what's in the letter.
 <<darken 1>>
 

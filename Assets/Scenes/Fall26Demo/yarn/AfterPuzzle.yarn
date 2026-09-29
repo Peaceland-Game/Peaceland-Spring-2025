@@ -49,7 +49,7 @@ They stare at each other in silence.
 
 <<changeSprite 1 3>>// Change Damir's Expression: Afraid
 <<lighten 1>>   
-{$cousinName}'s posture stiffens. His face pales, his expression shifting something akin to fear.
+{$cousinName}'s posture stiffens. His face pales, his expression shifting to something akin to fear.
 <<darken 1>>
 
 <<lighten 2>>
