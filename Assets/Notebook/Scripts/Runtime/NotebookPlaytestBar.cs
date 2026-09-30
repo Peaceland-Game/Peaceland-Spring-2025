@@ -183,7 +183,7 @@ namespace Peaceland.Notebook
         {
             int collected = NotebookSaveUtility.CountCollected();
             string statsLine = "K/C=" + PeacelandStatManager.Instance.Get(PeacelandStatId.KindnessCruelty)
-                + " | S/A=" + PeacelandStatManager.Instance.Get(PeacelandStatId.SelfishAltruistic)
+                + " | I/N=" + PeacelandStatManager.Instance.Get(PeacelandStatId.InsightNaivety)
                 + " | checkpoint=" + PeacelandProgress.Instance.GetCurrentSceneCheckpoint();
             return collected == 0
                 ? statsLine + " | notebook: none collected yet"

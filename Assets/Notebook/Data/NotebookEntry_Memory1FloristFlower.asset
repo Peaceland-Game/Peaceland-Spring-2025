@@ -42,6 +42,6 @@ MonoBehaviour:
     statId: 1
     statDelta: 1
   - choiceId: guarded
-    label: Read it as a guarded request (-1 Altruism)
-    statId: 0
+    label: Read it as a guarded request (-1 Kindness)
+    statId: 3
     statDelta: -1

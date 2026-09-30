@@ -20,6 +20,9 @@ namespace Peaceland
     [Serializable]
     public sealed class PeacelandStatsSnapshot
     {
+        // selfishAltruistic and nationalismRebellion were retired 9/18/2026 but stay in the
+        // JSON so older saves round-trip; nothing in the game reads or writes them now.
+#pragma warning disable CS0618
         public int selfishAltruistic;
         public int insightNaivety;
         public int nationalismRebellion;
@@ -67,6 +70,7 @@ namespace Peaceland
         {
             return Math.Max(-5, Math.Min(5, value));
         }
+#pragma warning restore CS0618
     }
 
     [Serializable]

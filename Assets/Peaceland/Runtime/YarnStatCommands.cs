@@ -27,9 +27,11 @@ namespace Peaceland
         /// <summary>Yarn: &lt;&lt;add_stat KindnessCruelty 1&gt;&gt;. Unknown names log a warning and do nothing.</summary>
         private void AddStat(string statName, int delta)
         {
-            if (!Enum.TryParse(statName, true, out PeacelandStatId statId))
+            if (!Enum.TryParse(statName, true, out PeacelandStatId statId) || !PeacelandStats.IsActive(statId))
             {
-                Debug.LogWarning("Unknown Peaceland stat in Yarn command: " + statName, this);
+                Debug.LogWarning(
+                    "Yarn <<add_stat>> ignored '" + statName + "'. Use KindnessCruelty or InsightNaivety.",
+                    this);
                 return;
             }
 

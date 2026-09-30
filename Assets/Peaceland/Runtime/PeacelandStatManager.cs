@@ -69,10 +69,8 @@ namespace Peaceland
 
         public string FormatAllStats()
         {
-            return "S/A=" + Get(PeacelandStatId.SelfishAltruistic)
-                + " I/N=" + Get(PeacelandStatId.InsightNaivety)
-                + " N/RA=" + Get(PeacelandStatId.NationalismRebellion)
-                + " K/C=" + Get(PeacelandStatId.KindnessCruelty);
+            return "K/C=" + Get(PeacelandStatId.KindnessCruelty)
+                + " I/N=" + Get(PeacelandStatId.InsightNaivety);
         }
     }
 }
