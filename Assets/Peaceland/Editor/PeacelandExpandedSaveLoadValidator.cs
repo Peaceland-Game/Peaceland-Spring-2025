@@ -338,6 +338,20 @@ namespace Peaceland.Editor
                 });
                 File.WriteAllText(slotZeroPath, JsonUtility.ToJson(existing, true));
 
+                // NotebookController reads back inside DataLoaded; that read must not re-bind slot 0 mid-clear.
+                Action reentrantReader = () => service.GetNotebookData();
+                service.DataLoaded += reentrantReader;
+                try
+                {
+                    service.ClearActiveSlotSelection();
+                    Require(!service.HasActiveSlot,
+                        "a DataLoaded listener reading back re-bound a slot during the clear");
+                }
+                finally
+                {
+                    service.DataLoaded -= reentrantReader;
+                }
+
                 service.ClearActiveSlotSelection();
                 Require(!service.HasActiveSlot, "the slot selection did not clear");
 

@@ -95,6 +95,12 @@ public sealed class MazeObjectiveSequence : MonoBehaviour
     /// </summary>
     public void ResetCurrentObjective()
     {
+        if (objectives == null || currentIndex >= objectives.Length)
+        {
+            // Already complete; re-arming would fire onSequenceComplete a second time.
+            return;
+        }
+
         if (objectiveRoutine != null)
         {
             StopCoroutine(objectiveRoutine);

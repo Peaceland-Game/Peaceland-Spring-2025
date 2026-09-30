@@ -88,9 +88,16 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
         running = true;
         currentStepIndex = -1;
 
-        if (dialogueRunner != null && !string.IsNullOrWhiteSpace(startNode) && !dialogueRunner.IsDialogueRunning)
+        if (dialogueRunner != null && !string.IsNullOrWhiteSpace(startNode))
         {
-            dialogueRunner.StartDialogue(startNode);
+            // Yarn owns the beats through <<rhythm_beat>>; running the step sequence too
+            // would have the two destroy each other's active beat.
+            if (!dialogueRunner.IsDialogueRunning)
+            {
+                dialogueRunner.StartDialogue(startNode);
+            }
+
+            return;
         }
 
         sequenceCoroutine = StartCoroutine(RunSequence());

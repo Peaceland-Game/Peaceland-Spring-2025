@@ -25,6 +25,9 @@ namespace Peaceland
         private PeacelandGameSaveData data = new PeacelandGameSaveData();
         private int activeSlotIndex = -1;
         private bool legacyMigrationAttempted;
+        // True while DataLoaded / ActiveSlotChanged fire for "no slot": a listener that reads
+        // back must not re-bind slot 0 in the middle of the clear.
+        private bool raisingUnboundEvents;
 
         public static PeacelandSaveService Instance
         {
@@ -415,8 +418,24 @@ namespace Peaceland
             PlayerPrefs.SetInt(PeacelandSaveSlots.ActiveSlotPlayerPrefsKey, -1);
             PlayerPrefs.Save();
             data = new PeacelandGameSaveData();
-            DataLoaded?.Invoke();
-            ActiveSlotChanged?.Invoke(-1);
+            RaiseUnbound(() =>
+            {
+                DataLoaded?.Invoke();
+                ActiveSlotChanged?.Invoke(-1);
+            });
+        }
+
+        private void RaiseUnbound(Action raise)
+        {
+            raisingUnboundEvents = true;
+            try
+            {
+                raise();
+            }
+            finally
+            {
+                raisingUnboundEvents = false;
+            }
         }
 
         public bool DeleteSlot(int slotIndex)
@@ -435,7 +454,7 @@ namespace Peaceland
             if (activeSlotIndex == slotIndex)
             {
                 data = new PeacelandGameSaveData();
-                DataLoaded?.Invoke();
+                RaiseUnbound(() => DataLoaded?.Invoke());
             }
 
             return true;
@@ -667,7 +686,7 @@ namespace Peaceland
         /// </summary>
         private void BindLiveDocument()
         {
-            if (!HasActiveSlot)
+            if (!HasActiveSlot && !raisingUnboundEvents)
             {
                 EnsureActiveSlotBound(preferExistingSlotZero: true);
             }
@@ -787,9 +806,10 @@ namespace Peaceland
             }
             catch (Exception exception)
             {
+                // A slot that cannot be read must not stay active, or the next autosave
+                // overwrites it without the explicit wipe ActivateSlotAndContinue demands.
                 Debug.LogError("Failed to load Peaceland save: " + exception.Message);
-                data = new PeacelandGameSaveData();
-                DataLoaded?.Invoke();
+                ClearActiveSlotSelection();
                 return false;
             }
         }
@@ -799,7 +819,7 @@ namespace Peaceland
             if (!HasActiveSlot)
             {
                 data = new PeacelandGameSaveData();
-                DataLoaded?.Invoke();
+                RaiseUnbound(() => DataLoaded?.Invoke());
                 return;
             }
 
@@ -993,7 +1013,6 @@ namespace Peaceland
         private void NormalizeData()
         {
             data ??= new PeacelandGameSaveData();
-            data.version = PeacelandGameSaveData.CurrentVersion;
 
             if (data.stats == null)
             {
@@ -1014,7 +1033,9 @@ namespace Peaceland
             }
 
             data.checkpoints ??= new List<PeacelandCheckpointSnapshot>();
+            // Migrate first: EnsureLegacyCheckpoint is a no-op once the version says current.
             EnsureLegacyCheckpoint(data);
+            data.version = PeacelandGameSaveData.CurrentVersion;
         }
 
         private void OnDataChanged()
