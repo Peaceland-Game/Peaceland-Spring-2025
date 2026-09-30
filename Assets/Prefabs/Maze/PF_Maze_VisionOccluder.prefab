@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6466514138516847702}
   - component: {fileID: 25382703819843332}
-  m_Layer: 14
+  m_Layer: 9
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,8 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6007669715443550109}
   - component: {fileID: 5767050840865077312}
-  - component: {fileID: 2231948300044623320}
-  m_Layer: 14
+  m_Layer: 9
   m_Name: PF_Maze_VisionOccluder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,17 +166,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2231948300044623320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8557483192767542872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7639c26916623a04ab357db5bb40dcf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerName: MazeVisionOccluder
-  includeChildren: 1

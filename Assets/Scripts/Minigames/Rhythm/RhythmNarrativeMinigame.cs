@@ -59,9 +59,14 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
     private Coroutine sequenceCoroutine;
     private int currentStepIndex = -1;
     private bool running;
+    private RhythmJudgement lastJudgement;
 
     public int CurrentStepIndex => currentStepIndex;
     public bool IsRunning => running;
+    public RhythmJudgement LastJudgement => lastJudgement;
+
+    /// <summary>The beat the player is being asked for right now, or null between beats.</summary>
+    public RhythmBeatInteraction ActiveBeat => activeBeat;
 
     private void Awake()
     {
@@ -83,9 +88,16 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
         running = true;
         currentStepIndex = -1;
 
-        if (dialogueRunner != null && !string.IsNullOrWhiteSpace(startNode) && !dialogueRunner.IsDialogueRunning)
+        if (dialogueRunner != null && !string.IsNullOrWhiteSpace(startNode))
         {
-            dialogueRunner.StartDialogue(startNode);
+            // Yarn owns the beats through <<rhythm_beat>>; running the step sequence too
+            // would have the two destroy each other's active beat.
+            if (!dialogueRunner.IsDialogueRunning)
+            {
+                dialogueRunner.StartDialogue(startNode);
+            }
+
+            return;
         }
 
         sequenceCoroutine = StartCoroutine(RunSequence());
@@ -101,12 +113,7 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
             sequenceCoroutine = null;
         }
 
-        if (activeBeat != null)
-        {
-            activeBeat.CancelBeat();
-            Destroy(activeBeat.gameObject);
-            activeBeat = null;
-        }
+        DiscardActiveBeat();
     }
 
     public void RestartSequence()
@@ -114,64 +121,74 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
         StartMinigame();
     }
 
+    /// <summary>
+    /// One beat, asked for again after every miss until it lands. This is the unit a
+    /// Yarn command waits on, so a script can put a beat between any two lines.
+    /// Ends early, without success, if StopMinigame discards the beat.
+    /// </summary>
+    public IEnumerator PlayBeatUntilSuccess(RhythmBeatKind kind, float leadTime)
+    {
+        EnsureUi();
+        DiscardActiveBeat();
+
+        RhythmBeatInteraction template = GetTemplate(kind);
+        if (template == null)
+        {
+            Debug.LogError("RhythmNarrativeMinigame is missing a prefab for " + kind, this);
+            yield break;
+        }
+
+        while (true)
+        {
+            activeBeat = Instantiate(template, beatContainer);
+            // Each retry gets a clean instance, so no tapIndex or hold state survives from the last attempt.
+            activeBeat.transform.localPosition = Vector3.zero;
+            activeBeat.transform.localScale = Vector3.one;
+            float lead = Mathf.Max(0.1f, leadTime);
+            activeBeat.BeginBeat(Time.unscaledTime + lead, lead, OnBeatResolved);
+
+            while (activeBeat != null && activeBeat.IsActive)
+            {
+                yield return null;
+            }
+
+            if (activeBeat == null)
+            {
+                // Discarded from outside: the caller stopped the minigame, not the player.
+                yield break;
+            }
+
+            RhythmBeatInteraction completedBeat = activeBeat;
+            activeBeat = null;
+            Destroy(completedBeat.gameObject);
+            if (lastJudgement == RhythmJudgement.Miss)
+            {
+                // Failure only ever means being asked again - no game over, no punishing teleport.
+                onStepMissed?.Invoke();
+                yield return new WaitForSecondsRealtime(Mathf.Max(0.05f, retryDelay));
+                continue;
+            }
+
+            // Perfect and good both let the story continue; only the feedback line tells them apart.
+            onStepSucceeded?.Invoke();
+            yield return new WaitForSecondsRealtime(Mathf.Max(0.05f, nextStepDelay));
+            yield break;
+        }
+    }
+
     private IEnumerator RunSequence()
     {
-        // The outer loop walks the story steps; the inner one retries the current step after a miss.
+        // The outer loop walks the story steps; PlayBeatUntilSuccess retries each one after a miss.
         for (currentStepIndex = 0; currentStepIndex < steps.Length && running; currentStepIndex++)
         {
             RhythmNarrativeStep step = steps[currentStepIndex];
             SetDialogue(step);
             onStepStarted?.Invoke();
+            yield return PlayBeatUntilSuccess(step.beatKind, step.leadTime);
 
-            bool resolved = false;
-            while (running && !resolved)
+            if (!running || lastJudgement == RhythmJudgement.Miss)
             {
-                RhythmBeatInteraction template = GetTemplate(step.beatKind);
-                if (template == null)
-                {
-                    Debug.LogError("RhythmNarrativeMinigame is missing a prefab for " + step.beatKind, this);
-                    yield break;
-                }
-
-                activeBeat = Instantiate(template, beatContainer);
-                // Each retry gets a clean instance, so no tapIndex or hold state survives from the last attempt.
-                activeBeat.transform.localPosition = Vector3.zero;
-                activeBeat.transform.localScale = Vector3.one;
-                activeBeat.BeginBeat(Time.unscaledTime + Mathf.Max(0.1f, step.leadTime), OnBeatResolved);
-
-                while (running && activeBeat != null && activeBeat.IsActive)
-                {
-                    yield return null;
-                }
-
-                if (!running)
-                {
-                    yield break;
-                }
-
-                if (activeBeat == null)
-                {
-                    yield break;
-                }
-
-                RhythmBeatInteraction completedBeat = activeBeat;
-                activeBeat = null;
-                Destroy(completedBeat.gameObject);
-                if (lastJudgement == RhythmJudgement.Miss)
-                {
-                    // Failure only ever means being asked again - no game over, no punishing teleport.
-                    onStepMissed?.Invoke();
-                    resultLabel.text = "MISS — TRY AGAIN";
-                    yield return new WaitForSecondsRealtime(Mathf.Max(0.05f, retryDelay));
-                }
-                else
-                {
-                    // Perfect and good both let the story continue; only the feedback line tells them apart.
-                    resolved = true;
-                    onStepSucceeded?.Invoke();
-                    resultLabel.text = lastJudgement.ToString().ToUpperInvariant();
-                    yield return new WaitForSecondsRealtime(Mathf.Max(0.05f, nextStepDelay));
-                }
+                yield break;
             }
         }
 
@@ -183,13 +200,36 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
         }
     }
 
-    private RhythmJudgement lastJudgement;
-
-    private void OnBeatResolved(RhythmBeatInteraction beat, RhythmJudgement judgement, float offset)
+    private void OnBeatResolved(RhythmBeatInteraction beat, RhythmJudgement judgement, float offset, string detail)
     {
         // The beat component knows nothing about the story system and reports its verdict through this callback alone.
+        // Early or late, and by how much, is what lets the player correct on the retry.
         lastJudgement = judgement;
-        resultLabel.text = judgement.ToString().ToUpperInvariant();
+        string text = judgement.ToString().ToUpperInvariant();
+        if (!string.IsNullOrEmpty(detail))
+        {
+            text += " / " + detail;
+        }
+
+        text += string.Format("  ({0:+0;-0;0}ms)", Mathf.RoundToInt(offset * 1000f));
+        if (judgement == RhythmJudgement.Miss)
+        {
+            text += "  -  TRY AGAIN";
+        }
+
+        resultLabel.text = text;
+    }
+
+    private void DiscardActiveBeat()
+    {
+        if (activeBeat == null)
+        {
+            return;
+        }
+
+        activeBeat.CancelBeat();
+        Destroy(activeBeat.gameObject);
+        activeBeat = null;
     }
 
     private RhythmBeatInteraction GetTemplate(RhythmBeatKind kind)

@@ -37,6 +37,12 @@ namespace Peaceland.Editor
             Begin("Assets/Peaceland/Scenes/SaveLoad.unity", "expanded");
         }
 
+        [MenuItem("Peaceland/Save/Run Unbound Slot Fallback Check (Headless)")]
+        public static void RunUnboundSlotFallback()
+        {
+            Begin("Assets/Peaceland/Scenes/SaveLoad.unity", "unbound");
+        }
+
         [MenuItem("Peaceland/Save/Run R&J Internal Save Point Smoke (Headless)")]
         public static void RunRjSmoke()
         {
@@ -83,6 +89,9 @@ namespace Peaceland.Editor
                 {
                     case "expanded":
                         PeacelandExpandedSaveLoadValidator.Run();
+                        break;
+                    case "unbound":
+                        PeacelandExpandedSaveLoadValidator.RunUnboundSlotFallback();
                         break;
                     case "rj":
                         PeacelandExpandedSaveLoadValidator.RunRjInternalSavePointSmoke();

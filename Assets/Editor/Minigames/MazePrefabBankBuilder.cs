@@ -17,8 +17,7 @@ public static class MazePrefabBankBuilder
     {
         EnsureFolder("Assets/Prefabs");
         EnsureFolder(PrefabFolder);
-        EnsureLayers();
-        NormalizeElementPrefabs();
+        RebakeElementLayers();
 
         Scene scene = SceneManager.GetSceneByPath(ScenePath);
         bool openedForBuild = !scene.isLoaded;
@@ -94,7 +93,24 @@ public static class MazePrefabBankBuilder
             }
         }
 
-        Debug.Log("Maze prefab bank validation PASS: 6 elements + complete minigame root.");
+        int drifted = 0;
+        foreach (Transform item in root.GetComponentsInChildren<Transform>(true))
+        {
+            GameObject source = PrefabUtility.GetCorrespondingObjectFromSource(item.gameObject);
+            if (source != null && source.layer != item.gameObject.layer)
+            {
+                drifted++;
+            }
+        }
+
+        if (drifted > 0)
+        {
+            throw new InvalidOperationException(
+                drifted + " object(s) in the complete root sit on a different Layer than the element "
+                + "they come from. Run Peaceland/Maze/Rebake Element Layers.");
+        }
+
+        Debug.Log("Maze prefab bank validation PASS: 6 elements + complete minigame root, no Layer drift.");
     }
 
     [MenuItem("Peaceland/Maze/Open Prefab Playtest")]
@@ -112,73 +128,78 @@ public static class MazePrefabBankBuilder
         Require<MazePenaltyCell2D>(root);
     }
 
-    private static void EnsureLayers()
+    /// <summary>
+    /// The element prefabs were baked against MazePhysical / MazeVisionOccluder /
+    /// MazeEventTrigger / MazePenalty, none of which exist in this project, so their
+    /// layer indices landed on whatever happened to occupy those slots. The maze now
+    /// adds no layers at all: solid things go on Wall, everything else stays on Default
+    /// and does its work through trigger colliders.
+    /// </summary>
+    [MenuItem("Peaceland/Maze/Rebake Element Layers")]
+    public static void RebakeElementLayers()
     {
-        string[] required =
+        int wall = LayerMask.NameToLayer(MazeLayers.WallLayerName);
+        if (wall < 0)
         {
-            "MazePhysical",
-            "MazeVisionOccluder",
-            "MazeEventTrigger",
-            "MazePenalty"
-        };
-        UnityEngine.Object tagManager =
-            AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0];
-        SerializedObject serialized = new SerializedObject(tagManager);
-        SerializedProperty layers = serialized.FindProperty("layers");
+            throw new InvalidOperationException(
+                "The project has no " + MazeLayers.WallLayerName + " layer; the maze needs it to block anything.");
+        }
 
-        foreach (string layerName in required)
+        // Solid: stops a step, a path and a sight line.
+        SetPrefabLayer("PF_Maze_Wall.prefab", wall);
+        SetPrefabLayer("PF_Maze_VisionOccluder.prefab", wall);
+
+        // Triggers: must not block movement or vision, so they stay on Default.
+        SetPrefabLayer("PF_Maze_EventTrigger.prefab", 0);
+        SetPrefabLayer("PF_Maze_PenaltyCell.prefab", 0);
+
+        ConfigureMasks("PF_Maze_Player.prefab");
+        ConfigureMasks("PF_Maze_PatrolNpc.prefab");
+        RebakeCompleteRoot();
+        AssetDatabase.SaveAssets();
+        Debug.Log("Maze element layers rebaked onto " + MazeLayers.WallLayerName + " / Default.");
+    }
+
+    /// <summary>
+    /// The complete root is made of nested element instances, and the old bake left
+    /// per-instance Layer overrides on some of them - a wall pinned to whatever index
+    /// happened to sit in that slot stops blocking the moment the elements are fixed.
+    /// Following the source puts every one of them back on the element's own Layer.
+    /// </summary>
+    private static void RebakeCompleteRoot()
+    {
+        GameObject root = PrefabUtility.LoadPrefabContents(RootPrefabPath);
+        int reverted = 0;
+
+        foreach (Transform item in root.GetComponentsInChildren<Transform>(true))
         {
-            bool exists = false;
-            for (int index = 8; index < layers.arraySize; index++)
-            {
-                if (layers.GetArrayElementAtIndex(index).stringValue == layerName)
-                {
-                    exists = true;
-                    break;
-                }
-            }
-
-            if (exists)
+            GameObject source = PrefabUtility.GetCorrespondingObjectFromSource(item.gameObject);
+            if (source == null || source.layer == item.gameObject.layer)
             {
                 continue;
             }
 
-            for (int index = 8; index < layers.arraySize; index++)
-            {
-                SerializedProperty layer = layers.GetArrayElementAtIndex(index);
-                if (string.IsNullOrEmpty(layer.stringValue))
-                {
-                    layer.stringValue = layerName;
-                    break;
-                }
-            }
+            item.gameObject.layer = source.layer;
+            reverted++;
         }
 
-        serialized.ApplyModifiedPropertiesWithoutUndo();
+        PrefabUtility.SaveAsPrefabAsset(root, RootPrefabPath);
+        PrefabUtility.UnloadPrefabContents(root);
+        Debug.Log("Complete maze root: " + reverted + " stale Layer override(s) put back on the element Layer.");
     }
 
-    private static void NormalizeElementPrefabs()
-    {
-        SetPrefabLayer("PF_Maze_Wall.prefab", "MazePhysical");
-        SetPrefabLayer("PF_Maze_VisionOccluder.prefab", "MazeVisionOccluder");
-        SetPrefabLayer("PF_Maze_EventTrigger.prefab", "MazeEventTrigger");
-        SetPrefabLayer("PF_Maze_PenaltyCell.prefab", "MazePenalty");
-
-        ConfigureMasks("PF_Maze_Player.prefab");
-        ConfigureMasks("PF_Maze_PatrolNpc.prefab");
-    }
-
-    private static void SetPrefabLayer(string fileName, string layerName)
+    private static void SetPrefabLayer(string fileName, int layer)
     {
         string path = PrefabFolder + "/" + fileName;
         GameObject root = PrefabUtility.LoadPrefabContents(path);
-        int layer = LayerMask.NameToLayer(layerName);
+
+        // MazeLayerBinding existed only to resolve those missing layer names at runtime.
         MazeLayerBinding binding = root.GetComponent<MazeLayerBinding>();
-        if (binding == null)
+        if (binding != null)
         {
-            binding = root.AddComponent<MazeLayerBinding>();
+            UnityEngine.Object.DestroyImmediate(binding, true);
         }
-        binding.Configure(layerName);
+
         foreach (Transform item in root.GetComponentsInChildren<Transform>(true))
         {
             item.gameObject.layer = layer;
@@ -196,16 +217,14 @@ public static class MazePrefabBankBuilder
         if (player != null)
         {
             SerializedObject serializedPlayer = new SerializedObject(player);
-            serializedPlayer.FindProperty("blockingMask").intValue =
-                LayerMask.GetMask("MazePhysical", "Wall");
+            serializedPlayer.FindProperty("blockingMask").intValue = MazeLayers.Blocking;
             serializedPlayer.ApplyModifiedPropertiesWithoutUndo();
         }
 
         foreach (MazeVisionCone2D cone in root.GetComponentsInChildren<MazeVisionCone2D>(true))
         {
             SerializedObject serializedCone = new SerializedObject(cone);
-            serializedCone.FindProperty("occlusionMask").intValue =
-                LayerMask.GetMask("MazeVisionOccluder", "Wall");
+            serializedCone.FindProperty("occlusionMask").intValue = MazeLayers.Blocking;
             serializedCone.ApplyModifiedPropertiesWithoutUndo();
         }
 

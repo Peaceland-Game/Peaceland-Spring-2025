@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 
 /// <summary>
 /// Explicit composition entry point for the Maze prototype.
@@ -12,6 +14,8 @@ public sealed class MazeGameBootstrap : MonoBehaviour
 
     private void Awake()
     {
+        EnsureEventSystem();
+
         if (player == null)
         {
             player = FindFirstObjectByType<MazePlayerController2D>();
@@ -32,6 +36,21 @@ public sealed class MazeGameBootstrap : MonoBehaviour
         {
             cameraController.SetTarget(player.transform);
         }
+    }
+
+    /// <summary>
+    /// The game's pause menu survives scene loads and selects a button on every scene it
+    /// enters; without an EventSystem that throws once per frame. The maze does its own
+    /// input, so it never asked for one - it needs one for the menu's sake.
+    /// </summary>
+    private static void EnsureEventSystem()
+    {
+        if (EventSystem.current != null || FindFirstObjectByType<EventSystem>() != null)
+        {
+            return;
+        }
+
+        new GameObject("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
     }
 
     public void ResetMaze()

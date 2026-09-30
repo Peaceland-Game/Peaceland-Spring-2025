@@ -42,6 +42,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
     // Shared timing fields. Everything runs on unscaledTime, so a pause or a slow motion effect cannot shift the judgement.
     [Header("Beat")]
     [SerializeField] private RhythmBeatKind beatKind = RhythmBeatKind.StoryTap;
+    [Tooltip("Used when BeginBeat is not given a lead of its own.")]
     [SerializeField] private float previewLead = 0.85f;
     [SerializeField] private float perfectWindow = 0.05f;
     [SerializeField] private float goodWindow = 0.15f;
@@ -59,6 +60,17 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
     [Header("Move")]
     [SerializeField] private float requiredMoveDistance = 120f;
 
+    // A ring alone is a reaction test. Ticks spaced evenly across the lead, ending on the
+    // target, give the player a tempo to lock to before the moment arrives.
+    [Header("Sound")]
+    [Tooltip("Ticks before the target. 0 plays only the target itself.")]
+    [SerializeField, Range(0, 4)] private int countIn = 2;
+    [Tooltip("Optional. Leave empty for a generated tick.")]
+    [SerializeField] private AudioClip countInClip;
+    [Tooltip("Optional. Leave empty for a generated tick a fifth higher.")]
+    [SerializeField] private AudioClip targetClip;
+    [SerializeField, Range(0f, 1f)] private float cueVolume = 0.6f;
+
     [Header("Events")]
     [SerializeField] private UnityEvent onPerfect;
     [SerializeField] private UnityEvent onGood;
@@ -68,6 +80,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
     [SerializeField] private Image ringImage;
     [SerializeField] private Text label;
     private CanvasGroup canvasGroup;
+    private AudioSource audioSource;
     private float targetTime;
     private float holdStartTime;
     private Vector2 pointerStart;
@@ -75,21 +88,29 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
     private RhythmJudgement accumulatedJudgement = RhythmJudgement.Perfect;
     private bool activeBeat;
     private bool holding;
-    private Action<RhythmBeatInteraction, RhythmJudgement, float> resolvedCallback;
+    private float nextCueTime;
+    private float cuePeriod;
+    private Action<RhythmBeatInteraction, RhythmJudgement, float, string> resolvedCallback;
 
     private static Sprite solidSprite;
     private static Sprite ringSprite;
+    private static AudioClip generatedCountIn;
+    private static AudioClip generatedTarget;
 
     public RhythmBeatKind BeatKind => beatKind;
     public bool IsActive => activeBeat;
     public float PerfectWindow => perfectWindow;
     public float GoodWindow => goodWindow;
+    public float TargetTime => targetTime;
+    public float MultiTapInterval => multiTapInterval;
+    public float HoldDuration => holdDuration;
 
     private void Awake()
     {
         // A prefab only has to store the bare root; the ring and the label are built here when they are missing.
         canvasGroup = GetComponent<CanvasGroup>();
         EnsureVisuals();
+        EnsureAudio();
         HideBeat();
     }
 
@@ -105,6 +126,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
         float expectedTime = targetTime + tapIndex * multiTapInterval;
         float remaining = Mathf.Clamp01((expectedTime - now) / Mathf.Max(0.01f, previewLead));
         ringImage.rectTransform.localScale = Vector3.one * Mathf.Lerp(0.62f, 1.35f, remaining);
+        PlayDueCues(now, expectedTime);
 
         if (beatKind == RhythmBeatKind.Hold && holding)
         {
@@ -123,24 +145,28 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
             label.text = string.Format("TAP {0}/{1}", tapIndex + 1, requiredTaps);
         }
 
-        float timeout = beatKind == RhythmBeatKind.Hold
-            ? targetTime + goodWindow + holdDuration
-            : expectedTime + goodWindow;
-        if (now > timeout)
+        // Without a press the window closes at goodWindow like every other kind; the hold
+        // duration only matters once a hold has started, and that branch returned above.
+        if (now > expectedTime + goodWindow)
         {
-            Resolve(RhythmJudgement.Miss, now - expectedTime);
+            Resolve(RhythmJudgement.Miss, now - expectedTime, "NO INPUT");
         }
     }
 
-    public void BeginBeat(float beatTargetTime, Action<RhythmBeatInteraction, RhythmJudgement, float> callback)
+    public void BeginBeat(float beatTargetTime, float lead, Action<RhythmBeatInteraction, RhythmJudgement, float, string> callback)
     {
         // The sequence controller spawns an instance, then calls BeginBeat with an absolute target time and the callback to report back through.
+        // The ring and the count-in both run off the lead the caller chose, so a step with a
+        // longer lead does not spend its first half with the ring pinned at full size.
         targetTime = beatTargetTime;
+        previewLead = Mathf.Max(0.1f, lead);
         resolvedCallback = callback;
         tapIndex = 0;
         accumulatedJudgement = RhythmJudgement.Perfect;
         holding = false;
         activeBeat = true;
+        cuePeriod = countIn > 0 ? previewLead / countIn : 0f;
+        nextCueTime = countIn > 0 ? targetTime - previewLead : targetTime;
         gameObject.SetActive(true);
         canvasGroup.alpha = 1f;
         ringImage.rectTransform.localScale = Vector3.one * 1.35f;
@@ -168,7 +194,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
         RhythmJudgement judgement = EvaluateOffset(offset);
         if (judgement == RhythmJudgement.Miss)
         {
-            Resolve(RhythmJudgement.Miss, offset);
+            Resolve(RhythmJudgement.Miss, offset, EarlyOrLate(offset));
             return;
         }
 
@@ -187,7 +213,11 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
         if (tapIndex >= Mathf.Max(1, requiredTaps))
         {
             Resolve(accumulatedJudgement, offset);
+            return;
         }
+
+        // The next tap is closer than a count-in period, so it gets its own single tick.
+        nextCueTime = targetTime + tapIndex * multiTapInterval;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -204,7 +234,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
             RhythmJudgement judgement = EvaluateOffset(offset);
             if (judgement == RhythmJudgement.Miss)
             {
-                Resolve(RhythmJudgement.Miss, offset);
+                Resolve(RhythmJudgement.Miss, offset, EarlyOrLate(offset));
                 return;
             }
 
@@ -228,7 +258,7 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
         }
 
         holding = false;
-        Resolve(RhythmJudgement.Miss, Time.unscaledTime - targetTime);
+        Resolve(RhythmJudgement.Miss, Time.unscaledTime - targetTime, "LET GO EARLY");
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -245,7 +275,8 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
         }
 
         float offset = Time.unscaledTime - targetTime;
-        Resolve(EvaluateOffset(offset), offset);
+        RhythmJudgement judgement = EvaluateOffset(offset);
+        Resolve(judgement, offset, judgement == RhythmJudgement.Miss ? EarlyOrLate(offset) : null);
     }
 
     public RhythmJudgement EvaluateOffset(float offsetSeconds)
@@ -265,7 +296,12 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
         return RhythmJudgement.Miss;
     }
 
-    private void Resolve(RhythmJudgement judgement, float offset)
+    private static string EarlyOrLate(float offset)
+    {
+        return offset < 0f ? "TOO EARLY" : "TOO LATE";
+    }
+
+    private void Resolve(RhythmJudgement judgement, float offset, string detail = null)
     {
         // Resolve runs once: fire the Inspector event, hide the visuals, tell the story controller.
         if (!activeBeat)
@@ -288,10 +324,10 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
                 break;
         }
 
-        Action<RhythmBeatInteraction, RhythmJudgement, float> callback = resolvedCallback;
+        Action<RhythmBeatInteraction, RhythmJudgement, float, string> callback = resolvedCallback;
         resolvedCallback = null;
         HideBeat();
-        callback?.Invoke(this, judgement, offset);
+        callback?.Invoke(this, judgement, offset, detail);
     }
 
     private string GetInitialLabel()
@@ -309,52 +345,135 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
         }
     }
 
+    private void PlayDueCues(float now, float expectedTime)
+    {
+        // Ticks that fell due since the last frame, the last of them on the target itself.
+        while (nextCueTime <= expectedTime + 0.001f && now >= nextCueTime)
+        {
+            bool onTarget = nextCueTime >= expectedTime - 0.001f;
+            AudioClip clip = onTarget ? (targetClip != null ? targetClip : generatedTarget)
+                                      : (countInClip != null ? countInClip : generatedCountIn);
+            if (audioSource != null && clip != null)
+            {
+                audioSource.PlayOneShot(clip, cueVolume);
+            }
+
+            if (onTarget || cuePeriod <= 0f)
+            {
+                nextCueTime = float.MaxValue;
+                break;
+            }
+
+            nextCueTime += cuePeriod;
+        }
+    }
+
     private void EnsureVisuals()
     {
-        // Build the button itself, the ring that shrinks around it, and the text label at runtime.
+        // Build the button itself, the ring that shrinks around it, and the text label when
+        // they are missing. What the prefab already has is left exactly as the Editor set it;
+        // only sprites that cannot be stored in a prefab are filled in.
         Image body = GetComponent<Image>();
-        body.sprite = GetSolidSprite();
+        if (body.sprite == null)
+        {
+            body.sprite = GetSolidSprite();
+        }
+
         body.raycastTarget = true;
 
-        Transform ringTransform = transform.Find("TimingRing");
-        if (ringTransform == null)
+        if (ringImage == null)
         {
-            GameObject ringObject = new GameObject("TimingRing", typeof(RectTransform), typeof(Image));
-            ringObject.transform.SetParent(transform, false);
-            ringTransform = ringObject.transform;
+            Transform ringTransform = transform.Find("TimingRing");
+            ringImage = ringTransform != null ? ringTransform.GetComponent<Image>() : CreateRing();
         }
 
-        ringImage = ringTransform.GetComponent<Image>();
-        ringImage.sprite = GetRingSprite();
-        ringImage.color = new Color(0.31f, 0.77f, 1f, 0.75f);
+        if (ringImage.sprite == null)
+        {
+            ringImage.sprite = GetRingSprite();
+        }
+
         ringImage.raycastTarget = false;
-        RectTransform ringRect = ringImage.rectTransform;
-        ringRect.anchorMin = Vector2.zero;
-        ringRect.anchorMax = Vector2.one;
-        ringRect.offsetMin = Vector2.zero;
-        ringRect.offsetMax = Vector2.zero;
-        ringRect.SetAsFirstSibling();
 
-        Transform labelTransform = transform.Find("Label");
-        if (labelTransform == null)
+        if (label == null)
         {
-            GameObject labelObject = new GameObject("Label", typeof(RectTransform), typeof(Text));
-            labelObject.transform.SetParent(transform, false);
-            labelTransform = labelObject.transform;
+            Transform labelTransform = transform.Find("Label");
+            label = labelTransform != null ? labelTransform.GetComponent<Text>() : CreateLabel();
         }
 
-        label = labelTransform.GetComponent<Text>();
-        label.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        label.fontSize = 28;
-        label.alignment = TextAnchor.MiddleCenter;
-        label.color = Color.white;
+        if (label.font == null)
+        {
+            label.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
+        }
+
         label.raycastTarget = false;
-        RectTransform labelRect = label.rectTransform;
-        labelRect.anchorMin = Vector2.zero;
-        labelRect.anchorMax = Vector2.one;
-        labelRect.offsetMin = Vector2.zero;
-        labelRect.offsetMax = Vector2.zero;
-        label.transform.SetAsLastSibling();
+    }
+
+    private Image CreateRing()
+    {
+        GameObject ringObject = new GameObject("TimingRing", typeof(RectTransform), typeof(Image));
+        ringObject.transform.SetParent(transform, false);
+        Image ring = ringObject.GetComponent<Image>();
+        ring.color = new Color(0.31f, 0.77f, 1f, 0.75f);
+        Stretch(ring.rectTransform);
+        ring.rectTransform.SetAsFirstSibling();
+        return ring;
+    }
+
+    private Text CreateLabel()
+    {
+        GameObject labelObject = new GameObject("Label", typeof(RectTransform), typeof(Text));
+        labelObject.transform.SetParent(transform, false);
+        Text text = labelObject.GetComponent<Text>();
+        text.fontSize = 28;
+        text.alignment = TextAnchor.MiddleCenter;
+        text.color = Color.white;
+        Stretch(text.rectTransform);
+        text.rectTransform.SetAsLastSibling();
+        return text;
+    }
+
+    private static void Stretch(RectTransform rect)
+    {
+        rect.anchorMin = Vector2.zero;
+        rect.anchorMax = Vector2.one;
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
+    }
+
+    private void EnsureAudio()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            audioSource.spatialBlend = 0f;
+        }
+
+        if (generatedCountIn == null)
+        {
+            generatedCountIn = GenerateTick("RhythmCountInTick", 880f);
+            generatedTarget = GenerateTick("RhythmTargetTick", 1320f);
+        }
+    }
+
+    private static AudioClip GenerateTick(string clipName, float frequency)
+    {
+        // A short decaying sine, made here so the bank does not have to ship audio files.
+        const int sampleRate = 44100;
+        const float seconds = 0.06f;
+        int sampleCount = Mathf.RoundToInt(sampleRate * seconds);
+        float[] samples = new float[sampleCount];
+        for (int index = 0; index < sampleCount; index++)
+        {
+            float t = index / (float)sampleRate;
+            float envelope = Mathf.Exp(-t * 60f);
+            samples[index] = Mathf.Sin(2f * Mathf.PI * frequency * t) * envelope;
+        }
+
+        AudioClip clip = AudioClip.Create(clipName, sampleCount, 1, sampleRate, false);
+        clip.SetData(samples, 0);
+        return clip;
     }
 
     private void HideBeat()

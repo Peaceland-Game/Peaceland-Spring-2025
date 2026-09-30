@@ -8622,7 +8622,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5776111788231213853, guid: cf931de93a83bc64fa707032a41aa184, type: 3}
       propertyPath: m_Layer
-      value: 13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6317975402556210148, guid: cf931de93a83bc64fa707032a41aa184, type: 3}
       propertyPath: patrolPoints.Array.size

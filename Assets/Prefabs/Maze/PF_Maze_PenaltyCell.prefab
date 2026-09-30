@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 132833383787904545}
   - component: {fileID: 6188505995352627031}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,8 +98,7 @@ GameObject:
   - component: {fileID: 4590702964934295059}
   - component: {fileID: 1650382908765380734}
   - component: {fileID: 8671519137326012553}
-  - component: {fileID: 123810606998841133}
-  m_Layer: 16
+  m_Layer: 0
   m_Name: PF_Maze_PenaltyCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,17 +183,3 @@ MonoBehaviour:
   onPlayerReturned:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &123810606998841133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5790510714610767759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7639c26916623a04ab357db5bb40dcf6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerName: MazePenalty
-  includeChildren: 1

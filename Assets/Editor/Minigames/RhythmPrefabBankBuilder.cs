@@ -6,12 +6,16 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public static class RhythmPrefabBankBuilder
 {
     // Every reusable rhythm asset lives in this one folder, so the Project window can treat it as a prefab bank.
     private const string Folder = "Assets/Prefabs/Rhythm";
     private const string PlaytestScene = "Assets/Scenes/Rhythm/RhythmPrefabPlaytest.unity";
+    private const string YarnFolder = "Assets/Scenes/Rhythm/Yarn";
+    private const string YarnPlaytestScene = "Assets/Scenes/Rhythm/RhythmYarnPlaytest.unity";
+    public const string YarnPlaytestNode = "RhythmYarnPlaytest";
 
     [MenuItem("Peaceland/Rhythm/Create Prefab Bank")]
     public static void CreatePrefabBank()
@@ -125,7 +129,8 @@ public static class RhythmPrefabBankBuilder
             NewSceneSetup.EmptyScene, NewSceneMode.Additive);
         try
         {
-            GameObject cameraObject = new GameObject("Main Camera", typeof(Camera));
+            // The beats tick; without a listener Unity complains every frame one plays.
+            GameObject cameraObject = new GameObject("Main Camera", typeof(Camera), typeof(AudioListener));
             cameraObject.tag = "MainCamera";
             cameraObject.transform.position = new Vector3(0f, 0f, -10f);
             SceneManager.MoveGameObjectToScene(cameraObject, scene);
@@ -157,6 +162,109 @@ public static class RhythmPrefabBankBuilder
                 EditorSceneManager.CloseScene(scene, true);
             }
         }
+    }
+
+    [MenuItem("Peaceland/Rhythm/Create Yarn Playtest Scene")]
+    public static void CreateYarnPlaytestScene()
+    {
+        // The smallest scene in which <<rhythm_beat>> can be seen doing its job: a script
+        // that asks for two gestures, a Yarn line view, and the sequence the beats spawn in.
+        EnsureFolder("Assets/Scenes");
+        EnsureFolder("Assets/Scenes/Rhythm");
+        EnsureFolder(YarnFolder);
+
+        string yarnPath = YarnFolder + "/" + YarnPlaytestNode + ".yarn";
+        string projectPath = YarnFolder + "/" + YarnPlaytestNode + ".yarnproject";
+        System.IO.File.WriteAllText(yarnPath, string.Join("\n", new[]
+        {
+            "title: " + YarnPlaytestNode,
+            "---",
+            "Organizer: Listen first. Then answer.",
+            "<<rhythm_beat StoryTap 0.4>>",
+            "Organizer: Stay with the pressure.",
+            "<<rhythm_beat Hold 0.4>>",
+            "Organizer: That is the rhythm.",
+            "===",
+            ""
+        }));
+        System.IO.File.WriteAllText(projectPath, string.Join("\n", new[]
+        {
+            "{",
+            "  \"projectFileVersion\": 2,",
+            "  \"sourceFiles\": [ \"**/*.yarn\" ],",
+            "  \"excludeFiles\": [ \"**/*~/*\" ],",
+            "  \"localisation\": {},",
+            "  \"baseLanguage\": \"en\",",
+            "  \"compilerOptions\": {}",
+            "}",
+            ""
+        }));
+        AssetDatabase.ImportAsset(yarnPath, ImportAssetOptions.ForceSynchronousImport);
+        AssetDatabase.ImportAsset(projectPath, ImportAssetOptions.ForceSynchronousImport);
+        YarnProject project = AssetDatabase.LoadAssetAtPath<YarnProject>(projectPath);
+        if (project == null)
+        {
+            throw new System.InvalidOperationException("Yarn did not import " + projectPath);
+        }
+
+        GameObject lineViewTemplate = AssetDatabase.LoadAssetAtPath<GameObject>(
+            "Packages/dev.yarnspinner.unity/Prefabs/Line View.prefab");
+        GameObject sequenceTemplate = AssetDatabase.LoadAssetAtPath<GameObject>(
+            Folder + "/RhythmNarrativeSequence.prefab");
+        if (lineViewTemplate == null || sequenceTemplate == null)
+        {
+            throw new System.InvalidOperationException(
+                "Need the Yarn Spinner Line View prefab and the rhythm prefab bank first.");
+        }
+
+        // Single, not additive: batchmode starts on an untitled scene that additive refuses to sit beside.
+        Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
+        GameObject cameraObject = new GameObject("Main Camera", typeof(Camera), typeof(AudioListener));
+        cameraObject.tag = "MainCamera";
+        cameraObject.transform.position = new Vector3(0f, 0f, -10f);
+        SceneManager.MoveGameObjectToScene(cameraObject, scene);
+
+        GameObject eventSystem = new GameObject(
+            "EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
+        SceneManager.MoveGameObjectToScene(eventSystem, scene);
+
+        GameObject canvasObject = new GameObject(
+            "Dialogue Canvas", typeof(RectTransform), typeof(Canvas), typeof(CanvasScaler), typeof(GraphicRaycaster));
+        canvasObject.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
+        SceneManager.MoveGameObjectToScene(canvasObject, scene);
+        GameObject lineViewObject = (GameObject)PrefabUtility.InstantiatePrefab(lineViewTemplate, scene);
+        lineViewObject.transform.SetParent(canvasObject.transform, false);
+        LineView lineView = lineViewObject.GetComponent<LineView>();
+        // A line that waits for a click would stall a headless run; the beat itself is the wait.
+        SerializedObject serializedLineView = new SerializedObject(lineView);
+        serializedLineView.FindProperty("autoAdvance").boolValue = true;
+        serializedLineView.FindProperty("holdTime").floatValue = 0.3f;
+        serializedLineView.ApplyModifiedPropertiesWithoutUndo();
+
+        GameObject sequence = (GameObject)PrefabUtility.InstantiatePrefab(sequenceTemplate, scene);
+        RhythmNarrativeMinigame rhythm = sequence.GetComponent<RhythmNarrativeMinigame>();
+
+        GameObject dialogueObject = new GameObject("Dialogue", typeof(DialogueRunner), typeof(InMemoryVariableStorage));
+        SceneManager.MoveGameObjectToScene(dialogueObject, scene);
+        DialogueRunner runner = dialogueObject.GetComponent<DialogueRunner>();
+        runner.yarnProject = project;
+        runner.startAutomatically = false;
+        runner.startNode = YarnPlaytestNode;
+        runner.dialogueViews = new DialogueViewBase[] { lineView };
+        runner.SetProject(project);
+        SerializedObject serializedRunner = new SerializedObject(runner);
+        serializedRunner.FindProperty("_variableStorage").objectReferenceValue =
+            dialogueObject.GetComponent<InMemoryVariableStorage>();
+        serializedRunner.ApplyModifiedPropertiesWithoutUndo();
+
+        RhythmYarnCommands commands = dialogueObject.AddComponent<RhythmYarnCommands>();
+        SerializedObject serializedCommands = new SerializedObject(commands);
+        serializedCommands.FindProperty("dialogueRunner").objectReferenceValue = runner;
+        serializedCommands.FindProperty("rhythm").objectReferenceValue = rhythm;
+        serializedCommands.ApplyModifiedPropertiesWithoutUndo();
+
+        EditorSceneManager.SaveScene(scene, YarnPlaytestScene);
+        Debug.Log("Rhythm Yarn playtest scene created at " + YarnPlaytestScene);
     }
 
     [MenuItem("Peaceland/Rhythm/Validate Prefab Bank")]

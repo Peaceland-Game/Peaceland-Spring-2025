@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using Yarn.Unity;
@@ -15,16 +16,32 @@ public sealed class MazeEventTrigger2D : MonoBehaviour
     [SerializeField] private string startNode;
 
     private bool hasTriggered;
+    private bool armed = true;
+
+    /// <summary>
+    /// Raised before the UnityEvent and the Yarn node, so a sequence can take over.
+    /// </summary>
+    public event Action<MazeEventTrigger2D> PlayerEntered;
+
+    /// <summary>
+    /// A disarmed trigger is inert. MazeObjectiveSequence keeps exactly one armed
+    /// so the player always has one place to be going.
+    /// </summary>
+    public void SetArmed(bool value)
+    {
+        armed = value;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         MazePlayerController2D player = other.GetComponentInParent<MazePlayerController2D>();
-        if (player == null || (oneShot && hasTriggered))
+        if (player == null || !armed || (oneShot && hasTriggered))
         {
             return;
         }
 
         hasTriggered = true;
+        PlayerEntered?.Invoke(this);
         onPlayerEntered?.Invoke();
 
         if (dialogueRunner != null && !dialogueRunner.IsDialogueRunning && !string.IsNullOrWhiteSpace(startNode))
