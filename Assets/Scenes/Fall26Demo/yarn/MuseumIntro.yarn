@@ -1,4 +1,62 @@
-﻿title: MuseumIntro
+﻿title: MarcHouseMorning
+---
+{$protagName} stands in front of his bathroom mirror.
+He has a determined look on his face as he holds a dark green tie in both hands, attempting to tie it around his neck.
+He hopes that a tie would help make a good first impression, but he needs to learn how to tie it first before thinking ahead.
+He gives the tie a few more tugs before it gives up and falls entirely onto his hands.
+
+{$protagName}: *Sigh*, great.
+
+{$protagName} didn’t have much hope in the tie, so he grabbed the green sweater next to him.
+With the sweater in his left hand and the tie in his right, he thinks about what his best next move should be, until he hears something downstairs.
+
+*Sizzle, sizzle, sizzle*
+
+The sizzle he heard was far too familiar for {$protagName} to ignore.
+He runs downstairs, still holding the sweater, too concerned about the sound to put it down.
+
+{$protagName}: Out of all days!
+
+//Scene 2
+As {$protagName} turns into the kitchen, he sees a pot of water overboiling on the stove.
+He looks around and sees no one else around to manage it.
+Without thinking, he runs towards the stove and tries to shift the pot off the stove.
+In his attempt, a stray drop of boiling water falls on his hand.
+
+{$protagName}: SHIT!
+
+{$protagName} quickly moves his hand away from the pot handle and looks at where he was splashed. A mark is already starting to show.
+
+{$protagName}: *Sigh*, just my luck. Who was even down here to-
+
+{$protagName} stops mid-thought and sees a note left on the counter.
+He is too far away to see what it says, but the handwriting gives away that it came from his little brother {$brotherName}.
+{$protagName} tosses his sweater on a chair and walks towards the sink.
+He holds his hands underneath as he runs the cold water to hopefully make the burn mark stop swelling.
+
+{$protagName} dries off his hand and picks up the note that {$brotherName} left him.
+
+"Decided to make you coffee for your first day. You're welcome." -{$brotherName}
+
+{$protagName}: I mean...at least he tried his best.
+
+{$protagName} thinks about how {$brotherName}’s been doing. 
+How much he’s grown in these past few years and wonder how much more he’ll grow as the years continue.
+He looks at the pot and knows that {$brotherName} is trying his best, which is all that {$protagName} can ask for.
+
+{$protagName} then grabs the sweater he threw and leaves home, walking towards the town square.
+
+//Scene 3
+As {$protagName} is walking, he looks around at the people around the town square. 
+It was busy as usual, with people of different ages and backgrounds walking every which way. 
+The slight breeze blowing by made the day seem less stressful, giving {$protagName} a bit more optimism.
+{$protagName} finishes up his snack and pulls the sweater over himself. 
+As he stands, he takes a deep breath. {$protagName} didn’t know what to expect at the museum, but he just had to hope things went smoothly.
+{$protagName} starts making his way towards the museum for his first day.
+
+===
+
+title: MuseumIntro
 tags:
 ---
 <<set $protagName = "Marc">>

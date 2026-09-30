@@ -43,7 +43,7 @@ Over the PA System: Explore the past, embrace the present.
 <<darken 2>>
 <<darken 1>>
 A pair of adults approaches, both wearing wedding rings.
-The woman is looking directly at you with a smile.
+The woman is looking directly at {$protagName} with a smile.
 The man is gazing intently at the <b>Memory Tree</b>.
 
 {$protagName}: Yes. {$lover2Name} and {$lover1Name}, I assume?

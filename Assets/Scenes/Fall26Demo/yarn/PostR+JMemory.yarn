@@ -34,7 +34,7 @@
 <<darken 2>>
 
 <<lighten 1>>   // Change Ruzica's Expression: Angry
-{$lover2Name} glares at you.
+{$lover2Name} glares at {$protagName}.
 <<darken 1>>
 
 <<lighten 2>>   // Change Jovan's Expression: Grieving
