@@ -18,6 +18,7 @@ He runs downstairs, still holding the sweater, too concerned about the sound to 
 {$protagName}: Out of all days!
 
 //Scene 2
+<<changeBG 1>>
 As {$protagName} turns into the kitchen, he sees a pot of water overboiling on the stove.
 He looks around and sees no one else around to manage it.
 Without thinking, he runs towards the stove and tries to shift the pot off the stove.
@@ -47,6 +48,7 @@ He looks at the pot and knows that {$brotherName} is trying his best, which is a
 {$protagName} then grabs the sweater he threw and leaves home, walking towards the town square.
 
 //Scene 3
+<<changeBG 2>>
 As {$protagName} is walking, he looks around at the people around the town square. 
 It was busy as usual, with people of different ages and backgrounds walking every which way. 
 The slight breeze blowing by made the day seem less stressful, giving {$protagName} a bit more optimism.

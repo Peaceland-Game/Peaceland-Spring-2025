@@ -7,6 +7,7 @@
 As {$protagName} walks into his house, he sees {$brotherName} in the dining room.
 
 //display Art
+<<oneChar>>
 <<changeSprite 1 0>>
 <<lighten 1>>
 {$brotherName}: Oh, hey. You like the coffee I left for you this morning?
@@ -35,11 +36,11 @@ As {$protagName} walks into his house, he sees {$brotherName} in the dining room
 {$brotherName}: So, how was your first day? Was it everything you ever could have dreamed of?
 -> Go into detail
     <<darken 1>>
-    {$protagName}: I spoke with Jovan and Ruzica [INSERT LAST NAME HERE].
+    {$protagName}: I spoke with Jovan and Ruzica INSERT LAST NAME HERE.
     {$protagName}: They're friends with my boss and live in his neighborhood.
     {$protagName}: Their story was...actually pretty depressing.
     <<lighten 1>>
-    {$brotherName}: Oh, I've seen Mr. [INSERT LAST NAME HERE], and he has a picture of his wife on his desk. What did they tell you?
+    {$brotherName}: Oh, I've seen Mr. INSERT LAST NAME HERE, and he has a picture of his wife on his desk. What did they tell you?
     <<darken 1>>
     {$protagName}: They lived in different parts of the city, back when it was strictly segregated.
     {$protagName}: Jovan snuck out to be with Ruzica, which made everyone really upset.
@@ -77,23 +78,38 @@ As {$protagName} walks into his house, he sees {$brotherName} in the dining room
     {$brotherName}: Mmm, and what if I just... didn't?
     {$brotherName}: Sorry, but I don’t wanna get into this, man.
 <<zeroChar>>
-{$brotherName} walks away
+{$brotherName} walks away.
 
-{$protagName} goes to the kitchen to talk with his parents.
+{$protagName}'s parents go to the kitchen to talk with him.
 <<twoChar>>
 <<changeSprite 1 1>>
 <<changeSprite 2 0>>
+<<darken 1>>
+<<lighten 2>>
 {$momName}: Hey, kiddo. How was your first day?
 -> It was definitely...something.
+    <<darken 2>>
     {$protagName}: It was definitely...something.
+    <<lighten 1>>
     {$dadName}: You're already complaining?
+    <<darken 1>>
+    <<lighten 2>>
     {$momName}: I made dinner. You’ll feel better after you eat. And get to bed soon; you want to be rested for tomorrow.
+    <<darken 2>>
 -> It went as well as I would've imagined.
+    <<darken 2>>
     {$protagName}: It went as well as I would've imagined.
+    <<lighten 2>>
     {$momName}: Don’t worry so much about it. They’re lucky to have you.
+    <<darken 2>>
+    <<lighten 1>>
     {$dadName}: {$momName}, he’s a grown man. There’s no need to reassure him.
+    <<darken 1>>
 -> Honestly, not bad at all.
+    <<darken 2>>
     {$protagName}: Honestly, not bad at all. I’m actually looking forward to tomorrow.
+    <<lighten 2>>
     {$momName}: It sounded perfect for you when you told us last week! It’s good to have something to look forward to.
+    <<darken 2>>
 {$protagName} goes to his room
 ===

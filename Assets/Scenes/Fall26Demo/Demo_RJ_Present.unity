@@ -148,6 +148,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 524892327}
   - {fileID: 1151276898}
   - {fileID: 521999149}
   - {fileID: 964700708}
@@ -320,15 +321,15 @@ RectTransform:
   m_GameObject: {fileID: 455805385}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 17.375326, y: 9.226001, z: 9.226}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 320817801}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &455805387
 MonoBehaviour:
@@ -343,14 +344,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -7973862039547745229, guid: 1e835cd5c9fa1da478e3cc256b7c758e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -543,6 +544,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 1791870416}
   startNode: RJIntro
+--- !u!1 &524892326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524892327}
+  - component: {fileID: 524892328}
+  m_Layer: 0
+  m_Name: MarcHouseMorning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &524892327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524892326}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 58081627}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &524892328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524892326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 443a04c4b1a996f4a80d2fe9c17d207b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 1791870416}
+  startNode: MarcHouseMorning
 --- !u!224 &552369554 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2600366535429458009, guid: 770cc1d7482b3e648a5f533a0e777969, type: 3}
@@ -606,6 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minigames:
+  - {fileID: 524892328}
   - {fileID: 1151276897}
   - {fileID: 521999150}
   - {fileID: 964700709}
@@ -613,11 +661,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 927aa52cdaecdf649a7584a3b395dde6, type: 2}
   - {fileID: 11400000, guid: ea37a50265d616548bd6d3e2abc6a691, type: 2}
   - {fileID: 11400000, guid: 927aa52cdaecdf649a7584a3b395dde6, type: 2}
-  backgroundList: []
-  backgroundSprite: {fileID: 0}
+  backgroundList:
+  - {fileID: -7973862039547745229, guid: 1e835cd5c9fa1da478e3cc256b7c758e, type: 3}
+  - {fileID: -1873555975952604234, guid: ff93cef5cf8a99c4ab38c60fe9bd5ea6, type: 3}
+  - {fileID: -7222131422067487457, guid: fc0fab9af8be16741bb20501ee32ef8e, type: 3}
+  backgroundSprite: {fileID: 455805387}
   objectImageList: []
   dialogueRunner: {fileID: 1791870416}
-  afterMemStart: 2
+  afterMemStart: 3
   MainCharPortrait: {fileID: 752152684}
   SecondCharPortrait: {fileID: 1299239116}
   transition: {fileID: 320817797}
@@ -1573,7 +1624,7 @@ GameObject:
   - component: {fileID: 1151276898}
   - component: {fileID: 1151276897}
   m_Layer: 0
-  m_Name: PresentStart
+  m_Name: MuseumIntro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4780,7 +4831,7 @@ MonoBehaviour:
   currentMemoryManager: {fileID: 583866550}
   difficulty: 0
   allMuseumDialogueComplete: 0
-  currentScene: R+JMemory
+  currentScene: 
 --- !u!1 &2032065664
 GameObject:
   m_ObjectHideFlags: 0

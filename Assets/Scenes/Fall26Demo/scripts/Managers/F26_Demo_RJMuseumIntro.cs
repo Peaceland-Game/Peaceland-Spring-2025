@@ -90,7 +90,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
 
         if (GM.allMuseumDialogueComplete)
         {
-            currentMinigame = 3;
+            currentMinigame = 4;
         }
 
         Debug.Log("demo start");
@@ -260,7 +260,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             //}
         }
         //Display the town square button if able to go to the town square
-        if(currentMinigame >= 3)
+        if(currentMinigame >= 4)
         {
             goToTownSquareButton.interactable = !dialogueRunner.IsDialogueRunning;
             goToTownSquareButton.GetComponent<Image>().enabled = !dialogueRunner.IsDialogueRunning;
@@ -292,7 +292,11 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
 
             Debug.Log("NEWS READ TAPPED");
 
-            StartCoroutine(NewsTransition());
+            //StartCoroutine(NewsTransition());
+            NextOrder();
+            NextMinigame();
+            newsPaper.enabled = false;
+            DisableContinueButton();
         }
 
         if (museumWide.enabled == true)
@@ -314,7 +318,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         marcStart = true;
         StartCoroutine(Wait());
         NextOrder();
-        NextMinigame();
+        minigames[currentMinigame].StartMinigame();
         startDialogueButton.interactable = false;
         startDialogueButton.GetComponent<Image>().enabled = false;
     }
@@ -326,14 +330,14 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     {
         if (GM.allMuseumDialogueComplete)
         {
-            currentMinigame = 3;
+            currentMinigame = 4;
             Debug.Log("All dialogue is complete. currentMinigame clamped to 3.");
             return;
         }
 
         Debug.Log("Current Minigame " + currentMinigame);
 
-        // Stope the current mingame, if there is one.
+        // Stop the current mingame, if there is one.
         if (currentMinigame >= 0) minigames[currentMinigame].StopMinigame();
 
         // Increment minigame counter
@@ -345,6 +349,12 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             minigames[currentMinigame].StartMinigame();
         }
 
+        //Go to outside of museum after initial dialogue
+        else if (currentMinigame == 1)
+        {
+            StartCoroutine(NewsTransition());
+        }
+
         //Allow travel to war room after initial dialogue
         else if (GM.CurrentScene.Equals("MuseumIntro"))
         {
@@ -352,6 +362,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             warRoomEntrance.interactable = true; 
         }
 
+        //Start at R+J Intro if coming from the war room
         else if (GM.CurrentScene.Equals("WarRoomIntro"))
         {
             GM.CurrentScene = "R+JIntro";
@@ -372,7 +383,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
 
         // If after the ending dialogue, enable the button that transitions to 
         // demo end screen and make warRoomEntrance interactable again
-        else if (currentMinigame == 3)
+        else if (currentMinigame == 4)
         {
             GM.allMuseumDialogueComplete = true;
             warRoomEntrance.interactable = true;
@@ -415,6 +426,8 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         newsPaper.enabled = false;
         museumWide.enabled = true;
         marcBack.enabled = true;
+        continueButton.interactable = true;
+        continueButton.GetComponent<Image>().enabled = true;
         Debug.Log("Museum Enabled: " + museumWide.enabled);
 
         // Fade out
