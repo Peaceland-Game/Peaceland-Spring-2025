@@ -4,7 +4,7 @@
 <<declare $dadName= "Zoran">>
 <<declare $momName= "Dafina">>
 
-As {$protagName} walks into his house, he sees {$brotherName} in the dining room.
+As {$protagName} walks into his house, he sees {$brotherName} in the kitchen.
 
 //display Art
 <<oneChar>>
@@ -71,7 +71,7 @@ As {$protagName} walks into his house, he sees {$brotherName} in the dining room
     <<darken 1>>
     {$protagName}: I get it. But you’re nothing like those delinquents.
     <<lighten 1>>
-    {$brotherName}: Whatever
+    {$brotherName}: Whatever.
 -> Don't talk about the town square incident
     {$protagName}: You should respect him.
     <<lighten 1>>
@@ -111,5 +111,5 @@ As {$protagName} walks into his house, he sees {$brotherName} in the dining room
     <<lighten 2>>
     {$momName}: It sounded perfect for you when you told us last week! It’s good to have something to look forward to.
     <<darken 2>>
-{$protagName} goes to his room
+{$protagName} goes to his room.
 ===
