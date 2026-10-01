@@ -3,6 +3,10 @@ using System.Linq;
 
 namespace Peaceland.Notebook
 {
+    /// <summary>
+    /// Cross-scene collect entry point. Use this from minigames / Yarn / world objects
+    /// when the notebook UI may not be loaded yet.
+    /// </summary>
     public static class NotebookGlobalBridge
     {
         private static readonly HashSet<string> PendingEntryIds = new HashSet<string>();
@@ -22,6 +26,11 @@ namespace Peaceland.Notebook
             }
         }
 
+        /// <summary>
+        /// Unlocks one NotebookDatabase entry by id.
+        /// If no controller is in the current scene, the id is queued and applied when the book loads.
+        /// Safe to call twice; already-collected ids are ignored.
+        /// </summary>
         public static void CollectEntry(string entryId)
         {
             if (string.IsNullOrWhiteSpace(entryId))

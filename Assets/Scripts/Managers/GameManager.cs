@@ -68,7 +68,17 @@ public class GameManager : MonoBehaviour
     {
         get
         {
-            if (_instance is null)
+            if (_instance == null && Application.isPlaying)
+            {
+                // The manager lives on an object in DemoStart and rides DontDestroyOnLoad into
+                // every later scene, so opening one of those scenes on its own - a save point
+                // test, a designer checking one memory - left all 62 callers dereferencing
+                // null. Build one from its serialized defaults instead.
+                _instance = FindFirstObjectByType<GameManager>(FindObjectsInactive.Include)
+                    ?? new GameObject(nameof(GameManager)).AddComponent<GameManager>();
+            }
+
+            if (_instance == null)
                 Debug.LogError("GameManager is NULL");
 
             return _instance;

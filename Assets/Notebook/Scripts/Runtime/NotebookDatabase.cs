@@ -11,6 +11,9 @@ namespace Peaceland.Notebook
         public int SortOrder;
     }
 
+    /// <summary>
+    /// Master list of notes. Assign every shipped NotebookEntryDefinition here or Collect() will warn.
+    /// </summary>
     [CreateAssetMenu(fileName = "NotebookDatabase", menuName = "Peaceland/Notebook/Database")]
     public class NotebookDatabase : ScriptableObject
     {
@@ -18,6 +21,7 @@ namespace Peaceland.Notebook
 
         public IReadOnlyList<NotebookEntryDefinition> Entries => entries;
 
+        /// <summary>Looks up a note by the stable entryId on the ScriptableObject. Null if it was never added to this database.</summary>
         public NotebookEntryDefinition GetEntry(string entryId)
         {
             if (string.IsNullOrWhiteSpace(entryId))

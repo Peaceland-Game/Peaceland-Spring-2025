@@ -23,6 +23,9 @@ namespace Peaceland.Notebook
         private const string EntryId = "NotebookEntry_Memory1FloristFlower";
         private const string ChoiceId = "practical";
         private const string SourceScene = "Assets/Notebook/Scenes/NotebookTest_FloristMinigame.unity";
+        private const string NotebookScenePath = "Assets/Notebook/Scenes/NoteBookTesting.unity";
+        private const string TransitionScenePath =
+            "Assets/Notebook/Scenes/NotebookTest_RandJItemCollect.unity";
         private const string NotebookSceneName = "NoteBookTesting";
         private const string TransitionSceneName = "NotebookTest_RandJItemCollect";
         private const string EntryAssetPath = "Assets/Notebook/Data/NotebookEntry_Memory1FloristFlower.asset";
@@ -100,6 +103,7 @@ namespace Peaceland.Notebook
             }
 
             ClearSession();
+            EnsureTestScenesInBuildSettings();
             SessionState.SetBool(KeyPrefix + "Running", true);
             SessionState.SetInt(KeyPrefix + "Stage", 1);
             SessionState.SetInt(KeyPrefix + "StartedStage", 0);
@@ -494,7 +498,65 @@ namespace Peaceland.Notebook
             Debug.Log(passed
                 ? "Notebook save/load closed loop PASSED. Report: " + ReportPath
                 : "Notebook save/load closed loop FAILED. Report: " + ReportPath);
+            RestoreBuildSettings();
             ClearSession();
+
+            if (Application.isBatchMode)
+            {
+                EditorApplication.Exit(passed ? 0 : 1);
+            }
+        }
+
+        private static void EnsureTestScenesInBuildSettings()
+        {
+            EditorBuildSettingsScene[] original = EditorBuildSettings.scenes;
+            SessionState.SetString(
+                KeyPrefix + "BuildScenes",
+                string.Join(
+                    "\n",
+                    original.Select(scene => (scene.enabled ? "1|" : "0|") + scene.path)));
+
+            List<EditorBuildSettingsScene> scenes = original.ToList();
+            string[] required = { SourceScene, NotebookScenePath, TransitionScenePath };
+            for (int i = 0; i < required.Length; i++)
+            {
+                string path = required[i];
+                int existing = scenes.FindIndex(scene => scene.path == path);
+                if (existing >= 0)
+                {
+                    scenes[existing] = new EditorBuildSettingsScene(path, true);
+                }
+                else
+                {
+                    scenes.Add(new EditorBuildSettingsScene(path, true));
+                }
+            }
+
+            EditorBuildSettings.scenes = scenes.ToArray();
+        }
+
+        private static void RestoreBuildSettings()
+        {
+            string serialized = SessionState.GetString(KeyPrefix + "BuildScenes", string.Empty);
+            if (string.IsNullOrWhiteSpace(serialized))
+            {
+                return;
+            }
+
+            List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>();
+            string[] lines = serialized.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < lines.Length; i++)
+            {
+                string line = lines[i];
+                if (line.Length < 3 || line[1] != '|')
+                {
+                    continue;
+                }
+
+                scenes.Add(new EditorBuildSettingsScene(line.Substring(2), line[0] == '1'));
+            }
+
+            EditorBuildSettings.scenes = scenes.ToArray();
         }
 
         private static string BuildReport(bool passed, int harnessErrors, int harnessWarnings, int originalSlot)
@@ -572,7 +634,7 @@ namespace Peaceland.Notebook
 
             foreach (string suffix in new[]
                      {
-                         "StartedUtc", "OriginalScene", "Failure", "CapturedErrors", "Log",
+                "StartedUtc", "OriginalScene", "Failure", "CapturedErrors", "Log", "BuildScenes",
                      })
             {
                 SessionState.EraseString(KeyPrefix + suffix);

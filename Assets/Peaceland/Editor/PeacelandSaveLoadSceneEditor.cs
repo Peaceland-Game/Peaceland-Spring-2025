@@ -65,49 +65,57 @@ namespace Peaceland.Editor
             Button backButton = CreateButton(safeArea, "Back Button", "<", new Color32(245, 194, 202, 255));
             SetAnchoredRect(backButton.transform as RectTransform, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-8f, -4f), new Vector2(74f, 74f), Vector2.one);
 
-            RectTransform slotRoot = CreateRect(safeArea, "Slot Grid");
+            RectTransform slotRoot = CreateRect(safeArea, "Slot Scroll");
             slotRoot.anchorMin = new Vector2(0f, 0.12f);
             slotRoot.anchorMax = new Vector2(1f, 0.88f);
             slotRoot.offsetMin = new Vector2(8f, 0f);
             slotRoot.offsetMax = new Vector2(-8f, 0f);
-            HorizontalLayoutGroup horizontal = slotRoot.gameObject.AddComponent<HorizontalLayoutGroup>();
-            horizontal.spacing = 34f;
-            horizontal.childAlignment = TextAnchor.UpperCenter;
-            horizontal.childControlWidth = true;
-            horizontal.childControlHeight = true;
-            horizontal.childForceExpandWidth = true;
-            horizontal.childForceExpandHeight = true;
+            Image slotFrame = slotRoot.gameObject.AddComponent<Image>();
+            slotFrame.color = new Color(0.08f, 0.06f, 0.04f, 0.42f);
 
-            PeacelandSaveSlotEntryView[] entries = new PeacelandSaveSlotEntryView[PeacelandSaveSlots.SlotCount];
-            for (int columnIndex = 0; columnIndex < 2; columnIndex++)
-            {
-                RectTransform column = CreateRect(slotRoot, columnIndex == 0 ? "Left Column" : "Right Column");
-                column.gameObject.AddComponent<LayoutElement>().flexibleWidth = 1f;
-                VerticalLayoutGroup vertical = column.gameObject.AddComponent<VerticalLayoutGroup>();
-                vertical.spacing = 18f;
-                vertical.childAlignment = TextAnchor.UpperCenter;
-                vertical.childControlWidth = true;
-                vertical.childControlHeight = true;
-                vertical.childForceExpandWidth = true;
-                vertical.childForceExpandHeight = true;
+            ScrollRect slotScroll = slotRoot.gameObject.AddComponent<ScrollRect>();
+            slotScroll.horizontal = false;
+            slotScroll.vertical = true;
+            slotScroll.movementType = ScrollRect.MovementType.Clamped;
+            slotScroll.scrollSensitivity = 32f;
 
-                for (int rowIndex = 0; rowIndex < 5; rowIndex++)
-                {
-                    int slotIndex = columnIndex * 5 + rowIndex;
-                    entries[slotIndex] = CreateSlotEntry(column, slotIndex);
-                }
-            }
+            RectTransform slotViewport = CreateRect(slotRoot, "Viewport");
+            Stretch(slotViewport);
+            slotViewport.offsetMin = new Vector2(16f, 16f);
+            slotViewport.offsetMax = new Vector2(-16f, -16f);
+            Image viewportImage = slotViewport.gameObject.AddComponent<Image>();
+            viewportImage.color = new Color(1f, 1f, 1f, 0.01f);
+            slotViewport.gameObject.AddComponent<Mask>().showMaskGraphic = false;
 
+            RectTransform slotContent = CreateRect(slotViewport, "Content");
+            slotContent.anchorMin = new Vector2(0f, 1f);
+            slotContent.anchorMax = new Vector2(1f, 1f);
+            slotContent.pivot = new Vector2(0.5f, 1f);
+            slotContent.anchoredPosition = Vector2.zero;
+            slotContent.sizeDelta = Vector2.zero;
+            slotContent.gameObject.AddComponent<GridLayoutGroup>();
+            slotContent.gameObject.AddComponent<PeacelandResponsiveSaveGrid>();
+            ContentSizeFitter slotFitter = slotContent.gameObject.AddComponent<ContentSizeFitter>();
+            slotFitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            slotScroll.viewport = slotViewport;
+            slotScroll.content = slotContent;
+
+            PeacelandSaveSlotEntryView template = CreateSlotEntry(slotContent, 0);
             PeacelandSaveSlotPanel slotPanel = slotRoot.gameObject.AddComponent<PeacelandSaveSlotPanel>();
             SerializedObject panelObject = new SerializedObject(slotPanel);
             panelObject.FindProperty("root").objectReferenceValue = slotRoot.gameObject;
+            panelObject.FindProperty("slotEntryTemplate").objectReferenceValue = template;
+            panelObject.FindProperty("slotEntryContainer").objectReferenceValue = slotContent;
+            panelObject.FindProperty("initialVisibleSlotCount").intValue =
+                PeacelandSaveSlots.InitialVisibleSlotCount;
+            panelObject.FindProperty("emptySlotBuffer").intValue = 2;
             SerializedProperty entriesProperty = panelObject.FindProperty("slotEntries");
-            entriesProperty.arraySize = entries.Length;
-            for (int i = 0; i < entries.Length; i++)
-            {
-                entriesProperty.GetArrayElementAtIndex(i).objectReferenceValue = entries[i];
-            }
+            entriesProperty.arraySize = 1;
+            entriesProperty.GetArrayElementAtIndex(0).objectReferenceValue = template;
             panelObject.ApplyModifiedPropertiesWithoutUndo();
+
+            PeacelandCheckpointListPanel checkpointPanel =
+                CreateCheckpointPanel(safeArea);
 
             TMP_Text feedback = CreateText(
                 safeArea,
@@ -129,16 +137,19 @@ namespace Peaceland.Editor
             PeacelandSaveLoadSceneController controller = flow.GetComponent<PeacelandSaveLoadSceneController>();
             SerializedObject controllerObject = new SerializedObject(controller);
             controllerObject.FindProperty("slotPanel").objectReferenceValue = slotPanel;
+            controllerObject.FindProperty("checkpointPanel").objectReferenceValue = checkpointPanel;
             controllerObject.FindProperty("backButton").objectReferenceValue = backButton;
             controllerObject.FindProperty("feedbackText").objectReferenceValue = feedback;
             controllerObject.FindProperty("returnSceneName").stringValue = "DemoStart";
-            controllerObject.FindProperty("firstGameplaySceneName").stringValue = "NoteBookTesting";
+            controllerObject.FindProperty("firstGameplaySceneName").stringValue = "DemoDisclaimer";
             controllerObject.FindProperty("loadGameplaySceneAfterSelection").boolValue = true;
             controllerObject.FindProperty("clearActiveSlotOnOpen").boolValue = true;
             controllerObject.ApplyModifiedPropertiesWithoutUndo();
 
             SerializedObject policyObject = new SerializedObject(flow.GetComponent<PeacelandSceneCheckpointPolicy>());
             policyObject.FindProperty("recordAsGameplayCheckpoint").boolValue = false;
+            policyObject.FindProperty("exclusionReason").stringValue =
+                "Navigation-only save selection scene.";
             policyObject.ApplyModifiedPropertiesWithoutUndo();
 
             EditorSceneManager.SaveScene(scene, ScenePath);
@@ -146,6 +157,167 @@ namespace Peaceland.Editor
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
             Debug.Log("Save/load scene authored at " + ScenePath);
+        }
+
+        private static PeacelandCheckpointListPanel CreateCheckpointPanel(Transform parent)
+        {
+            Image panelImage = CreateImage(
+                parent,
+                "Checkpoint Panel",
+                new Color(0.10f, 0.075f, 0.045f, 0.94f));
+            panelImage.raycastTarget = true;
+            RectTransform panelRect = panelImage.rectTransform;
+            panelRect.anchorMin = new Vector2(0f, 0.12f);
+            panelRect.anchorMax = new Vector2(1f, 0.88f);
+            panelRect.offsetMin = new Vector2(8f, 0f);
+            panelRect.offsetMax = new Vector2(-8f, 0f);
+
+            TMP_Text heading = CreateText(
+                panelRect,
+                "Checkpoint Heading",
+                "CHECKPOINTS",
+                24f,
+                FontStyles.Bold,
+                TextAlignmentOptions.Left);
+            heading.color = new Color(0.94f, 0.9f, 0.82f, 1f);
+            heading.rectTransform.anchorMin = new Vector2(0f, 1f);
+            heading.rectTransform.anchorMax = new Vector2(1f, 1f);
+            heading.rectTransform.pivot = new Vector2(0.5f, 1f);
+            heading.rectTransform.anchoredPosition = new Vector2(-12f, -14f);
+            heading.rectTransform.sizeDelta = new Vector2(-92f, 44f);
+
+            Button close = CreateButton(
+                panelRect,
+                "Close Checkpoints",
+                "X",
+                new Color(0.30f, 0.12f, 0.10f, 0.9f));
+            SetAnchoredRect(
+                close.transform as RectTransform,
+                Vector2.one,
+                Vector2.one,
+                new Vector2(-12f, -12f),
+                new Vector2(48f, 42f),
+                Vector2.one);
+            TMP_Text closeLabel = close.GetComponentInChildren<TMP_Text>();
+            closeLabel.fontSize = 22f;
+            closeLabel.fontSizeMax = 22f;
+
+            RectTransform scrollRoot = CreateRect(panelRect, "Checkpoint Scroll");
+            scrollRoot.anchorMin = new Vector2(0f, 0f);
+            scrollRoot.anchorMax = new Vector2(1f, 1f);
+            scrollRoot.offsetMin = new Vector2(16f, 16f);
+            scrollRoot.offsetMax = new Vector2(-16f, -66f);
+            ScrollRect scroll = scrollRoot.gameObject.AddComponent<ScrollRect>();
+            scroll.horizontal = false;
+            scroll.vertical = true;
+            scroll.movementType = ScrollRect.MovementType.Clamped;
+
+            RectTransform viewport = CreateRect(scrollRoot, "Viewport");
+            Stretch(viewport);
+            Image viewportImage = viewport.gameObject.AddComponent<Image>();
+            viewportImage.color = new Color(1f, 1f, 1f, 0.01f);
+            viewport.gameObject.AddComponent<Mask>().showMaskGraphic = false;
+
+            RectTransform content = CreateRect(viewport, "Content");
+            content.anchorMin = new Vector2(0f, 1f);
+            content.anchorMax = new Vector2(1f, 1f);
+            content.pivot = new Vector2(0.5f, 1f);
+            content.sizeDelta = Vector2.zero;
+            content.gameObject.AddComponent<GridLayoutGroup>();
+            PeacelandResponsiveSaveGrid responsive =
+                content.gameObject.AddComponent<PeacelandResponsiveSaveGrid>();
+            SerializedObject gridObject = new SerializedObject(responsive);
+            gridObject.FindProperty("columns").intValue = 2;
+            gridObject.FindProperty("cardHeight").floatValue = 96f;
+            gridObject.FindProperty("horizontalSpacing").floatValue = 18f;
+            gridObject.FindProperty("verticalSpacing").floatValue = 10f;
+            gridObject.FindProperty("horizontalPadding").floatValue = 2f;
+            gridObject.ApplyModifiedPropertiesWithoutUndo();
+            ContentSizeFitter fitter = content.gameObject.AddComponent<ContentSizeFitter>();
+            fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+            scroll.viewport = viewport;
+            scroll.content = content;
+
+            PeacelandCheckpointEntryView template =
+                CreateCheckpointEntry(content);
+            PeacelandCheckpointListPanel panel =
+                panelRect.gameObject.AddComponent<PeacelandCheckpointListPanel>();
+            SerializedObject panelObject = new SerializedObject(panel);
+            panelObject.FindProperty("root").objectReferenceValue = panelRect.gameObject;
+            panelObject.FindProperty("headingText").objectReferenceValue = heading;
+            panelObject.FindProperty("closeButton").objectReferenceValue = close;
+            panelObject.FindProperty("entryContainer").objectReferenceValue = content;
+            panelObject.FindProperty("entryTemplate").objectReferenceValue = template;
+            panelObject.ApplyModifiedPropertiesWithoutUndo();
+            panelRect.gameObject.SetActive(false);
+            return panel;
+        }
+
+        private static PeacelandCheckpointEntryView CreateCheckpointEntry(Transform parent)
+        {
+            GameObject card = new GameObject(
+                "Checkpoint 1",
+                typeof(RectTransform),
+                typeof(Image),
+                typeof(Button),
+                typeof(LayoutElement),
+                typeof(PeacelandCheckpointEntryView));
+            card.transform.SetParent(parent, false);
+            LayoutElement layout = card.GetComponent<LayoutElement>();
+            layout.minHeight = 86f;
+            layout.preferredHeight = 96f;
+
+            Image background = card.GetComponent<Image>();
+            background.color = new Color(0.90f, 0.84f, 0.72f, 1f);
+            Button button = card.GetComponent<Button>();
+            button.targetGraphic = background;
+
+            TMP_Text title = CreateText(
+                card.transform,
+                "Title",
+                "Checkpoint",
+                20f,
+                FontStyles.Bold,
+                TextAlignmentOptions.TopLeft);
+            title.rectTransform.anchorMin = new Vector2(0f, 0.48f);
+            title.rectTransform.anchorMax = new Vector2(1f, 1f);
+            title.rectTransform.offsetMin = new Vector2(14f, 0f);
+            title.rectTransform.offsetMax = new Vector2(-74f, -8f);
+
+            TMP_Text detail = CreateText(
+                card.transform,
+                "Detail",
+                "Scene\nTime",
+                15f,
+                FontStyles.Normal,
+                TextAlignmentOptions.BottomLeft);
+            detail.rectTransform.anchorMin = Vector2.zero;
+            detail.rectTransform.anchorMax = new Vector2(1f, 0.58f);
+            detail.rectTransform.offsetMin = new Vector2(14f, 8f);
+            detail.rectTransform.offsetMax = new Vector2(-14f, 0f);
+
+            TMP_Text active = CreateText(
+                card.transform,
+                "Active Marker",
+                "ACTIVE",
+                13f,
+                FontStyles.Bold,
+                TextAlignmentOptions.TopRight);
+            active.color = new Color(0.35f, 0.15f, 0.08f, 1f);
+            active.rectTransform.anchorMin = new Vector2(0.72f, 0.62f);
+            active.rectTransform.anchorMax = Vector2.one;
+            active.rectTransform.offsetMin = Vector2.zero;
+            active.rectTransform.offsetMax = new Vector2(-12f, -10f);
+
+            PeacelandCheckpointEntryView view =
+                card.GetComponent<PeacelandCheckpointEntryView>();
+            SerializedObject viewObject = new SerializedObject(view);
+            viewObject.FindProperty("selectButton").objectReferenceValue = button;
+            viewObject.FindProperty("titleText").objectReferenceValue = title;
+            viewObject.FindProperty("detailText").objectReferenceValue = detail;
+            viewObject.FindProperty("activeMarker").objectReferenceValue = active.gameObject;
+            viewObject.ApplyModifiedPropertiesWithoutUndo();
+            return view;
         }
 
         private static PeacelandSaveSlotEntryView CreateSlotEntry(Transform parent, int slotIndex)
@@ -162,8 +334,8 @@ namespace Peaceland.Editor
 
             LayoutElement layout = card.GetComponent<LayoutElement>();
             layout.flexibleHeight = 1f;
-            layout.minHeight = 86f;
-            layout.preferredHeight = 112f;
+            layout.minHeight = 108f;
+            layout.preferredHeight = 128f;
 
             Image background = card.GetComponent<Image>();
             background.color = new Color32(217, 217, 217, 255);
@@ -188,6 +360,18 @@ namespace Peaceland.Editor
             location.rectTransform.anchorMax = new Vector2(0.92f, 0.82f);
             location.rectTransform.offsetMin = Vector2.zero;
             location.rectTransform.offsetMax = Vector2.zero;
+
+            TMP_Text detail = CreateText(
+                card.transform,
+                "Detail",
+                "Scene | Stats | Notebook | Checkpoints",
+                14f,
+                FontStyles.Normal,
+                TextAlignmentOptions.BottomLeft);
+            detail.rectTransform.anchorMin = Vector2.zero;
+            detail.rectTransform.anchorMax = new Vector2(0.82f, 0.32f);
+            detail.rectTransform.offsetMin = new Vector2(14f, 8f);
+            detail.rectTransform.offsetMax = Vector2.zero;
 
             TMP_Text day = CreateText(card.transform, "Day", string.Empty, 18f, FontStyles.Bold, TextAlignmentOptions.BottomRight);
             day.rectTransform.anchorMin = Vector2.zero;
@@ -215,6 +399,7 @@ namespace Peaceland.Editor
             viewObject.FindProperty("selectButton").objectReferenceValue = button;
             viewObject.FindProperty("deleteButton").objectReferenceValue = delete;
             viewObject.FindProperty("titleText").objectReferenceValue = title;
+            viewObject.FindProperty("detailText").objectReferenceValue = detail;
             viewObject.FindProperty("locationText").objectReferenceValue = location;
             viewObject.FindProperty("dayText").objectReferenceValue = day;
             viewObject.FindProperty("slotBackground").objectReferenceValue = background;

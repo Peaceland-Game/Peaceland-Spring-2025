@@ -4,6 +4,20 @@ using System.Collections.Generic;
 namespace Peaceland
 {
     [Serializable]
+    public sealed class PeacelandCheckpointSnapshot
+    {
+        public string checkpointId;
+        public string checkpointKey;
+        public string displayName;
+        public string sceneName;
+        public string savedUtc;
+        public PeacelandStatsSnapshot stats = new PeacelandStatsSnapshot();
+        public PeacelandProgressSnapshot progress = new PeacelandProgressSnapshot();
+        public Peaceland.Notebook.NotebookSaveData notebook =
+            new Peaceland.Notebook.NotebookSaveData();
+    }
+
+    [Serializable]
     public sealed class PeacelandStatsSnapshot
     {
         public int selfishAltruistic;
@@ -48,6 +62,7 @@ namespace Peaceland
             }
         }
 
+        /// <summary>Hidden stats are always stored in -5..+5.</summary>
         public static int Clamp(int value)
         {
             return Math.Max(-5, Math.Min(5, value));
@@ -55,18 +70,30 @@ namespace Peaceland
     }
 
     [Serializable]
+    public sealed class PeacelandIntProgressValue
+    {
+        public string key;
+        public int value;
+    }
+
+    [Serializable]
     public sealed class PeacelandProgressSnapshot
     {
         public List<string> trueFlags = new List<string>();
+        public List<PeacelandIntProgressValue> intValues =
+            new List<PeacelandIntProgressValue>();
         public string lastSceneName = string.Empty;
         public string displayLocationName = string.Empty;
         public int currentDay = 1;
     }
 
+    /// <summary>
+    /// One save document. version 3 includes checkpoints and occupied.
+    /// </summary>
     [Serializable]
     public sealed class PeacelandGameSaveData
     {
-        public const int CurrentVersion = 2;
+        public const int CurrentVersion = 3;
 
         public int version = CurrentVersion;
         public string savedUtc;
@@ -74,6 +101,9 @@ namespace Peaceland
         public PeacelandStatsSnapshot stats = new PeacelandStatsSnapshot();
         public PeacelandProgressSnapshot progress = new PeacelandProgressSnapshot();
         public Peaceland.Notebook.NotebookSaveData notebook = new Peaceland.Notebook.NotebookSaveData();
+        public List<PeacelandCheckpointSnapshot> checkpoints =
+            new List<PeacelandCheckpointSnapshot>();
+        public string activeCheckpointId;
 
         public static PeacelandGameSaveData CreateNewGame()
         {
