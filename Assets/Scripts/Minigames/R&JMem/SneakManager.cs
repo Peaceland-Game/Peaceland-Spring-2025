@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SneakManager : MinigameBehavior
 {
@@ -11,6 +12,8 @@ public class SneakManager : MinigameBehavior
     [SerializeField]
     private float camSpeed;     // Movement speed of camera
     private SneakPlayer player; // Reference to the player
+    [SerializeField]
+    private GameObject backgroundLoop; // Reference to the background
 
     [SerializeField]
     private GameObject goalTile;    // Reference to the goal tile
@@ -79,7 +82,7 @@ public class SneakManager : MinigameBehavior
             MoveSentries();
 
             // The player loses if they fall too far behind the camera or is caught
-            if (player.transform.position.x < cam.transform.position.x - loseDistance
+            if (!IsObjectVisible(player)
                 || player.IsCaught)
             {
                 DisplayGameOver();
@@ -100,6 +103,7 @@ public class SneakManager : MinigameBehavior
 
             // Remove offscreen sentries
             CleanUpOldSentries();
+
         }
     }
 
@@ -108,7 +112,7 @@ public class SneakManager : MinigameBehavior
     /// </summary>
     private void MoveCamera()
     {
-        cam.transform.Translate(camSpeed, 0, 0);
+        cam.transform.Translate(camSpeed * Time.deltaTime, 0, 0);
     }
 
     /// <summary>
@@ -157,6 +161,11 @@ public class SneakManager : MinigameBehavior
     {
         cam.transform.position = startPos;
         player.ResetPlayer();
+        BackgroundLoop[] backgroundPanels = backgroundLoop.GetComponentsInChildren<BackgroundLoop>();
+        foreach (BackgroundLoop b in backgroundPanels)
+        {
+            b.ResetBackground();
+        }
         gameOverScreen.SetActive(false);
         victoryScreen.SetActive(false);
         sneakUI.SetActive(true);
@@ -193,5 +202,32 @@ public class SneakManager : MinigameBehavior
     public void loadNextLevel()
     {
         LL.LoadLevelByBuildIndex(2);
+    }
+
+    /// <summary>
+    /// Checks if the given object is on camera, returning a combined boolean for each axis.
+    /// </summary>
+    /// <param name="player">The SneakPlayer, but its could be genericized for potential futurue use in other circumstances</param>
+    /// <returns></returns>
+    public bool IsObjectVisible(SneakPlayer player)
+    {
+        Vector3 viewPoint = cam.WorldToViewportPoint(player.transform.position);
+
+        // Check each axis to make sure the object is on camera, basically a stand in for checking the object agianst the bounds of the canvas, that way it adapts to PC or tablet mode
+        bool isXVisible = viewPoint.x >= 0f && viewPoint.x <= 1f;
+        bool isYVisible = viewPoint.y >= 0f && viewPoint.y <= 1f;
+        bool isInFrontOfCamera = viewPoint.z > 0f;
+
+        return isXVisible && isYVisible && isInFrontOfCamera;
+    }
+
+    /// <summary>
+    /// Cloese the application, for use in the test builds of the escape minigame.
+    /// </summary>
+    public void QuitGame()
+    {
+        Application.Quit();
+
+        Debug.Log("Game has been quit.");
     }
 }

@@ -1,0 +1,1705 @@
+fileFormatVersion: 2
+guid: 068ced3489bd8a94f92ca8dd8fcbbbd8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1875242869853441114
+    second: Street_Background_House_V2_0
+  - first:
+      213: -6957116535003138289
+    second: Street_Background_House_V2_1
+  - first:
+      213: 3962366972674446321
+    second: Street_Background_House_V2_2
+  - first:
+      213: -2843881975848174016
+    second: Street_Background_House_V2_3
+  - first:
+      213: 682941520561129454
+    second: Street_Background_House_V2_4
+  - first:
+      213: 2393973613279201880
+    second: Street_Background_House_V2_5
+  - first:
+      213: -1648610081047983635
+    second: Street_Background_House_V2_6
+  - first:
+      213: -4367814537016330232
+    second: Street_Background_House_V2_7
+  - first:
+      213: -7779680006960683278
+    second: Street_Background_House_V2_8
+  - first:
+      213: -5041660564375813916
+    second: Street_Background_House_V2_9
+  - first:
+      213: -754344605491532245
+    second: Street_Background_House_V2_10
+  - first:
+      213: -3025985550653099506
+    second: Street_Background_House_V2_11
+  - first:
+      213: 5487075309684552647
+    second: Street_Background_House_V2_12
+  - first:
+      213: 2531124485522265610
+    second: Street_Background_House_V2_13
+  - first:
+      213: -4277605629177879033
+    second: Street_Background_House_V2_14
+  - first:
+      213: -8642619606058766334
+    second: Street_Background_House_V2_15
+  - first:
+      213: 284626417629724190
+    second: Street_Background_House_V2_16
+  - first:
+      213: 9095766844134960699
+    second: Street_Background_House_V2_17
+  - first:
+      213: -8804035424432239884
+    second: Street_Background_House_V2_18
+  - first:
+      213: 3338594968598001460
+    second: Street_Background_House_V2_19
+  - first:
+      213: 6559389368409359892
+    second: Street_Background_House_V2_20
+  - first:
+      213: 279047474417150477
+    second: Street_Background_House_V2_21
+  - first:
+      213: -8175115360649484737
+    second: Street_Background_House_V2_22
+  - first:
+      213: 6218143450404661165
+    second: Street_Background_House_V2_23
+  - first:
+      213: -557216957913966657
+    second: Street_Background_House_V2_24
+  - first:
+      213: -602073103921455925
+    second: Street_Background_House_V2_25
+  - first:
+      213: 4594604375832920121
+    second: Street_Background_House_V2_26
+  - first:
+      213: 1676041734666035309
+    second: Street_Background_House_V2_27
+  - first:
+      213: -4579606702684849610
+    second: Street_Background_House_V2_28
+  - first:
+      213: 1765532029328669595
+    second: Street_Background_House_V2_29
+  - first:
+      213: -7799037065619497869
+    second: Street_Background_House_V2_30
+  - first:
+      213: -4592775865856055559
+    second: Street_Background_House_V2_31
+  - first:
+      213: -6766504031295412886
+    second: Street_Background_House_V2_32
+  - first:
+      213: -8827876474639298140
+    second: Street_Background_House_V2_33
+  - first:
+      213: -8815205373771205945
+    second: Street_Background_House_V2_34
+  - first:
+      213: 6326746302995195430
+    second: Street_Background_House_V2_35
+  - first:
+      213: 6015980817484641749
+    second: Street_Background_House_V2_36
+  - first:
+      213: 5546168830911675018
+    second: Street_Background_House_V2_37
+  - first:
+      213: -3915630468936148374
+    second: Street_Background_House_V2_38
+  - first:
+      213: 2545063786864922692
+    second: Street_Background_House_V2_39
+  - first:
+      213: 6682307078408420246
+    second: Street_Background_House_V2_40
+  - first:
+      213: -7073192186614551206
+    second: Street_Background_House_V2_41
+  - first:
+      213: 4681950846327220524
+    second: Street_Background_House_V2_42
+  - first:
+      213: 4926000670231034747
+    second: Street_Background_House_V2_43
+  - first:
+      213: -9057959818719129342
+    second: Street_Background_House_V2_44
+  - first:
+      213: -496497439664893787
+    second: Street_Background_House_V2_45
+  - first:
+      213: 4026652564586963874
+    second: Street_Background_House_V2_46
+  - first:
+      213: -5926941783039165059
+    second: Street_Background_House_V2_47
+  - first:
+      213: -2900421247196272880
+    second: Street_Background_House_V2_48
+  - first:
+      213: 2399516099799074148
+    second: Street_Background_House_V2_49
+  - first:
+      213: 5371272561467077132
+    second: Street_Background_House_V2_50
+  - first:
+      213: -2243131585333392521
+    second: Street_Background_House_V2_51
+  - first:
+      213: -8427468916098126367
+    second: Street_Background_House_V2_52
+  - first:
+      213: 2914728722282703393
+    second: Street_Background_House_V2_53
+  - first:
+      213: 4047325501152376995
+    second: Street_Background_House_V2_54
+  - first:
+      213: 5662153955340589808
+    second: Street_Background_House_V2_55
+  - first:
+      213: -918421976598886637
+    second: Street_Background_House_V2_56
+  - first:
+      213: -5722350691777324940
+    second: Street_Background_House_V2_57
+  - first:
+      213: -4138144164540580159
+    second: Street_Background_House_V2_58
+  - first:
+      213: 3570348494122221031
+    second: Street_Background_House_V2_59
+  - first:
+      213: 1610122670592946201
+    second: Street_Background_House_V2_60
+  - first:
+      213: 614747596319468590
+    second: Street_Background_House_V2_61
+  - first:
+      213: -867352747490860486
+    second: Street_Background_House_V2_62
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Street_Background_House_V2_0
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 737
+        width: 671
+        height: 663
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5cc2356473360a10800000000000000
+      internalID: 1875242869853441114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_1
+      rect:
+        serializedVersion: 2
+        x: 990
+        y: 745
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f07342e2f5b537f90800000000000000
+      internalID: -6957116535003138289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_2
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 745
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f31004a4c72df630800000000000000
+      internalID: 3962366972674446321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_3
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 746
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04efe6619608888d0800000000000000
+      internalID: -2843881975848174016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_4
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 744
+        width: 33
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee7496fc1bb4a7900800000000000000
+      internalID: 682941520561129454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_5
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 754
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85a4a25415a193120800000000000000
+      internalID: 2393973613279201880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_6
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 747
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de9c102bdd5fe19e0800000000000000
+      internalID: -1648610081047983635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_7
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 749
+        width: 13
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 808ba5cf1d76263c0800000000000000
+      internalID: -4367814537016330232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_8
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 746
+        width: 8
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f666ee8046090490800000000000000
+      internalID: -7779680006960683278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_9
+      rect:
+        serializedVersion: 2
+        x: 1141
+        y: 743
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e0c846bd6c680ab0800000000000000
+      internalID: -5041660564375813916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_10
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 743
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2ee177f3970885f0800000000000000
+      internalID: -754344605491532245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_11
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 749
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e027bdd8c2a8106d0800000000000000
+      internalID: -3025985550653099506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_12
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 746
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c370912ce1062c40800000000000000
+      internalID: 5487075309684552647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_13
+      rect:
+        serializedVersion: 2
+        x: 1198
+        y: 754
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0619d12f4c502320800000000000000
+      internalID: 2531124485522265610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_14
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 752
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70624af0854e2a4c0800000000000000
+      internalID: -4277605629177879033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_15
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 750
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2007a04424f3f0880800000000000000
+      internalID: -8642619606058766334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_16
+      rect:
+        serializedVersion: 2
+        x: 1231
+        y: 744
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1ef284083233f300800000000000000
+      internalID: 284626417629724190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_17
+      rect:
+        serializedVersion: 2
+        x: 1233
+        y: 753
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3ea078d0c7aa3e70800000000000000
+      internalID: 9095766844134960699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_18
+      rect:
+        serializedVersion: 2
+        x: 1240
+        y: 743
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fac2c06d68c1d580800000000000000
+      internalID: -8804035424432239884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_19
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 746
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 437b0307f62155e20800000000000000
+      internalID: 3338594968598001460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_20
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 752
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 416838f90e1a70b50800000000000000
+      internalID: 6559389368409359892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_21
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 745
+        width: 27
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0aaa1413306fd300800000000000000
+      internalID: 279047474417150477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_22
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 740
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f36e5a2a4e72c8e80800000000000000
+      internalID: -8175115360649484737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_23
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 747
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da7aac3e5884b4650800000000000000
+      internalID: 6218143450404661165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_24
+      rect:
+        serializedVersion: 2
+        x: 1335
+        y: 737
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb7d6b8012e5448f0800000000000000
+      internalID: -557216957913966657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_25
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 749
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bccd1ffa3b105a7f0800000000000000
+      internalID: -602073103921455925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_26
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 738
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9300af8265053cf30800000000000000
+      internalID: 4594604375832920121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_27
+      rect:
+        serializedVersion: 2
+        x: 1356
+        y: 746
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d60af7fd31f724710800000000000000
+      internalID: 1676041734666035309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_28
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 737
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63ab87bb7f7f170c0800000000000000
+      internalID: -4579606702684849610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_29
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 741
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9bb5b7c60e608810800000000000000
+      internalID: 1765532029328669595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_30
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 737
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37c15a12c1144c390800000000000000
+      internalID: -7799037065619497869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_31
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 738
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f6a9aefeae2340c0800000000000000
+      internalID: -4592775865856055559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_32
+      rect:
+        serializedVersion: 2
+        x: 1390
+        y: 741
+        width: 14
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a65636b1f6c8812a0800000000000000
+      internalID: -6766504031295412886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_33
+      rect:
+        serializedVersion: 2
+        x: 1404
+        y: 741
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a1d8105e151d7580800000000000000
+      internalID: -8827876474639298140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_34
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 749
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c2b042ea691aa580800000000000000
+      internalID: -8815205373771205945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_35
+      rect:
+        serializedVersion: 2
+        x: 1416
+        y: 746
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6266b06fd3e1dc750800000000000000
+      internalID: 6326746302995195430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_36
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 737
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d57cb1fdae0d7350800000000000000
+      internalID: 6015980817484641749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_37
+      rect:
+        serializedVersion: 2
+        x: 1430
+        y: 741
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8a75d6ba23f7fc40800000000000000
+      internalID: 5546168830911675018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_38
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 738
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6a5d5b95d2e8a9c0800000000000000
+      internalID: -3915630468936148374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_39
+      rect:
+        serializedVersion: 2
+        x: 1438
+        y: 754
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4405bc2a702e15320800000000000000
+      internalID: 2545063786864922692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_40
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 738
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69bbc9822e25cbc50800000000000000
+      internalID: 6682307078408420246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_41
+      rect:
+        serializedVersion: 2
+        x: 1450
+        y: 752
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5d65c08e29f6dd90800000000000000
+      internalID: -7073192186614551206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_42
+      rect:
+        serializedVersion: 2
+        x: 1460
+        y: 750
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c296c2b1d71a9f040800000000000000
+      internalID: 4681950846327220524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_43
+      rect:
+        serializedVersion: 2
+        x: 1462
+        y: 740
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7bf470b28bac5440800000000000000
+      internalID: 4926000670231034747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_44
+      rect:
+        serializedVersion: 2
+        x: 1471
+        y: 744
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2011c773989ab4280800000000000000
+      internalID: -9057959818719129342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_45
+      rect:
+        serializedVersion: 2
+        x: 1474
+        y: 753
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a012ec85361c19f0800000000000000
+      internalID: -496497439664893787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_46
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 742
+        width: 8
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a32f126c2b81e730800000000000000
+      internalID: 4026652564586963874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_47
+      rect:
+        serializedVersion: 2
+        x: 1489
+        y: 739
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7db781c9d54fbda0800000000000000
+      internalID: -5926941783039165059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_48
+      rect:
+        serializedVersion: 2
+        x: 1502
+        y: 742
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 017eed52e32afb7d0800000000000000
+      internalID: -2900421247196272880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_49
+      rect:
+        serializedVersion: 2
+        x: 1505
+        y: 746
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 465ca59fd2bcc4120800000000000000
+      internalID: 2399516099799074148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_50
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 752
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c023c0abfe79a8a40800000000000000
+      internalID: 5371272561467077132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_51
+      rect:
+        serializedVersion: 2
+        x: 1531
+        y: 738
+        width: 13
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77b8ebf25bbced0e0800000000000000
+      internalID: -2243131585333392521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_52
+      rect:
+        serializedVersion: 2
+        x: 1533
+        y: 754
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ed2354ebad9b0b80800000000000000
+      internalID: -8427468916098126367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_53
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 738
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12ae94c7452337820800000000000000
+      internalID: 2914728722282703393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_54
+      rect:
+        serializedVersion: 2
+        x: 1564
+        y: 740
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a83192891dfa2830800000000000000
+      internalID: 4047325501152376995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_55
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 755
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fa16a3e503049e40800000000000000
+      internalID: 5662153955340589808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_56
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 747
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31749ea041c1143f0800000000000000
+      internalID: -918421976598886637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_57
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 738
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 478d6683d502690b0800000000000000
+      internalID: -5722350691777324940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_58
+      rect:
+        serializedVersion: 2
+        x: 1583
+        y: 749
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cef333aecb5296c0800000000000000
+      internalID: -4138144164540580159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_59
+      rect:
+        serializedVersion: 2
+        x: 1591
+        y: 739
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ed7184f90d6c8130800000000000000
+      internalID: 3570348494122221031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_60
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 752
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 910fe71c90e485610800000000000000
+      internalID: 1610122670592946201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_61
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 746
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2ca5298ea5088800800000000000000
+      internalID: 614747596319468590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Street_Background_House_V2_62
+      rect:
+        serializedVersion: 2
+        x: 1601
+        y: 741
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3229d6854b86f3f0800000000000000
+      internalID: -867352747490860486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

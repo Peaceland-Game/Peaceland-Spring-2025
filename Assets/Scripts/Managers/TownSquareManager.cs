@@ -1,10 +1,10 @@
 using UnityEngine;
-using Unity.UI;
+//using Unity.UI;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
-using UnityEditor.Rendering.Universal.ShaderGUI;
+//using UnityEditor.Rendering.Universal.ShaderGUI;
 
 public class TownSquareManager : MonoBehaviour
 {
