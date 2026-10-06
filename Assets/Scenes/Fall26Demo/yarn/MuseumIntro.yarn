@@ -1,60 +1,82 @@
 ﻿title: MarcHouseMorning
 ---
 <<changeBG 0>>
-{$protagName} stands in front of his bathroom mirror.
-He has a determined look on his face as he holds a dark green tie in both hands, attempting to tie it around his neck.
-He hopes that a tie would help make a good first impression, but he needs to learn how to tie it first before thinking ahead.
-He gives the tie a few more tugs before it gives up and falls entirely onto his hands.
+{$protagName} stands in front of his bathroom mirror, clutching at the fabric of his necktie. 
 
-{$protagName}: *Sigh*, great.
+{$protagName}: (<i>Over, under, around, through the loop? Wait, no.</i>)
 
-{$protagName} didn’t have much hope in the tie, so he grabbed the green sweater next to him.
-With the sweater in his left hand and the tie in his right, he thinks about what his best next move should be, until he hears something downstairs.
+{$protagName}: (<i>Which side is supposed to be longer? They look the same!</i>)
 
-*Sizzle, sizzle, sizzle*
+The fabric gives way, clumping into a tangle in {$protagName}’s hands.
 
-The sizzle he heard was far too familiar for {$protagName} to ignore.
-He runs downstairs, still holding the sweater, too concerned about the sound to put it down.
+{$protagName}: Great. Magnificent work, Malkin.
 
-{$protagName}: Out of all days!
+{$protagName} drops the tie onto the counter and picks up his folded sweater.
+
+{$protagName}: Hmm, should I just wear this instead?
+
+As {$protagName} grabs at the sweater, he hears a sound coming from the kitchen.
+
+<i>Sizzle, sizzle, sizzle</i>
+
+The noise {$protagName} heard was far too familiar for him to ignore.
+
+{$protagName}: No. Oh no. Not today.
+
+{$protagName} bolts through the door of the bathroom, sweater in hand.
 
 //Scene 2
 <<changeBG 1>>
-As {$protagName} turns into the kitchen, he sees a pot of water overboiling on the stove.
-He looks around and sees no one else around to manage it.
-Without thinking, he runs towards the stove and tries to shift the pot off the stove.
-In his attempt, a stray drop of boiling water falls on his hand.
+As {$protagName} turns into the kitchen, he sees the kettle overboiling on the stove.
 
-{$protagName}: SHIT!
+{$protagName}: (<i>Where is everybody? Who just leaves water boiling in a room?</i>)
 
-{$protagName} quickly moves his hand away from the pot handle and looks at where he was splashed. A mark is already starting to show.
+<i>Sizzle, sizzle, sizzle</i>
 
-{$protagName}: *Sigh*, just my luck. Who was even down here to-
+As {$protagName} darts forward to grab the handle of the kettle, the boiling water spills over the top and lands across the back of his wrist. 
 
-{$protagName} stops mid-thought and sees a note left on the counter.
-He is too far away to see what it says, but the handwriting gives away that it came from his little brother {$brotherName}.
-{$protagName} tosses his sweater on a chair and walks towards the sink.
-He holds his hands underneath as he runs the cold water to hopefully make the burn mark stop swelling.
+{$protagName}: Are you kidding me!
 
-{$protagName} dries off his hand and picks up the note that {$brotherName} left him.
+{$protagName} quickly moves his hand away from the stove and looks at where he was splashed.
 
-"Decided to make you coffee for your first day. You're welcome." -{$brotherName}
+{$protagName}: (<i>That’s definitely going to leave a mark…</i>)
 
-{$protagName}: I mean...at least he tried his best.
+{$protagName}: Sigh, just my luck.
 
-{$protagName} thinks about how {$brotherName}’s been doing. 
-How much he’s grown in these past few years and wonder how much more he’ll grow as the years continue.
-He looks at the pot and knows that {$brotherName} is trying his best, which is all that {$protagName} can ask for.
+{$protagName}: Who was even down here befo-
 
-{$protagName} then grabs the sweater he threw and leaves home, walking towards the town square.
+{$protagName}: (<i>Is that a note on the counter?</i>)
+
+{$protagName} lays the sweater on the counter and goes to inspect the piece of paper sitting next to the stove. 
+
+“Decided to make you coffee for your first day. You’re welcome.” - Art
+
+{$protagName}: Ha… well at least he tried.
+
+{$protagName}: (<i>I didn’t realize that Art remembered today is my first day at the museum.</i>)
+
+{$protagName}: (<i>Seems like my baby brother is finally growing up.</i>)
+
+{$protagName} grabs his sweater and leaves home, making his way to the city’s museum.
 
 //Scene 3
 <<changeBG 2>>
 As {$protagName} is walking, he looks around at the people around the town square. 
-It was busy as usual, with people of different ages and backgrounds walking every which way. 
-The slight breeze blowing by made the day seem less stressful, giving {$protagName} a bit more optimism.
-{$protagName} finishes up his snack and pulls the sweater over himself. 
-As he stands, he takes a deep breath. {$protagName} didn’t know what to expect at the museum, but he just had to hope things went smoothly.
+
+{$protagName}: (<i>Look at all of them.</i>)
+
+{$protagName}: (<i>Tourists, commuters, students… Seems like everybody has somewhere to be.</i>)
+
+A crisp breeze brushes {$protagName}’s face.
+
+{$protagName}: (<i>Maybe today won’t be so bad after all, burnt wrist aside.</i>)
+
+{$protagName}: (<i>How hard can working at a museum really be?</i>)
+
+{$protagName}: (<i>Curating history, preserving art? Sounds… fun!</i>)
+
+{$protagName}: Sigh, Well, here goes nothing.
+
 {$protagName} starts making his way towards the museum for his first day.
 
 ===

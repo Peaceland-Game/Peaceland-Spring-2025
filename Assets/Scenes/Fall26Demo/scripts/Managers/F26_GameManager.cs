@@ -77,6 +77,15 @@ public class F26_GameManager : MonoBehaviour
     //create the private instance
     private static F26_GameManager _instance;
 
+    //Internal Stats for tracking player decisions over time
+    [SerializeField]
+    private float knowledgeStat;
+    public float KnowledgeStat
+    {
+        get { return knowledgeStat; }
+        set { knowledgeStat = value; }
+    }
+
     //create the public reference
     public static F26_GameManager Instance
     {
@@ -154,6 +163,7 @@ public class F26_GameManager : MonoBehaviour
 
         }
 
+        KnowledgeStat = 0;
         debugSkipInputAction = InputSystem.actions.FindAction("DebugSkip");
     }
 

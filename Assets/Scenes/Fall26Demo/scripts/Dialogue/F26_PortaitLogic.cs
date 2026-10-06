@@ -33,6 +33,7 @@ public class F26_PortaitLogic : MonoBehaviour
         dialogueRunner.AddCommandHandler("nextOrder", NextOrder);
         dialogueRunner.AddCommandHandler<int>("showIMG", ShowObjectImage);
         dialogueRunner.AddCommandHandler<int>("hideIMG", HideObjectImage);
+        dialogueRunner.AddCommandHandler<int, int>("changeStat", ChangeStat);
     }
 
     public void Start()
@@ -226,5 +227,17 @@ public class F26_PortaitLogic : MonoBehaviour
     private void HideObjectImage(int _index)
     {
         GM.CurrentMemoryManager.HideObjectImage(_index);
+    }
+    /// <summary>
+    /// Change a hidden stat
+    /// </summary>
+    /// <param name="statIndex">Which stat to change (currently just 0 for knowledge)</param>
+    /// <param name="amount">Amount to change the stat by</param>
+    private void ChangeStat(int statIndex, int amount)
+    {
+        switch (statIndex)
+        {
+            case 0: GM.KnowledgeStat += amount; break;
+        }
     }
 }
