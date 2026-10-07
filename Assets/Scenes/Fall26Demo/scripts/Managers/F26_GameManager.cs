@@ -163,7 +163,6 @@ public class F26_GameManager : MonoBehaviour
 
         }
 
-        KnowledgeStat = 0;
         debugSkipInputAction = InputSystem.actions.FindAction("DebugSkip");
     }
 
