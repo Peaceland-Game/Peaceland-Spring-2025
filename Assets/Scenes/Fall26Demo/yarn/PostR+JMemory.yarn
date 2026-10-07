@@ -102,6 +102,7 @@ title: PostMemRJStart
 <<twoChar>>
 <<changeSprite 1 0>>
 <<changeSprite 2 0>>
+<<changeStat 0 2>>
 
 <<darken 1>>
 <<lighten 2>>
@@ -135,6 +136,7 @@ title: PostMemRJChildren
 <<darken 2>>
 -> I'm sure they were in good hands.
     {$protagName}: I'm sure they were in good hands.
+    <<changeStat 0 1>>
     <<lighten 1>>
     {$lover2Name}: In times of war, there's no guarantee.
     <<darken 1>>
@@ -148,6 +150,7 @@ title: PostMemRJChildren
         <<darken 2>>
         <<jump PostMemRJEnd>>
     -> Have you checked in on them?
+        <<changeStat 0 2>>
         {$protagName}: Have you checked in on them?
         <<lighten 2>>
         {$lover1Name}: I've tried, but-

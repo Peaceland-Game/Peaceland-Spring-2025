@@ -120,6 +120,7 @@ title: TownSquareKatarina1
 <<darken 1>>
 -> I'm safe, at least.
     {$protagName}: I'm safe, at least.
+    <<changeStat 0 4>>
     <<lighten 1>>
     {$collegeFriendName}: That's good. I was expecting this sort of stuff with the election coming up, but it's still unpredictable.
     <<darken 1>>
@@ -155,6 +156,7 @@ title: TownSquareKatarina1
 
 title: TownSquareKatarina2
 ---
+<<changeStat 0 2>>
 <<lighten 1>>
 {$collegeFriendName}: I was just heading home. I know sports fans could get unruly, but I’ve never seen it in person before.
 <<darken 1>>

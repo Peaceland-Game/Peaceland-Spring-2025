@@ -34,8 +34,9 @@ As {$protagName} walks into his house, he sees {$brotherName} in the kitchen.
     {$protagName}: I'm just kidding.
 <<lighten 1>>
 {$brotherName}: So, how was your first day? Was it everything you ever could have dreamed of?
--> Go into detail
+-> Tell Art about Jovan and Ruzica
     <<darken 1>>
+    <<changeStat 0 4>>
     {$protagName}: I spoke with Jovan and Ruzica INSERT LAST NAME HERE.
     {$protagName}: They're friends with my boss and live in his neighborhood.
     {$protagName}: Their story was...actually pretty depressing.
@@ -49,7 +50,7 @@ As {$protagName} walks into his house, he sees {$brotherName} in the kitchen.
     {$brotherName}: Oh. That sounds... kinda bad.
     <<darken 1>>
     {$protagName}: Tell me about it.
--> Stay vague
+-> Don't tell Art about Jovan and Ruzica
     <<darken 1>>
     {$protagName}: I spent my day at a museum, so not totally terrible.
     <<lighten 1>>
@@ -64,6 +65,7 @@ As {$protagName} walks into his house, he sees {$brotherName} in the kitchen.
 <<darken 1>>
 {$protagName}: C'mon, he's a good guy, and you know it.
 -> Talk about the town square incident
+    <<changeStat 0 2>>
     {$protagName}: He approached me just as I got out of the bakery.
     {$protagName}: Then this huge brawl started between these guys, arguing about sports.
     <<lighten 1>>
