@@ -12,7 +12,8 @@ namespace Peaceland.Notebook.EditableScenePack.Editor
     public static class NotebookEditableScenePackEditor
     {
         private const string PackRoot = "Assets/Notebook/EditableScenePack";
-        private const string ReportsFolder = PackRoot + "/Reports";
+        // Reports go under Library so running the check never adds files for git to pick up.
+        private const string ReportsFolder = "Library/NotebookReports";
         private const string LatestReportPath = ReportsFolder + "/scene_self_check_latest.md";
 
         private static readonly string[] AllTestScenes =
@@ -393,14 +394,9 @@ namespace Peaceland.Notebook.EditableScenePack.Editor
                 return;
             }
 
-            if (!AssetDatabase.IsValidFolder(ReportsFolder))
-            {
-                AssetDatabase.CreateFolder(PackRoot, "Reports");
-            }
-
+            Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), ReportsFolder));
             string markdown = NotebookSceneSpecAudit.MergeReportsToMarkdown(rounds, title);
             File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), LatestReportPath), markdown);
-            AssetDatabase.Refresh();
             Debug.Log("[EditableScenePack] Wrote " + LatestReportPath);
         }
 

@@ -1,0 +1,50 @@
+using System;
+using UnityEngine;
+using Yarn.Unity;
+
+namespace Peaceland
+{
+    /// <summary>
+    /// Yarn command &lt;&lt;add_stat StatId delta&gt;&gt;. Put this on the same object as DialogueRunner.
+    /// StatId must match PeacelandStatId names, e.g. KindnessCruelty.
+    /// </summary>
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(DialogueRunner))]
+    public sealed class YarnStatCommands : MonoBehaviour
+    {
+        [Tooltip("Filled automatically from this object.")]
+        [SerializeField] private DialogueRunner dialogueRunner;
+
+        private void Awake()
+        {
+            if (dialogueRunner == null)
+            {
+                dialogueRunner = GetComponent<DialogueRunner>();
+            }
+
+            dialogueRunner.AddCommandHandler<string, int>("add_stat", AddStat);
+        }
+
+        private void OnDestroy()
+        {
+            if (dialogueRunner != null)
+            {
+                dialogueRunner.RemoveCommandHandler("add_stat");
+            }
+        }
+
+        /// <summary>Yarn: &lt;&lt;add_stat KindnessCruelty 1&gt;&gt;. Unknown names log a warning and do nothing.</summary>
+        private void AddStat(string statName, int delta)
+        {
+            if (!Enum.TryParse(statName, true, out PeacelandStatId statId) || !PeacelandStats.IsActive(statId))
+            {
+                Debug.LogWarning(
+                    "Yarn <<add_stat>> ignored '" + statName + "'. Use KindnessCruelty or InsightNaivety.",
+                    this);
+                return;
+            }
+
+            PeacelandStatManager.Instance.AddDelta(statId, delta);
+        }
+    }
+}

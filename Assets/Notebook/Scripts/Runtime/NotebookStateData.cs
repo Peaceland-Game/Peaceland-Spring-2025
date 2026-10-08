@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Peaceland.Notebook
 {
+    /// <summary>Per-entry flags stored in the save JSON (collected, reviewed, record-choice).</summary>
     [Serializable]
     public class NotebookEntryStateData
     {
@@ -16,6 +17,7 @@ namespace Peaceland.Notebook
         public string selectedRecordChoiceId;
     }
 
+    /// <summary>Notebook slice of peaceland_save_slot_N.json.</summary>
     [Serializable]
     public class NotebookSaveData
     {

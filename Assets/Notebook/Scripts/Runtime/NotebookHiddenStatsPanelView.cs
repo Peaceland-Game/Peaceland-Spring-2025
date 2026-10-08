@@ -11,13 +11,7 @@ namespace Peaceland.Notebook
     /// </summary>
     public sealed class NotebookHiddenStatsPanelView : MonoBehaviour
     {
-        private static readonly PeacelandStatId[] StatOrder =
-        {
-            PeacelandStatId.KindnessCruelty,
-            PeacelandStatId.SelfishAltruistic,
-            PeacelandStatId.InsightNaivety,
-            PeacelandStatId.NationalismRebellion,
-        };
+        private static readonly PeacelandStatId[] StatOrder = PeacelandStats.Active;
 
         [SerializeField] private RectTransform rowsRoot;
         [SerializeField] private TMP_Text headerText;

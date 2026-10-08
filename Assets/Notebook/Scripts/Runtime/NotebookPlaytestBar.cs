@@ -22,28 +22,8 @@ namespace Peaceland.Notebook
 
         private Canvas canvas;
 
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
-        private static void BootstrapIfNotebookTestScene()
-        {
-            if (!Application.isPlaying)
-            {
-                return;
-            }
-
-            string sceneName = SceneManager.GetActiveScene().name;
-            if (!IsNotebookTestScene(sceneName))
-            {
-                return;
-            }
-
-            if (FindFirstObjectByType<NotebookPlaytestBar>() != null)
-            {
-                return;
-            }
-
-            GameObject host = new GameObject("Notebook Playtest Bar");
-            host.AddComponent<NotebookPlaytestBar>();
-        }
+        // Kept as a legacy component for old scenes. New test scenes use
+        // NotebookTestSceneControls.prefab and do not create UI at runtime.
 
         public static bool IsNotebookTestScene(string sceneName)
         {
@@ -203,7 +183,7 @@ namespace Peaceland.Notebook
         {
             int collected = NotebookSaveUtility.CountCollected();
             string statsLine = "K/C=" + PeacelandStatManager.Instance.Get(PeacelandStatId.KindnessCruelty)
-                + " | S/A=" + PeacelandStatManager.Instance.Get(PeacelandStatId.SelfishAltruistic)
+                + " | I/N=" + PeacelandStatManager.Instance.Get(PeacelandStatId.InsightNaivety)
                 + " | checkpoint=" + PeacelandProgress.Instance.GetCurrentSceneCheckpoint();
             return collected == 0
                 ? statsLine + " | notebook: none collected yet"
@@ -212,6 +192,13 @@ namespace Peaceland.Notebook
 
         private static void ClearSave()
         {
+            PeacelandGameBootstrap.EnsureExists();
+            if (PeacelandSaveService.HasInstance)
+            {
+                PeacelandSaveService.Instance.EnsureActiveSlotBound(preferExistingSlotZero: true);
+                PeacelandSaveService.Instance.ClearNotebookSection();
+            }
+
             PlayerPrefs.DeleteKey(NotebookSaveUtility.DefaultSaveKey);
             PlayerPrefs.Save();
             NotebookPlaytestBar existing = FindFirstObjectByType<NotebookPlaytestBar>();

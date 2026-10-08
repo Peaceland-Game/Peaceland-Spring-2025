@@ -1,9 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
 namespace Peaceland
 {
+    /// <summary>
+    /// One JSON file per save slot: notebook + stats + progress + checkpoints.
+    /// Lives on PeacelandGameBootstrap (DontDestroyOnLoad).
+    /// NOTE: Save() needs an active slot. SaveLoad / GameStart selects one;
+    /// playtests without a slot call EnsureActiveSlotBound() which prefers slot 0.
+    /// </summary>
     public sealed class PeacelandSaveService : MonoBehaviour
     {
         public const string LegacyDefaultFileName = "peaceland_save.json";
@@ -11,10 +18,16 @@ namespace Peaceland
         private static PeacelandSaveService instance;
 
         [SerializeField] private bool autoSaveOnChange = true;
+        [Tooltip("0 keeps every checkpoint. Positive values keep only the newest entries.")]
+        [Min(0)]
+        [SerializeField] private int maxCheckpointHistory;
 
         private PeacelandGameSaveData data = new PeacelandGameSaveData();
         private int activeSlotIndex = -1;
         private bool legacyMigrationAttempted;
+        // True while DataLoaded / ActiveSlotChanged fire for "no slot": a listener that reads
+        // back must not re-bind slot 0 in the middle of the clear.
+        private bool raisingUnboundEvents;
 
         public static PeacelandSaveService Instance
         {
@@ -46,6 +59,7 @@ namespace Peaceland
         public static bool HasInstance => instance != null;
 
         public int ActiveSlotIndex => activeSlotIndex;
+        /// <summary>True after the player (or EnsureActiveSlotBound) has selected slot 0+.</summary>
         public bool HasActiveSlot => PeacelandSaveSlots.IsValidSlotIndex(activeSlotIndex);
 
         public event Action DataLoaded;
@@ -150,8 +164,41 @@ namespace Peaceland
             try
             {
                 string json = File.ReadAllText(path);
+                if (string.IsNullOrWhiteSpace(json))
+                {
+                    summary = new PeacelandSaveSlotSummary
+                    {
+                        slotIndex = slotIndex,
+                        hasData = false,
+                    };
+                    return true;
+                }
+
+                string trimmed = json.Trim();
+                if (trimmed[0] != '{' || trimmed[trimmed.Length - 1] != '}')
+                {
+                    summary = new PeacelandSaveSlotSummary
+                    {
+                        slotIndex = slotIndex,
+                        hasData = false,
+                        isCorrupt = true,
+                    };
+                    return false;
+                }
+
                 PeacelandGameSaveData loaded = JsonUtility.FromJson<PeacelandGameSaveData>(json);
-                if (loaded == null || !loaded.IsOccupied())
+                if (loaded == null)
+                {
+                    summary = new PeacelandSaveSlotSummary
+                    {
+                        slotIndex = slotIndex,
+                        hasData = false,
+                        isCorrupt = true,
+                    };
+                    return false;
+                }
+
+                if (!loaded.IsOccupied())
                 {
                     summary = new PeacelandSaveSlotSummary
                     {
@@ -167,9 +214,160 @@ namespace Peaceland
             catch (Exception exception)
             {
                 Debug.LogWarning("Failed to read save slot " + slotIndex + ": " + exception.Message);
-                summary = new PeacelandSaveSlotSummary { slotIndex = slotIndex, hasData = false };
+                summary = new PeacelandSaveSlotSummary
+                {
+                    slotIndex = slotIndex,
+                    hasData = false,
+                    isCorrupt = true,
+                };
                 return false;
             }
+        }
+
+        public static int GetVisibleSlotCount(
+            int minimum = PeacelandSaveSlots.InitialVisibleSlotCount,
+            int emptySlotBuffer = 1)
+        {
+            int highestIndex = -1;
+            string searchPattern =
+                PeacelandSaveSlots.SlotFilePrefix + "*" + PeacelandSaveSlots.SlotFileSuffix;
+
+            foreach (string path in Directory.GetFiles(Application.persistentDataPath, searchPattern))
+            {
+                if (PeacelandSaveSlots.TryParseSlotIndex(
+                    Path.GetFileName(path),
+                    out int slotIndex))
+                {
+                    highestIndex = Mathf.Max(highestIndex, slotIndex);
+                }
+            }
+
+            return Mathf.Max(
+                Mathf.Max(1, minimum),
+                highestIndex + 1 + Mathf.Max(1, emptySlotBuffer));
+        }
+
+        public bool TryGetCheckpointSummaries(
+            int slotIndex,
+            out List<PeacelandCheckpointSummary> summaries)
+        {
+            summaries = new List<PeacelandCheckpointSummary>();
+            if (!TryReadSlotData(slotIndex, out PeacelandGameSaveData loaded))
+            {
+                return false;
+            }
+
+            if (loaded.checkpoints == null)
+            {
+                return true;
+            }
+
+            for (int i = loaded.checkpoints.Count - 1; i >= 0; i--)
+            {
+                PeacelandCheckpointSnapshot checkpoint = loaded.checkpoints[i];
+                if (checkpoint == null)
+                {
+                    continue;
+                }
+
+                summaries.Add(new PeacelandCheckpointSummary
+                {
+                    slotIndex = slotIndex,
+                    checkpointId = checkpoint.checkpointId,
+                    checkpointKey = checkpoint.checkpointKey,
+                    displayName = checkpoint.displayName,
+                    sceneName = checkpoint.sceneName,
+                    savedUtc = checkpoint.savedUtc,
+                    isActive = checkpoint.checkpointId == loaded.activeCheckpointId,
+                });
+            }
+
+            return true;
+        }
+
+        public string CaptureCheckpoint(
+            string checkpointKey,
+            string displayName,
+            string sceneName,
+            bool replaceMatchingKey = false)
+        {
+            if (string.IsNullOrWhiteSpace(sceneName))
+            {
+                return null;
+            }
+
+            BindLiveDocument();
+            if (!HasActiveSlot)
+            {
+                // Slot 0 is corrupt and nothing else was chosen; there is nowhere to write.
+                return null;
+            }
+
+            NormalizeData();
+            data.progress.lastSceneName = sceneName;
+            data.checkpoints ??= new List<PeacelandCheckpointSnapshot>();
+
+            if (replaceMatchingKey && !string.IsNullOrWhiteSpace(checkpointKey))
+            {
+                data.checkpoints.RemoveAll(
+                    checkpoint => checkpoint != null
+                        && checkpoint.checkpointKey == checkpointKey);
+            }
+
+            string savedUtc = DateTime.UtcNow.ToString("o");
+            PeacelandCheckpointSnapshot snapshot = new PeacelandCheckpointSnapshot
+            {
+                checkpointId = Guid.NewGuid().ToString("N"),
+                checkpointKey = string.IsNullOrWhiteSpace(checkpointKey)
+                    ? sceneName
+                    : checkpointKey,
+                displayName = string.IsNullOrWhiteSpace(displayName)
+                    ? sceneName
+                    : displayName,
+                sceneName = sceneName,
+                savedUtc = savedUtc,
+                stats = Clone(data.stats),
+                progress = Clone(data.progress),
+                notebook = Clone(data.notebook),
+            };
+
+            data.checkpoints.Add(snapshot);
+            data.activeCheckpointId = snapshot.checkpointId;
+            TrimCheckpointHistory();
+            Save();
+            return snapshot.checkpointId;
+        }
+
+        public bool ActivateSlotAtCheckpoint(int slotIndex, string checkpointId)
+        {
+            if (string.IsNullOrWhiteSpace(checkpointId)
+                || !TryReadSlotData(slotIndex, out PeacelandGameSaveData loaded)
+                || loaded.checkpoints == null)
+            {
+                return false;
+            }
+
+            PeacelandCheckpointSnapshot selected =
+                loaded.checkpoints.Find(
+                    checkpoint => checkpoint != null
+                        && checkpoint.checkpointId == checkpointId);
+            if (selected == null)
+            {
+                return false;
+            }
+
+            SetActiveSlot(slotIndex);
+            data = loaded;
+            NormalizeData();
+            data.stats = Clone(selected.stats) ?? new PeacelandStatsSnapshot();
+            data.progress = Clone(selected.progress) ?? new PeacelandProgressSnapshot();
+            data.notebook = Clone(selected.notebook)
+                ?? new Peaceland.Notebook.NotebookSaveData();
+            data.progress.lastSceneName = selected.sceneName;
+            data.activeCheckpointId = selected.checkpointId;
+            Save();
+            DataLoaded?.Invoke();
+            return true;
         }
 
         /// <summary>Bind runtime save I/O to a slot and load existing data if present.</summary>
@@ -180,11 +378,20 @@ namespace Peaceland
                 return false;
             }
 
+            if (TryGetSlotSummary(slotIndex, out PeacelandSaveSlotSummary summary) && summary.isCorrupt)
+            {
+                Debug.LogError(
+                    "PeacelandSaveService: refusing to continue corrupt slot "
+                    + slotIndex + " without an explicit wipe.");
+                return false;
+            }
+
             SetActiveSlot(slotIndex);
             bool loaded = LoadFromPath(GetSlotPath(slotIndex), silentIfMissing: true);
             if (!loaded || !data.IsOccupied())
             {
                 Debug.LogWarning("Slot " + slotIndex + " has no save data to continue.");
+                ClearActiveSlotSelection();
                 return false;
             }
 
@@ -211,8 +418,24 @@ namespace Peaceland
             PlayerPrefs.SetInt(PeacelandSaveSlots.ActiveSlotPlayerPrefsKey, -1);
             PlayerPrefs.Save();
             data = new PeacelandGameSaveData();
-            DataLoaded?.Invoke();
-            ActiveSlotChanged?.Invoke(-1);
+            RaiseUnbound(() =>
+            {
+                DataLoaded?.Invoke();
+                ActiveSlotChanged?.Invoke(-1);
+            });
+        }
+
+        private void RaiseUnbound(Action raise)
+        {
+            raisingUnboundEvents = true;
+            try
+            {
+                raise();
+            }
+            finally
+            {
+                raisingUnboundEvents = false;
+            }
         }
 
         public bool DeleteSlot(int slotIndex)
@@ -231,7 +454,7 @@ namespace Peaceland
             if (activeSlotIndex == slotIndex)
             {
                 data = new PeacelandGameSaveData();
-                DataLoaded?.Invoke();
+                RaiseUnbound(() => DataLoaded?.Invoke());
             }
 
             return true;
@@ -265,6 +488,7 @@ namespace Peaceland
 
         public Peaceland.Notebook.NotebookSaveData GetNotebookData()
         {
+            BindLiveDocument();
             if (data.notebook == null)
             {
                 data.notebook = new Peaceland.Notebook.NotebookSaveData();
@@ -323,22 +547,28 @@ namespace Peaceland
 
         public int GetStat(PeacelandStatId statId)
         {
+            BindLiveDocument();
             return data.stats.Get(statId);
         }
 
         public void SetStat(PeacelandStatId statId, int value)
         {
+            BindLiveDocument();
             data.stats.Set(statId, value);
             OnDataChanged();
         }
 
+        /// <summary>Adds delta then clamps to -5..+5. Same path as PeacelandStatManager.AddDelta.</summary>
         public void AddStat(PeacelandStatId statId, int delta)
         {
+            // Read after binding, or the delta is added to an empty document's zero.
+            BindLiveDocument();
             SetStat(statId, data.stats.Get(statId) + delta);
         }
 
         public bool HasProgressFlag(string flagId)
         {
+            BindLiveDocument();
             if (string.IsNullOrWhiteSpace(flagId) || data.progress == null)
             {
                 return false;
@@ -347,8 +577,52 @@ namespace Peaceland
             return data.progress.trueFlags.Contains(flagId);
         }
 
+        public bool TryGetProgressInt(string key, out int value)
+        {
+            BindLiveDocument();
+            value = 0;
+            if (string.IsNullOrWhiteSpace(key)
+                || data.progress == null
+                || data.progress.intValues == null)
+            {
+                return false;
+            }
+
+            PeacelandIntProgressValue entry =
+                data.progress.intValues.Find(item => item != null && item.key == key);
+            if (entry == null)
+            {
+                return false;
+            }
+
+            value = entry.value;
+            return true;
+        }
+
+        public void SetProgressInt(string key, int value)
+        {
+            BindLiveDocument();
+            if (string.IsNullOrWhiteSpace(key))
+            {
+                return;
+            }
+
+            NormalizeData();
+            PeacelandIntProgressValue entry =
+                data.progress.intValues.Find(item => item != null && item.key == key);
+            if (entry == null)
+            {
+                entry = new PeacelandIntProgressValue { key = key };
+                data.progress.intValues.Add(entry);
+            }
+
+            entry.value = value;
+            OnDataChanged();
+        }
+
         public void SetProgressFlag(string flagId, bool value)
         {
+            BindLiveDocument();
             if (string.IsNullOrWhiteSpace(flagId))
             {
                 return;
@@ -381,6 +655,7 @@ namespace Peaceland
 
         public void SetLastSceneName(string sceneName)
         {
+            BindLiveDocument();
             if (data.progress == null)
             {
                 data.progress = new PeacelandProgressSnapshot();
@@ -392,6 +667,7 @@ namespace Peaceland
 
         public void SetSaveDisplayProgress(string locationName, int day)
         {
+            BindLiveDocument();
             if (data.progress == null)
             {
                 data.progress = new PeacelandProgressSnapshot();
@@ -402,8 +678,64 @@ namespace Peaceland
             OnDataChanged();
         }
 
+        /// <summary>
+        /// Gameplay reads and writes go through here first. A document nobody has bound to
+        /// a slot is replaced by that slot's file the moment it is saved, and the change
+        /// goes with it - a collected entry, a stat delta, the scene name. Binding before
+        /// the document is touched means the change lands on top of what the slot holds.
+        /// </summary>
+        private void BindLiveDocument()
+        {
+            if (!HasActiveSlot && !raisingUnboundEvents)
+            {
+                EnsureActiveSlotBound(preferExistingSlotZero: true);
+            }
+        }
+
+        /// <summary>
+        /// Binds runtime I/O to a slot when none is active so Notebook/stat playtests
+        /// actually persist. Prefers continuing slot 0 when it already has data.
+        /// </summary>
+        public void EnsureActiveSlotBound(bool preferExistingSlotZero = true)
+        {
+            if (HasActiveSlot)
+            {
+                return;
+            }
+
+            const int defaultSlot = 0;
+            if (preferExistingSlotZero
+                && TryGetSlotSummary(defaultSlot, out PeacelandSaveSlotSummary summary)
+                && summary.hasData
+                && !summary.isCorrupt)
+            {
+                ActivateSlotAndContinue(defaultSlot);
+                return;
+            }
+
+            if (preferExistingSlotZero
+                && TryGetSlotSummary(defaultSlot, out summary)
+                && summary.isCorrupt)
+            {
+                Debug.LogWarning(
+                    "PeacelandSaveService: default slot 0 is corrupt; leaving no active slot until the player chooses.");
+                return;
+            }
+
+            ActivateSlotAndStartNewGame(defaultSlot);
+        }
+
+        /// <summary>
+        /// Writes the current document to peaceland_save_slot_{n}.json.
+        /// If no slot is selected, binds slot 0 (unless that file is corrupt).
+        /// </summary>
         public void Save()
         {
+            if (!HasActiveSlot)
+            {
+                EnsureActiveSlotBound(preferExistingSlotZero: true);
+            }
+
             if (!HasActiveSlot)
             {
                 Debug.LogWarning("PeacelandSaveService.Save skipped - no active save slot selected.");
@@ -419,6 +751,11 @@ namespace Peaceland
 
         public void Load()
         {
+            if (!HasActiveSlot)
+            {
+                EnsureActiveSlotBound(preferExistingSlotZero: true);
+            }
+
             if (!HasActiveSlot)
             {
                 data = new PeacelandGameSaveData();
@@ -469,7 +806,10 @@ namespace Peaceland
             }
             catch (Exception exception)
             {
+                // A slot that cannot be read must not stay active, or the next autosave
+                // overwrites it without the explicit wipe ActivateSlotAndContinue demands.
                 Debug.LogError("Failed to load Peaceland save: " + exception.Message);
+                ClearActiveSlotSelection();
                 return false;
             }
         }
@@ -479,7 +819,7 @@ namespace Peaceland
             if (!HasActiveSlot)
             {
                 data = new PeacelandGameSaveData();
-                DataLoaded?.Invoke();
+                RaiseUnbound(() => DataLoaded?.Invoke());
                 return;
             }
 
@@ -490,6 +830,7 @@ namespace Peaceland
 
         public void ClearNotebookSection()
         {
+            BindLiveDocument();
             data.notebook = new Peaceland.Notebook.NotebookSaveData();
             Save();
             DataLoaded?.Invoke();
@@ -497,6 +838,7 @@ namespace Peaceland
 
         public void ReplaceNotebookData(Peaceland.Notebook.NotebookSaveData notebookData)
         {
+            BindLiveDocument();
             data.notebook = notebookData ?? new Peaceland.Notebook.NotebookSaveData();
         }
 
@@ -565,6 +907,10 @@ namespace Peaceland
             int notebookCount = loaded.notebook != null && loaded.notebook.states != null
                 ? loaded.notebook.states.Count
                 : 0;
+            PeacelandCheckpointSnapshot latestCheckpoint =
+                loaded.checkpoints != null && loaded.checkpoints.Count > 0
+                    ? loaded.checkpoints[loaded.checkpoints.Count - 1]
+                    : null;
 
             return new PeacelandSaveSlotSummary
             {
@@ -576,11 +922,98 @@ namespace Peaceland
                 currentDay = loaded.progress != null ? Mathf.Max(1, loaded.progress.currentDay) : 1,
                 kindnessCruelty = loaded.stats != null ? loaded.stats.kindnessCruelty : 0,
                 collectedNotebookEntryCount = notebookCount,
+                checkpointCount = loaded.checkpoints != null ? loaded.checkpoints.Count : 0,
+                latestCheckpointName = latestCheckpoint != null
+                    ? latestCheckpoint.displayName
+                    : string.Empty,
             };
+        }
+
+        private bool TryReadSlotData(int slotIndex, out PeacelandGameSaveData loaded)
+        {
+            loaded = null;
+            if (!PeacelandSaveSlots.IsValidSlotIndex(slotIndex))
+            {
+                return false;
+            }
+
+            string path = GetSlotPath(slotIndex);
+            if (!File.Exists(path))
+            {
+                return true;
+            }
+
+            try
+            {
+                loaded = JsonUtility.FromJson<PeacelandGameSaveData>(File.ReadAllText(path));
+                if (loaded != null && loaded.checkpoints == null)
+                {
+                    loaded.checkpoints = new List<PeacelandCheckpointSnapshot>();
+                }
+
+                EnsureLegacyCheckpoint(loaded);
+
+                return loaded != null;
+            }
+            catch (Exception exception)
+            {
+                Debug.LogWarning(
+                    "Failed to read save slot " + slotIndex + ": " + exception.Message);
+                return false;
+            }
+        }
+
+        private void TrimCheckpointHistory()
+        {
+            if (maxCheckpointHistory <= 0 || data.checkpoints == null)
+            {
+                return;
+            }
+
+            while (data.checkpoints.Count > maxCheckpointHistory)
+            {
+                data.checkpoints.RemoveAt(0);
+            }
+        }
+
+        private static T Clone<T>(T source) where T : class
+        {
+            return source == null
+                ? null
+                : JsonUtility.FromJson<T>(JsonUtility.ToJson(source));
+        }
+
+        private static void EnsureLegacyCheckpoint(PeacelandGameSaveData loaded)
+        {
+            if (loaded == null
+                || loaded.version >= PeacelandGameSaveData.CurrentVersion
+                || loaded.checkpoints == null
+                || loaded.checkpoints.Count > 0
+                || loaded.progress == null
+                || string.IsNullOrWhiteSpace(loaded.progress.lastSceneName))
+            {
+                return;
+            }
+
+            const string legacyCheckpointId = "legacy-latest";
+            loaded.checkpoints.Add(new PeacelandCheckpointSnapshot
+            {
+                checkpointId = legacyCheckpointId,
+                checkpointKey = "legacy/latest",
+                displayName = loaded.progress.lastSceneName,
+                sceneName = loaded.progress.lastSceneName,
+                savedUtc = loaded.savedUtc,
+                stats = Clone(loaded.stats),
+                progress = Clone(loaded.progress),
+                notebook = Clone(loaded.notebook),
+            });
+            loaded.activeCheckpointId = legacyCheckpointId;
         }
 
         private void NormalizeData()
         {
+            data ??= new PeacelandGameSaveData();
+
             if (data.stats == null)
             {
                 data.stats = new PeacelandStatsSnapshot();
@@ -592,15 +1025,26 @@ namespace Peaceland
             }
 
             data.progress.currentDay = Mathf.Max(1, data.progress.currentDay);
+            data.progress.intValues ??= new List<PeacelandIntProgressValue>();
 
             if (data.notebook == null)
             {
                 data.notebook = new Peaceland.Notebook.NotebookSaveData();
             }
+
+            data.checkpoints ??= new List<PeacelandCheckpointSnapshot>();
+            // Migrate first: EnsureLegacyCheckpoint is a no-op once the version says current.
+            EnsureLegacyCheckpoint(data);
+            data.version = PeacelandGameSaveData.CurrentVersion;
         }
 
         private void OnDataChanged()
         {
+            if (!HasActiveSlot)
+            {
+                EnsureActiveSlotBound(preferExistingSlotZero: true);
+            }
+
             if (!HasActiveSlot)
             {
                 return;

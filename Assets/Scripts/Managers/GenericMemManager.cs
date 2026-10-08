@@ -91,6 +91,41 @@ public abstract class GenericMemManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Finds where a minigame sits in the list, so a save can record it by index.
+    /// </summary>
+    /// <param name="minigame">The minigame to look up.</param>
+    /// <returns>The index, or -1 when the minigame is not in this memory.</returns>
+    public int IndexOfMinigame(MinigameBehavior minigame)
+    {
+        return minigames != null ? minigames.IndexOf(minigame) : -1;
+    }
+
+    /// <summary>
+    /// Jumps straight to a saved minigame and order, stopping whatever is running first.
+    /// Used when loading a save mid-memory; NextMinigame is still the normal way forward.
+    /// </summary>
+    /// <param name="minigameIndex">Minigame index to resume at.</param>
+    /// <param name="orderIndex">Order index to resume at, ignored when there are no orders.</param>
+    public virtual void RestoreProgress(int minigameIndex, int orderIndex)
+    {
+        if (minigames == null || minigames.Count == 0)
+        {
+            return;
+        }
+
+        if (currentMinigame >= 0 && currentMinigame < minigames.Count)
+        {
+            minigames[currentMinigame].StopMinigame();
+        }
+
+        currentMinigame = Mathf.Clamp(minigameIndex, 0, minigames.Count - 1);
+        currentOrder = scenes != null && scenes.Count > 0
+            ? Mathf.Clamp(orderIndex, 0, scenes.Count - 1)
+            : -1;
+        minigames[currentMinigame].StartMinigame();
+    }
+
+    /// <summary>
     /// Increments to the next minigame in the list.
     /// </summary>
     public virtual void NextMinigame()
