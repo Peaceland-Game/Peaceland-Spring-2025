@@ -1,17 +1,23 @@
 # Minigame prefab usage
 
+> Start with `Assets/HANDOFF_NOTEBOOK_SAVE_MINIGAMES.md`. It is the short version and is kept up to date; this page goes into more detail.
+
 ## Rhythm
 
 Use `Assets/Prefabs/Rhythm/RhythmNarrativeSequence.prefab` for the complete
 four-step example. Its Canvas, labels, beat container, sequence data, and four
 beat references are visible and editable in Prefab Mode.
 
-The four element prefabs can also be used separately:
+The four element prefabs are what the sequence spawns, one per gesture:
 
 - `RhythmStoryTapBeat.prefab`
 - `RhythmHoldBeat.prefab`
 - `RhythmMultiTapBeat.prefab`
 - `RhythmMoveBeat.prefab`
+
+They start hidden and only appear when a sequence calls `BeginBeat`, so dropping
+one into a scene on its own shows nothing. Use them through
+`RhythmNarrativeSequence` (or your own script that calls `BeginBeat`).
 
 Edit timing and gesture values on `RhythmBeatInteraction`. Edit narrative text,
 step order, Yarn entry, and completion events on `RhythmNarrativeMinigame`.
@@ -32,7 +38,12 @@ Organizer: Again. Again. Again.
 <<rhythm_beat MultiTap 1.2>>
 ```
 
-The dialogue waits until the beat lands; a miss only asks again. The second
+Alternatively, type the node into the sequence's `Start Node`. `StartMinigame()`
+then plays that node instead of the Steps list, and `onSequenceComplete` fires
+when the node ends.
+
+The dialogue waits until the beat lands; a miss only asks again. Pausing the
+game (timeScale 0) pauses the beat as well. The second
 argument is the lead time in seconds and is optional. Kinds are `StoryTap`,
 `Hold`, `MultiTap`, `Move`.
 
@@ -50,7 +61,10 @@ what went wrong on a miss (`TOO EARLY`, `TOO LATE`, `LET GO EARLY`, `NO INPUT`).
 
 ### Commands
 
-- `Peaceland > Rhythm > Create Prefab Bank` - regenerate the bank.
+- `Peaceland > Rhythm > Create Prefab Bank` - regenerate the bank. This
+  overwrites the prefabs and anything you changed on them, so it asks first.
+- `Peaceland > Rhythm > Create Prefab Playtest Scene` / `Open Prefab Playtest` -
+  the four-step example scene.
 - `Peaceland > Rhythm > Validate Prefab Bank` - run before migration.
 - `Peaceland > Rhythm > Create Yarn Playtest Scene` - writes a three-line
   script with two `<<rhythm_beat>>` commands and a scene that runs it
@@ -76,8 +90,13 @@ Both call `Exit` themselves, so they take no `-quit`.
 
 Use `Assets/Prefabs/Maze/PF_Maze_MinigameRoot.prefab` for the complete sample
 maze. It contains the level layout, start point, player, patrol NPC, events,
-penalty cells, walls, and occluders. Keep the scene Camera outside this prefab;
-`MazeGameBootstrap` resolves it when the scene starts.
+penalty cells, walls, and occluders. Keep the scene Camera outside this prefab and
+add a `MazeCameraController2D` to it, or the camera will not follow the player.
+`MazeGameBootstrap` finds both when the maze starts.
+
+The root prefab does not contain a `MazeObjectiveSequence`; add one yourself
+(see "Objectives" below). `Assets/Scenes/Maze/MazeSample.unity` has a complete,
+wired example.
 
 Use the element prefabs when building a different level:
 
@@ -120,10 +139,24 @@ NPC's suspicion has to fill first, so breaking line of sight is always a way
 out. When it does fill, the player goes back to the start point and the
 objective they were walking to is re-armed - the walk is lost, the story is not.
 
+### Running the maze from a memory manager
+
+Put the whole maze (including the `MazeObjectiveSequence`) under one object and
+switch it off. Add `MazeMinigame` somewhere else, drag the maze object into
+`Maze Root`, and add the `MazeMinigame` to the manager's Minigames list.
+`StartMinigame()` switches the maze on; when the last objective is done it
+switches it off and calls `NextMinigame()` on the scene's manager.
+
+Managers that advance on every `onDialogueComplete` (the Fall 26 R&J Present
+and R&J Memory managers) would also advance on each objective's dialogue, so
+run the maze in a scene whose manager does not do that.
+
 ### Commands
 
 - `Peaceland > Maze > Create Prefab Bank From Prototype` - refresh the complete
-  root from the prototype scene.
+  root from the prototype scene. Overwrites changes made to the prefabs, so it
+  asks first.
+- `Peaceland > Maze > Open Prefab Playtest` - open the prefab playtest scene.
 - `Peaceland > Maze > Validate Prefab Bank` - run before migration.
 - `Peaceland > Maze > Build Sample Level` - lay out
   `Assets/Scenes/Maze/MazeSample.unity`, a small level with a route, two

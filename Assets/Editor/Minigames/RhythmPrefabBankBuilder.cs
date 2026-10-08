@@ -18,6 +18,20 @@ public static class RhythmPrefabBankBuilder
     public const string YarnPlaytestNode = "RhythmYarnPlaytest";
 
     [MenuItem("Peaceland/Rhythm/Create Prefab Bank")]
+    public static void CreatePrefabBankMenu()
+    {
+        if (!Application.isBatchMode && !EditorUtility.DisplayDialog(
+                "Rebuild rhythm prefabs?",
+                "This overwrites the prefabs in Assets/Prefabs/Rhythm with fresh defaults. Art, sounds and events you set on them are lost. Only needed if the prefabs are missing or broken.",
+                "Overwrite",
+                "Cancel"))
+        {
+            return;
+        }
+
+        CreatePrefabBank();
+    }
+
     public static void CreatePrefabBank()
     {
         // This menu command is idempotent: running it again overwrites the current template version of a prefab of the same name.
@@ -218,6 +232,11 @@ public static class RhythmPrefabBankBuilder
         }
 
         // Single, not additive: batchmode starts on an untitled scene that additive refuses to sit beside.
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            return;
+        }
+
         Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
         GameObject cameraObject = new GameObject("Main Camera", typeof(Camera), typeof(AudioListener));
         cameraObject.tag = "MainCamera";
@@ -311,6 +330,11 @@ public static class RhythmPrefabBankBuilder
     [MenuItem("Peaceland/Rhythm/Open Prefab Playtest")]
     public static void OpenPlaytest()
     {
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            return;
+        }
+
         EditorSceneManager.OpenScene(PlaytestScene, OpenSceneMode.Single);
     }
 

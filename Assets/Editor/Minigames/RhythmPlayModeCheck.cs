@@ -56,6 +56,11 @@ public static class RhythmPlayModeCheck
 
     private static void Begin(string scenePath, string probe)
     {
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            return;
+        }
+
         EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
         SessionState.SetString(PendingKey, probe);
         EditorApplication.update += Tick;

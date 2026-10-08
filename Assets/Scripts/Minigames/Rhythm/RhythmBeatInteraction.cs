@@ -39,25 +39,33 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
 {
     // The shared input and timing core behind all four beat prefabs.
     // They reuse this one script and differ only by beatKind and the fields below.
-    // Shared timing fields. Everything runs on unscaledTime, so a pause or a slow motion effect cannot shift the judgement.
+    // Shared timing fields. Timing runs on unscaledTime so slow motion cannot shift the judgement;
+    // a full pause (timeScale 0) holds the beat in place instead, see Update.
     [Header("Beat")]
+    [Tooltip("Which gesture this beat asks for.")]
     [SerializeField] private RhythmBeatKind beatKind = RhythmBeatKind.StoryTap;
-    [Tooltip("Used when BeginBeat is not given a lead of its own.")]
+    [Tooltip("Seconds the beat is on screen before the moment to hit it. Used when BeginBeat is not given a lead of its own.")]
     [SerializeField] private float previewLead = 0.85f;
+    [Tooltip("Seconds either side of the moment that still count as Perfect.")]
     [SerializeField] private float perfectWindow = 0.05f;
+    [Tooltip("Seconds either side of the moment that still count as Good. Outside this is a Miss.")]
     [SerializeField] private float goodWindow = 0.15f;
 
     // Hold only: the press has to land inside the window, then last holdDuration seconds.
     [Header("Hold")]
+    [Tooltip("Hold only: seconds the press has to last.")]
     [SerializeField] private float holdDuration = 0.75f;
 
     // MultiTap only: each tap's target time steps on by multiTapInterval.
     [Header("Multi Tap")]
+    [Tooltip("Multi Tap only: how many taps.")]
     [SerializeField] private int requiredTaps = 3;
+    [Tooltip("Multi Tap only: seconds between taps.")]
     [SerializeField] private float multiTapInterval = 0.18f;
 
     // Move only: resolves once the drag covers the given pixel distance from where it started.
     [Header("Move")]
+    [Tooltip("Move only: drag distance needed, in screen pixels at 1080p. Scaled for other screen sizes.")]
     [SerializeField] private float requiredMoveDistance = 120f;
 
     // A ring alone is a reaction test. Ticks spaced evenly across the lead, ending on the
@@ -119,6 +127,17 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
         // Besides driving the ring, Update times out into a miss, so a player who never taps cannot stall the sequence.
         if (!activeBeat)
         {
+            return;
+        }
+
+        // Paused (the pause menu sets timeScale to 0): slide every deadline forward so the beat
+        // waits for the player instead of timing out behind the menu.
+        if (Time.timeScale <= 0f)
+        {
+            float pausedFor = Time.unscaledDeltaTime;
+            targetTime += pausedFor;
+            nextCueTime += pausedFor;
+            holdStartTime += pausedFor;
             return;
         }
 
@@ -269,7 +288,9 @@ public sealed class RhythmBeatInteraction : MonoBehaviour,
         }
 
         float distance = Vector2.Distance(pointerStart, eventData.position);
-        if (distance < requiredMoveDistance)
+        // Authored at 1080p; a phone screen with more pixels needs a proportionally longer drag in pixels.
+        float screenScale = Mathf.Max(0.25f, Screen.height / 1080f);
+        if (distance < requiredMoveDistance * screenScale)
         {
             return;
         }

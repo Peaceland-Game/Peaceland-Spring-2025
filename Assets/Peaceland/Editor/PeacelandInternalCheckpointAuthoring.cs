@@ -18,6 +18,11 @@ namespace Peaceland.Editor
         [MenuItem("Peaceland/Save/Author Internal Save Points")]
         public static void Author()
         {
+            if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                return;
+            }
+
             SceneSetup[] previousSetup = EditorSceneManager.GetSceneManagerSetup();
             try
             {

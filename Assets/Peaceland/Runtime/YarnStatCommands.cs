@@ -12,6 +12,7 @@ namespace Peaceland
     [RequireComponent(typeof(DialogueRunner))]
     public sealed class YarnStatCommands : MonoBehaviour
     {
+        [Tooltip("Filled automatically from this object.")]
         [SerializeField] private DialogueRunner dialogueRunner;
 
         private void Awake()
@@ -22,6 +23,14 @@ namespace Peaceland
             }
 
             dialogueRunner.AddCommandHandler<string, int>("add_stat", AddStat);
+        }
+
+        private void OnDestroy()
+        {
+            if (dialogueRunner != null)
+            {
+                dialogueRunner.RemoveCommandHandler("add_stat");
+            }
         }
 
         /// <summary>Yarn: &lt;&lt;add_stat KindnessCruelty 1&gt;&gt;. Unknown names log a warning and do nothing.</summary>

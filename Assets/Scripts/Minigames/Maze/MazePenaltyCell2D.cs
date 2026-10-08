@@ -7,8 +7,18 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider2D))]
 public sealed class MazePenaltyCell2D : MonoBehaviour
 {
+    [Tooltip("Where the player is sent back to. Required.")]
     [SerializeField] private Transform startPoint;
+    [Tooltip("Runs after the player is sent back.")]
     [SerializeField] private UnityEvent onPlayerReturned;
+
+    private void Start()
+    {
+        if (startPoint == null)
+        {
+            Debug.LogWarning(name + ": Start Point is empty, so stepping here does nothing.", this);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

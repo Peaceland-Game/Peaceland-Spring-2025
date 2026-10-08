@@ -36,6 +36,11 @@ public static class MazePlayModeCheck
     [MenuItem("Peaceland/Maze/Run Sample Level Check (Play Mode)")]
     public static void Run()
     {
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            return;
+        }
+
         EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
         SessionState.SetBool(PendingKey, true);
         EditorApplication.update += Tick;

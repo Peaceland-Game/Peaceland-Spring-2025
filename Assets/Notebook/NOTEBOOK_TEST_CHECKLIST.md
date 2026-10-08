@@ -1,5 +1,7 @@
 # Notebook Manual Test Checklist
 
+> Start with `Assets/HANDOFF_NOTEBOOK_SAVE_MINIGAMES.md`. It is the short version and is kept up to date; this page goes into more detail.
+
 Run in `NoteBookTesting` unless noted. Clear save via **Test tools → Clear save** when you need a fresh state.
 
 ## Open / close

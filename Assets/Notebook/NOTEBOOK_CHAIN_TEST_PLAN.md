@@ -1,5 +1,7 @@
 # Notebook Chain Test Plan
 
+> Start with `Assets/HANDOFF_NOTEBOOK_SAVE_MINIGAMES.md`. It is the short version and is kept up to date; this page goes into more detail.
+
 Use this plan when validating notebook, save/load, and the record-choice minigame as one complete gameplay chain.
 
 ## Scope

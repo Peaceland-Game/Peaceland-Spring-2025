@@ -48,6 +48,13 @@ namespace Peaceland.Notebook
             Undo.IncrementCurrentGroup();
             int undoGroup = Undo.GetCurrentGroup();
 
+            if (Camera.main == null)
+            {
+                GameObject cameraObject = new GameObject("Main Camera", typeof(Camera));
+                cameraObject.tag = "MainCamera";
+                Undo.RegisterCreatedObjectUndo(cameraObject, "Verify Collectible Spawner");
+            }
+
             List<string> failures = new List<string>();
             try
             {
@@ -90,7 +97,11 @@ namespace Peaceland.Notebook
             Require(spawned.GetComponent<SpriteRenderer>() != null, "WorldSprite: no SpriteRenderer.", failures);
             Require(spawned.GetComponent<BoxCollider2D>() != null, "WorldSprite: no collider, clicks cannot land.", failures);
             Require(spawned.GetComponent<NotebookCollectableGlowView>() != null, "WorldSprite: glow was requested but not added.", failures);
-            CheckTrigger(spawned, entry, expectPointerClick: false, expectMouseDown: true, label: "WorldSprite", failures: failures);
+            CheckTrigger(spawned, entry, expectPointerClick: true, expectMouseDown: false, label: "WorldSprite", failures: failures);
+            Require(Object.FindFirstObjectByType<EventSystem>() != null,
+                "WorldSprite: no EventSystem in the scene, so the click never arrives.", failures);
+            Require(Camera.main != null && Camera.main.GetComponent<Physics2DRaycaster>() != null,
+                "WorldSprite: main camera has no Physics2DRaycaster, so world clicks are never raycast.", failures);
         }
 
         private static void CheckUIButton(NotebookEntryDefinition entry, List<string> failures)
@@ -131,6 +142,8 @@ namespace Peaceland.Notebook
                 return;
             }
 
+            Require(host.GetComponent<Collider2D>() != null,
+                "AttachToSelection: host had no collider and none was added, so it cannot be clicked.", failures);
             Require(host.GetComponents<NotebookCollectTrigger>().Length == 1,
                 "AttachToSelection: expected exactly one trigger on the host.", failures);
             Require(host.GetComponent<NotebookCollectableGlowView>() == null,

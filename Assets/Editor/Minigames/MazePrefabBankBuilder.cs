@@ -13,6 +13,20 @@ public static class MazePrefabBankBuilder
     private const string RootPrefabPath = PrefabFolder + "/PF_Maze_MinigameRoot.prefab";
 
     [MenuItem("Peaceland/Maze/Create Prefab Bank From Prototype")]
+    public static void CreatePrefabBankMenu()
+    {
+        if (!Application.isBatchMode && !EditorUtility.DisplayDialog(
+                "Rebuild maze prefabs?",
+                "This overwrites the prefabs in Assets/Prefabs/Maze from the prototype scene. Art and settings you changed on them are lost. Only needed if the prefabs are missing or broken.",
+                "Overwrite",
+                "Cancel"))
+        {
+            return;
+        }
+
+        CreatePrefabBank();
+    }
+
     public static void CreatePrefabBank()
     {
         EnsureFolder("Assets/Prefabs");
@@ -116,6 +130,11 @@ public static class MazePrefabBankBuilder
     [MenuItem("Peaceland/Maze/Open Prefab Playtest")]
     public static void OpenPlaytest()
     {
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            return;
+        }
+
         EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);
     }
 

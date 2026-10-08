@@ -17,6 +17,16 @@ namespace Peaceland.Editor
         [MenuItem("Peaceland/Save/Configure Enabled Scene Checkpoints")]
         public static void ConfigureEnabledScenes()
         {
+            // Opens and saves every enabled build scene, including scenes other people own.
+            if (!Application.isBatchMode && !EditorUtility.DisplayDialog(
+                    "Change every build scene?",
+                    "This opens and saves every enabled scene in Build Settings to add a checkpoint policy, including scenes other people are working on. That can cause merge conflicts. To set up one scene, add a PeacelandSceneCheckpointPolicy to it by hand instead.",
+                    "Change all scenes",
+                    "Cancel"))
+            {
+                return;
+            }
+
             EnsureOpenScenesAreSaved();
             EnsureSaveLoadSceneEnabled();
             SceneSetup[] previousSetup = EditorSceneManager.GetSceneManagerSetup();

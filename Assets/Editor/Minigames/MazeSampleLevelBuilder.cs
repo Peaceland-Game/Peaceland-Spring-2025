@@ -40,6 +40,11 @@ public static class MazeSampleLevelBuilder
     [MenuItem("Peaceland/Maze/Build Sample Level")]
     public static void BuildSampleLevel()
     {
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            return;
+        }
+
         Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
 
         CreateCamera();
@@ -90,6 +95,11 @@ public static class MazeSampleLevelBuilder
         {
             throw new InvalidOperationException(
                 "No sample level. Run Peaceland/Maze/Build Sample Level first.");
+        }
+
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+        {
+            return;
         }
 
         Scene scene = EditorSceneManager.OpenScene(ScenePath, OpenSceneMode.Single);

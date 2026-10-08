@@ -1,5 +1,7 @@
 # Peaceland Save/Load
 
+> Start with `Assets/HANDOFF_NOTEBOOK_SAVE_MINIGAMES.md`. It is the short version and is kept up to date; this page goes into more detail.
+
 The project has a standalone 10-slot save scene at
 `Assets/Peaceland/Scenes/SaveLoad.unity`. Its layout follows the Figma
 `Saves-title` frame: Memory Tree background, two columns, and five cards per
@@ -30,7 +32,8 @@ Use `Peaceland/Save/Seed Loading Test Slots` to fill only empty Save 2-4:
 - Save 4 loads `NotebookTest_RandJItemCollect`.
 
 Each test slot contains a different Notebook marker entry. The command never
-overwrites an existing slot file.
+overwrites an existing slot file. These three test scenes are switched off in
+Build Settings, so a slot only loads its scene after you switch that scene on.
 
 ## Per-slot Notebook contract
 
@@ -64,6 +67,13 @@ On `Save Load Flow`:
 
 The `PeacelandSceneCheckpointPolicy` on this scene prevents `SaveLoad` from
 overwriting the last gameplay checkpoint.
+
+## Checkpoints, save points and hidden stats
+
+See `Assets/HANDOFF_NOTEBOOK_SAVE_MINIGAMES.md` (section "Save and hidden stats") for
+`PeacelandSceneCheckpointPolicy`, in-memory save points
+(`PeacelandMinigameProgressBridge` + `PeacelandMinigameCheckpointMilestone`) and the
+`<<add_stat>>` Yarn command.
 
 ## Validation
 

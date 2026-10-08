@@ -17,9 +17,11 @@ using Yarn.Unity;
 [RequireComponent(typeof(DialogueRunner))]
 public sealed class RhythmYarnCommands : MonoBehaviour
 {
+    [Tooltip("Filled automatically from this object.")]
     [SerializeField] private DialogueRunner dialogueRunner;
     [Tooltip("Optional. Found in the scene when empty.")]
     [SerializeField] private RhythmNarrativeMinigame rhythm;
+    [Tooltip("Seconds between the beat appearing and the moment to hit it, when the Yarn line gives no lead.")]
     [SerializeField] private float defaultLeadTime = 0.85f;
 
     private void Awake()
@@ -30,6 +32,14 @@ public sealed class RhythmYarnCommands : MonoBehaviour
         }
 
         dialogueRunner.AddCommandHandler<string, float>("rhythm_beat", PlayBeat);
+    }
+
+    private void OnDestroy()
+    {
+        if (dialogueRunner != null)
+        {
+            dialogueRunner.RemoveCommandHandler("rhythm_beat");
+        }
     }
 
     /// <summary>Yarn: &lt;&lt;rhythm_beat Hold&gt;&gt; or &lt;&lt;rhythm_beat Hold 1.2&gt;&gt;. Unknown kinds log a warning and do nothing.</summary>

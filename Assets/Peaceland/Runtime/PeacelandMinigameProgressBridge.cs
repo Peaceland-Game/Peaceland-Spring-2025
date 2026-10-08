@@ -14,9 +14,11 @@ namespace Peaceland
         [Header("Progress Identity")]
         [Tooltip("Stable key shared by this scene's checkpoint milestones.")]
         [SerializeField] private string progressKey;
+        [Tooltip("Filled automatically from this object.")]
         [SerializeField] private GenericMemManager manager;
 
         [Header("Restore")]
+        [Tooltip("On scene start, jump the manager to the minigame saved under Progress Key.")]
         [SerializeField] private bool restoreOnStart = true;
 
         private int observedMinigame = int.MinValue;
@@ -33,14 +35,14 @@ namespace Peaceland
             manager ??= GetComponent<GenericMemManager>();
             yield return null;
 
-            if (restoreOnStart)
+            // Managers start their first minigame in their own Start, which has already run by now.
+            // Begin from "nothing started" so that first minigame still raises MinigameStarted.
+            // A successful restore sets observedMinigame itself, so the restored minigame is not re-announced.
+            if (!restoreOnStart || !RestoreProgress())
             {
-                RestoreProgress();
+                observedMinigame = -1;
             }
 
-            observedMinigame = manager != null
-                ? manager.CurrentMinigame
-                : int.MinValue;
             ready = true;
         }
 

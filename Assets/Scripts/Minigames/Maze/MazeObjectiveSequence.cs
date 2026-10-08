@@ -14,20 +14,27 @@ public sealed class MazeObjectiveSequence : MonoBehaviour
     [Tooltip("Visited in order. The same trigger may appear more than once.")]
     [SerializeField] private MazeEventTrigger2D[] objectives;
 
+    [Tooltip("Found in the scene when empty.")]
     [SerializeField] private MazePlayerController2D player;
-    [Tooltip("Optional. Without one the sequence advances as soon as a trigger fires.")]
+    [Tooltip("Optional. Found in the scene when empty. Without one the sequence advances as soon as a trigger fires.")]
     [SerializeField] private DialogueRunner dialogueRunner;
 
     [Tooltip("How long to wait for a node to actually start before giving up on it.")]
     [SerializeField] private float dialogueStartGrace = 0.25f;
 
     [Header("Events")]
+    [Tooltip("Runs each time a new objective becomes the one to reach.")]
     [SerializeField] private UnityEvent onObjectiveChanged;
+    [Tooltip("Runs when the player is caught and has to reach the current objective again.")]
     [SerializeField] private UnityEvent onObjectiveReset;
+    [Tooltip("Runs once when the last objective is done. MazeMinigame listens for this on its own.")]
     [SerializeField] private UnityEvent onSequenceComplete;
 
     private int currentIndex = -1;
     private Coroutine objectiveRoutine;
+
+    /// <summary>Raised once when the last objective is reached, right after onSequenceComplete.</summary>
+    public event System.Action SequenceCompleted;
 
     public int CurrentIndex => currentIndex;
     public bool IsComplete => objectives != null && currentIndex >= objectives.Length;
@@ -85,6 +92,26 @@ public sealed class MazeObjectiveSequence : MonoBehaviour
 
     private void Start()
     {
+        if (currentIndex < 0)
+        {
+            GoTo(0);
+        }
+    }
+
+    /// <summary>Starts the errand list over from the first objective and sends the player to the start point.</summary>
+    public void Restart()
+    {
+        if (objectiveRoutine != null)
+        {
+            StopCoroutine(objectiveRoutine);
+            objectiveRoutine = null;
+        }
+
+        if (player != null)
+        {
+            player.ResetToStart();
+        }
+
         GoTo(0);
     }
 
@@ -123,6 +150,7 @@ public sealed class MazeObjectiveSequence : MonoBehaviour
         if (objectives == null || currentIndex >= objectives.Length)
         {
             onSequenceComplete?.Invoke();
+            SequenceCompleted?.Invoke();
             return;
         }
 

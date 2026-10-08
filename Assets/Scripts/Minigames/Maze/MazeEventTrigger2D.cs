@@ -10,9 +10,13 @@ using Yarn.Unity;
 [RequireComponent(typeof(Collider2D))]
 public sealed class MazeEventTrigger2D : MonoBehaviour
 {
+    [Tooltip("Fire only the first time the player walks in.")]
     [SerializeField] private bool oneShot = true;
+    [Tooltip("Runs when the player walks in.")]
     [SerializeField] private UnityEvent onPlayerEntered;
+    [Tooltip("Optional. Found in the scene when empty and Start Node is set.")]
     [SerializeField] private DialogueRunner dialogueRunner;
+    [Tooltip("Yarn node to play when the player walks in. Leave empty for no dialogue.")]
     [SerializeField] private string startNode;
 
     private bool hasTriggered;
@@ -44,7 +48,23 @@ public sealed class MazeEventTrigger2D : MonoBehaviour
         PlayerEntered?.Invoke(this);
         onPlayerEntered?.Invoke();
 
-        if (dialogueRunner != null && !dialogueRunner.IsDialogueRunning && !string.IsNullOrWhiteSpace(startNode))
+        if (string.IsNullOrWhiteSpace(startNode))
+        {
+            return;
+        }
+
+        if (dialogueRunner == null)
+        {
+            dialogueRunner = FindFirstObjectByType<DialogueRunner>();
+        }
+
+        if (dialogueRunner == null)
+        {
+            Debug.LogWarning(name + ": Start Node '" + startNode + "' is set but the scene has no DialogueRunner, so no dialogue plays.", this);
+            return;
+        }
+
+        if (!dialogueRunner.IsDialogueRunning)
         {
             dialogueRunner.StartDialogue(startNode);
         }

@@ -158,6 +158,11 @@ namespace Peaceland.Notebook.Editor
                 return null;
             }
 
+            if (spawnKind != SpawnKind.UIButton)
+            {
+                EnsureWorldClickable(target);
+            }
+
             ConfigureTrigger(target, entry, spawnKind, disableAfterCollect);
 
             if (addGlow && target.GetComponent<SpriteRenderer>() != null
@@ -268,9 +273,44 @@ namespace Peaceland.Notebook.Editor
             }
 
             serialized.FindProperty("disableAfterCollect").boolValue = disableAfterCollect;
-            serialized.FindProperty("collectOnPointerClick").boolValue = spawnKind == SpawnKind.UIButton;
-            serialized.FindProperty("collectOnMouseDown").boolValue = spawnKind != SpawnKind.UIButton;
+            // The project uses the Input System only, where OnMouseDown never fires.
+            // Clicks reach world objects through the EventSystem and the camera's Physics2DRaycaster.
+            serialized.FindProperty("collectOnPointerClick").boolValue = true;
+            serialized.FindProperty("collectOnMouseDown").boolValue = false;
             serialized.ApplyModifiedProperties();
+        }
+
+        /// <summary>
+        /// A world object only gets pointer clicks with a Collider2D, an EventSystem in the scene,
+        /// and a Physics2DRaycaster on the camera. Add whichever is missing.
+        /// </summary>
+        private static void EnsureWorldClickable(GameObject target)
+        {
+            if (target.GetComponent<RectTransform>() == null && target.GetComponent<Collider2D>() == null)
+            {
+                BoxCollider2D collider = Undo.AddComponent<BoxCollider2D>(target);
+                SpriteRenderer renderer = target.GetComponent<SpriteRenderer>();
+                if (renderer != null && renderer.sprite != null)
+                {
+                    collider.size = renderer.sprite.bounds.size;
+                }
+
+                Debug.Log("Added a BoxCollider2D to '" + target.name + "' so it can be clicked. Resize it if needed.", target);
+            }
+
+            NotebookContentAuthoring.EnsureEventSystem();
+
+            Camera camera = Camera.main;
+            if (camera == null)
+            {
+                Debug.LogWarning("No camera tagged MainCamera in this scene, so world collectibles cannot be clicked yet.");
+                return;
+            }
+
+            if (camera.GetComponent<UnityEngine.EventSystems.Physics2DRaycaster>() == null)
+            {
+                Undo.AddComponent<UnityEngine.EventSystems.Physics2DRaycaster>(camera.gameObject);
+            }
         }
 
         private static bool ContainsEntry(SerializedProperty entryList, NotebookEntryDefinition entry)

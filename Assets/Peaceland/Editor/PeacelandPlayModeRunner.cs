@@ -57,6 +57,11 @@ namespace Peaceland.Editor
 
         private static void Begin(string scenePath, string target)
         {
+            if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+            {
+                return;
+            }
+
             EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Single);
             SessionState.SetString(PendingKey, target);
             EditorApplication.update += Tick;

@@ -1,4 +1,6 @@
-# Notebook Workflow — Start Here
+# Notebook Workflow
+
+> Start with `Assets/HANDOFF_NOTEBOOK_SAVE_MINIGAMES.md`. It is the short version and is kept up to date; this page goes into more detail.
 
 Use this file as the **only entry point** for day-to-day notebook work.  
 QA: `NOTEBOOK_TEST_CHECKLIST.md` · Art: `NOTEBOOK_ARTWORK.md`
@@ -55,7 +57,7 @@ You should **not** need to edit pagination code to tune the book. Tune **Layout*
    - `Page Usable Height` — height of one page’s writable area (match ruled lines)
    - `Bookmark Top Inset` / `Bookmark Horizontal Offset` — tab strip position
    - Then enable **`Lock Layout`** so Author menus won’t move rects again.
-4. **Full Author is destructive** to unlocked layout. Use **Wire Controller To Shell** for safe repair.
+4. **Full Author is destructive** to unlocked layout. Use **Wire Controller To Existing UI** for safe repair.
 5. **Test in one scene:** `Assets/Notebook/Scenes/NoteBookTesting.unity`
 
 ---
@@ -67,7 +69,7 @@ You should **not** need to edit pagination code to tune the book. Tune **Layout*
 | 1 | Edit or add entries under `Assets/Notebook/Data/` |
 | 2 | Play `NoteBookTesting` |
 | 3 | Collect / flip / bookmark — see `NOTEBOOK_TEST_CHECKLIST.md` |
-| 4 | If buttons dead → `Peaceland → Notebook → Wire Controller To Shell` |
+| 4 | If buttons dead → `Peaceland → Notebook → Wire Controller To Existing UI` |
 | 5 | If entire UI missing → `Peaceland → Notebook → Author Open UI In Active Scene` (resets unlocked layout) |
 
 ---
@@ -98,8 +100,8 @@ You should **not** need to edit pagination code to tune the book. Tune **Layout*
 ### Scene cleanup & UI
 
 - **Cleanup NoteBookTesting Scene** — recommended baseline: remove stray sprites, rebuild shell, wire refs, clip masks
-- **Author Open UI In Active Scene** — rebuild shell; respects `Lock Layout` for rects
-- **Wire Controller To Shell** — safe; reconnects refs only
+- **Author Open UI In Active Scene** — places and binds the notebook prefab; it does not generate UI
+- **Wire Controller To Existing UI** — safe; reconnects refs only
 - **Cleanup Legacy Test UI** — removes old test panels
 
 ### Data
@@ -131,7 +133,7 @@ You should **not** need to edit pagination code to tune the book. Tune **Layout*
    - Set `Page Usable Height` (start ~300–360; increase if too many items per page).
    - Set bookmark insets if tabs float wrong.
    - Enable **Lock Layout**.
-5. `Peaceland → Notebook → Wire Controller To Shell`
+5. `Peaceland → Notebook → Wire Controller To Existing UI`
 6. Save scene.
 
 ---
@@ -170,5 +172,5 @@ You should **not** need to edit pagination code to tune the book. Tune **Layout*
 
 1. Confirm only one book UI (no duplicate sprites).
 2. Confirm `Lock Layout` + `Page Usable Height` set.
-3. Run **Wire Controller To Shell**, not full Author.
+3. Run **Wire Controller To Existing UI**, not full Author.
 4. Note which **spread kind** you see: main directory / section index / content — they behave differently by design.

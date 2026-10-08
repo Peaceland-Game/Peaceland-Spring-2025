@@ -9,16 +9,23 @@ using UnityEngine.InputSystem;
 public sealed class MazePlayerController2D : MonoBehaviour
 {
     [Header("Grid movement")]
+    [Tooltip("World units per step. Keep at 1: patrol NPCs and the level builder assume a 1-unit grid.")]
     [SerializeField] private float cellSize = 1f;
+    [Tooltip("Seconds per step.")]
     [SerializeField] private float moveDuration = 0.16f;
+    [Tooltip("Size of the box checked against walls before a step.")]
     [SerializeField] private Vector2 collisionSize = new Vector2(0.55f, 0.55f);
+    [HideInInspector]
     [SerializeField] private LayerMask blockingMask;
 
     [Header("Input")]
+    [Tooltip("Camera used to turn clicks into world positions. Main camera when empty.")]
     [SerializeField] private Camera worldCamera;
+    [Tooltip("Walk to the clicked/tapped spot, around walls. Off: only scripts can move the player.")]
     [SerializeField] private bool acceptPointerInput = true;
 
     [Header("Reset")]
+    [Tooltip("Where getting caught or a penalty cell sends the player.")]
     [SerializeField] private Transform startPoint;
 
     private Coroutine moveRoutine;
@@ -53,7 +60,10 @@ public sealed class MazePlayerController2D : MonoBehaviour
             return;
         }
 
-        if (Pointer.current.press.wasPressedThisFrame)
+        // A tap on a UI button (pause, notebook) should not also walk the player.
+        if (Pointer.current.press.wasPressedThisFrame
+            && (UnityEngine.EventSystems.EventSystem.current == null
+                || !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()))
         {
             RequestStep(Pointer.current.position.ReadValue());
         }

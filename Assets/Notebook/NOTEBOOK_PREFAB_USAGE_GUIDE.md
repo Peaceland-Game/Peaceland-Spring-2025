@@ -1,5 +1,7 @@
 # Notebook Prefab Usage Guide
 
+> Start with `Assets/HANDOFF_NOTEBOOK_SAVE_MINIGAMES.md`. It is the short version and is kept up to date; this page goes into more detail.
+
 The notebook UI has exactly one source:
 
 - `Assets/Notebook/Prefabs/NotebookProductionSceneUI.prefab`
@@ -77,7 +79,7 @@ If several scenes need the same override, apply it back to the prefab instead.
 1. Create or duplicate a `NotebookEntryDefinition` in `Assets/Notebook/Data`.
 2. Give it a unique `entryId`.
 3. Set its section, title, body, image and sort order.
-4. Add the entry to `NotebookDatabase.asset`.
+4. Run `Peaceland > Notebook > Sync Notebook Database From Assets`. Do not edit `NotebookDatabase.asset` by hand; the next sync overwrites it.
 5. Add the matching notebook collectible or adapter to the real interactable object.
 6. Reference the entry asset in the Inspector. Never hard code entry text in a script.
 7. Check in Play Mode that:

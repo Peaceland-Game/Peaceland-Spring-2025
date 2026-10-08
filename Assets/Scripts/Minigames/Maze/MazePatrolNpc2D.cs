@@ -11,13 +11,19 @@ using UnityEngine.Events;
 public sealed class MazePatrolNpc2D : MonoBehaviour
 {
     [Header("Patrol")]
+    [Tooltip("Points the NPC walks between, in order. Place them on whole-number grid cells. Two or more to move at all.")]
     [SerializeField] private Transform[] patrolPoints;
+    [Tooltip("Seconds per grid step while patrolling.")]
     [SerializeField] private float moveDuration = 0.32f;
+    [Tooltip("Seconds to pause at each patrol point.")]
     [SerializeField] private float waitAtPoint = 0.45f;
+    [Tooltip("Go back to the first point after the last. Off: stop at the last point.")]
     [SerializeField] private bool loop = true;
 
     [Header("Perception")]
+    [Tooltip("Found in children when empty.")]
     [SerializeField] private MazeVisionCone2D visionCone;
+    [Tooltip("Found in the scene when empty.")]
     [SerializeField] private MazePlayerController2D player;
     [Tooltip("Seconds of unbroken sight before the player is caught.")]
     [SerializeField] private float suspicionToCatch = 1.2f;
@@ -60,6 +66,17 @@ public sealed class MazePatrolNpc2D : MonoBehaviour
             player = FindFirstObjectByType<MazePlayerController2D>(FindObjectsInactive.Include);
         }
 
+        if (patrolPoints != null && System.Array.IndexOf(patrolPoints, null) >= 0)
+        {
+            Debug.LogWarning(name + ": Patrol Points has empty slots; they are skipped.", this);
+            patrolPoints = System.Array.FindAll(patrolPoints, point => point != null);
+        }
+
+        if (visionCone == null || player == null)
+        {
+            Debug.LogWarning(name + ": no vision cone child or no MazePlayerController2D in the scene, so this NPC can never catch anyone.", this);
+        }
+
         if (patrolPoints != null && patrolPoints.Length > 0)
         {
             transform.position = patrolPoints[0].position;
@@ -76,7 +93,8 @@ public sealed class MazePatrolNpc2D : MonoBehaviour
             return;
         }
 
-        bool canSee = visionCone.CanSee(player.transform.position);
+        // While the player is frozen (dialogue, cutscene) they cannot dodge, so they cannot be caught either.
+        bool canSee = player.MovementEnabled && visionCone.CanSee(player.transform.position);
         if (canSee)
         {
             if (!wasSeeing)

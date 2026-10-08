@@ -29,28 +29,37 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
     // This component runs the loop of story line -> beat -> verdict -> next line.
     // A miss does not end the run, it respawns the current beat, which keeps the emphasis on the story.
     [Header("Beat prefabs")]
+    [Tooltip("The four PF_RhythmBeat_* prefabs from Assets/Prefabs/Rhythm, one per gesture.")]
     [SerializeField] private RhythmBeatInteraction storyTapPrefab;
     [SerializeField] private RhythmBeatInteraction holdPrefab;
     [SerializeField] private RhythmBeatInteraction multiTapPrefab;
     [SerializeField] private RhythmBeatInteraction movePrefab;
 
     [Header("Sequence")]
+    [Tooltip("Lines and gestures in order. Ignored when Start Node is set (Yarn drives the beats then).")]
     [SerializeField] private RhythmNarrativeStep[] steps;
+    [Tooltip("Seconds before a missed beat is asked for again.")]
     [SerializeField] private float retryDelay = 0.6f;
+    [Tooltip("Seconds between a landed beat and the next line.")]
     [SerializeField] private float nextStepDelay = 0.45f;
+    [Tooltip("Start by itself when the scene loads. Leave off when a memory manager starts it.")]
     [SerializeField] private bool startOnAwake;
 
     [Header("Optional Yarn entry")]
+    [Tooltip("Optional. Found in the scene when empty and Start Node is set.")]
     [SerializeField] private DialogueRunner dialogueRunner;
+    [Tooltip("Yarn node to play instead of the Steps list. Put <<rhythm_beat Kind>> lines in it. The minigame finishes when the node ends.")]
     [SerializeField] private string startNode;
 
     [Header("Story hooks")]
     [SerializeField] private UnityEvent onStepStarted;
     [SerializeField] private UnityEvent onStepSucceeded;
     [SerializeField] private UnityEvent onStepMissed;
+    [Tooltip("Runs once when every step has landed, or when the Yarn node ends.")]
     [SerializeField] private UnityEvent onSequenceComplete;
 
     [Header("Prefab UI references")]
+    [Tooltip("Optional. Anything left empty is built at runtime.")]
     [SerializeField] private Text speakerLabel;
     [SerializeField] private Text lineLabel;
     [SerializeField] private Text resultLabel;
@@ -88,16 +97,29 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
         running = true;
         currentStepIndex = -1;
 
-        if (dialogueRunner != null && !string.IsNullOrWhiteSpace(startNode))
+        if (!string.IsNullOrWhiteSpace(startNode))
         {
-            // Yarn owns the beats through <<rhythm_beat>>; running the step sequence too
-            // would have the two destroy each other's active beat.
-            if (!dialogueRunner.IsDialogueRunning)
+            if (dialogueRunner == null)
             {
-                dialogueRunner.StartDialogue(startNode);
+                dialogueRunner = FindFirstObjectByType<DialogueRunner>();
             }
 
-            return;
+            if (dialogueRunner == null)
+            {
+                Debug.LogWarning(name + ": Start Node is set but the scene has no DialogueRunner; playing the Steps list instead.", this);
+            }
+            else
+            {
+                // Yarn owns the beats through <<rhythm_beat>>; running the step sequence too
+                // would have the two destroy each other's active beat.
+                if (!dialogueRunner.IsDialogueRunning)
+                {
+                    dialogueRunner.StartDialogue(startNode);
+                }
+
+                sequenceCoroutine = StartCoroutine(WaitForYarnNode());
+                return;
+            }
         }
 
         sequenceCoroutine = StartCoroutine(RunSequence());
@@ -200,6 +222,33 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
         }
     }
 
+    /// <summary>
+    /// Yarn mode: the node plays its own beats through &lt;&lt;rhythm_beat&gt;&gt;, so the minigame is done when the node is.
+    /// Polled rather than hooked to onDialogueComplete, which Yarn also raises when something calls Stop().
+    /// </summary>
+    private IEnumerator WaitForYarnNode()
+    {
+        // Give the runner a moment to actually start the node.
+        float waited = 0f;
+        while (running && !dialogueRunner.IsDialogueRunning && waited < 0.5f)
+        {
+            waited += Time.unscaledDeltaTime;
+            yield return null;
+        }
+
+        while (running && dialogueRunner.IsDialogueRunning)
+        {
+            yield return null;
+        }
+
+        sequenceCoroutine = null;
+        if (running)
+        {
+            running = false;
+            onSequenceComplete?.Invoke();
+        }
+    }
+
     private void OnBeatResolved(RhythmBeatInteraction beat, RhythmJudgement judgement, float offset, string detail)
     {
         // The beat component knows nothing about the story system and reports its verdict through this callback alone.
@@ -274,24 +323,43 @@ public sealed class RhythmNarrativeMinigame : MinigameBehavior
     private void EnsureUi()
     {
         // A minimal story UI. A real scene would swap in its own dialogue box and portraits on the prefab.
-        if (speakerLabel != null)
+        // Anything assigned in the Inspector is kept; only the missing pieces are built.
+        if (speakerLabel != null && lineLabel != null && resultLabel != null && beatContainer != null)
         {
             return;
         }
 
-        Canvas canvas = GetComponent<Canvas>();
-        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvas.sortingOrder = 50;
+        if (speakerLabel == null)
+        {
+            Canvas canvas = GetComponent<Canvas>();
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+            canvas.sortingOrder = 50;
 
-        CanvasScaler scaler = GetComponent<CanvasScaler>();
-        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-        scaler.referenceResolution = new Vector2(1920f, 1080f);
-        scaler.matchWidthOrHeight = 0.5f;
+            CanvasScaler scaler = GetComponent<CanvasScaler>();
+            scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+            scaler.referenceResolution = new Vector2(1920f, 1080f);
+            scaler.matchWidthOrHeight = 0.5f;
+        }
 
-        beatContainer = CreateRect("BeatContainer", transform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(260f, 260f));
-        speakerLabel = CreateText("Speaker", transform, 30, new Vector2(0.5f, 1f), new Vector2(0f, -90f), new Vector2(900f, 50f));
-        lineLabel = CreateText("StoryLine", transform, 24, new Vector2(0.5f, 1f), new Vector2(0f, -145f), new Vector2(1100f, 70f));
-        resultLabel = CreateText("Result", transform, 30, new Vector2(0.5f, 0f), new Vector2(0f, 100f), new Vector2(800f, 60f));
+        if (beatContainer == null)
+        {
+            beatContainer = CreateRect("BeatContainer", transform, new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(260f, 260f));
+        }
+
+        if (speakerLabel == null)
+        {
+            speakerLabel = CreateText("Speaker", transform, 30, new Vector2(0.5f, 1f), new Vector2(0f, -90f), new Vector2(900f, 50f));
+        }
+
+        if (lineLabel == null)
+        {
+            lineLabel = CreateText("StoryLine", transform, 24, new Vector2(0.5f, 1f), new Vector2(0f, -145f), new Vector2(1100f, 70f));
+        }
+
+        if (resultLabel == null)
+        {
+            resultLabel = CreateText("Result", transform, 30, new Vector2(0.5f, 0f), new Vector2(0f, 100f), new Vector2(800f, 60f));
+        }
     }
 
     private static RectTransform CreateRect(string objectName, Transform parent, Vector2 anchor, Vector2 position, Vector2 size)
