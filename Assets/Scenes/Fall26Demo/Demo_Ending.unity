@@ -1383,7 +1383,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 776619937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c643a522b7a26354b956e10e1da6a76d, type: 3}
+  m_Script: {fileID: 11500000, guid: e68023be8049b0543a0140578c6607fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minigames:
@@ -1832,7 +1832,7 @@ MonoBehaviour:
   difficulty: 0
   allMuseumDialogueComplete: 0
   currentScene: R+JMemory
-  knowledgeStat: 0
+  knowledgeStat: 6
 --- !u!4 &1027729049
 Transform:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ using UnityEditor.Rendering.Universal.ShaderGUI;
 public class F26_EndingManager : GenericMemManager
 {
     bool executedEnding = false;
-    const int ENDING_THRESHOLD_KNOWLEDGE = 7;
+    const int ENDING_THRESHOLD_KNOWLEDGE = 8;
     //Initializes variables and plays the starting dialogue
     void Start()
     {

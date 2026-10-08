@@ -53,12 +53,12 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     // Build indices for LevelLoader
     private int DemoStartBuildIndex = 0;
     private int DemoDisclaimerBuilIndex = 1;
-    private int DemoRJPresentBuildIndex = 8;
-    private int RJ_MemoryBuildIndex = 9;
+    private int DemoRJPresentBuildIndex = 9;
+    private int RJ_MemoryBuildIndex = 10;
     private int DemoEndBuildIndex = 4;
     private int PresentLobbyBuildIndex = 5;
-    private int WarRoomBuildIndex = 10;
-    private int TownSquareBuildIndex = 11;
+    private int WarRoomBuildIndex = 11;
+    private int TownSquareBuildIndex = 12;
 
     //State tracking
     public bool newsRead;

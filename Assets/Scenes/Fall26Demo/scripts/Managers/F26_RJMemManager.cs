@@ -45,7 +45,7 @@ public class F26_RJMemManager : GenericMemManager
 
             // Update GM bool and return to the present
             F26_GameManager.Instance.completedScenes["R+JMemory"] = true;
-            LL.LoadLevelByBuildIndex(8);
+            LL.LoadLevelByBuildIndex(9);
             return;
         }
 

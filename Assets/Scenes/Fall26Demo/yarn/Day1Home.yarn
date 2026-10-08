@@ -114,4 +114,6 @@ As {$protagName} walks into his house, he sees {$brotherName} in the kitchen.
     {$momName}: It sounded perfect for you when you told us last week! It’s good to have something to look forward to.
     <<darken 2>>
 {$protagName} goes to his room.
+<<changeBG 1>>
+{$protagName} sits at his desk, thinking about everything that happened today
 ===

@@ -3091,7 +3091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -7973862039547745229, guid: 1e835cd5c9fa1da478e3cc256b7c758e, type: 3}
+  m_Sprite: {fileID: 8187422015717571592, guid: 2ad8d428d8a808843a5abea282eb78e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4916,6 +4916,7 @@ MonoBehaviour:
   difficulty: 0
   allMuseumDialogueComplete: 0
   currentScene: 
+  knowledgeStat: 0
 --- !u!1 &2032065664
 GameObject:
   m_ObjectHideFlags: 0
