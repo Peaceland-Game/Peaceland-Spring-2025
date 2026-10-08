@@ -6,22 +6,22 @@
 
 ---
 
-## 📋 What this document is for
+## What this document is for
 
 Adding a "pick it up and it goes in the notebook" object used to mean four manual steps: attach `NotebookCollectTrigger`, drag the note asset into its list, add a collider, add the glow. Miss any one of them and nothing errors — the object just **does nothing when clicked**.
 
 Those four steps are now one window. All you do is:
 
-1. ✅ **Write a note** (fill in a form, no code)
-2. ✅ **Sync the database** (one menu click)
-3. ✅ **Pick it from a dropdown and press a button**
+1. **Write a note** (fill in a form, no code)
+2. **Sync the database** (one menu click)
+3. **Pick it from a dropdown and press a button**
 
 > **You never need to open a `.cs` file.**
 > Everything in this document happens in Unity editor menus.
 
 ---
 
-## 🧠 Three things to understand (only three)
+## Three things to understand (only three)
 
 | Name | What it is | Where you touch it |
 |------|------------|--------------------|
@@ -34,7 +34,7 @@ Break any link and the result is an object that does nothing when clicked.
 
 ---
 
-## 🔧 Steps
+## Steps
 
 ### **Step 1: Make a note**
 
@@ -50,7 +50,7 @@ Select it and fill in these fields in the Inspector. **Leave everything else at 
 NotebookEntryDefinition
 ┌────────────────────────────────────────────────────┐
 │ Entry Id     → globally unique id, e.g. florist-rose│
-│                ⚠ never change it later              │
+│                never change it later                │
 │                  (saves identify notes by this)     │
 │                                                     │
 │ Section      → which page this note belongs to:     │
@@ -60,7 +60,7 @@ NotebookEntryDefinition
 │ Title        → the title shown in the notebook      │
 │ Body Text    → the note itself (multi-line)         │
 │ Image        → the illustration sprite              │
-│                ⚠ this is also what the object in    │
+│                this is also what the object in      │
 │                  the scene will look like           │
 └────────────────────────────────────────────────────┘
 ```
@@ -95,7 +95,7 @@ Add Collectible
 │ 1. Which note does this unlock?                      │
 │    [ Present/florist-rose  —  A Pressed Rose      ▾] │
 │                                                       │
-│    ⚠ If this note is not in the database yet, a      │
+│    If this note is not in the database yet, a        │
 │      yellow warning appears here, with a             │
 │      [Sync Notebook Database From Assets] button.    │
 │      Press it and the warning goes away.             │
@@ -104,8 +104,8 @@ Add Collectible
 │    [ World Sprite                                 ▾] │
 │                                                       │
 │ 3. Options                                           │
-│    Pulsing glow        [✓]                           │
-│    Hide once collected [✓]                           │
+│    Pulsing glow        [x]                           │
+│    Hide once collected [x]                           │
 │                                                       │
 │            [      Add To Scene      ]                │
 └──────────────────────────────────────────────────────┘
@@ -165,7 +165,7 @@ Collectible ready: 'Collectible - florist-rose' unlocks 'florist-rose'.
 
 ---
 
-## 🎮 What happens at runtime
+## What happens at runtime
 
 ```
 Player clicks the object
@@ -183,7 +183,7 @@ The scene does **not** need a `NotebookController` placed in advance. If there i
 
 ---
 
-## 🐛 Common problems
+## Common problems
 
 ### **1. Clicking does nothing**
 
@@ -221,7 +221,7 @@ Generate it, then select it and add to the **Entries** list on its `NotebookColl
 
 ---
 
-## 📁 File map
+## File map
 
 ### What you will touch:
 
@@ -241,7 +241,7 @@ Assets/Peaceland/            ← the save system
 
 ---
 
-## 🚀 Quick acceptance run
+## Quick acceptance run
 
 From a new note to collecting it in game, end to end:
 
@@ -263,17 +263,17 @@ If what step 6 produced looks wrong, run **Peaceland → Notebook → Harness �
 
 ---
 
-## ⚠️ Things not to do
+## Things not to do
 
 ```
-✗ Do not hand edit NotebookDatabase.asset  → use Sync; hand edits are overwritten next sync
-✗ Do not change a live Entry Id            → saves will not recognise it
-✗ Do not edit Assets/Notebook/Scripts/     → ask Yu instead of changing it yourself
+Don't hand edit NotebookDatabase.asset  → use Sync; hand edits are overwritten next sync
+Don't change a live Entry Id            → saves will not recognise it
+Don't edit Assets/Notebook/Scripts/     → ask Yu instead of changing it yourself
 ```
 
 ---
 
-## 📞 Who to ask
+## Who to ask
 
 This tooling and the notebook system are maintained by **Yu Ma**.
 If step 9 does not work, or you need a form this window does not offer, say so rather than editing the scripts.
