@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Marcs_Room day_0: -7973862039547745229
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
