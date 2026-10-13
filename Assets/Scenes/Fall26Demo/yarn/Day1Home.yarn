@@ -37,11 +37,11 @@ As {$protagName} walks into his house, he sees {$brotherName} in the kitchen.
 -> Tell Art about Jovan and Ruzica
     <<darken 1>>
     <<changeStat 0 4>>
-    {$protagName}: I spoke with Jovan and Ruzica INSERT LAST NAME HERE.
+    {$protagName}: I spoke with Jovan and Ruzica {$loverLastName}.
     {$protagName}: They're friends with my boss and live in his neighborhood.
     {$protagName}: Their story was...actually pretty depressing.
     <<lighten 1>>
-    {$brotherName}: Oh, I've seen Mr. INSERT LAST NAME HERE, and he has a picture of his wife on his desk. What did they tell you?
+    {$brotherName}: Oh, I've seen Mr. {$loverLastName}, and he has a picture of his wife on his desk. What did they tell you?
     <<darken 1>>
     {$protagName}: They lived in different parts of the city, back when it was strictly segregated.
     {$protagName}: Jovan snuck out to be with Ruzica, which made everyone really upset.

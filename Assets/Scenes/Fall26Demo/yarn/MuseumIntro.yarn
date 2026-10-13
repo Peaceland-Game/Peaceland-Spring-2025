@@ -87,6 +87,7 @@ tags:
 <<set $protagName = "Marc">>
 <<set $lover1Name = "Jovan">>
 <<set $lover2Name = "Ruzica">>
+<<declare $loverLastName = "Lukashov">>
 <<declare $directorName = "Petar">>
 
 <<oneChar>>

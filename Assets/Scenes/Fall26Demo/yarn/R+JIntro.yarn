@@ -17,7 +17,7 @@
 <<changeSprite 1 4>>
 <<lighten 1>>
 {$directorName}: Your first interview will be with a couple who lived through the war together. 
-{$directorName}: Their names are {$lover2Name} and {$lover1Name}. {$lover2Name} is an electrician, and {$lover1Name} is a teacher.
+{$directorName}: Their names are {$lover2Name} and {$lover1Name} {$loverLastName}. {$lover2Name} is an electrician, and {$lover1Name} is a teacher.
 {$directorName}: They will tell you about their past, and you will be kind and polite. Am I understood?
 <<darken 1>>
 

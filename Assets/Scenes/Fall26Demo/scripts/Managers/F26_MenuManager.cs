@@ -161,9 +161,9 @@ public class F26_MenuManager : MonoBehaviour
             UnPauseGame();
         }
         //show dialogue replay is closed
-        if (GameManager.Instance.dialogueReplayActive)
+        if (F26_GameManager.Instance.dialogueReplayActive)
         {
-            GameManager.Instance.dialogueReplayActive = false;
+            F26_GameManager.Instance.dialogueReplayActive = false;
         }
         //back out by one menu if we're not at the base layer
         if (menuStack.Count > 1)
@@ -262,7 +262,7 @@ public class F26_MenuManager : MonoBehaviour
         }
         PauseGame();
         //set menu flag for dialoguelog script to check for text box
-        GameManager.Instance.dialogueReplayActive = true;
+        F26_GameManager.Instance.dialogueReplayActive = true;
         OpenMenu(dialogueReplayCanvas);
     }
 
@@ -285,13 +285,13 @@ public class F26_MenuManager : MonoBehaviour
     {
         Time.timeScale = 0.0f;
         isPaused = true;
-        GameManager.Instance.gameState = GameManager.GameState.Paused;
+        F26_GameManager.Instance.gameState = F26_GameManager.GameState.Paused;
     }
 
     //unpauses the game
     public void UnPauseGame()
     {
-        GameManager.Instance.gameState = GameManager.GameState.Active;
+        F26_GameManager.Instance.gameState = F26_GameManager.GameState.Active;
         Time.timeScale = 1.0f;
         isPaused = false;
     }
