@@ -221,10 +221,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blankPrefab: {fileID: 1068559090868022982, guid: d31d103a02d31f84b9d558eeb8bcb77a, type: 3}
   defaultPrefab: {fileID: 7245016990855208199, guid: e1ac6c34b98999c4581a031627fd28a7, type: 3}
-  pausedPrefab: {fileID: 5324057555577673706, guid: c88b684b468b7e44c921041f17b3014c, type: 3}
-  settingsPrefab: {fileID: 3029401708694951846, guid: c14cb5f84ba60814a946c1a41392e701, type: 3}
-  saveExitPrefab: {fileID: 4944517442451081257, guid: 76cce76844d6e9942adc875ff2759aa4, type: 3}
-  mainMenuPrefab: {fileID: 3017851128143547703, guid: 912fdbb4959113c4995d8ce36d9d555f, type: 3}
+  pausedPrefab: {fileID: 5324057555577673706, guid: b2687af2426a1414a870a4296128ddb2, type: 3}
+  settingsPrefab: {fileID: 3029401708694951846, guid: fc3772d198ed2ed42a26e604823940ce, type: 3}
+  saveExitPrefab: {fileID: 4944517442451081257, guid: fb0bddf155460f44590036bb4707133f, type: 3}
+  mainMenuPrefab: {fileID: 3017851128143547703, guid: 084fd8b4b38c2404f9380e1fcc51127f, type: 3}
   dialogueReplayPrefab: {fileID: 9174176115627427787, guid: cfd53c65c0258ba4ba74c0ae4036e160, type: 3}
   isBlank: 0
 --- !u!1 &190766927
@@ -2056,6 +2056,10 @@ PrefabInstance:
     - target: {fileID: 7744082722762575003, guid: d5075452b53884349bcab3b2b8a5e2ca, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7744082722762575003, guid: d5075452b53884349bcab3b2b8a5e2ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

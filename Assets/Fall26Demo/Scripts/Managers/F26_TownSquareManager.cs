@@ -1,10 +1,8 @@
 using UnityEngine;
-using Unity.UI;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
-using UnityEditor.Rendering.Universal.ShaderGUI;
 
 public class F26_TownSquareManager : GenericMemManager
 {
@@ -27,6 +25,6 @@ public class F26_TownSquareManager : GenericMemManager
 
     public void GoHome()
     {
-        LL.LoadLevelByBuildIndex(13, true);
+        LL.LoadLevelByBuildIndex(F26_GameManager.HomeBuildIndex, true);
     }
 }

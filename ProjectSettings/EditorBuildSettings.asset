@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/FMemIntro.unity
     guid: 3b8c065ad39116a46a87d34cabd54600
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DemoStart.unity
     guid: a44448c9cde269c4399d766487a333e9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DemoDisclaimer.unity
     guid: f6c3ef22f7cf47c429c291702f3d7ba9
   - enabled: 0
@@ -26,25 +26,25 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/FlowerMemoryScene.unity
     guid: b4b8e1b5fec086f40b657d890449e5e5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/R&JMemory/Demo_RJ_Present.unity
     guid: ba6a145683be728488b61bcb54af521f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/R&JMemory/R&JMemoryScene.unity
     guid: bd79436c7bbc1e742944c05bf6eb7b12
   - enabled: 0
     path: Assets/Scenes/PDayIntro.unity
     guid: d7b7df2f2d05ee2438f747b9b165d848
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DemoEnd.unity
     guid: 598190bd147e608469e15c5acee13a6b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TownSquare.unity
     guid: 2499dcdab019cde4da319fb7a1c0debe
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WarRoom.unity
     guid: 8c4da3e816ee9204ebabec8ed7e666ea
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PresentLobby.unity
     guid: fa3bed94a93f2f745b5cf550c9b04167
   - enabled: 0

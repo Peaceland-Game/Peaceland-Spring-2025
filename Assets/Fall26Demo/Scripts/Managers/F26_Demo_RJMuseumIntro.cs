@@ -50,16 +50,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     public UnityEngine.UI.Image museumTree;
     public SpriteRenderer treePlaque;
 
-    // Build indices for LevelLoader
-    private int DemoStartBuildIndex = 0;
-    private int DemoDisclaimerBuilIndex = 1;
-    private int DemoRJPresentBuildIndex = 9;
-    private int RJ_MemoryBuildIndex = 10;
-    private int DemoEndBuildIndex = 4;
-    private int PresentLobbyBuildIndex = 5;
-    private int WarRoomBuildIndex = 11;
-    private int TownSquareBuildIndex = 12;
-
     //State tracking
     public bool newsRead;
     public bool introSprawlDone;
@@ -397,7 +387,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     /// </summary>
     public void GoToTownSquare()
     {
-        LL.LoadLevelByBuildIndex(TownSquareBuildIndex, true);
+        LL.LoadLevelByBuildIndex(F26_GameManager.TownSquareBuildIndex, true);
     }
 
     /// <summary>
@@ -410,7 +400,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         {
             GM.completedScenes["MuseumIntro"] = true;
         }
-        LL.LoadLevelByBuildIndex(WarRoomBuildIndex, true);
+        LL.LoadLevelByBuildIndex(F26_GameManager.WarRoomBuildIndex, true);
     }
 
     //whole transition sequence for newspaper and auto advance screens

@@ -1870,7 +1870,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -5969785612072809107, guid: 24eb948a5a6b0ce4cbaf6a4c5ddeac8e, type: 3}
+  m_Sprite: {fileID: -5512708815795086695, guid: 9d1ff41a9ee0936468ae5440ad44f144, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1951,7 +1951,8 @@ MonoBehaviour:
   - {fileID: 5319253394661811579, guid: a9d12a16c4ab06d4bb11b0c5206a8d96, type: 3}
   - {fileID: -1389367038011371706, guid: b62ef748a33acbb40a59fd4f033cc190, type: 3}
   backgroundSprite: {fileID: 1139363226}
-  objectImageList: []
+  objectImageList:
+  - {fileID: 0}
   dialogueRunner: {fileID: 1017169655}
   continueButton: {fileID: 488926588}
 --- !u!114 &776619940

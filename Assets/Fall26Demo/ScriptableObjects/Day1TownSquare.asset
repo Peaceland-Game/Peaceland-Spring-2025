@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: -3030350253314157650, guid: 411b3643659400545b815e9008d9beae, type: 3}
   - {fileID: -1989328090450821335, guid: 46673bfb6a6760547a218ca8e479c6f4, type: 3}
   secondCharSprites:
-  - {fileID: 21300000, guid: 2e1cd7ed26be69c45a8a6540e9ccc8d6, type: 3}
+  - {fileID: -5512708815795086695, guid: 9d1ff41a9ee0936468ae5440ad44f144, type: 3}
   dialogueStartNode: TownSquareIntro
   dialogueEndNode: AfterMemory
   nameForScene: WarRoomIntro

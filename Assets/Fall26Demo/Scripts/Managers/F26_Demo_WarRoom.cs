@@ -271,8 +271,7 @@ public class F26_Demo_WarRoom : GenericMemManager
         {
             GM.completedScenes["WarRoomIntro"] = true;
         }
-        int museumSceneIndex = 9;
-        LL.LoadLevelByBuildIndex(museumSceneIndex, true);
+        LL.LoadLevelByBuildIndex(F26_GameManager.DemoRJPresentBuildIndex, true);
     }
 
     /// <summary>

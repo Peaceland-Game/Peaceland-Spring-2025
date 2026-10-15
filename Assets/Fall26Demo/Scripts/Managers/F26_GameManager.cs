@@ -12,7 +12,14 @@ public class F26_GameManager : MonoBehaviour
     //Dictionary of completed game scenes
     public Dictionary<string, bool> completedScenes;
 
-    
+    //Scene build indices
+    public const int DemoStartBuildIndex = 0;
+    public const int DemoRJPresentBuildIndex = 1;
+    public const int RJ_MemoryBuildIndex = 2;
+    public const int WarRoomBuildIndex = 3;
+    public const int TownSquareBuildIndex = 4;
+    public const int HomeBuildIndex = 5;
+
     //larger gamestate tracking variables
     public enum GameState
     {

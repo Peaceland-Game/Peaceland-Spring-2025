@@ -110,7 +110,7 @@ public class F26_MenuManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
 
         // Activate specific scene menus
-        if (currentScene.name == "DemoStart")
+        if (currentScene.name == "Demo_Start")
         {
             mainMenuCanvas = Instantiate(mainMenuPrefab);
             mainMenuCanvas.SetActive(true);
