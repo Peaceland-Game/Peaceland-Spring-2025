@@ -29,6 +29,9 @@ public class ExitDescription : ButtonUtils
     [SerializeField]
     public Button exitZoom = null;          //button that exits zoomed view
 
+    [SerializeField]
+    public GameObject text = null;          //if this panel was opened by a See More button
+
     public event EventHandler OnExitDescriptionClicked; //subscribed by HoverButton.cs to re-enable the hover button when exiting the description
 
     void Start()
@@ -47,7 +50,10 @@ public class ExitDescription : ButtonUtils
         EnableButton(rightArrow);
         EnableButton(viewDescButton); // Enable the view description button
 
-
+        if (text != null)
+        {
+            text.gameObject.SetActive(true);
+        }
         //disables the description view buttons
         panel.SetActive(false);
         DisableButton(exitDescButton); // Disable the exit description button
