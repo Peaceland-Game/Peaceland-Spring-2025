@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SneakPlayer : MonoBehaviour
 {
@@ -7,10 +8,18 @@ public class SneakPlayer : MonoBehaviour
     private float speed;                        // The player's base speed
     [SerializeField]
     private float speedScalar = 2.0f;           // The speed boost gained by sprinting
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;      // The SpriterRenderer for the player
     private bool isHiding = false;              // Checks if the player is currently pressing the HIDE button
     private bool isWithinHidingPlace = false;   // Checks if the player is in range of a hiding spot
     private bool isSprinting = false;           // Checks if the player is currently sprinting
     private bool isCaught = false;              // Checks if the player has been caught
+    private CircleCollider2D fullBodyCollider;  // Collider for the player sprite, for detecting if they're in an enemy vision cone
+    private CircleCollider2D innerBodyCollider; // Collider for the middle of the player sprite, for detecting if they're sufficiently within hiding spots
+    [SerializeField]
+    private Animator animator;                  //Animator for the R&J walk cycle
+    [SerializeField]
+    private Sprite hidingSprite;                //Sprite for when R&J are hiding
 
     private Camera cam;         // Reference to the camera
     [SerializeField]
@@ -35,12 +44,58 @@ public class SneakPlayer : MonoBehaviour
         isHiding = false;
         isSprinting = false;
         isCaught = false;
+
+        //find colliders
+        CircleCollider2D[] colliders = GetComponents<CircleCollider2D>();
+
+        //as long as there actually is 2 or more, assign them to full body and innerbody
+        if (colliders.Length >= 2)
+        {
+            //Unity gets them from top to bottom in the inspector, in this case that means the full body one is first and the inner one is second.
+            fullBodyCollider = colliders[0];
+            innerBodyCollider = colliders[1];
+        }
+
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
+        //Check that a keyboard is connected as a precaution
+        if (Keyboard.current == null) return;
 
+        //assuming a keyboard is connected, check if shift or control was pressed
+        if (Keyboard.current.leftShiftKey.wasPressedThisFrame)
+        {
+            //if shift was pressed, start sprinting, and stop hiding to prevent issues where you're sprinting and hiding at the same time
+            isSprinting = true;
+            isHiding = false;
+
+        }
+        if (Keyboard.current.leftCtrlKey.wasPressedThisFrame)
+        {
+            //if ctrl was pressed, vice versa, but also change the sprite layer to show the character is in shadows when appropriate
+            isSprinting = false;
+            isHiding = true;
+          
+        }
+
+        //then check if either key was released this frame
+        if (Keyboard.current.leftShiftKey.wasReleasedThisFrame)
+        {
+            //if shift was released, stop sprinting
+            isSprinting = false;
+
+        }
+        if (Keyboard.current.leftCtrlKey.wasReleasedThisFrame)
+        {
+            //if ctrl was released, stop hiding and return sprite layer to normal
+            isHiding = false;
+           
+        }
+
+        //check to see if the sprite needs darkened or not
+        Hiding();
     }
 
     /// <summary>
@@ -50,7 +105,7 @@ public class SneakPlayer : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // When the player enters a hiding place, swich bool to true
-        if (collision.CompareTag("HidingPlace"))
+        if (innerBodyCollider.IsTouching(collision) && collision.CompareTag("HidingPlace"))
         {
             isWithinHidingPlace = true;
             Debug.Log("Player is in a hiding place.");
@@ -64,7 +119,7 @@ public class SneakPlayer : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         // When the player leaves a hiding place, swich bool to false
-        if (collision.CompareTag("HidingPlace"))
+        if (!innerBodyCollider.IsTouching(collision) && collision.CompareTag("HidingPlace"))
         {
             isWithinHidingPlace = false;
             Debug.Log("Player has left a hiding place.");
@@ -102,11 +157,11 @@ public class SneakPlayer : MonoBehaviour
             // Move the player forward
             if (isSprinting)
             {
-                gameObject.transform.Translate(speed * speedScalar, 0, 0);
+                gameObject.transform.Translate(speed * speedScalar * Time.deltaTime, 0, 0);
             }
             else
             {
-                gameObject.transform.Translate(speed, 0, 0);
+                gameObject.transform.Translate(speed * Time.deltaTime, 0, 0);
             }
 
         }
@@ -139,5 +194,28 @@ public class SneakPlayer : MonoBehaviour
         isHiding = false;
         isWithinHidingPlace = false;
         isCaught = false;
+    }
+
+    /// <summary>
+    /// Darkens and changes character sprite when hiding and reverts at all other times
+    /// </summary>
+    public void Hiding()
+    {
+        //if succesfully hidden, darken the sprite to show as such, if just hitting the hide button but not in a hiding spot (or vice versa), don't darken.
+        if (isWithinHidingPlace && isHiding)
+        {
+            animator.SetBool("Is Crouching", true);
+            spriteRenderer.color = Color.gray;
+
+        }
+        else if (isHiding)
+        {
+            animator.SetBool("Is Crouching", true);
+        }
+        else
+        {
+            animator.SetBool("Is Crouching", false);
+            spriteRenderer.color = Color.white;
+        }
     }
 }

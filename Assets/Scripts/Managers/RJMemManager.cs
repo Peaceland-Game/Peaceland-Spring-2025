@@ -44,7 +44,7 @@ public class RJMemManager : GenericMemManager
 
             // Update GM bool and return to the present
             GameManager.Instance.seenRJMemory = true;
-            LL.LoadLevelByBuildIndex(2);
+            LL.LoadLevelByBuildIndex(8);
             return;
         }
 
