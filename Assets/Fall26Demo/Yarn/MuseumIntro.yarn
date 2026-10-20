@@ -41,7 +41,7 @@ As {$protagName} darts forward to grab the handle of the kettle, the boiling wat
 
 {$protagName}: (<i>That’s definitely going to leave a mark…</i>)
 
-{$protagName}: Sigh, just my luck.
+{$protagName}: <i>Sigh</i>, just my luck.
 
 {$protagName}: Who was even down here befo-
 
@@ -75,7 +75,7 @@ A crisp breeze brushes {$protagName}’s face.
 
 {$protagName}: (<i>Curating history, preserving art? Sounds… fun!</i>)
 
-{$protagName}: Sigh, Well, here goes nothing.
+{$protagName}: <i>Sigh</i>. Well, here goes nothing.
 
 {$protagName} starts making his way towards the museum for his first day.
 
@@ -95,29 +95,33 @@ tags:
 <<darken 1>>
 
 {$protagName} looks around the museum in awe.
-->So, this is the tree?
+<<lighten 1>>
+{$directorName}: Are you just going to stand there?
+->Wow, the tree is… so tall.
+    <<darken 1>>
     {$protagName}: So, this is the tree?
     <<lighten 1>>
     {$directorName}: Congrats, you know what a tree is.
     <<darken 1>>
 ->You must be the manager?
+    <<darken 1>>
     {$protagName}: You must be the manager?
     <<lighten 1>>
-    {$directorName}: Yes, I am. You'd better show some respect.
+    {$directorName}: Yes, I am.
     <<darken 1>>
 -><i>Stay Silent</i>
     <<lighten 1>>
-    {$directorName}: Well? Any thoughts rattling around up there?
+    {$directorName}: Good morning to you too, Mr. Malkin.
     <<darken 1>>
 {$directorName} gives {$protagName} a look.
 <<lighten 1>>
-{$directorName}: Do you even know why you're here?
+{$directorName}: I’m sure you’re aware of why you’re here.
 <<darken 1>>
 {$directorName} points at {$protagName}'s hand.
 <<lighten 1>>
 {$directorName}: And do I even want to know what happened there?
 <<darken 1>>
-{$protagName}: Siblings.
+{$protagName}: Just a small accident making breakfast
 {$protagName} and {$directorName} stare at each other in awkward silence. {$protagName}, confused, clears his throat.
 ->I feel like I've done something wrong.
     {$protagName}: I feel like I've done something wrong.

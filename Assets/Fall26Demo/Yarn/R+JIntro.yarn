@@ -16,16 +16,17 @@
 <<oneChar>>
 <<changeSprite 1 4>>
 <<lighten 1>>
-{$directorName}: Your first interview will be with a couple who lived through the war together. 
-{$directorName}: Their names are {$lover2Name} and {$lover1Name} {$loverLastName}. {$lover2Name} is an electrician, and {$lover1Name} is a teacher.
-{$directorName}: They will tell you about their past, and you will be kind and polite. Am I understood?
+{$directorName}: Your first interview will be with a couple. They are dear friends of mine. 
+{$directorName}: Their names are <b>{$lover2Name}</b> and <b>{$lover1Name} {$loverLastName}</b>.
+{$directorName}: They will tell you about their experience, and you will be kind and polite. Am I understood?
 <<darken 1>>
 
 {$protagName} nods, and {$directorName} walks away.
 <<zeroChar>>
 {$protagName} sits down and looks at the memory tree as his mind starts to wonder.
-{$protagName}: (<i>It's going to be a while before I build my reputation back after the incident.</i>)
-{$protagName}: (<i>Will people </i>ever<i> look at me the same again?</i>)
+{$protagName}: (<i>I have to make a good impression on Petar.</i>)
+{$protagName}: (<i>I’ve got to make up for what people think I’ve done.</i>)
+{$protagName}: (<i>If I don’t, no one will ever look at me the same again</i>)
 
 <<wait 1.5>>
 <<zeroChar>>
@@ -50,34 +51,8 @@ The man is gazing intently at the <b>Memory Tree</b>.
 
 {$lover2Name} nods her head.
 
-{$protagName}: It's nice to meet you both. 
-
-<<lighten 2>>
-{$lover1Name}: The tree looks a little bare, but the rest of the exhibit looks great!
-<<darken 2>>
-
--> {$protagName}: Yeah, it's still a work in progress.
-    {$protagName}: Yeah, it's still a work in progress.
-    <<lighten 2>>
-    {$lover1Name}: I see. Well, I'm sure that the end result will look fantastic!
-    <<darken 2>>
--> {$protagName}: It's going to take a while.
-    {$protagName}: It's going to take a while.
-    <<lighten 2>>
-    {$lover1Name}: Well, if it looks this great now, I'm sure that it can only get better!
-    <<darken 2>>
--> {$protagName}: I don't think it's going to look much better.
-    {$protagName}: I don't think it's going to look much better.
-    <<lighten 2>>    // change Jovan's expression to frown
-    {$lover1Name}: I see. Well, difference of opinion, I suppose.
-    <<darken 2>>    
-
-// This line was added because otherwise Jovan's response hovered in the text box
-{$protagName}: (<i>I should formally start the interview.</i>)
-
-// change Jovan's expression back to neutral?
-// Change Ruzica's expression back to neutral?
-{$protagName}: Can I collect your story for the <b>Memory Tree</b>?
+{$protagName}: It's nice to meet you both.
+{$protagName}: Are you both ready to start the interview?
 
 <<lighten 2>>
 <<lighten 1>>   // Expression change: both to smile
