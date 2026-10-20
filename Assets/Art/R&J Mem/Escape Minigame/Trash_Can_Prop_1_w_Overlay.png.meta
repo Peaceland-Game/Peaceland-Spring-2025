@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Trash_Can_Prop_1_w_Overlay_0: 531026671790860362
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

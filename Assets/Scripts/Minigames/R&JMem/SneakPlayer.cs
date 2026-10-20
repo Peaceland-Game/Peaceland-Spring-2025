@@ -16,6 +16,10 @@ public class SneakPlayer : MonoBehaviour
     private bool isCaught = false;              // Checks if the player has been caught
     private CircleCollider2D fullBodyCollider;  // Collider for the player sprite, for detecting if they're in an enemy vision cone
     private CircleCollider2D innerBodyCollider; // Collider for the middle of the player sprite, for detecting if they're sufficiently within hiding spots
+    [SerializeField]
+    private Animator animator;                  //Animator for the R&J walk cycle
+    [SerializeField]
+    private Sprite hidingSprite;                //Sprite for when R&J are hiding
 
     private Camera cam;         // Reference to the camera
     [SerializeField]
@@ -51,6 +55,7 @@ public class SneakPlayer : MonoBehaviour
             fullBodyCollider = colliders[0];
             innerBodyCollider = colliders[1];
         }
+
     }
 
     // Update is called once per frame
@@ -90,7 +95,7 @@ public class SneakPlayer : MonoBehaviour
         }
 
         //check to see if the sprite needs darkened or not
-        Darken();
+        Hiding();
     }
 
     /// <summary>
@@ -192,21 +197,25 @@ public class SneakPlayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Darkens the character sprite when hiding and lightens it back to normal at all other times
+    /// Darkens and changes character sprite when hiding and reverts at all other times
     /// </summary>
-    public void Darken()
+    public void Hiding()
     {
         //if succesfully hidden, darken the sprite to show as such, if just hitting the hide button but not in a hiding spot (or vice versa), don't darken.
         if (isWithinHidingPlace && isHiding)
         {
-            spriteRenderer.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+            animator.SetBool("Is Crouching", true);
+            spriteRenderer.color = Color.gray;
 
+        }
+        else if (isHiding)
+        {
+            animator.SetBool("Is Crouching", true);
         }
         else
         {
-            //return the sprite's brightness to normal. This won't make any visible change if they were already normal 
-            //brightness, but guarantees that they return to full brightness whenever they arent hiding regardless of location
-            spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
+            animator.SetBool("Is Crouching", false);
+            spriteRenderer.color = Color.white;
         }
     }
 }

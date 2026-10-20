@@ -14,6 +14,8 @@ public class SneakManager : MinigameBehavior
     private SneakPlayer player; // Reference to the player
     [SerializeField]
     private GameObject backgroundLoop; // Reference to the background
+    [SerializeField]
+    private HouseRandomizer houseManager; // Reference to the background houseManager
 
     [SerializeField]
     private GameObject goalTile;    // Reference to the goal tile
@@ -24,7 +26,7 @@ public class SneakManager : MinigameBehavior
     [SerializeField]
     private float sentrySpawnOffset;        // Ditance to offset Sentries from their spawners
     [SerializeField]
-    private SneakSentry sentryPrefab;       // Reference to Sentry prefab to instantiate from
+    private SneakSentry[] sentryPrefabs;       // Reference to Sentry prefabs to instantiate from
     private List<SneakSentry> sentryList = new List<SneakSentry>(); // List of active Sentries
     [SerializeField]
     private float loseDistance;     // Distance from camera to remove old objects
@@ -95,7 +97,7 @@ public class SneakManager : MinigameBehavior
 
             // Check if the player has passed the current sentry spawn point
             if (currentSentrySpawner < sentrySpawners.Length &&
-                player.transform.position.x >= sentrySpawners[currentSentrySpawner].x)
+                cam.transform.position.x >= sentrySpawners[currentSentrySpawner].x)
             {
                 SpawnSentry(new Vector3(sentrySpawners[currentSentrySpawner].x + sentrySpawnOffset, 2.5f, 0));
                 currentSentrySpawner++;
@@ -132,8 +134,14 @@ public class SneakManager : MinigameBehavior
     /// <param name="spawnPos">A vector 3 position at which to spawn the sentry</param>
     private void SpawnSentry(Vector3 spawnPos)
     {
+        if (sentryPrefabs == null || sentryPrefabs.Length == 0) return; //make sure there actually are items in the array
+
+        //get a random index for the prefabs array
+        int randomIndex = Random.Range(0, sentryPrefabs.Length);
+
+        //INstantiate the prefab that corresponds to the given index
         sentryList.Add(
-            Instantiate(sentryPrefab, spawnPos, Quaternion.AngleAxis(45f, Vector3.forward))
+        Instantiate(sentryPrefabs[randomIndex], spawnPos, Quaternion.AngleAxis(45f, Vector3.forward))
             );
     }
 
@@ -159,6 +167,7 @@ public class SneakManager : MinigameBehavior
     /// </summary>
     public void ResetSneakGame()
     {
+        Time.timeScale = 1f;
         cam.transform.position = startPos;
         player.ResetPlayer();
         BackgroundLoop[] backgroundPanels = backgroundLoop.GetComponentsInChildren<BackgroundLoop>();
@@ -166,6 +175,7 @@ public class SneakManager : MinigameBehavior
         {
             b.ResetBackground();
         }
+        houseManager.ResetHouses();
         gameOverScreen.SetActive(false);
         victoryScreen.SetActive(false);
         sneakUI.SetActive(true);
@@ -187,6 +197,7 @@ public class SneakManager : MinigameBehavior
         isRunning = false;
         sneakUI.SetActive(false);
         gameOverScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     /// <summary>
@@ -197,10 +208,12 @@ public class SneakManager : MinigameBehavior
         isRunning = false;
         sneakUI.SetActive(false);
         victoryScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void loadNextLevel()
     {
+        Time.timeScale = 1f;
         LL.LoadLevelByBuildIndex(2);
     }
 

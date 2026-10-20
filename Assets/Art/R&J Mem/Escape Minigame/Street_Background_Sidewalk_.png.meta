@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Street_Background_Sidewalk__0: -6501213271363497516
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

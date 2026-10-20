@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Street_Background_sky w clouds _0: -8956761919255626058
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

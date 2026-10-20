@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Car_Prop_V3_w_Overlay_0: 4612423366346735072
+      Car_Prop_V3_w_Overlay_1: 1044072338554663446
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
