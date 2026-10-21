@@ -1,11 +1,27 @@
-﻿title: PeaceEnding
+﻿title: EndingStart
 tags:
 ---
-peace ending
+{$protagName}: (<i>Well, today wasn’t so bad after all.</i>)
+{$protagName}: (<i>I wonder who else is going to stop by the memory tree.</i>)
+{$protagName}: (<i>If things keep going like this, then this week should just fly by, and I’ll meet some nice people along the way.</i>)
+===
+
+title: PeaceEnding
+tags:
+---
+{$protagName}: (<i>It must mean a lot to people that their stories are finally being heard.</i>)
+{$protagName}: (<i>There must be people all over Streynia with stories just waiting to be shared and preserved.</i>)
+{$protagName}: (<i>It’s a lot to think about honestly, but it’s still nice.</i>)
+{$protagName}: (<i>Other than the fight earlier, I have a good feeling about everything.</i>)
+{$protagName}: (<i>The election seems to be going well, so hopefully this peace can carry on into the future.</i>)
 ===
 
 title: WarEnding
 tags:
 ---
-war ending
+{$protagName}: (<i>Even so, I hope that people actually care about the memory tree.</i>)
+{$protagName}: (<i>It must be hard to think about the war again.</i>)
+{$protagName}: (<i>I can’t even imagine the trauma they must’ve gone through.</i>)
+{$protagName}: (<i>If the fight earlier is any indication of the days to come, I’m honestly worried.</i>)
+{$protagName}: (<i>Maybe the election can bring some peace in the near future. I can’t even imagine what could escalate into something worse.</i>)
 ===
