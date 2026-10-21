@@ -18,7 +18,7 @@
 <<darken 1>>
 
 <<lighten 2>>
-{$lover1Name} places her hand in his his.
+{$lover1Name} places her hand in his.
 {$lover1Name}: I don't know. I don't think so.
 <<darken 2>>
 
@@ -37,7 +37,7 @@
 <<darken 1>>
 
 <<lighten 2>>
-{$lover1Name}: I know Ruzica but nobody did, trust me.
+{$lover1Name}: I know, {$lover2Name}, but nobody did, trust me.
 Their heads snap to the window after hearing voices outside.
 <<darken 2>>
 

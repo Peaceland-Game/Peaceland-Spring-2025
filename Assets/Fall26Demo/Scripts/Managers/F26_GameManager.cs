@@ -19,6 +19,7 @@ public class F26_GameManager : MonoBehaviour
     public const int WarRoomBuildIndex = 3;
     public const int TownSquareBuildIndex = 4;
     public const int HomeBuildIndex = 5;
+    public const int SneakBuildIndex = 6;
 
     //larger gamestate tracking variables
     public enum GameState
@@ -66,6 +67,7 @@ public class F26_GameManager : MonoBehaviour
         "WarRoomIntro",
         "R+JIntro",
         "R+JMemory",
+        "PostSneak",
         "R+JPostMemory",
         "Day1TownSquare",
         "Day1Home"};
