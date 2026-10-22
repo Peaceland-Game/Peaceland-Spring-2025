@@ -802,7 +802,7 @@ GameObject:
   - component: {fileID: 425445506}
   - component: {fileID: 425445507}
   m_Layer: 0
-  m_Name: PostEscape
+  m_Name: PostSneak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

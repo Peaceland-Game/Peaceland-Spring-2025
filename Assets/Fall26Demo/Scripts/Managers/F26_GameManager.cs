@@ -20,6 +20,7 @@ public class F26_GameManager : MonoBehaviour
     public const int TownSquareBuildIndex = 4;
     public const int HomeBuildIndex = 5;
     public const int SneakBuildIndex = 6;
+    public const int LetterBuildIndex = 7;
 
     //larger gamestate tracking variables
     public enum GameState

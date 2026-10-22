@@ -33,6 +33,7 @@ public class LetterManager : MinigameBehavior
     private string[] filledWords;
     private bool isStamping = false;
     private Coroutine sealAnimationCoroutine;
+    private LevelLoader levelLoader;
 
     private void Awake()
     {
@@ -54,6 +55,7 @@ public class LetterManager : MinigameBehavior
 
     private void Start()
     {
+        levelLoader = FindFirstObjectByType<LevelLoader>();
         StartMinigame();
     }
 
@@ -250,7 +252,8 @@ public class LetterManager : MinigameBehavior
     {
         if (isStamping) return;
         if (sealAnimationCoroutine != null) StopCoroutine(sealAnimationCoroutine);
-        ResetMinigame();
+        //ResetMinigame();
+        levelLoader.LoadLevelByBuildIndex(F26_GameManager.DemoRJPresentBuildIndex);
     }
 
     public void CloseResults()

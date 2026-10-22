@@ -144,7 +144,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         // Jump ahead on dialog if returning from the memory
         if (GM.completedScenes["R+JMemory"])
         {
-            if (GM.CurrentScene == "R+JMemory")
+            if (GM.CurrentScene == "R+JMemory" || GM.CurrentScene == "PostSneak")
             {
                 Debug.Log("Returning from memory, skipping to museum tree");
                 textStarted = true;
@@ -156,7 +156,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
                 goToTownSquareButton.interactable = false;
                 goToTownSquareButton.GetComponent<Image>().enabled = false;
                 NextOrder();
-                PlayMinigameAtIndex(2);
+                PlayMinigameAtIndex(3);
                 GM.CurrentScene = "PostR+JMemory";
             }
             else
