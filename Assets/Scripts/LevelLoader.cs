@@ -74,14 +74,14 @@ public class LevelLoader : MonoBehaviour
     {
         // Important note: The the second "i" is lowercase
         transition.Play("Base Layer.WhiteFadein", 0, 0.0f);
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
     }
 
     // Plays the WhiteFadeOut animimation on command
     IEnumerator PlayWhiteFadeOutAnimation()
     {
         transition.Play("Base Layer.WhiteFadeOut", 0, 0.0f);
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
     }
 
     /// <summary>
@@ -107,13 +107,13 @@ public class LevelLoader : MonoBehaviour
     IEnumerator PlayBlackFadeInAnimation()
     {
         transition.Play("Base Layer.BlackFadeIn", 0, 0.0f);
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
     }
 
     // Plays the BlackFadeOut animimation on command
     IEnumerator PlayBlackFadeOutAnimation()
     {
         transition.Play("Base Layer.BlackFadeOut", 0, 0.0f);
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
     }
 }
