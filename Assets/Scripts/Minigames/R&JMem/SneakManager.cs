@@ -38,6 +38,8 @@ public class SneakManager : MinigameBehavior
     private GameObject gameOverScreen;  // UI for when the player has been caught
     [SerializeField]
     private GameObject victoryScreen;   // UI for when the player has reached the goal
+    [SerializeField]
+    private GameObject gameStartScreen;   // UI for when the player has started the game for the first time
 
     // Level Loader
     protected LevelLoader LL;
@@ -51,10 +53,12 @@ public class SneakManager : MinigameBehavior
     {
         cam = FindFirstObjectByType<Camera>();
         player = FindFirstObjectByType<SneakPlayer>();
-        sneakUI.SetActive(true);
+        sneakUI.SetActive(false);
+        gameStartScreen.SetActive(true);
         gameOverScreen.SetActive(false);
         victoryScreen.SetActive(false);
         isRunning = true;
+        Time.timeScale = 0f;
     }
 
     /// <summary>
@@ -140,11 +144,18 @@ public class SneakManager : MinigameBehavior
         int randomIndex = Random.Range(0, sentryPrefabs.Length);
 
         //INstantiate the prefab that corresponds to the given index
-        sentryList.Add(
-        Instantiate(sentryPrefabs[randomIndex], spawnPos, Quaternion.AngleAxis(45f, Vector3.forward))
-            );
-    }
+        SneakSentry sentryToAdd = Instantiate(sentryPrefabs[randomIndex], spawnPos, Quaternion.AngleAxis(45f, Vector3.forward));
 
+        SpriteRenderer tempSpriteRenderer = sentryToAdd.GetComponent<SpriteRenderer>();
+
+        //if (tempSpriteRenderer != null)
+        //{
+            // Set the order
+            //tempSpriteRenderer.sortingOrder = 1;
+        //}
+
+        sentryList.Add(sentryToAdd);
+    }
     /// <summary>
     /// Destroy sentries once they move off screen
     /// </summary>
@@ -209,6 +220,17 @@ public class SneakManager : MinigameBehavior
         sneakUI.SetActive(false);
         victoryScreen.SetActive(true);
         Time.timeScale = 0f;
+    }
+
+    /// <summary>
+    /// Starts the minigame when the start button is pressed
+    /// </summary>
+    public void PressStart()
+    {
+        isRunning = true;
+        sneakUI.SetActive(true);
+        gameStartScreen.SetActive(false);
+        Time.timeScale = 1f;
     }
 
     public void loadNextLevel()

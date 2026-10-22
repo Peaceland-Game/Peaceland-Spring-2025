@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6278879069142869092}
   - component: {fileID: 1792043069448338088}
   - component: {fileID: 2287438787179191458}
+  - component: {fileID: 6805584551378245962}
   m_Layer: 0
   m_Name: SneakSentry4
   m_TagString: Untagged
@@ -151,6 +152,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2.5
+--- !u!210 &6805584551378245962
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194674464952690520}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &2559787344379453166
 GameObject:
   m_ObjectHideFlags: 0
@@ -314,7 +327,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8311511555964898002, guid: c36177a0014106344819c1f66269f84a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -423,7 +436,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
   m_Color: {r: 0.88440007, g: 0.90188676, b: 0, a: 0.3529412}
   m_FlipX: 0

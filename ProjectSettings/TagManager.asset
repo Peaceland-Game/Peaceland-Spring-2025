@@ -58,6 +58,9 @@ TagManager:
   - name: vase
     uniqueID: 4158576665
     locked: 0
+  - name: Isolated Masking
+    uniqueID: 3248411257
+    locked: 0
   - name: paintcan
     uniqueID: 221437479
     locked: 0

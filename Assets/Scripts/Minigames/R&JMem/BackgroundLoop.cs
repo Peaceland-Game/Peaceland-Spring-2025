@@ -9,7 +9,8 @@ public class BackgroundLoop : MonoBehaviour
     private Vector3 startPos;
     [SerializeField]
     private float speed;
-
+    [SerializeField]
+    private float widthOverride;    //for use in situations where the script is applied to something without a direct sprite renderer or width otherwises needs overriding
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,10 +20,15 @@ public class BackgroundLoop : MonoBehaviour
 
         //get the width of the sprite automatically (Also accounts for scaling)
         SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
+        if (widthOverride != 0)
+        {
+            spriteWidth = widthOverride;
+        }
+        else if (spriteRenderer != null)
         {
             spriteWidth = spriteRenderer.bounds.size.x;
         }
+
         startPos = transform.position;
 
         //set the buffer
@@ -37,7 +43,7 @@ public class BackgroundLoop : MonoBehaviour
         if (cameraTransform.position.x - transform.position.x >= spriteWidth )
         {
             //move the sprite two widths ahead, a.k.a ahead of the camera to keep the loop going
-            transform.position = new Vector3(transform.position.x + (spriteWidth * 2) - buffer, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x + (spriteWidth * 2), transform.position.y, transform.position.z);
         }
         Move();
     }
@@ -58,4 +64,5 @@ public class BackgroundLoop : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x - (speed/200), transform.position.y, transform.position.z);
     }
+
 }
