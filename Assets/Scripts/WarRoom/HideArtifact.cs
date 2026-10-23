@@ -63,26 +63,33 @@ public class HideArtifact : HoverButton
 
         // Check if the condition has been completed
         bool unlocked = false;
-        switch (unlockCondition)
+        if (gm.overrideHideArtifact)
         {
-            case UnlockCondition.Placeholder:
-                unlocked = gm.placeholderCondition;
-                break;
-            case UnlockCondition.CompleteFlorist:
-                unlocked = gm.seenFloristMemory;
-                break;
-            case UnlockCondition.CompleteRJ:
-                unlocked = gm.seenRJMemory;
-                break;
-            case UnlockCondition.CompleteChild:
-                unlocked = gm.seenChildMemory;
-                break;
-            case UnlockCondition.CompleteVillain:
-                unlocked = gm.seenVillainMemory;
-                break;
-            case UnlockCondition.CompleteBoris:
-                unlocked = gm.seenBorisMemory;
-                break;
+            unlocked = true;
+        }
+        else
+        {
+            switch (unlockCondition)
+            {
+                case UnlockCondition.Placeholder:
+                    unlocked = gm.placeholderCondition;
+                    break;
+                case UnlockCondition.CompleteFlorist:
+                    unlocked = gm.seenFloristMemory;
+                    break;
+                case UnlockCondition.CompleteRJ:
+                    unlocked = gm.seenRJMemory;
+                    break;
+                case UnlockCondition.CompleteChild:
+                    unlocked = gm.seenChildMemory;
+                    break;
+                case UnlockCondition.CompleteVillain:
+                    unlocked = gm.seenVillainMemory;
+                    break;
+                case UnlockCondition.CompleteBoris:
+                    unlocked = gm.seenBorisMemory;
+                    break;
+            }
         }
 
         // If the condition is not completed, hide the artifact

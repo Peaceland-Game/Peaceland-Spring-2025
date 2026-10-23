@@ -50,14 +50,23 @@ public class ExitDescription : ButtonUtils
         EnableButton(rightArrow);
         EnableButton(viewDescButton); // Enable the view description button
 
+        //disables the description view buttons
+        panel.SetActive(false);
+        DisableButton(exitDescButton); // Disable the exit description button
+    }
+    
+    //for see more
+    public void ExitDescriptionForScroll()
+    {
+        DisableButton(exitDescButton); // Disable exit scroll button
+        panel.SetActive(false); //disable the scroll panel
+
+        // Enable the see more button
+        EnableButton(viewDescButton); 
         if (text != null)
         {
             text.gameObject.SetActive(true);
         }
-        //disables the description view buttons
-        panel.SetActive(false);
-        DisableButton(exitDescButton); // Disable the exit description button
-        OnExitDescriptionClicked?.Invoke(this, EventArgs.Empty); // Raise the event to notify subscribers
     }
 
     public void ExitDescriptionForZoom()

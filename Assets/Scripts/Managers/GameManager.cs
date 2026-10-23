@@ -60,6 +60,9 @@ public class GameManager : MonoBehaviour
 
     public bool allMuseumDialogueComplete = false;
 
+    public bool overrideHideArtifact = false; //for testing war room
+
+
     //create the private instance
     private static GameManager _instance;
 
