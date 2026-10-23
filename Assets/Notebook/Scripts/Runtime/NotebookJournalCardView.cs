@@ -15,10 +15,14 @@ namespace Peaceland.Notebook
         [SerializeField] private UnityEngine.UI.Button cardButton;
 
         private Action onViewedAction;
+        private Action<ArtifactDefinition> onInspectAction;
+        private ArtifactDefinition currentArtifact;
 
-        public void Bind(ArtifactDefinition artifact, bool isNew, Action onViewed)
+        public void Bind(ArtifactDefinition artifact, bool isNew, Action onViewed, Action<ArtifactDefinition> onInspect = null)
         {
+            currentArtifact = artifact;
             onViewedAction = onViewed;
+            onInspectAction = onInspect;
 
             if (artifact == null) return;
 
@@ -65,6 +69,7 @@ namespace Peaceland.Notebook
                 newBadgeRoot.SetActive(false);
             }
             onViewedAction?.Invoke();
+            onInspectAction?.Invoke(currentArtifact);
         }
     }
 }

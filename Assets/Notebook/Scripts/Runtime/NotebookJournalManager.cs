@@ -56,6 +56,9 @@ namespace Peaceland.Notebook
         [SerializeField] private TMP_Text collectionToastText;
         [SerializeField] private TMP_Text worldHoverText;
 
+        [Header("Artifact Detail Popup")]
+        [SerializeField] private NotebookArtifactDetailModal artifactDetailModal;
+
         // Runtime state
         private readonly HashSet<string> collectedIds = new HashSet<string>();
         private readonly HashSet<string> newIds = new HashSet<string>();
@@ -129,7 +132,14 @@ namespace Peaceland.Notebook
                 }
                 else if (keyboard.escapeKey.wasPressedThisFrame && isOpen)
                 {
-                    CloseNotebook();
+                    if (artifactDetailModal != null && artifactDetailModal.IsShowing)
+                    {
+                        artifactDetailModal.Hide();
+                    }
+                    else
+                    {
+                        CloseNotebook();
+                    }
                 }
                 else if (isOpen && !isAnimating)
                 {
@@ -456,6 +466,11 @@ namespace Peaceland.Notebook
         {
             isAnimating = true;
 
+            if (artifactDetailModal != null && artifactDetailModal.IsShowing)
+            {
+                artifactDetailModal.Hide(immediate: true);
+            }
+
             // Fade out open book contents
             if (openBookContent != null)
             {
@@ -777,9 +792,26 @@ namespace Peaceland.Notebook
                 if (cardView != null)
                 {
                     bool isNew = newIds.Contains(artifact.Id);
-                    cardView.Bind(artifact, isNew, () => MarkArtifactReviewed(artifact.Id));
+                    cardView.Bind(artifact, isNew, 
+                        () => MarkArtifactReviewed(artifact.Id),
+                        (art) => ShowArtifactDetail(art));
                 }
             }
+        }
+
+        public NotebookArtifactDetailModal ArtifactDetailModal => artifactDetailModal;
+
+        public void ShowArtifactDetail(ArtifactDefinition artifact)
+        {
+            if (artifactDetailModal != null && artifact != null)
+            {
+                artifactDetailModal.Show(artifact);
+            }
+        }
+
+        public void SetArtifactDetailModal(NotebookArtifactDetailModal modal)
+        {
+            artifactDetailModal = modal;
         }
 
         // ==================== EDITOR HELPERS ====================
