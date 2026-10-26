@@ -53,6 +53,8 @@ public class ExitDescription : ButtonUtils
         //disables the description view buttons
         panel.SetActive(false);
         DisableButton(exitDescButton); // Disable the exit description button
+
+        OnExitDescriptionClicked?.Invoke(this, EventArgs.Empty);
     }
     
     //for see more
@@ -67,6 +69,8 @@ public class ExitDescription : ButtonUtils
         {
             text.gameObject.SetActive(true);
         }
+
+        OnExitDescriptionClicked?.Invoke(this, EventArgs.Empty);
     }
 
     public void ExitDescriptionForZoom()
