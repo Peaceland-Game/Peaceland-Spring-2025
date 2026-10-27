@@ -54,6 +54,8 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     private bool mingming = false; //keep this off AT ALL TIMES 
 
+    private GameManager gm;
+
     void Start()
     {
         //dont mind this part 
@@ -86,6 +88,8 @@ public class WarRoom : GenericMemManager
         DisableButton(leftArrow);
         DisableButton(rightArrow);
         DisableButton(exitWallView); 
+
+        gm = GameManager.Instance;
     }
 
     // Update is called once per frame
@@ -290,6 +294,11 @@ public class WarRoom : GenericMemManager
         EnableButton(leftArrow);
         EnableButton(rightArrow);
         ToggleWalls();
+    }
+
+    public void TestPostRJ()
+    {
+        gm.seenRJMemory = true;
     }
 
     /// helper that turns a button interactable and visible
