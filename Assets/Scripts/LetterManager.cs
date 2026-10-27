@@ -229,18 +229,25 @@ public class LetterManager : MinigameBehavior
                 // Blank i
                 if (!string.IsNullOrEmpty(filledWords[i]))
                 {
-                    
-                    sb.Append($"<b><u><color=#153B6B>{filledWords[i]}</color></u></b>");
+                    if(filledWords[i] == "(Leave Blank)")
+                    {
+                        sb.Append($"<b><color=#153B6B></color></b>");
+                    }
+                    else
+                    {
+                        sb.Append($"<b><color=#153B6B>{filledWords[i]}</color></b>");
+
+                    }
                 }
                 else if (i == currentBlankIndex)
                 {
                     // Active blank 
-                    sb.Append("<color=#A03E15><b><u>\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0</u></b></color>");
+                    sb.Append($"<color=#A03E15><b>{currentLetter.blanks[i].placeholder}</b></color>");
                 }
                 else
                 {
                     // Future blank 
-                    sb.Append("<color=#7A6C5E><u>\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0</u></color>");
+                    sb.Append($"<color=#7A6C5E><b>{currentLetter.blanks[i].placeholder}</b></color>");
                 }
             }
         }

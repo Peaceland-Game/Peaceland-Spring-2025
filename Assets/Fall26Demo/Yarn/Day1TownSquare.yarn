@@ -16,7 +16,7 @@
 //go in to bakery
 <<changeBG 2>>
 
-//Put Dalila in the person 2 slot (it lines up better with the layout of the bakery)
+//Put {$bakerName} in the person 2 slot (it lines up better with the layout of the bakery)
 <<twoChar>>
 <<changeSprite 1 0>>
 <<changeSprite 2 0>>
@@ -28,15 +28,34 @@
 <<darken 2>>
 
 {$protagName}: I am. Today was my first shift at the new museum
-{$protagName}: I figured that I'd look presentable, despite how my morning went.
-
-{$protagName} shows {$bakerName} the bandage on his hand.
 
 <<lighten 2>>
-{$bakerName}: Oh my! Let me guess, Art's doing?
-<<darken 2>>
+{$bakerName}: Oh, of course. I don’t suppose that you are working with that new exhibit? The Memory Tree?
 
-{$protagName}: Yeah...he tried to make me breakfast. You know how he is, left the kettle on.
+<<darken 2>>
+{$protagName}: You already know it!
+{$protagName}: Yeah, I’m interviewing all these different people. 
+{$protagName}: I just came from talking to an Eskani and Thebrean couple who ran away together.
+
+<<lighten 2>>
+{$bakerName}: An Eskani and Thebrean… couple?
+{$bakerName}: I believe I know the couple you are referring to.
+{$bakerName}: I heard the rumor when I was younger. I always thought it was simply that, a story. 
+
+<<darken 2>>
+{$protagName}: What did you hear?
+
+<<lighten 2>>
+{$bakerName}: That he left his cousin to die to run away with a girl he barely knew.
+{$bakerName}: Did that really happen?
+
+<<darken 2>>
+{$protagName}: I guess that’s one way of putting it, yeah.
+
+<<lighten 2>>
+{$bakerName} eyes {$protagName} carefully.
+{$bakerName}: I do hope that Thebrean man didn’t give you any trouble, {$protagName}.
+{$protagName}: I’m alright, Jovan was very kind to me.
 
 <<lighten 2>>
 {$bakerName}: Well, let me get you a doughnut for your troubles.
