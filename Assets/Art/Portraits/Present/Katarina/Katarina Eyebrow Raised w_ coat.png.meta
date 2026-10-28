@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: 982dea6fd5f8dea4c88e174d0b71dd2f
+guid: e4f21052e434ac849845d95607f5b77b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3481538419126736461
-    second: Dafina No Puffer_0
+      213: 3027329715012208567
+    second: Katarina Eyebrow Raised w_ coat_0
   - first:
-      213: 6017849968177087295
-    second: Dafina No Puffer_1
-  - first:
-      213: -965048763241971800
-    second: Dafina No Puffer_2
+      213: -8287560662073354987
+    second: Katarina Eyebrow Raised w_ coat_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +51,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 75
@@ -102,39 +99,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dafina No Puffer_0
+      name: Katarina Eyebrow Raised w_ coat_0
       rect:
         serializedVersion: 2
-        x: 465
-        y: 288
-        width: 36
-        height: 6
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3b96318f0471fafc0800000000000000
-      internalID: -3481538419126736461
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Dafina No Puffer_1
-      rect:
-        serializedVersion: 2
-        x: 606
-        y: 73
-        width: 778
-        height: 1838
+        x: 154
+        y: 83
+        width: 585
+        height: 1674
       alignment: 9
       pivot: {x: 0.5, y: 0.7}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f338ac089a2b38350800000000000000
-      internalID: 6017849968177087295
+      spriteID: 7b78949165c330a20800000000000000
+      internalID: 3027329715012208567
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dafina No Puffer_2
+      name: Katarina Eyebrow Raised w_ coat_1
       rect:
         serializedVersion: 2
-        x: 1029
-        y: 75
-        width: 9
-        height: 43
+        x: 789
+        y: 568
+        width: 6
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8af380c43457b92f0800000000000000
-      internalID: -965048763241971800
+      spriteID: 515dd9abc7bacfc80800000000000000
+      internalID: -8287560662073354987
       vertices: []
       indices: 
       edges: []
@@ -175,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2b7d390a78c57044bafa3b0d976b6438
+    spriteID: 590d5d5acdc84a94dabd86ec62cf2938
     internalID: 0
     vertices: []
     indices: 
@@ -185,9 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Dafina No Puffer_0: -3481538419126736461
-      Dafina No Puffer_1: 6017849968177087295
-      Dafina No Puffer_2: -965048763241971800
+      Katarina Eyebrow Raised w_ coat_0: 3027329715012208567
+      Katarina Eyebrow Raised w_ coat_1: -8287560662073354987
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

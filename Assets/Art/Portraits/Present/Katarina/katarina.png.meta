@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 24eb948a5a6b0ce4cbaf6a4c5ddeac8e
+guid: 46673bfb6a6760547a218ca8e479c6f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5969785612072809107
-    second: Jovan Present_0
-  - first:
-      213: -5496196682887693770
-    second: Jovan Present_1
+      213: -1989328090450821335
+    second: katarina_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -99,49 +96,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jovan Present_0
+      name: katarina_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 45
-        width: 767
-        height: 2431
+        x: 0
+        y: 0
+        width: 204
+        height: 512
       alignment: 9
-      pivot: {x: 0.5, y: 0.75}
+      pivot: {x: 0.5, y: 0.6}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d6d89277d9f072da0800000000000000
-      internalID: -5969785612072809107
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jovan Present_1
-      rect:
-        serializedVersion: 2
-        x: 784
-        y: 1733
-        width: 60
-        height: 801
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 63a7cccac3699b3b0800000000000000
-      internalID: -5496196682887693770
+      spriteID: 92ff8f244ac7464e0800000000000000
+      internalID: -1989328090450821335
       vertices: []
       indices: 
       edges: []
@@ -150,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 6031af9577688d746b6f9af8225fd1b6
+    spriteID: cbf123c8bf239574b9bafd59aee45891
     internalID: 0
     vertices: []
     indices: 
@@ -160,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Jovan Present_0: -5969785612072809107
-      Jovan Present_1: -5496196682887693770
+      katarina_0: -1989328090450821335
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

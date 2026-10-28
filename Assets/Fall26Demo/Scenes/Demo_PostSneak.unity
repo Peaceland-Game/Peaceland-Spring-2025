@@ -1556,7 +1556,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea37a50265d616548bd6d3e2abc6a691, type: 2}
   backgroundList:
   - {fileID: 2266740177925982103, guid: 7af50ab8a2368764ebcbfb8b6fc2d48e, type: 3}
-  - {fileID: -2850297495729680593, guid: 0df003d3ea6e853438beb4cb2253fc86, type: 3}
+  - {fileID: 7050485780488192128, guid: 5640b04746bd84f45afa26c810c41d0f, type: 3}
   backgroundSprite: {fileID: 1139363226}
   objectImageList: []
   dialogueRunner: {fileID: 1017169655}

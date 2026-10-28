@@ -14,9 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCharSprites:
   - {fileID: 2266740177925982103, guid: 7af50ab8a2368764ebcbfb8b6fc2d48e, type: 3}
-  - {fileID: -3030350253314157650, guid: 411b3643659400545b815e9008d9beae, type: 3}
-  - {fileID: -1989328090450821335, guid: 46673bfb6a6760547a218ca8e479c6f4, type: 3}
+  - {fileID: -481045979939651818, guid: 88e57fec19d99714ebd00755cbf35d3a, type: 3}
+  - {fileID: -4637355083179346927, guid: 4e3ecdcd62ddd384da7ad87bdd800810, type: 3}
+  - {fileID: 7358481397889661516, guid: 550042c1dfdd28d4da792c53a1c6e168, type: 3}
+  - {fileID: 4585285060034533363, guid: 584130e78981b1c4fbf73284e597e87a, type: 3}
+  - {fileID: 3027329715012208567, guid: e4f21052e434ac849845d95607f5b77b, type: 3}
+  - {fileID: 2951894985080798144, guid: eabb982dfdb56824893be73ff8df2ec6, type: 3}
+  - {fileID: 3949906704794439584, guid: b154c2557f8d7e541a015cc87f084001, type: 3}
   secondCharSprites:
+  - {fileID: -5512708815795086695, guid: 9d1ff41a9ee0936468ae5440ad44f144, type: 3}
+  - {fileID: -5512708815795086695, guid: 9d1ff41a9ee0936468ae5440ad44f144, type: 3}
   - {fileID: -5512708815795086695, guid: 9d1ff41a9ee0936468ae5440ad44f144, type: 3}
   dialogueStartNode: TownSquareIntro
   dialogueEndNode: AfterMemory
