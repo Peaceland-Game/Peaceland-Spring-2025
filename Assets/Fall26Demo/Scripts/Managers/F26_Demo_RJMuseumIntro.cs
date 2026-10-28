@@ -170,7 +170,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             newsPaper.enabled = false;
             museumTree.enabled = true;
             treePlaque.enabled = true;
-            warRoomEntrance.gameObject.SetActive(true);
+            //warRoomEntrance.gameObject.SetActive(true);
             DisableContinueButton();
             
         }
@@ -363,7 +363,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         // If after the initial dialogue, jump into the memory sequence.
         else if (currentMinigame == afterMemStart && !GM.completedScenes["R+JMemory"])
         {
-            LL.LoadNextLevel();
+            LL.LoadLevelByBuildIndex(F26_GameManager.RJ_MemoryBuildIndex);
         }
 
         // If returning from the memory, run the dialogue

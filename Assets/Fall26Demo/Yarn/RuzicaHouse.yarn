@@ -29,7 +29,7 @@
 <<changeSprite 2 1>>// Change Jovan's Expression: Smile (for comfort)
 <<lighten 2>>   
 {$lover1Name} grabs her hand tighter.
-{$lover1Name}: It’ll be okay Ruzica, now that we’re together
+{$lover1Name}: It’ll be okay Ruzica, now that we’re together.
 <<darken 2>>
 
 <<lighten 1>>

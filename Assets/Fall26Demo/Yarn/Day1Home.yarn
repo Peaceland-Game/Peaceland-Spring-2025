@@ -11,7 +11,7 @@ As {$protagName} walks into his house, he spots {$brotherName} standing by the f
 <<changeSprite 1 0>>
 <<lighten 1>>
 {$brotherName}: Oh, hey, Marc. 
-A sly smirk grows over {$brotherName}'s face
+A sly smirk grows over {$brotherName}'s face.
 {$brotherName}: You like the coffee I left for you this morning?
 -> Yeah, my hand really loved the hot water.
     <<darken 1>>
@@ -130,5 +130,6 @@ A sly smirk grows over {$brotherName}'s face
     <<darken 2>>
 {$protagName} goes to his room.
 <<changeBG 1>>
+<<zeroChar>>
 {$protagName} sits at his desk, thinking about everything that happened today
 ===
