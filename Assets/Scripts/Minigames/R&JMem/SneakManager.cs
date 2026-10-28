@@ -143,16 +143,10 @@ public class SneakManager : MinigameBehavior
         //get a random index for the prefabs array
         int randomIndex = Random.Range(0, sentryPrefabs.Length);
 
-        //INstantiate the prefab that corresponds to the given index
+        //Instantiate the prefab that corresponds to the given index
         SneakSentry sentryToAdd = Instantiate(sentryPrefabs[randomIndex], spawnPos, Quaternion.AngleAxis(45f, Vector3.forward));
 
         SpriteRenderer tempSpriteRenderer = sentryToAdd.GetComponent<SpriteRenderer>();
-
-        //if (tempSpriteRenderer != null)
-        //{
-            // Set the order
-            //tempSpriteRenderer.sortingOrder = 1;
-        //}
 
         sentryList.Add(sentryToAdd);
     }
@@ -191,6 +185,7 @@ public class SneakManager : MinigameBehavior
         victoryScreen.SetActive(false);
         sneakUI.SetActive(true);
         isRunning = true;
+        
 
         currentSentrySpawner = 0;
         for (int i = 0; i < sentryList.Count; i++)
