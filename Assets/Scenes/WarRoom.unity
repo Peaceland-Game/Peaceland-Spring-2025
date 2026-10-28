@@ -1196,7 +1196,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.14823137}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -372.58997}
+  m_AnchoredPosition: {x: 0, y: -372.59003}
   m_SizeDelta: {x: 0, y: 745.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &56478786
@@ -3735,7 +3735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621941670988647396, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -234.98198
+      value: -234.982
       objectReference: {fileID: 0}
     - target: {fileID: 1629208101253302989, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Type
@@ -7655,7 +7655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453268616855467610, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -6.8898926
+      value: -6.889923
       objectReference: {fileID: 0}
     - target: {fileID: 883921553065995047, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8188,6 +8188,8 @@ MonoBehaviour:
   - {fileID: 1380548654863677624}
   wallClickInstructions: {fileID: 582594156}
   mingming: 0
+  testRJCompletedButton: {fileID: 960473421}
+  showTestRJCompletedButton: 1
 --- !u!1 &595966605
 GameObject:
   m_ObjectHideFlags: 0
@@ -11602,7 +11604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621941670988647396, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -156.49197
+      value: -156.49194
       objectReference: {fileID: 0}
     - target: {fileID: 1629208101253302989, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Type
@@ -12345,7 +12347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 453268616855467610, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0.17676358
+      value: 56.998165
       objectReference: {fileID: 0}
     - target: {fileID: 453268616855467610, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -12381,15 +12383,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 883921553065995047, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 961.8854
+      value: 821.5896
+      objectReference: {fileID: 0}
+    - target: {fileID: 883921553065995047, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 418.56
       objectReference: {fileID: 0}
     - target: {fileID: 883921553065995047, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1670
+      value: 1510.6077
       objectReference: {fileID: 0}
     - target: {fileID: 883921553065995047, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -222.36194
+      value: -180.75125
       objectReference: {fileID: 0}
     - target: {fileID: 966375673872425219, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_IsActive
@@ -12437,7 +12443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621941670988647396, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 658.11456
+      value: 639.0181
       objectReference: {fileID: 0}
     - target: {fileID: 1621941670988647396, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.y
@@ -12449,7 +12455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1621941670988647396, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -310.25198
+      value: -270.41626
       objectReference: {fileID: 0}
     - target: {fileID: 1629208101253302989, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Type
@@ -12613,16 +12619,12 @@ PrefabInstance:
       objectReference: {fileID: 818371597}
     - target: {fileID: 4407943790353120084, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_text
-      value: "1: An Eskani plate passed down within a family as a generational keepsake.\n\n2:
-        An artisan Cleoni plate displayed within homes and businesses to honor their
-        culture and give thanks to the makers of the dish.\n\n3: An urn used by Thebrean
-        families. It is common in Thebrean families to cremate a loved one who has
-        passed and put their ashes in a decorative urn to show respect to their relatives.
-        \r"
+      value: Ceramics passed down from generation to generation, representing history
+        from each of the three main groups in Streynia.
       objectReference: {fileID: 0}
     - target: {fileID: 4407943790353120084, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_fontSize
-      value: 41.65
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4407943790353120084, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_margin.x
@@ -12634,7 +12636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4407943790353120084, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_fontSizeMax
-      value: 45
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4407943790353120084, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_TextWrappingMode
@@ -12646,7 +12648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5298772743006022241, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -220.26605
+      value: -397.71252
       objectReference: {fileID: 0}
     - target: {fileID: 5548816744953601444, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_Enabled
@@ -12692,6 +12694,10 @@ PrefabInstance:
       propertyPath: 'neighbours.Array.data[5]'
       value: 
       objectReference: {fileID: 1835263427}
+    - target: {fileID: 7548096012616376638, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
+      propertyPath: m_Spacing
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7823839356436880927, guid: 5566b590cb47e2d47b961c3d2f92df9b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -12775,7 +12781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -126.11499, y: -53.024994}
+  m_AnchoredPosition: {x: -126.11499, y: -53.025024}
   m_SizeDelta: {x: 252.22998, y: 106.04999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &960473423
@@ -13843,7 +13849,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 476.28}
+  m_SizeDelta: {x: 0, y: 564.02}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1056929212
 GameObject:
@@ -13983,7 +13989,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 73.72, y: 71.03}
+  m_AnchoredPosition: {x: 73.71997, y: 71.03}
   m_SizeDelta: {x: 147.43, y: 142.06}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1060249389
@@ -15068,7 +15074,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.24518743, y: 0}
   m_AnchorMax: {x: 0.7528126, y: 0.42400002}
-  m_AnchoredPosition: {x: 0.5, y: -0.019989014}
+  m_AnchoredPosition: {x: 0.5, y: -0.020019531}
   m_SizeDelta: {x: 1.3500061, y: -0.039993286}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1247888818
@@ -18576,8 +18582,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0008544922}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 157.72}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1932653814
 GameObject:

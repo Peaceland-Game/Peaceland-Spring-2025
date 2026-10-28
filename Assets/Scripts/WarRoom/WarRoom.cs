@@ -54,6 +54,12 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     private bool mingming = false; //keep this off AT ALL TIMES 
 
+    [SerializeField]
+    private GameObject testRJCompletedButton = null;
+
+    [SerializeField]
+    private bool showTestRJCompletedButton = false;
+
     private GameManager gm;
 
     void Start()
@@ -72,6 +78,15 @@ public class WarRoom : GenericMemManager
             {
                 wall.GetComponent<Image>().color = new Color(255, 255, 255, 0);
             }
+        }
+
+        if (showTestRJCompletedButton)
+        {
+            testRJCompletedButton.SetActive(true);
+        }
+        else
+        {
+            testRJCompletedButton.SetActive(false);
         }
 
         //enable wall view exclusive buttons/ui elements
