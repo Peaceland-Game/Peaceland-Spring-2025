@@ -75,6 +75,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         // Set up variables
         GM = FindFirstObjectByType<F26_GameManager>();
         LL = FindFirstObjectByType<LevelLoader>();
+        dialogueRunner.onDialogueComplete.RemoveListener(NextMinigame);
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
         tap = InputSystem.actions.FindAction("Tap");
 

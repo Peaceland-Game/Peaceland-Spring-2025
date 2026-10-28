@@ -245,10 +245,16 @@ public class F26_GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Clears the booleans that control the intro sequence, resetting the demo
+    /// Resets any variables that were changed by playing through the demo
     /// </summary>
-    private void ResetGameManager()
+    public void ResetGameManager()
     {
-        Debug.Log("Reseting GameManager bools.");
+        foreach (string s in SCENE_LIST_DEMO)
+        {
+            completedScenes[s] = false;
+        }
+        KnowledgeStat = 0;
+        allMuseumDialogueComplete = false;
+        currentScene = SCENE_LIST_DEMO[0];
     }
 }
