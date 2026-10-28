@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b06fbd85260b88442bfd71edfd299565, type: 3}
+  m_Name: Letter
+  m_EditorClassIdentifier: Assembly-CSharp::LetterData
+  letterName: Ruzica Letter
+  recipient: 
+  signoff: 
+  textParts:
+  - ' '
+  - "\n\nI\u2019m sure you\u2019re wondering where I\u2019ve gone. You all probably
+    aren\u2019t surprised. The truth is, I\u2019ve left to live the rest of my life
+    with my one, true love. He loves me and he makes me happy.  "
+  - ', but I never could have stayed. You  '
+  - ' between me and '
+  - ' so I made the choice for you. I refuse to spend my life hiding the person who
+    makes me happy because '
+  - ". I don\u2019t even want to think about what you all would have done to him
+    if you had found out before all this.\n\n"
+  - " I will not be coming back. Please don\u2019t waste your time looking for me.
+    Please don\u2019t try to convince me to change my mind. I am right where I need
+    and want to be. I hope that maybe one day you will change your mind about the
+    Thebrean people and to stop "
+  - ". We all need to focus on moving forward.\n\n "
+  - ",\nRuzica\n "
+  blanks:
+  - blankId: b0
+    placeholder: _______
+    choices:
+    - word: (Leave Blank)
+      mood: 2
+      points: 1
+    - word: Mom, Dad,
+      mood: 0
+      points: 1
+  - blankId: b1
+    placeholder: _______
+    choices:
+    - word: It hurts me to say this
+      mood: 1
+      points: 1
+    - word: I tried to tell you
+      mood: 1
+      points: 1
+  - blankId: b2
+    placeholder: _______
+    choices:
+    - word: couldn't choose
+      mood: 0
+      points: 1
+    - word: refused to choose
+      mood: 0
+      points: 1
+  - blankId: b3
+    placeholder: _______
+    choices:
+    - word: the beliefs you hold
+      mood: 0
+      points: 1
+    - word: your hatred for the Thebrean people
+      mood: 0
+      points: 1
+  - blankId: b4
+    placeholder: _______
+    choices:
+    - word: of where he comes from
+      mood: 0
+      points: 0
+    - word: you don't see him as human
+      mood: 0
+      points: 0
+  - blankId: b5
+    placeholder: _______
+    choices:
+    - word: So, for now,
+      mood: 0
+      points: 0
+    - word: I've made up my mind;
+      mood: 0
+      points: 0
+  - blankId: b6
+    placeholder: _______
+    choices:
+    - word: holding these meaningless grudges
+      mood: 0
+      points: 0
+    - word: tream them like they're lesser
+      mood: 0
+      points: 0
+  - blankId: b7
+    placeholder: _______
+    choices:
+    - word: I miss you
+      mood: 0
+      points: 0
+    - word: Goodbye
+      mood: 0
+      points: 0
+  correctWords: []
+  wordBank: []

@@ -78,7 +78,7 @@
 {$lover2Name}: Bye, {$protagName}! I hope we were able to help with the tree.
 <<darken 1>>
 <<zeroChar>>
-{$lover1Name} and {$lover2Name} walk away, hand-in-hand.
+{$lover1Name} and {$lover2Name} stroll away, hand-in-hand.
 ===
 
 title: PostRJPetarStart
@@ -93,7 +93,7 @@ title: PostRJPetarStart
     {$protagName}: I think it went pretty well.
 -> Excellent!
     {$protagName}: Excellent!
-{$directorName}: We'll see about that.
+{$directorName}: If you say so.
 <<zeroChar>>
 ===
 
@@ -118,7 +118,7 @@ title: PostMemRJStart
 {$protagName}: Is there anything in particular you like?
 
 <<lighten 2>>
-{$lover1Name}: I like the inclusion of children's toys. Too often, people forget about the children in those situations.
+{$lover1Name}: The inclusion of children's toys. Too often, people forget about the children in these sorts of situations.
 <<darken 2>>
 
 <<lighten 1>>
@@ -141,7 +141,7 @@ title: PostMemRJChildren
     {$lover2Name}: In times of war, there's no guarantee.
     <<darken 1>>
     <<lighten 2>>
-    {$lover1Name}: Still, I like to hope.
+    {$lover1Name}: Still, I'd like to hope.
     <<darken 2>>
     -> Hope is a good thing to have.
         {$protagName}: Hope is a good thing to have.
@@ -167,7 +167,7 @@ title: PostMemRJChildren
     <<lighten 1>>
     {$lover2Name}: Hopefully, we never have to go through that again.
     <<darken 1>>
-    {$protagName}: As long as you have each other.
+    {$protagName}: As long as you have each other, right?
     <<lighten 1>>
     {$lover2Name} smiles.
     {$lover2Name}: I suppose so.
@@ -181,8 +181,8 @@ title: PostMemRJEnd
 {$lover1Name}: Well, it was nice talking to you again!
 <<darken 2>>
 
-{$protagName}: You too.
+{$protagName}: You too. Come back and visit soon!
 
 <<zeroChar>>
-{$lover1Name} and {$lover2Name} leave.
+{$lover1Name} and {$lover2Name} smile at {$protagName} and turn to leave.
 ===

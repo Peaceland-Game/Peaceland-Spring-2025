@@ -12,39 +12,38 @@
 
 <<changeSprite 2 4>> // Change Jovan's Expression: Desperate
 <<lighten 2>>   
-{$lover1Name} is running around his dining room frantically. 
-He's looking in drawers and behind furniture. 
+{$lover1Name} is running around his dining room frantically, looking in drawers and behind furniture. 
 He gets more and more desperate as he mutters to himself.
 {$lover1Name}: I must have misplaced it.
-{$lover1Name}: I must have picked it up and put it somewhere.
-{$lover1Name}: It's fine, no one else has-
+{$lover1Name}: She must have left it somewhere.
+{$lover1Name}: It's fine,  it’s not like anyone would take it-
 <<darken 2>>
 
 <<changeSprite 1 0>>    // Damir starts with a neutral expression
-{$cousinName}, {$lover1Name}'s cousin, walks into the kitchen and sits at the table with a slice of chocolate cake.
+{$cousinName}, {$lover1Name}'s cousin, walks into the kitchen and sits at the table, holding a slice of chocolate cake.
 <<showChar 1>>
 <<showIMG 0>>   // Show Cake
 <<lighten 1>>
-{$cousinName}: Are you looking for something?
+{$cousinName}: Hey kid. Looking for something?
 <<darken 1>>
 
 <<changeSprite 2 0>> // Change Jovan's expression: Neutral
 <<lighten 2>>
 {$lover1Name} freezes before forcing himself to appear calm.
-{$lover1Name}: Not really. Just a pen.
+{$lover1Name}: Nope! Just uh- I just lost my pen..
 <<darken 2>>
 
 <<changeSprite 1 1>>// Change Damir's Expression: Suspicious
 <<lighten 1>>   
-{$cousinName}: Not really? Or just a pen?
+{$cousinName}: So you’re looking for your pen?
 <<darken 1>>
 
 <<lighten 2>>   
 {$lover1Name}'s heart beats faster.
-    -> Just a pen!
-        {$lover1Name}: Just a pen!
-    -> Not really. No pen.
-        {$lover1Name}: Not really. No pen.
+    -> Yep!
+        {$lover1Name}: Yep!
+    -> Not really...
+        {$lover1Name}: Not really...
     -> *Say nothing*
         {$lover1Name}: ...
 <<darken 2>>
@@ -61,12 +60,12 @@ He gets more and more desperate as he mutters to himself.
 
 <<lighten 1>>
 {$cousinName} holds up the envelope and waves it in the air.
-{$cousinName}: I found this by your favorite bench in the old park.
+{$cousinName}: I found this by the old bench outside our building.
 <<darken 1>>
 
 <<changeSprite 2 3>>// Change Jovan's Expression: Afraid
 <<lighten 2>> 
-{$lover1Name} rushes forward and grabs the letter. Then he steps back, but stops when {$cousinName} speaks.
+{$lover1Name} rushes forward and grabs the letter. He steps back to run to his room, but stops when {$cousinName} speaks.
 <<darken 2>>
 
 <<lighten 1>>
@@ -80,7 +79,7 @@ He gets more and more desperate as he mutters to himself.
 <<changeSprite 1 2>>// Change Damir's Expression: Determined
 <<lighten 1>>   
 {$cousinName} puts down his fork.
-{$cousinName}: A letter with no return address that's clearly filled with shredded paper was left in a park for you to find. 
+{$cousinName}: A letter with no return address that is clearly filled with shredded paper was left outside our house for you to find. 
 {$cousinName}: On top of that, you won't tell me what's in the letter.
 <<darken 1>>
 
@@ -100,7 +99,7 @@ He gets more and more desperate as he mutters to himself.
         {$lover1Name}: Just drop it, please.
     -> I know what I'm doing.
         {$lover1Name}: I know what I'm doing.
-    -> I know. But it's nothing, I promise.
+    -> It's nothing, {$cousinName}, I promise.
         {$lover1Name}: I know. But its nothing, I promise.
 <<darken 2>>
 
@@ -115,7 +114,7 @@ Picking up the fork and shaking his head, {$cousinName} gives up.
 {$lover1Name}: Of course!
 <<darken 2>>
 
-There's an awkward pause. 
+They stare at each other. 
 
 <<changeSprite 1 0>>// Change Damir's Expression: Neutral
 <<lighten 1>>   
@@ -130,10 +129,10 @@ There's an awkward pause.
 <<lighten 1>>
 {$cousinName}: Fine. I'll let you be suspicious in peace.
 <<darken 1>>
-{$cousinName} leaves the room.
+{$cousinName} rolls his eyes as he leaves the room.
 <<hideChar 1>>
 <<hideIMG 0>>   // Hide Cake
 
-{$lover1Name} dumps the pieces of the letter and begins to assemble it before he even sits down.
+{$lover1Name} dumps the pieces of the letter and begins to assemble it before he is even fully seated.
 <<hideChar 2>>
 ===

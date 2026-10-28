@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SneakManager : MinigameBehavior
 {
@@ -11,6 +12,10 @@ public class SneakManager : MinigameBehavior
     [SerializeField]
     private float camSpeed;     // Movement speed of camera
     private SneakPlayer player; // Reference to the player
+    [SerializeField]
+    private GameObject backgroundLoop; // Reference to the background
+    [SerializeField]
+    private HouseRandomizer houseManager; // Reference to the background houseManager
 
     [SerializeField]
     private GameObject goalTile;    // Reference to the goal tile
@@ -21,7 +26,7 @@ public class SneakManager : MinigameBehavior
     [SerializeField]
     private float sentrySpawnOffset;        // Ditance to offset Sentries from their spawners
     [SerializeField]
-    private SneakSentry sentryPrefab;       // Reference to Sentry prefab to instantiate from
+    private SneakSentry[] sentryPrefabs;       // Reference to Sentry prefabs to instantiate from
     private List<SneakSentry> sentryList = new List<SneakSentry>(); // List of active Sentries
     [SerializeField]
     private float loseDistance;     // Distance from camera to remove old objects
@@ -33,6 +38,12 @@ public class SneakManager : MinigameBehavior
     private GameObject gameOverScreen;  // UI for when the player has been caught
     [SerializeField]
     private GameObject victoryScreen;   // UI for when the player has reached the goal
+    [SerializeField]
+    private GameObject gameStartScreen;   // UI for when the player has started the game for the first time
+
+    // Level Loader
+    protected LevelLoader LL;
+    public LevelLoader LevelLoader { get { return LL; } }
 
 
     /// <summary>
@@ -42,10 +53,12 @@ public class SneakManager : MinigameBehavior
     {
         cam = FindFirstObjectByType<Camera>();
         player = FindFirstObjectByType<SneakPlayer>();
-        sneakUI.SetActive(true);
+        sneakUI.SetActive(false);
+        gameStartScreen.SetActive(true);
         gameOverScreen.SetActive(false);
         victoryScreen.SetActive(false);
         isRunning = true;
+        Time.timeScale = 0f;
     }
 
     /// <summary>
@@ -62,6 +75,7 @@ public class SneakManager : MinigameBehavior
     {
         // TEST CODE! Likely not needed for final version.
         StartMinigame();
+        LL = FindFirstObjectByType<LevelLoader>();
     }
 
     // Update is called once per frame
@@ -74,7 +88,7 @@ public class SneakManager : MinigameBehavior
             MoveSentries();
 
             // The player loses if they fall too far behind the camera or is caught
-            if (player.transform.position.x < cam.transform.position.x - loseDistance
+            if (!IsObjectVisible(player)
                 || player.IsCaught)
             {
                 DisplayGameOver();
@@ -87,14 +101,15 @@ public class SneakManager : MinigameBehavior
 
             // Check if the player has passed the current sentry spawn point
             if (currentSentrySpawner < sentrySpawners.Length &&
-                player.transform.position.x >= sentrySpawners[currentSentrySpawner].x)
+                cam.transform.position.x >= sentrySpawners[currentSentrySpawner].x)
             {
-                SpawnSentry(new Vector3(sentrySpawners[currentSentrySpawner].x + sentrySpawnOffset, 0, 0));
+                SpawnSentry(new Vector3(sentrySpawners[currentSentrySpawner].x + sentrySpawnOffset, 2.5f, 0));
                 currentSentrySpawner++;
             }
 
             // Remove offscreen sentries
             CleanUpOldSentries();
+
         }
     }
 
@@ -103,7 +118,7 @@ public class SneakManager : MinigameBehavior
     /// </summary>
     private void MoveCamera()
     {
-        cam.transform.Translate(camSpeed, 0, 0);
+        cam.transform.Translate(camSpeed * Time.deltaTime, 0, 0);
     }
 
     /// <summary>
@@ -123,11 +138,18 @@ public class SneakManager : MinigameBehavior
     /// <param name="spawnPos">A vector 3 position at which to spawn the sentry</param>
     private void SpawnSentry(Vector3 spawnPos)
     {
-        sentryList.Add(
-            Instantiate(sentryPrefab, spawnPos, new Quaternion())
-            );
-    }
+        if (sentryPrefabs == null || sentryPrefabs.Length == 0) return; //make sure there actually are items in the array
 
+        //get a random index for the prefabs array
+        int randomIndex = Random.Range(0, sentryPrefabs.Length);
+
+        //Instantiate the prefab that corresponds to the given index
+        SneakSentry sentryToAdd = Instantiate(sentryPrefabs[randomIndex], spawnPos, Quaternion.AngleAxis(45f, Vector3.forward));
+
+        SpriteRenderer tempSpriteRenderer = sentryToAdd.GetComponent<SpriteRenderer>();
+
+        sentryList.Add(sentryToAdd);
+    }
     /// <summary>
     /// Destroy sentries once they move off screen
     /// </summary>
@@ -150,12 +172,20 @@ public class SneakManager : MinigameBehavior
     /// </summary>
     public void ResetSneakGame()
     {
+        Time.timeScale = 1f;
         cam.transform.position = startPos;
         player.ResetPlayer();
+        BackgroundLoop[] backgroundPanels = backgroundLoop.GetComponentsInChildren<BackgroundLoop>();
+        foreach (BackgroundLoop b in backgroundPanels)
+        {
+            b.ResetBackground();
+        }
+        houseManager.ResetHouses();
         gameOverScreen.SetActive(false);
         victoryScreen.SetActive(false);
         sneakUI.SetActive(true);
         isRunning = true;
+        
 
         currentSentrySpawner = 0;
         for (int i = 0; i < sentryList.Count; i++)
@@ -173,6 +203,7 @@ public class SneakManager : MinigameBehavior
         isRunning = false;
         sneakUI.SetActive(false);
         gameOverScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     /// <summary>
@@ -183,5 +214,50 @@ public class SneakManager : MinigameBehavior
         isRunning = false;
         sneakUI.SetActive(false);
         victoryScreen.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    /// <summary>
+    /// Starts the minigame when the start button is pressed
+    /// </summary>
+    public void PressStart()
+    {
+        isRunning = true;
+        sneakUI.SetActive(true);
+        gameStartScreen.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void loadNextLevel()
+    {
+        Time.timeScale = 1f;
+        LL.LoadLevelByBuildIndex(8);
+    }
+
+    /// <summary>
+    /// Checks if the given object is on camera, returning a combined boolean for each axis.
+    /// </summary>
+    /// <param name="player">The SneakPlayer, but its could be genericized for potential futurue use in other circumstances</param>
+    /// <returns></returns>
+    public bool IsObjectVisible(SneakPlayer player)
+    {
+        Vector3 viewPoint = cam.WorldToViewportPoint(player.transform.position);
+
+        // Check each axis to make sure the object is on camera, basically a stand in for checking the object agianst the bounds of the canvas, that way it adapts to PC or tablet mode
+        bool isXVisible = viewPoint.x >= 0f && viewPoint.x <= 1f;
+        bool isYVisible = viewPoint.y >= 0f && viewPoint.y <= 1f;
+        bool isInFrontOfCamera = viewPoint.z > 0f;
+
+        return isXVisible && isYVisible && isInFrontOfCamera;
+    }
+
+    /// <summary>
+    /// Cloese the application, for use in the test builds of the escape minigame.
+    /// </summary>
+    public void QuitGame()
+    {
+        Application.Quit();
+
+        Debug.Log("Game has been quit.");
     }
 }

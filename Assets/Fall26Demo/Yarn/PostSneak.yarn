@@ -1,0 +1,48 @@
+﻿title: PostSneak
+// Corresponds to scene 4 in the narrative script
+// This scene is from Ruzica's POV
+// Ruzica and Jovan are the characters in these scene
+// Ruzica is character 1, Jovan is character 2
+---
+<<twoChar>>
+
+<<lighten 1>>
+{$lover2Name}: OK, we made it out of the city.
+<<darken 1>>
+<<lighten 2>>
+{$lover1Name}: Where do we go now?
+<<darken 2>>
+<<lighten 1>>
+{$lover2Name}: I don’t know. Let’s just keep walking until we find somewhere safe.
+<<darken 1>>
+They spent the next month hopping from town to town, unable to settle down.
+===
+
+title: ApptScene
+---
+{$lover1Name} and {$lover2Name} are standing in the middle of their newly leased apartment.
+
+<<lighten 2>>
+{$lover1Name}: It’s been too long since I’ve heard from Damir.
+<<darken 2>>
+<<lighten 1>>
+{$lover2Name}: I’m sure he’s alright. We ran away, remember?
+{$lover2Name}: I’ve been worried too, but it’s not a good idea to reach out again right now.
+<<darken 1>>
+<<lighten 2>>
+{$lover1Name}: I just want to know he’s alright. I haven’t stopped thinking about it.
+<<darken 2>>
+<<lighten 1>>
+{$lover2Name}: We have to put our life back together first.
+{$lover2Name}: I want to know as much as you do.
+<<darken 1>>
+<<lighten 2>>
+{$lover1Name}: He deserves to know we’re safe too, don’t you think everyone back home is worried about us?
+<<darken 2>>
+<<lighten 1>>
+{$lover2Name}: You might be right.
+{$lover2Name}: This is our home now, but I see your point.
+<<darken 1>>
+<<lighten 2>>
+{$lover1Name}: I’ll send a letter to Damir. You should send one to your parents, and then we can put it behind us.
+===

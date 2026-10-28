@@ -16,40 +16,65 @@
 //go in to bakery
 <<changeBG 2>>
 
-//Put Dalila in the person 2 slot (it lines up better with the layout of the bakery)
+//Put {$bakerName} in the person 2 slot (it lines up better with the layout of the bakery)
 <<twoChar>>
 <<changeSprite 1 0>>
 <<changeSprite 2 0>>
 
 <<lighten 2>>
-{$bakerName}: Hey, {$protagName}! You look sharp today.
+{$bakerName}: Well hello, {$protagName}! You look sharp today.
+{$bakerName} cracks a smile.
 {$bakerName}: I saw your parents the other day. They mentioned that you're starting a new job?
 <<darken 2>>
 
-{$protagName}: I am. Today was my first shift at the new museum, so I figured that I'd look presentable, despite how my morning went.
-
-{$protagName} shows {$bakerName} the bandage on his hand.
+{$protagName}: I am. Today was my first shift at the new museum.
 
 <<lighten 2>>
-{$bakerName}: Oh my! Let me guess, it was Art, wasn't it?
+{$bakerName}: Oh, of course. I don’t suppose that you are working with that new exhibit? The Memory Tree?
+
 <<darken 2>>
-
-{$protagName}: Yeah, he tried to make me breakfast. You know how he is, left the kettle on.
+{$protagName}: You already know it!
+{$protagName}: Yeah, I’m interviewing all these different people. 
+{$protagName}: I just came from talking to an Eskani and Thebrean couple who ran away together.
 
 <<lighten 2>>
-{$bakerName}: Well, I can at least give you a doughnut for your troubles.
-{$bakerName}: Don't worry, it's on the house!
+{$bakerName}: An Eskani and Thebrean… couple?
+{$bakerName}: I believe I know the couple you are referring to.
+{$bakerName}: I heard a rumor about them when I was younger. I always thought it was simply that, a rumor. 
+
+<<darken 2>>
+{$protagName}: What did you hear?
+
+<<lighten 2>>
+{$bakerName}: That he left his cousin to die to run away with a girl he barely knew.
+{$bakerName}: Did that really happen?
+
+<<darken 2>>
+-> I don't think he meant for that to happen.
+    <<changeStat 0 1>>
+    {$protagName}: I don't think he meant for that to happen.
+-> I guess that’s one way of putting it.
+    {$protagName}: I guess that’s one way of putting it.
+
+<<lighten 2>>
+{$bakerName} eyes {$protagName} carefully.
+{$bakerName}: I do hope that Thebrean man didn’t give you any trouble, {$protagName}.
+{$protagName}: I’m alright, Jovan was very kind to me.
+
+<<lighten 2>>
+{$bakerName}: Well, let me get you a doughnut for your troubles.
+{$bakerName}: On the house, of course!
 <<darken 2>>
 
 {$bakerName} grabs a doughnut from the display case and hands it to {$protagName}.  
 
-{$protagName}: Really? Thanks a lot!
+{$protagName}: Really? Thank you, {$bakerName}!
 
 <<lighten 2>>
-{$bakerName}: You're welcome!
+{$bakerName}: You're very welcome, {$protagName}!
 <<darken 2>>
 
-{$protagName}: Anyways, I should be going now. It was nice talking to you, {$bakerName}!
+{$protagName}: Anyways, I should be going now. It was good to see you, {$bakerName}!
 
 <<lighten 2>>
 {$bakerName}: Make sure you get home safe and tell your parents I said hi!
@@ -60,14 +85,17 @@
 <<zeroChar>>
 <<changeBG 0>>
 
-{$protagName} walks out of the bakery and starts heading home.
+{$protagName} walks out of the bakery and heads back to the town square.
 While enjoying his doughnut, he sees a crowd of people gathered.
-The crowd consists of two school sports teams, and they begin to argue and push each other around.
+The crowd consists of football fans that spilled out of a local bar.
+Sounds of arguments and dispute echo around the square.
+{$protagName}: (<i>Huh, a game must have ended.</i>)
+{$protagName} glances around the square and spots Officer {$officerName}.
 
 //Display Branko
 <<oneChar>>
 <<changeSprite 1 1>>
-Officer {$officerName} waves to {$protagName} and walks over to him.
+{$officerName} waves to {$protagName} and walks over to him.
 
 <<lighten 1>>
 {$officerName}: Hey, {$protagName}! How was your first day at the museum?
@@ -78,31 +106,34 @@ Officer {$officerName} waves to {$protagName} and walks over to him.
     {$protagName}: It wasn't bad, and I had some interesting conversations.
     {$protagName}: You know {$directorName}, right?
 
+<<changeSprite 1 2>>
 <<lighten 1>>
-{$officerName}: I can't say I know {$directorName} well, but he always seemed grumpy.
+{$officerName}: I can't say I know {$directorName} well, but he always seemed a bit...irritable.
 <<darken 1>>
 
 {$protagName}: I can see why you'd think that.
 
-The crowd of people is getting louder, and shoving has turned into throwing punches.
+The crowd of fans is getting louder, and shoving has turned into throwing punches.
 
+<<changeSprite 1 3>>
 <<lighten 1>>
 {$officerName}: Sorry, {$protagName}, I have to take care of this.
 <<darken 1>>
 
 <<zeroChar>>
 Before {$protagName} could respond, {$officerName} runs off to stop the fight.
-{$protagName} watches {$officerName} try to scare off the students, before deciding it was best to head home.
+{$protagName} watches {$officerName} try to calm down the growing mob.
+{$protagName}: (<i>Probably a good time to head home.</i>)
 
 //Display Katarina
 <<oneChar>>
-<<changeSprite 1 2>>
-While he hurriedly walks away, he spots {$collegeFriendName}.
+<<changeSprite 1 4>>
+While he hurriedly walks away, he spots {$collegeFriendName}, a friend from school.
 
-{$protagName}: (<i>I wonder what she's doing here?</i>)
-{$protagName}: (<i>It'd be best to check on her before she gets too distracted by the commotion.</i>)
+{$protagName}: (<i>{$collegeFriendName}? What's she doing here?</i>)
+{$protagName}: (<i>It should check on her before she gets distracted by the commotion.</i>)
 
-The crowd of people seems to be quieting slightly - someone is probably being detained.
+The crowd of fans seems to be quieting slightly, and someone is probably being detained.
 
 {$protagName}: Hey, Katarina!
 -> Are you alright?
@@ -116,61 +147,69 @@ The crowd of people seems to be quieting slightly - someone is probably being de
 title: TownSquareKatarina1
 ---
 <<lighten 1>>
+<<changeSprite 1 5>>
+{$collegeFriendName} raises an eyebrow
 {$collegeFriendName}: I'm fine. How about you?
 <<darken 1>>
 -> I'm safe, at least.
     {$protagName}: I'm safe, at least.
-    <<changeStat 0 4>>
+    <<changeStat 0 5>>
     <<lighten 1>>
+    <<changeSprite 1 4>>
     {$collegeFriendName}: That's good. I was expecting this sort of stuff with the election coming up, but it's still unpredictable.
     <<darken 1>>
     {$protagName}: It's the first one in thirty years, so that makes sense.
+    {$protagName}: Tell me what you know about the people running, Ms. Reporter.
     <<lighten 1>>
-    {$collegeFriendName}: It’s the party that wants peace versus a paramilitary group.
+    <<changeSprite 1 6>>
+    {$collegeFriendName}: It basically all boils down to a party that wants peace and a party that wants to fight another war.
     <<darken 1>>
-    -> Isn't calling them paramilitary a bit harsh?
-        {$protagName}: Isn't calling them paramilitary a bit harsh?
-        <<lighten 1>>
-        {$collegeFriendName}: Not when they advocate for forceful segregation.
-        <<darken 1>>
-    -> Yikes. When you put it like that, I get why people are so angry.
-        {$protagName}: Yikes. When you put it like that, I get why people are so angry.
+    {$protagName}: Yikes. When you put it like that, I get why people are so angry.
     <<wait 1>>
     <<jump TownSquareKatarinaEnd>>
 -> I'm a bit spooked.
     {$protagName}: I'm a bit spooked.
+    <<changeSprite 1 4>>
     <<lighten 1>>
     {$collegeFriendName}: Me too. Just because this sort of thing isn’t rare doesn’t mean it’s pleasant. Don’t worry, though, I’ll protect you.
     <<darken 1>>
     -> My hero.
         {$protagName}: My hero.
+        <<changeSprite 1 7>>
         {$collegeFriendName} smirks.
     -> Thanks. I still wish people didn’t get into fights so often.
         {$protagName}: Thanks. I still wish people didn’t get into fights so often.
+        <<changeSprite 1 6>>
         {$collegeFriendName} frowns.
         <<lighten 1>>
-        {$collegeFriendName}: Same here.
+        {$collegeFriendName}: Agreed.
         <<darken 1>>
     <<jump TownSquareKatarinaEnd>>
 ===
 
 title: TownSquareKatarina2
 ---
-<<changeStat 0 2>>
+<<changeStat 0 3>>
 <<lighten 1>>
-{$collegeFriendName}: I was just heading home. I know sports fans could get unruly, but I’ve never seen it in person before.
+{$collegeFriendName}: I was just heading home. I know sports fans could get unruly, but I’ve never seen something like this in person in person before.
 <<darken 1>>
-{$protagName}: I think it’s weird that people get so into sports… It’s literally just watching people kick around a ball.
+{$protagName}: I think it’s weird that people get so into sports… you just watch people kick around a ball.
 <<lighten 1>>
+<<changeSprite 1 6>>
 {$collegeFriendName}: It’s never just sports. There’s always politics involved, especially here.
 <<darken 1>>
-{$protagName}: Yeah, I guess you would know, Ms. Star Student.
+{$protagName}: Yeah, I guess you would know, Egghead.
+<<changeSprite 1 4>>
 {$collegeFriendName} chuckles.
 <<lighten 1>>
-{$collegeFriendName}: We actually talked about this in my class with Professor…sorry about that.
+{$collegeFriendName}: We actually talked about this in my class with Professor...
+<<changeSprite 1 6>>
+{$collegeFriendName} cuts herself off, looking guilty.
+{$collegeFriendName}: Sorry about that.
 <<darken 1>>
-{$protagName}: You can talk about college; I’m going eventually. Hopefully.
+{$protagName}: You can talk about college. I’m going eventually. Hopefully.
 <<lighten 1>>
+<<changeSprite 1 4>>
 {$collegeFriendName}: I know you’ll get there.
 <<darken 1>>
 -> I just need to save up for a car.
@@ -185,6 +224,8 @@ title: TownSquareKatarina2
 
 title: TownSquareKatarinaEnd
 ---
+<<changeSprite 1 4>>
+<<lighten 1>>
 {$collegeFriendName}: Well, I can't miss the bus. Maybe I'll see you later?
 -> Sure.
     {$protagName}: Sure.
@@ -192,5 +233,5 @@ title: TownSquareKatarinaEnd
     {$protagName}: Hopefully.
 <<zeroChar>>
 {$collegeFriendName} waves goodbye and exits the square.
-{$protagName} is finally able to go home.
+{$protagName} is finally able to start his trek home.
 ===
