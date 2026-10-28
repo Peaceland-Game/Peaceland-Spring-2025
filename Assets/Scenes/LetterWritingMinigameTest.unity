@@ -2200,8 +2200,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -317.08, y: 29}
-  m_SizeDelta: {x: 634.155, y: 850.993}
+  m_AnchoredPosition: {x: -317.08, y: 0}
+  m_SizeDelta: {x: 778.84, y: 1021.1916}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1894666419
 MonoBehaviour:
@@ -2387,13 +2387,19 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Dearest,\n\nThe __________ has finally broken over the orchard, and I
-    found myself thinking of you at the __________ hour. I still remember the way
-    you __________ when Father spoke about the harvest. The house feels __________
-    without your footsteps on the stair.\n\nYesterday I walked out to the __________
-    and left a stone where we used to sit. I suppose that is a __________ thing to
-    do. Write back when you can. I will be __________ until then.\n\n                                                      
-    Ever yours,\n                                                       __________"
+  m_text: "My Family,\r\n\r\nI\u2019m sure you\u2019re wondering where I\u2019ve
+    gone. You all probably aren\u2019t surprised. The truth is, I\u2019ve left to
+    live the rest of my life with my one, true love. He loves me and he makes me
+    happy. It hurts me to say this, but I never could have stayed. You weren\u2019t
+    able to choose between me and the beliefs that you hold, so I made the choice
+    for you. I refuse to spend my life hiding the person who makes me happy because
+    of who his family is. I don\u2019t even want to think about what you all would
+    have done to him if you had found out before all this. \r\n\r\nSo for now, I
+    will not be coming back. Please don\u2019t waste your time looking for me. Please
+    don\u2019t try to convince me to change my mind. I am right where I need and
+    want to be. I hope that maybe one day you will change your mind about the Thebrean
+    people and to stop holding those meaningless grudges. We all need to focus on
+    moving forward.\r\n\r\nI miss you,\r\nRuzica\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e3415a25d2f252c418b7b4b31a195fc9, type: 2}
   m_sharedMaterial: {fileID: 4350130204539160935, guid: e3415a25d2f252c418b7b4b31a195fc9, type: 2}
@@ -2420,8 +2426,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 34
-  m_fontSizeBase: 34
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 20
