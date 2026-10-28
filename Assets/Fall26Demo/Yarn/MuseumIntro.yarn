@@ -131,7 +131,4 @@ tags:
 <<lighten 1>>
 {$directorName}: Follow me to the <b>War Artifact</b> room.
 <<darken 1>>
-
-<<zeroChar>>
-<color=\#7F7F7F>You can move to another room by tapping/clicking on the entrance.</color>
 ===

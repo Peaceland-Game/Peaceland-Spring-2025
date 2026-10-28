@@ -19,7 +19,7 @@ public class F26_PostSneakManager : GenericMemManager
 
     public override void NextMinigame()
     {
-        if (currentMinigame == 0) {
+        if (currentMinigame >= minigames.Count - 1) {
             LL.LoadLevelByBuildIndex(F26_GameManager.LetterBuildIndex, true);
         }
         else

@@ -16,9 +16,10 @@
 {$lover2Name}: I don’t know. Let’s just keep walking until we find somewhere safe.
 <<darken 1>>
 They spent the next month hopping from town to town, unable to settle down.
+===
 
-<<changeBG 1>>
-
+title: ApptScene
+---
 {$lover1Name} and {$lover2Name} are standing in the middle of their newly leased apartment.
 
 <<lighten 2>>
