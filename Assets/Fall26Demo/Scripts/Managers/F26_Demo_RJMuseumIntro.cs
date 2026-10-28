@@ -91,7 +91,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         textStarted = false;
         DisableContinueButton();
 
-        warRoomEntrance.interactable = false;
+        warRoomEntrance.gameObject.SetActive(false);
         startDialogueButton.interactable = false;
         startDialogueButton.GetComponent<Image>().enabled = false;
         DisableDemoEndButton();
@@ -170,7 +170,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             newsPaper.enabled = false;
             museumTree.enabled = true;
             treePlaque.enabled = true;
-            warRoomEntrance.interactable = true;
+            warRoomEntrance.gameObject.SetActive(true);
             DisableContinueButton();
             
         }
@@ -304,7 +304,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     /// </summary>
     public void StartDialogue()
     {
-        warRoomEntrance.interactable = false;
+        warRoomEntrance.gameObject.SetActive(false);
         
         marcStart = true;
         StartCoroutine(Wait());
@@ -350,7 +350,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         else if (GM.CurrentScene.Equals("MuseumIntro"))
         {
             Debug.Log("War room enabled");
-            warRoomEntrance.interactable = true; 
+            warRoomEntrance.gameObject.SetActive(true); 
         }
 
         //Start at R+J Intro if coming from the war room
@@ -369,7 +369,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         // If returning from the memory, run the dialogue
         else if (currentMinigame == afterMemStart && GM.completedScenes["R+JMemory"] && !GM.allMuseumDialogueComplete)
         {
-            warRoomEntrance.interactable = false;
+            warRoomEntrance.gameObject.SetActive(false);
         }
 
         // If after the ending dialogue, enable the button that transitions to 
@@ -377,8 +377,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         else if (currentMinigame == 4)
         {
             GM.allMuseumDialogueComplete = true;
-            warRoomEntrance.interactable = true;
-            warRoomEntrance.interactable = false;
+            warRoomEntrance.gameObject.SetActive(false);
         }
 
     }
@@ -430,7 +429,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     {
         DisableContinueButton();
         DisableDemoEndButton();
-        warRoomEntrance.interactable = false;
+        warRoomEntrance.gameObject.SetActive(false);
         Debug.Log("Start Museum Transition");
 
         startDialogueButton.interactable = true;
