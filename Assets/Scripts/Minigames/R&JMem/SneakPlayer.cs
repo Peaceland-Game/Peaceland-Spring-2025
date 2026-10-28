@@ -194,6 +194,7 @@ public class SneakPlayer : MonoBehaviour
         isHiding = false;
         isWithinHidingPlace = false;
         isCaught = false;
+        isSprinting = false;
     }
 
     /// <summary>

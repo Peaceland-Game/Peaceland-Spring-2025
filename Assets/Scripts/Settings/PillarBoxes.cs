@@ -33,6 +33,9 @@ public class CameraSpacePillarboxEnforcer : MonoBehaviour
         CalculatePillarboxes();
     }
 
+    /// <summary>
+    /// Automatically adjusts the sizes for the pillar boxes on either side based on how far from a 16:9 aspect ratio the screen is
+    /// </summary>
     void CalculatePillarboxes()
     {
         if (leftBar == null || rightBar == null || canvasRect == null) return;
