@@ -38,9 +38,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LetterWritingMinigameTest.unity
     guid: 4ca9907a8683e0741b3090b4bd24153f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Notebook/Scenes/Journal.unity
     guid: d2b81f51605383f49a9de39cd7cdd732
+  - enabled: 1
+    path: Assets/JournalMinigame.unity
+    guid: d30490e4a381f7345a832cf274674d42
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: f0575c88935330e43a5e85ee93b729a5, type: 2}

@@ -56,6 +56,11 @@ public class LetterPuzzleMinigame : MinigameBehavior
 
     [SerializeField] Draggable[] puzzleList;
 
+    [SerializeField] string[] sentenceTexts;
+    [SerializeField] string[] targetHintTexts;
+    [SerializeField] int[] pieceMemoryIds;
+    [SerializeField] int[] targetMemoryIds;
+
     //[SerializeField] Button[] buttons;
 
     private bool isTransitioning;
@@ -89,16 +94,28 @@ public class LetterPuzzleMinigame : MinigameBehavior
     [SerializeField]
     private GameObject box1;
 
+    [SerializeField]
+    private bool autoStart = true;
+    private bool isStarted = false;
+
     private void Start()
     {
-        continueButton.interactable = false;  // Ensure button is disabled
-        continueButton.GetComponent<Image>().enabled = false; // Ensure button image is disabled
-        puzzleMinigame.GetComponent<DragManager>().OnCompleted += HandleCompleted;
-        //registers HandleCompleted as a listener for the OnCompleted event on the DragManager.
-        //When DragManager raises OnCompleted, HandleCompleted method will be invoked.
+        if (continueButton != null)
+        {
+            continueButton.interactable = false;  // Ensure button is disabled
+            continueButton.gameObject.SetActive(false);
+        }
+        if (puzzleMinigame != null && puzzleMinigame.GetComponent<DragManager>() != null)
+        {
+            puzzleMinigame.GetComponent<DragManager>().OnCompleted += HandleCompleted;
+        }
 
-        tap = InputSystem.actions.FindAction("Tap");
-        
+        tap = InputSystem.actions != null ? InputSystem.actions.FindAction("Tap") : null;
+
+        if (autoStart)
+        {
+            StartMinigame();
+        }
     }
 
     private void Update()
@@ -111,36 +128,44 @@ public class LetterPuzzleMinigame : MinigameBehavior
         if (timer >= 0) timer -= Time.deltaTime;
         if (timer <= 0)
         {
-            continueButton.interactable = true;
-            continueButton.GetComponent<Image>().enabled = true;
-            box1.SetActive(false);
+            if (continueButton != null)
+            {
+                continueButton.gameObject.SetActive(true);
+                continueButton.interactable = true;
+                if (continueButton.GetComponent<Image>() != null)
+                    continueButton.GetComponent<Image>().enabled = true;
+            }
+            if (box1 != null)
+            {
+                box1.SetActive(false);
+            }
         }
 
     }
 
     public void Continue()
     {
-        
-        //    if (Mouse.current.leftButton.wasPressedThisFrame)
-        //if (tap.IsPressed())
-        //{
-            //Debug.Log("Transitioning to next minigame");
-            isTransitioning = false;
+        isTransitioning = false;
+        isStarted = false;
+        if (puzzleMinigame != null && puzzleMinigame.GetComponent<DragManager>() != null)
+        {
             puzzleMinigame.GetComponent<DragManager>().Reset();
-        //continueText.SetActive(false);
+        }
 
         // Turn off button
         Debug.Log("Continue Button Clicked");
-        continueButton.interactable = false;
-        continueButton.GetComponent<Image>().enabled = false;
+        if (continueButton != null)
+        {
+            continueButton.interactable = false;
+            continueButton.gameObject.SetActive(false);
+        }
 
         // Assuming this is the victory condition, call NextMinigame
         Debug.Log("Next minigame called");
+        if (GameManager.Instance != null && GameManager.Instance.CurrentMemoryManager != null)
+        {
             GameManager.Instance.CurrentMemoryManager.NextMinigame();
-                
-        //}
-
-        
+        }
     }
 
     /// <summary>
@@ -150,12 +175,19 @@ public class LetterPuzzleMinigame : MinigameBehavior
     {
         isTransitioning = true;
         timer = 0.5f; // Reset timer for transition
-        continueButton.GetComponent<Image>().enabled = true; // Show the continue button
-        continueButton.interactable=true;   // Enable text when puzzle is complete
+        if (continueButton != null)
+        {
+            continueButton.gameObject.SetActive(true);
+            if (continueButton.GetComponent<Image>() != null)
+                continueButton.GetComponent<Image>().enabled = true; // Show the continue button
+            continueButton.interactable = true;   // Enable text when puzzle is complete
+        }
     }
 
     public override void StartMinigame()
     {
+        if (isStarted) return;
+        isStarted = true;
         gameObject.SetActive(true);
         //puzzleContainer.SetActive(true);
 
@@ -168,25 +200,98 @@ public class LetterPuzzleMinigame : MinigameBehavior
         
 
 
+        bool randomize = (pieceLocations != null && pieceLocations.Length > count);
+        System.Collections.Generic.List<int> availableIndices = new System.Collections.Generic.List<int>();
+        if (pieceLocations != null)
+        {
+            for (int j = 0; j < pieceLocations.Length; j++) availableIndices.Add(j);
+        }
+
         for (int i = 0; i < count; i++)
         {
-            // randomize the piece locations
-            int randomIndex = Random.Range(0, pieceLocations.Length); //index, -1 (inclusive)
-            dragPos[i] = pieceLocations[randomIndex];
-            targetPos[i] = targetLocations[i];
-            targetRot[i] = targetRotations[i];
+            int locIndex = i;
+            if (randomize)
+            {
+                if (availableIndices.Count > 0)
+                {
+                    int r = Random.Range(0, availableIndices.Count);
+                    locIndex = availableIndices[r];
+                    availableIndices.RemoveAt(r);
+                }
+                else if (pieceLocations.Length > 0)
+                {
+                    locIndex = Random.Range(0, pieceLocations.Length);
+                }
+            }
+
+            dragPos[i] = (pieceLocations != null && locIndex < pieceLocations.Length) ? pieceLocations[locIndex] : Vector3.zero;
+            targetPos[i] = (targetLocations != null && targetLocations.Length > 0) ? targetLocations[i % targetLocations.Length] : Vector3.zero;
+            targetRot[i] = (targetRotations != null && targetRotations.Length > 0) ? targetRotations[i % targetRotations.Length] : Vector3.zero;
             pieceIds[i] = i;
         }
 
-        Draggable[] pieceList = puzzleMinigame.GetComponent<DragManager>().CreateDragToTarget(
-            count,
-            piecePrefab,
-            targetPrefab,
-            dragPos,
-            targetPos,
-            targetRot,
-            pieceIds,
-            sprites);
+        Draggable[] pieceList;
+        DragManager dm = puzzleMinigame.GetComponent<DragManager>();
+
+        if (pieceMemoryIds != null && pieceMemoryIds.Length == count && targetLocations != null && targetLocations.Length > 0)
+        {
+            int numTargets = targetLocations.Length;
+            int[] tTypes = (targetMemoryIds != null && targetMemoryIds.Length == numTargets) ? targetMemoryIds : new int[numTargets];
+            if (targetMemoryIds == null || targetMemoryIds.Length != numTargets)
+            {
+                for (int t = 0; t < numTargets; t++) tTypes[t] = t + 1;
+            }
+
+            pieceList = dm.CreateDragWithCustomTargets(
+                count,
+                numTargets,
+                piecePrefab,
+                targetPrefab,
+                dragPos,
+                targetLocations,
+                targetRotations,
+                pieceMemoryIds,
+                tTypes,
+                sprites,
+                null);
+        }
+        else
+        {
+            pieceList = dm.CreateDragToTarget(
+                count,
+                piecePrefab,
+                targetPrefab,
+                dragPos,
+                targetPos,
+                targetRot,
+                pieceIds,
+                sprites);
+        }
+
+        if (sentenceTexts != null && sentenceTexts.Length > 0 && pieceList != null)
+        {
+            for (int i = 0; i < pieceList.Length; i++)
+            {
+                if (i < sentenceTexts.Length && pieceList[i] != null)
+                {
+                    var tmp = pieceList[i].GetComponentInChildren<TMPro.TextMeshPro>();
+                    if (tmp != null) tmp.text = sentenceTexts[i];
+                }
+            }
+        }
+
+        if (targetHintTexts != null && targetHintTexts.Length > 0 && puzzleMinigame != null)
+        {
+            var dmTargets = puzzleMinigame.GetComponentsInChildren<DragTarget>();
+            for (int i = 0; i < dmTargets.Length; i++)
+            {
+                if (i < targetHintTexts.Length && dmTargets[i] != null)
+                {
+                    var tmp = dmTargets[i].GetComponentInChildren<TMPro.TextMeshPro>();
+                    if (tmp != null) tmp.text = targetHintTexts[i];
+                }
+            }
+        }
 
         if  (pieceList.Length > 0)
         {

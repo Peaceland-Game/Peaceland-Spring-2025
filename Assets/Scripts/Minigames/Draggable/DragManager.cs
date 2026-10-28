@@ -84,6 +84,7 @@ public class DragManager : MonoBehaviour
         {
             // Set the positions of the draggables and dragPositions
             draggables[i].gameObject.transform.localPosition = dragPositions[i];
+            draggables[i].dm = this;
             targets[i].transform.localPosition = targetPositions[i];
             targets[i].transform.eulerAngles = targetRotations[i];
             draggables[i].EnableDrag();
@@ -95,6 +96,49 @@ public class DragManager : MonoBehaviour
 
         return draggables;
 
+    }
+
+    public Draggable[] CreateDragWithCustomTargets<T>(
+        int _numDraggables,
+        int _numTargets,
+        GameObject draggablePrefab,
+        GameObject targetPrefab,
+        Vector3[] dragPositions,
+        Vector3[] targetPositions,
+        Vector3[] targetRotations,
+        T[] draggableTypes,
+        T[] targetTypes,
+        Sprite[] pieceSprites,
+        Sprite[] targetSprites)
+    {
+        numDraggables = _numDraggables;
+        draggables = new Draggable[numDraggables];
+        targets = new GameObject[_numTargets];
+
+        for (int t = 0; t < _numTargets; t++)
+        {
+            GameObject newTarget = Instantiate(targetPrefab);
+            targets[t] = newTarget;
+            newTarget.transform.parent = transform;
+            newTarget.transform.localPosition = targetPositions[t];
+            newTarget.transform.eulerAngles = targetRotations[t];
+            Sprite tSprite = (targetSprites != null && t < targetSprites.Length) ? targetSprites[t] : null;
+            newTarget.GetComponent<DragTarget>().Constructor(targetTypes[t], tSprite);
+        }
+
+        for (int i = 0; i < numDraggables; i++)
+        {
+            GameObject dragObj = Instantiate(draggablePrefab);
+            draggables[i] = dragObj.GetComponent<Draggable>();
+            dragObj.transform.parent = transform;
+            draggables[i].gameObject.transform.localPosition = dragPositions[i];
+            draggables[i].dm = this;
+            draggables[i].EnableDrag();
+            Sprite pSprite = (pieceSprites != null && i < pieceSprites.Length) ? pieceSprites[i] : null;
+            draggables[i].Constructor(targets, draggableTypes[i], pSprite);
+        }
+
+        return draggables;
     }
 
     /// <summary>
@@ -145,6 +189,67 @@ public class DragManager : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        if (!isActiveAndEnabled) return;
+        if (GameManager.Instance != null && GameManager.Instance.gameState == GameManager.GameState.Paused) return;
+
+        if (Mouse.current != null)
+        {
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                ProcessPointerDown();
+            }
+            else if (Mouse.current.leftButton.wasReleasedThisFrame)
+            {
+                ProcessPointerUp();
+            }
+        }
+        else if (Touchscreen.current != null)
+        {
+            if (Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+            {
+                ProcessPointerDown();
+            }
+            else if (Touchscreen.current.primaryTouch.press.wasReleasedThisFrame)
+            {
+                ProcessPointerUp();
+            }
+        }
+    }
+
+    private void ProcessPointerDown()
+    {
+        if (currentDraggable != null) return;
+        Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
+        int highestOrderInLayer = int.MinValue;
+        Draggable candidate = null;
+        if (draggables != null)
+        {
+            foreach (var draggable in draggables)
+            {
+                if (draggable != null && draggable.CanDrag(touch_wp) && draggable.GetComponent<SpriteRenderer>().sortingOrder > highestOrderInLayer)
+                {
+                    candidate = draggable;
+                }
+            }
+        }
+        if (candidate != null)
+        {
+            currentDraggable = candidate;
+            currentDraggable.StartDrag(touch_wp, GameManager.Instance != null ? GameManager.Instance.difficulty : 0);
+        }
+    }
+
+    private void ProcessPointerUp()
+    {
+        if (currentDraggable != null)
+        {
+            currentDraggable.EndDrag();
+            currentDraggable = null;
+        }
+    }
+
     /// <summary>
     /// Handles touch input to start or end dragging of draggable objects based on the input action phase.
     /// Auto calls.
@@ -152,41 +257,16 @@ public class DragManager : MonoBehaviour
     /// <param name="context">The input action callback context containing information about the touch event.</param>
     public void OnTouch(InputAction.CallbackContext context)
     {
-        // Debug log: very useful for testing what object is receiving the touch input and if it is active and enabled, as well as the phase of the touch input
-        //Debug.Log("Object: " + gameObject.name + " | enabled: " + enabled + " | active: " + gameObject.activeSelf);
-        //Debug.Log("Touch input received with phase: " + context.phase);
-
         if (!isActiveAndEnabled) return;
-        if (GameManager.Instance.gameState == GameManager.GameState.Paused) return;
+        if (GameManager.Instance != null && GameManager.Instance.gameState == GameManager.GameState.Paused) return;
 
         if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled)
         {
-            if (currentDraggable is not null)
-            {
-
-                //End the drag of the current draggable
-                currentDraggable.EndDrag();
-            }
+            ProcessPointerUp();
         }
-        else if (context.phase == InputActionPhase.Started)
+        else if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
         {
-
-            Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
-            int highestOrderInLayer = int.MinValue;
-            Draggable candidate = null;
-            foreach (var draggable in draggables)
-            {
-                // Select the draggable in front
-                if (draggable.CanDrag(touch_wp) && draggable.GetComponent<SpriteRenderer>().sortingOrder > highestOrderInLayer)
-                {
-                    candidate = draggable;
-                }
-            }
-            if (candidate is not null)
-            {
-                currentDraggable = candidate;
-                currentDraggable.StartDrag(touch_wp, GameManager.Instance.difficulty);
-            }
+            ProcessPointerDown();
         }
     }
 
@@ -195,7 +275,8 @@ public class DragManager : MonoBehaviour
     /// </summary>
     public void CompletionCheck()
     {
-        if (completedDragCount >= draggables.Length)
+        int requiredCount = (targets != null && targets.Length > 0) ? targets.Length : (draggables != null ? draggables.Length : 0);
+        if (completedDragCount >= requiredCount && requiredCount > 0)
         {
             //reset the number of completed drags and successfully drag to target num
             completedDragCount = 0;
