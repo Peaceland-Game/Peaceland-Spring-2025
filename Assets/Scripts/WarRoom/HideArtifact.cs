@@ -31,8 +31,12 @@ public class HideArtifact : HoverButton
     [SerializeField]
     private bool changeColor = true;    //whether or not the artifact's color should be changed when disabled (almsot always a "yes"/true)
 
-    private GameManager gm;
+    private F26_GameManager f26_gm = null;
     
+    private GameManager gm = null;
+
+    private bool f26 = true;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,7 +50,13 @@ public class HideArtifact : HoverButton
         artifactButton.interactable = false;
 
         //GameManager is a singleton
-        gm = GameManager.Instance; 
+        f26_gm = FindFirstObjectByType<F26_GameManager>();
+        gm = FindFirstObjectByType<GameManager>();
+
+        if (f26_gm == null)
+        {
+            f26 = false;
+        }
     }
 
     // Update is called once per frame
@@ -63,32 +73,66 @@ public class HideArtifact : HoverButton
 
         // Check if the condition has been completed
         bool unlocked = false;
-        if (gm.overrideHideArtifact)
+
+        bool overrideHideArtifact = false;
+        if (!f26) 
+        { 
+            overrideHideArtifact = gm.overrideHideArtifact;
+        }
+
+        if (overrideHideArtifact)
         {
             unlocked = true;
         }
         else
         {
-            switch (unlockCondition)
+            if (!f26) 
             {
-                case UnlockCondition.Placeholder:
-                    unlocked = gm.placeholderCondition;
-                    break;
-                case UnlockCondition.CompleteFlorist:
-                    unlocked = gm.seenFloristMemory;
-                    break;
-                case UnlockCondition.CompleteRJ:
-                    unlocked = gm.seenRJMemory;
-                    break;
-                case UnlockCondition.CompleteChild:
-                    unlocked = gm.seenChildMemory;
-                    break;
-                case UnlockCondition.CompleteVillain:
-                    unlocked = gm.seenVillainMemory;
-                    break;
-                case UnlockCondition.CompleteBoris:
-                    unlocked = gm.seenBorisMemory;
-                    break;
+                switch (unlockCondition)
+                {
+                    case UnlockCondition.Placeholder:
+                        unlocked = gm.placeholderCondition;
+                        break;
+                    case UnlockCondition.CompleteFlorist:
+                        unlocked = gm.seenFloristMemory;
+                        break;
+                    case UnlockCondition.CompleteRJ:
+                        unlocked = gm.seenRJMemory;
+                        break;
+                    case UnlockCondition.CompleteChild:
+                        unlocked = gm.seenChildMemory;
+                        break;
+                    case UnlockCondition.CompleteVillain:
+                        unlocked = gm.seenVillainMemory;
+                        break;
+                    case UnlockCondition.CompleteBoris:
+                        unlocked = gm.seenBorisMemory;
+                        break;
+                }
+            }
+            else
+            {
+                switch (unlockCondition)
+                {
+                    case UnlockCondition.Placeholder:
+                        unlocked = false;
+                        break;
+                    case UnlockCondition.CompleteFlorist:
+                        unlocked = false;
+                        break;
+                    case UnlockCondition.CompleteRJ:
+                        unlocked = f26_gm.completedScenes["R+JMemory"];
+                        break;
+                    case UnlockCondition.CompleteChild:
+                        unlocked = false;
+                        break;
+                    case UnlockCondition.CompleteVillain:
+                        unlocked = false;
+                        break;
+                    case UnlockCondition.CompleteBoris:
+                        unlocked = false;
+                        break;
+                }
             }
         }
 
