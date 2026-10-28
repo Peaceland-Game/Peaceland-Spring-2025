@@ -231,7 +231,7 @@ public class SneakManager : MinigameBehavior
     public void loadNextLevel()
     {
         Time.timeScale = 1f;
-        LL.LoadLevelByBuildIndex(2);
+        LL.LoadLevelByBuildIndex(8);
     }
 
     /// <summary>
