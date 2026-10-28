@@ -29,13 +29,11 @@ public class JournalMinigameController : MonoBehaviour
     [Header("Scene References")]
     [SerializeField] private DragManager dragManager;
     [SerializeField] private GameObject interactiveBookRoot;
-    [SerializeField] private GameObject summaryBookRoot;
 
     [Header("Left Page Elements (Interactive)")]
     [SerializeField] private TextMeshPro pageTitleText;
     [SerializeField] private TextMeshPro pageMemoryHeader;
     [SerializeField] private TextMeshPro pageMemorySummary;
-    [SerializeField] private TextMeshPro pageInstructionsText;
 
     [Header("Right Page Elements (Interactive)")]
     [SerializeField] private TextMeshPro wordBankTitleText;
@@ -48,13 +46,6 @@ public class JournalMinigameController : MonoBehaviour
     [SerializeField] private Button completeButton;
     [SerializeField] private TextMeshProUGUI completeButtonText;
 
-    [Header("Summary Spread UI")]
-    [SerializeField] private TextMeshPro summaryTitleText;
-    [SerializeField] private TextMeshPro summarySubtitleText;
-    [SerializeField] private TextMeshPro[] summaryMemoryHeaders;
-    [SerializeField] private TextMeshPro[] summaryMemoryTexts;
-    [SerializeField] private TextMeshPro[] summaryChosenCards;
-    [SerializeField] private Button summaryContinueButton;
 
     // Runtime state
     private int currentPageIndex = 0;
@@ -82,20 +73,19 @@ public class JournalMinigameController : MonoBehaviour
         if (prevPageButton != null) prevPageButton.onClick.AddListener(OnPrevPageClicked);
         if (nextPageButton != null) nextPageButton.onClick.AddListener(OnNextPageClicked);
         if (completeButton != null) completeButton.onClick.AddListener(OnCompleteJournalClicked);
-        if (summaryContinueButton != null) summaryContinueButton.onClick.AddListener(OnFinalContinueClicked);
     }
 
     private void InitDefaultDataIfEmpty()
     {
-        if (memoryPages != null && memoryPages.Length == 3) return;
+        if (memoryPages != null && memoryPages.Length > 0) return;
 
-        memoryPages = new MemoryPageData[3];
+        memoryPages = new MemoryPageData[7];
 
         // Memory 1
         memoryPages[0] = new MemoryPageData
         {
-            memoryTitle = "Memory #1: The Misplaced Letter",
-            memorySummary = "Jovan frantically searched his dining room for his love letter to Ruzica. His cousin Damir found it in the park, questioning Jovan before promising to keep it hidden.",
+            memoryTitle = "Memory #1",
+            memorySummary = "I met Jovan and Ruzica, a Thebrean and Eskani couple respectively. They told me their story of escaping their neighborhoods together and running away to a mixed city.  ",
             slotHint = "[ Drag Selected Reflection Here ]",
             wordBankChoices = new string[]
             {
@@ -109,7 +99,7 @@ public class JournalMinigameController : MonoBehaviour
         // Memory 2
         memoryPages[1] = new MemoryPageData
         {
-            memoryTitle = "Memory #2: The Flight from Danger",
+            memoryTitle = "Memory #2",
             memorySummary = "With civil unrest growing and patrols roaming the city streets, Jovan snuck to Ruzica's home. Knowing they were no longer safe, the lovers resolved to abandon everything and escape.",
             slotHint = "[ Drag Selected Reflection Here ]",
             wordBankChoices = new string[]
@@ -124,8 +114,8 @@ public class JournalMinigameController : MonoBehaviour
         // Memory 3
         memoryPages[2] = new MemoryPageData
         {
-            memoryTitle = "Memory #3: Damir's Tragic Sacrifice",
-            memorySummary = "Jovan and Ruzica escaped the city to safety, but Damir paid the ultimate price—his home was burned and he lost his life protecting their escape. He died so that they could live.",
+            memoryTitle = "Memory #3",
+            memorySummary = "Once they escaped they learned that Damir was chased back to the Thebrean neighborhood and their house was burned down and Damir was killed.",
             slotHint = "[ Drag Selected Reflection Here ]",
             wordBankChoices = new string[]
             {
@@ -135,6 +125,60 @@ public class JournalMinigameController : MonoBehaviour
                 "They did what they could to survive, they were both in serious danger and had to escape."
             }
         };
+
+        memoryPages[3] = new MemoryPageData
+        {
+            memoryTitle = "R+J Present",
+            memorySummary = "When I talked to them about it after going through the memory they seemed remorseful about Damir. ",
+            slotHint = "[ Drag Selected Reflection Here ]",
+            wordBankChoices = new string[]
+            {
+                "Jovan was the one to blame for Damir's death.",
+                "Ruzica should never have asked Jovan to put himself in danger, she is responsible.",
+                "Neither of them were thinking clearly and someone needed a level head.",
+                "They did what they could to survive, they were both in serious danger and had to escape."
+            }
+        };
+
+        memoryPages[4] = new MemoryPageData
+        {
+            memoryTitle = "Branko",
+            memorySummary = "I went to Dalila’s after work for a bite to eat.",
+            slotHint = "[ Drag Selected Reflection Here ]",
+            wordBankChoices = new string[]
+            {
+                "Dalila was quick to judge Jovan just because he is Thebrean.",
+                "Dalila made a good point about Jovan’s lack of care for family.",
+                "Dalila is right about Jovan, the Thebreans shouldn’t have been that stupid."
+            }
+        };
+
+        memoryPages[5] = new MemoryPageData
+        {
+            memoryTitle = "Katarina",
+            memorySummary = "After that I met Katarina in the square.",
+            slotHint = "[ Drag Selected Reflection Here ]",
+            wordBankChoices = new string[]
+            {
+                "Katarina is justifiably skeptical of this upcoming election.",
+                "Biases like Katarina’s are the reason wars start in the first place when people can’t agree."
+            }
+        };
+
+        memoryPages[6] = new MemoryPageData
+        {
+            memoryTitle = "Art",
+            memorySummary = "And then I came home and spoke to Art.",
+            slotHint = "[ Drag Selected Reflection Here ]",
+            wordBankChoices = new string[]
+            {
+                "Art is immature and doesn’t understand the scale of these events.",
+                "I’ll have to help Art better understand this.",
+                "Art is dangerous, his indifference about what happened to Damir is scary.",
+                "Art is understandably skeptical of people who don’t agree."
+            }
+        };
+
     }
 
     private void InitState()
@@ -216,44 +260,24 @@ public class JournalMinigameController : MonoBehaviour
 
     private void Update()
     {
-        // Continuously check slot state to keep chosenChoicePerMemory updated
         for (int page = 0; page < memoryPages.Length; page++)
         {
             var target = spawnedTargetsPerMemory[page];
             if (target == null) continue;
 
+            // Find the card sitting in this page's slot, if any
             int foundSnappedChoice = -1;
-            if (target.currentSnappedPiece != null)
+            float closestDist = 0.5f;
+            for (int c = 0; c < spawnedPiecesPerMemory[page].Length; c++)
             {
-                for (int c = 0; c < spawnedPiecesPerMemory[page].Length; c++)
+                var piece = spawnedPiecesPerMemory[page][c];
+                if (piece == null) continue;
+
+                float dist = Vector3.Distance(piece.transform.position, target.transform.position);
+                if (dist < closestDist)
                 {
-                    if (spawnedPiecesPerMemory[page][c] == target.currentSnappedPiece)
-                    {
-                        foundSnappedChoice = c;
-                        break;
-                    }
-                }
-            }
-            else if (chosenChoicePerMemory[page] != -1)
-            {
-                foundSnappedChoice = chosenChoicePerMemory[page];
-            }
-            else
-            {
-                // Fallback check distance if snapped without currentSnappedPiece pointer
-                for (int c = 0; c < spawnedPiecesPerMemory[page].Length; c++)
-                {
-                    var piece = spawnedPiecesPerMemory[page][c];
-                    if (piece != null)
-                    {
-                        float dist = Vector3.Distance(piece.transform.position, target.transform.position);
-                        if (dist < 0.5f)
-                        {
-                            foundSnappedChoice = c;
-                            target.currentSnappedPiece = piece;
-                            break;
-                        }
-                    }
+                    closestDist = dist;
+                    foundSnappedChoice = c;
                 }
             }
 
@@ -261,7 +285,11 @@ public class JournalMinigameController : MonoBehaviour
             {
                 chosenChoicePerMemory[page] = foundSnappedChoice;
                 target.isSnapped = (foundSnappedChoice != -1);
+                target.currentSnappedPiece = (foundSnappedChoice != -1)
+                    ? spawnedPiecesPerMemory[page][foundSnappedChoice]
+                    : null;
                 UpdateCompleteButtonState();
+                UpdateNextButtonState();
             }
         }
     }
@@ -275,8 +303,6 @@ public class JournalMinigameController : MonoBehaviour
         if (pageTitleText != null) pageTitleText.text = "JOURNAL REFLECTIONS";
         if (pageMemoryHeader != null) pageMemoryHeader.text = pageData.memoryTitle;
         if (pageMemorySummary != null) pageMemorySummary.text = pageData.memorySummary;
-        if (pageInstructionsText != null)
-            pageInstructionsText.text = "• Drag a choice to the slot on the left. Drag it back out to change your answer. •";
 
         if (wordBankTitleText != null) wordBankTitleText.text = "WORD BANK";
         if (wordBankSubtitleText != null)
@@ -288,13 +314,9 @@ public class JournalMinigameController : MonoBehaviour
             prevPageButton.gameObject.SetActive(currentPageIndex > 0);
             prevPageButton.interactable = (currentPageIndex > 0);
         }
-        if (nextPageButton != null)
-        {
-            nextPageButton.gameObject.SetActive(currentPageIndex < memoryPages.Length - 1);
-            nextPageButton.interactable = (currentPageIndex < memoryPages.Length - 1);
-        }
+        UpdateNextButtonState();
         if (pageIndicatorText != null)
-            pageIndicatorText.text = string.Format("Memory {0} of {1}", currentPageIndex + 1, memoryPages.Length);
+            pageIndicatorText.text = string.Format("Page {0} of {1}", currentPageIndex + 1, memoryPages.Length);
 
         // Show/Hide page elements
         for (int p = 0; p < memoryPages.Length; p++)
@@ -371,9 +393,21 @@ public class JournalMinigameController : MonoBehaviour
             completeButton.interactable = allDone;
             if (completeButtonText != null)
             {
-                completeButtonText.text = allDone ? "Review Completed Journal" : "Complete All 3 Memories To Review";
+                completeButtonText.text = allDone ? "Complete Journal" : "Complete All Reflections";
             }
         }
+    }
+
+    private void UpdateNextButtonState()
+    {
+        if (nextPageButton == null) return;
+
+        bool hasNextPage = currentPageIndex < memoryPages.Length - 1;
+        bool currentPageAnswered = chosenChoicePerMemory[currentPageIndex] != -1;
+        bool show = hasNextPage && currentPageAnswered;
+
+        nextPageButton.gameObject.SetActive(show);
+        nextPageButton.interactable = show;
     }
 
     public void OnCompleteJournalClicked()
@@ -393,36 +427,10 @@ public class JournalMinigameController : MonoBehaviour
         if (nextPageButton != null) nextPageButton.gameObject.SetActive(false);
         if (pageIndicatorText != null) pageIndicatorText.gameObject.SetActive(false);
         if (completeButton != null) completeButton.gameObject.SetActive(false);
-
-        // Populate and display Summary Spread (All 3 memories on one open spread)
-        PopulateSummarySpread();
-        if (summaryBookRoot != null) summaryBookRoot.SetActive(true);
-        if (summaryContinueButton != null) summaryContinueButton.gameObject.SetActive(true);
+        OnFinalContinueClicked();
     }
 
-    private void PopulateSummarySpread()
-    {
-        if (summaryTitleText != null) summaryTitleText.text = "COMPLETED JOURNAL ENTRY";
-        if (summarySubtitleText != null)
-            summarySubtitleText.text = "All 3 Romeo & Juliet memories and your chosen reflections:";
-
-        for (int i = 0; i < memoryPages.Length; i++)
-        {
-            if (summaryMemoryHeaders != null && i < summaryMemoryHeaders.Length && summaryMemoryHeaders[i] != null)
-            {
-                summaryMemoryHeaders[i].text = memoryPages[i].memoryTitle;
-            }
-
-            if (summaryChosenCards != null && i < summaryChosenCards.Length && summaryChosenCards[i] != null)
-            {
-                int choiceIdx = chosenChoicePerMemory[i];
-                string chosenText = (choiceIdx >= 0 && choiceIdx < memoryPages[i].wordBankChoices.Length)
-                    ? memoryPages[i].wordBankChoices[choiceIdx]
-                    : "No choice selected.";
-                summaryChosenCards[i].text = chosenText;
-            }
-        }
-    }
+   
 
     public void OnFinalContinueClicked()
     {
