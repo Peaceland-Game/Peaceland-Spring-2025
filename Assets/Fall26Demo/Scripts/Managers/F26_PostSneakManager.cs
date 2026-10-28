@@ -12,6 +12,7 @@ public class F26_PostSneakManager : GenericMemManager
         F26_GameManager.Instance.CurrentScene = "PostSneak";
         LL = FindFirstObjectByType<LevelLoader>();
         dialogueRunner = FindFirstObjectByType<DialogueRunner>();
+        dialogueRunner.onDialogueComplete.RemoveListener(NextMinigame);
         dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
         NextMinigame();
         NextOrder();

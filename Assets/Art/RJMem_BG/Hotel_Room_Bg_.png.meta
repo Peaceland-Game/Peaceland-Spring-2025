@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 229090483778af94198f4aa907b04237
+guid: 5640b04746bd84f45afa26c810c41d0f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8770507255626422965
-    second: Zoran Neutral_0
+      213: 7050485780488192128
+    second: Hotel_Room_Bg__0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,27 +96,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Zoran Neutral_0
+      name: Hotel_Room_Bg__0
       rect:
         serializedVersion: 2
-        x: 406
-        y: 119
-        width: 831
-        height: 2376
-      alignment: 9
-      pivot: {x: 0.5, y: 0.675}
+        x: 0
+        y: 0
+        width: 2560
+        height: 1400
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b45a6608e16e84680800000000000000
-      internalID: -8770507255626422965
+      spriteID: 08001f7567b58d160800000000000000
+      internalID: 7050485780488192128
       vertices: []
       indices: 
       edges: []
@@ -125,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 71726e85fc8ac8d4da0d5a6d7709f0db
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Zoran Neutral_0: -8770507255626422965
+      Hotel_Room_Bg__0: 7050485780488192128
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

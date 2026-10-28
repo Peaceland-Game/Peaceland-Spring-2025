@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 9d1ff41a9ee0936468ae5440ad44f144
+guid: b154c2557f8d7e541a015cc87f084001
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3345501326856833157
-    second: Delila_Portrait_Neutral__0
+      213: 3949906704794439584
+    second: Katarina Smirk w_ coat_0
   - first:
-      213: -5512708815795086695
-    second: Delila_Portrait_Neutral__1
-  - first:
-      213: 7918258869077045113
-    second: Delila_Portrait_Neutral__2
-  - first:
-      213: 5563651276258994681
-    second: Delila_Portrait_Neutral__3
+      213: -4710190770992795984
+    second: Katarina Smirk w_ coat_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 70
+  spritePixelsToUnits: 75
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,61 +99,52 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Delila_Portrait_Neutral__0
+      name: Katarina Smirk w_ coat_0
       rect:
         serializedVersion: 2
-        x: 303
-        y: 1588
-        width: 17
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b77b919b4446291d0800000000000000
-      internalID: -3345501326856833157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Delila_Portrait_Neutral__1
-      rect:
-        serializedVersion: 2
-        x: 195
-        y: 82
-        width: 579
-        height: 1501
+        x: 154
+        y: 83
+        width: 585
+        height: 1674
       alignment: 9
-      pivot: {x: 0.5, y: 0.75}
+      pivot: {x: 0.5, y: 0.7}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99a9e542a8cee73b0800000000000000
-      internalID: -5512708815795086695
+      spriteID: 0afc4337833e0d630800000000000000
+      internalID: 3949906704794439584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Delila_Portrait_Neutral__2
+      name: Katarina Smirk w_ coat_1
       rect:
         serializedVersion: 2
-        x: 784
-        y: 893
+        x: 789
+        y: 568
         width: 6
-        height: 6
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,30 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 97f6cea1d7e43ed60800000000000000
-      internalID: 7918258869077045113
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Delila_Portrait_Neutral__3
-      rect:
-        serializedVersion: 2
-        x: 732
-        y: 710
-        width: 29
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9f9e097bb5f063d40800000000000000
-      internalID: 5563651276258994681
+      spriteID: 0bea6ae037a02aeb0800000000000000
+      internalID: -4710190770992795984
       vertices: []
       indices: 
       edges: []
@@ -200,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fa7dc97d94924964b8bf440f28b4f933
+    spriteID: 44f1bb38aca1f874d9bf73587b976071
     internalID: 0
     vertices: []
     indices: 
@@ -210,10 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Delila_Portrait_Neutral__0: -3345501326856833157
-      Delila_Portrait_Neutral__1: -5512708815795086695
-      Delila_Portrait_Neutral__2: 7918258869077045113
-      Delila_Portrait_Neutral__3: 5563651276258994681
+      Katarina Smirk w_ coat_0: 3949906704794439584
+      Katarina Smirk w_ coat_1: -4710190770992795984
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

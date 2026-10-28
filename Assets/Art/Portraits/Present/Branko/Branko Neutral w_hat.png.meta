@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 3f4d2fbe8a7c70548a110354350ad9b6
+guid: 88e57fec19d99714ebd00755cbf35d3a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5254250293326989361
-    second: Ruzica Present_0
+      213: -481045979939651818
+    second: Branko Neutral w_hat_0
+  - first:
+      213: -6803265594505148079
+    second: Branko Neutral w_hat_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 75
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,27 +99,62 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ruzica Present_0
+      name: Branko Neutral w_hat_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 664
-        height: 2048
+        x: 296
+        y: 1891
+        width: 9
+        height: 13
       alignment: 9
-      pivot: {x: 0.5, y: 0.8}
+      pivot: {x: 0.5, y: 0.7}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc7b04942372517b0800000000000000
-      internalID: -5254250293326989361
+      spriteID: 61f311dda3bf259f0800000000000000
+      internalID: -481045979939651818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Branko Neutral w_hat_1
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 75
+        width: 707
+        height: 1783
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15942eeacf1f591a0800000000000000
+      internalID: -6803265594505148079
       vertices: []
       indices: 
       edges: []
@@ -125,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ccf75564855b393459303423351528dd
+    spriteID: 814c121026e1dfc4d841e1d09fc0ad6c
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Ruzica Present_0: -5254250293326989361
+      Branko Neutral w_hat_0: -481045979939651818
+      Branko Neutral w_hat_1: -6803265594505148079
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
