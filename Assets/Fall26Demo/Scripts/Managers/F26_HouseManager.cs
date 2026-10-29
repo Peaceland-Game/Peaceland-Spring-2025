@@ -11,11 +11,23 @@ public class F26_HouseManager : GenericMemManager
     void Start()
     {
         F26_GameManager.Instance.CurrentScene = "Day1Home";
+        LL = FindFirstObjectByType<LevelLoader>();
+        dialogueRunner = FindFirstObjectByType<DialogueRunner>();
+        dialogueRunner.onDialogueComplete.RemoveListener(NextMinigame);
+        dialogueRunner.onDialogueComplete.AddListener(NextMinigame);
         NextMinigame();
         NextOrder();
     }
 
-    void Update()
+    public override void NextMinigame()
     {
+        if(currentMinigame < minigames.Count - 1)
+        {
+            base.NextMinigame();
+        }
+        else
+        {
+            LL.LoadLevelByBuildIndex(F26_GameManager.JournalBuildIndex, true);
+        }
     }
 }

@@ -142,7 +142,7 @@ public class JournalMinigameController : MonoBehaviour
 
         memoryPages[4] = new MemoryPageData
         {
-            memoryTitle = "Branko",
+            memoryTitle = "Dalila",
             memorySummary = "I went to Dalila’s after work for a bite to eat.",
             slotHint = "[ Drag Selected Reflection Here ]",
             wordBankChoices = new string[]
@@ -431,10 +431,12 @@ public class JournalMinigameController : MonoBehaviour
 
     public void OnFinalContinueClicked()
     {
-        Debug.Log("Final Journal Continue Clicked! Advancing to next story segment...");
-        if (GameManager.Instance != null && GameManager.Instance.CurrentMemoryManager != null)
-        {
-            GameManager.Instance.CurrentMemoryManager.NextMinigame();
-        }
+        //Debug.Log("Final Journal Continue Clicked! Advancing to next story segment...");
+        //if (GameManager.Instance != null && GameManager.Instance.CurrentMemoryManager != null)
+        //{
+        //    GameManager.Instance.CurrentMemoryManager.NextMinigame();
+        //}
+        LevelLoader LL = FindFirstObjectByType<LevelLoader>();
+        LL.LoadLevelByBuildIndex(F26_GameManager.EndingBuildIndex, true);
     }
 }
