@@ -134,14 +134,28 @@ namespace Peaceland.Notebook.Editor
         [MenuItem("Peaceland/Notebook/Ensure Collect Overlay In Active Scene")]
         public static void EnsureCollectOverlayMenu()
         {
-            Canvas canvas = Object.FindFirstObjectByType<Canvas>();
-            if (canvas == null)
+            NotebookController controller = NotebookSceneLookup.FindController();
+            NotebookOverlayView overlay = null;
+            if (controller != null)
+            {
+                SerializedObject serializedController = new SerializedObject(controller);
+                overlay = serializedController.FindProperty("overlayView").objectReferenceValue
+                    as NotebookOverlayView;
+            }
+
+            Canvas canvas = overlay != null
+                ? overlay.GetComponentInParent<Canvas>(true)
+                : Object.FindFirstObjectByType<Canvas>();
+            if (overlay == null && canvas == null)
             {
                 Debug.LogWarning("No canvas found in active scene.");
                 return;
             }
 
-            NotebookOverlayView overlay = NotebookOverlayAuthoring.EnsureOverlay(canvas.transform);
+            if (overlay == null)
+            {
+                overlay = NotebookOverlayAuthoring.EnsureOverlay(canvas.transform);
+            }
             NotebookCollectHintHost host = Object.FindFirstObjectByType<NotebookCollectHintHost>();
             if (host == null)
             {
@@ -153,7 +167,6 @@ namespace Peaceland.Notebook.Editor
             hostObjectSerialized.FindProperty("overlayView").objectReferenceValue = overlay;
             hostObjectSerialized.ApplyModifiedPropertiesWithoutUndo();
 
-            NotebookController controller = NotebookSceneLookup.FindController();
             if (controller != null)
             {
                 SerializedObject controllerSerialized = new SerializedObject(controller);
@@ -300,7 +313,7 @@ namespace Peaceland.Notebook.Editor
             EditorSceneManager.SaveOpenScenes();
         }
 
-        private static void SyncNotebookDatabaseFromAssets()
+        public static void SyncNotebookDatabaseFromAssets()
         {
             EnsureDataFolder();
             NotebookDatabase database = LoadDatabase();
@@ -827,7 +840,7 @@ namespace Peaceland.Notebook.Editor
             }
         }
 
-        private static void EnsureEventSystem()
+        internal static void EnsureEventSystem()
         {
             EventSystem existing = Object.FindFirstObjectByType<EventSystem>();
             if (existing != null)

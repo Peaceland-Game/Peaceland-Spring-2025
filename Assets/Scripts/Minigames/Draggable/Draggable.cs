@@ -30,13 +30,16 @@ public class Draggable : MonoBehaviour
     /// How close to get to a drag target before snapping to it=
     /// </summary>
     [SerializeField]
-    private float dragDistanceThreshold = 2.0f;
+    private float dragDistanceThreshold = 3.5f;
 
     /// <summary>
     /// When the object is released on a drag target, this signal is invoked with the transform of the target.
     /// </summary>
     [SerializeField]
     UnityEvent<Transform> draggedOnTargetEvent;
+
+    [SerializeField]
+    private bool allowRemovalFromTarget = true;
 
     ///[SerializeField] 
     private int boundsOffset = 0;
@@ -118,11 +121,14 @@ public class Draggable : MonoBehaviour
     // Called when object is instantiated
     public void Constructor<T>(GameObject[] _dragTargets, T _dataType, Sprite sprite = null)
     {
+        if (dragTargets == null) dragTargets = new List<Transform>();
+        dragTargets.Clear();
         foreach (GameObject dragTarget in _dragTargets)
         {
-            dragTargets.Add(dragTarget.transform);
+            if (dragTarget != null) dragTargets.Add(dragTarget.transform);
         }
         dragType = _dataType;
+        startPos = transform.position;
 
         // Set the sprite
         
@@ -145,7 +151,9 @@ public class Draggable : MonoBehaviour
     }
 
     public bool CanDrag(Vector3 touch_wp) {
-        return draggable && bounds.OverlapPoint(touch_wp);
+        if (bounds == null) bounds = GetComponent<Collider2D>();
+        bool canInteract = draggable || (allowRemovalFromTarget && snapIndex != -1);
+        return canInteract && bounds != null && bounds.OverlapPoint(touch_wp);
     }
 
     /// <summary>
@@ -166,6 +174,21 @@ public class Draggable : MonoBehaviour
         dragging = true;
         offset = transform.position - touch_wp;
         difficulty = currentDifficulty;
+
+        if (snapIndex != -1 && allowRemovalFromTarget)
+        {
+            if (snapIndex < dragTargets.Count && dragTargets[snapIndex] != null)
+            {
+                var dt = dragTargets[snapIndex].GetComponent<DragTarget>();
+                if (dt != null) dt.UnsnapPiece(this);
+            }
+            snapIndex = -1;
+            if (dm != null && dm.completedDragCount > 0)
+            {
+                dm.completedDragCount -= 1;
+            }
+            EnableDrag();
+        }
 
         GameObject scrollView = GameObject.FindGameObjectWithTag("ScrollView");
         if (scrollView != null)
@@ -194,6 +217,22 @@ public class Draggable : MonoBehaviour
         draggable = true;
     }
 
+    public void ReturnToStartPos()
+    {
+        if (snapIndex != -1 && snapIndex < dragTargets.Count && dragTargets[snapIndex] != null)
+        {
+            var dt = dragTargets[snapIndex].GetComponent<DragTarget>();
+            if (dt != null && dt.currentSnappedPiece == this)
+            {
+                dt.UnsnapPiece(this);
+            }
+        }
+        snapIndex = -1;
+        dragging = false;
+        EnableDrag();
+        transform.position = startPos;
+    }
+
     /// <summary>
     /// Player stopped dragging this object
     /// </summary>
@@ -207,21 +246,54 @@ public class Draggable : MonoBehaviour
             scrollView.GetComponent<ScrollRect>().enabled = true;
         }
 
-        if (snapIndex != -1) {
-            DisableDrag();
-            dragTargets[snapIndex].GetComponent<DragTarget>().isSnapped = true;
-            draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
-
-            
+        if (snapIndex == -1 && dragTargets != null && dragTargets.Count > 0)
+        {
+            float lowestDist = float.MaxValue;
+            int foundIndex = -1;
+            for (int i = 0; i < dragTargets.Count; i++)
+            {
+                Transform target = dragTargets[i];
+                if (target != null && target.GetComponent<DragTarget>().CanSnap(dragType))
+                {
+                    float dist = (transform.position - target.position).magnitude;
+                    if (dist < dragDistanceThreshold && dist < lowestDist)
+                    {
+                        lowestDist = dist;
+                        foundIndex = i;
+                    }
+                }
+            }
+            if (foundIndex != -1)
+            {
+                snapIndex = foundIndex;
+                transform.position = dragTargets[snapIndex].position;
+                transform.eulerAngles = dragTargets[snapIndex].eulerAngles;
+                var dt = dragTargets[snapIndex].GetComponent<DragTarget>();
+                bool wasAlreadySnapped = (dt != null && dt.isSnapped);
+                if (dt != null)
+                {
+                    dt.SnapPiece(this);
+                }
+                if (dm != null && !wasAlreadySnapped)
+                {
+                    dm.completedDragCount += 1;
+                    dm.CompletionCheck();
+                }
+            }
         }
 
+        if (snapIndex != -1) {
+            if (!allowRemovalFromTarget) DisableDrag();
+            draggedOnTargetEvent.Invoke(dragTargets[snapIndex]);
+        }
         else
         {
-            BoundsCheck();
+            // Dropped outside any valid target: return smoothly back to original position in the word bank!
+            transform.position = startPos;
         }
 
         
-    } 
+    }
 
     public void setBoundsOffset(int offset)
     {
@@ -289,30 +361,6 @@ public class Draggable : MonoBehaviour
             Vector3 newPos = new(touch_wp.x + offset.x + xShakeOffset, touch_wp.y + offset.y + yShakeOffset, transform.position.z);
             Vector3 newRot = new(0, 0, 0);
            
-            // Snap to closts drag target (if one exists)
-            if (dragTargets.Count > 0) {
-                float lowest_dist = float.MaxValue;
-                int i = 0;
-                snapIndex = -1;
-                foreach (Transform target in dragTargets) {
-                    if (!target.GetComponent<DragTarget>().isSnapped)
-                    {
-                        float dist = (newPos - target.position).magnitude;
-                        // Snap position and rotation if close enough AND if the draggable obj types are the same
-                        if (dist < dragDistanceThreshold && dist < lowest_dist && target.gameObject.GetComponent<DragTarget>().CanSnap(dragType))
-                        {
-                            newPos = target.position;
-                            newRot = target.eulerAngles;
-                            snapIndex = i;
-                            DisableDrag();
-                            dm.completedDragCount += 1;
-                            dm.CompletionCheck();
-                        }
-                    }
-                    i++;
-                }
-            }
-
             // Clamp position to drag limit
             if (!dragLimit || dragLimit.OverlapPoint(newPos)) {
                 transform.position = newPos;

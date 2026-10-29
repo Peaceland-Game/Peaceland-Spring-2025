@@ -5,12 +5,17 @@ using UnityEngine;
 
 namespace Peaceland.Notebook
 {
+    /// <summary>
+    /// One collectable note. Create under Assets/Notebook/Data, then add it to NotebookDatabase.
+    /// Keep entryId stable; gameplay scripts should reference this asset, not hardcode the title.
+    /// </summary>
     [CreateAssetMenu(fileName = "NotebookEntry", menuName = "Peaceland/Notebook/Entry")]
     public class NotebookEntryDefinition : ScriptableObject
     {
         [Serializable]
         public class RecordChoice
         {
+            [Tooltip("Stable id written into the save when the player picks this interpretation.")]
             [SerializeField] private string choiceId = "choice";
             [SerializeField] private string label = "Record this as...";
             [SerializeField] private PeacelandStatId statId = PeacelandStatId.InsightNaivety;
@@ -41,6 +46,7 @@ namespace Peaceland.Notebook
         [SerializeField] private float layoutHeight = 220f;
         [SerializeField] private int sortOrder;
         [Header("Record Choice Minigame")]
+        [Tooltip("If enabled, the player must pick an interpretation the next time they open this note.")]
         [SerializeField] private bool requiresRecordChoice;
         [SerializeField] private string recordChoicePrompt = "How do you want to record this?";
         [SerializeField] private List<RecordChoice> recordChoices = new List<RecordChoice>();
