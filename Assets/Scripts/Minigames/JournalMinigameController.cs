@@ -390,11 +390,8 @@ public class JournalMinigameController : MonoBehaviour
         bool allDone = AreAllMemoriesCompleted();
         if (completeButton != null)
         {
+            completeButton.gameObject.SetActive(allDone);
             completeButton.interactable = allDone;
-            if (completeButtonText != null)
-            {
-                completeButtonText.text = allDone ? "Complete Journal" : "Complete All Reflections";
-            }
         }
     }
 
