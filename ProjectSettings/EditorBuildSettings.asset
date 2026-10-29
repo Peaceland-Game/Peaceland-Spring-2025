@@ -81,6 +81,7 @@ EditorBuildSettings:
     path: Assets/Fall26Demo/Scenes/Demo_PostSneak.unity
     guid: 0416f2e71d24d084ca06ea106e13ab9e
   m_configObjects:
+    com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: f0575c88935330e43a5e85ee93b729a5, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 81253cb86dd87734391587a09a6a872c, type: 3}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 4d8ae7137bdc4414b8f3343a5d7fb862, type: 2}
