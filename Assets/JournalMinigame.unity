@@ -297,7 +297,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WORD BANK
+  m_text: REFLECTION CHOICES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bec09ad86fa1a445be6e73a59921be3, type: 2}
   m_sharedMaterial: {fileID: -2705481054575229854, guid: 8bec09ad86fa1a445be6e73a59921be3, type: 2}
@@ -723,7 +723,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Memory #1: The Misplaced Letter'
+  m_text: 'Reflection 1:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bec09ad86fa1a445be6e73a59921be3, type: 2}
   m_sharedMaterial: {fileID: -2705481054575229854, guid: 8bec09ad86fa1a445be6e73a59921be3, type: 2}
@@ -1052,7 +1052,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.85, y: 1.7}
+  m_AnchoredPosition: {x: -2.85, y: 1.87}
   m_SizeDelta: {x: 4.45, y: 1.35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &929817162
@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Choose one reflection sentence for Memory #1:'
+  m_text: 'Choose one reflection sentence:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8bec09ad86fa1a445be6e73a59921be3, type: 2}
   m_sharedMaterial: {fileID: -2705481054575229854, guid: 8bec09ad86fa1a445be6e73a59921be3, type: 2}
