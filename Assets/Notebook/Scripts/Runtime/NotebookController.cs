@@ -10,6 +10,10 @@ using UnityEngine.UI;
 
 namespace Peaceland.Notebook
 {
+    /// <summary>
+    /// Runtime book. Bind from NotebookProductionSceneUI — do not spawn this UI from code.
+    /// Collect / review / pagination all go through this component, then into PeacelandSaveService.
+    /// </summary>
     public class NotebookController : MonoBehaviour
     {
         [Serializable]
@@ -93,6 +97,7 @@ namespace Peaceland.Notebook
 
         private void Awake()
         {
+            PeacelandGameBootstrap.EnsureExists();
             BuildStateCache();
             LoadState();
             WireButtons();
@@ -179,6 +184,7 @@ namespace Peaceland.Notebook
         private void OnEnable()
         {
             NotebookGlobalBridge.RegisterController(this);
+            PeacelandGameBootstrap.EnsureExists();
             if (PeacelandSaveService.HasInstance)
             {
                 PeacelandSaveService.Instance.DataLoaded += HandleExternalSaveLoaded;
@@ -187,6 +193,7 @@ namespace Peaceland.Notebook
 
         private void OnDisable()
         {
+            FinalizePendingReview();
             NotebookGlobalBridge.UnregisterController(this);
             if (PeacelandSaveService.HasInstance)
             {
@@ -208,6 +215,7 @@ namespace Peaceland.Notebook
             }
         }
 
+        /// <summary>Opens the book if closed; closes it if open. Bound to NotebookOpenButton.</summary>
         public void ToggleNotebook()
         {
             if (isOpen)
@@ -219,6 +227,9 @@ namespace Peaceland.Notebook
             OpenNotebook();
         }
 
+        /// <summary>
+        /// Opens the book to the directory spread. If it is already open, jumps back to directory.
+        /// </summary>
         public void OpenNotebook()
         {
             if (isOpen)
@@ -240,6 +251,7 @@ namespace Peaceland.Notebook
             StartCoroutine(OpenRoutine());
         }
 
+        /// <summary>Closes the book and leaves the last page state on the save.</summary>
         public void CloseNotebook()
         {
             FinalizePendingReview();
@@ -417,24 +429,33 @@ namespace Peaceland.Notebook
             RenderCurrentSpread();
         }
 
+        /// <summary>
+        /// Unlocks one database entry by id, writes the active save, and shows a toast.
+        /// Safe to call twice; already-collected ids return without changing stats or pages.
+        /// </summary>
         public void CollectEntry(string entryId)
+        {
+            CollectEntryInternal(entryId, persistImmediately: true, playToast: true);
+        }
+
+        private bool CollectEntryInternal(string entryId, bool persistImmediately, bool playToast)
         {
             if (database == null || string.IsNullOrWhiteSpace(entryId))
             {
-                return;
+                return false;
             }
 
             NotebookEntryDefinition definition = database.GetEntry(entryId);
             if (definition == null)
             {
                 Debug.LogWarning("Notebook entry '" + entryId + "' is not in the notebook database.", this);
-                return;
+                return false;
             }
 
             NotebookEntryStateData state = GetOrCreateState(entryId);
             if (state.isCollected)
             {
-                return;
+                return false;
             }
 
             collectedCounter++;
@@ -442,22 +463,28 @@ namespace Peaceland.Notebook
             state.isReviewed = false;
             state.collectedOrder = collectedCounter;
 
-            SaveState();
+            if (persistImmediately)
+            {
+                SaveState();
+            }
+
             if (OnEntryCollected != null)
             {
                 OnEntryCollected.Invoke(entryId);
             }
 
-            if (overlayView != null)
+            if (playToast && overlayView != null)
             {
                 overlayView.PlayCollectedToast("Notebook updated: " + definition.Title);
             }
 
-            if (isOpen)
+            if (persistImmediately && isOpen)
             {
                 RebuildLayout();
                 RenderCurrentSpread();
             }
+
+            return true;
         }
 
         public void CollectEntriesByIds(IEnumerable<string> entryIds)
@@ -467,9 +494,25 @@ namespace Peaceland.Notebook
                 return;
             }
 
+            bool anyCollected = false;
             foreach (string entryId in entryIds)
             {
-                CollectEntry(entryId);
+                if (CollectEntryInternal(entryId, persistImmediately: false, playToast: false))
+                {
+                    anyCollected = true;
+                }
+            }
+
+            if (!anyCollected)
+            {
+                return;
+            }
+
+            SaveState();
+            if (isOpen)
+            {
+                RebuildLayout();
+                RenderCurrentSpread();
             }
         }
 
@@ -490,6 +533,7 @@ namespace Peaceland.Notebook
             NotebookGlobalBridge.CollectEntries(entryIds);
         }
 
+        /// <summary>Same as NotebookGlobalBridge.CollectEntry. Use from a scene that may not have the book loaded.</summary>
         public void QueueCollectEntryFromAnyScene(string entryId)
         {
             NotebookGlobalBridge.CollectEntry(entryId);
@@ -698,8 +742,19 @@ namespace Peaceland.Notebook
         {
             if (notebookButton != null)
             {
-                notebookButton.onClick.RemoveAllListeners();
-                notebookButton.onClick.AddListener(ToggleNotebook);
+                // NotebookOpenButton owns this listener when present. Registering both
+                // handlers makes one click toggle twice, depending on Awake order.
+                NotebookOpenButton openButton =
+                    notebookButton.GetComponent<NotebookOpenButton>();
+                if (openButton != null)
+                {
+                    openButton.Configure(this);
+                }
+                else
+                {
+                    notebookButton.onClick.RemoveAllListeners();
+                    notebookButton.onClick.AddListener(ToggleNotebook);
+                }
             }
 
             if (previousSpreadButton != null)
@@ -1439,6 +1494,7 @@ namespace Peaceland.Notebook
 
         private void LoadState()
         {
+            PeacelandGameBootstrap.EnsureExists();
             if (PeacelandSaveService.HasInstance)
             {
                 ApplyLoadedNotebookState(PeacelandSaveService.Instance.GetNotebookData());
@@ -1487,6 +1543,7 @@ namespace Peaceland.Notebook
                 states = stateById.Values.OrderBy(state => state.collectedOrder).ToList(),
             };
 
+            PeacelandGameBootstrap.EnsureExists();
             if (PeacelandSaveService.HasInstance)
             {
                 PeacelandSaveService.Instance.ReplaceNotebookData(saveData);

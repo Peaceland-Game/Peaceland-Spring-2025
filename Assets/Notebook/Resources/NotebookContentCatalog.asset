@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ea0f37622cd3734ea68dcc036296476, type: 3}
   m_Name: NotebookContentCatalog
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   specs:
   - entryId: NotebookEntry_PresentNewspaper
     kind: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
     categoryId: scene-collected
     requireBodyText: 1
     requireCollectTrigger: 0
-    collectSceneName:
+    collectSceneName: 
     notes: "Florist greeting \u2014 optional test scene hook"
   - entryId: NotebookEntry_Memory1FloristFlower
     kind: 0

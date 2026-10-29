@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c60aab75cb62c40bf8abfa0d6bb067, type: 3}
+  m_Name: rj_letter_piece_1
+  m_EditorClassIdentifier: Assembly-CSharp::Peaceland.Notebook.ArtifactDefinition
+  id: rj_letter_piece_1
+  title: Torn Letter Fragment
+  icon: {fileID: -5165381202115445375, guid: 295e8f54c4acf904fb72b710ce2aabe1, type: 3}
+  chapter: Romeo & Juliet
+  category: MEMORIES
+  sortOrder: 4
+  description: '[Placeholder] A torn piece of correspondence containing half of an
+    urgent warning concerning the impending feud.'
+  collectedAtStart: 1

@@ -54,6 +54,14 @@ public class WarRoom : GenericMemManager
     [SerializeField]
     private bool mingming = false; //keep this off AT ALL TIMES 
 
+    [SerializeField]
+    private GameObject testRJCompletedButton = null;
+
+    [SerializeField]
+    private bool showTestRJCompletedButton = false;
+
+    private GameManager gm;
+
     void Start()
     {
         //dont mind this part 
@@ -72,6 +80,15 @@ public class WarRoom : GenericMemManager
             }
         }
 
+        if (showTestRJCompletedButton)
+        {
+            testRJCompletedButton.SetActive(true);
+        }
+        else
+        {
+            testRJCompletedButton.SetActive(false);
+        }
+
         //enable wall view exclusive buttons/ui elements
         wallClickInstructions.SetActive(true);
         EnableButton(returnToLobbyButton);
@@ -86,6 +103,8 @@ public class WarRoom : GenericMemManager
         DisableButton(leftArrow);
         DisableButton(rightArrow);
         DisableButton(exitWallView); 
+
+        gm = GameManager.Instance;
     }
 
     // Update is called once per frame
@@ -290,6 +309,11 @@ public class WarRoom : GenericMemManager
         EnableButton(leftArrow);
         EnableButton(rightArrow);
         ToggleWalls();
+    }
+
+    public void TestPostRJ()
+    {
+        gm.seenRJMemory = true;
     }
 
     /// helper that turns a button interactable and visible

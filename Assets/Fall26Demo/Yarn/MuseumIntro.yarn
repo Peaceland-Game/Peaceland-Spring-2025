@@ -121,7 +121,7 @@ tags:
 <<lighten 1>>
 {$directorName}: And do I even want to know what happened there?
 <<darken 1>>
-{$protagName}: Just a small accident making breakfast
+{$protagName}: Just a small accident making breakfast.
 {$protagName} and {$directorName} stare at each other in awkward silence. {$protagName}, confused, clears his throat.
 ->I feel like I've done something wrong.
     {$protagName}: I feel like I've done something wrong.

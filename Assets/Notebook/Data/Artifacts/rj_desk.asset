@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c60aab75cb62c40bf8abfa0d6bb067, type: 3}
+  m_Name: rj_desk
+  m_EditorClassIdentifier: Assembly-CSharp::Peaceland.Notebook.ArtifactDefinition
+  id: rj_desk
+  title: Antique Desk
+  icon: {fileID: 8033975403568566451, guid: 59f17bcdce226dd4bad901157d019f09, type: 3}
+  chapter: Romeo & Juliet
+  category: MEMORIES
+  sortOrder: 3
+  description: '[Placeholder] The sturdy wooden desk where confidential letters,
+    plans, and diary entries were penned in secret.'
+  collectedAtStart: 0

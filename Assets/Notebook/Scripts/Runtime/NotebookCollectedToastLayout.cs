@@ -10,10 +10,10 @@ namespace Peaceland.Notebook
     {
         public static readonly Vector2 Anchor = new Vector2(0f, 1f);
         public static readonly Vector2 Pivot = new Vector2(0f, 1f);
-        public static readonly Vector2 RestPosition = new Vector2(24f, -24f);
+        public static readonly Vector2 RestPosition = new Vector2(24f, -88f);
         public static readonly Vector2 Size = new Vector2(380f, 72f);
 
-        public static readonly Vector2 HiddenPosition = new Vector2(-404f, -24f);
+        public static readonly Vector2 HiddenPosition = new Vector2(-404f, -88f);
         public static readonly Vector2 VisiblePosition = RestPosition;
         public static readonly Vector2 ExitPosition = HiddenPosition;
 

@@ -135,7 +135,8 @@ namespace Peaceland
                     : summary.lastSceneName;
                 detailText.text = "Scene: " + scene
                     + "  |  Kindness: " + summary.kindnessCruelty
-                    + "  |  Notebook: " + summary.collectedNotebookEntryCount;
+                    + "  |  Notebook: " + summary.collectedNotebookEntryCount
+                    + "  |  Checkpoints: " + summary.checkpointCount;
             }
 
             if (deleteButton != null)

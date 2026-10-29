@@ -1257,6 +1257,7 @@ GameObject:
   m_IsActive: 0
 --- !u!212 &706898157
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1275,6 +1276,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1296,9 +1299,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 6017849968177087295, guid: 982dea6fd5f8dea4c88e174d0b71dd2f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1308,7 +1313,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &706898158
 Transform:
@@ -1390,7 +1394,9 @@ MonoBehaviour:
   - {fileID: 425445507}
   scenes:
   - {fileID: 11400000, guid: c21031903af50064381f676e8a3456e2, type: 2}
-  backgroundList: []
+  backgroundList:
+  - {fileID: -1873555975952604234, guid: ff93cef5cf8a99c4ab38c60fe9bd5ea6, type: 3}
+  - {fileID: -7973862039547745229, guid: 1e835cd5c9fa1da478e3cc256b7c758e, type: 3}
   backgroundSprite: {fileID: 1139363226}
   objectImageList: []
   dialogueRunner: {fileID: 1017169655}
@@ -1413,6 +1419,7 @@ GameObject:
   m_IsActive: 0
 --- !u!212 &835810398
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1431,6 +1438,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1452,9 +1461,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 3011819982127858974, guid: 818eb732d1c4ac1439ac1a4911f1f380, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1464,7 +1475,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &835810399
 Transform:
@@ -1785,6 +1795,7 @@ MonoBehaviour:
   difficulty: 0
   allMuseumDialogueComplete: 0
   currentScene: R+JMemory
+  knowledgeStat: 0
 --- !u!4 &1027729049
 Transform:
   m_ObjectHideFlags: 0

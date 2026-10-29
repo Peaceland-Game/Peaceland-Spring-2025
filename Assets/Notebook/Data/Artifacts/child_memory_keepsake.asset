@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c60aab75cb62c40bf8abfa0d6bb067, type: 3}
+  m_Name: child_memory_keepsake
+  m_EditorClassIdentifier: Assembly-CSharp::Peaceland.Notebook.ArtifactDefinition
+  id: child_memory_keepsake
+  title: Childhood Keepsake
+  icon: {fileID: 599749539538422185, guid: 62c29300dc0fedc4286ef10ed0845fe1, type: 3}
+  chapter: Child Memory
+  category: MEMORIES
+  sortOrder: 1
+  description: '[Placeholder] A nostalgic reminder of earlier, simpler days before
+    the unrest began.'
+  collectedAtStart: 0

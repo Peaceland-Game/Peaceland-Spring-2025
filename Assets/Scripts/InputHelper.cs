@@ -4,24 +4,26 @@ using UnityEngine.InputSystem;
 public static class InputHelper
 {
     public static Vector2 GetPointerPosition() {
-
-        Vector2 pos;
-
-        if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.WindowsPlayer)
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
         {
-            pos = Touchscreen.current.position.ReadValue();
+            return Touchscreen.current.primaryTouch.position.ReadValue();
         }
-        else {
-            pos = Mouse.current.position.ReadValue();
+        if (Mouse.current != null)
+        {
+            return Mouse.current.position.ReadValue();
         }
-
-        //pos = Touchscreen.current.position.ReadValue();
-
-        return pos;
+        if (Touchscreen.current != null)
+        {
+            return Touchscreen.current.primaryTouch.position.ReadValue();
+        }
+        return Vector2.zero;
     }
 
     public static Vector3 GetPointerWorldPosition() {
-        Vector3 pos = Camera.main.ScreenToWorldPoint(GetPointerPosition());
+        Camera cam = Camera.main;
+        if (cam == null) cam = Object.FindFirstObjectByType<Camera>();
+        if (cam == null) return Vector3.zero;
+        Vector3 pos = cam.ScreenToWorldPoint(GetPointerPosition());
         return new Vector3(pos.x, pos.y, 0.0f);
     }
 }

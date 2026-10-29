@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Peaceland
@@ -10,6 +11,17 @@ namespace Peaceland
     {
         [SerializeField] private PeacelandSaveSlotEntryView[] slotEntries;
         [SerializeField] private GameObject root;
+        [Header("Dynamic Slots")]
+        [SerializeField] private PeacelandSaveSlotEntryView slotEntryTemplate;
+        [SerializeField] private Transform slotEntryContainer;
+        [Min(1)]
+        [SerializeField] private int initialVisibleSlotCount =
+            PeacelandSaveSlots.InitialVisibleSlotCount;
+        [Min(1)]
+        [SerializeField] private int emptySlotBuffer = 1;
+
+        private readonly List<PeacelandSaveSlotEntryView> runtimeEntries =
+            new List<PeacelandSaveSlotEntryView>();
 
         private PeacelandGameStartController startController;
         private Action<int> standaloneSlotSelected;
@@ -72,10 +84,12 @@ namespace Peaceland
 
         public void Refresh()
         {
-            EnsureSlotEntries();
             PeacelandSaveService saveService = PeacelandSaveService.Instance;
+            EnsureSlotEntries(PeacelandSaveService.GetVisibleSlotCount(
+                initialVisibleSlotCount,
+                emptySlotBuffer));
 
-            for (int i = 0; i < slotEntries.Length && i < PeacelandSaveSlots.SlotCount; i++)
+            for (int i = 0; i < slotEntries.Length; i++)
             {
                 PeacelandSaveSlotEntryView entry = slotEntries[i];
                 if (entry == null)
@@ -149,14 +163,48 @@ namespace Peaceland
             }
         }
 
-        private void EnsureSlotEntries()
+        private void EnsureSlotEntries(int requiredCount = -1)
         {
-            if (slotEntries != null && slotEntries.Length >= PeacelandSaveSlots.SlotCount)
+            if (runtimeEntries.Count == 0)
             {
-                return;
+                PeacelandSaveSlotEntryView[] authoredEntries =
+                    slotEntries != null && slotEntries.Length > 0
+                        ? slotEntries
+                        : GetComponentsInChildren<PeacelandSaveSlotEntryView>(true);
+
+                foreach (PeacelandSaveSlotEntryView entry in authoredEntries)
+                {
+                    if (entry != null && !runtimeEntries.Contains(entry))
+                    {
+                        runtimeEntries.Add(entry);
+                    }
+                }
             }
 
-            slotEntries = GetComponentsInChildren<PeacelandSaveSlotEntryView>(true);
+            if (slotEntryTemplate == null && runtimeEntries.Count > 0)
+            {
+                slotEntryTemplate = runtimeEntries[0];
+            }
+
+            if (slotEntryContainer == null && slotEntryTemplate != null)
+            {
+                slotEntryContainer = slotEntryTemplate.transform.parent;
+            }
+
+            int targetCount = requiredCount > 0
+                ? requiredCount
+                : Mathf.Max(initialVisibleSlotCount, runtimeEntries.Count);
+
+            while (runtimeEntries.Count < targetCount && slotEntryTemplate != null)
+            {
+                PeacelandSaveSlotEntryView entry = Instantiate(
+                    slotEntryTemplate,
+                    slotEntryContainer);
+                entry.name = "Save Slot " + (runtimeEntries.Count + 1);
+                runtimeEntries.Add(entry);
+            }
+
+            slotEntries = runtimeEntries.ToArray();
         }
     }
 }

@@ -253,12 +253,15 @@ namespace Peaceland.Notebook.EditableScenePack
             }
 
             Transform overlayRoot = overlay.transform;
-            if (overlayRoot.name != "Notebook Overlay" || overlayRoot.parent != canvas.transform)
+            Canvas overlayCanvas = overlay.GetComponentInParent<Canvas>(true);
+            if (overlayRoot.name != "Notebook Overlay"
+                || overlayCanvas == null
+                || overlayRoot.parent != overlayCanvas.transform)
             {
                 report.Add(
                     NotebookHarnessSeverity.Error,
                     "OVERLAY_ROOT_MISMATCH",
-                    "NotebookOverlayView must be the direct child named 'Notebook Overlay' under the scene Canvas.",
+                    "NotebookOverlayView must be the direct child named 'Notebook Overlay' under its Canvas.",
                     sceneName);
             }
 
