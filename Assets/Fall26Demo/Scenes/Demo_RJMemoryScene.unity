@@ -2209,7 +2209,7 @@ PrefabInstance:
     - target: {fileID: 8880641255474623990, guid: aeb492adda39ade44a72a56f6201bdfe, type: 3}
       propertyPath: 'dialogueViews.Array.data[2]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1030130991}
     m_RemovedComponents:
     - {fileID: 5055328928758533238, guid: aeb492adda39ade44a72a56f6201bdfe, type: 3}
     m_RemovedGameObjects: []
