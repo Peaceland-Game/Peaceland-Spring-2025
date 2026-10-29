@@ -159,6 +159,9 @@ public class F26_DragManager : MonoBehaviour
         if (!isActiveAndEnabled) return;
         if (F26_GameManager.Instance.gameState == F26_GameManager.GameState.Paused) return;
 
+        //if the draggables didnt initialize properly or is empty, return
+        if (draggables == null || draggables.Length == 0) return;
+
         if (context.phase == InputActionPhase.Disabled || context.phase == InputActionPhase.Canceled)
         {
             if (currentF26_Draggable is not null)
@@ -168,7 +171,7 @@ public class F26_DragManager : MonoBehaviour
                 currentF26_Draggable.EndDrag();
             }
         }
-        else if (context.phase == InputActionPhase.Started)
+        else if (context.phase == InputActionPhase.Started || context.phase == InputActionPhase.Performed)
         {
 
             Vector3 touch_wp = InputHelper.GetPointerWorldPosition();
@@ -176,6 +179,9 @@ public class F26_DragManager : MonoBehaviour
             F26_Draggable candidate = null;
             foreach (var draggable in draggables)
             {
+                //if the dragggable was caught/clicked mid-initilization, 
+                if (draggable == null || draggable.gameObject == null) continue;
+
                 // Select the draggable in front
                 if (draggable.CanDrag(touch_wp) && draggable.GetComponent<SpriteRenderer>().sortingOrder > highestOrderInLayer)
                 {
