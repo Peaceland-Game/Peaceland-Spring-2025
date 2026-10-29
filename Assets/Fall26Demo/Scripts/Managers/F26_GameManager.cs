@@ -21,6 +21,9 @@ public class F26_GameManager : MonoBehaviour
     public const int HomeBuildIndex = 5;
     public const int SneakBuildIndex = 6;
     public const int LetterBuildIndex = 7;
+    public const int PostSneakBuildIndex = 8;
+    public const int JournalBuildIndex = 9;
+    public const int EndingBuildIndex = 10;
 
     //larger gamestate tracking variables
     public enum GameState
