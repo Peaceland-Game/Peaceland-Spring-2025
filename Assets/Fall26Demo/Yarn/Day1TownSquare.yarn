@@ -131,7 +131,7 @@ Before {$protagName} could respond, {$officerName} runs off to stop the fight.
 While he hurriedly walks away, he spots {$collegeFriendName}, a friend from school.
 
 {$protagName}: (<i>{$collegeFriendName}? What's she doing here?</i>)
-{$protagName}: (<i>It should check on her before she gets distracted by the commotion.</i>)
+{$protagName}: (<i>I should check on her before she gets distracted by the commotion.</i>)
 
 The crowd of fans seems to be quieting slightly, and someone is probably being detained.
 
@@ -148,7 +148,7 @@ title: TownSquareKatarina1
 ---
 <<lighten 1>>
 <<changeSprite 1 5>>
-{$collegeFriendName} raises an eyebrow
+{$collegeFriendName} raises an eyebrow.
 {$collegeFriendName}: I'm fine. How about you?
 <<darken 1>>
 -> I'm safe, at least.

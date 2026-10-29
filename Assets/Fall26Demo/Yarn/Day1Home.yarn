@@ -4,7 +4,7 @@
 <<declare $dadName= "Zoran">>
 <<declare $momName= "Dafina">>
 
-As {$protagName} walks into his house, he spots {$brotherName} standing by the front door.
+As {$protagName} walks into his house, he spots {$brotherName} standing in the kitchen.
 
 //display Art
 <<oneChar>>
@@ -131,5 +131,5 @@ A sly smirk grows over {$brotherName}'s face.
 {$protagName} goes to his room.
 <<changeBG 1>>
 <<zeroChar>>
-{$protagName} sits at his desk, thinking about everything that happened today
+{$protagName} sits at his desk, thinking about everything that happened today.
 ===
