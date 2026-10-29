@@ -40,8 +40,8 @@ public class ToggleNeighbours : ButtonUtils
     {
         foreach (var btn in neighbours)
         {
-            DisableButton(btn);
-            if(btn == self)
+            btn.interactable = false;
+            if (btn == self)
             {
                 continue;
             }

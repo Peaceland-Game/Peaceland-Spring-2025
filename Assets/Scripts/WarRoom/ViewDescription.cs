@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 /// <summary>
 /// Enables description view for an artifact, by enabling and disabling specific buttons and panels when
@@ -31,6 +32,9 @@ public class ViewDescription : ButtonUtils
     [SerializeField]
     public Button exitZoom = null;
 
+    [SerializeField]
+    public GameObject text = null; //if this object is a See More button
+
     public event EventHandler OnViewDescriptionClicked; //subscribed by HoverButton.cs to re-enable the hover button when exiting the description
 
 
@@ -48,6 +52,10 @@ public class ViewDescription : ButtonUtils
         DisableButton(leftArrow);
         DisableButton(rightArrow);
         viewDescButton.interactable = false;
+        if (text != null)
+        {
+            text.gameObject.SetActive(false);
+        }
         if (exitZoom != null)
         {
             DisableButton(exitZoom);
