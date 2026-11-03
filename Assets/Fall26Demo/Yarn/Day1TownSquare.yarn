@@ -24,12 +24,14 @@
 <<lighten 2>>
 {$bakerName}: Well hello, {$protagName}! You look sharp today.
 {$bakerName} cracks a smile.
+<<changeSprite 2 1>>
 {$bakerName}: I saw your parents the other day. They mentioned that you're starting a new job?
 <<darken 2>>
 
 {$protagName}: I am. Today was my first shift at the new museum.
 
 <<lighten 2>>
+<<changeSprite 2 0>>
 {$bakerName}: Oh, of course. I don’t suppose that you are working with that new exhibit? The Memory Tree?
 
 <<darken 2>>
@@ -57,12 +59,14 @@
     {$protagName}: I guess that’s one way of putting it.
 
 <<lighten 2>>
+<<changeSprite 2 2>>
 {$bakerName} eyes {$protagName} carefully.
 {$bakerName}: I do hope that Thebrean man didn’t give you any trouble, {$protagName}.
 {$protagName}: I’m alright, Jovan was very kind to me.
 
 <<lighten 2>>
 {$bakerName}: Well, let me get you a doughnut for your troubles.
+<<changeSprite 2 1>>
 {$bakerName}: On the house, of course!
 <<darken 2>>
 
@@ -74,6 +78,7 @@
 {$bakerName}: You're very welcome, {$protagName}!
 <<darken 2>>
 
+<<changeSprite 2 0>>
 {$protagName}: Anyways, I should be going now. It was good to see you, {$bakerName}!
 
 <<lighten 2>>
