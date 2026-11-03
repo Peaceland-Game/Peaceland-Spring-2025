@@ -202,6 +202,9 @@ public class SneakPlayer : MonoBehaviour
     /// </summary>
     public void Hiding()
     {
+        //if you've already been caught, dont bother changing the sprite
+        if (isCaught) { return; } 
+
         //if succesfully hidden, darken the sprite to show as such, if just hitting the hide button but not in a hiding spot (or vice versa), don't darken.
         if (isWithinHidingPlace && isHiding)
         {
