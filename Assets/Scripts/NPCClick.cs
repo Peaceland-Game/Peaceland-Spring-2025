@@ -12,13 +12,14 @@ public class NPCClick : MonoBehaviour
     Vector3 originalPosition;
     Vector3 originalScale;
     private bool npcMoved = false;
+    private InputAction tapAction;
 
     void Start()
     {
         originalPosition = transform.position;
         originalScale = transform.localScale;
-
         dialogueRunner.onDialogueComplete.AddListener(RestoreNPC); //When dialogue ends, the original position and scales are restored
+        tapAction = InputSystem.actions.FindAction("Tap");
     }
 
     /// <summary>
@@ -37,9 +38,9 @@ public class NPCClick : MonoBehaviour
     {
         if (!dialogueRunner.IsDialogueRunning)
         {
-            if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (tapAction.WasPressedThisFrame())
             {
-                Vector2 mouseWorld = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                Vector2 mouseWorld = InputHelper.GetPointerWorldPosition();
 
                 if (boxCollider.OverlapPoint(mouseWorld))
                 {
