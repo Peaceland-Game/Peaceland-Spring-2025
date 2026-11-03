@@ -13,7 +13,7 @@
 <<changeSprite 2 0>>    // Jovan Starts neutral/calm
 <<darken 2>>
 
-<<lighten 2>>
+<<lighten 1>>
 {$lover2Name}: Did anyone see you?
 <<darken 1>>
 

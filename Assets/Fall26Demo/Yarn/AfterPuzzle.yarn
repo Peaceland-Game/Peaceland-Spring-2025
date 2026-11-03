@@ -8,7 +8,7 @@ title: AfterPuzzle
 <<twoChar>>
 <<changeSprite 2 5>>    // Jovan starts the scene serious
 <<hideChar 1>>
-{$cousinName} comes back into the roomand sees {$lover1Name} sitting at the kitchen table.
+{$cousinName} comes back into the room and sees {$lover1Name} sitting at the kitchen table.
 <<showChar 1>>
 <<changeSprite 1 0>>    // Damir starts the scene neutral
 <<lighten 1>>

@@ -83,6 +83,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/R&JMemory/JournalMinigame.unity
     guid: d0c5f0594d0890943896957b4f988140
+  - enabled: 1
+    path: Assets/Fall26Demo/Scenes/Demo_Ending.unity
+    guid: 1504b30cdf91d2a4b8554130ee53766e
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: f0575c88935330e43a5e85ee93b729a5, type: 2}

@@ -45,19 +45,19 @@ MonoBehaviour:
   - blankId: b1
     placeholder: _______
     choices:
-    - word: It hurts me to say this
+    - word: I tried to tell you
       mood: 1
       points: 1
-    - word: I tried to tell you
+    - word: It hurts me to say this
       mood: 1
       points: 1
   - blankId: b2
     placeholder: _______
     choices:
-    - word: couldn't choose
+    - word: refused to choose
       mood: 0
       points: 1
-    - word: refused to choose
+    - word: couldn't choose
       mood: 0
       points: 1
   - blankId: b3
@@ -72,10 +72,10 @@ MonoBehaviour:
   - blankId: b4
     placeholder: _______
     choices:
-    - word: of where he comes from
+    - word: you don't see him as human
       mood: 0
       points: 0
-    - word: you don't see him as human
+    - word: of where he comes from
       mood: 0
       points: 0
   - blankId: b5
@@ -90,10 +90,10 @@ MonoBehaviour:
   - blankId: b6
     placeholder: _______
     choices:
-    - word: holding these meaningless grudges
+    - word: tream them like they're lesser
       mood: 0
       points: 0
-    - word: tream them like they're lesser
+    - word: holding these meaningless grudges
       mood: 0
       points: 0
   - blankId: b7

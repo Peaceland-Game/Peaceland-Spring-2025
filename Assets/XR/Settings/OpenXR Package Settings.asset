@@ -272,7 +272,6 @@ MonoBehaviour:
   targetOpenXRApiVersion: 
   required: 0
   customRuntimeLoaderName: 
-  m_UseRightHandedNDC: 0
 --- !u!114 &-5842578510457681158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,8 +456,6 @@ MonoBehaviour:
   - {fileID: 7139244499305656665}
   - {fileID: 924686583573505651}
   - {fileID: 7029147250841003158}
-  - {fileID: -5931811690402642895}
-  - {fileID: 4220260217653572873}
   - {fileID: -7021520947487524853}
   - {fileID: 6148443877158345932}
   - {fileID: 6323857000245677963}
@@ -487,11 +484,7 @@ MonoBehaviour:
   m_spacewarpMotionVectorTextureFormat: 0
   m_optimizeBufferDiscards: 0
   m_symmetricProjection: 0
-  m_optimizeMultiviewRenderRegions: 0
-  m_multiviewRenderRegionsOptimizationMode: 0
-  m_hasMigratedMultiviewRenderRegionSetting: 1
   m_foveatedRenderingApi: 0
-  m_useOpenXRPredictedTime: 0
 --- !u!114 &-3656117867194900073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,11 +756,7 @@ MonoBehaviour:
   m_spacewarpMotionVectorTextureFormat: 0
   m_optimizeBufferDiscards: 0
   m_symmetricProjection: 0
-  m_optimizeMultiviewRenderRegions: 0
-  m_multiviewRenderRegionsOptimizationMode: 0
-  m_hasMigratedMultiviewRenderRegionSetting: 1
   m_foveatedRenderingApi: 0
-  m_useOpenXRPredictedTime: 0
 --- !u!114 &344248268047246376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -814,8 +803,6 @@ MonoBehaviour:
   lateLatchingMode: 0
   lateLatchingDebug: 0
   optimizeMultiviewRenderRegions: 0
-  m_multiviewRenderRegionsOptimizationMode: 0
-  m_hasMigratedMultiviewRenderRegions: 1
   spacewarpMotionVectorTextureFormat: 0
 --- !u!114 &924686583573505651
 MonoBehaviour:
