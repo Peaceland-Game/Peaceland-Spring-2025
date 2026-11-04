@@ -15,15 +15,21 @@ public class F26_GameManager : MonoBehaviour
     //Scene build indices
     public const int DemoStartBuildIndex = 0;
     public const int DemoRJPresentBuildIndex = 1;
-    public const int RJ_MemoryBuildIndex = 2;
+    //public const int RJ_MemoryBuildIndex = 2;
     public const int WarRoomBuildIndex = 3;
     public const int TownSquareBuildIndex = 4;
     public const int HomeBuildIndex = 5;
-    public const int SneakBuildIndex = 6;
-    public const int LetterBuildIndex = 7;
-    public const int PostSneakBuildIndex = 8;
+    //public const int SneakBuildIndex = 6;
+    //public const int LetterBuildIndex = 7;
+    //public const int PostSneakBuildIndex = 8;
     public const int JournalBuildIndex = 9;
     public const int EndingBuildIndex = 10;
+
+    //Use these if you want to only have the memory
+    public const int RJ_MemoryBuildIndex = 1; 
+    public const int SneakBuildIndex = 2;
+    public const int LetterBuildIndex = 3;
+    public const int PostSneakBuildIndex = 4;
 
     //larger gamestate tracking variables
     public enum GameState
