@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class SneakPlayer : MonoBehaviour
@@ -21,9 +22,13 @@ public class SneakPlayer : MonoBehaviour
     [SerializeField]
     private Sprite hidingSprite;                //Sprite for when R&J are hiding
 
+    [SerializeField]
+    private Slider progressBar;                 // The progress bar to show how far into the minigame you are
+
     private Camera cam;         // Reference to the camera
     [SerializeField]
     private float camOffset;    // Distance to offset player from Camera
+
 
     // Get/Set Properties
     /// <summary>
@@ -44,6 +49,8 @@ public class SneakPlayer : MonoBehaviour
         isHiding = false;
         isSprinting = false;
         isCaught = false;
+        //Reset Progress Bar
+        progressBar.value = Mathf.Clamp01(0);
 
         //find colliders
         CircleCollider2D[] colliders = GetComponents<CircleCollider2D>();
@@ -96,6 +103,12 @@ public class SneakPlayer : MonoBehaviour
 
         //check to see if the sprite needs darkened or not
         Hiding();
+
+        //update the progressbar to keep up with how far the camera has moved
+        if (progressBar != null)
+        {
+            progressBar.value = Mathf.Clamp01(cam.transform.position.x/150);
+        }
     }
 
     /// <summary>
@@ -195,6 +208,7 @@ public class SneakPlayer : MonoBehaviour
         isWithinHidingPlace = false;
         isCaught = false;
         isSprinting = false;
+        progressBar.value = Mathf.Clamp01(0);
     }
 
     /// <summary>
