@@ -79,7 +79,7 @@ public class JournalMinigameController : MonoBehaviour
     {
         if (memoryPages != null && memoryPages.Length > 0) return;
 
-        memoryPages = new MemoryPageData[7];
+        memoryPages = new MemoryPageData[6];
 
         // Memory 1
         memoryPages[0] = new MemoryPageData
@@ -154,19 +154,6 @@ public class JournalMinigameController : MonoBehaviour
         memoryPages[5] = new MemoryPageData
         {
             memoryTitle = "Reflection 6",
-            memorySummary = "After that I met Katarina in the square.",
-            slotHint = "[ Drag Selected Reflection Here ]",
-            wordBankChoices = new string[]
-            {
-                "Katarina is justifiably skeptical of this upcoming election.",
-                "Biases like Katarina’s are the reason wars start in the first place when people can’t agree.",
-                "I didn't meet with them."
-            }
-        };
-
-        memoryPages[6] = new MemoryPageData
-        {
-            memoryTitle = "Reflection 7",
             memorySummary = "And then I came home and spoke to Art.",
             slotHint = "[ Drag Selected Reflection Here ]",
             wordBankChoices = new string[]

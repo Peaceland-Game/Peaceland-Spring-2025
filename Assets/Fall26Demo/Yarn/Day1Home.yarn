@@ -95,39 +95,6 @@ A sly smirk grows over {$brotherName}'s face.
 <<zeroChar>>
 {$brotherName} walks away.
 
-{$protagName}'s parents go to the kitchen to talk with him.
-<<twoChar>>
-<<changeSprite 1 1>>
-<<changeSprite 2 0>>
-<<darken 1>>
-<<lighten 2>>
-{$momName}: Hey, kiddo. How was your first day?
--> It was definitely...something.
-    <<darken 2>>
-    {$protagName}: It was definitely...something.
-    <<lighten 1>>
-    {$dadName} raises an eyebrow.
-    {$dadName}: Already complaining?
-    <<darken 1>>
-    <<lighten 2>>
-    {$momName}: Get to bed soon; you want to be rested for tomorrow.
-    <<darken 2>>
--> It went as well as I would've imagined.
-    <<darken 2>>
-    {$protagName}: It went as well as I would've imagined.
-    <<lighten 2>>
-    {$momName}: Don’t worry so much about it. The museum is lucky to have you.
-    <<darken 2>>
-    <<lighten 1>>
-    {$dadName}: {$momName}, he’s a grown man. There’s no need to reassure him.
-    <<darken 1>>
--> Honestly, not bad at all.
-    <<darken 2>>
-    {$protagName}: Honestly, not bad at all. I’m actually looking forward to tomorrow.
-    <<lighten 2>>
-    {$momName}: It sounded perfect for you when you told us last week!
-    {$momName}: I’m glad you have something to look forward to.
-    <<darken 2>>
 {$protagName} goes to his room.
 <<changeBG 1>>
 <<zeroChar>>
