@@ -33,13 +33,19 @@ public class SneakManager : MinigameBehavior
 
     // UI fields
     [SerializeField]
-    private GameObject sneakUI;     // UI for when the game is running
+    private GameObject sneakUI;         // UI for when the game is running
     [SerializeField]
     private GameObject gameOverScreen;  // UI for when the player has been caught
     [SerializeField]
     private GameObject victoryScreen;   // UI for when the player has reached the goal
     [SerializeField]
-    private GameObject gameStartScreen;   // UI for when the player has started the game for the first time
+    private GameObject gameStartScreen; // UI for when the player has started the game for the first time
+    [SerializeField]
+    private GameObject hideButton;      // Reference to the Hide Button
+    [SerializeField]
+    private GameObject sprintButton;    // Reference to the Sprint Button
+    [SerializeField]
+    private GameObject ctrlText;        // Reference to the controls text that explains PC controls
 
     // Level Loader
     protected LevelLoader LL;
@@ -76,6 +82,21 @@ public class SneakManager : MinigameBehavior
         // TEST CODE! Likely not needed for final version.
         StartMinigame();
         LL = FindFirstObjectByType<LevelLoader>();
+
+        //Check if we're on adroid, if so, show the buttons and hide the PC ctrls text
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            hideButton.SetActive(true);
+            sprintButton.SetActive(true);
+            ctrlText.SetActive(false);
+        }
+        else
+        {
+            // On any other device (presumably PC) do the opposite
+            hideButton.SetActive(false);
+            sprintButton.SetActive(false);
+            ctrlText.SetActive(true);
+        }
     }
 
     // Update is called once per frame
