@@ -260,10 +260,10 @@ public class LetterManager : MinigameBehavior
         if (isStamping) return;
         if (sealAnimationCoroutine != null) StopCoroutine(sealAnimationCoroutine);
         //ResetMinigame();
-        //levelLoader.LoadLevelByBuildIndex(F26_GameManager.DemoRJPresentBuildIndex);
+        levelLoader.LoadLevelByBuildIndex(F26_GameManager.DemoRJPresentBuildIndex);
         //use instead of previous line if you want just the memory
-        F26_GameManager.Instance.ResetGameManager();
-        levelLoader.LoadLevelByBuildIndex(F26_GameManager.DemoStartBuildIndex);
+        //F26_GameManager.Instance.ResetGameManager();
+        //levelLoader.LoadLevelByBuildIndex(F26_GameManager.DemoStartBuildIndex);
 
     }
 

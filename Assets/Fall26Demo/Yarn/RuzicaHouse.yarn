@@ -100,9 +100,9 @@ They pause after hearing a voice from outside her door.
 {$lover2Name}: No, no. Everything is okay.
 <<darken 1>>
 
-They hear {$lover2Name}'s Mom walking toward her room. 
+They hear {$lover2Name}'s mom walking toward her room. 
 
-{$lover2Name}'s Mom begins to open the door.
+{$lover2Name}'s mom begins to open the door.
 {$lover2Name}'s Mom: Are you sure?
 
 <<lighten 1>>
