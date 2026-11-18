@@ -14,6 +14,8 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     // List of minigames, SceneCharacters, and DialogueRunner inherited from parent.
     [SerializeField]
     private int afterMemStart;      // Minigame index to start at after finishing the memory
+    private int allMuseumDialogueCompleteMinigameIndex = 4; //Minigame index to go to if all (required) museum dialog is completed
+
     [SerializeField]
     private GameObject MainCharPortrait;
     [SerializeField]
@@ -81,7 +83,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
 
         if (GM.allMuseumDialogueComplete)
         {
-            currentMinigame = 4;
+            currentMinigame = allMuseumDialogueCompleteMinigameIndex;
         }
 
         Debug.Log("demo start");
@@ -117,17 +119,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
         MainCharPortrait.SetActive(false);
         SecondCharPortrait.SetActive(false);
 
-        
-        if (introSprawlDone && !GM.completedScenes["R+JMemory"])
-        {
-            newsPaper.enabled = false;
-            MainCharPortrait.SetActive(false);
-            SecondCharPortrait.SetActive(false);
-            DisableContinueButton();
-            StartCoroutine(MuseumTransition());
-            return;
-        }
-
         //skip to R+J intro if war room has been completed
         if (GM.CurrentScene == "WarRoomIntro")
         {
@@ -142,7 +133,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             NextOrder();
         }
 
-        // Jump ahead on dialog if returning from the memory
+        //Skip to post memory if returning from the memory
         if (GM.completedScenes["R+JMemory"])
         {
             if (GM.CurrentScene == "R+JMemory" || GM.CurrentScene == "PostSneak")
@@ -170,7 +161,6 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             newsPaper.enabled = false;
             museumTree.enabled = true;
             treePlaque.enabled = true;
-            //warRoomEntrance.gameObject.SetActive(true);
             DisableContinueButton();
             
         }
@@ -251,7 +241,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             //}
         }
         //Display the town square button if able to go to the town square
-        if(currentMinigame >= 4)
+        if(currentMinigame >= allMuseumDialogueCompleteMinigameIndex)
         {
             goToTownSquareButton.interactable = !dialogueRunner.IsDialogueRunning;
             goToTownSquareButton.GetComponent<Image>().enabled = !dialogueRunner.IsDialogueRunning;
@@ -321,7 +311,7 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
     {
         if (GM.allMuseumDialogueComplete)
         {
-            currentMinigame = 4;
+            currentMinigame = allMuseumDialogueCompleteMinigameIndex;
             Debug.Log("All dialogue is complete. currentMinigame clamped to 3.");
             return;
         }
@@ -360,21 +350,21 @@ public class F26_Demo_RJMuseumIntro : GenericMemManager
             PlayMinigameAtIndex(1);
         }
 
-        // If after the initial dialogue, jump into the memory sequence.
+        //Go to memory sequence after R+J Intro.
         else if (currentMinigame == afterMemStart && !GM.completedScenes["R+JMemory"])
         {
             LL.LoadLevelByBuildIndex(F26_GameManager.RJ_MemoryBuildIndex);
         }
 
-        // If returning from the memory, run the dialogue
+        // If returning from the memory, run post-memory
         else if (currentMinigame == afterMemStart && GM.completedScenes["R+JMemory"] && !GM.allMuseumDialogueComplete)
         {
             warRoomEntrance.gameObject.SetActive(false);
         }
 
-        // If after the ending dialogue, enable the button that transitions to 
+        // After the post memory, enable the button that transitions to 
         // demo end screen and make warRoomEntrance interactable again
-        else if (currentMinigame == 4)
+        else if (currentMinigame == allMuseumDialogueCompleteMinigameIndex)
         {
             GM.allMuseumDialogueComplete = true;
             warRoomEntrance.gameObject.SetActive(false);
