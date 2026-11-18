@@ -19,3 +19,10 @@ tags:
 <<zeroChar>>
 {$protagName}: (<i>Okay, I think I've seen enough. I should get back to Petar.</i>)
 ===
+
+title: WarRoomWarning
+tags:
+---
+<<zeroChar>>
+{$protagName}: (<i>I should probably at least check out those flags before going back</i>)
+===

@@ -94,7 +94,6 @@ public class F26_Demo_WarRoom : GenericMemManager
         //enable wall view exclusive buttons/ui elements
         showWallClickInstructions = true;
         EnableButton(returnToLobbyButton);
-        returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
         ToggleButtonArray(true, clickableWalls);
         ToggleWalls();
 
@@ -121,15 +120,13 @@ public class F26_Demo_WarRoom : GenericMemManager
         if (onWideShot)
         {
             //enable wideshot exclusive elements
-            if (allIntroItemsClicked && !dialogueRunner.IsDialogueRunning)
+            if (!dialogueRunner.IsDialogueRunning)
             {
                 EnableButton(returnToLobbyButton);
-                returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
             }
             else
             {
                 DisableButton(returnToLobbyButton);
-                returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
             }
 
             //Show wall click instructions when new to the room, when dialog is not running
@@ -158,7 +155,6 @@ public class F26_Demo_WarRoom : GenericMemManager
         {
             //disable wideshot exclusive buttons
             DisableButton(returnToLobbyButton);
-            returnToLobbyButton.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
             ToggleButtonArray(false, clickableWalls);
         }
         //set background sprite as current wall 
@@ -266,12 +262,20 @@ public class F26_Demo_WarRoom : GenericMemManager
     /// </summary>
     public void ReturnToLobby()
     {
-        Debug.Log("Returning to lobby...");
-        if (!GM.completedScenes["WarRoomIntro"])
+        if (allIntroItemsClicked)
         {
-            GM.completedScenes["WarRoomIntro"] = true;
+            Debug.Log("Returning to lobby...");
+            if (!GM.completedScenes["WarRoomIntro"])
+            {
+                GM.completedScenes["WarRoomIntro"] = true;
+            }
+            LL.LoadLevelByBuildIndex(F26_GameManager.DemoRJPresentBuildIndex, true);
         }
-        LL.LoadLevelByBuildIndex(F26_GameManager.DemoRJPresentBuildIndex, true);
+        //Give hint about what to look at
+        else
+        {
+            PlayMinigameAtIndex(2);
+        }
     }
 
     /// <summary>
